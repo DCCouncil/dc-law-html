@@ -1,0 +1,83 @@
+{
+  "from": "{{from}}{{^from}}0{{/from}}",
+  "size": 5,
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "bool": {
+            "_name": "simple query",
+            "must": [{
+              /*
+                When input = 1-702, it will match "1" or "702" in num, title or body
+              */
+              "simple_query_string": {
+                "fields": [
+                  "num",
+                  "title",
+                  "body"
+                ],
+                "query": "{{query_string}}"
+              }
+            }],
+
+            "filter": {
+              "term": {
+                "path": "{{path}}{{^path}}library{{/path}}"
+              }
+            }
+
+          }
+        },
+        {
+          "bool": {
+            "boost": 2,
+            "_name": "exact number",
+            "must": [{
+              /*
+                  When input = 1-702, it will only match num where exactly "1-702" appears
+                  The boost of 4 should push it to the top of the results
+              */
+              "match": {
+                "num": {
+                  "query": "{{query_string}}",
+                  "operator": "and"
+                }
+              }
+            }]
+          }
+        }
+      ]
+    }
+  },
+  "_source": {
+    "includes": ["url", "title", "path"]
+  },
+  "highlight": {
+    "pre_tags": [
+      "<mark>"
+    ],
+    "post_tags": [
+      "</mark>"
+    ],
+    "fields": {
+      /*
+          The "span" fragmenter ignores fragment_size and no_match_size when
+          a lot of text appears between matches.  This can produce very long results.
+
+          The "simple" fragmenter will always respect the maximum size of the fragment
+
+          https://github.com/elastic/elasticsearch/issues/9442#issuecomment-316392449
+      */
+      "body": {
+        "fragmenter": "simple",
+        "number_of_fragments": 1,
+        "fragment_size": 60,
+        "no_match_size": 60
+      },
+      "title": {
+        "number_of_fragments": 0
+      }
+    }
+  }
+}
