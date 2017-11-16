@@ -13,9 +13,22 @@ import argparse
 import sys, os
 import urllib.parse
 import posixpath
+import json
+
 DIR = os.path.abspath(os.path.dirname(__file__))
 
 class RequestHandler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        redirect = self.server.redirects.get(self.path)
+        if redirect:
+            sa = self.server.socket.getsockname()
+            location = 'http://{}:{}{}'.format(*sa, redirect)
+            self.send_response(302)
+            self.send_header('Location', location)
+            self.end_headers()
+        else:
+            super().do_GET()
+
     def translate_path(self, path):
         """Translate a /-separated PATH to the local filename syntax.
 
@@ -62,6 +75,15 @@ if __name__ == '__main__':
     server_address = (args.bind, args.port)
 
     httpd = HTTPServer(server_address, RequestHandler)
+
+    raw_redirects = []
+    try:
+        with open(os.path.join(DIR, 'redirects.json')) as f:
+            raw_redirects = json.load(f)
+    except:
+        pass
+    redirects = {r[0]: r[1] for r in raw_redirects}
+    httpd.redirects = redirects
 
     sa = httpd.socket.getsockname()
     print("Serving HTTP on", sa[0], "port", sa[1], "...")
