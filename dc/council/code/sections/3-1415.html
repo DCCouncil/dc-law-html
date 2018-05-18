@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/3-1416.html">§ 3–1416. Local, small, and disadvantaged business program. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-1415.html">Report Error</a>
@@ -100,9 +100,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 2-4015.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2 of the Sports Commission Emergency Amendment Act of 1996 (D.C. Act 11-226, March 15, 1996,  43 DCR 1534).</p>
-                <p>For temporary (90 day) repeal, see § 2082(j) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) repeal, see § 2082(j) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) repeal, see § 2082(j) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary amendment of section, see § 2 of the Sports Commission Emergency Amendment Act of 1996 (D.C. Act 11-226, March 15, 1996,  43 DCR 1534).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Sports Commission Conflict of Interest Temporary Amendment Act of 1996 (D.C. Law 11-141, June 13, 1996, law notification  43 DCR 3369).</p>
                 <h4>Editor's Notes</h4>

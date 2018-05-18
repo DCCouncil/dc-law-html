@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/2/chapters/3/units/A/subchapters/III/">Subchapter III. Source Selection and Contract Formation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/2/chapters/3/units/A/subchapters/II/">Report Error</a>
@@ -89,14 +89,30 @@
         <section class="col8 body">
           <h1>Subchapter II. Procurement Organization.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/2-302.01.html">§ 2–302.01. Policy. [Repealed]</a>
-            <a href="/dc/council/code/sections/2-302.02.html">§ 2–302.02. Procurement regulations and information system. [Repealed]</a>
-            <a href="/dc/council/code/sections/2-302.03.html">§ 2–302.03. Duties of Director. [Repealed]</a>
-            <a href="/dc/council/code/sections/2-302.04.html">§ 2–302.04. Regulatory powers of Mayor. [Repealed]</a>
-            <a href="/dc/council/code/sections/2-302.05.html">§ 2–302.05. Establishment and effect of District Government Procurement Regulations. [Repealed]</a>
-            <a href="/dc/council/code/sections/2-302.06.html">§ 2–302.06. Contract information hotline. [Repealed]</a>
-            <a href="/dc/council/code/sections/2-302.07.html">§ 2–302.07. Transfer of procurement personnel to the Office of Contracting and Procurement. [Repealed]</a>
-            <a href="/dc/council/code/sections/2-302.08.html">§ 2–302.08. Creation and duties of Office of the Inspector General. [Transferred]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-302.01.html">§ 2–302.01. Policy. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-302.02.html">§ 2–302.02. Procurement regulations and information system. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-302.03.html">§ 2–302.03. Duties of Director. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-302.04.html">§ 2–302.04. Regulatory powers of Mayor. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-302.05.html">§ 2–302.05. Establishment and effect of District Government Procurement Regulations. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-302.06.html">§ 2–302.06. Contract information hotline. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-302.07.html">§ 2–302.07. Transfer of procurement personnel to the Office of Contracting and Procurement. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-302.08.html">§ 2–302.08. Creation and duties of Office of the Inspector General. [Transferred]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -166,8 +182,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-1182.4.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of Authority Under <a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>, the “D.C. Procurement Practices Act of 1985”, see Mayor’s Order 2002-117, July 19, 2002 ( 49 DCR 6880).</p>
                 <p>Delegation of Authority Under <a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>, the “D.C. Procurement Practices Act of 1985”, see Mayor’s Order 2002-207, December 27, 2002 ( 49 DCR 11867).</p>
+                <p>Delegation of Authority Under <a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>, the “D.C. Procurement Practices Act of 1985”, see Mayor’s Order 2002-117, July 19, 2002 ( 49 DCR 6880).</p>
               </section>
             </section>
             <hr/>
@@ -184,18 +200,18 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-1182.5.</p>
                 <h4>Editor's Notes</h4>
-                <p>The word “period” was inserted in subsection (b) to correct an omission in <a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>.</p>
-                <p>Approval of initial District of Columbia Procurement Practices Act rules: Pursuant to Resolution 7-181, the “District of Columbia Procurement Practices Act of 1985 Initial Rules Approval Resolution of 1987,” effective December 8, 1987, the Council approved proposed chapters 10, 12, 13, 15—28, 32, 38 and 41 of 27 DCMR which were submitted by the Mayor on July 9, 1987, and proposed chapters 11, 31, 33, 36, 37, 40, 42 and 45 of 27 DCMR which were submitted by the Mayor on October 5, 1987. Final rulemaking effective February 26, 1988 ( 35 DCR 1385).</p>
-                <p>Disapproval of amendments to District of Columbia Procurement Practices Act rules: Pursuant to Resolution 8-216, the “District of Columbia Procurement Practices Act of 1985 Amend. to Rules for Special Contracting Methods Disapproval Resolution of 1990”, effective April 27, 1990, the Council disapproved rules amending the District of Columbia procurement regulations to increase the number of option periods in any contract for a city-wide telecommunications system.</p>
                 <p>Contracting for Expert and Consulting Services Final Rulemaking Approval Resolution of 1996: Pursuant to Resolution 11-220, effective February 6, 1996, Council approved the final rulemaking to amend Title 27, Chapter 19 of the District of Columbia Municipal Regulations.</p>
+                <p>Disapproval of amendments to District of Columbia Procurement Practices Act rules: Pursuant to Resolution 8-216, the “District of Columbia Procurement Practices Act of 1985 Amend. to Rules for Special Contracting Methods Disapproval Resolution of 1990”, effective April 27, 1990, the Council disapproved rules amending the District of Columbia procurement regulations to increase the number of option periods in any contract for a city-wide telecommunications system.</p>
+                <p>Approval of initial District of Columbia Procurement Practices Act rules: Pursuant to Resolution 7-181, the “District of Columbia Procurement Practices Act of 1985 Initial Rules Approval Resolution of 1987,” effective December 8, 1987, the Council approved proposed chapters 10, 12, 13, 15—28, 32, 38 and 41 of 27 DCMR which were submitted by the Mayor on July 9, 1987, and proposed chapters 11, 31, 33, 36, 37, 40, 42 and 45 of 27 DCMR which were submitted by the Mayor on October 5, 1987. Final rulemaking effective February 26, 1988 ( 35 DCR 1385).</p>
+                <p>The word “period” was inserted in subsection (b) to correct an omission in <a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>.</p>
                 <h4>Resolutions</h4>
-                <p>Resolution 15-447, the “Revised Privatization Contracts Disapproval Resolution of 2004”, was approved effective February 3, 2004.</p>
-                <p>Resolution 16-167, the “Procurement TANF Contract Source Selection Rulemaking Approval Resolution of 2005”, was approved effective June 7, 2005.</p>
-                <p>Resolution 16-588, the “Notice of Contract Awards Amendment Approval Resolution of 2006”, was approved effective March 28, 2006.</p>
-                <p>Resolution 16-782, the “Contractors Approval Resolution of 2006”, was approved effective July 16, 2006.</p>
-                <p>Resolution 17-64, the “Special Contracting Methods Approval Resolution of 2007”, was approved effective February 17, 2007.</p>
-                <p>Resolution 17-442, the “Required Sources of Supplies and Services Approval Resolution of 2007”, was approved effective December 11, 2007.</p>
                 <p>Resolution 17-794, the “Procurement by Competitive Sealed Proposals Amendment Approval Resolution of 2008”, was approved effective October 7, 2008.</p>
+                <p>Resolution 17-442, the “Required Sources of Supplies and Services Approval Resolution of 2007”, was approved effective December 11, 2007.</p>
+                <p>Resolution 17-64, the “Special Contracting Methods Approval Resolution of 2007”, was approved effective February 17, 2007.</p>
+                <p>Resolution 16-782, the “Contractors Approval Resolution of 2006”, was approved effective July 16, 2006.</p>
+                <p>Resolution 16-588, the “Notice of Contract Awards Amendment Approval Resolution of 2006”, was approved effective March 28, 2006.</p>
+                <p>Resolution 16-167, the “Procurement TANF Contract Source Selection Rulemaking Approval Resolution of 2005”, was approved effective June 7, 2005.</p>
+                <p>Resolution 15-447, the “Revised Privatization Contracts Disapproval Resolution of 2004”, was approved effective February 3, 2004.</p>
               </section>
             </section>
             <hr/>

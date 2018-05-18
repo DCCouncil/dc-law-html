@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/5/subchapters/I-A/">Subchapter I-A. Residency Preferences and Requirements for Government Employees.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/5/subchapters/I/">Report Error</a>
@@ -88,17 +88,39 @@
         <section class="col8 body">
           <h1>Subchapter I. General.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-501.html">§ 1–501. Oath to be taken by officers.</a>
-            <a href="/dc/council/code/sections/1-502.html">§ 1–502. Reports by custodians of property.</a>
-            <a href="/dc/council/code/sections/1-503.html">§ 1–503. Employment to be authorized and compensation to be paid from specific appropriations; moneys returned to Treasury.</a>
-            <a href="/dc/council/code/sections/1-504.html">§ 1–504. Designation by Mayor of Dr. King’s birthday as holiday.</a>
-            <a href="/dc/council/code/sections/1-505.html">§ 1–505. Effect of signature by mark upon payment of compensation.</a>
-            <a href="/dc/council/code/sections/1-506.html">§ 1–506. Refusal to give testimony relating to office or employment.</a>
-            <a href="/dc/council/code/sections/1-507.html">§ 1–507. Wages, salaries, annuities, retirement, disability benefits, and other remuneration based on District employment subject to attachment garnishment, and assignment for child support, maintenance, alimony payments, and other obligations.</a>
-            <a href="/dc/council/code/sections/1-508.html">§ 1–508. Technical assistance. [Expired]</a>
-            <a href="/dc/council/code/sections/1-509.html">§ 1–509. Allowances for privately owned vehicles for employees.</a>
-            <a href="/dc/council/code/sections/1-510.html">§ 1–510. Exemption of District government employees on compressed schedule from federal overtime requirements.</a>
-            <a href="/dc/council/code/sections/1-511.html">§ 1–511. Review of personnel practices.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-501.html">§ 1–501. Oath to be taken by officers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-502.html">§ 1–502. Reports by custodians of property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-503.html">§ 1–503. Employment to be authorized and compensation to be paid from specific appropriations; moneys returned to Treasury.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-504.html">§ 1–504. Designation by Mayor of Dr. King’s birthday as holiday.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-505.html">§ 1–505. Effect of signature by mark upon payment of compensation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-506.html">§ 1–506. Refusal to give testimony relating to office or employment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-507.html">§ 1–507. Wages, salaries, annuities, retirement, disability benefits, and other remuneration based on District employment subject to attachment garnishment, and assignment for child support, maintenance, alimony payments, and other obligations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-508.html">§ 1–508. Technical assistance. [Expired]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-509.html">§ 1–509. Allowances for privately owned vehicles for employees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-510.html">§ 1–510. Exemption of District government employees on compressed schedule from federal overtime requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-511.html">§ 1–511. Review of personnel practices.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -113,8 +135,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§85">R.S., D.C., § 85</a>; June 20, 1874, 18 Stat. 116, ch. 337, § 2; June 11, 1878, 20 Stat. 103, ch. 180, § 2.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-501.</p>
                 <p>1973 Ed., § 1-308.</p>
+                <p>1981 Ed., § 1-501.</p>
                 <h4>Mayor's Orders</h4>
                 <p>Establishment of District of Columbia Board of Appeals and Review: See Mayor’s Order 96-27, March 5, 1996 ( 43 DCR 1367).</p>
               </section>
@@ -131,8 +153,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/63-2-ch191.html#§7">July 21, 1914, 38 Stat. 553, ch. 191, § 7</a>; Mar. 3, 1915, 38 Stat. 925, ch. 80, § 7.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-502.</p>
                 <p>1973 Ed., § 1-309.</p>
+                <p>1981 Ed., § 1-502.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -149,8 +171,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/58-3-ch1406.html#§2">Mar. 3, 1905, 33 Stat. 913, ch. 1406, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-503.</p>
                 <p>1973 Ed., § 1-310.</p>
+                <p>1981 Ed., § 1-503.</p>
               </section>
             </section>
             <hr/>
@@ -165,13 +187,13 @@
       (<a class="internal-link" href="/dc/council/laws/2-13.html#§3">July 12, 1977, D.C. Law 2-13, § 3, 24 DCR 1443</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-504.</p>
                 <p>1973 Ed., § 1-314b.</p>
+                <p>1981 Ed., § 1-504.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-632.06.html">1-632.06</a>.</p>
                 <h4>Cross References</h4>
-                <p>Holidays, recognition of Dr. King’s birthday, see § <a class="internal-link" href="/dc/council/code/sections/28-2701.html">28-2701</a>.</p>
                 <p>Merit system, continuation of existing laws, see § <a class="internal-link" href="/dc/council/code/sections/1-632.06.html">1-632.06</a>.</p>
+                <p>Holidays, recognition of Dr. King’s birthday, see § <a class="internal-link" href="/dc/council/code/sections/28-2701.html">28-2701</a>.</p>
               </section>
             </section>
             <hr/>
@@ -186,8 +208,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/69-1-ch276.html#§7">May 10, 1926, 44 Stat. 453, ch. 276, § 7</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-505.</p>
                 <p>1973 Ed., § 1-315.</p>
+                <p>1981 Ed., § 1-505.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of the Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -206,8 +228,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch159.html#§409">June 29, 1953, 67 Stat. 108, ch. 159, title IV, § 409</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-506.</p>
                 <p>1973 Ed., § 1-319.</p>
+                <p>1981 Ed., § 1-506.</p>
               </section>
             </section>
             <hr/>
@@ -223,11 +245,11 @@
       (<a class="internal-link" href="/dc/council/laws/2-14.html#§2">July 26, 1977, D.C. Law 2-14, § 2, 24 DCR 1774</a>; <a class="internal-link" href="/dc/council/laws/6-166.html">Feb. 24, 1987, D.C. Law 6-166, § 33(d), 33 DCR 6710</a>; Aug. 5, 1997, 111 Stat. 784, Pub. L. 105-33, § 11713.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-516.</p>
                 <p>1973 Ed., § 1-323.</p>
+                <p>1981 Ed., § 1-516.</p>
                 <h4>Cross References</h4>
-                <p>Attachment and garnishment of wages, see § <a class="internal-link" href="/dc/council/code/sections/16-571.html">16-571</a> et seq.</p>
                 <p>Child Support Enforcement Amendment Act of 1985, see § <a class="internal-link" href="/dc/council/code/sections/46-201.html">46-201</a> et seq.</p>
+                <p>Attachment and garnishment of wages, see § <a class="internal-link" href="/dc/council/code/sections/16-571.html">16-571</a> et seq.</p>
                 <h4>References in Text</h4>
                 <p>The “District of Columbia Child Support Enforcement Amendment Act of 1985,” referred to in the first and second sentences of (a), is <a class="internal-link" href="/dc/council/laws/6-166.html">D.C. Law 6-166</a>.</p>
               </section>
@@ -267,8 +289,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-518.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see § 3202 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <p>For temporary (90 day) amendment of section, see § 3202 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) addition of section, see § 3202 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/9-1173.html">§ 9–1173. Aerial wire planning requirements.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/9-1172.html">Report Error</a>
@@ -100,15 +100,15 @@
       (<a class="internal-link" href="/dc/council/laws/18-339.html#§3">Mar. 31, 2011, D.C. Law 18-339, § 3, 58 DCR 618</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 3 of Transportation Infrastructure Emergency Amendment Act of 2010 (D.C. Act 18-486, July 19, 2010,  57 DCR 7164).</p>
                 <p>For temporary (90 day) addition, see § 3 of Transportation Infrastructure Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-583, October 19, 2010,  57 DCR 10129).</p>
+                <p>For temporary (90 day) addition, see § 3 of Transportation Infrastructure Emergency Amendment Act of 2010 (D.C. Act 18-486, July 19, 2010,  57 DCR 7164).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 3 of D.C. Law 18-258 added a section to read as follows:</p>
-                <p>“Sec. 3. Wire-free zones.</p>
-                <p>“No aerial wires for streetcar transit shall be installed in the following areas:</p>
-                <p>“(1) Along the National Mall in the cross-axis area that extends from the U.S. Capitol on the east to the Lincoln Memorial on the west and from the White House on the north to the Jefferson Memorial on the south, including federal properties abutting this cross-axis area; and</p>
-                <p>“(2) Along Pennsylvania Avenue between the Capitol and the White House.”</p>
                 <p>Section 7(b) of D.C. Law 18-258 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) Along Pennsylvania Avenue between the Capitol and the White House.”</p>
+                <p>“(1) Along the National Mall in the cross-axis area that extends from the U.S. Capitol on the east to the Lincoln Memorial on the west and from the White House on the north to the Jefferson Memorial on the south, including federal properties abutting this cross-axis area; and</p>
+                <p>“No aerial wires for streetcar transit shall be installed in the following areas:</p>
+                <p>“Sec. 3. Wire-free zones.</p>
+                <p>Section 3 of D.C. Law 18-258 added a section to read as follows:</p>
               </section>
             </section>
           </section>

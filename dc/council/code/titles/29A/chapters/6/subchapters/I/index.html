@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/29A/chapters/6/subchapters/II/">Subchapter II. Exemption from Usury Laws. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29A/chapters/6/subchapters/I/">Report Error</a>
@@ -88,25 +88,63 @@
         <section class="col8 body">
           <h1>Subchapter I. General. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/29A-601.html">§ 29A-601. Incorporation — Number; filing and recordation of certificate; content. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-602.html">§ 29A-602. Incorporation — Powers of body politic and corporate. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-603.html">§ 29A-603. Corporate powers. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-604.html">§ 29A-604. Property to be held for educational purposes. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-605.html">§ 29A-605. Funds — Application. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-606.html">§ 29A-606. Funds — Acceptance of donations, devises, or bequests for particular purposes. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-607.html">§ 29A-607. Land — Restriction on holdings. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-608.html">§ 29A-608. Land — Reversion of excess. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-609.html">§ 29A-609. Officers; powers and duties. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-610.html">§ 29A-610. Treasurer; bond required. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-611.html">§ 29A-611. Annual statement; filing and recordation; contents. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-612.html">§ 29A-612. Service of process against corporation. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-613.html">§ 29A-613. Quo warranto. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-614.html">§ 29A-614. Incorporation fee. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-615.html">§ 29A-615. License to confer degrees — Issuance by Education Licensure Commission required. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-616.html">§ 29A-616. License to confer degrees — Application; filing and recordation; use of public school personnel authorized. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-617.html">§ 29A-617. License to confer degrees — Revocation of license; notice; hearing before Commission; review. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-618.html">§ 29A-618. Title of institution not to imply official connection with government of United States or District of Columbia. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-619.html">§ 29A-619. Penalties for conferral of degrees without licenses. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-601.html">§ 29A-601. Incorporation — Number; filing and recordation of certificate; content. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-602.html">§ 29A-602. Incorporation — Powers of body politic and corporate. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-603.html">§ 29A-603. Corporate powers. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-604.html">§ 29A-604. Property to be held for educational purposes. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-605.html">§ 29A-605. Funds — Application. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-606.html">§ 29A-606. Funds — Acceptance of donations, devises, or bequests for particular purposes. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-607.html">§ 29A-607. Land — Restriction on holdings. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-608.html">§ 29A-608. Land — Reversion of excess. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-609.html">§ 29A-609. Officers; powers and duties. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-610.html">§ 29A-610. Treasurer; bond required. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-611.html">§ 29A-611. Annual statement; filing and recordation; contents. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-612.html">§ 29A-612. Service of process against corporation. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-613.html">§ 29A-613. Quo warranto. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-614.html">§ 29A-614. Incorporation fee. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-615.html">§ 29A-615. License to confer degrees — Issuance by Education Licensure Commission required. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-616.html">§ 29A-616. License to confer degrees — Application; filing and recordation; use of public school personnel authorized. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-617.html">§ 29A-617. License to confer degrees — Revocation of license; notice; hearing before Commission; review. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-618.html">§ 29A-618. Title of institution not to imply official connection with government of United States or District of Columbia. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-619.html">§ 29A-619. Penalties for conferral of degrees without licenses. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -121,9 +159,9 @@
       (Mar. 3, 1901, 31 Stat. 1280, ch. 854, § 574; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 30, 44 DCR 1271</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-601.</p>
-                <p>1981 Ed., § 29-801.</p>
                 <p>1973 Ed., § 29-401.</p>
+                <p>1981 Ed., § 29-801.</p>
+                <p>2001 Ed., § 29-601.</p>
               </section>
             </section>
             <hr/>
@@ -138,9 +176,9 @@
       (Mar. 3, 1901, 31 Stat. 1281, ch. 854, § 575; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-602.</p>
-                <p>1981 Ed., § 29-802.</p>
                 <p>1973 Ed., § 29-402.</p>
+                <p>1981 Ed., § 29-802.</p>
+                <p>2001 Ed., § 29-602.</p>
               </section>
             </section>
             <hr/>
@@ -155,9 +193,9 @@
       (Mar. 3, 1901, 31 Stat. 1281, ch. 854, § 576; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-603.</p>
-                <p>1981 Ed., § 29-803.</p>
                 <p>1973 Ed., § 29-403.</p>
+                <p>1981 Ed., § 29-803.</p>
+                <p>2001 Ed., § 29-603.</p>
               </section>
             </section>
             <hr/>
@@ -172,9 +210,9 @@
       (Mar. 3, 1901, 31 Stat. 1281, ch. 854, § 577; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-604.</p>
-                <p>1981 Ed., § 29-804.</p>
                 <p>1973 Ed., § 29-404.</p>
+                <p>1981 Ed., § 29-804.</p>
+                <p>2001 Ed., § 29-604.</p>
               </section>
             </section>
             <hr/>
@@ -189,9 +227,9 @@
       (Mar. 3, 1901, 31 Stat. 1281, ch. 854, § 578; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-605.</p>
-                <p>1981 Ed., § 29-805.</p>
                 <p>1973 Ed., § 29-405.</p>
+                <p>1981 Ed., § 29-805.</p>
+                <p>2001 Ed., § 29-605.</p>
               </section>
             </section>
             <hr/>
@@ -206,9 +244,9 @@
       (Mar. 3, 1901, 31 Stat. 1281, ch. 854, § 579; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-606.</p>
-                <p>1981 Ed., § 29-806.</p>
                 <p>1973 Ed., § 29-406.</p>
+                <p>1981 Ed., § 29-806.</p>
+                <p>2001 Ed., § 29-606.</p>
               </section>
             </section>
             <hr/>
@@ -223,9 +261,9 @@
       (Mar. 3, 1901, 31 Stat. 1281, ch. 854, § 580; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-607.</p>
-                <p>1981 Ed., § 29-807.</p>
                 <p>1973 Ed., § 29-407.</p>
+                <p>1981 Ed., § 29-807.</p>
+                <p>2001 Ed., § 29-607.</p>
               </section>
             </section>
             <hr/>
@@ -240,9 +278,9 @@
       (Mar. 3, 1901, 31 Stat. 1281, ch. 854, § 581; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-608.</p>
-                <p>1981 Ed., § 29-808.</p>
                 <p>1973 Ed., § 29-408.</p>
+                <p>1981 Ed., § 29-808.</p>
+                <p>2001 Ed., § 29-608.</p>
               </section>
             </section>
             <hr/>
@@ -257,9 +295,9 @@
       (Mar. 3, 1901, 31 Stat. 1281, ch. 854, § 582; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-609.</p>
-                <p>1981 Ed., § 29-809.</p>
                 <p>1973 Ed., § 29-409.</p>
+                <p>1981 Ed., § 29-809.</p>
+                <p>2001 Ed., § 29-609.</p>
               </section>
             </section>
             <hr/>
@@ -274,9 +312,9 @@
       (Mar. 3, 1901, 31 Stat. 1281, ch. 854, § 583; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-610.</p>
-                <p>1981 Ed., § 29-810.</p>
                 <p>1973 Ed., § 29-410.</p>
+                <p>1981 Ed., § 29-810.</p>
+                <p>2001 Ed., § 29-610.</p>
               </section>
             </section>
             <hr/>
@@ -291,9 +329,9 @@
       (Mar. 3, 1901, 31 Stat. 1282, ch. 854, § 584; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-611.</p>
-                <p>1981 Ed., § 29-811.</p>
                 <p>1973 Ed., § 29-411.</p>
+                <p>1981 Ed., § 29-811.</p>
+                <p>2001 Ed., § 29-611.</p>
               </section>
             </section>
             <hr/>
@@ -308,9 +346,9 @@
       (Mar. 3, 1901, 31 Stat. 1282, ch. 854, § 585; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-612.</p>
-                <p>1981 Ed., § 29-812.</p>
                 <p>1973 Ed., § 29-412.</p>
+                <p>1981 Ed., § 29-812.</p>
+                <p>2001 Ed., § 29-612.</p>
               </section>
             </section>
             <hr/>
@@ -325,9 +363,9 @@
       (Mar. 3, 1901, 31 Stat. 1282, ch. 854, § 586; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 909, 991, ch. 646, §§ 1, 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(c)(1)(G)</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-613.</p>
-                <p>1981 Ed., § 29-813.</p>
                 <p>1973 Ed., 29-413.</p>
+                <p>1981 Ed., § 29-813.</p>
+                <p>2001 Ed., § 29-613.</p>
               </section>
             </section>
             <hr/>
@@ -342,9 +380,9 @@
       (Mar. 3, 1901, ch. 854, § 586a; Mar. 2, 1929, 45 Stat. 1503, ch. 523; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-614.</p>
-                <p>1981 Ed., § 29-814.</p>
                 <p>1973 Ed., § 29-414.</p>
+                <p>1981 Ed., § 29-814.</p>
+                <p>2001 Ed., § 29-614.</p>
               </section>
             </section>
             <hr/>
@@ -359,12 +397,12 @@
       (Mar. 3, 1901, ch. 854, § 586b; Mar. 2, 1929, 45 Stat. 1504, ch. 523; <a class="internal-link" href="/us/congress/laws/public/89-791.html">Nov. 7, 1966, 80 Stat. 1430, Pub. L. 89-791, title I, § 106</a>; <a class="internal-link" href="/dc/council/laws/1-104.html">Apr. 6, 1977, D.C. Law 1-104, § 6(a)(1), 23 DCR 8734</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2003(v)(1), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/15-38.html">Oct. 28, 2003, D.C. Law 15-38, § 3(t)(1), 50 DCR 6913</a>; <a class="internal-link" href="/dc/council/laws/16-33.html">Oct. 20, 2005, D.C. Law 16-33, § 4004(b)(1), 52 DCR 7503</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-615.</p>
-                <p>1981 Ed., § 29-815.</p>
                 <p>1973 Ed., § 29-415.</p>
+                <p>1981 Ed., § 29-815.</p>
+                <p>2001 Ed., § 29-615.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(t)(1) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <p>For temporary (90 day) amendment of section, see § 4004(b)(1) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(t)(1) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
               </section>
             </section>
             <hr/>
@@ -379,9 +417,9 @@
       (Mar. 3, 1901, ch. 854, § 586c; Mar. 2, 1929, 45 Stat. 1504, ch. 523; <a class="internal-link" href="/us/congress/laws/public/89-791.html">Nov. 7, 1966, 80 Stat. 1430, Pub. L. 89-791, title I, § 106</a>; <a class="internal-link" href="/dc/council/laws/1-104.html">Apr. 6, 1977, D.C. Law 1-104, § 6(a)(2), 23 DCR 8734</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2003(v)(2), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/16-33.html">Oct. 20, 2005, D.C. Law 16-33, § 4004(b)(2), 52 DCR 7503</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-616.</p>
-                <p>1981 Ed., § 29-816.</p>
                 <p>1973 Ed., § 29-416.</p>
+                <p>1981 Ed., § 29-816.</p>
+                <p>2001 Ed., § 29-616.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 4004(b)(2) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
               </section>
@@ -398,9 +436,9 @@
       (Mar. 3, 1901, ch. 854, § 586d; Mar. 2, 1929, 45 Stat. 1504, ch. 523; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/89-791.html">Nov. 7, 1966, 80 Stat. 1430, Pub. L. 89-791, title I, § 106</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 582, Pub. L. 91-358, title I, § 163(a)</a>; <a class="internal-link" href="/dc/council/laws/1-104.html">Apr. 6, 1977, D.C. Law 1-104, § 6(a)(3), 23 DCR 8734</a>; <a class="internal-link" href="/dc/council/laws/16-33.html">Oct. 20, 2005, D.C. Law 16-33, § 4004(b)(3), 52 DCR 7503</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-617.</p>
-                <p>1981 Ed., § 29-817.</p>
                 <p>1973 Ed., § 29-417.</p>
+                <p>1981 Ed., § 29-817.</p>
+                <p>2001 Ed., § 29-617.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 4004(b)(3) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
                 <h4>Editor's Notes</h4>
@@ -419,9 +457,9 @@
       (Mar. 3, 1901, ch. 854, § 586e; Mar. 2, 1929, 45 Stat. 1505, ch. 523; Apr. 16, 1934, 48 Stat. 592, ch. 143; <a class="internal-link" href="/us/congress/laws/public/89-791.html">Nov. 7, 1966, 80 Stat. 1430, Pub. L. 89-791, title I, § 106</a>; <a class="internal-link" href="/dc/council/laws/1-104.html">Apr. 6, 1977, D.C. Law 1-104, § 6(a)(4), 23 DCR 8734</a>; <a class="internal-link" href="/dc/council/laws/7-142.html">Sept. 21, 1988, D.C. Law 7-142, § 2, 35 DCR 5401</a>; <a class="internal-link" href="/dc/council/laws/16-33.html">Oct. 20, 2005, D.C. Law 16-33, § 4004(b)(4), 52 DCR 7503</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-618.</p>
-                <p>1981 Ed., § 29-818.</p>
                 <p>1973 Ed., § 29-418.</p>
+                <p>1981 Ed., § 29-818.</p>
+                <p>2001 Ed., § 29-618.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 4004(b)(4) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
               </section>
@@ -438,9 +476,9 @@
       (Mar. 3, 1901, ch. 854, § 586f; Mar. 2, 1929, 45 Stat. 1505, ch. 523; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(c)(1)(H)</a>; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42, § 470(a), 32 DCR 4450</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(5), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-619.</p>
-                <p>1981 Ed., § 29-819.</p>
                 <p>1973 Ed., § 29-419.</p>
+                <p>1981 Ed., § 29-819.</p>
+                <p>2001 Ed., § 29-619.</p>
               </section>
             </section>
             <hr/>

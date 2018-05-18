@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/31/chapters/38/">Chapter 38. Newborn Health Insurance.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/31/chapters/37/">Report Error</a>
@@ -87,10 +87,14 @@
         <section class="col8 body">
           <h1>Chapter 37. Medicare Supplement Insurance.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/31/chapters/37/subchapters/I/">Subchapter I. General.</a>
-            <p>§§ 31-3701 - 31-3710</p>
-            <a href="/dc/council/code/titles/31/chapters/37/subchapters/II/">Subchapter II. Repealed Provisions.</a>
-            <p>§§ 31-3751 - 31-3760</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/31/chapters/37/subchapters/I/">Subchapter I. General.</a>
+            </p>
+            <p>§§ 31-3701 – 31-3710</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/31/chapters/37/subchapters/II/">Subchapter II. Repealed Provisions.</a>
+            </p>
+            <p>§§ 31-3751 – 31-3760</p>
           </section>
           <section class="content">
             <hr/>
@@ -121,8 +125,8 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of §§ 35-2611 through 35-2620 comprising Chapter 26 of Title 35 1981 Ed., see §§ 2 to 11 of Medicare Supplement Insurance Minimum Standard Temporary Act of 1992 (D.C. Law 9-133, July 22, 1992, law notification  39 DCR 5814).</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority under D.C. Act 9-199, the Medicare Supplement Insurance Minimum Standards Emergency Act of 1992, see Mayor’s Order 92-92, July 20, 1992.</p>
                 <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/9-170.html">D.C. Law 9-170</a>, the Medicare Supplement Insurance Standards Act of 1992, see Mayor’s Order 93-60, May 12, 1993.</p>
+                <p>Delegation of authority under D.C. Act 9-199, the Medicare Supplement Insurance Minimum Standards Emergency Act of 1992, see Mayor’s Order 92-92, July 20, 1992.</p>
               </section>
             </section>
             <hr/>
@@ -325,9 +329,9 @@
                 <h4>Temporary Legislation</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/31-3701.html">31-3701</a>.</p>
                 <h4>Resolutions</h4>
-                <p>Resolution 16-394, Medicare Supplement Insurance Minimum Standards Approval Resolution of 2005“, was approved effective November 26, 2005.</p>
-                <p>Resolution 16-788, the “Medicare Supplement Insurance Minimum Standards Approval Resolution of 2006”, was approved effective August 11, 2006.</p>
                 <p>Resolution 18-298, the “Medicare Supplement Insurance Minimum Standards Approval Resolution of 2009”, was approved effective November 3, 2009.</p>
+                <p>Resolution 16-788, the “Medicare Supplement Insurance Minimum Standards Approval Resolution of 2006”, was approved effective August 11, 2006.</p>
+                <p>Resolution 16-394, Medicare Supplement Insurance Minimum Standards Approval Resolution of 2005“, was approved effective November 26, 2005.</p>
               </section>
             </section>
             <hr/>

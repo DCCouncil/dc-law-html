@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/24/chapters/6/subchapters/II/">Subchapter II. Omitted and Repealed Provisions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/24/chapters/6/subchapters/I/">Report Error</a>
@@ -88,21 +88,51 @@
         <section class="col8 body">
           <h1>Subchapter I. General.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/24-601.html">§ 24–601. Purpose.</a>
-            <a href="/dc/council/code/sections/24-602.html">§ 24–602. Definitions.</a>
-            <a href="/dc/council/code/sections/24-603.html">§ 24–603. Public health program; delegation of powers by Mayor.</a>
-            <a href="/dc/council/code/sections/24-604.html">§ 24–604. Public intoxication; confidential records.</a>
-            <a href="/dc/council/code/sections/24-605.html">§ 24–605. Voluntary admission to inpatient centers; information program; involuntary detention.</a>
-            <a href="/dc/council/code/sections/24-606.html">§ 24–606. Outpatient treatment; treatment where recovery unlikely; coordination of treatment programs.</a>
-            <a href="/dc/council/code/sections/24-607.html">§ 24–607. Commitment by Court order.</a>
-            <a href="/dc/council/code/sections/24-608.html">§ 24–608. Limitation of application of chapter.</a>
-            <a href="/dc/council/code/sections/24-609.html">§ 24–609. Authority of Mayor to contract.</a>
-            <a href="/dc/council/code/sections/24-610.html">§ 24–610. Programs for alcoholic employees.</a>
-            <a href="/dc/council/code/sections/24-611.html">§ 24–611. Program for inmates in correctional institutions.</a>
-            <a href="/dc/council/code/sections/24-612.html">§ 24–612. Program for juveniles and young adults.</a>
-            <a href="/dc/council/code/sections/24-613.html">§ 24–613. Evaluations and recommendations by Mayor; publications; comprehensive plan.</a>
-            <a href="/dc/council/code/sections/24-614.html">§ 24–614. Cost of treatment.</a>
-            <a href="/dc/council/code/sections/24-615.html">§ 24–615. Donations.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-601.html">§ 24–601. Purpose.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-602.html">§ 24–602. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-603.html">§ 24–603. Public health program; delegation of powers by Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-604.html">§ 24–604. Public intoxication; confidential records.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-605.html">§ 24–605. Voluntary admission to inpatient centers; information program; involuntary detention.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-606.html">§ 24–606. Outpatient treatment; treatment where recovery unlikely; coordination of treatment programs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-607.html">§ 24–607. Commitment by Court order.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-608.html">§ 24–608. Limitation of application of chapter.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-609.html">§ 24–609. Authority of Mayor to contract.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-610.html">§ 24–610. Programs for alcoholic employees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-611.html">§ 24–611. Program for inmates in correctional institutions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-612.html">§ 24–612. Program for juveniles and young adults.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-613.html">§ 24–613. Evaluations and recommendations by Mayor; publications; comprehensive plan.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-614.html">§ 24–614. Cost of treatment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-615.html">§ 24–615. Donations.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -117,8 +147,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§1">Aug. 4, 1947, 61 Stat. 744, ch. 472, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 618, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-521.</p>
                 <p>1973 Ed., § 24-521.</p>
+                <p>1981 Ed., § 24-521.</p>
               </section>
             </section>
             <hr/>
@@ -138,8 +168,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§2">Aug. 4, 1947, 61 Stat. 744, ch. 472, § 2</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 618, Pub. L. 90-452, § 3(a)</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-522.</p>
                 <p>1973 Ed., § 24-522.</p>
+                <p>1981 Ed., § 24-522.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2885.11.html">47-2885.11</a>.</p>
                 <h4>Change in Government</h4>
@@ -164,8 +194,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§3">Aug. 4, 1947, 61 Stat. 744, ch. 472, § 3</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 619, Pub. L. 90-452, § 3(a)</a>; <a class="internal-link" href="/dc/council/laws/11-275.html">June 3, 1997, D.C. Law 11-275, § 18, 44 DCR 1408</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-523.</p>
                 <p>1973 Ed., § 24-523.</p>
+                <p>1981 Ed., § 24-523.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-604.html">24-604</a>, § <a class="internal-link" href="/dc/council/code/sections/24-605.html">24-605</a>, and § <a class="internal-link" href="/dc/council/code/sections/24-606.html">24-606</a>.</p>
                 <h4>Change in Government</h4>
@@ -195,16 +225,16 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§4">Aug. 4, 1947, 61 Stat. 745, ch. 472, § 4</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 619, Pub. L. 90-452, § 3(a)</a>; <a class="internal-link" href="/dc/council/laws/15-105.html">Mar. 13, 2004, D.C. Law 15-105, § 58, 51 DCR 881</a>; <a class="internal-link" href="/dc/council/laws/18-273.html">Dec. 4, 2010, D.C. Law 18-273, § 209, 57 DCR 7171</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-524.</p>
                 <p>1973 Ed., § 24-524.</p>
+                <p>1981 Ed., § 24-524.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-115.03.html">5-115.03</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsec. (b), substituted “§ <a class="internal-link" href="/dc/council/code/sections/25-1001.html">25-1001</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/25-128.html">25-128</a>” in pars. (1) and (2).</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-273.html">D.C. Law 18-273</a> rewrote subsec. (c), which had read as follows: “(c) The registration and other records of a detoxification center shall remain confidential, and may be disclosed only to medical personnel for purposes of diagnosis, treatment, and court testimony, to police personnel for purposes of investigation of criminal offenses and complaints against police action, and to authorized personnel for purposes of presentence reports.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsec. (b), substituted “§ <a class="internal-link" href="/dc/council/code/sections/25-1001.html">25-1001</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/25-128.html">25-128</a>” in pars. (1) and (2).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 209 of Data-Sharing and Information Coordination Emergency Amendment Act of 2010 (D.C. Act 18-530, August 6, 2010,  57 DCR 8099).</p>
                 <p>For temporary (90 day) amendment of section, see § 209 of Data-Sharing and Information Coordination Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-582, October 20, 2010,  57 DCR 10118).</p>
+                <p>For temporary (90 day) amendment of section, see § 209 of Data-Sharing and Information Coordination Emergency Amendment Act of 2010 (D.C. Act 18-530, August 6, 2010,  57 DCR 8099).</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -224,8 +254,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§5">Aug. 4, 1947, 61 Stat. 745, ch. 472, § 5</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 620, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-525.</p>
                 <p>1973 Ed., § 24-525.</p>
+                <p>1981 Ed., § 24-525.</p>
               </section>
             </section>
             <hr/>
@@ -243,8 +273,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§6">Aug. 4, 1947, 61 Stat. 745, ch. 472, § 6</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 621, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-526.</p>
                 <p>1973 Ed., § 24-526.</p>
+                <p>1981 Ed., § 24-526.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, 1-207.11), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -274,8 +304,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§7">Aug. 4, 1947, 61 Stat. 745, ch. 472, § 7</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 621, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-527.</p>
                 <p>1973 Ed., § 24-527.</p>
+                <p>1981 Ed., § 24-527.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1602.html">2-1602</a>, § <a class="internal-link" href="/dc/council/code/sections/24-604.html">24-604</a>, § <a class="internal-link" href="/dc/council/code/sections/24-605.html">24-605</a>, and § <a class="internal-link" href="/dc/council/code/sections/24-606.html">24-606</a>.</p>
                 <h4>References in Text</h4>
@@ -296,8 +326,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§8">Aug. 4, 1947, 61 Stat. 745, ch. 472, § 8</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 622, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-528.</p>
                 <p>1973 Ed., § 24-528.</p>
+                <p>1981 Ed., § 24-528.</p>
               </section>
             </section>
             <hr/>
@@ -312,8 +342,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§9">Aug. 4, 1947, 61 Stat. 745, ch. 472, § 9</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 622, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-529.</p>
                 <p>1973 Ed., § 24-529.</p>
+                <p>1981 Ed., § 24-529.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -331,8 +361,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§10">Aug. 4, 1947, 61 Stat. 746, ch. 472, § 10</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 622, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-530.</p>
                 <p>1973 Ed., § 24-530.</p>
+                <p>1981 Ed., § 24-530.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -349,8 +379,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§11">Aug. 4, 1947, 61 Stat. 746, ch. 472, § 11</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 622, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-531.</p>
                 <p>1973 Ed., § 24-531.</p>
+                <p>1981 Ed., § 24-531.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -367,8 +397,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§12">Aug. 4, 1947, 61 Stat. 746, ch. 472, § 12</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 622, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-532.</p>
                 <p>1973 Ed., § 24-532.</p>
+                <p>1981 Ed., § 24-532.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -387,8 +417,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§13">Aug. 4, 1947, 61 Stat. 746, ch. 472, § 13</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 623, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-533.</p>
                 <p>1973 Ed., § 24-533.</p>
+                <p>1981 Ed., § 24-533.</p>
                 <h4>Transfer of Functions</h4>
                 <p>The functions of the Department of Health, Education and Welfare was transferred to the Department of Health and Human Services by the Act of October 17, 1979, 93 Stat. 675, Pub. L. 96-88, § 509.</p>
                 <h4>Change in Government</h4>
@@ -410,8 +440,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§14">Aug. 4, 1947, ch. 472, § 14</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 623, Pub. L. 90-452, § 3(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-534.</p>
                 <p>1973 Ed., § 24-534.</p>
+                <p>1981 Ed., § 24-534.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -428,8 +458,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch472.html#§15">Aug. 4, 1947, ch. 472, § 15</a>; <a class="internal-link" href="/us/congress/laws/public/90-452.html">Aug. 3, 1968, 82 Stat. 624, Pub. L. 90-452, § 3(a)</a>; <a class="internal-link" href="/dc/council/laws/1-42.html">Jan. 22, 1976, D.C. Law 1-42, § 5(b), 22 DCR 6316</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-535.</p>
                 <p>1973 Ed., § 24-535.</p>
+                <p>1981 Ed., § 24-535.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>

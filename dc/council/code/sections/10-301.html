@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/10-302.html">§ 10–302. Authority of Department of Parks and Recreation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/10-301.html">Report Error</a>
@@ -109,9 +109,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 8-301.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> added pars. (1A) to (1D).</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-275.html">D.C. Law 19-275</a> substituted “whose mission includes supporting” for “whose primary mission is to support” in (6).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-280.html">D.C. Law 19-280</a> added (2) and (3) and redesignated former (1A) as (4); added present (5); and redesignated former (1B) through (2) as (6) through (9), respectively.</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-275.html">D.C. Law 19-275</a> substituted “whose mission includes supporting” for “whose primary mission is to support” in (6).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> added pars. (1A) to (1D).</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary addition of chapter, see §§ 2-7 of the Recreation Emergency Act of 1995 (D.C. Act 11-20, February 28, 1995,  42 DCR 1175).</p>
                 <h4>Short Title</h4>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/42-2109.html">§ 42–2109. Proposals to develop a Technical Training Program.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-2108.html">Report Error</a>
@@ -125,12 +125,12 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 45-2708.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-11.html">D.C. Law 13-11</a> in pars. (1) and (4) of subsec. (a) inserted the word “(Residential)” after the word “homesteader”; added subsec. (a) pars. (1A) (1B) and (4A); and in pars. (5) and (6) of subsec. (a) inserted the phrase “or 10” after the number “5”. The amendment in subsec. (b) inserted the word “residential” after the phrase “Organizations to which” and added a new sentence at the end of the phrase “the Mayor.” providing “Organizations to which commercial properties have been transferred shall certify that they will meet the terms of an abatement agreement that would require the rehabilitation of the property.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-114.html">D.C. Law 14-114</a>, in subsec. (a)(7), substituted “taxes, fees, utility charges” for “taxes, fees,”; added subsec. (b-1); and substituted “Mayor” for “Administrator” wherever it appears in the section.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (c), substituted “has a total disability” for “becomes totally disabled”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-114.html">D.C. Law 14-114</a>, in subsec. (a)(7), substituted “taxes, fees, utility charges” for “taxes, fees,”; added subsec. (b-1); and substituted “Mayor” for “Administrator” wherever it appears in the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-11.html">D.C. Law 13-11</a> in pars. (1) and (4) of subsec. (a) inserted the word “(Residential)” after the word “homesteader”; added subsec. (a) pars. (1A) (1B) and (4A); and in pars. (5) and (6) of subsec. (a) inserted the phrase “or 10” after the number “5”. The amendment in subsec. (b) inserted the word “residential” after the phrase “Organizations to which” and added a new sentence at the end of the phrase “the Mayor.” providing “Organizations to which commercial properties have been transferred shall certify that they will meet the terms of an abatement agreement that would require the rehabilitation of the property.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(k) and (l) of the Homestead Housing Preservation Emergency Amendment Act of 1998 (D.C. Act 12-556, January 12, 1999,  45 DCR 625).</p>
                 <p>For temporary (90-day) amendment of section, see § 2(f) of the Homestead Housing Preservation Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-62, May 10, 1999,  46 DCR 4454).</p>
+                <p>For temporary amendment of section, see § 2(k) and (l) of the Homestead Housing Preservation Emergency Amendment Act of 1998 (D.C. Act 12-556, January 12, 1999,  45 DCR 625).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(k), (l) of Homestead Housing Preservation Temporary Amendment Act of 1998 (D.C. Law 12-245, April 20, 1999, law notification  46 DCR 4158).</p>
                 <h4>References in Text</h4>

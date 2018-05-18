@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-319.html">§ 28:9-319. Rights and title of consignee with respect to creditors and purchasers.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-318.html">Report Error</a>
@@ -101,11 +101,11 @@
       (<a class="internal-link" href="/dc/council/laws/13-201.html">Oct. 26, 2000, D.C. Law 13-201, § 101, 47 DCR 7576</a>.)
     </p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. New.</p>
-                <p>2. Sellers of Accounts, Chattel Paper, Payment Intangibles, and Promissory Notes.  Section 1-201(37) defines “security interest” to include the interest of a buyer of accounts, chattel paper, payment intangibles, or promissory notes. See also  Section 9-109(a) and Comment 5. Subsection (a) makes explicit what was implicit, but perfectly obvious, under former Article 9: The fact that a sale of an account or chattel paper gives rise to a “security interest” does not imply that the seller retains an interest in the property that has been sold. To the contrary, a seller of an account or chattel paper retains no interest whatsoever in the property to the extent that it has been sold. Subsection (a) also applies to sales of payment intangibles and promissory notes, transactions that were not covered by former Article 9. Neither this Article nor the definition of “security interest” in  Section 1-201 provides rules for distinguishing sales transactions from those that create a security interest securing an obligation.</p>
-                <p>3. Buyers of Accounts and Chattel Paper. Another aspect of sales of accounts and chattel paper also was implicit, and equally obvious, under former Article 9: If the buyer’s security interest is unperfected, then for purposes of determining the rights of certain third parties, the seller (debtor) is deemed to have all rights and title that the seller sold. The seller is deemed to have these rights even though, as between the parties, it has sold all its rights to the buyer. Subsection (b) makes this explicit. As a consequence of subsection (b), if the buyer’s security interest is unperfected, the seller can transfer, and the creditors of the seller can reach, the account or chattel paper as if it had not been sold.</p>
-                <p>Example: Debtor sells accounts or chattel paper to Buyer-1 and retains no interest in them. Buyer-1 does not file a financing statement. Debtor then sells the same receivables to Buyer-2. Buyer-2 files a proper financing statement. Having sold the receivables to Buyer-1, Debtor would not have any rights in the collateral so as to permit Buyer-2’s security (ownership) interest to attach. Nevertheless, under this section, for purposes of determining the rights of purchasers for value from Debtor, Debtor is deemed to have the rights that Debtor sold. Accordingly, Buyer-2’s security interest attaches, is perfected by the filing, and, under  Section 9-322, is senior to Buyer-1’s interest.</p>
                 <p>4. Effect of Perfection. If the security interest of a buyer of accounts or chattel paper is perfected the usual result would take effect: transferees from and creditors of the seller could not acquire an interest in the sold accounts or chattel paper. The same result would occur if payment intangibles or promissory notes were sold, inasmuch as the buyer’s security interest is automatically perfected under  Section 9-309.</p>
+                <p>Example: Debtor sells accounts or chattel paper to Buyer-1 and retains no interest in them. Buyer-1 does not file a financing statement. Debtor then sells the same receivables to Buyer-2. Buyer-2 files a proper financing statement. Having sold the receivables to Buyer-1, Debtor would not have any rights in the collateral so as to permit Buyer-2’s security (ownership) interest to attach. Nevertheless, under this section, for purposes of determining the rights of purchasers for value from Debtor, Debtor is deemed to have the rights that Debtor sold. Accordingly, Buyer-2’s security interest attaches, is perfected by the filing, and, under  Section 9-322, is senior to Buyer-1’s interest.</p>
+                <p>3. Buyers of Accounts and Chattel Paper. Another aspect of sales of accounts and chattel paper also was implicit, and equally obvious, under former Article 9: If the buyer’s security interest is unperfected, then for purposes of determining the rights of certain third parties, the seller (debtor) is deemed to have all rights and title that the seller sold. The seller is deemed to have these rights even though, as between the parties, it has sold all its rights to the buyer. Subsection (b) makes this explicit. As a consequence of subsection (b), if the buyer’s security interest is unperfected, the seller can transfer, and the creditors of the seller can reach, the account or chattel paper as if it had not been sold.</p>
+                <p>2. Sellers of Accounts, Chattel Paper, Payment Intangibles, and Promissory Notes.  Section 1-201(37) defines “security interest” to include the interest of a buyer of accounts, chattel paper, payment intangibles, or promissory notes. See also  Section 9-109(a) and Comment 5. Subsection (a) makes explicit what was implicit, but perfectly obvious, under former Article 9: The fact that a sale of an account or chattel paper gives rise to a “security interest” does not imply that the seller retains an interest in the property that has been sold. To the contrary, a seller of an account or chattel paper retains no interest whatsoever in the property to the extent that it has been sold. Subsection (a) also applies to sales of payment intangibles and promissory notes, transactions that were not covered by former Article 9. Neither this Article nor the definition of “security interest” in  Section 1-201 provides rules for distinguishing sales transactions from those that create a security interest securing an obligation.</p>
+                <p>1. Source. New.</p>
               </section>
             </section>
           </section>

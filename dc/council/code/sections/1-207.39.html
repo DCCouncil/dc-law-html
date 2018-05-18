@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/1-207.40.html">§ 1–207.40. Emergency control of police.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-207.39.html">Report Error</a>
@@ -117,15 +117,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-198.html#§739">Dec. 24, 1973, 81 Stat. 825, Pub. L. 93-198, title VII, § 739</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-142.</p>
                 <p>1973 Ed., § 9-146.</p>
+                <p>1981 Ed., § 9-142.</p>
                 <h4>References in Text</h4>
-                <p>“Level IV of the Executive Schedule of  § 5314 of Title 5, U.S.C.”, referred to in subsection (c), is Level III.</p>
-                <p>The “Executive Protective Service”, referred to in subsection (e) was changed to “United States Secret Service Uniformed Division” by the Act of November 15, 1977, 91 Stat. 1371, Pub. L. 95-179.</p>
                 <p>“ Section 1-1131 (§ <a class="internal-link" href="/dc/council/code/sections/1-207.31.html">1-207.31</a>, 2001 Ed.)”, referred to in subsection (h)(2), was repealed September 13, 1982, 96 Stat. 877, Pub. L. 97-258, § 5(b).</p>
+                <p>The “Executive Protective Service”, referred to in subsection (e) was changed to “United States Secret Service Uniformed Division” by the Act of November 15, 1977, 91 Stat. 1371, Pub. L. 95-179.</p>
+                <p>“Level IV of the Executive Schedule of  § 5314 of Title 5, U.S.C.”, referred to in subsection (c), is Level III.</p>
                 <h4>Editor's Notes</h4>
-                <p>Delegation of functions:  Executive Order No. 11815, October 23, 1974, 39 F.R. 37963, provided that the President of the United States, under § 739(g) of the District of Columbia Self-Government and Governmental Reorganization Act, could authorize and direct the Chairman of the National Capital Planning Commission to carry out all duties vested in the President by § 739(g) with respect to the establishment of the metes and bounds of the National Capital Service Area.</p>
                 <p>Definitions applicable: The definitions in § <a class="internal-link" href="/dc/council/code/sections/1-201.03.html">1-201.03</a> apply to this section.</p>
+                <p>Delegation of functions:  Executive Order No. 11815, October 23, 1974, 39 F.R. 37963, provided that the President of the United States, under § 739(g) of the District of Columbia Self-Government and Governmental Reorganization Act, could authorize and direct the Chairman of the National Capital Planning Commission to carry out all duties vested in the President by § 739(g) with respect to the establishment of the metes and bounds of the National Capital Service Area.</p>
               </section>
             </section>
           </section>

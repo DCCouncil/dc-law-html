@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/5-1139.html">§ 5–1139. Miscellaneous provisions. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/5-1138.html">Report Error</a>
@@ -101,9 +101,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 4-908.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(d) of the Civilian Complaint Review Board Emergency Amendment Act of 1992 (D.C. Act 9-274, July 23, 1992,  39 DCR 5846).</p>
-                <p>For temporary amendment of section, see § 2(d) of the Civilian Complaint Review Board Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-292, October 19, 1992,  39 DCR 7934).</p>
                 <p>For temporary amendment of section, see § 2(d) of the Civilian Complaint Review Board Second Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-379, January 5, 1993,  40 DCR 640).</p>
+                <p>For temporary amendment of section, see § 2(d) of the Civilian Complaint Review Board Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-292, October 19, 1992,  39 DCR 7934).</p>
+                <p>For temporary amendment of section, see § 2(d) of the Civilian Complaint Review Board Emergency Amendment Act of 1992 (D.C. Act 9-274, July 23, 1992,  39 DCR 5846).</p>
                 <h4>Effective Dates</h4>
                 <p>For effective date of repeal of §§ <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a> to 5-1140, see Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a>.</p>
               </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/42-3404.06.html">§ 42–3404.06. Exercise or assignment of rights.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-3404.05.html">Report Error</a>
@@ -110,16 +110,16 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3404.12.html">42-3404.12</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 3(k) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1994 (D.C. Act 10-285, July 8, 1994,  41 DCR 4904).</p>
                 <p>For temporary amendment of section, see § 3(k) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1995 (D.C. Act 11-47, May 4, 1995,  42 DCR 2410) and § 3(k) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Congressional Recess Emergency Act of 1995 (D.C. Act 11-96, July 19, 1995,  42 DCR 3837).</p>
+                <p>For temporary amendment of section, see § 3(k) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1994 (D.C. Act 10-285, July 8, 1994,  41 DCR 4904).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 3(k) of Rental Housing Conversion and Sale Act of 1980 Temporary Extension Amendment Act of 1994 (D.C. Law 10-176, September 22, 1994, law notification  41 DCR 6076).</p>
                 <h4>Editor's Notes</h4>
-                <p>Reenactment of Law 3-86: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3401.01.html">42-3401.01</a>.</p>
-                <p>Amendment of section by Law 10-144: Section 2(k) of <a class="internal-link" href="/dc/council/laws/10-144.html">D.C. Law 10-144</a> purported to insert new (a-1), (a-2) and (a-3) of this section to read as follows:</p>
-                <p>“(a-1) Reduced price. If the owner sells or contracts to sell the accommodation to a third party for a price more than 10% less than the price offered to the tenant or for other terms which would constitute bargaining without good faith, the owner shall comply anew with all requirements of §§ 45-1638, 45-1639, or 45-1640 as applicable.</p>
-                <p>“(a-2) Financial assurances. The owner may not require the tenant to prove financial ability to perform as a prerequisite to entering into a contract. The owner may not require the tenant to pay the purchase price in installments unless the owner provides deferred purchase money financing on terms reasonably acceptable to the tenant. The owner may require the tenant to prove that the tenant, either alone or in conjunction with a third party, has comparable financial ability to the third party contractor before the owner will be required to grant deferred purchase money financing to the tenant on the same terms and conditions agreed between the owner and the third party contractor. If the tenant can prove comparable financial ability alone, the owner may not require the tenant to secure a third party guarantor. This proof cannot be required as a prerequisite to contracting. It may be required only as a prerequisite to the owner granting deferred purchase money financing at settlement.</p>
                 <p>“(a-3) Transfers of interest in a partnership or corporation and master leases. In the event of a transfer of interest in a partnership or corporation or in the event of a master lease or agreement that is considered a sale within the meaning of § 45-1631(c) but which does not involve a transfer of record title to the real property, the owner shall be bargaining in good faith if the owner offers the tenant the opportunity to acquire record title to the real property or offers the tenant the opportunity to match the type of transfer or agreement entered into with the third party. With respect to either type of offer, all provisions of this subchapter apply.”</p>
+                <p>“(a-2) Financial assurances. The owner may not require the tenant to prove financial ability to perform as a prerequisite to entering into a contract. The owner may not require the tenant to pay the purchase price in installments unless the owner provides deferred purchase money financing on terms reasonably acceptable to the tenant. The owner may require the tenant to prove that the tenant, either alone or in conjunction with a third party, has comparable financial ability to the third party contractor before the owner will be required to grant deferred purchase money financing to the tenant on the same terms and conditions agreed between the owner and the third party contractor. If the tenant can prove comparable financial ability alone, the owner may not require the tenant to secure a third party guarantor. This proof cannot be required as a prerequisite to contracting. It may be required only as a prerequisite to the owner granting deferred purchase money financing at settlement.</p>
+                <p>“(a-1) Reduced price. If the owner sells or contracts to sell the accommodation to a third party for a price more than 10% less than the price offered to the tenant or for other terms which would constitute bargaining without good faith, the owner shall comply anew with all requirements of §§ 45-1638, 45-1639, or 45-1640 as applicable.</p>
+                <p>Amendment of section by Law 10-144: Section 2(k) of <a class="internal-link" href="/dc/council/laws/10-144.html">D.C. Law 10-144</a> purported to insert new (a-1), (a-2) and (a-3) of this section to read as follows:</p>
+                <p>Reenactment of Law 3-86: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3401.01.html">42-3401.01</a>.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/47/chapters/3/subchapters/II-A/">Subchapter II-A. Capital Review and Debt Affordability.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/47/chapters/3/subchapters/II/">Report Error</a>
@@ -88,23 +88,57 @@
         <section class="col8 body">
           <h1>Subchapter II. Borrowing.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/47-321.html">§ 47–321. Reserved</a>
-            <a href="/dc/council/code/sections/47-322.html">§ 47–322. Reserved</a>
-            <a href="/dc/council/code/sections/47-323.html">§ 47–323. Reserved</a>
-            <a href="/dc/council/code/sections/47-324.html">§ 47–324. Reserved</a>
-            <a href="/dc/council/code/sections/47-325.html">§ 47–325. Reserved</a>
-            <a href="/dc/council/code/sections/47-326.html">§ 47–326. Reserved</a>
-            <a href="/dc/council/code/sections/47-327.html">§ 47–327. Reserved</a>
-            <a href="/dc/council/code/sections/47-328.html">§ 47–328. Reserved</a>
-            <a href="/dc/council/code/sections/47-329.html">§ 47–329. Reserved</a>
-            <a href="/dc/council/code/sections/47-330.html">§ 47–330. Reserved</a>
-            <a href="/dc/council/code/sections/47-331.html">§ 47–331. Reserved</a>
-            <a href="/dc/council/code/sections/47-332.html">§ 47–332. Reserved</a>
-            <a href="/dc/council/code/sections/47-333.html">§ 47–333. Reserved</a>
-            <a href="/dc/council/code/sections/47-334.html">§ 47–334. Definitions.</a>
-            <a href="/dc/council/code/sections/47-335.html">§ 47–335. Permissible security.</a>
-            <a href="/dc/council/code/sections/47-335.01.html">§ 47–335.01. Borrowing of funds for capital projects.</a>
-            <a href="/dc/council/code/sections/47-335.02.html">§ 47–335.02. Borrowing limitation.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-321.html">§ 47–321. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-322.html">§ 47–322. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-323.html">§ 47–323. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-324.html">§ 47–324. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-325.html">§ 47–325. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-326.html">§ 47–326. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-327.html">§ 47–327. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-328.html">§ 47–328. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-329.html">§ 47–329. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-330.html">§ 47–330. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-331.html">§ 47–331. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-332.html">§ 47–332. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-333.html">§ 47–333. Reserved</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-334.html">§ 47–334. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-335.html">§ 47–335. Permissible security.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-335.01.html">§ 47–335.01. Borrowing of funds for capital projects.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-335.02.html">§ 47–335.02. Borrowing limitation.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -157,17 +191,17 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-1778.30.html">8-1778.30</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote the section.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-370.html">D.C. Law 18-370</a>, in par. (1), added the second sentence.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Limitation on Borrowing and Establishment of the Operating Cash Reserve Technical Amendment Emergency Act of 2009 (D.C. Act 18-174, August 3, 2009,  56 DCR 6639).</p>
-                <p>For temporary (90 day) amendment of section, see § 7081(a) of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
-                <p>For temporary (90 day) amendment of section, see § 7211(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 7211(a) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
                 <p>For temporary (90 day) amendment of section, see § 752(a) of Fiscal Year 2011 Supplemental Budget Support Emergency Act of 2010 (D.C. Act 18-694, January 19, 2011,  58 DCR 662).</p>
+                <p>For temporary (90 day) amendment of section, see § 7211(a) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 7211(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 7081(a) of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Limitation on Borrowing and Establishment of the Operating Cash Reserve Technical Amendment Emergency Act of 2009 (D.C. Act 18-174, August 3, 2009,  56 DCR 6639).</p>
                 <h4>Short Title</h4>
-                <p>Short title: Section 7210 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle S of title VII of the act may be cited as the “Limitation on Borrowing Technical Amendments Act of 2009”.</p>
                 <p>Short title: Section 751 of <a class="internal-link" href="/dc/council/laws/18-370.html">D.C. Law 18-370</a> provided that subtitle F of title VII of the act may be cited as “Limitation on Borrowing Amendment Act of 2010”.</p>
+                <p>Short title: Section 7210 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle S of title VII of the act may be cited as the “Limitation on Borrowing Technical Amendments Act of 2009”.</p>
               </section>
             </section>
             <hr/>
@@ -199,22 +233,22 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added the last sentence.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) authorization to borrow funds for capital projects through the issuance of general obligation bonds, see § 2 of Fiscal Year 2005 General Obligation Bond Issuance Emergency Approval Act of 2004 (D.C. Act 15-593, October 26, 2004,  51 DCR 10734).</p>
-                <p>For temporary (90 day) addition of section, see § 3 of Fiscal Year 2011 Income Tax Secured Revenue Bond and General Obligation Bond Issuance Emergency Approval Act of 2010 (D.C. Act 18-607, November 17, 2010,  57 DCR 11054).</p>
-                <p>For temporary (90 days) amendment of this section, see § 1043(c) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 1043(c) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 1043(c) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 1043(c) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 1043(c) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) addition of section, see § 3 of Fiscal Year 2011 Income Tax Secured Revenue Bond and General Obligation Bond Issuance Emergency Approval Act of 2010 (D.C. Act 18-607, November 17, 2010,  57 DCR 11054).</p>
+                <p>For temporary (90 day) authorization to borrow funds for capital projects through the issuance of general obligation bonds, see § 2 of Fiscal Year 2005 General Obligation Bond Issuance Emergency Approval Act of 2004 (D.C. Act 15-593, October 26, 2004,  51 DCR 10734).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 3 of D.C. Law 18-308 added a section to read as follows:</p>
-                <p>“Sec. 3. (a) Pursuant to section 3302 of the Fiscal Year 2001 Budget Support Act of 2000, effective October 19, 2000 (<a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/47-335.01.html">47-335.01</a>), the Council approves the issuance and sale of general obligation bonds in an aggregate principal amount not to exceed $180 million to fund certain capital projects listed in section 4, plus all costs and expenses related to issuing and delivering the bonds as authorized pursuant to the Bond Acts.</p>
-                <p>“(b) The capital projects listed in section 4 have been authorized pursuant to section 446 of the District of Columbia Home Rule Act, approved December 24, 1973 (87 Stat. 801; D.C. Official Code § 1-204.46), the District of Columbia Appropriations Act, 2000, approved November 29, 1999 (Pub. L. No. 106-113; 113 Stat. 1501), the District of Columbia Appropriations Act, 2001, approved November 22, 2000 (Pub. L. No. 106-522; 114 Stat. 2457), the District of Columbia Appropriations Act, 2002, approved December 21, 2001 (Pub. L. No. 107-96; 115 Stat. 923), the District of Columbia Appropriations Act, 2003, approved February 20, 2003 (Pub. L. No. 108-7; 117 Stat. 11), the District of Columbia Appropriations Act, 2004, approved January 23, 2004 (Pub. L. No. 108-199; 118 Stat. 3), the District of Columbia Appropriations Act, 2005, approved October 18, 2004 (Pub. L. No. 108-335; 118 Stat. 1322), the District of Columbia Appropriations Act, 2006, approved November 30, 2005 (Pub. L. No 109-115; 119 Stat. 2508), the Continuing Appropriations Resolution, 2007, approved February 15, 2007 (Pub. L. No. 110-5; 121 Stat. 8), the Continuing Appropriations Resolution, 2008, approved September 29, 2007 (Pub. L. No. 110-92; 121 Stat. 989), the District of Columbia Appropriations Act, 2008, approved December 26, 2007 (Pub. L. No. 110-161; 121 Stat. 1990), the Continuing Appropriations Resolution, 2009, approved September 30, 2008 (Pub. L. No. 110-329; 119 Stat. 3574), the District of Columbia Appropriations Act, 2009, approved March 11, 2009 (Pub. L. No. 111-8; 123 Stat. 524), the Continuing Appropriations Resolution, 2010, approved October 1, 2009 (Pub. L. No. 111-68; 123 Stat. 2023), the Further Continuing Appropriations Resolution, 2010, approved October 30, 2009 (Pub. L. No. 111-88; 123 Stat. 2904), the District of Columbia Appropriations Act, 2010, approved December 16, 2009 (Pub. L. No. 111-117; 123 Stat. 3034), the Continuing Appropriations Resolution, 2011, approved September 30, 2010 (Pub. L. No. 111-242; 124 Stat. 2607), and are included within the schedule of capital projects for which the District of Columbia is authorized to incur indebtedness under the General Obligation Bonds and Bond Anticipation Notes for Fiscal Years 1999—2004 Authorization Act of 1999, effective July 29, 1999 (D.C. Law 13-22; D.C. Official Code § 1-204.61, note); the General Obligation Bonds and Bond Anticipation Notes for Fiscal Years 2002-2007 Authorization Act of 2002, effective March 25, 2003 (D.C. Law 14-214; D.C. Official Code § 1-204.61, note); and the General Obligation Bonds and Bond Anticipation Notes for Fiscal Years 2007-2012 Authorization Act of 2006, effective March 6, 2007 (D.C. Law 16-212; D.C. Official Code § 1.204.61, note) (’Bond Acts’).”</p>
                 <p>Section 8(b) of D.C. Law 18-308 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(b) The capital projects listed in section 4 have been authorized pursuant to section 446 of the District of Columbia Home Rule Act, approved December 24, 1973 (87 Stat. 801; D.C. Official Code § 1-204.46), the District of Columbia Appropriations Act, 2000, approved November 29, 1999 (Pub. L. No. 106-113; 113 Stat. 1501), the District of Columbia Appropriations Act, 2001, approved November 22, 2000 (Pub. L. No. 106-522; 114 Stat. 2457), the District of Columbia Appropriations Act, 2002, approved December 21, 2001 (Pub. L. No. 107-96; 115 Stat. 923), the District of Columbia Appropriations Act, 2003, approved February 20, 2003 (Pub. L. No. 108-7; 117 Stat. 11), the District of Columbia Appropriations Act, 2004, approved January 23, 2004 (Pub. L. No. 108-199; 118 Stat. 3), the District of Columbia Appropriations Act, 2005, approved October 18, 2004 (Pub. L. No. 108-335; 118 Stat. 1322), the District of Columbia Appropriations Act, 2006, approved November 30, 2005 (Pub. L. No 109-115; 119 Stat. 2508), the Continuing Appropriations Resolution, 2007, approved February 15, 2007 (Pub. L. No. 110-5; 121 Stat. 8), the Continuing Appropriations Resolution, 2008, approved September 29, 2007 (Pub. L. No. 110-92; 121 Stat. 989), the District of Columbia Appropriations Act, 2008, approved December 26, 2007 (Pub. L. No. 110-161; 121 Stat. 1990), the Continuing Appropriations Resolution, 2009, approved September 30, 2008 (Pub. L. No. 110-329; 119 Stat. 3574), the District of Columbia Appropriations Act, 2009, approved March 11, 2009 (Pub. L. No. 111-8; 123 Stat. 524), the Continuing Appropriations Resolution, 2010, approved October 1, 2009 (Pub. L. No. 111-68; 123 Stat. 2023), the Further Continuing Appropriations Resolution, 2010, approved October 30, 2009 (Pub. L. No. 111-88; 123 Stat. 2904), the District of Columbia Appropriations Act, 2010, approved December 16, 2009 (Pub. L. No. 111-117; 123 Stat. 3034), the Continuing Appropriations Resolution, 2011, approved September 30, 2010 (Pub. L. No. 111-242; 124 Stat. 2607), and are included within the schedule of capital projects for which the District of Columbia is authorized to incur indebtedness under the General Obligation Bonds and Bond Anticipation Notes for Fiscal Years 1999—2004 Authorization Act of 1999, effective July 29, 1999 (D.C. Law 13-22; D.C. Official Code § 1-204.61, note); the General Obligation Bonds and Bond Anticipation Notes for Fiscal Years 2002-2007 Authorization Act of 2002, effective March 25, 2003 (D.C. Law 14-214; D.C. Official Code § 1-204.61, note); and the General Obligation Bonds and Bond Anticipation Notes for Fiscal Years 2007-2012 Authorization Act of 2006, effective March 6, 2007 (D.C. Law 16-212; D.C. Official Code § 1.204.61, note) (’Bond Acts’).”</p>
+                <p>“Sec. 3. (a) Pursuant to section 3302 of the Fiscal Year 2001 Budget Support Act of 2000, effective October 19, 2000 (<a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/47-335.01.html">47-335.01</a>), the Council approves the issuance and sale of general obligation bonds in an aggregate principal amount not to exceed $180 million to fund certain capital projects listed in section 4, plus all costs and expenses related to issuing and delivering the bonds as authorized pursuant to the Bond Acts.</p>
+                <p>Section 3 of D.C. Law 18-308 added a section to read as follows:</p>
                 <h4>Resolutions</h4>
-                <p>Resolution 14-224, the “General Obligation Bond Issuance Authorization Resolution of 2001”, was approved effective October 16, 2001.</p>
-                <p>Resolution 14-225, the “General Obligation Bond Proceeds Financing Reallocation Authorization Resolution of 2001”, was approved effective October 16, 2001.</p>
-                <p>Resolution 14-585, the “General Obligation Bond Issuance Authorization Emergency Resolution of 2002”, was approved effective October 18, 2002.</p>
-                <p>Resolution 15-129, the “General Obligation Bond Issuance Approval Resolution of 2003”, was approved effective July 8, 2003.</p>
                 <p>Resolution 16-356, the “Fiscal Year 2006 General Obligation Bond Issuance Approval Emergency Resolution of 2005”, was approved effective November 1, 2005.</p>
+                <p>Resolution 15-129, the “General Obligation Bond Issuance Approval Resolution of 2003”, was approved effective July 8, 2003.</p>
+                <p>Resolution 14-585, the “General Obligation Bond Issuance Authorization Emergency Resolution of 2002”, was approved effective October 18, 2002.</p>
+                <p>Resolution 14-225, the “General Obligation Bond Proceeds Financing Reallocation Authorization Resolution of 2001”, was approved effective October 16, 2001.</p>
+                <p>Resolution 14-224, the “General Obligation Bond Issuance Authorization Resolution of 2001”, was approved effective October 16, 2001.</p>
               </section>
             </section>
             <hr/>
@@ -235,14 +269,14 @@
       (<a class="internal-link" href="/dc/council/laws/17-360.html">Mar. 25, 2009, D.C. Law 17-360, § 2(c), 56 DCR 1200</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 7211(b), 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/18-370.html">Apr. 8, 2011, D.C. Law 18-370, § 752(b), 58 DCR 1008</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote the section.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-370.html">D.C. Law 18-370</a> substituted “5 succeeding fiscal years” for “3 succeeding fiscal years”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Limitation on Borrowing and Establishment of the Operating Cash Reserve Technical Amendment Emergency Act of 2009 (D.C. Act 18-174, August 3, 2009,  56 DCR 6639).</p>
-                <p>For temporary (90 day) amendment of section, see § 7081(b) of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
-                <p>For temporary (90 day) amendment of section, see § 7211(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 7211(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
                 <p>For temporary (90 day) amendment of section, see § 752(b) of Fiscal Year 2011 Supplemental Budget Support Emergency Act of 2010 (D.C. Act 18-694, January 19, 2011,  58 DCR 662).</p>
+                <p>For temporary (90 day) amendment of section, see § 7211(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 7211(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 7081(b) of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Limitation on Borrowing and Establishment of the Operating Cash Reserve Technical Amendment Emergency Act of 2009 (D.C. Act 18-174, August 3, 2009,  56 DCR 6639).</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/3-703.html">§ 3–703. Powers of the Commission.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-702.html">Report Error</a>
@@ -103,15 +103,15 @@
       (<a class="internal-link" href="/dc/council/laws/2-109.html#§3">Sept. 22, 1978, D.C. Law 2-109, § 3, 25 DCR 1456</a>; <a class="internal-link" href="/dc/council/laws/12-285.html">June 12, 1999, D.C. Law 12-285, § 4(k), 46 DCR 1355</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 313, 56 DCR 1117</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 29, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-802.</p>
                 <p>1973 Ed., § 2-2602.</p>
+                <p>1981 Ed., § 2-802.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in subsec. (c), deleted “, with the advice and consent of the Council,” following “the Mayor”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made punctuation correction in (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in subsec. (c), deleted “, with the advice and consent of the Council,” following “the Mayor”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 4(k) of the Confirmation Emergency Amendment Act of 1999 (D.C. Act 13-25, March 15, 1999,  46 DCR 2971).</p>
-                <p>For temporary amendment of section, see § 4(k) of the Confirmation Act Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-92, June 4, 1999,  46 DCR 5330).</p>
                 <p>For temporary (90-day) amendment of section, see § 4(k) of the Confirmation Act Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-92, June 4, 1999,  46 DCR 5330).</p>
+                <p>For temporary amendment of section, see § 4(k) of the Confirmation Act Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-92, June 4, 1999,  46 DCR 5330).</p>
+                <p>For temporary amendment of section, see § 4(k) of the Confirmation Emergency Amendment Act of 1999 (D.C. Act 13-25, March 15, 1999,  46 DCR 2971).</p>
               </section>
             </section>
           </section>

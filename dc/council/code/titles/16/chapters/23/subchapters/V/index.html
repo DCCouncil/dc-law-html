@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/16/chapters/25/">Chapter 25. Change of Name or Gender.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/16/chapters/23/subchapters/V/">Report Error</a>
@@ -88,25 +88,63 @@
         <section class="col8 body">
           <h1>Subchapter V. Permanent Guardianship.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/16-2381.html">§ 16–2381. Purpose of the subchapter; construction of provisions.</a>
-            <a href="/dc/council/code/sections/16-2382.html">§ 16–2382. Definitions.</a>
-            <a href="/dc/council/code/sections/16-2383.html">§ 16–2383. Grounds for the creation of a permanent guardianship.</a>
-            <a href="/dc/council/code/sections/16-2384.html">§ 16–2384. Motions.</a>
-            <a href="/dc/council/code/sections/16-2385.html">§ 16–2385. Parties.</a>
-            <a href="/dc/council/code/sections/16-2386.html">§ 16–2386. Notice.</a>
-            <a href="/dc/council/code/sections/16-2387.html">§ 16–2387. Conduct of hearings.</a>
-            <a href="/dc/council/code/sections/16-2388.html">§ 16–2388. Adjudicatory hearings.</a>
-            <a href="/dc/council/code/sections/16-2389.html">§ 16–2389. Effect of guardianship order.</a>
-            <a href="/dc/council/code/sections/16-2390.html">§ 16–2390. Jurisdiction.</a>
-            <a href="/dc/council/code/sections/16-2391.html">§ 16–2391. Relocation.</a>
-            <a href="/dc/council/code/sections/16-2392.html">§ 16–2392. Guardianship order; finality; appeals; transcripts.</a>
-            <a href="/dc/council/code/sections/16-2393.html">§ 16–2393. Confidentiality of records.</a>
-            <a href="/dc/council/code/sections/16-2394.html">§ 16–2394. Unlawful disclosure.</a>
-            <a href="/dc/council/code/sections/16-2395.html">§ 16–2395. Modification, termination, or enforcement of the guardianship order.</a>
-            <a href="/dc/council/code/sections/16-2396.html">§ 16–2396. Support.</a>
-            <a href="/dc/council/code/sections/16-2397.html">§ 16–2397. Interlocutory order of guardianship.</a>
-            <a href="/dc/council/code/sections/16-2398.html">§ 16–2398. Successor guardian.</a>
-            <a href="/dc/council/code/sections/16-2399.html">§ 16–2399. Permanent guardianship subsidy.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2381.html">§ 16–2381. Purpose of the subchapter; construction of provisions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2382.html">§ 16–2382. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2383.html">§ 16–2383. Grounds for the creation of a permanent guardianship.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2384.html">§ 16–2384. Motions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2385.html">§ 16–2385. Parties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2386.html">§ 16–2386. Notice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2387.html">§ 16–2387. Conduct of hearings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2388.html">§ 16–2388. Adjudicatory hearings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2389.html">§ 16–2389. Effect of guardianship order.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2390.html">§ 16–2390. Jurisdiction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2391.html">§ 16–2391. Relocation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2392.html">§ 16–2392. Guardianship order; finality; appeals; transcripts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2393.html">§ 16–2393. Confidentiality of records.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2394.html">§ 16–2394. Unlawful disclosure.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2395.html">§ 16–2395. Modification, termination, or enforcement of the guardianship order.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2396.html">§ 16–2396. Support.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2397.html">§ 16–2397. Interlocutory order of guardianship.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2398.html">§ 16–2398. Successor guardian.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-2399.html">§ 16–2399. Permanent guardianship subsidy.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -124,8 +162,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(c), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 3(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 3(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399., see § 3(b) of the Foster Children’s Guardianship Temporary Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-208.html">D.C. Law 13-208</a>, April 4, 2001, law notification  48 DCR 3239).</p>
                 <h4>Delegation of Authority</h4>
@@ -149,8 +187,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(b), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 3(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 3(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399., see § 3(b) of the Foster Children’s Guardianship Temporary Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-208.html">D.C. Law 13-208</a>, April 4, 2001, law notification  48 DCR 3239).</p>
               </section>
@@ -178,8 +216,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(b), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 3(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 3(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399., see § 3(b) of the Foster Children’s Guardianship Temporary Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-208.html">D.C. Law 13-208</a>, April 4, 2001, law notification  48 DCR 3239).</p>
               </section>
@@ -213,8 +251,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/16-2398.html">16-2398</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399., see § 3(b) of the Foster Children’s Guardianship Temporary Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-208.html">D.C. Law 13-208</a>, April 4, 2001, law notification  48 DCR 3239).</p>
               </section>
@@ -231,8 +269,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(b), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399., see § 3(b) of the Foster Children’s Guardianship Temporary Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-208.html">D.C. Law 13-208</a>, April 4, 2001, law notification  48 DCR 3239).</p>
               </section>
@@ -252,8 +290,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(b), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399., see § 3(b) of the Foster Children’s Guardianship Temporary Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-208.html">D.C. Law 13-208</a>, April 4, 2001, law notification  48 DCR 3239).</p>
               </section>
@@ -273,8 +311,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(b), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399., see § 3(b) of the Foster Children’s Guardianship Temporary Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-208.html">D.C. Law 13-208</a>, April 4, 2001, law notification  48 DCR 3239).</p>
               </section>
@@ -300,8 +338,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in subsec. (e), substituted “spouse or domestic partner” for “husband/wife”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399., see § 3(b) of the Foster Children’s Guardianship Temporary Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-208.html">D.C. Law 13-208</a>, April 4, 2001, law notification  48 DCR 3239).</p>
               </section>
@@ -339,8 +377,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-1531.08.html">7-1531.08</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399., see § 3(b) of the Foster Children’s Guardianship Temporary Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-208.html">D.C. Law 13-208</a>, April 4, 2001, law notification  48 DCR 3239).</p>
               </section>
@@ -360,12 +398,12 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-230.html">D.C. Law 18-230</a> rewrote the section, which had read as follows: “The court shall retain jurisdiction to enforce, modify, or terminate a guardianship order until the child reaches 18 years of age. If the court finds that it is in the child’s best interest and if the child consents, the court may retain jurisdiction until the child reaches 21 years of age.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
-                <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(a) of Adoption and Guardianship Subsidy Emergency Amendment Act of 2010 (D.C. Act 18-393, May 7, 2010,  57 DCR 4346).</p>
+                <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 3(a) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
+                <p>For temporary (225 day) amendment of section, see § 3(a) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
               </section>
             </section>
             <hr/>
@@ -380,8 +418,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(b), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
               </section>
@@ -402,8 +440,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(b), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
               </section>
@@ -422,8 +460,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/16-2394.html">16-2394</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
               </section>
@@ -442,9 +480,9 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “not more than $250”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
-                <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
                 <p>For temporary (90 days) amendment of this section, see § 281(f) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
+                <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
                 <h4>Editor's Notes</h4>
@@ -471,8 +509,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/16-2398.html">16-2398</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
               </section>
@@ -490,8 +528,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(b), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
               </section>
@@ -510,8 +548,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(b), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
               </section>
@@ -543,8 +581,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-273.html">Apr. 4, 2001, D.C. Law 13-273, § 3(b), 48 DCR 1637</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
               </section>
@@ -577,17 +615,17 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/4-1301.02.html">4-1301.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a>, in subsec. (b)(1), deleted “abused or” following “adjudicated”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-230.html">D.C. Law 18-230</a>, in subsec. (b)(2), inserted “and” at the end; repealed subsec. (b)(3); in subsec. (d), designated the existing text as par. (1); in subsec. (d)(1), substituted “Except as provided in paragraph (2) of this subsection, eligibility for subsidy” for “Eligibility for subsidy”; and added subsec. (d)(2).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> deleted “and” at the end of (b)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-230.html">D.C. Law 18-230</a>, in subsec. (b)(2), inserted “and” at the end; repealed subsec. (b)(3); in subsec. (d), designated the existing text as par. (1); in subsec. (d)(1), substituted “Except as provided in paragraph (2) of this subsection, eligibility for subsidy” for “Eligibility for subsidy”; and added subsec. (d)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a>, in subsec. (b)(1), deleted “abused or” following “adjudicated”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
-                <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
-                <p>For temporary (90 day) amendment of section, see § 5 of Technical Amendments Emergency Act of 2001 (D.C. Act 14-108, August 3, 2001,  48 DCR 7622).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(b) of Adoption and Guardianship Subsidy Emergency Amendment Act of 2010 (D.C. Act 18-393, May 7, 2010,  57 DCR 4346).</p>
+                <p>For temporary (90 day) amendment of section, see § 5 of Technical Amendments Emergency Act of 2001 (D.C. Act 14-108, August 3, 2001,  48 DCR 7622).</p>
+                <p>For temporary (90 day) addition of section, see § 3(c) of Foster Children’s Guardianship Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-4, February 13, 2001,  48 DCR 2254).</p>
+                <p>For temporary (90 day) addition of section, see § 2(b) of the Foster Children’s Guardianship Legislative Review Emergency Act of 2000 (D.C. Act 13-490, December 18, 2000,  48 DCR 63).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
                 <p>For temporary (225 day) addition of subchapter V, “Permanent Guardianship”, consisting of §§ <a class="internal-link" href="/dc/council/code/sections/16-2381.html">16-2381</a> to 16-2399, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
+                <p>For temporary (225 day) amendment of section, see § 3(b) of the Adoption and Guardianship Subsidy Temporary Amendment Act of 2010 (D.C. Law 18-208, July 27, 2010, law notification  57 DCR 7547).</p>
                 <h4>Editor's Notes</h4>
                 <p>Based on the text, the reference in <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a>, § 75(b) to § <a class="internal-link" href="/dc/council/code/sections/16-2390.html">16-2390</a> should have been to § <a class="internal-link" href="/dc/council/code/sections/16-2399.html">16-2399</a>; therefore, the changes enacted by the law have been applied to that code section.</p>
                 <h4>Delegation of Authority</h4>

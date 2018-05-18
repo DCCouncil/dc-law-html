@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/44/chapters/21/">Chapter 21. Saint Elizabeths’ Hospital. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/chapters/20/">Report Error</a>
@@ -87,25 +87,63 @@
         <section class="col8 body">
           <h1>Chapter 20. Health Services Planning Program. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/44-2001.html">§ 44–2001. Definitions. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2002.html">§ 44–2002. Office of Health Systems Development; establishment and functions. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2003.html">§ 44–2003. Health Advisory Committee; establishment and responsibilities. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2004.html">§ 44–2004. Health Systems Plan; development, publication, updating, and implementation. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2005.html">§ 44–2005. Reporting, analysis and publication of utilization, financial and other health-related data; regulations, reporting periods, format and forms. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2006.html">§ 44–2006. Certificate of need requirements. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2007.html">§ 44–2007. Activities exempt from certificate of need review. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2008.html">§ 44–2008. Adoption of procedures and criteria for review by the OHSD governing application and review. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2009.html">§ 44–2009. Criteria for review and required findings. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2010.html">§ 44–2010. Duration, modification, sale, or transfer of a certificate of need. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2011.html">§ 44–2011. Reconsideration of review decisions. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2012.html">§ 44–2012. Administrative appeal. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2013.html">§ 44–2013. Judicial review of certificate of need decisions. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2014.html">§ 44–2014. Certificate of need mandatory condition precedent. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2015.html">§ 44–2015. Violations and penalties for noncompliance. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2016.html">§ 44–2016. Immunity from civil liability. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2017.html">§ 44–2017. Moratorium on applications. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2018.html">§ 44–2018. Annual report. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2019.html">§ 44–2019. Rules. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2001.html">§ 44–2001. Definitions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2002.html">§ 44–2002. Office of Health Systems Development; establishment and functions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2003.html">§ 44–2003. Health Advisory Committee; establishment and responsibilities. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2004.html">§ 44–2004. Health Systems Plan; development, publication, updating, and implementation. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2005.html">§ 44–2005. Reporting, analysis and publication of utilization, financial and other health-related data; regulations, reporting periods, format and forms. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2006.html">§ 44–2006. Certificate of need requirements. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2007.html">§ 44–2007. Activities exempt from certificate of need review. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2008.html">§ 44–2008. Adoption of procedures and criteria for review by the OHSD governing application and review. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2009.html">§ 44–2009. Criteria for review and required findings. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2010.html">§ 44–2010. Duration, modification, sale, or transfer of a certificate of need. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2011.html">§ 44–2011. Reconsideration of review decisions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2012.html">§ 44–2012. Administrative appeal. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2013.html">§ 44–2013. Judicial review of certificate of need decisions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2014.html">§ 44–2014. Certificate of need mandatory condition precedent. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2015.html">§ 44–2015. Violations and penalties for noncompliance. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2016.html">§ 44–2016. Immunity from civil liability. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2017.html">§ 44–2017. Moratorium on applications. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2018.html">§ 44–2018. Annual report. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2019.html">§ 44–2019. Rules. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

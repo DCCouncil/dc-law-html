@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-3503.html">§ 47–3503. Exemptions for qualifying lower income homeownership households and cooperative housing associations.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-3502.html">Report Error</a>
@@ -112,26 +112,26 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-802.html">47-802</a>, § <a class="internal-link" href="/dc/council/code/sections/47-3503.html">47-3503</a>, § <a class="internal-link" href="/dc/council/code/sections/47-3504.html">47-3504</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-3505.html">47-3505</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-282.html">D.C. Law 14-282</a> added subsec. (c).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, in subsec. (c), substituted “80% of the median sale price for homes within the District of Columbia in the prior year” for “$250,000”.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> added “unless the unit or residential property is a for-sale unit constructed pursuant to the Housing Production Trust Fund Act of 1988, effective March 16, 1989 (<a class="internal-link" href="/dc/council/laws/7-202.html">D.C. Law 7-202</a>; D.C. Official Code Section 42-2801 et seq.), that remains affordable for 180 months or a longer period selected by the developer, in accordance with section 2218 of Title 14 of the District of Columbia Municipal Regulations (14 DCMR Section 2218), then this chapter shall apply” in (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, in subsec. (c), substituted “80% of the median sale price for homes within the District of Columbia in the prior year” for “$250,000”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-282.html">D.C. Law 14-282</a> added subsec. (c).</p>
                 <h4>Cross References</h4>
                 <p>Real property assessment and tax, “owner” and “taxpayer” defined, see § <a class="internal-link" href="/dc/council/code/sections/47-802.html">47-802</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 12(bbb) of Tax Clarity and Recorder of Deeds Emergency Act of 2002 (D.C. Act 14-381, June 6, 2002,  49 DCR 5674).</p>
-                <p>For temporary (90 day) amendment of section, see § 12(ccc) of Tax Clarity and Related Amendments Emergency Act of 2002 (D.C. Act 14-456, July 23, 2002,  49 DCR 8107).</p>
-                <p>For temporary (90 day) amendment of section, see § 12(ccc) of Tax Clarity and Related Amendments Congressional Review Emergency Act of 2002 (D.C. Act 14-510, October 23, 2002,  49 DCR 10247).</p>
-                <p>For temporary (90 day) amendment of section, see §§ 1281(b), 1282, 1283 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2053 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 1281(b), 1282, 1283 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
+                <p>For temporary (90 day) amendment of section, see § 12(ccc) of Tax Clarity and Related Amendments Congressional Review Emergency Act of 2002 (D.C. Act 14-510, October 23, 2002,  49 DCR 10247).</p>
+                <p>For temporary (90 day) amendment of section, see § 12(ccc) of Tax Clarity and Related Amendments Emergency Act of 2002 (D.C. Act 14-456, July 23, 2002,  49 DCR 8107).</p>
+                <p>For temporary (90 day) amendment of section, see § 12(bbb) of Tax Clarity and Recorder of Deeds Emergency Act of 2002 (D.C. Act 14-381, June 6, 2002,  49 DCR 5674).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 12(ccc) of Tax Clarity and Related Amendments Temporary Act of 2003 (<a class="internal-link" href="/dc/council/laws/14-228.html">D.C. Law 14-228</a>, March 23, 2003, law notification  50 DCR 2741).</p>
                 <h4>Editor's Notes</h4>
-                <p>Mayor authorized to issue rules: Section 13 of <a class="internal-link" href="/dc/council/laws/7-177.html">D.C. Law 7-177</a> provided that the Mayor shall issue rules to implement the provisions of the act.</p>
-                <p>Applicability and expiration of subtitle HH of title I, §§ 1280 to 1284, of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>: Sections 1282 and 1283 of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, as amended by <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, § 7068(f), (g), provided:</p>
-                <p>“Sec. 1282. Applicability; conditional effect.</p>
-                <p>“(a) Section 1281 shall apply for taxable years beginning after September 30, 2005.</p>
-                <p>“(b) Repealed.</p>
                 <p>“Sec. 1283. Repealed.”</p>
+                <p>“(b) Repealed.</p>
+                <p>“(a) Section 1281 shall apply for taxable years beginning after September 30, 2005.</p>
+                <p>“Sec. 1282. Applicability; conditional effect.</p>
+                <p>Applicability and expiration of subtitle HH of title I, §§ 1280 to 1284, of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>: Sections 1282 and 1283 of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, as amended by <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, § 7068(f), (g), provided:</p>
+                <p>Mayor authorized to issue rules: Section 13 of <a class="internal-link" href="/dc/council/laws/7-177.html">D.C. Law 7-177</a> provided that the Mayor shall issue rules to implement the provisions of the act.</p>
               </section>
             </section>
           </section>

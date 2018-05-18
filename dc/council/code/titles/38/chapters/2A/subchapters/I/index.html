@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/38/chapters/2A/subchapters/II/">Subchapter II. Enhancement of Existing Pre-K Programs.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/38/chapters/2A/subchapters/I/">Report Error</a>
@@ -88,13 +88,27 @@
         <section class="col8 body">
           <h1>Subchapter I. Definitions; Administration; and Funding.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/38-271.01.html">§ 38–271.01. Definitions.</a>
-            <a href="/dc/council/code/sections/38-271.02.html">§ 38–271.02. Administration of pre-k.</a>
-            <a href="/dc/council/code/sections/38-271.03.html">§ 38–271.03. Annual evaluation of the quality of current pre-k programs.</a>
-            <a href="/dc/council/code/sections/38-271.04.html">§ 38–271.04. Annual capacity audit.</a>
-            <a href="/dc/council/code/sections/38-271.05.html">§ 38–271.05. Annual report to the Council.</a>
-            <a href="/dc/council/code/sections/38-271.06.html">§ 38–271.06. Funding.</a>
-            <a href="/dc/council/code/sections/38-271.07.html">§ 38–271.07. State Early Childhood Development Coordinating Council.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-271.01.html">§ 38–271.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-271.02.html">§ 38–271.02. Administration of pre-k.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-271.03.html">§ 38–271.03. Annual evaluation of the quality of current pre-k programs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-271.04.html">§ 38–271.04. Annual capacity audit.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-271.05.html">§ 38–271.05. Annual report to the Council.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-271.06.html">§ 38–271.06. Funding.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-271.07.html">§ 38–271.07. State Early Childhood Development Coordinating Council.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -135,24 +149,24 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1595.html">2-1595</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2031.html">7-2031</a>, § <a class="internal-link" href="/dc/council/code/sections/38-1802.14.html">38-1802.14</a>, and § <a class="internal-link" href="/dc/council/code/sections/38-2602.html">38-2602</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-285.html">D.C. Law 18-285</a> rewrote pars. (1) and (3); and added pars. (1A), (1B), (1C), (2A), and (3A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> repealed par. (2), which formerly read:</p>
-                <p>“(2) ‘Fund’ means the Pre-k Program Assistance Grant Fund established by § <a class="internal-link" href="/dc/council/code/sections/38-272.04.html">38-272.04</a>.”</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-262.html">D.C. Law 19-262</a> added (1); and redesignated former (1), (1A), (1B), and (1C) as present (1A), (1B), (1C), and (1D), respectively.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-12.html">D.C. Law 21-12</a> added (5A) and (11A).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-262.html">D.C. Law 19-262</a> added (1); and redesignated former (1), (1A), (1B), and (1C) as present (1A), (1B), (1C), and (1D), respectively.</p>
+                <p>“(2) ‘Fund’ means the Pre-k Program Assistance Grant Fund established by § <a class="internal-link" href="/dc/council/code/sections/38-272.04.html">38-272.04</a>.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> repealed par. (2), which formerly read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-285.html">D.C. Law 18-285</a> rewrote pars. (1) and (3); and added pars. (1A), (1B), (1C), (2A), and (3A).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Pre-K Acceleration and Clarification Emergency Amendment Act of 2009 (D.C. Act 18-304, January 28, 2010,  57 DCR 1475).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-602, December 1, 2010,  57 DCR 11039).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(a) of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 19-4, February 11, 2011,  58 DCR 1399).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-602, December 1, 2010,  57 DCR 11039).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Pre-K Acceleration and Clarification Emergency Amendment Act of 2009 (D.C. Act 18-304, January 28, 2010,  57 DCR 1475).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(a) of D.C. Law 18-142 rewrote par. (1) to read as follows:</p>
-                <p>“(1) ‘Community-based organization’ or ‘CBO’ means a Head Start or early childhood education program operated by a nonprofit entity, faith-based organization, or organization that participates in federally funded or District-funded early childhood programs, including the child care subsidy program funded by the federal Child Care and Development Fund.”; in par. (3), substituted “pursuant to” for “by”; and added pars. (2A) and (3A) to read as follows:</p>
-                <p>“(2A) ‘HEIG fund’ means the Higher Education Incentive Grant Fund established by section 403.”.</p>
-                <p>“(3A) ‘HEI scholarship program’ means the scholarship program established pursuant to sections 401 and 402.”.</p>
                 <p>Section 5(a) of D.C. Law 18-142 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(3A) ‘HEI scholarship program’ means the scholarship program established pursuant to sections 401 and 402.”.</p>
+                <p>“(2A) ‘HEIG fund’ means the Higher Education Incentive Grant Fund established by section 403.”.</p>
+                <p>“(1) ‘Community-based organization’ or ‘CBO’ means a Head Start or early childhood education program operated by a nonprofit entity, faith-based organization, or organization that participates in federally funded or District-funded early childhood programs, including the child care subsidy program funded by the federal Child Care and Development Fund.”; in par. (3), substituted “pursuant to” for “by”; and added pars. (2A) and (3A) to read as follows:</p>
+                <p>Section 2(a) of D.C. Law 18-142 rewrote par. (1) to read as follows:</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 7101 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> repealed section 701 of <a class="internal-link" href="/dc/council/laws/17-202.html">D.C. Law 17-202</a>.</p>
                 <p>Establishment—District of Columbia Early Childhood Advisory Council, see Mayor’s Order 2010-68, May 21, 2010 ( 57 DCR 4460).</p>
+                <p>Section 7101 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> repealed section 701 of <a class="internal-link" href="/dc/council/laws/17-202.html">D.C. Law 17-202</a>.</p>
               </section>
             </section>
             <hr/>
@@ -199,18 +213,18 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-271.06.html">38-271.06</a>, § <a class="internal-link" href="/dc/council/code/sections/38-273.01.html">38-273.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/38-2602.html">38-2602</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>D.C. Law 18- 285, in subsec. (a), substituted “oversee CBO pre-k” for “oversee pre-k”; and rewrote subsecs. (b)(2) and (b)(8), which formerly read:</p>
-                <p>“(2) In regard to public charter schools, consult with the Public Charter School Board, established by § <a class="internal-link" href="/dc/council/code/sections/38-1802.14.html">38-1802.14</a>, to ensure that the requirements and the goals of this chapter are met;”</p>
-                <p>“(8) Develop and administer the technical assistance and professional development programs for all teaching staff, principals, and other administrators in all of the sectors of pre-k, in coordination with the District’s state system of professional development and training;”</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-262.html">D.C. Law 19-262</a> added (c).</p>
+                <p>“(8) Develop and administer the technical assistance and professional development programs for all teaching staff, principals, and other administrators in all of the sectors of pre-k, in coordination with the District’s state system of professional development and training;”</p>
+                <p>“(2) In regard to public charter schools, consult with the Public Charter School Board, established by § <a class="internal-link" href="/dc/council/code/sections/38-1802.14.html">38-1802.14</a>, to ensure that the requirements and the goals of this chapter are met;”</p>
+                <p>D.C. Law 18- 285, in subsec. (a), substituted “oversee CBO pre-k” for “oversee pre-k”; and rewrote subsecs. (b)(2) and (b)(8), which formerly read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Pre-K Acceleration and Clarification Emergency Amendment Act of 2009 (D.C. Act 18-304, January 28, 2010,  57 DCR 1475).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-602, December 1, 2010,  57 DCR 11039).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(b) of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 19-4, February 11, 2011,  58 DCR 1399).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-602, December 1, 2010,  57 DCR 11039).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Pre-K Acceleration and Clarification Emergency Amendment Act of 2009 (D.C. Act 18-304, January 28, 2010,  57 DCR 1475).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(b) of D.C. Law 18-142 rewrote subsec. (b)(2) to read as follows:</p>
-                <p>“(2) In regard to pre-k programs in public schools and public charter schools, consult with local education agencies and the Public Charter School Board, established by section 2214 of the District of Columbia School Reform Act of 1995, approved April 26, 1996 (110 Stat. 1321; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/38-1802.14.html">38-1802.14</a>), to ensure that the goals of this act are met.”.; and repealed subsec. (b)(8).</p>
                 <p>Section 5(a) of D.C. Law 18-142 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) In regard to pre-k programs in public schools and public charter schools, consult with local education agencies and the Public Charter School Board, established by section 2214 of the District of Columbia School Reform Act of 1995, approved April 26, 1996 (110 Stat. 1321; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/38-1802.14.html">38-1802.14</a>), to ensure that the goals of this act are met.”.; and repealed subsec. (b)(8).</p>
+                <p>Section 2(b) of D.C. Law 18-142 rewrote subsec. (b)(2) to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -369,53 +383,53 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-271.01.html">38-271.01</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(c) of Pre-K Acceleration and Clarification Emergency Amendment Act of 2009 (D.C. Act 18-304, January 28, 2010,  57 DCR 1475).</p>
-                <p>For temporary (90 day) addition, see § 2(c) of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-602, December 1, 2010,  57 DCR 11039).</p>
                 <p>For temporary (90 day) addition of section, see § 2(c) of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 19-4, February 11, 2011,  58 DCR 1399).</p>
+                <p>For temporary (90 day) addition, see § 2(c) of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-602, December 1, 2010,  57 DCR 11039).</p>
+                <p>For temporary (90 day) addition, see § 2(c) of Pre-K Acceleration and Clarification Emergency Amendment Act of 2009 (D.C. Act 18-304, January 28, 2010,  57 DCR 1475).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(c) of D.C. Law 18-142 added a section to read as follows:</p>
-                <p>“Sec. 107. State Early Child Development Coordinating Council; establishment.</p>
-                <p>“(a) Within 45 days of the effective date of the Pre-k Acceleration and Clarification Emergency Amendment Act of 2010, passed on emergency basis on January 5, 2010 (Enrolled version of Bill 8-603), the Mayor shall establish and convene a State Early Childhood Development Coordinating Council (‘Coordinating Council’) to:</p>
-                <p>“(1) Improve collaboration and coordination among entities carrying out federally funded and District-funded pre-k and other early childhood programs to improve school readiness;</p>
-                <p>“(2) Assist in the planning and development of a comprehensive early childhood education system that serves children ages birth to 8 years of age; and</p>
-                <p>“(3) Comply with the Head Start Act, approved December 12, 2007 (Pub. L. No. 110-134; 121 Stat. 1363).</p>
-                <p>“(b) The Coordinating Council shall:</p>
-                <p>“(1) Identify opportunities for collaboration and coordination among early childhood education entities;</p>
-                <p>“(2) Review the annual pre-k report to the Council required by section 105 and submit to the OSSE additional recommendations to improve the quality of and expand access to pre-k and other early childhood programs to be submitted to the Council along with the annual pre-k report;</p>
-                <p>“(3) Develop recommendations to:</p>
-                <p>“(A) Increase participation of children in existing pre-k and other early childhood programs;</p>
-                <p>“(B) Improve the quality of pre-k and other early childhood programs;</p>
-                <p>“(C) Support the implementation of pre-k workforce development programs; and</p>
-                <p>“(D) Improve state early learning policies; and</p>
-                <p>“(4) Perform other tasks as determined by the Mayor.</p>
-                <p>“(c) The Coordinating Council membership shall consist of:</p>
-                <p>“(1) The following members, or their designees, the:</p>
-                <p>“(A) Mayor;</p>
-                <p>“(B) Chairman of the Council of the District of Columbia</p>
-                <p>“(C) State Superintendent of Education;</p>
-                <p>“(D) Chancellor of the District of Columbia Public Schools;</p>
-                <p>“(E) Executive Director of the Public Charter School Board;</p>
-                <p>“(F) Director of the Department of Health;</p>
-                <p>“(G) Director of the Department of Mental Health;</p>
-                <p>“(H) Director of the Department of Human Services;</p>
-                <p>“(I) Director of the Child and Family Services Agency;</p>
-                <p>“(J) State Director for Head Start Collaboration; and</p>
-                <p>“(K) Director of the entity designated as the state resource and referral agency; and</p>
-                <p>“(2) The following members, who shall be appointed by the Chairman of the Council or the Mayor, with each appointing at least one District resident from each of the following categories, to serve a term of 2 years:</p>
-                <p>“(A) Families whose children are receiving or have received pre-k-education services;</p>
-                <p>“(B) Head Start;</p>
-                <p>“(C) Community-based organizations;</p>
-                <p>“(D) Public schools;</p>
-                <p>“(E) Public charter schools;</p>
-                <p>“(F) Public charter school support organizations;</p>
-                <p>“(G) Early childhood advocacy organizations;</p>
-                <p>“(H) Business community;</p>
-                <p>“(I) Philanthropic community;</p>
-                <p>“(J) DC Collaborative; and</p>
-                <p>“(K) Any additional category identified by the Coordinating Council as necessary or appropriate.</p>
-                <p>“(d)(1) Two people appointed pursuant to subsection (c)(2) of this section shall be appointed co-chairs, one by the Chairman and one by the Mayor. The co-chairs shall convene the Coordinating Council no fewer than 4 times each year for the purpose of gathering public input on the Coordinating Council’s recommendations.</p>
-                <p>“(2) A quorum to transact business shall consist of 50% plus one of the members who are appointed and serving.”.</p>
                 <p>Section 5(a) of D.C. Law 18-142 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) A quorum to transact business shall consist of 50% plus one of the members who are appointed and serving.”.</p>
+                <p>“(d)(1) Two people appointed pursuant to subsection (c)(2) of this section shall be appointed co-chairs, one by the Chairman and one by the Mayor. The co-chairs shall convene the Coordinating Council no fewer than 4 times each year for the purpose of gathering public input on the Coordinating Council’s recommendations.</p>
+                <p>“(K) Any additional category identified by the Coordinating Council as necessary or appropriate.</p>
+                <p>“(J) DC Collaborative; and</p>
+                <p>“(I) Philanthropic community;</p>
+                <p>“(H) Business community;</p>
+                <p>“(G) Early childhood advocacy organizations;</p>
+                <p>“(F) Public charter school support organizations;</p>
+                <p>“(E) Public charter schools;</p>
+                <p>“(D) Public schools;</p>
+                <p>“(C) Community-based organizations;</p>
+                <p>“(B) Head Start;</p>
+                <p>“(A) Families whose children are receiving or have received pre-k-education services;</p>
+                <p>“(2) The following members, who shall be appointed by the Chairman of the Council or the Mayor, with each appointing at least one District resident from each of the following categories, to serve a term of 2 years:</p>
+                <p>“(K) Director of the entity designated as the state resource and referral agency; and</p>
+                <p>“(J) State Director for Head Start Collaboration; and</p>
+                <p>“(I) Director of the Child and Family Services Agency;</p>
+                <p>“(H) Director of the Department of Human Services;</p>
+                <p>“(G) Director of the Department of Mental Health;</p>
+                <p>“(F) Director of the Department of Health;</p>
+                <p>“(E) Executive Director of the Public Charter School Board;</p>
+                <p>“(D) Chancellor of the District of Columbia Public Schools;</p>
+                <p>“(C) State Superintendent of Education;</p>
+                <p>“(B) Chairman of the Council of the District of Columbia</p>
+                <p>“(A) Mayor;</p>
+                <p>“(1) The following members, or their designees, the:</p>
+                <p>“(c) The Coordinating Council membership shall consist of:</p>
+                <p>“(4) Perform other tasks as determined by the Mayor.</p>
+                <p>“(D) Improve state early learning policies; and</p>
+                <p>“(C) Support the implementation of pre-k workforce development programs; and</p>
+                <p>“(B) Improve the quality of pre-k and other early childhood programs;</p>
+                <p>“(A) Increase participation of children in existing pre-k and other early childhood programs;</p>
+                <p>“(3) Develop recommendations to:</p>
+                <p>“(2) Review the annual pre-k report to the Council required by section 105 and submit to the OSSE additional recommendations to improve the quality of and expand access to pre-k and other early childhood programs to be submitted to the Council along with the annual pre-k report;</p>
+                <p>“(1) Identify opportunities for collaboration and coordination among early childhood education entities;</p>
+                <p>“(b) The Coordinating Council shall:</p>
+                <p>“(3) Comply with the Head Start Act, approved December 12, 2007 (Pub. L. No. 110-134; 121 Stat. 1363).</p>
+                <p>“(2) Assist in the planning and development of a comprehensive early childhood education system that serves children ages birth to 8 years of age; and</p>
+                <p>“(1) Improve collaboration and coordination among entities carrying out federally funded and District-funded pre-k and other early childhood programs to improve school readiness;</p>
+                <p>“(a) Within 45 days of the effective date of the Pre-k Acceleration and Clarification Emergency Amendment Act of 2010, passed on emergency basis on January 5, 2010 (Enrolled version of Bill 8-603), the Mayor shall establish and convene a State Early Childhood Development Coordinating Council (‘Coordinating Council’) to:</p>
+                <p>“Sec. 107. State Early Child Development Coordinating Council; establishment.</p>
+                <p>Section 2(c) of D.C. Law 18-142 added a section to read as follows:</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/6/chapters/2/subchapters/II/">Subchapter II. District of Columbia Housing Authority, 1994.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/6/chapters/2/subchapters/I/">Report Error</a>
@@ -88,35 +88,93 @@
         <section class="col8 body">
           <h1>Subchapter I. District of Columbia Housing Authority, 1999.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/6-201.html">§ 6–201. Definitions.</a>
-            <a href="/dc/council/code/sections/6-202.html">§ 6–202. Establishment of District of Columbia Housing Authority; purposes of Authority; Fund.</a>
-            <a href="/dc/council/code/sections/6-203.html">§ 6–203. General powers of the Authority.</a>
-            <a href="/dc/council/code/sections/6-204.html">§ 6–204. Tax exemption.</a>
-            <a href="/dc/council/code/sections/6-205.html">§ 6–205. Limitation on actions against Authority.</a>
-            <a href="/dc/council/code/sections/6-206.html">§ 6–206. Representation.</a>
-            <a href="/dc/council/code/sections/6-207.html">§ 6–207. Office of Audit and Compliance.</a>
-            <a href="/dc/council/code/sections/6-208.html">§ 6–208. Exemption from court fees and costs.</a>
-            <a href="/dc/council/code/sections/6-209.html">§ 6–209. Power to issue bonds, notes and other obligations.</a>
-            <a href="/dc/council/code/sections/6-210.html">§ 6–210. Terms for sale of Obligations.</a>
-            <a href="/dc/council/code/sections/6-211.html">§ 6–211. Board of Commissioners.</a>
-            <a href="/dc/council/code/sections/6-212.html">§ 6–212. Establishment of Authority Advisory Committee. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-213.html">§ 6–213. Executive Director.</a>
-            <a href="/dc/council/code/sections/6-214.html">§ 6–214. Social services teams in public housing.</a>
-            <a href="/dc/council/code/sections/6-215.html">§ 6–215. Status of Authority employees.</a>
-            <a href="/dc/council/code/sections/6-216.html">§ 6–216. Authority employees’ benefits.</a>
-            <a href="/dc/council/code/sections/6-217.html">§ 6–217. Drug and alcohol testing of Authority employees.</a>
-            <a href="/dc/council/code/sections/6-218.html">§ 6–218. Applicability of the Hatch Act.</a>
-            <a href="/dc/council/code/sections/6-219.html">§ 6–219. Procurement.</a>
-            <a href="/dc/council/code/sections/6-220.html">§ 6–220. Financial disclosure and conflict of interest — Board of Commissioners and Executive Director.</a>
-            <a href="/dc/council/code/sections/6-221.html">§ 6–221. Financial disclosure and conflict of interest — employees.</a>
-            <a href="/dc/council/code/sections/6-222.html">§ 6–222. Local law exemption.</a>
-            <a href="/dc/council/code/sections/6-223.html">§ 6–223. District of Columbia Housing Authority Police Department.</a>
-            <a href="/dc/council/code/sections/6-224.html">§ 6–224. Disposition of assets on dissolution.</a>
-            <a href="/dc/council/code/sections/6-225.html">§ 6–225. Intragovernmental cooperation.</a>
-            <a href="/dc/council/code/sections/6-226.html">§ 6–226. Rent Supplement Program: establishment of program and distribution of funds.</a>
-            <a href="/dc/council/code/sections/6-227.html">§ 6–227. Project-based and sponsor-based voucher assistance.</a>
-            <a href="/dc/council/code/sections/6-228.html">§ 6–228. Tenant-based assistance.</a>
-            <a href="/dc/council/code/sections/6-229.html">§ 6–229. Capital-based assistance.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-201.html">§ 6–201. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-202.html">§ 6–202. Establishment of District of Columbia Housing Authority; purposes of Authority; Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-203.html">§ 6–203. General powers of the Authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-204.html">§ 6–204. Tax exemption.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-205.html">§ 6–205. Limitation on actions against Authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-206.html">§ 6–206. Representation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-207.html">§ 6–207. Office of Audit and Compliance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-208.html">§ 6–208. Exemption from court fees and costs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-209.html">§ 6–209. Power to issue bonds, notes and other obligations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-210.html">§ 6–210. Terms for sale of Obligations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-211.html">§ 6–211. Board of Commissioners.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-212.html">§ 6–212. Establishment of Authority Advisory Committee. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-213.html">§ 6–213. Executive Director.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-214.html">§ 6–214. Social services teams in public housing.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-215.html">§ 6–215. Status of Authority employees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-216.html">§ 6–216. Authority employees’ benefits.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-217.html">§ 6–217. Drug and alcohol testing of Authority employees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-218.html">§ 6–218. Applicability of the Hatch Act.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-219.html">§ 6–219. Procurement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-220.html">§ 6–220. Financial disclosure and conflict of interest — Board of Commissioners and Executive Director.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-221.html">§ 6–221. Financial disclosure and conflict of interest — employees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-222.html">§ 6–222. Local law exemption.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-223.html">§ 6–223. District of Columbia Housing Authority Police Department.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-224.html">§ 6–224. Disposition of assets on dissolution.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-225.html">§ 6–225. Intragovernmental cooperation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-226.html">§ 6–226. Rent Supplement Program: establishment of program and distribution of funds.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-227.html">§ 6–227. Project-based and sponsor-based voucher assistance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-228.html">§ 6–228. Tenant-based assistance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-229.html">§ 6–229. Capital-based assistance.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -202,31 +260,31 @@
       (<a class="internal-link" href="/dc/council/laws/13-105.html#§2">May 9, 2000, D.C. Law 13-105, § 2, 47 DCR 1325</a>; <a class="internal-link" href="/dc/council/laws/15-337.html">Apr. 12, 2005, D.C. Law 15-337, § 2(a), 52 DCR 2278</a>; <a class="internal-link" href="/dc/council/laws/16-192.html">Mar. 2, 2007, D.C. Law 16-192, § 2142(a), 53 DCR 6899</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 19(a), 53 DCR 6198</a>; <a class="internal-link" href="/dc/council/laws/17-118.html">Mar. 20, 2008, D.C. Law 17-118, § 102(a), 55 DCR 1461</a>; <a class="internal-link" href="/dc/council/laws/17-231.html">Sept. 12, 2008, D.C. Law 17-231, § 15(a), 55 DCR 6758</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 302, 56 DCR 1117</a>; <a class="internal-link" href="/dc/council/laws/20-271.html">May 2, 2015, D.C. Law 20-271, § 254(a), 62 DCR 1884</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-337.html">D.C. Law 15-337</a> added par. (19A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> added pars. (3A), (19A), (23A), (36A), (39A), (42A), (43A), and (43B).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “residents with disabilities” for “disabled residents”, throughout the section.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-118.html">D.C. Law 17-118</a> added pars. (7A) and (13A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a> added par. (16A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated previously made technical corrections in the designation of pars. (19A) and (19B).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-271.html">D.C. Law 20-271</a> repealed (2), defining “Advisory Committee.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated previously made technical corrections in the designation of pars. (19A) and (19B).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a> added par. (16A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-118.html">D.C. Law 17-118</a> added pars. (7A) and (13A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “residents with disabilities” for “disabled residents”, throughout the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> added pars. (3A), (19A), (23A), (36A), (39A), (42A), (43A), and (43B).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-337.html">D.C. Law 15-337</a> added par. (19A).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of §§ 5-151 to 5-172 1981 Ed., see §§ 2 to 23 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
-                <p>For temporary (90-day) addition of §§ 5-151 to 5-172 1981 Ed., see §§ 2 to 23 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of District of Columbia Housing Authority Revitalization Projects Emergency Amendment Act of 2004 (D.C. Act 15-552, October 26, 2004,  51 DCR 10356).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of District of Columbia Housing Authority Revitalization Projects Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-36, February 17, 2005,  52 DCR 3026).</p>
-                <p>For temporary (90 day) amendment of section, see § 2142(a) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) amendment of section, see § 2142(a) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
-                <p>For temporary (90 day) amendment of section, see § 2142(a) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Local Rent Supplement Program Emergency Amendment Act of 2008 (D.C. Act 17-306, February 22, 2008,  55 DCR 2518).</p>
-                <p>For temporary (90 day) amendment of section, see § 102(a) of Arthur Capper/Carrollsburg Public Improvement Revenue Bonds Technical Correction Emergency Act of 2008 (D.C. Act 17-318, March 19, 2008,  55 DCR 3418).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Local Rent Supplement Program Second Emergency Amendment Act of 2008 (D.C. Act 17-684, January 12, 2009,  56 DCR 1111).</p>
-                <p>For temporary (90 days) amendment of this section, see § 254(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
                 <p>For temporary (90 days) amendment of this section, see § 254(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-7, Feb. 26, 2015,  62 DCR 2646, 21 STAT 807).</p>
+                <p>For temporary (90 days) amendment of this section, see § 254(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Local Rent Supplement Program Second Emergency Amendment Act of 2008 (D.C. Act 17-684, January 12, 2009,  56 DCR 1111).</p>
+                <p>For temporary (90 day) amendment of section, see § 102(a) of Arthur Capper/Carrollsburg Public Improvement Revenue Bonds Technical Correction Emergency Act of 2008 (D.C. Act 17-318, March 19, 2008,  55 DCR 3418).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Local Rent Supplement Program Emergency Amendment Act of 2008 (D.C. Act 17-306, February 22, 2008,  55 DCR 2518).</p>
+                <p>For temporary (90 day) amendment of section, see § 2142(a) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) amendment of section, see § 2142(a) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) amendment of section, see § 2142(a) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of District of Columbia Housing Authority Revitalization Projects Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-36, February 17, 2005,  52 DCR 3026).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of District of Columbia Housing Authority Revitalization Projects Emergency Amendment Act of 2004 (D.C. Act 15-552, October 26, 2004,  51 DCR 10356).</p>
+                <p>For temporary (90-day) addition of §§ 5-151 to 5-172 1981 Ed., see §§ 2 to 23 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) addition of §§ 5-151 to 5-172 1981 Ed., see §§ 2 to 23 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(a) of District of Columbia Housing Authority Revitalization Projects Temporary Amendment Act of 2004(D.C. Law 15-260, March 17, 2005, law notification  52 DCR 4372).</p>
-                <p>For temporary (225 day) amendment of section, see § 2 of Local Rent Supplement Program Temporary Amendment Act of 2008 (D.C. Law 17-164, May 13, 2008, law notification  55 DCR 6252).</p>
-                <p>Section 2(a) of D.C. Law 17-382, in par. (43A), substituted “units owned, leased, or operated” for “units owned and operated”.</p>
                 <p>Section 4(a) of D.C. Law 17-382 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(a) of D.C. Law 17-382, in par. (43A), substituted “units owned, leased, or operated” for “units owned and operated”.</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Local Rent Supplement Program Temporary Amendment Act of 2008 (D.C. Law 17-164, May 13, 2008, law notification  55 DCR 6252).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(a) of District of Columbia Housing Authority Revitalization Projects Temporary Amendment Act of 2004(D.C. Law 15-260, March 17, 2005, law notification  52 DCR 4372).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 2141 of <a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> provided that subtitle L of title II of the act may be cited as the “D.C. Housing Authority Rent Supplement Act of 2006”.</p>
               </section>
@@ -270,9 +328,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a> added subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
-                <p>For temporary (90 day) amendment of section, see § 2022 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§2102">§ 2102 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2022 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
+                <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle C of title II of Law 16-33: Section 2021 of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a> provided that subtitle C of title II of the act may be cited as the District Support for Public Housing Amendment Act of 2005.</p>
               </section>
@@ -322,13 +380,13 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 2 of D.C. Law 17-364 provided:</p>
-                <p>“Sec. 2. Housing waiting list elimination plan.</p>
-                <p>“(a) Within 90 days of the effective date of this act, the Mayor shall develop and submit to the Council for approval a comprehensive plan to eliminate the District of Columbia Housing Authority’s current waiting list of individuals seeking housing choice vouchers and placement in public housing by January 1, 2011.</p>
-                <p>“(b) The plan shall identify local funding for, but not limited to, the local rent supplement program and the production of new public housing units to create new housing options for the over 25,000 individuals currently on the waiting list.</p>
-                <p>“(c) The plan shall also identify a strategy for the District to pursue additional federal, private, and other funding for this purpose.</p>
-                <p>“(d) The plan shall identify a strategy and make recommendations to prevent the waiting list from reaching current levels in the future.</p>
                 <p>“(e) In developing the plan, the Mayor shall consult and collaborate with appropriate public and private agencies, institutions, and organizations in the District of Columbia.”</p>
+                <p>“(d) The plan shall identify a strategy and make recommendations to prevent the waiting list from reaching current levels in the future.</p>
+                <p>“(c) The plan shall also identify a strategy for the District to pursue additional federal, private, and other funding for this purpose.</p>
+                <p>“(b) The plan shall identify local funding for, but not limited to, the local rent supplement program and the production of new public housing units to create new housing options for the over 25,000 individuals currently on the waiting list.</p>
+                <p>“(a) Within 90 days of the effective date of this act, the Mayor shall develop and submit to the Council for approval a comprehensive plan to eliminate the District of Columbia Housing Authority’s current waiting list of individuals seeking housing choice vouchers and placement in public housing by January 1, 2011.</p>
+                <p>“Sec. 2. Housing waiting list elimination plan.</p>
+                <p>Section 2 of D.C. Law 17-364 provided:</p>
               </section>
             </section>
             <hr/>
@@ -347,9 +405,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-337.html">D.C. Law 15-337</a>, in subsecs. (a) and (b), substituted “for-profit activities” for “for-profit activities involving Housing Properties”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of District of Columbia Housing Authority Revitalization Projects Emergency Amendment Act of 2004 (D.C. Act 15-552, October 26, 2004,  51 DCR 10356).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(b) of District of Columbia Housing Authority Revitalization Projects Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-36, February 17, 2005,  52 DCR 3026).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of District of Columbia Housing Authority Revitalization Projects Emergency Amendment Act of 2004 (D.C. Act 15-552, October 26, 2004,  51 DCR 10356).</p>
+                <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of District of Columbia Housing Authority Revitalization Projects Temporary Amendment Act of 2004(D.C. Law 15-260, March 17, 2005, law notification  52 DCR 4372).</p>
               </section>
@@ -460,8 +518,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/17-118.html">D.C. Law 17-118</a> added subsec. (n).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
                 <p>For temporary (90 day) amendment of section, see § 102(b) of Arthur Capper/Carrollsburg Public Improvement Revenue Bonds Technical Correction Emergency Act of 2008 (D.C. Act 17-318, March 19, 2008,  55 DCR 3418).</p>
+                <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
               </section>
             </section>
             <hr/>
@@ -579,15 +637,15 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-337.html">D.C. Law 15-337</a>, in subsec. (q), substituted “(including those that are purely advisory, except for Advisory Neighborhood Commissions)” for “(including those that are purely advisory)”; rewrote subsec. (s); and rewrote the first three sentences of subsec. (w) which had read: “The Board shall meet at least once each month. All meetings of the Board shall be conducted in public after publication of notice of the date, time, and location of the meeting, at least one week prior thereto, in the District of Columbia Register. Each meeting shall commence with a period for public comments, which shall not be limited in time, except that the time allowed each individual speaker may be reasonably limited.” Prior to amendment, subsec. (s) read as follows: “(s) Each Commissioner shall be entitled to compensation at the hourly rate of $25 per meeting, not to exceed $3,000 for each board member per year; provided, that each Commissioner shall be entitled to reimbursement of actual travel and other expenses reasonably related to the Commissioner’s attendance at Board meetings and fulfillment of official duties.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in subsec. (q), substituted “spouse or domestic partner” for “spouse”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-131.html">D.C. Law 18-131</a>, in subsec. (a), substituted “11” for “9” in the lead in language, added pars. (2A) and (5), deleted “; and” from the end of par. (3), and substituted “; and” for a period at the end of par. (4); in subsec. (b), inserted “pursuant to subsection (a)(1) of this section”; in subsec. (m), inserted “nominated pursuant to subsection (a)(1) of this section”; and, in subsec. (l), substituted “Elected” for “Resident”, “a resident” for “an elected”, and “the resident” for “the elected”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-334.html">D.C. Law 18-334</a>, in subsec. (a)(2A), substituted “housing choice voucher program recipient” for “recipient”.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-271.html">D.C. Law 20-271</a> substituted “Executive Director” for “Advisory Committee” in (b)(1) and (c); and rewrote (s).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-334.html">D.C. Law 18-334</a>, in subsec. (a)(2A), substituted “housing choice voucher program recipient” for “recipient”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-131.html">D.C. Law 18-131</a>, in subsec. (a), substituted “11” for “9” in the lead in language, added pars. (2A) and (5), deleted “; and” from the end of par. (3), and substituted “; and” for a period at the end of par. (4); in subsec. (b), inserted “pursuant to subsection (a)(1) of this section”; in subsec. (m), inserted “nominated pursuant to subsection (a)(1) of this section”; and, in subsec. (l), substituted “Elected” for “Resident”, “a resident” for “an elected”, and “the resident” for “the elected”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in subsec. (q), substituted “spouse or domestic partner” for “spouse”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-337.html">D.C. Law 15-337</a>, in subsec. (q), substituted “(including those that are purely advisory, except for Advisory Neighborhood Commissions)” for “(including those that are purely advisory)”; rewrote subsec. (s); and rewrote the first three sentences of subsec. (w) which had read: “The Board shall meet at least once each month. All meetings of the Board shall be conducted in public after publication of notice of the date, time, and location of the meeting, at least one week prior thereto, in the District of Columbia Register. Each meeting shall commence with a period for public comments, which shall not be limited in time, except that the time allowed each individual speaker may be reasonably limited.” Prior to amendment, subsec. (s) read as follows: “(s) Each Commissioner shall be entitled to compensation at the hourly rate of $25 per meeting, not to exceed $3,000 for each board member per year; provided, that each Commissioner shall be entitled to reimbursement of actual travel and other expenses reasonably related to the Commissioner’s attendance at Board meetings and fulfillment of official duties.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
-                <p>For temporary (90 days) amendment of this section, see § 254(b) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
                 <p>For temporary (90 days) amendment of this section, see § 254(b) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-7, Feb. 26, 2015,  62 DCR 2646, 21 STAT 807).</p>
+                <p>For temporary (90 days) amendment of this section, see § 254(b) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
+                <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
               </section>
             </section>
             <hr/>
@@ -604,9 +662,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
-                <p>For temporary (90 days) repeal of this section, see § 254(c) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
                 <p>For temporary (90 days) repeal of this section, see § 254(c) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-7, Feb. 26, 2015,  62 DCR 2646, 21 STAT 807).</p>
+                <p>For temporary (90 days) repeal of this section, see § 254(c) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
+                <p>For temporary (90-day) addition of section, see notes following § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>.</p>
               </section>
             </section>
             <hr/>
@@ -855,8 +913,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-105.html#§25">May 9, 2000, D.C. Law 13-105, § 25, 47 DCR 1325</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see § 24 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) addition of section, see § 24 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) addition of section, see § 24 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
               </section>
             </section>
             <hr/>
@@ -881,8 +939,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “Department of General Services” for “Office of Property Management” in (3).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see § 25 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) addition of section, see § 25 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) addition of section, see § 25 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
               </section>
             </section>
             <hr/>
@@ -905,17 +963,17 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/4-753.04.html">4-753.04</a>, § <a class="internal-link" href="/dc/council/code/sections/4-756.01.html">4-756.01</a>, § <a class="internal-link" href="/dc/council/code/sections/6-201.html">6-201</a>, § <a class="internal-link" href="/dc/council/code/sections/6-227.html">6-227</a>, § <a class="internal-link" href="/dc/council/code/sections/6-228.html">6-228</a>, § <a class="internal-link" href="/dc/council/code/sections/6-229.html">6-229</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-2802.html">42-2802</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote subsec. (b), which had read as follows: “(b) The Authority shall allocate the funds appropriated for the program annually toward project-based and sponsor-based voucher assistance, as described in § <a class="internal-link" href="/dc/council/code/sections/6-227.html">6-227</a>, and tenant-based assistance, as described in § <a class="internal-link" href="/dc/council/code/sections/6-228.html">6-228</a>.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> added subsec. (e).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote subsec. (b), which had read as follows: “(b) The Authority shall allocate the funds appropriated for the program annually toward project-based and sponsor-based voucher assistance, as described in § <a class="internal-link" href="/dc/council/code/sections/6-227.html">6-227</a>, and tenant-based assistance, as described in § <a class="internal-link" href="/dc/council/code/sections/6-228.html">6-228</a>.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
-                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
-                <p>For temporary (90 day) amendment of section, see § 2241(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 2241(a) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 2241(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
                 <h4>Short Title</h4>
-                <p>Short title: Section 2240 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle Y of title II of the act may be cited as the “Local Rent Supplement Amendment Act of 2009”.</p>
                 <p>Short title: Section 2031 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided that subtitle D of title II of the act may be cited as “Rent Supplement Prioritization and Funding Act of 2011”.</p>
+                <p>Short title: Section 2240 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle Y of title II of the act may be cited as the “Local Rent Supplement Amendment Act of 2009”.</p>
                 <h4>Resolutions</h4>
                 <p>Resolution 18-453, the “District of Columbia Housing Authority Rent Supplement Proposed Rulemaking Emergency Approval Resolution of 2010”, was approved effective April 20, 2010.</p>
               </section>
@@ -941,19 +999,19 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> added (e).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
-                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Local Rent Supplement Program Second Emergency Amendment Act of 2008 (D.C. Act 17-684, January 12, 2009,  56 DCR 1111).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§2202">§ 2202 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Local Rent Supplement Program Second Emergency Amendment Act of 2008 (D.C. Act 17-684, January 12, 2009,  56 DCR 1111).</p>
+                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(b) of D.C. Law 17-382 amended subsec. (c) to read as follows:</p>
-                <p>“(c)(1) The Authority shall apply its existing Partnership Program rules to govern the awarding of Partnership Program grants for project-based voucher assistance and the continuing eligibility for those grants under this section, except where the rules are inconsistent with this act.</p>
-                <p>“(2)(A) For project-based assistance and sponsor-based assistance, except for rules promulgated by the Authority regarding eligibility, admission, and determination of the amount of rental assistance payments pursuant to subparagraph (B) of this paragraph, the Authority shall also apply its existing Partnership Program and Housing Choice Voucher Program rules to govern eligibility, admission, and continuing occupancy by tenants in units receiving assistance under this section, section 26a, and section 26c, except if the rules are inconsistent with this section, section 26a, or section 26c.</p>
-                <p>“(B) For sponsor-based assistance, the Authority shall promulgate rules to govern eligibility, admission, and determination of the amount of rental assistance payments for units receiving sponsor-based assistance under this section, which eligibility and admission rules will set forth requirements regarding criminal background, citizenship, and residency of tenants.</p>
-                <p>“(3) The Authority shall promulgate rules as are necessary to ensure that eligibility for tenancy is limited to households with gross income at or below 30% of the area median income in units supported by grants under this section, section 26a, and 26c and to households that have resided in the District for the previous 6 months in units supported by grants under this section.</p>
-                <p>“(4) Any rules proposed pursuant to this subsection shall be submitted to the Council for a 30-day period of review. If the Council does not approve or disapprove the proposed rules, in whole or in part, by resolution within the 30-day review period, the proposed rules shall be deemed approved.”.</p>
                 <p>Section 4(b) of D.C. Law 17-382 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(4) Any rules proposed pursuant to this subsection shall be submitted to the Council for a 30-day period of review. If the Council does not approve or disapprove the proposed rules, in whole or in part, by resolution within the 30-day review period, the proposed rules shall be deemed approved.”.</p>
+                <p>“(3) The Authority shall promulgate rules as are necessary to ensure that eligibility for tenancy is limited to households with gross income at or below 30% of the area median income in units supported by grants under this section, section 26a, and 26c and to households that have resided in the District for the previous 6 months in units supported by grants under this section.</p>
+                <p>“(B) For sponsor-based assistance, the Authority shall promulgate rules to govern eligibility, admission, and determination of the amount of rental assistance payments for units receiving sponsor-based assistance under this section, which eligibility and admission rules will set forth requirements regarding criminal background, citizenship, and residency of tenants.</p>
+                <p>“(2)(A) For project-based assistance and sponsor-based assistance, except for rules promulgated by the Authority regarding eligibility, admission, and determination of the amount of rental assistance payments pursuant to subparagraph (B) of this paragraph, the Authority shall also apply its existing Partnership Program and Housing Choice Voucher Program rules to govern eligibility, admission, and continuing occupancy by tenants in units receiving assistance under this section, section 26a, and section 26c, except if the rules are inconsistent with this section, section 26a, or section 26c.</p>
+                <p>“(c)(1) The Authority shall apply its existing Partnership Program rules to govern the awarding of Partnership Program grants for project-based voucher assistance and the continuing eligibility for those grants under this section, except where the rules are inconsistent with this act.</p>
+                <p>Section 2(b) of D.C. Law 17-382 amended subsec. (c) to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -982,12 +1040,12 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> substituted “selected from the households referred to the Authority pursuant to subsection (c) of this section or” for “selected from” in (b); and added (c), (d), and (e).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
-                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Displaced Veterans Rental Assistance Emergency Amendment Act of 2008 (D.C. Act 17-351, April 17, 2008,  55 DCR 5366).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Veterans Rental Assistance Congressional Review Emergency Act of 2008 (D.C. Act 17-438, July 16, 2008,  55 DCR 8286).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2042 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Veterans Rental Assistance Congressional Review Emergency Act of 2008 (D.C. Act 17-438, July 16, 2008,  55 DCR 8286).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Displaced Veterans Rental Assistance Emergency Amendment Act of 2008 (D.C. Act 17-351, April 17, 2008,  55 DCR 5366).</p>
+                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) addition, see § 2142(b) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Veterans Rental Assistance Temporary Amendment Act of 2008 (D.C. Law 17-189, July 18, 2008, law notification  55 DCR 9767).</p>
               </section>
@@ -1006,8 +1064,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-226.html">6-226</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2241(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) addition, see § 2241(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 2241(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>

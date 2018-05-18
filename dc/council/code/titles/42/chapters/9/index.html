@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/42/chapters/10/">Chapter 10. Powers Relating to Realty.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/42/chapters/9/">Report Error</a>
@@ -87,9 +87,15 @@
         <section class="col8 body">
           <h1>Chapter 9. Ownership of Real Property by Aliens and Nonresidents.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/42-901.html">§ 42–901. Ownership of real estate by aliens.</a>
-            <a href="/dc/council/code/sections/42-902.html">§ 42–902. Ownership of legations or residences by representatives of foreign governments.</a>
-            <a href="/dc/council/code/sections/42-903.html">§ 42–903. Resident agent required for care and maintenance of vacant property owned by nonresidents.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-901.html">§ 42–901. Ownership of real estate by aliens.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-902.html">§ 42–902. Ownership of legations or residences by representatives of foreign governments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-903.html">§ 42–903. Resident agent required for care and maintenance of vacant property owned by nonresidents.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -104,8 +110,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/58-3-ch733.html">Feb. 23, 1905, 33 Stat. 733, ch. 733</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1301.</p>
                 <p>1973 Ed., § 45-1501.</p>
+                <p>1981 Ed., § 45-1301.</p>
               </section>
             </section>
             <hr/>
@@ -120,8 +126,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/50-1-ch30.html">Mar. 9, 1888, 25 Stat. 45, ch. 30</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1302.</p>
                 <p>1973 Ed., § 45-1505.</p>
+                <p>1981 Ed., § 45-1302.</p>
               </section>
             </section>
             <hr/>

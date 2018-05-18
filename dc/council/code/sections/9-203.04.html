@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/9-203.05.html">§ 9–203.05. Area between property line and building restriction line.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/9-203.04.html">Report Error</a>
@@ -105,10 +105,10 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/17-246.html">D.C. Law 17-246</a> substituted “Except as provided in § <a class="internal-link" href="/dc/council/code/sections/9-203.03.html">9-203.03</a>(b) and (c), and any regulations issued pursuant to § <a class="internal-link" href="/dc/council/code/sections/9-203.03.html">9-203.03</a>(b) or (c), in any” for “In any”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Approval of new streets or alleys: Section 2 of D.C. Law 8-178 provided that the Council accepts the dedication of land and approves the establishment of building restriction lines necessary to create minor streets within Lot 2 in Square 5957, as shown on the Surveyor’s plat filed under S.O. 89-276, upon the filing of certain covenants in the Recorder of Deeds Division. Section 4(b) of D.C. Law 8-178 provided that if the covenant required by § 2 of the act is not filed within 2 years of October 2, 1990, the act shall expire.</p>
-                <p>Creation of street: Section 2 of <a class="internal-link" href="/dc/council/laws/7-102.html">D.C. Law 7-102</a> provided that pursuant to § <a class="internal-link" href="/dc/council/code/sections/9-203.04.html">9-203.04</a> the Council of the District of Columbia accepts the dedication of land and approves the establishment of building restriction lines necessary to create a minor street in Square 4325 connecting 31st Place, N.E., and Fort Lincoln Drive, N.E., in Fort Lincoln New Town, as shown in the Surveyor’s plat filed under S.O. 85-189.</p>
-                <p>Approval of new streets or alleys: Section 3 of D.C. Law 8-81 provided that the Council accepted the dedication of land for minor streets in Squares 5041 and 5056; approved the set-aside of portions of public alleys for minor streets in Squares 5041 and 5056, as shown on the Surveyor’s plat filed under S.O. 88-212; approved the set-aside of a portion of Grant Street, N.E., for Parkside Place, N.E., as shown on the Surveyor’s plat filed under S.O. 88-212; and approved the establishment of building restriction lines for minor streets in Squares 5041 and 5056, as shown on the Surveyor’s plat filed under S.O. 88-212.</p>
                 <p>Section 2 of D.C. Law 10-197 provided that the Council accepts the dedication of land and approves the establishment of building restriction lines necessary to create a minor street in Square 5969 near Mississippi Avenue, S.E., and 4th Street, S.E., as shown on the Surveyor’s plat filed under S.O. 92-124.</p>
+                <p>Approval of new streets or alleys: Section 3 of D.C. Law 8-81 provided that the Council accepted the dedication of land for minor streets in Squares 5041 and 5056; approved the set-aside of portions of public alleys for minor streets in Squares 5041 and 5056, as shown on the Surveyor’s plat filed under S.O. 88-212; approved the set-aside of a portion of Grant Street, N.E., for Parkside Place, N.E., as shown on the Surveyor’s plat filed under S.O. 88-212; and approved the establishment of building restriction lines for minor streets in Squares 5041 and 5056, as shown on the Surveyor’s plat filed under S.O. 88-212.</p>
+                <p>Creation of street: Section 2 of <a class="internal-link" href="/dc/council/laws/7-102.html">D.C. Law 7-102</a> provided that pursuant to § <a class="internal-link" href="/dc/council/code/sections/9-203.04.html">9-203.04</a> the Council of the District of Columbia accepts the dedication of land and approves the establishment of building restriction lines necessary to create a minor street in Square 4325 connecting 31st Place, N.E., and Fort Lincoln Drive, N.E., in Fort Lincoln New Town, as shown in the Surveyor’s plat filed under S.O. 85-189.</p>
+                <p>Approval of new streets or alleys: Section 2 of D.C. Law 8-178 provided that the Council accepts the dedication of land and approves the establishment of building restriction lines necessary to create minor streets within Lot 2 in Square 5957, as shown on the Surveyor’s plat filed under S.O. 89-276, upon the filing of certain covenants in the Recorder of Deeds Division. Section 4(b) of D.C. Law 8-178 provided that if the covenant required by § 2 of the act is not filed within 2 years of October 2, 1990, the act shall expire.</p>
               </section>
             </section>
           </section>

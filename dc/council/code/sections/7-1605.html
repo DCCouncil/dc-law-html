@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/7-1606.html">§ 7–1606. Rules.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-1605.html">Report Error</a>
@@ -107,11 +107,11 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-273.html">D.C. Law 18-273</a> rewrote the section, which had read as follows: “The provisions of the Preventive Health Services Amendments Act of 1985 (<a class="internal-link" href="/dc/council/laws/6-83.html">D.C. Law 6-83</a>), pertaining to the confidentiality of medical records and information on persons with AIDS, shall be applicable to this chapter.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 206 of Data-Sharing and Information Coordination Emergency Amendment Act of 2010 (D.C. Act 18-530, August 6, 2010,  57 DCR 8099).</p>
                 <p>For temporary (90 day) amendment of section, see § 206 of Data-Sharing and Information Coordination Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-582, October 20, 2010,  57 DCR 10118).</p>
+                <p>For temporary (90 day) amendment of section, see § 206 of Data-Sharing and Information Coordination Emergency Amendment Act of 2010 (D.C. Act 18-530, August 6, 2010,  57 DCR 8099).</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to Law 6-121, see Mayor’s Order 86-171, September 30, 1986.</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/6-121.html">D.C. Law 6-121</a>, the “AIDS Health-Care Response Act of 1986”, see Mayor’s Order 2000-55, March 29, 2000 ( 47 DCR 4735).</p>
+                <p>Delegation of authority pursuant to Law 6-121, see Mayor’s Order 86-171, September 30, 1986.</p>
               </section>
             </section>
           </section>

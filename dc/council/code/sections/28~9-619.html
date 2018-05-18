@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-620.html">§ 28:9-620. Acceptance of collateral in full or partial satisfaction of obligation; compulsory disposition of collateral.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-619.html">Report Error</a>
@@ -109,10 +109,10 @@
       (<a class="internal-link" href="/dc/council/laws/13-201.html">Oct. 26, 2000, D.C. Law 13-201, § 101, 47 DCR 7576</a>.)
     </p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. New.</p>
-                <p>2. Transfer of Record or Legal Title. Potential buyers of collateral that is covered by a certificate of title (e.g., an automobile) or is subject to a registration system (e.g., a copyright) typically require as a condition of their purchase that the certificate or registry reflect their ownership. In many cases, this condition can be met only with the consent of the record owner. If the record owner is the debtor and, as may be the case after the default, the debtor refuses to cooperate, the secured party may have great difficulty disposing of the collateral.</p>
-                <p>Subsection (b) provides a simple mechanism for obtaining record or legal title, for use primarily when other law does not provide one. Of course, use of this mechanism will not be effective to clear title to the extent that subsection (b) is preempted by federal law. Subsection (b) contemplates a transfer of record or legal title to a third party, following a secured party’s exercise of its disposition or acceptance remedies under this Part, as well as a transfer by a debtor to a secured party prior to the secured party’s exercise of those remedies. Under subsection (c), a transfer of record or legal title (under subsection (b) or under other law) to a secured party prior to the exercise of those remedies merely puts the secured party in a position to pass legal or record title to a transferee at foreclosure. A secured party who has obtained record or legal title retains its duties with respect to enforcement of its security interest, and the debtor retains its rights as well.</p>
                 <p>3. Title-Clearing Systems Under Other Law. Applicable non-UCC law (e.g., a certificate-of-title statute, federal registry rules, or the like) may provide a means by which the secured party may obtain or transfer record or legal title for the purpose of a disposition of the property under this Article. The mechanism provided by this section is in addition to any title-clearing provision under law other than this Article.</p>
+                <p>Subsection (b) provides a simple mechanism for obtaining record or legal title, for use primarily when other law does not provide one. Of course, use of this mechanism will not be effective to clear title to the extent that subsection (b) is preempted by federal law. Subsection (b) contemplates a transfer of record or legal title to a third party, following a secured party’s exercise of its disposition or acceptance remedies under this Part, as well as a transfer by a debtor to a secured party prior to the secured party’s exercise of those remedies. Under subsection (c), a transfer of record or legal title (under subsection (b) or under other law) to a secured party prior to the exercise of those remedies merely puts the secured party in a position to pass legal or record title to a transferee at foreclosure. A secured party who has obtained record or legal title retains its duties with respect to enforcement of its security interest, and the debtor retains its rights as well.</p>
+                <p>2. Transfer of Record or Legal Title. Potential buyers of collateral that is covered by a certificate of title (e.g., an automobile) or is subject to a registration system (e.g., a copyright) typically require as a condition of their purchase that the certificate or registry reflect their ownership. In many cases, this condition can be met only with the consent of the record owner. If the record owner is the debtor and, as may be the case after the default, the debtor refuses to cooperate, the secured party may have great difficulty disposing of the collateral.</p>
+                <p>1. Source. New.</p>
               </section>
             </section>
           </section>

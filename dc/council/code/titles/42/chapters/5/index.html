@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/42/chapters/6/">Chapter 6. Forms; Covenants and Warranties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/42/chapters/5/">Report Error</a>
@@ -87,29 +87,75 @@
         <section class="col8 body">
           <h1>Chapter 5. Estates in Land.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/42-501.html">§ 42–501. Recognized estates.</a>
-            <a href="/dc/council/code/sections/42-502.html">§ 42–502. Fee simple estates — Estates tail abolished.</a>
-            <a href="/dc/council/code/sections/42-503.html">§ 42–503. Fee simple estates — Absolute or qualified.</a>
-            <a href="/dc/council/code/sections/42-504.html">§ 42–504. Freeholds; chattels real; chattel interests; conditions precedent or subsequent.</a>
-            <a href="/dc/council/code/sections/42-505.html">§ 42–505. Estates pur autre vie; when deemed freehold and when chattel real.</a>
-            <a href="/dc/council/code/sections/42-506.html">§ 42–506. Estates classified; possession; expectancy.</a>
-            <a href="/dc/council/code/sections/42-507.html">§ 42–507. Estate in possession.</a>
-            <a href="/dc/council/code/sections/42-508.html">§ 42–508. Estate in expectancy.</a>
-            <a href="/dc/council/code/sections/42-509.html">§ 42–509. Reversions.</a>
-            <a href="/dc/council/code/sections/42-510.html">§ 42–510. Future estates — Commencement.</a>
-            <a href="/dc/council/code/sections/42-511.html">§ 42–511. Future estates — Remainder and conditional limitation.</a>
-            <a href="/dc/council/code/sections/42-512.html">§ 42–512. Future estates — Vested and contingent.</a>
-            <a href="/dc/council/code/sections/42-513.html">§ 42–513. Future estates — Alternative.</a>
-            <a href="/dc/council/code/sections/42-514.html">§ 42–514. Expectant estates — No defeat or bar unless provided for at creation.</a>
-            <a href="/dc/council/code/sections/42-515.html">§ 42–515. Expectant estates — Descendible, devisable, and alienable.</a>
-            <a href="/dc/council/code/sections/42-516.html">§ 42–516. Tenancies in common, tenancies by the entireties, and joint tenancies.</a>
-            <a href="/dc/council/code/sections/42-517.html">§ 42–517. Coparcenary estates abolished.</a>
-            <a href="/dc/council/code/sections/42-518.html">§ 42–518. Estates for years.</a>
-            <a href="/dc/council/code/sections/42-519.html">§ 42–519. Estates from year to year.</a>
-            <a href="/dc/council/code/sections/42-520.html">§ 42–520. Estates by sufferance.</a>
-            <a href="/dc/council/code/sections/42-521.html">§ 42–521. Estates from month to month or from quarter to quarter.</a>
-            <a href="/dc/council/code/sections/42-522.html">§ 42–522. Estates at will; termination; creation.</a>
-            <a href="/dc/council/code/sections/42-523.html">§ 42–523. Provisions applicable to personal property.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-501.html">§ 42–501. Recognized estates.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-502.html">§ 42–502. Fee simple estates — Estates tail abolished.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-503.html">§ 42–503. Fee simple estates — Absolute or qualified.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-504.html">§ 42–504. Freeholds; chattels real; chattel interests; conditions precedent or subsequent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-505.html">§ 42–505. Estates pur autre vie; when deemed freehold and when chattel real.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-506.html">§ 42–506. Estates classified; possession; expectancy.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-507.html">§ 42–507. Estate in possession.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-508.html">§ 42–508. Estate in expectancy.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-509.html">§ 42–509. Reversions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-510.html">§ 42–510. Future estates — Commencement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-511.html">§ 42–511. Future estates — Remainder and conditional limitation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-512.html">§ 42–512. Future estates — Vested and contingent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-513.html">§ 42–513. Future estates — Alternative.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-514.html">§ 42–514. Expectant estates — No defeat or bar unless provided for at creation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-515.html">§ 42–515. Expectant estates — Descendible, devisable, and alienable.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-516.html">§ 42–516. Tenancies in common, tenancies by the entireties, and joint tenancies.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-517.html">§ 42–517. Coparcenary estates abolished.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-518.html">§ 42–518. Estates for years.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-519.html">§ 42–519. Estates from year to year.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-520.html">§ 42–520. Estates by sufferance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-521.html">§ 42–521. Estates from month to month or from quarter to quarter.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-522.html">§ 42–522. Estates at will; termination; creation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-523.html">§ 42–523. Provisions applicable to personal property.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -124,8 +170,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1011">Mar. 3, 1901, 31 Stat. 1350, ch. 854, § 1011</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-201.</p>
                 <p>1973 Ed., § 45-801.</p>
+                <p>1981 Ed., § 45-201.</p>
                 <h4>Cross References</h4>
                 <p>Statute of frauds, see §§ <a class="internal-link" href="/dc/council/code/sections/28-3501.html">28-3501</a>, <a class="internal-link" href="/dc/council/code/sections/28-3503.html">28-3503</a>.</p>
               </section>
@@ -142,8 +188,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1012">Mar. 3, 1901, 31 Stat. 1350, ch. 854, § 1012</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-202.</p>
                 <p>1973 Ed., § 45-802.</p>
+                <p>1981 Ed., § 45-202.</p>
               </section>
             </section>
             <hr/>
@@ -158,8 +204,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1013">Mar. 3, 1901, 31 Stat. 1351, ch. 854, § 1013</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-203.</p>
                 <p>1973 Ed., § 45-803.</p>
+                <p>1981 Ed., § 45-203.</p>
               </section>
             </section>
             <hr/>
@@ -174,8 +220,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1014">Mar. 3, 1901, 31 Stat. 1351, ch. 854, § 1014</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-204.</p>
                 <p>1973 Ed., § 45-804.</p>
+                <p>1981 Ed., § 45-204.</p>
               </section>
             </section>
             <hr/>
@@ -190,8 +236,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1015">Mar. 3, 1901, 31 Stat. 1351, ch. 854, § 1015</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-205.</p>
                 <p>1973 Ed., § 45-805.</p>
+                <p>1981 Ed., § 45-205.</p>
               </section>
             </section>
             <hr/>
@@ -206,8 +252,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1016">Mar. 3, 1901, 31 Stat. 1351, ch. 854, § 1016</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-206.</p>
                 <p>1973 Ed., § 45-806.</p>
+                <p>1981 Ed., § 45-206.</p>
               </section>
             </section>
             <hr/>
@@ -222,8 +268,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1017">Mar. 3, 1901, 31 Stat. 1351, ch. 854, § 1017</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-207.</p>
                 <p>1973 Ed., § 45-807.</p>
+                <p>1981 Ed., § 45-207.</p>
               </section>
             </section>
             <hr/>
@@ -238,8 +284,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1018">Mar. 3, 1901, 31 Stat. 1351, ch. 854, § 1018</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-208.</p>
                 <p>1973 Ed., § 45-808.</p>
+                <p>1981 Ed., § 45-208.</p>
               </section>
             </section>
             <hr/>
@@ -254,8 +300,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1019">Mar. 3, 1901, 31 Stat. 1351, ch. 854, § 1019</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-209.</p>
                 <p>1973 Ed., § 45-809.</p>
+                <p>1981 Ed., § 45-209.</p>
               </section>
             </section>
             <hr/>
@@ -270,8 +316,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1020">Mar. 3, 1901, 31 Stat. 1351, ch. 854, § 1020</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-210.</p>
                 <p>1973 Ed., § 45-810.</p>
+                <p>1981 Ed., § 45-210.</p>
               </section>
             </section>
             <hr/>
@@ -286,8 +332,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1021">Mar. 3, 1901, 31 Stat. 1351, ch. 854, § 1021</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-211.</p>
                 <p>1973 Ed., § 45-811.</p>
+                <p>1981 Ed., § 45-211.</p>
                 <h4>Cross References</h4>
                 <p>Proceeding by remainderman to determine whether or not life tenant is still alive, see § <a class="internal-link" href="/dc/council/code/sections/16-1151.html">16-1151</a> et seq.</p>
               </section>
@@ -304,8 +350,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1022">Mar. 3, 1901, 31 Stat. 1351, ch. 854, § 1022</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-212.</p>
                 <p>1973 Ed., § 45-812.</p>
+                <p>1981 Ed., § 45-212.</p>
               </section>
             </section>
             <hr/>
@@ -320,8 +366,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1026">Mar. 3, 1901, 31 Stat. 1352, ch. 854, § 1026</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-213.</p>
                 <p>1973 Ed., § 45-813.</p>
+                <p>1981 Ed., § 45-213.</p>
               </section>
             </section>
             <hr/>
@@ -336,8 +382,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1029">Mar. 3, 1901, 31 Stat. 1352, ch. 854, § 1029</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-214.</p>
                 <p>1973 Ed., § 45-814.</p>
+                <p>1981 Ed., § 45-214.</p>
               </section>
             </section>
             <hr/>
@@ -352,8 +398,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1030">Mar. 3, 1901, 31 Stat. 1352, ch. 854, § 1030</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-215.</p>
                 <p>1973 Ed., § 45-815.</p>
+                <p>1981 Ed., § 45-215.</p>
               </section>
             </section>
             <hr/>
@@ -376,11 +422,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1031">Mar. 3, 1901, 31 Stat. 1352, ch. 854, § 1031</a>; June 30, 1902, 32 Stat. 538, ch. 1329; <a class="internal-link" href="/us/congress/laws/public/91-530.html">Dec. 7, 1970, 84 Stat. 1390, Pub. L. 91-530, § 1</a>; <a class="internal-link" href="/dc/council/laws/10-110.html">Apr. 27, 1994, D.C. Law 10-110, § 2(d), 41 DCR 1023</a>; <a class="internal-link" href="/dc/council/laws/17-231.html">Sept. 12, 2008, D.C. Law 17-231,§ 33(a), 55 DCR 6758</a>; <a class="internal-link" href="/dc/council/laws/18-33.html">July 18, 2008, D.C. Law 18-33, § 6(a), 56 DCR 4269</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-216.</p>
                 <p>1973 Ed., § 45-816.</p>
+                <p>1981 Ed., § 45-216.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in subsec. (a), substituted “including estates granted or devised to spouses or domestic partners, as defined in § <a class="internal-link" href="/dc/council/code/sections/32-701.html">32-701</a>(3),” for “including estates granted or devised to husband and wife,”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-33.html">D.C. Law 18-33</a> added subsec. (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in subsec. (a), substituted “including estates granted or devised to spouses or domestic partners, as defined in § <a class="internal-link" href="/dc/council/code/sections/32-701.html">32-701</a>(3),” for “including estates granted or devised to husband and wife,”.</p>
               </section>
             </section>
             <hr/>
@@ -395,8 +441,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§956">Mar. 3, 1901, 31 Stat. 1343, ch. 854, § 956</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-217.</p>
                 <p>1973 Ed., § 45-817.</p>
+                <p>1981 Ed., § 45-217.</p>
               </section>
             </section>
             <hr/>
@@ -411,8 +457,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1032">Mar. 3, 1901, 31 Stat. 1352, ch. 854, § 1032</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-218.</p>
                 <p>1973 Ed., § 45-818.</p>
+                <p>1981 Ed., § 45-218.</p>
               </section>
             </section>
             <hr/>
@@ -427,8 +473,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1033">Mar. 3, 1901, 31 Stat. 1352, ch. 854, § 1033</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-219.</p>
                 <p>1973 Ed., § 45-819.</p>
+                <p>1981 Ed., § 45-219.</p>
               </section>
             </section>
             <hr/>
@@ -443,8 +489,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1034">Mar. 3, 1901, 31 Stat. 1352, ch. 854, § 1034</a>; June 30, 1902, 32 Stat. 538, ch. 1329.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-220.</p>
                 <p>1973 Ed., § 45-820.</p>
+                <p>1981 Ed., § 45-220.</p>
                 <h4>Cross References</h4>
                 <p>Statute of frauds, see §§ <a class="internal-link" href="/dc/council/code/sections/28-3501.html">28-3501</a> and <a class="internal-link" href="/dc/council/code/sections/28-3503.html">28-3503</a>.</p>
               </section>
@@ -461,8 +507,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1035">Mar. 3, 1901, 31 Stat. 1352, ch. 854, § 1035</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-221.</p>
                 <p>1973 Ed., § 45-821.</p>
+                <p>1981 Ed., § 45-221.</p>
               </section>
             </section>
             <hr/>
@@ -477,8 +523,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1036">Mar. 3, 1901, 31 Stat. 1352, ch. 854, § 1036</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-222.</p>
                 <p>1973 Ed., § 45-822.</p>
+                <p>1981 Ed., § 45-222.</p>
                 <h4>Cross References</h4>
                 <p>Forcible entry and detainer, see §§ <a class="internal-link" href="/dc/council/code/sections/16-1501.html">16-1501</a> et seq., 22-3302.</p>
               </section>
@@ -495,8 +541,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1036">Mar. 3, 1901, 31 Stat. 1352, ch. 854, § 1036</a>; June 30, 1902, 32 Stat. 538, ch. 1329.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-223.</p>
                 <p>1973 Ed., § 45-823.</p>
+                <p>1981 Ed., § 45-223.</p>
               </section>
             </section>
             <hr/>

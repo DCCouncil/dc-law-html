@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/29A-924.html">§ 29A-924. Subscribers. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/29A-923.html">Report Error</a>
@@ -98,12 +98,12 @@
       (June 19, 1940, 54 Stat. 485, ch. 397, § 23; <a class="internal-link" href="/dc/council/laws/12-217.html">Apr. 13, 1999, D.C. Law 12-217, § 2(a), 46 DCR 284</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(q), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/29-923.html">29-923</a>.</p>
-                <p>1981 Ed., § 29-1123.</p>
                 <p>1973 Ed., § 29-823.</p>
+                <p>1981 Ed., § 29-1123.</p>
+                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/29-923.html">29-923</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(a) of the Cooperative Association Emergency Amendment Act of 1996 (D.C. Act 11-483, January 13, 1997,  44 DCR 626), and see § 2(a) of the Cooperative Association Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-59, March 31, 1997,  44 DCR 2235).</p>
                 <p>For temporary amendment of section, see § 2(a) of the Cooperative Association Second Emergency Amendment Act of 1997 (D.C. Act 12-203, December 2, 1997,  44 DCR 7498).</p>
+                <p>For temporary amendment of section, see § 2(a) of the Cooperative Association Emergency Amendment Act of 1996 (D.C. Act 11-483, January 13, 1997,  44 DCR 626), and see § 2(a) of the Cooperative Association Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-59, March 31, 1997,  44 DCR 2235).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of the Cooperative Association Temporary Amendment Act of 1996 (D.C. Law 11-265, April 25, 1997, law notification  43 DCR 4355).</p>
               </section>

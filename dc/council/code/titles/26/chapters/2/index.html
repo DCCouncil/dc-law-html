@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/26/chapters/3/">Chapter 3. Check Cashers.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/26/chapters/2/">Report Error</a>
@@ -87,12 +87,18 @@
         <section class="col8 body">
           <h1>Chapter 2. Building Associations.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/26/chapters/2/subchapters/I/">Subchapter I. General.</a>
-            <p>§§ 26-201 - 26-215</p>
-            <a href="/dc/council/code/titles/26/chapters/2/subchapters/II/">Subchapter II. Federal Securities.</a>
-            <p>§§ 26-231 - 26-232</p>
-            <a href="/dc/council/code/titles/26/chapters/2/subchapters/III/">Subchapter III. Transfer of Remaining Functions to the Superintendent of Banking and Financial Institutions.</a>
-            <p>§§ 26-251 - 26-251</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/26/chapters/2/subchapters/I/">Subchapter I. General.</a>
+            </p>
+            <p>§§ 26-201 – 26-215</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/26/chapters/2/subchapters/II/">Subchapter II. Federal Securities.</a>
+            </p>
+            <p>§§ 26-231 – 26-232</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/26/chapters/2/subchapters/III/">Subchapter III. Transfer of Remaining Functions to the Superintendent of Banking and Financial Institutions.</a>
+            </p>
+            <p>§§ 26-251 – 26-251</p>
           </section>
           <section class="content">
             <hr/>
@@ -109,8 +115,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html">Mar. 3, 1901, 31 Stat. 1298, ch. 854, §§ 687, 688</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(2), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-501.</p>
                 <p>1973 Ed., § 26-401.</p>
+                <p>1981 Ed., § 26-501.</p>
                 <h4>Effect of Amendments</h4>
                 <p>D.C. Law 19-378, in subsec. (a), substituted “Chapters 1 and 3 of Title 29” for “Chapter 2 of Title 29”.</p>
                 <h4>Transfer of Functions</h4>
@@ -129,8 +135,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§689">Mar. 3, 1901, 31 Stat. 1299, ch. 854, § 689</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-502.</p>
                 <p>1973 Ed., § 26-402.</p>
+                <p>1981 Ed., § 26-502.</p>
               </section>
             </section>
             <hr/>
@@ -145,8 +151,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§690">Mar. 3, 1901, 31 Stat. 1299, ch. 854, § 690</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-503.</p>
                 <p>1973 Ed., § 26-403.</p>
+                <p>1981 Ed., § 26-503.</p>
               </section>
             </section>
             <hr/>
@@ -163,8 +169,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§691">Mar. 3, 1901, 31 Stat. 1299, ch. 854, § 691</a>; Mar. 4, 1909, 35 Stat. 1058, ch. 303, § 1; Sept. 15, 1951, 65 Stat. 323, ch. 404, § 1; <a class="internal-link" href="/dc/council/laws/4-164.html">Dec. 1, 1982, D.C. Law 4-164, § 601(i), 29 DCR 3976</a>; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63, § 106(a)(2)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-504.</p>
                 <p>1973 Ed., § 26-404.</p>
+                <p>1981 Ed., § 26-504.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-702.01.html">26-702.01</a>.</p>
                 <h4>References in Text</h4>
@@ -197,8 +203,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§691a">Mar. 3, 1901, ch. 854, § 691a</a>; Mar. 4, 1909, 35 Stat. 1059, ch. 303, § 2; July 18, 1939, 53 Stat. 1060, ch. 322, § 1; Sept. 15, 1951, 65 Stat. 323, ch. 404, § 2; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63, § 106(a)(3)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>; <a class="internal-link" href="/dc/council/laws/7-104.html">Apr. 30, 1988, D.C. Law 7-104, § 44, 35 DCR 147</a>; <a class="internal-link" href="/dc/council/laws/7-175.html">Oct. 12, 1988, D.C. Law 7-175, § 18, 35 DCR 6133</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 24(d), 44 DCR 1271</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-506.</p>
                 <p>1973 Ed., § 26-405.</p>
+                <p>1981 Ed., § 26-506.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-103.html">26-103</a> and § <a class="internal-link" href="/dc/council/code/sections/26-204.html">26-204</a>.</p>
               </section>
@@ -215,8 +221,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§692">Mar. 3, 1901, 31 Stat. 1299, ch. 854, § 692</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-507.</p>
                 <p>1973 Ed., § 26-406.</p>
+                <p>1981 Ed., § 26-507.</p>
               </section>
             </section>
             <hr/>
@@ -231,8 +237,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§693">Mar. 3, 1901, 31 Stat. 1299, ch. 854, § 693</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-508.</p>
                 <p>1973 Ed., § 26-407.</p>
+                <p>1981 Ed., § 26-508.</p>
               </section>
             </section>
             <hr/>
@@ -247,8 +253,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§694">Mar. 3, 1901, 31 Stat. 1299, ch. 854, § 694</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-509.</p>
                 <p>1973 Ed., § 26-408.</p>
+                <p>1981 Ed., § 26-509.</p>
               </section>
             </section>
             <hr/>
@@ -263,8 +269,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§695">Mar. 3, 1901, 31 Stat. 1300, ch. 854, § 695</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-510.</p>
                 <p>1973 Ed., § 26-409.</p>
+                <p>1981 Ed., § 26-510.</p>
               </section>
             </section>
             <hr/>
@@ -279,8 +285,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§696">Mar. 3, 1901, 31 Stat. 1300, ch. 854, § 696</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-511.</p>
                 <p>1973 Ed., § 26-410.</p>
+                <p>1981 Ed., § 26-511.</p>
               </section>
             </section>
             <hr/>
@@ -295,8 +301,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§697">Mar. 3, 1901, 31 Stat. 1300, ch. 854, § 697</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-512.</p>
                 <p>1973 Ed., § 26-411.</p>
+                <p>1981 Ed., § 26-512.</p>
               </section>
             </section>
             <hr/>
@@ -311,8 +317,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§698">Mar. 3, 1901, 31 Stat. 1300, ch. 854, § 698</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-513.</p>
                 <p>1973 Ed., § 26-412.</p>
+                <p>1981 Ed., § 26-513.</p>
               </section>
             </section>
             <hr/>
@@ -327,8 +333,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§699">Mar. 3, 1901, 31 Stat. 1300, ch. 854, § 699</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-514.</p>
                 <p>1973 Ed., § 26-413.</p>
+                <p>1981 Ed., § 26-514.</p>
               </section>
             </section>
             <hr/>
@@ -343,8 +349,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§700">Mar. 3, 1901, 31 Stat. 1300, ch. 854, § 700</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-515.</p>
                 <p>1973 Ed., § 26-414.</p>
+                <p>1981 Ed., § 26-515.</p>
               </section>
             </section>
             <hr/>
@@ -360,11 +366,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§55">Mar. 3, 1901, ch. 854, § 55</a>; Mar. 27, 1934, 48 Stat. 506, ch. 96.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-516.</p>
                 <p>1973 Ed., § 26-415.</p>
+                <p>1981 Ed., § 26-516.</p>
                 <h4>References in Text</h4>
-                <p>The Home Owners’ Loan Corporation, referred to near the middle of this section, was dissolved by the Act of June 30, 1953, 67 Stat. 126, ch. 170, § 21.</p>
                 <p>The Home Owners’ Loan Act of 1933, approved June 13, 1933, referred to near the middle of this section, is codified in Chapter 12 of Title 12, United States Code, and, as amended, is referred to as the “Home Owners’ Loan Act.”.</p>
+                <p>The Home Owners’ Loan Corporation, referred to near the middle of this section, was dissolved by the Act of June 30, 1953, 67 Stat. 126, ch. 170, § 21.</p>
               </section>
             </section>
             <hr/>
@@ -379,13 +385,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§56">Mar. 3, 1901, ch. 854, § 56</a>; Mar. 27, 1934, 48 Stat. 506, ch. 96.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-517.</p>
                 <p>1973 Ed., § 26-416.</p>
+                <p>1981 Ed., § 26-517.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-710.html">26-710</a>.</p>
                 <h4>References in Text</h4>
-                <p>The Home Owners’ Loan Corporation, referred to in this section, was dissolved by the Act of June 30, 1953, 67 Stat. 126, ch. 170, § 21.</p>
                 <p>The Home Owners’ Loan Act of 1933, approved June 13, 1933, referred to in this section, is codified in Chapter 12 of Title 12, United States Code, and, as amended, is referred to as the “Home Owners’ Loan Act.”.</p>
+                <p>The Home Owners’ Loan Corporation, referred to in this section, was dissolved by the Act of June 30, 1953, 67 Stat. 126, ch. 170, § 21.</p>
               </section>
             </section>
             <hr/>
@@ -401,13 +407,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/82-1-ch404.html#§4">Sept. 15, 1951, 65 Stat. 324, ch. 404, § 4</a>; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63,§ 106(e)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-505.</p>
                 <p>1973 Ed., § 26-404a.</p>
+                <p>1981 Ed., § 26-505.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-710.html">26-710</a>.</p>
                 <h4>References in Text</h4>
-                <p>The “Home Loan Bank Board,” formerly referred to throughout this section, was changed to “Federal Home Loan Bank Board” by § 109(a)(3) of the Act of August 11, 1955, 69 Stat. 640. Subsequently, the Federal Home Loan Bank Board was abolished. For provisions relating to the abolition of the Federal Home Loan Bank Board and the transfer of functions, personnel and property of that agency, see §§ 401 to 406 of Pub. L. 101-73, set out as a note under  12 U.S.C. § 1437.</p>
                 <p>The words “specific statutory amendments,” referred to in the section, means the amendments made by §§ 1 to 3 of the Act of September 15, 1951, 65 Stat. 324, ch. 404.</p>
+                <p>The “Home Loan Bank Board,” formerly referred to throughout this section, was changed to “Federal Home Loan Bank Board” by § 109(a)(3) of the Act of August 11, 1955, 69 Stat. 640. Subsequently, the Federal Home Loan Bank Board was abolished. For provisions relating to the abolition of the Federal Home Loan Bank Board and the transfer of functions, personnel and property of that agency, see §§ 401 to 406 of Pub. L. 101-73, set out as a note under  12 U.S.C. § 1437.</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/5/chapters/1/subchapters/V/">Subchapter V. Cadet Program.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/5-107.04.html">Report Error</a>
@@ -149,12 +149,12 @@
       (<a class="internal-link" href="/dc/council/laws/13-160.html#§205">Oct. 4, 2000, D.C. Law 13-160, § 205, 47 DCR 4619</a>; <a class="internal-link" href="/dc/council/laws/15-194.html">Sept. 30, 2004, D.C. Law 15-194, § 302(b), 51 DCR 9406</a>; <a class="internal-link" href="/dc/council/laws/19-320.html">June 19, 2013, D.C. Law 19-320, § 505, 60 DCR 3390</a>; <a class="internal-link" href="/dc/council/laws/20-198.html">Mar. 10, 2015, D.C. Law 20-198, § 6(b), 61 DCR 12450</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-194.html">D.C. Law 15-194</a> substituted “Board” for “Training and Standards Board” in the introductory language of subsec. (d), par. (1) of subsec. (d), subsec. (e), the introductory language of subsec. (f), and subsecs. (i) and (k); substituted “October 31” for “November 31” in subpar. (B) of subsec. (f); and added subsec. (f-1).</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> deleted “standards for applicants; continuing education program” from the section heading; and rewrote the section.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-198.html">D.C. Law 20-198</a> substituted “Police and Firefighters Retirement and Relief Board” for “Police and Firemen's Retirement and Relief Board” in (r).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> deleted “standards for applicants; continuing education program” from the section heading; and rewrote the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-194.html">D.C. Law 15-194</a> substituted “Board” for “Training and Standards Board” in the introductory language of subsec. (d), par. (1) of subsec. (d), subsec. (e), the introductory language of subsec. (f), and subsecs. (i) and (k); substituted “October 31” for “November 31” in subpar. (B) of subsec. (f); and added subsec. (f-1).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 505 of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 505 of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of section, see § 505 of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/1-204.24e.html">§ 1–204.24e. Functions of Treasurer.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-204.24d.html">Report Error</a>
@@ -141,30 +141,30 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-204.48.html">1-204.48</a>, § <a class="internal-link" href="/dc/council/code/sections/1-204.49.html">1-204.49</a>, § <a class="internal-link" href="/dc/council/code/sections/1-301.115a.html">1-301.115a</a>, § <a class="internal-link" href="/dc/council/code/sections/2-1217.34m.html">2-1217.34m</a>, § <a class="internal-link" href="/dc/council/code/sections/8-1778.01.html">8-1778.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/9-107.62.html">9-107.62</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>Pub. L. 106-522, in par. (2), deleted “or § 47-317.4 1981 Ed.” following “§ 47-317.3 (§ 1-204.24c, 2001 Ed.)”.</p>
-                <p>Pub. L. 109-356 rewrote the section which had previously read:</p>
-                <p>“§ <a class="internal-link" href="/dc/council/code/sections/1-204.24d.html">1-204.24d</a>. Functions of Treasurer.</p>
-                <p>“At all times, the Treasurer shall have the following duties:</p>
-                <p>“(1) Assisting the Chief Financial Officer in reporting revenues received by the District government, including submitting annual and quarterly reports concerning the cash position of the District government not later than 60 days after the last day of the quarter (or year) involved. Such reports shall include:</p>
-                <p>“(A) Comparative reports of revenue and other receipts by source, including tax, nontax, and Federal revenues, grants and reimbursements, capital program loans, and advances. Each source shall be broken down into specific components.</p>
-                <p>“(B) Statements of the cash flow of the District government for the preceding quarter or year, including receipts, disbursements, net changes in cash inclusive of the beginning balance, cash and investment, and the ending balance, inclusive of cash and investment. Such statements shall reflect the actual, planned, better or worse dollar amounts and the percentage change with respect to the current quarter, year-to-date, and fiscal year;</p>
-                <p>“(C) Quarterly cash flow forecast for the quarter or year involved, reflecting receipts, disbursements, net change in cash inclusive of the beginning balance, cash and investment, and the ending balance, inclusive of cash and investment with respect to the actual dollar amounts for the quarter or year, and projected dollar amounts for each of the 3 succeeding quarters;</p>
-                <p>“(D) Monthly reports reflecting a detailed summary analysis of all District of Columbia government investments, including, but not limited to:</p>
-                <p>“(i) The total of long-term and short-term investments;</p>
-                <p>“(ii) A detailed summary analysis of investments by type and amount, including purchases, sales (maturities), and interest;</p>
-                <p>“(iii) An analysis of investment portfolio mix by type and amount, including liquidity, quality/risk of each security, and similar information;</p>
-                <p>“(iv) An analysis of investment strategy, including near-term strategic plans and projects of investment activity, as well as forecasts of future investment strategies based on anticipated market conditions, and similar information; and</p>
-                <p>“(v) An analysis of cash utilization, including:</p>
-                <p>“(I) Comparisons of budgeted percentages of total cash to be invested with actual percentages of cash invested and the dollar amounts;</p>
-                <p>“(II) Comparisons of the next return on invested cash expressed in percentages (yield) with comparable market indicators and established District of Columbia government yield objectives; and</p>
-                <p>“(III) Comparisons of estimated dollar return against actual dollar yield; and</p>
-                <p>“(E) Monthly reports reflecting a detailed summary analysis of long-term and short-term borrowings inclusive of debt as authorized by § <a class="internal-link" href="/dc/council/code/sections/1-206.03.html">1-206.03</a>, in the current fiscal year and the amount of debt for each succeeding fiscal year not to exceed 5 years; all such reports shall reflect:</p>
-                <p>“(i) The amount of debt outstanding by type of instrument;</p>
-                <p>“(ii) The amount of authorized and unissued debt, including availability of short-term lines of credit, United States Treasury borrowings, and similar information;</p>
-                <p>“(iii) A maturity schedule of the debt;</p>
-                <p>“(iv) The rate of interest payable upon the debt; and</p>
-                <p>“(v) The amount of debt service requirements and related debt service reserves; and</p>
                 <p>“(2) Such other functions assigned to the Chief Financial Officer under § <a class="internal-link" href="/dc/council/code/sections/1-204.24c.html">1-204.24c</a> as the Chief Financial Officer may delegate.”</p>
+                <p>“(v) The amount of debt service requirements and related debt service reserves; and</p>
+                <p>“(iv) The rate of interest payable upon the debt; and</p>
+                <p>“(iii) A maturity schedule of the debt;</p>
+                <p>“(ii) The amount of authorized and unissued debt, including availability of short-term lines of credit, United States Treasury borrowings, and similar information;</p>
+                <p>“(i) The amount of debt outstanding by type of instrument;</p>
+                <p>“(E) Monthly reports reflecting a detailed summary analysis of long-term and short-term borrowings inclusive of debt as authorized by § <a class="internal-link" href="/dc/council/code/sections/1-206.03.html">1-206.03</a>, in the current fiscal year and the amount of debt for each succeeding fiscal year not to exceed 5 years; all such reports shall reflect:</p>
+                <p>“(III) Comparisons of estimated dollar return against actual dollar yield; and</p>
+                <p>“(II) Comparisons of the next return on invested cash expressed in percentages (yield) with comparable market indicators and established District of Columbia government yield objectives; and</p>
+                <p>“(I) Comparisons of budgeted percentages of total cash to be invested with actual percentages of cash invested and the dollar amounts;</p>
+                <p>“(v) An analysis of cash utilization, including:</p>
+                <p>“(iv) An analysis of investment strategy, including near-term strategic plans and projects of investment activity, as well as forecasts of future investment strategies based on anticipated market conditions, and similar information; and</p>
+                <p>“(iii) An analysis of investment portfolio mix by type and amount, including liquidity, quality/risk of each security, and similar information;</p>
+                <p>“(ii) A detailed summary analysis of investments by type and amount, including purchases, sales (maturities), and interest;</p>
+                <p>“(i) The total of long-term and short-term investments;</p>
+                <p>“(D) Monthly reports reflecting a detailed summary analysis of all District of Columbia government investments, including, but not limited to:</p>
+                <p>“(C) Quarterly cash flow forecast for the quarter or year involved, reflecting receipts, disbursements, net change in cash inclusive of the beginning balance, cash and investment, and the ending balance, inclusive of cash and investment with respect to the actual dollar amounts for the quarter or year, and projected dollar amounts for each of the 3 succeeding quarters;</p>
+                <p>“(B) Statements of the cash flow of the District government for the preceding quarter or year, including receipts, disbursements, net changes in cash inclusive of the beginning balance, cash and investment, and the ending balance, inclusive of cash and investment. Such statements shall reflect the actual, planned, better or worse dollar amounts and the percentage change with respect to the current quarter, year-to-date, and fiscal year;</p>
+                <p>“(A) Comparative reports of revenue and other receipts by source, including tax, nontax, and Federal revenues, grants and reimbursements, capital program loans, and advances. Each source shall be broken down into specific components.</p>
+                <p>“(1) Assisting the Chief Financial Officer in reporting revenues received by the District government, including submitting annual and quarterly reports concerning the cash position of the District government not later than 60 days after the last day of the quarter (or year) involved. Such reports shall include:</p>
+                <p>“At all times, the Treasurer shall have the following duties:</p>
+                <p>“§ <a class="internal-link" href="/dc/council/code/sections/1-204.24d.html">1-204.24d</a>. Functions of Treasurer.</p>
+                <p>Pub. L. 109-356 rewrote the section which had previously read:</p>
+                <p>Pub. L. 106-522, in par. (2), deleted “or § 47-317.4 1981 Ed.” following “§ 47-317.3 (§ 1-204.24c, 2001 Ed.)”.</p>
                 <h4>References in Text</h4>
                 <p>The Individuals with Disabilities Education Act, referred to in par. (28), is codified at  20 U.S.C. § 1400 et seq.</p>
                 <h4>Editor's Notes</h4>

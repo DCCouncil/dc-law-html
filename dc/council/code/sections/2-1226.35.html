@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1226.36.html">§ 2–1226.36. Stormwater control standards.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1226.35.html">Report Error</a>
@@ -113,8 +113,8 @@
       (<a class="internal-link" href="/dc/council/laws/17-138.html#§455">Mar. 26, 2008, D.C. Law 17-138, § 455, 55 DCR 1689</a>; <a class="internal-link" href="/dc/council/laws/18-349.html">Mar. 31, 2011, D.C. Law 18-349, § 4(b), 58 DCR 724</a>; <a class="internal-link" href="/dc/council/laws/19-192.html">Oct. 23, 2012, D.C. Law 19-192, § 2(d), 59 DCR 10174</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-349.html">D.C. Law 18-349</a>, in subsecs. (a)(1)(A) and (2)(A)(i), substituted “current edition of the LEED standard for commercial and institutional buildings” for “LEED-NC 2.2 standard or LEED-CS 2.0 standard”; and, in subsec. (a)(1)(B), substituted “current edition of the LEED standard for commercial and institutional buildings” for “LEED-CI standard”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-192.html">D.C. Law 19-192</a> substituted “DDOE” for “District Department of the Environment (‘DDOE’)” in (a)(1)(D).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-349.html">D.C. Law 18-349</a>, in subsecs. (a)(1)(A) and (2)(A)(i), substituted “current edition of the LEED standard for commercial and institutional buildings” for “LEED-NC 2.2 standard or LEED-CS 2.0 standard”; and, in subsec. (a)(1)(B), substituted “current edition of the LEED standard for commercial and institutional buildings” for “LEED-CI standard”.</p>
               </section>
             </section>
           </section>

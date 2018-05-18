@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-303.html">§ 28:2A-303. Alienability of party’s interest under lease contract or of lessor’s residual interest in goods; delegation of performance; transfer of rights.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-302.html">Report Error</a>
@@ -101,13 +101,13 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 28:2A-302.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Section 9-202.</p>
-                <p><strong>Changes:</strong>Section 9-202 was modified to reflect leasing terminology and to clarify the law of leases with respect to fraudulent conveyances or transfers.</p>
-                <p><strong>Purposes:</strong> The separation of ownership and possession of goods between the lessor and the lessee (or a third party) has created problems under certain fraudulent conveyance statutes. See, e.g.,  In re Ludlum Enters., 510 F.2d 996 (5th Cir.1975);  Suburbia Fed. Sav. &amp; Loan Ass’n v. Bel-Air Conditioning Co., 385 So.2d 1151 (Fla.Dist.Ct.App.1980). This section provides, among other things, that separation of ownership and possession per se does not affect the enforceability of the lease contract. Sections 2A-301 and 2A-308.</p>
-                <p><strong>Cross References:</strong> Sections 2A-301, 2A-308 and 9-202.</p>
-                <p><strong>Definitional Cross References:</strong> “Goods”. Section 2A-103(1)(h).</p>
-                <p>“Lessee”. Section 2A-103(1)(n).</p>
                 <p>“Lessor”. Section 2A-103(1)(p).</p>
+                <p>“Lessee”. Section 2A-103(1)(n).</p>
+                <p><strong>Definitional Cross References:</strong> “Goods”. Section 2A-103(1)(h).</p>
+                <p><strong>Cross References:</strong> Sections 2A-301, 2A-308 and 9-202.</p>
+                <p><strong>Purposes:</strong> The separation of ownership and possession of goods between the lessor and the lessee (or a third party) has created problems under certain fraudulent conveyance statutes. See, e.g.,  In re Ludlum Enters., 510 F.2d 996 (5th Cir.1975);  Suburbia Fed. Sav. &amp; Loan Ass’n v. Bel-Air Conditioning Co., 385 So.2d 1151 (Fla.Dist.Ct.App.1980). This section provides, among other things, that separation of ownership and possession per se does not affect the enforceability of the lease contract. Sections 2A-301 and 2A-308.</p>
+                <p><strong>Changes:</strong>Section 9-202 was modified to reflect leasing terminology and to clarify the law of leases with respect to fraudulent conveyances or transfers.</p>
+                <p><strong>Uniform Statutory Source:</strong>Section 9-202.</p>
               </section>
             </section>
           </section>

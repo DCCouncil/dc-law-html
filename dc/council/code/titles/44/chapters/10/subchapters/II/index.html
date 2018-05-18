@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/44/chapters/10/subchapters/III/">Subchapter III. Discharge, Transfer, and Relocation of Residents.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/chapters/10/subchapters/II/">Report Error</a>
@@ -88,16 +88,36 @@
         <section class="col8 body">
           <h1>Subchapter II. Receiverships.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/44-1002.01.html">§ 44–1002.01. Purpose of receivership.</a>
-            <a href="/dc/council/code/sections/44-1002.02.html">§ 44–1002.02. Grounds for receivership.</a>
-            <a href="/dc/council/code/sections/44-1002.03.html">§ 44–1002.03. Petitions for receivership.</a>
-            <a href="/dc/council/code/sections/44-1002.04.html">§ 44–1002.04. Notice and hearing requirements; ex parte appointment.</a>
-            <a href="/dc/council/code/sections/44-1002.05.html">§ 44–1002.05. Appointment of receiver; continuation of ex parte appointment.</a>
-            <a href="/dc/council/code/sections/44-1002.06.html">§ 44–1002.06. Powers and duties of receiver.</a>
-            <a href="/dc/council/code/sections/44-1002.07.html">§ 44–1002.07. Termination of receivership.</a>
-            <a href="/dc/council/code/sections/44-1002.08.html">§ 44–1002.08. Final accounting.</a>
-            <a href="/dc/council/code/sections/44-1002.09.html">§ 44–1002.09. Special fund or account.</a>
-            <a href="/dc/council/code/sections/44-1002.10.html">§ 44–1002.10. Appointment of court monitor.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1002.01.html">§ 44–1002.01. Purpose of receivership.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1002.02.html">§ 44–1002.02. Grounds for receivership.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1002.03.html">§ 44–1002.03. Petitions for receivership.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1002.04.html">§ 44–1002.04. Notice and hearing requirements; ex parte appointment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1002.05.html">§ 44–1002.05. Appointment of receiver; continuation of ex parte appointment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1002.06.html">§ 44–1002.06. Powers and duties of receiver.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1002.07.html">§ 44–1002.07. Termination of receivership.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1002.08.html">§ 44–1002.08. Final accounting.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1002.09.html">§ 44–1002.09. Special fund or account.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1002.10.html">§ 44–1002.10. Appointment of court monitor.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -218,8 +238,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/44-1002.07.html">44-1002.07</a> and § <a class="internal-link" href="/dc/council/code/sections/44-1002.10.html">44-1002.10</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-127.html">D.C. Law 13-127</a> amended subsec. (b)(1) and (2) by adding the phrase “, Assisted Living Residence,” after the phrase “nursing home” wherever it appears and by adding the phrase “or personal care services,” after the word “health-care” wherever it appears.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a> rewrote subsec. (b)(3)(C), which had read as follows: “(C) A parent, child, grandchild, spouse, sibling, first cousin, aunt, or uncle of one of the facility’s residents, whether the relationship arises by blood, marriage, or adoption.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-127.html">D.C. Law 13-127</a> amended subsec. (b)(1) and (2) by adding the phrase “, Assisted Living Residence,” after the phrase “nursing home” wherever it appears and by adding the phrase “or personal care services,” after the word “health-care” wherever it appears.</p>
               </section>
             </section>
             <hr/>

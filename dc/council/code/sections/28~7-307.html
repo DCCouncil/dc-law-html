@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:7-308.html">§ 28:7-308. Enforcement of carrier’s lien.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:7-307.html">Report Error</a>
@@ -101,35 +101,35 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 725, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/19-299.html">Apr. 27, 2013, D.C. Law 19-299, § 9, 60 DCR 2634</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:7-307.</p>
                 <p>1973 Ed., § 28:7-307.</p>
+                <p>1981 Ed., § 28:7-307.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Prior Uniform Statutory Provision:</strong> Sections 27 through 32, Uniform Warehouse Receipts Act.</p>
-                <p><strong>Changes:</strong> Rewritten; lien extended to carrier. Lien of common carrier validated unless carrier had notice that consignor lacked authority to subject the goods to charges and expenses. Where the carrier is not required by law to receive the goods for transportation, lien validated against anyone who permitted the bailor to have possession even if he had no real or apparent authority.</p>
-                <p><strong>Purposes of Changes:</strong> The section is intended to give carriers a specific statutory lien for charges and expenses similar to that given to warehousemen by the first sentence of  Section 7-209. But since carriers do not commonly claim a lien for charges in relation to other goods or lend money on the security of goods in their hands, provisions for a general lien or a security interest similar to those in  Section 7-209(1) and (2) are omitted. See Comment to  Section 7-105. Since the lien given by this section is specific, and the storage or transportation often preserves or increases the value of the goods, subsection (2) validates the lien against anyone who permitted the bailor to have possession of the goods. Where the carrier is required to receive the goods for transportation, the owner’s interest may be subjected to charges and expenses arising out of deposit of his goods by a thief. Cf.  Section 9-310. The crucial mental element is the carrier’s knowledge or reason to know of the bailor’s lack of authority.</p>
-                <p><strong>Cross References:</strong>Sections 7-209,  9-102(2) and  9-310.</p>
-                <p><strong>Definitional Cross References:</strong> “Bill of lading”.  Section 1-201.</p>
-                <p>“Consignor”.  Section 7-102.</p>
-                <p>“Delivery”.  Section 1-201.</p>
-                <p>“Goods”.  Section 7-102.</p>
-                <p>“Person”.  Section 1-201.</p>
-                <p>“Purchaser”.  Section 1-201.</p>
-                <p>“Value”.  Section 1-201.</p>
-                <p><strong>Prior Uniform Statutory Provision:</strong> Former  Section 7-307.</p>
-                <p><strong>Changes:</strong> Expanded to cover proceeds of the goods transported.</p>
-                <p><strong>Purposes:</strong> 1. The section is intended to give carriers a specific statutory lien for charges and expenses similar to that given to warehouses by the first sentence of  Section 7-209(a) and extends that lien to the proceeds of the goods as long as the carrier has possession of the proceeds. But because carriers do not commonly claim a lien for charges in relation to other goods or lend money on the security of goods in their hands, provisions for a general lien or a security interest similar to those in  Section 7-209(a) and (b) are omitted. Carriers may utilize Article 9 to obtain a security interest and become a secured party or a carrier may agree to limit its lien rights in a transportation agreement with the shipper. As the lien given by this section is specific, and the storage or transportation often preserves or increases the value of the goods, subsection (b) validates the lien against anyone who permitted the bailor to have possession of the goods. Where the carrier is required to receive the goods for transportation, the owner’s interest may be subjected to charges and expenses arising out of deposit of his goods by a thief. The crucial mental element is the carrier’s knowledge or reason to know of the bailor’s lack of authority. If the carrier does not know or have reason to know of the bailor’s lack of authority, the carrier has a lien under this section against any person so long as the conditions of subsection (b) are satisfied. In light of the crucial mental element,  Sections 7-307 and  9-333 combine to give priority to a carrier’s lien over security interests in the goods. In this regard, the judicial decision in In re Sharon Steel Corp., 25 U.C.C. Rep.2d 503,  176 B.R. 384 (W.D. Pa. 1995) is correct and is the controlling precedent.</p>
-                <p>2. The reference to charges in this section means charges relating to the bailment relationship for transportation. Charges does not mean that the bill of lading must state a specific rate or a specific amount. However, failure to state a specific rate or a specific amount has legal consequences under the second sentence of subsection (a).</p>
-                <p>3. The carrier’s specific lien under this section is a possessory lien. See subsection (c). Part 3 of Article 7 does not require any particular form for a bill of lading. The carrier’s lien arises when the carrier has issued a bill of lading.</p>
-                <p><strong>Cross References:</strong> Point 1:  Sections 7-209,  9-109 and  9-333.</p>
-                <p>Point 3.  Section 7-202 and  7-209.</p>
-                <p><strong>Definitional Cross References:</strong> “Bill of lading”.  Section 1-201.</p>
-                <p>“Carrier”.  Section 7-102.</p>
-                <p>“Consignor”.  Section 7-102.</p>
-                <p>“Delivery”.  Section 1-201.</p>
-                <p>“Goods”.  Section 7-102.</p>
-                <p>“Person”.  Section 1-201.</p>
-                <p>“Purchaser”.  Section 1-201.</p>
                 <p>“Value”.  Section 1-204.</p>
+                <p>“Purchaser”.  Section 1-201.</p>
+                <p>“Person”.  Section 1-201.</p>
+                <p>“Goods”.  Section 7-102.</p>
+                <p>“Delivery”.  Section 1-201.</p>
+                <p>“Consignor”.  Section 7-102.</p>
+                <p>“Carrier”.  Section 7-102.</p>
+                <p><strong>Definitional Cross References:</strong> “Bill of lading”.  Section 1-201.</p>
+                <p>Point 3.  Section 7-202 and  7-209.</p>
+                <p><strong>Cross References:</strong> Point 1:  Sections 7-209,  9-109 and  9-333.</p>
+                <p>3. The carrier’s specific lien under this section is a possessory lien. See subsection (c). Part 3 of Article 7 does not require any particular form for a bill of lading. The carrier’s lien arises when the carrier has issued a bill of lading.</p>
+                <p>2. The reference to charges in this section means charges relating to the bailment relationship for transportation. Charges does not mean that the bill of lading must state a specific rate or a specific amount. However, failure to state a specific rate or a specific amount has legal consequences under the second sentence of subsection (a).</p>
+                <p><strong>Purposes:</strong> 1. The section is intended to give carriers a specific statutory lien for charges and expenses similar to that given to warehouses by the first sentence of  Section 7-209(a) and extends that lien to the proceeds of the goods as long as the carrier has possession of the proceeds. But because carriers do not commonly claim a lien for charges in relation to other goods or lend money on the security of goods in their hands, provisions for a general lien or a security interest similar to those in  Section 7-209(a) and (b) are omitted. Carriers may utilize Article 9 to obtain a security interest and become a secured party or a carrier may agree to limit its lien rights in a transportation agreement with the shipper. As the lien given by this section is specific, and the storage or transportation often preserves or increases the value of the goods, subsection (b) validates the lien against anyone who permitted the bailor to have possession of the goods. Where the carrier is required to receive the goods for transportation, the owner’s interest may be subjected to charges and expenses arising out of deposit of his goods by a thief. The crucial mental element is the carrier’s knowledge or reason to know of the bailor’s lack of authority. If the carrier does not know or have reason to know of the bailor’s lack of authority, the carrier has a lien under this section against any person so long as the conditions of subsection (b) are satisfied. In light of the crucial mental element,  Sections 7-307 and  9-333 combine to give priority to a carrier’s lien over security interests in the goods. In this regard, the judicial decision in In re Sharon Steel Corp., 25 U.C.C. Rep.2d 503,  176 B.R. 384 (W.D. Pa. 1995) is correct and is the controlling precedent.</p>
+                <p><strong>Changes:</strong> Expanded to cover proceeds of the goods transported.</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> Former  Section 7-307.</p>
+                <p>“Value”.  Section 1-201.</p>
+                <p>“Purchaser”.  Section 1-201.</p>
+                <p>“Person”.  Section 1-201.</p>
+                <p>“Goods”.  Section 7-102.</p>
+                <p>“Delivery”.  Section 1-201.</p>
+                <p>“Consignor”.  Section 7-102.</p>
+                <p><strong>Definitional Cross References:</strong> “Bill of lading”.  Section 1-201.</p>
+                <p><strong>Cross References:</strong>Sections 7-209,  9-102(2) and  9-310.</p>
+                <p><strong>Purposes of Changes:</strong> The section is intended to give carriers a specific statutory lien for charges and expenses similar to that given to warehousemen by the first sentence of  Section 7-209. But since carriers do not commonly claim a lien for charges in relation to other goods or lend money on the security of goods in their hands, provisions for a general lien or a security interest similar to those in  Section 7-209(1) and (2) are omitted. See Comment to  Section 7-105. Since the lien given by this section is specific, and the storage or transportation often preserves or increases the value of the goods, subsection (2) validates the lien against anyone who permitted the bailor to have possession of the goods. Where the carrier is required to receive the goods for transportation, the owner’s interest may be subjected to charges and expenses arising out of deposit of his goods by a thief. Cf.  Section 9-310. The crucial mental element is the carrier’s knowledge or reason to know of the bailor’s lack of authority.</p>
+                <p><strong>Changes:</strong> Rewritten; lien extended to carrier. Lien of common carrier validated unless carrier had notice that consignor lacked authority to subject the goods to charges and expenses. Where the carrier is not required by law to receive the goods for transportation, lien validated against anyone who permitted the bailor to have possession even if he had no real or apparent authority.</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> Sections 27 through 32, Uniform Warehouse Receipts Act.</p>
               </section>
             </section>
           </section>

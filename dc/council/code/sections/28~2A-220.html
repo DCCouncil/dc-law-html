@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-221.html">§ 28:2A-221. Casualty to identified goods.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-220.html">Report Error</a>
@@ -106,18 +106,18 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § 28:2A-219.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Section 2-510.</p>
-                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology. The rule in Section (1)(b) does not allow the lessee under a finance lease to treat the risk of loss as having remained with the supplier from the beginning. This is appropriate given the limited circumstances under which the lessee under a finance lease is allowed to revoke acceptance. Section 2A-517 and Section 2A-516 official comment.</p>
-                <p><strong>Definitional Cross References:</strong> “Conforming”. Section 2A-103(1)(d).</p>
-                <p>“Delivery”.  Section 1-201(14).</p>
-                <p>“Finance lease”. Section 2A-103(1)(g).</p>
-                <p>“Goods”. Section 2A-103(1)(h).</p>
-                <p>“Lease contract”. Section 2A-103(1)(l).</p>
-                <p>“Lessee”. Section 2A-103(1)(n).</p>
-                <p>“Lessor”. Section 2A-103(1)(p).</p>
-                <p>“Reasonable time”.  Section 1-204(1) and (2).</p>
-                <p>“Rights”.  Section 1-201(36).</p>
                 <p>“Supplier”. Section 2A-103(1)(x).</p>
+                <p>“Rights”.  Section 1-201(36).</p>
+                <p>“Reasonable time”.  Section 1-204(1) and (2).</p>
+                <p>“Lessor”. Section 2A-103(1)(p).</p>
+                <p>“Lessee”. Section 2A-103(1)(n).</p>
+                <p>“Lease contract”. Section 2A-103(1)(l).</p>
+                <p>“Goods”. Section 2A-103(1)(h).</p>
+                <p>“Finance lease”. Section 2A-103(1)(g).</p>
+                <p>“Delivery”.  Section 1-201(14).</p>
+                <p><strong>Definitional Cross References:</strong> “Conforming”. Section 2A-103(1)(d).</p>
+                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology. The rule in Section (1)(b) does not allow the lessee under a finance lease to treat the risk of loss as having remained with the supplier from the beginning. This is appropriate given the limited circumstances under which the lessee under a finance lease is allowed to revoke acceptance. Section 2A-517 and Section 2A-516 official comment.</p>
+                <p><strong>Uniform Statutory Source:</strong>Section 2-510.</p>
               </section>
             </section>
           </section>

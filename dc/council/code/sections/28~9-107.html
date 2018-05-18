@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-108.html">§ 28:9-108. Sufficiency of description.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-107.html">Report Error</a>
@@ -102,12 +102,12 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:9-203.html">28:9-203</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-207.html">28:9-207</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-208.html">28:9-208</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-314.html">28:9-314</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-329.html">28:9-329</a>, and § <a class="internal-link" href="/dc/council/code/sections/28:9-601.html">28:9-601</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. New.</p>
-                <p>2. “Control” of Letter-of-Credit Right. Whether a secured party has control of a letter-of-credit right may determine the secured party’s priority as against competing secured parties. See  Section 9-329. This section provides that a secured party acquires control of a letter-of-credit right by receiving an assignment if the secured party obtains the consent of the issuer or any nominated person, such as a confirmer or negotiating bank, under  Section 5-114 or other applicable law or practice. Because both issuers and nominated persons may give or be obligated to give value under a letter of credit, this section contemplates that a secured party obtains control of a letter-of-credit right with respect to the issuer or a particular nominated person only to the extent that the issuer or that nominated person consents to the assignment. For example, if a secured party obtains control to the extent of an issuer’s obligation but fails to obtain the consent of a nominated person, the secured party does not have control to the extent that the nominated person gives value. In many cases the person or persons who will give value under a letter of credit will be clear from its terms. In other cases, prudence may suggest obtaining consent from more than one person. The details of the consenting issuer’s or nominated person’s duties to pay or otherwise render performance to the secured party are left to the agreement of the parties.</p>
-                <p>3. “Proceeds of a Letter of Credit.”  Section 5-114 follows traditional banking terminology by referring to a letter of credit beneficiary’s assignment of its right to receive payment thereunder as an assignment of the “proceeds of a letter of credit.“ However, as the seller of goods can assign its right to receive payment (an ‘’account“) before it has been earned by delivering the goods to the buyer, so the beneficiary of a letter of credit can assign its contingent right to payment before the letter of credit has been honored. See  Section 5-114(b). If the assignment creates a security interest, the security interest can be perfected at the time it is created. An assignment of, including the creation of a security interest in, a letter-of-credit right is an assignment of a present interest.</p>
-                <p>4. “Transfer” vs. “Assignment.” Letter-of-credit law and practice distinguish the “transfer” of a letter of credit from an “assignment.” Under a transfer, the transferee itself becomes the beneficiary and acquires the right to draw. Whether a new, substitute credit is issued or the issuer advises the transferee of its status as such, the transfer constitutes a novation under which the transferee is the new, substituted beneficiary (but only to the extent of the transfer, in the case of a partial transfer).</p>
-                <p>Section 5-114(e) provides that the rights of a transferee beneficiary or nominated person are independent of the beneficiary’s assignment of the proceeds of a letter of credit and are superior to the assignee’s right to the proceeds. For this reason, transfer does not appear in this Article as a means of control or perfection.  Section 9-109(c)(4) recognizes the independent and superior rights of a transferee beneficiary under  Section 5-114(e); this Article does not apply to the rights of a transferee beneficiary or nominated person to the extent that those rights are independent and superior under  Section 5-114.</p>
                 <p>5. Supporting Obligation: Automatic Attachment and Perfection. A letter-of-credit right is a type of “supporting obligation,” as defined in  Section 9-102. Under  Sections 9-203 and  9-308, a security interest in a letter-of-credit right automatically attaches and is automatically perfected if the security interest in the supported obligation is a perfected security interest. However, unless the secured party has control of the letter-of-credit right or itself becomes a transferee beneficiary, it cannot obtain any rights against the issuer or a nominated person under Article 5. Consequently, as a practical matter, the secured party’s rights would be limited to its ability to locate and identify proceeds distributed by the issuer or nominated person under the letter of credit.</p>
+                <p>Section 5-114(e) provides that the rights of a transferee beneficiary or nominated person are independent of the beneficiary’s assignment of the proceeds of a letter of credit and are superior to the assignee’s right to the proceeds. For this reason, transfer does not appear in this Article as a means of control or perfection.  Section 9-109(c)(4) recognizes the independent and superior rights of a transferee beneficiary under  Section 5-114(e); this Article does not apply to the rights of a transferee beneficiary or nominated person to the extent that those rights are independent and superior under  Section 5-114.</p>
+                <p>4. “Transfer” vs. “Assignment.” Letter-of-credit law and practice distinguish the “transfer” of a letter of credit from an “assignment.” Under a transfer, the transferee itself becomes the beneficiary and acquires the right to draw. Whether a new, substitute credit is issued or the issuer advises the transferee of its status as such, the transfer constitutes a novation under which the transferee is the new, substituted beneficiary (but only to the extent of the transfer, in the case of a partial transfer).</p>
+                <p>3. “Proceeds of a Letter of Credit.”  Section 5-114 follows traditional banking terminology by referring to a letter of credit beneficiary’s assignment of its right to receive payment thereunder as an assignment of the “proceeds of a letter of credit.“ However, as the seller of goods can assign its right to receive payment (an ‘’account“) before it has been earned by delivering the goods to the buyer, so the beneficiary of a letter of credit can assign its contingent right to payment before the letter of credit has been honored. See  Section 5-114(b). If the assignment creates a security interest, the security interest can be perfected at the time it is created. An assignment of, including the creation of a security interest in, a letter-of-credit right is an assignment of a present interest.</p>
+                <p>2. “Control” of Letter-of-Credit Right. Whether a secured party has control of a letter-of-credit right may determine the secured party’s priority as against competing secured parties. See  Section 9-329. This section provides that a secured party acquires control of a letter-of-credit right by receiving an assignment if the secured party obtains the consent of the issuer or any nominated person, such as a confirmer or negotiating bank, under  Section 5-114 or other applicable law or practice. Because both issuers and nominated persons may give or be obligated to give value under a letter of credit, this section contemplates that a secured party obtains control of a letter-of-credit right with respect to the issuer or a particular nominated person only to the extent that the issuer or that nominated person consents to the assignment. For example, if a secured party obtains control to the extent of an issuer’s obligation but fails to obtain the consent of a nominated person, the secured party does not have control to the extent that the nominated person gives value. In many cases the person or persons who will give value under a letter of credit will be clear from its terms. In other cases, prudence may suggest obtaining consent from more than one person. The details of the consenting issuer’s or nominated person’s duties to pay or otherwise render performance to the secured party are left to the agreement of the parties.</p>
+                <p>1. Source. New.</p>
               </section>
             </section>
           </section>

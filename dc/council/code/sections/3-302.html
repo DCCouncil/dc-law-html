@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/3-303.html">§ 3–303. Control of and jurisdiction over Armory; maintenance and repair.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-302.html">Report Error</a>
@@ -99,15 +99,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch418.html#§2">June 4, 1948, 62 Stat. 339, ch. 418, § 2</a>; <a class="internal-link" href="/us/congress/laws/public/93-198.html">Dec. 24, 1973, 87 Stat. 811, Pub. L. 93-198, title IV, § 494</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-302.</p>
                 <p>1973 Ed., § 2-1702.</p>
+                <p>1981 Ed., § 2-302.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-315.02.html">1-315.02</a>, § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/1-604.06.html">1-604.06</a>.</p>
                 <h4>Cross References</h4>
-                <p>“Agency” defined, see 1-315.02.</p>
-                <p>Disclosure of financial interests, requirements, see 1-1106.02.</p>
-                <p>Nomination and approval of agency heads, see 1-523.01.</p>
                 <p>Personnel authority, rules and regulations, implementation, see 1-604.06.</p>
+                <p>Nomination and approval of agency heads, see 1-523.01.</p>
+                <p>Disclosure of financial interests, requirements, see 1-1106.02.</p>
+                <p>“Agency” defined, see 1-315.02.</p>
                 <h4>Transfer of Functions</h4>
                 <p>Transfer of nonmilitary functions to Sports Commission: Section 19 of <a class="internal-link" href="/dc/council/laws/10-152.html">D.C. Law 10-152</a>, provided, in part, that the Sports Commission shall assume all nonmilitary functions of the Armory Board as are set forth in § 2-306 repealed and that all references to the Armory Board in Subchapter II of Chapter 3 of Title 2 are intended to be references to the Sports Commission unless the clear meaning requires otherwise.</p>
                 <h4>References in Text</h4>

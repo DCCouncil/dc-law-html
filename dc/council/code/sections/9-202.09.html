@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/9-202.10.html">§ 9–202.10. Required notice of approval to affected property owners.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/9-202.09.html">Report Error</a>
@@ -126,8 +126,8 @@
                 <h4>References in Text</h4>
                 <p>Section 308b of the Comprehensive Plan (10 DCMR) referred to in (f) is codified as § 308b of Title 10 of the D.C. Municipal Regulations.</p>
                 <h4>Effective Dates</h4>
-                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/10-193.html">D.C. Law 10-193</a> provided that no District element of the Comprehensive Plan for the National Capital shall take effect until it has been reviewed by the National Capital Planning Commission as provided in § <a class="internal-link" href="/dc/council/code/sections/2-1002.html">2-1002</a>(a) and § <a class="internal-link" href="/dc/council/code/sections/1-204.23.html">1-204.23</a>.</p>
                 <p>Section 7(b) of <a class="internal-link" href="/dc/council/laws/12-275.html">D.C. Law 12-275</a> provided that no District element of the Comprehensive Plan for the National Capital shall take effect until it has been reviewed by the National Capital Planning Commission as provided in § <a class="internal-link" href="/dc/council/code/sections/2-1002.html">2-1002</a>(a) and § <a class="internal-link" href="/dc/council/code/sections/1-204.23.html">1-204.23</a>.</p>
+                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/10-193.html">D.C. Law 10-193</a> provided that no District element of the Comprehensive Plan for the National Capital shall take effect until it has been reviewed by the National Capital Planning Commission as provided in § <a class="internal-link" href="/dc/council/code/sections/2-1002.html">2-1002</a>(a) and § <a class="internal-link" href="/dc/council/code/sections/1-204.23.html">1-204.23</a>.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/42-3404.02a.html">§ 42–3404.02a. Registration of a tenant organization.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-3404.02.html">Report Error</a>
@@ -242,44 +242,44 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-2851.04.html">42-2851.04</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3404.05.html">42-3404.05</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3404.12.html">42-3404.12</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-176.html">D.C. Law 15-176</a>, in subsec. (c), substituted “spouse, or domestic partner as defined in § <a class="internal-link" href="/dc/council/code/sections/32-701.html">32-701</a>(3),” for “spouse”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-15.html">D.C. Law 16-15</a>, in subsec. (b), substituted “subchapters IV and V of this chapter, the terms ‘sell’ or ‘sale’ include, but are not limited to, the execution of any agreement pursuant to which the owner of the housing accommodation agrees to some, but not all, of the following:” for “this subchapter, the terms ‘sell’ or ‘sale’ include the execution of any agreement that assigns, leases, or encumbers property, pursuant to which the owner”; rewrote subsec. (c); and added subsec. (d).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsecs. (b), (c)(3), and (d)(5)(A), validated previously made technical corrections.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-40.html">D.C. Law 17-40</a>, in subsec. (c)(2), added subpar. (H-i).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in subsec. (c)(2)(B), substituted “spouses” for “husband and wife”.</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “to an entity under § <a class="internal-link" href="/dc/council/code/sections/29-204.06.html">29-204.06</a>” for “to a limited liability company as contemplated by § 29-1013” in (c)(2)(G) and (I).</p>
                 <p>The 2016 amendment by <a class="internal-link" href="/dc/council/laws/21-63.html">D.C. Law 21-63</a> rewrote (a); and added (a-1) and (a-2).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “to an entity under § <a class="internal-link" href="/dc/council/code/sections/29-204.06.html">29-204.06</a>” for “to a limited liability company as contemplated by § 29-1013” in (c)(2)(G) and (I).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in subsec. (c)(2)(B), substituted “spouses” for “husband and wife”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-40.html">D.C. Law 17-40</a>, in subsec. (c)(2), added subpar. (H-i).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsecs. (b), (c)(3), and (d)(5)(A), validated previously made technical corrections.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-15.html">D.C. Law 16-15</a>, in subsec. (b), substituted “subchapters IV and V of this chapter, the terms ‘sell’ or ‘sale’ include, but are not limited to, the execution of any agreement pursuant to which the owner of the housing accommodation agrees to some, but not all, of the following:” for “this subchapter, the terms ‘sell’ or ‘sale’ include the execution of any agreement that assigns, leases, or encumbers property, pursuant to which the owner”; rewrote subsec. (c); and added subsec. (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-176.html">D.C. Law 15-176</a>, in subsec. (c), substituted “spouse, or domestic partner as defined in § <a class="internal-link" href="/dc/council/code/sections/32-701.html">32-701</a>(3),” for “spouse”.</p>
                 <h4>Expiration of Law</h4>
-                <p>Expiration of Law 17-40</p>
                 <p>Section 3 of <a class="internal-link" href="/dc/council/laws/17-40.html">D.C. Law 17-40</a> provided that the act shall expire on October 18, 2017.</p>
+                <p>Expiration of Law 17-40</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 3(i) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1994 (D.C. Act 10-285, July 8, 1994,  41 DCR 4904).</p>
-                <p>For temporary amendment of section, see § 3(i) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1995 (D.C. Act 11-47, May 4, 1995,  42 DCR 2410) and § 3(i) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Congressional Recess Emergency Act of 1995 (D.C. Act 11-96, July 19, 1995,  42 DCR 3837).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Historic Preservation Tax Credit Partnership and Limited Liability Company Clarification Emergency Act of 2007 (D.C. Act 17-111, July 27, 2007,  54 DCR 8227).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Tenant Opportunity to Purchase Emergency Amendment Act of 2014 (D.C. Act 20-434, Oct. 7, 2014, 61 DCR 10715, 20 STAT 4152).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Tenant Opportunity to Purchase Congressional Review Emergency Amendment Act of 2014 (D.C. Act 20-581, Jan. 13, 2015, 62 DCR 1267, 21 STAT 733).</p>
-                <p>For temporary (90 days) exemption from the notice requirements of § <a class="internal-link" href="/dc/council/code/sections/42-3404.02.html">42-3404.02</a>(d) for transfer of an interest in Jubilee Maycroft LLC (Lots 2010-2072 in Square 2669, 1474 Columbia Road, N.W.), from Jubilee Housing, Inc. to one or more entities controlled directly or indirectly by Jubilee Housing, Inc., see § 2 of the Jubilee Maycroft TOPA Notice Exemption Emergency Act of 2015 (D.C. Act 21-54, May 7,  2015, 62 DCR 5952, 21 DCSTAT 1429).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the TOPA Bona Fide Offer of Sale Clarification Emergency Amendment Act of 2015 (D.C. Act 21-95, June 25, 2015,  62 DCR 9225, 21 DCSTAT 1484).</p>
-                <p>For temporary (90 days) repeal of temporary D.C. Law 20-166, see § 3 of the TOPA Bona Fide Offer of Sale Clarification Emergency Amendment Act of 2015 (D.C. Act 21-95, June 25, 2015,  62 DCR 9225, 21 DCSTAT 1484).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the TOPA Bona Fide Offer of Sale Clarification Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-151, Aug. 11, 2015,  62 DCR 11441).</p>
                 <p>For temporary (90 days) repeal of temporary D.C. Law 20-166, see § 3 of the TOPA Bona Fide Offer of Sale Clarification Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-151, Aug. 11, 2015,  62 DCR 11441).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the TOPA Bona Fide Offer of Sale Clarification Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-151, Aug. 11, 2015,  62 DCR 11441).</p>
+                <p>For temporary (90 days) repeal of temporary D.C. Law 20-166, see § 3 of the TOPA Bona Fide Offer of Sale Clarification Emergency Amendment Act of 2015 (D.C. Act 21-95, June 25, 2015,  62 DCR 9225, 21 DCSTAT 1484).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the TOPA Bona Fide Offer of Sale Clarification Emergency Amendment Act of 2015 (D.C. Act 21-95, June 25, 2015,  62 DCR 9225, 21 DCSTAT 1484).</p>
+                <p>For temporary (90 days) exemption from the notice requirements of § <a class="internal-link" href="/dc/council/code/sections/42-3404.02.html">42-3404.02</a>(d) for transfer of an interest in Jubilee Maycroft LLC (Lots 2010-2072 in Square 2669, 1474 Columbia Road, N.W.), from Jubilee Housing, Inc. to one or more entities controlled directly or indirectly by Jubilee Housing, Inc., see § 2 of the Jubilee Maycroft TOPA Notice Exemption Emergency Act of 2015 (D.C. Act 21-54, May 7,  2015, 62 DCR 5952, 21 DCSTAT 1429).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Tenant Opportunity to Purchase Congressional Review Emergency Amendment Act of 2014 (D.C. Act 20-581, Jan. 13, 2015, 62 DCR 1267, 21 STAT 733).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Tenant Opportunity to Purchase Emergency Amendment Act of 2014 (D.C. Act 20-434, Oct. 7, 2014, 61 DCR 10715, 20 STAT 4152).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Historic Preservation Tax Credit Partnership and Limited Liability Company Clarification Emergency Act of 2007 (D.C. Act 17-111, July 27, 2007,  54 DCR 8227).</p>
+                <p>For temporary amendment of section, see § 3(i) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1995 (D.C. Act 11-47, May 4, 1995,  42 DCR 2410) and § 3(i) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Congressional Recess Emergency Act of 1995 (D.C. Act 11-96, July 19, 1995,  42 DCR 3837).</p>
+                <p>For temporary amendment of section, see § 3(i) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1994 (D.C. Act 10-285, July 8, 1994,  41 DCR 4904).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 3(i) of Rental Housing Conversion and Sale Act of 1980 Temporary Extension Amendment Act of 1994 (D.C. Law 10-176, September 22, 1994, law notification  41 DCR 6706).</p>
-                <p>For temporary (225 days) amendment of this section, see § 2 of the Tenant Opportunity to Purchase Temporary Amendment Act of 2014 (D.C. Law 20-166, February 26, 2015, 61 DCR 11101).</p>
-                <p>For temporary (225 days) exemption from the notice requirements of § <a class="internal-link" href="/dc/council/code/sections/42-3404.02.html">42-3404.02</a>(d) for transfer of an interest in Jubilee Maycroft LLC (Lots 2010 - 2072 in Square 2669, 1474 Columbia Road, N.W.), from Jubilee Housing, Inc. to one or more entities controlled directly or indirectly by Jubilee Housing, Inc., see § 2 of the Jubilee Maycroft TOPA Notice Exemption Temporary Act of 2015 (D.C. Law 21-19, July 22, 2015,  62 DCR 6882).</p>
-                <p>For temporary (225 days) amendment of this section, see § 2(b) of the TOPA Bona Fide Offer of Sale Clarification Temporary Amendment Act of 2015   (D.C. Law 21-26, Sept. 23, 2015,  62 DCR 9456).</p>
                 <p>For temporary (225 days) repeal of temporary D.C. Law 20-166, see § 3 of the TOPA Bona Fide Offer of Sale Clarification Temporary Amendment Act of 2015   (D.C. Law 21-26, Sept. 23, 2015,  62 DCR 9456).</p>
+                <p>For temporary (225 days) amendment of this section, see § 2(b) of the TOPA Bona Fide Offer of Sale Clarification Temporary Amendment Act of 2015   (D.C. Law 21-26, Sept. 23, 2015,  62 DCR 9456).</p>
+                <p>For temporary (225 days) exemption from the notice requirements of § <a class="internal-link" href="/dc/council/code/sections/42-3404.02.html">42-3404.02</a>(d) for transfer of an interest in Jubilee Maycroft LLC (Lots 2010 - 2072 in Square 2669, 1474 Columbia Road, N.W.), from Jubilee Housing, Inc. to one or more entities controlled directly or indirectly by Jubilee Housing, Inc., see § 2 of the Jubilee Maycroft TOPA Notice Exemption Temporary Act of 2015 (D.C. Law 21-19, July 22, 2015,  62 DCR 6882).</p>
+                <p>For temporary (225 days) amendment of this section, see § 2 of the Tenant Opportunity to Purchase Temporary Amendment Act of 2014 (D.C. Law 20-166, February 26, 2015, 61 DCR 11101).</p>
+                <p>For temporary (225 day) amendment of section, see § 3(i) of Rental Housing Conversion and Sale Act of 1980 Temporary Extension Amendment Act of 1994 (D.C. Law 10-176, September 22, 1994, law notification  41 DCR 6706).</p>
                 <h4>Editor's Notes</h4>
-                <p>Application of Law 8-49: Section 3 of <a class="internal-link" href="/dc/council/laws/8-49.html">D.C. Law 8-49</a> provided that the act shall not apply to any sale of a rental housing accommodation that occurs after June 23, 1988.</p>
-                <p>Reenactment of Law 3-86: See Historical and Statutory Notes following § 45-1601.</p>
-                <p>Amendment of section by Law 10-144: Section 2(i) of <a class="internal-link" href="/dc/council/laws/10-144.html">D.C. Law 10-144</a> purported to amend this section by adding (c) to read as follows:</p>
-                <p>“(c) For the purposes of this subchapter, the term ’sell’ or ’sale’ includes the transfer of 100% of all partnership interests in a partnership which owns the accommodation as its sole asset to 1 transferee or of 100% of all stock of a corporation which owns the accommodation as its sole asset to 1 transferee in 1 or more transactions occurring during a period of 1 year from the date of the first such transfer, and a master lease which meets some, but not all, of the factors described in subsection (b) of this section or which is similar in effect. For the purposes of this subchapter, the term ’sell’ or ’sale’ does not include a transfer, even though for consideration, by a decedent’s estate to members of the decedent’s family if the consideration arising from such transfer will pass from the decedent’s estate to, or solely for the benefit of, charity. For purposes of the preceding sentence, the term ‘member’s of the decedent’s family’ means:</p>
-                <p>“(1) a surviving spouse of the decedent, lineal descendants of the decedent, or spouses of lineal descendants of the decedent,</p>
-                <p>“(2) a trust for the primary benefit of the persons referred to in clause (1), and</p>
-                <p>“(3) a partnership, corporation, or other entity controlled by the individuals referred to in clauses (1) and (2).</p>
-                <p>“The term ‘sell’ or ‘sale’ does not include a foreclosure sale, a tax sale, or a bankruptcy sale. An owner who is uncertain as to the applicability of this subchapter is deemed to be an aggrieved owner for the purposes of seeking declaratory relief under §§ 45-1653 and 45-1653.1. The tenant or tenant organization in such an accommodation is deemed to be an aggrieved tenant or tenant organization, as applicable, for these purposes. This subsection shall not apply to any transaction involving accommodations otherwise subject hereto expressly contemplated by a registration statement filed with the Securities and Exchange Commission prior to February 22, 1994.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/15-176.html">D.C. Law 15-176</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/15-176.html">D.C. Law 15-176</a> provides that sections 2 through 6 of the act shall apply as of October 1, 2003.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/15-176.html">D.C. Law 15-176</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/15-176.html">D.C. Law 15-176</a> provides that sections 2 through 6 of the act shall apply as of October 1, 2003.</p>
+                <p>“The term ‘sell’ or ‘sale’ does not include a foreclosure sale, a tax sale, or a bankruptcy sale. An owner who is uncertain as to the applicability of this subchapter is deemed to be an aggrieved owner for the purposes of seeking declaratory relief under §§ 45-1653 and 45-1653.1. The tenant or tenant organization in such an accommodation is deemed to be an aggrieved tenant or tenant organization, as applicable, for these purposes. This subsection shall not apply to any transaction involving accommodations otherwise subject hereto expressly contemplated by a registration statement filed with the Securities and Exchange Commission prior to February 22, 1994.</p>
+                <p>“(3) a partnership, corporation, or other entity controlled by the individuals referred to in clauses (1) and (2).</p>
+                <p>“(2) a trust for the primary benefit of the persons referred to in clause (1), and</p>
+                <p>“(1) a surviving spouse of the decedent, lineal descendants of the decedent, or spouses of lineal descendants of the decedent,</p>
+                <p>“(c) For the purposes of this subchapter, the term ’sell’ or ’sale’ includes the transfer of 100% of all partnership interests in a partnership which owns the accommodation as its sole asset to 1 transferee or of 100% of all stock of a corporation which owns the accommodation as its sole asset to 1 transferee in 1 or more transactions occurring during a period of 1 year from the date of the first such transfer, and a master lease which meets some, but not all, of the factors described in subsection (b) of this section or which is similar in effect. For the purposes of this subchapter, the term ’sell’ or ’sale’ does not include a transfer, even though for consideration, by a decedent’s estate to members of the decedent’s family if the consideration arising from such transfer will pass from the decedent’s estate to, or solely for the benefit of, charity. For purposes of the preceding sentence, the term ‘member’s of the decedent’s family’ means:</p>
+                <p>Amendment of section by Law 10-144: Section 2(i) of <a class="internal-link" href="/dc/council/laws/10-144.html">D.C. Law 10-144</a> purported to amend this section by adding (c) to read as follows:</p>
+                <p>Reenactment of Law 3-86: See Historical and Statutory Notes following § 45-1601.</p>
+                <p>Application of Law 8-49: Section 3 of <a class="internal-link" href="/dc/council/laws/8-49.html">D.C. Law 8-49</a> provided that the act shall not apply to any sale of a rental housing accommodation that occurs after June 23, 1988.</p>
               </section>
             </section>
           </section>

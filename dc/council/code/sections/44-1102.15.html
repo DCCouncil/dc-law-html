@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/44-1102.16.html">§ 44–1102.16. Terms for sale of bonds; additional bond and note provisions. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/44-1102.15.html">Report Error</a>
@@ -101,8 +101,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 32-262.15.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/44-1101.01.html">44-1101.01</a>.</p>
                 <p>For temporary delay of the effective date of §§ 214-217 of the Health and Hospitals Public Benefit Corporation Congressional Review Emergency Act of 1997, see § 601(b) of the Health and Hospitals Public Benefit Corporation Congressional Review Emergency Act of 1997 (D.C. Act 12-39, March 31, 1997,  44 DCR 2044).</p>
+                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/44-1101.01.html">44-1101.01</a>.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 501(b) of <a class="internal-link" href="/dc/council/laws/11-212.html">D.C. Law 11-212</a> provided that §§ 214 through 217 of the act shall take effect upon the enactment by Congress of the legislation proposed in title III of the act or of substantially similar legislation.</p>
                 <h4>Editor's Notes</h4>

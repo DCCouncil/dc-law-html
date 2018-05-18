@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-211.html">§ 28:2A-211. Warranties against interference and against infringement; lessee’s obligation against infringement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-210.html">Report Error</a>
@@ -105,16 +105,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 28:2A-210.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Section 2-313.</p>
-                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology.</p>
-                <p><strong>Purposes:</strong> All of the express and implied warranties of the Article on Sales (Article 2) are included in this Article, revised to reflect the differences between a sale of goods and a lease of goods. Sections 2A-210 through 2A-216. The lease of goods is sufficiently similar to the sale of goods to justify this decision. Hawkland, The Impact of the Uniform Commercial Code on Equipment Leasing, 1972 Ill.L.F. 446, 459-60. Many state and federal courts have reached the same conclusion.</p>
-                <p>Value of the goods, as used in subsection (2), includes rental value.</p>
-                <p><strong>Cross References:</strong> Article 2, esp.  Section 2-313, and Sections 2A-210 through 2A-216.</p>
-                <p><strong>Definitional Cross References:</strong> “Conforming”. Section 2A-103(1)(d).</p>
-                <p>“Goods”. Section 2A-103(1)(h).</p>
-                <p>“Lessee”. Section 2A-103(1)(n).</p>
-                <p>“Lessor”. Section 2A-103(1)(p).</p>
                 <p>“Value”.  Section 1-201(44).</p>
+                <p>“Lessor”. Section 2A-103(1)(p).</p>
+                <p>“Lessee”. Section 2A-103(1)(n).</p>
+                <p>“Goods”. Section 2A-103(1)(h).</p>
+                <p><strong>Definitional Cross References:</strong> “Conforming”. Section 2A-103(1)(d).</p>
+                <p><strong>Cross References:</strong> Article 2, esp.  Section 2-313, and Sections 2A-210 through 2A-216.</p>
+                <p>Value of the goods, as used in subsection (2), includes rental value.</p>
+                <p><strong>Purposes:</strong> All of the express and implied warranties of the Article on Sales (Article 2) are included in this Article, revised to reflect the differences between a sale of goods and a lease of goods. Sections 2A-210 through 2A-216. The lease of goods is sufficiently similar to the sale of goods to justify this decision. Hawkland, The Impact of the Uniform Commercial Code on Equipment Leasing, 1972 Ill.L.F. 446, 459-60. Many state and federal courts have reached the same conclusion.</p>
+                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology.</p>
+                <p><strong>Uniform Statutory Source:</strong>Section 2-313.</p>
               </section>
             </section>
           </section>

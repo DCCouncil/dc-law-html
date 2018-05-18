@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/21/chapters/24/subchapters/III/">Subchapter III. Transfer of Guardianship or Conservatorship.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/21/chapters/24/subchapters/II/">Report Error</a>
@@ -88,15 +88,33 @@
         <section class="col8 body">
           <h1>Subchapter II. Jurisdiction.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/21-2402.01.html">§ 21–2402.01. Definitions; significant connection factors.</a>
-            <a href="/dc/council/code/sections/21-2402.02.html">§ 21–2402.02. Exclusive basis.</a>
-            <a href="/dc/council/code/sections/21-2402.03.html">§ 21–2402.03. Jurisdiction.</a>
-            <a href="/dc/council/code/sections/21-2402.04.html">§ 21–2402.04. Special jurisdiction.</a>
-            <a href="/dc/council/code/sections/21-2402.05.html">§ 21–2402.05. Exclusive and continuing jurisdiction.</a>
-            <a href="/dc/council/code/sections/21-2402.06.html">§ 21–2402.06. Appropriate forum.</a>
-            <a href="/dc/council/code/sections/21-2402.07.html">§ 21–2402.07. Jurisdiction declined by reason of conduct.</a>
-            <a href="/dc/council/code/sections/21-2402.08.html">§ 21–2402.08. Notice of proceeding.</a>
-            <a href="/dc/council/code/sections/21-2402.09.html">§ 21–2402.09. Proceedings in more than one state.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-2402.01.html">§ 21–2402.01. Definitions; significant connection factors.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-2402.02.html">§ 21–2402.02. Exclusive basis.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-2402.03.html">§ 21–2402.03. Jurisdiction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-2402.04.html">§ 21–2402.04. Special jurisdiction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-2402.05.html">§ 21–2402.05. Exclusive and continuing jurisdiction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-2402.06.html">§ 21–2402.06. Appropriate forum.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-2402.07.html">§ 21–2402.07. Jurisdiction declined by reason of conduct.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-2402.08.html">§ 21–2402.08. Notice of proceeding.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-2402.09.html">§ 21–2402.09. Proceedings in more than one state.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

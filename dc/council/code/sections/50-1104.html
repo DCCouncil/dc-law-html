@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/50-1105.html">§ 50–1105. Vehicles not inspected, or unsafe.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/50-1104.html">Report Error</a>
@@ -99,11 +99,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch31.html#§4">Feb. 18, 1938, 52 Stat. 78, ch. 31, § 4</a>; July 16, 1947, 61 Stat. 360, ch. 258, Art. IV, § 3; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 203(b), 48 DCR 2057</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-204.</p>
                 <p>1973 Ed., § 40-204.</p>
+                <p>1981 Ed., § 40-204.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> rewrote the section which had read:</p>
                 <p>“All motor vehicles and trailers owned and officially used by the government of the United States or by the government of the District of Columbia or by the representatives of foreign governments, shall be subject to annual inspection, such inspections to be furnished without charge.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> rewrote the section which had read:</p>
                 <h4>Cross References</h4>
                 <p>Publicly owned vehicles, see § <a class="internal-link" href="/dc/council/code/sections/50-201.html">50-201</a> et seq.</p>
               </section>

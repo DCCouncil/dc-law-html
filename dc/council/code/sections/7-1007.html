@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/7-1008.html">§ 7–1008. White Cane Safety Day.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-1007.html">Report Error</a>
@@ -100,13 +100,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-515.html#§6">Oct. 21, 1972, 86 Stat. 972, Pub. L. 92-515, § 6</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 25(e), 53 DCR 6198</a>; <a class="internal-link" href="/dc/council/laws/18-146.html">May 22, 2010, D.C. Law 18-146, § 2(b), 57 DCR 2549</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1707.</p>
                 <p>1973 Ed., § 6-1506.</p>
+                <p>1981 Ed., § 6-1707.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1831.03.html">2-1831.03</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “person or person with another physical disability” for “or otherwise disabled person”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-146.html">D.C. Law 18-146</a> designated the existing text as subsec. (a); and added subsecs. (b) and (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “person or person with another physical disability” for “or otherwise disabled person”.</p>
               </section>
             </section>
           </section>

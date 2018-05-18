@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/42/chapters/35A/">Chapter 35A. Rental Housing: Tenant Advocacy.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/42/chapters/35/">Report Error</a>
@@ -87,28 +87,50 @@
         <section class="col8 body">
           <h1>Chapter 35. Rental Housing Generally.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/I/">Subchapter I. Findings; Purposes; Definitions.</a>
-            <p>§§ 42-3501.01 - 42-3501.03</p>
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/II/">Subchapter II. Rent Stabilization Program.</a>
-            <p>§§ 42-3502.01 - 42-3502.24</p>
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/III/">Subchapter III. Tenant Assistance Program.</a>
-            <p>§§ 42-3503.01 - 42-3503.08</p>
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/IV/">Subchapter IV. Revenue.</a>
-            <p>§§ 42-3504.01 - 42-3504.02</p>
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/V/">Subchapter V. Evictions; Retaliatory Action; and Other Matters.</a>
-            <p>§§ 42-3505.01 - 42-3505.08</p>
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/V-A/">Subchapter V-A. Payment of Rent Beyond 5 Days After Due Date.</a>
-            <p>§§ 42-3505.31 - 42-3505.31</p>
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/V-B/">Subchapter V-B. Other Housing Provider Actions During Tenancies.</a>
-            <p>§§ 42-3505.51 - 42-3505.55</p>
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/VI/">Subchapter VI. Conversion or Demolition of Rental Housing for Hotels, Motels, or Inns.</a>
-            <p>§§ 42-3506.01 - 42-3506.02</p>
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/VII/">Subchapter VII. Relocation Assistance for Tenants Displaced by Substantial Rehabilitation, Demolition, or Housing Discontinuance.</a>
-            <p>§§ 42-3507.01 - 42-3507.05</p>
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/VIII/">Subchapter VIII. New and Vacant Rental Housing and Distressed Property.</a>
-            <p>§§ 42-3508.01 - 42-3508.06</p>
-            <a href="/dc/council/code/titles/42/chapters/35/subchapters/IX/">Subchapter IX. Miscellaneous Provisions.</a>
-            <p>§§ 42-3509.01 - 42-3509.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/I/">Subchapter I. Findings; Purposes; Definitions.</a>
+            </p>
+            <p>§§ 42-3501.01 – 42-3501.03</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/II/">Subchapter II. Rent Stabilization Program.</a>
+            </p>
+            <p>§§ 42-3502.01 – 42-3502.24</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/III/">Subchapter III. Tenant Assistance Program.</a>
+            </p>
+            <p>§§ 42-3503.01 – 42-3503.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/IV/">Subchapter IV. Revenue.</a>
+            </p>
+            <p>§§ 42-3504.01 – 42-3504.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/V/">Subchapter V. Evictions; Retaliatory Action; and Other Matters.</a>
+            </p>
+            <p>§§ 42-3505.01 – 42-3505.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/V-A/">Subchapter V-A. Payment of Rent Beyond 5 Days After Due Date.</a>
+            </p>
+            <p>§§ 42-3505.31 – 42-3505.31</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/V-B/">Subchapter V-B. Other Housing Provider Actions During Tenancies.</a>
+            </p>
+            <p>§§ 42-3505.51 – 42-3505.55</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/VI/">Subchapter VI. Conversion or Demolition of Rental Housing for Hotels, Motels, or Inns.</a>
+            </p>
+            <p>§§ 42-3506.01 – 42-3506.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/VII/">Subchapter VII. Relocation Assistance for Tenants Displaced by Substantial Rehabilitation, Demolition, or Housing Discontinuance.</a>
+            </p>
+            <p>§§ 42-3507.01 – 42-3507.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/VIII/">Subchapter VIII. New and Vacant Rental Housing and Distressed Property.</a>
+            </p>
+            <p>§§ 42-3508.01 – 42-3508.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/35/subchapters/IX/">Subchapter IX. Miscellaneous Provisions.</a>
+            </p>
+            <p>§§ 42-3509.01 – 42-3509.08</p>
           </section>
           <section class="content">
             <hr/>
@@ -139,8 +161,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3401.03.html">42-3401.03</a> and § <a class="internal-link" href="/dc/council/code/sections/47-1303.04.html">47-1303.04</a>.</p>
                 <h4>Cross References</h4>
-                <p>Real property tax assignment, applicable tenant protection provisions, see § <a class="internal-link" href="/dc/council/code/sections/47-1303.04.html">47-1303.04</a>.</p>
                 <p>Rental housing conversion and sale, see § <a class="internal-link" href="/dc/council/code/sections/42-3401.01.html">42-3401.01</a> et seq.</p>
+                <p>Real property tax assignment, applicable tenant protection provisions, see § <a class="internal-link" href="/dc/council/code/sections/47-1303.04.html">47-1303.04</a>.</p>
                 <h4>Expiration of Law</h4>
                 <p>Section 907 of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, as amended by § 2(d) of <a class="internal-link" href="/dc/council/laws/8-48.html">D.C. Law 8-48</a>, § 818 of <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a>, § 1202(b) of <a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a>, and § 2 of <a class="internal-link" href="/dc/council/laws/16-10.html">D.C. Law 16-10</a>, codified as § <a class="internal-link" href="/dc/council/code/sections/42-3509.07.html">42-3509.07</a>, provided that all subchapters of this chapter, except III and V, shall terminate on December 31, 2010.</p>
                 <h4>Mayor's Orders</h4>
@@ -241,9 +263,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-751.11.html">6-751.11</a>, § <a class="internal-link" href="/dc/council/code/sections/42-903.html">42-903</a>, § <a class="internal-link" href="/dc/council/code/sections/42-2851.02.html">42-2851.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3171.01.html">42-3171.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3173.01.html">42-3173.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.06.html">42-3502.06</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.09.html">42-3502.09</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.21.html">42-3502.21</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3508.04.html">42-3508.04</a>, § <a class="internal-link" href="/dc/council/code/sections/47-830.html">47-830</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-865.html">47-865</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> rewrote par. (10), which had read as follows: “(10) ‘Division’ means the Rental Accommodations and Conversion Division as continued by § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in par. (5)(C).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> added (8A); and repealed (10), which formerly read: “‘Division’ means the Rental Accommodations Division established by § <a class="internal-link" href="/dc/council/code/sections/42-3502.03.html">42-3502.03</a> or the Rental Conversion and Sale Division established by § <a class="internal-link" href="/dc/council/code/sections/42-3502.04a.html">42-3502.04a</a>.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in par. (5)(C).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> rewrote par. (10), which had read as follows: “(10) ‘Division’ means the Rental Accommodations and Conversion Division as continued by § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.”</p>
                 <h4>Cross References</h4>
                 <p>Improvement program for distressed property, see § <a class="internal-link" href="/dc/council/code/sections/42-3508.04.html">42-3508.04</a>.</p>
                 <h4>Expiration of Law</h4>
@@ -288,8 +310,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-327.html">D.C. Law 18-327</a> rewrote subsec. (a); and added subsec. (b-1). Prior to amendment, subsec. (a) read as follows: “(a) The Rental Housing Commission established by § <a class="internal-link" href="/dc/council/code/sections/42-4012.html">42-4012</a> is continued and shall be composed of 3 members appointed by the Mayor with the advice and consent of the Council. The members’ terms shall not exceed 3 years. Members may be appointed for successive terms. The terms of members of the Rental Housing Commission appointed under the Rental Housing Act of 1980 shall expire upon the confirmation of at least 2 new members appointed pursuant to this section but no later than 90 days after July 17, 1985, and the Mayor shall appoint the new members within 30 days of July 17, 1985. The Mayor shall designate 1 member of the Rental Housing Commission as the chairperson and administrative head. The date of swearing in for a majority of the members of the Rental Housing Commission appointed pursuant to this section shall become the anniversary date for all subsequent appointments.”</p>
                 <h4>Cross References</h4>
-                <p>Mayoral nomination of Rental Housing Commission, review and approval of Council, see § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.</p>
                 <p>Merit system classification policy and grade levels, see § <a class="internal-link" href="/dc/council/code/sections/1-611.01.html">1-611.01</a>.</p>
+                <p>Mayoral nomination of Rental Housing Commission, review and approval of Council, see § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.</p>
                 <h4>Expiration of Law</h4>
                 <p>Section 907 of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, as amended by § 2(d) of <a class="internal-link" href="/dc/council/laws/8-48.html">D.C. Law 8-48</a> and § 818 of <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a>, provided that all subchapters of the act, except III and V shall terminate on December 31, 2000.</p>
                 <h4>References in Text</h4>
@@ -326,23 +348,23 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3502.04.html">42-3502.04</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in par. (a)(3), substituted “rent charged” for “rent ceiling”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a>, in subsec. (d), substituted “The Department of Housing and Community Development” for “The Department of Consumer and Regulatory Affairs”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a>, in subsec. (a)(1), inserted “except rules and procedures subject to § <a class="internal-link" href="/dc/council/code/sections/2-1831.05.html">2-1831.05</a>(a)(7)”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a>, in subsec. (d), substituted “The Department of Housing and Community Development” for “The Department of Consumer and Regulatory Affairs”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in par. (a)(3), substituted “rent charged” for “rent ceiling”.</p>
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
-                <p>For temporary (90 day) amendment of section, see § 2003(b), of Fiscal Year 2008 Budget Support Emergency Act of 2007 (D.C. Act 17-74, July 25, 2007,  54 DCR 7549).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Rental Housing Commission Quorum Emergency Amendment Act of 2010 (D.C. Act 18-460, July 7, 2010,  57 DCR 6058).</p>
-                <p>For temporary (90 day) amendment of section, see § 520 of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
-                <p>For temporary (90 day) amendment of section, see § 520 of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Rental Housing Commission Quorum Emergency Amendment Act of 2011 (D.C. Act 19-52, April 27, 2011,  58 DCR 3880).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-4.html#§2(a)">§ 2(a) of Elderly Tenant and Tenant with a Disability Protection Emergency Amendment Act of 2017 (D.C. Act 22-4, Feb. 9, 2017, 64 DCR 1680)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Rental Housing Commission Quorum Emergency Amendment Act of 2011 (D.C. Act 19-52, April 27, 2011,  58 DCR 3880).</p>
+                <p>For temporary (90 day) amendment of section, see § 520 of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
+                <p>For temporary (90 day) amendment of section, see § 520 of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Rental Housing Commission Quorum Emergency Amendment Act of 2010 (D.C. Act 18-460, July 7, 2010,  57 DCR 6058).</p>
+                <p>For temporary (90 day) amendment of section, see § 2003(b), of Fiscal Year 2008 Budget Support Emergency Act of 2007 (D.C. Act 17-74, July 25, 2007,  54 DCR 7549).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 18-231, in subsec. (b)(2), substituted “One member” for “A majority”.</p>
                 <p>Section 4(b) of D.C. Law 18-231 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 18-231, in subsec. (b)(2), substituted “One member” for “A majority”.</p>
               </section>
             </section>
             <hr/>
@@ -374,8 +396,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3401.03.html">42-3401.03</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3501.03.html">42-3501.03</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3502.04b.html">42-3502.04b</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> rewrote the section.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-366.html">D.C. Law 17-366</a> rewrote the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> rewrote the section.</p>
                 <h4>Cross References</h4>
                 <p>Merit system classification policy and grade levels, see § <a class="internal-link" href="/dc/council/code/sections/1-611.01.html">1-611.01</a>.</p>
                 <h4>Expiration of Law</h4>
@@ -463,8 +485,8 @@
       (<a class="internal-link" href="/dc/council/laws/6-10.html#§203a">July 17, 1985, D.C. Law 6-10, §  203a</a>; <a class="internal-link" href="/dc/council/laws/21-36.html">as added Oct. 22, 2015, D.C. Law 21-36, § 2212(a), 62 DCR 10905</a>; <a class="internal-link" href="/dc/council/laws/22-33.html#§2092">Dec. 13, 2017, D.C. Law 22-33, § 2092, 64 DCR 7652</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 2122(a) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§2092">§ 2092 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) addition of this section, see § 2122(a) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
               </section>
             </section>
             <hr/>
@@ -501,8 +523,8 @@
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3503 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see § 3503 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 3503 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <h4>References in Text</h4>
                 <p>Title V of the Rental Housing Act of 1980, referred to in subsection (c), was title V of <a class="internal-link" href="/dc/council/laws/3-131.html">D.C. Law 3-131</a>, repealed July 17, 1985, by <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, § 905.</p>
               </section>
@@ -622,22 +644,22 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3501.03.html">42-3501.03</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.08.html">42-3502.08</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.09.html">42-3502.09</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.13.html">42-3502.13</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.17.html">42-3502.17</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.20.html">42-3502.20</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.21.html">42-3502.21</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.22.html">42-3502.22</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3504.01.html">42-3504.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subpar. (a)(7)(C), substituted “rent charged” for “rent ceiling”; and rewrote subsec. (g), which had read as follows: “(g) An amended registration statement shall be filed by each housing provider whose rental units are subject to registration under this chapter within 30 days of any event which changes or substantially affects the rents including vacant unit rent increases under § <a class="internal-link" href="/dc/council/code/sections/42-3502.13.html">42-3502.13</a>, services, facilities, or the housing provider or management of any rental unit in a registered housing accommodation. No amended registration statement shall be required for a change in rent under § <a class="internal-link" href="/dc/council/code/sections/42-3502.06.html">42-3502.06</a>(b).”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in subsec. (g)(2), substituted “The” for “Subject to appropriation, the”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (a)(7)(C).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> repealed (g)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (a)(7)(C).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in subsec. (g)(2), substituted “The” for “Subject to appropriation, the”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subpar. (a)(7)(C), substituted “rent charged” for “rent ceiling”; and rewrote subsec. (g), which had read as follows: “(g) An amended registration statement shall be filed by each housing provider whose rental units are subject to registration under this chapter within 30 days of any event which changes or substantially affects the rents including vacant unit rent increases under § <a class="internal-link" href="/dc/council/code/sections/42-3502.13.html">42-3502.13</a>, services, facilities, or the housing provider or management of any rental unit in a registered housing accommodation. No amended registration statement shall be required for a change in rent under § <a class="internal-link" href="/dc/council/code/sections/42-3502.06.html">42-3502.06</a>(b).”</p>
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-270.html">D.C. Law 21-270</a>: <a class="internal-link" href="/dc/council/laws/21-270.html#§3">§ 3 of D.C. Law 21-270</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-270.html#§2">§ 2 of D.C. Law 21-270</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a), (b) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2122(b) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§2212(a)">§ 2212(a) of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 2122(b) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a), (b) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
                 <h4>References in Text</h4>
-                <p>Section 42-3404.13(a)(3), referred to in subparagraph (a)(3)(E), was repealed March 16, 1978 by <a class="internal-link" href="/dc/council/laws/2-54.html">D.C. Law 2-54</a>, § 903,  24 DCR 5334.</p>
-                <p>Section 42-4016, referred to in subsection (a)(3)(E), expired pursuant to § 907 of <a class="internal-link" href="/dc/council/laws/3-131.html">D.C. Law 3-131</a> on April 30, 1985.</p>
                 <p>Section 206(a)(4) of the Rental Housing Act of 1980, referred to in paragraph (a)(4), was codified as § 45-1515 1981 Ed., which expired April 30, 1985, pursuant to D.C. Law 3-131, § 907.</p>
+                <p>Section 42-4016, referred to in subsection (a)(3)(E), expired pursuant to § 907 of <a class="internal-link" href="/dc/council/laws/3-131.html">D.C. Law 3-131</a> on April 30, 1985.</p>
+                <p>Section 42-3404.13(a)(3), referred to in subparagraph (a)(3)(E), was repealed March 16, 1978 by <a class="internal-link" href="/dc/council/laws/2-54.html">D.C. Law 2-54</a>, § 903,  24 DCR 5334.</p>
                 <h4>Editor's Notes</h4>
                 <p>On November 5, 1985, pursuant to the Initiative, Referendum, and Recall Charter Amendments Act of 1977 (<a class="internal-link" href="/dc/council/laws/2-46.html">D.C. Law 2-46</a>), the electorate of the District of Columbia rejected paragraphs (a)(6), (a)(8), (a)(9), and (a)(10) of § 205 of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>.</p>
               </section>
@@ -664,25 +686,25 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3501.03.html">42-3501.03</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.02.html">42-3502.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.08.html">42-3502.08</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.09.html">42-3502.09</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.10.html">42-3502.10</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.12.html">42-3502.12</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3502.16.html">42-3502.16</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsec. (a), inserted the first three sentences; and, in subsecs. (b), (c), and (f)(3), substituted “rent charged” for “rent ceiling”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-240.html">D.C. Law 16-240</a> rewrote subsec. (f)(2)(A) and added subsec. (f)(2)(2A). Prior to amendment, subsec. (f)(2)(A) read as follows: “(A) ’Disabled tenant’ means an individual who has a medically determinable physical impairment, including blindness, which prohibits and incapacitates 75% of that person’s ability to move about, to assist himself or herself, or to engage in an occupation, and has an income of not more than $40,000 per year at the time of approval by the Rent Administrator of a petition for capital improvements pursuant to § <a class="internal-link" href="/dc/council/code/sections/42-3502.10.html">42-3502.10</a>.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-294.html">D.C. Law 16-294</a>, in subsec. (a), made a technical correction that made no change in text.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (f)(1), substituted “tenant or tenant with a disability” for “or disabled tenant”; and, in subsec. (f)(2), purported to substitute “Tenant with a disability” for “Disabled tenant”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in the section heading, substituted “Rent ceilings abolished” for “Rent ceiling”, and validated a previously made technical correction in subsec. (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (f)(1), substituted “tenant or tenant with a disability” for “or disabled tenant”; and, in subsec. (f)(2), purported to substitute “Tenant with a disability” for “Disabled tenant”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-294.html">D.C. Law 16-294</a>, in subsec. (a), made a technical correction that made no change in text.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-240.html">D.C. Law 16-240</a> rewrote subsec. (f)(2)(A) and added subsec. (f)(2)(2A). Prior to amendment, subsec. (f)(2)(A) read as follows: “(A) ’Disabled tenant’ means an individual who has a medically determinable physical impairment, including blindness, which prohibits and incapacitates 75% of that person’s ability to move about, to assist himself or herself, or to engage in an occupation, and has an income of not more than $40,000 per year at the time of approval by the Rent Administrator of a petition for capital improvements pursuant to § <a class="internal-link" href="/dc/council/code/sections/42-3502.10.html">42-3502.10</a>.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsec. (a), inserted the first three sentences; and, in subsecs. (b), (c), and (f)(3), substituted “rent charged” for “rent ceiling”.</p>
                 <h4>Cross References</h4>
                 <p>Fee for housing accommodation conversion, rights to reduction, see § <a class="internal-link" href="/dc/council/code/sections/42-3402.04.html">42-3402.04</a>.</p>
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a), (c) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
-                <p>For temporary (90 day) repeal of section, see § 2(d) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
-                <p>For temporary (90 days) amendment of this section, see §  2 of the Rent Control Hardship Petition Limitation Emergency Amendment Act of 2014 (D.C. Act 20-430), October 7, 2014, 61 DCR 10706, 20 STAT 4145).</p>
-                <p>For temporary (90 days) amendment of this section, see §  2(a) of the Rent Control Hardship Petition Limitation Congressional Review Emergency Amendment Act of 2014 (D.C. Act 20-575, Jan. 13, 2015, 62 DCR 1068, 21 STAT 717).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(a) of the Rent Control Hardship Petition Limitation Emergency Amendment Act of 2015 (D.C. Act 21-160, Oct. 16, 2015,  62 DCR 13722).</p>
+                <p>For temporary (90 days) amendment of this section, see §  2(a) of the Rent Control Hardship Petition Limitation Congressional Review Emergency Amendment Act of 2014 (D.C. Act 20-575, Jan. 13, 2015, 62 DCR 1068, 21 STAT 717).</p>
+                <p>For temporary (90 days) amendment of this section, see §  2 of the Rent Control Hardship Petition Limitation Emergency Amendment Act of 2014 (D.C. Act 20-430), October 7, 2014, 61 DCR 10706, 20 STAT 4145).</p>
+                <p>For temporary (90 day) repeal of section, see § 2(d) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a), (c) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) amendment of this section, see §  2(a) of the Rent Control Hardship Petition Limitation Temporary Amendment Act of 2014 (D.C. Law 20-164, February 26, 2015, 61 DCR 11095).</p>
-                <p>For temporary (225 days) amendment of this section, see § 2(a) of the Rent Control Hardship Petition Limitation Temporary Amendment Act of 2015 (D.C. Law 21-49, Jan. 9, 2016,  62 DCR 13990).</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-169.html#§2(a)">§ 2(a) of Rent Control Hardship Petition Limitation Temporary Amendment Act of 2016 (D.C. Law 21-169, Nov. 30, 2016, 63 DCR 12597)</a>.</p>
+                <p>For temporary (225 days) amendment of this section, see § 2(a) of the Rent Control Hardship Petition Limitation Temporary Amendment Act of 2015 (D.C. Law 21-49, Jan. 9, 2016,  62 DCR 13990).</p>
+                <p>For temporary (225 days) amendment of this section, see §  2(a) of the Rent Control Hardship Petition Limitation Temporary Amendment Act of 2014 (D.C. Law 20-164, February 26, 2015, 61 DCR 11095).</p>
               </section>
             </section>
             <hr/>
@@ -747,8 +769,8 @@
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a), (e) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-4.html#§2(b)">§ 2(b) of Elderly Tenant and Tenant with a Disability Protection Emergency Amendment Act of 2017 (D.C. Act 22-4, Feb. 9, 2017, 64 DCR 1680)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a), (e) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
               </section>
             </section>
             <hr/>
@@ -769,8 +791,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3502.05.html">42-3502.05</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a> substituted “rent charged” for “rent ceiling”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a> substituted “rent charged” for “rent ceiling”.</p>
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
                 <h4>Emergency Legislation</h4>
@@ -814,8 +836,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3502.06.html">42-3502.06</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.08.html">42-3502.08</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3502.16.html">42-3502.16</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsecs. (c) and (h), substituted “rent charged” for “rent ceiling”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (j), substituted “tenants or tenants with a disability” for “and disabled tenants”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsecs. (c) and (h), substituted “rent charged” for “rent ceiling”.</p>
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
                 <h4>Emergency Legislation</h4>
@@ -906,17 +928,17 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsec. (c), substituted “rent charged” for “rent ceiling”.</p>
                 <h4>Expiration of Law</h4>
-                <p>Termination of Law 6-10</p>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
+                <p>Termination of Law 6-10</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Rent Control Hardship Petition Limitation Emergency Amendment Act of 2014 (D.C. Act 20-430, Oct. 7, 2014, 61 DCR 10706, 20 STAT 4145).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Rent Control Hardship Petition Limitation Congressional Review Emergency Amendment Act of 2014 (D.C. Act 20-575, Jan. 13, 2015, 62 DCR 1068, 21 STAT 717).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(b) of the Rent Control Hardship Petition Limitation Emergency Amendment Act of 2015 (D.C. Act 21-160, Oct. 16, 2015,  62 DCR 13722).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Rent Control Hardship Petition Limitation Congressional Review Emergency Amendment Act of 2014 (D.C. Act 20-575, Jan. 13, 2015, 62 DCR 1068, 21 STAT 717).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Rent Control Hardship Petition Limitation Emergency Amendment Act of 2014 (D.C. Act 20-430, Oct. 7, 2014, 61 DCR 10706, 20 STAT 4145).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) amendment of this section, see § 2(b) of the Rent Control Hardship Petition Limitation Temporary Amendment Act of 2014 (D.C. Law 20-164, February 26, 2015, 61 DCR 11095).</p>
-                <p>For temporary (225 days) amendment of this section, see § 2(b) of the Rent Control Hardship Petition Limitation Temporary Amendment Act of 2015 (D.C. Law 21-49, Jan. 9, 2016,  62 DCR 13990).</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-169.html#§2(b)">§ 2(b) of Rent Control Hardship Petition Limitation Temporary Amendment Act of 2016 (D.C. Law 21-169, Nov. 30, 2016, 63 DCR 12597)</a>.</p>
+                <p>For temporary (225 days) amendment of this section, see § 2(b) of the Rent Control Hardship Petition Limitation Temporary Amendment Act of 2015 (D.C. Law 21-49, Jan. 9, 2016,  62 DCR 13990).</p>
+                <p>For temporary (225 days) amendment of this section, see § 2(b) of the Rent Control Hardship Petition Limitation Temporary Amendment Act of 2014 (D.C. Law 20-164, February 26, 2015, 61 DCR 11095).</p>
               </section>
             </section>
             <hr/>
@@ -1041,15 +1063,15 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3502.06.html">42-3502.06</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.08.html">42-3502.08</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3502.12.html">42-3502.12</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsec. (f), substituted “rent charged” for “rent ceiling”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (b), substituted “by first-class mail” for “by certified mail or other form of service which assures delivery of the petition”; in subsec. (c), substituted “by first-class mail” for “by certified mail or other form of service which assures delivery”; in subsec. (j), substituted “by first-class mail” for “by certified mail or other form of service which assures delivery of the decision”; and added subsec. (m).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsec. (f), substituted “rent charged” for “rent ceiling”.</p>
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
-                <p>For temporary (90 day) amendment of section, see § 3011 of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
-                <p>For temporary (90 day) amendment of section, see § 3031 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 3031 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 3031 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 3011 of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 3030 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle D of title III of the act may be cited as the “Office of Administrative Hearings Mailing Certification Amendment Act of 2009”.</p>
                 <h4>References in Text</h4>
@@ -1094,9 +1116,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3502.05.html">42-3502.05</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-276.html">D.C. Law 16-276</a> designated existing text as subsec. (a) and inserted subsec. (b).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-366.html">D.C. Law 17-366</a>, in subsec. (b), inserted “and for the nonpayment of interest on tenant security deposits” following “tenant security deposits”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/19-140.html">D.C. Law 19-140</a>, in subsec. (b), substituted “complaints for the non-return of” for “complaints for the nonpayment of interest on”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-366.html">D.C. Law 17-366</a>, in subsec. (b), inserted “and for the nonpayment of interest on tenant security deposits” following “tenant security deposits”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-276.html">D.C. Law 16-276</a> designated existing text as subsec. (a) and inserted subsec. (b).</p>
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -1230,8 +1252,8 @@
       (<a class="internal-link" href="/dc/council/laws/6-10.html#§222">July 17, 1985, D.C. Law 6-10, § 222</a>; <a class="internal-link" href="/dc/council/laws/16-145.html">as added Aug. 5, 2006, D.C. Law 16-145, § 2(g), 53 DCR 4889</a>; <a class="internal-link" href="/dc/council/laws/20-135.html">Sept. 9, 2014, D.C. Law 20-135, § 301, 61 DCR 6767</a>; <a class="internal-link" href="/dc/council/laws/20-147.html">Dec. 17, 2014, D.C. Law 20-147, § 3, 61 DCR 8310</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-135.html">D.C. Law 20-135</a> added “and property maintenance code” in (b)(1)(F); made a minor stylistic change in (b)(1)(J); and added (b)(1)(K).</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-147.html">D.C. Law 20-147</a> added the subsection designated herein as (b)(1)(L) and made related changes; and added (b)(1A).</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-135.html">D.C. Law 20-135</a> added “and property maintenance code” in (b)(1)(F); made a minor stylistic change in (b)(1)(J); and added (b)(1)(K).</p>
               </section>
             </section>
             <hr/>
@@ -1251,8 +1273,8 @@
       (<a class="internal-link" href="/dc/council/laws/6-10.html#§223">July 17, 1985, D.C. Law 6-10, § 223</a>; <a class="internal-link" href="/dc/council/laws/16-145.html">as added Aug. 5, 2006, D.C. Law 16-145, § 2(g), 53 DCR 4889</a>; <a class="internal-link" href="/dc/council/laws/21-239.html#§3(f)">Apr. 7, 2017, D.C. Law 21-239, § 3(f), 64 DCR 1588</a>.)
     </p>
                 <h4>Cross References</h4>
-                <p>Homestead housing preservation, “low-income persons” defined, see § <a class="internal-link" href="/dc/council/code/sections/42-2103.html">42-2103</a>.</p>
                 <p>Housing Finance Agency, assisted housing projects, eligibility for rent supplements, see § <a class="internal-link" href="/dc/council/code/sections/42-2703.08.html">42-2703.08</a>.</p>
+                <p>Homestead housing preservation, “low-income persons” defined, see § <a class="internal-link" href="/dc/council/code/sections/42-2103.html">42-2103</a>.</p>
               </section>
             </section>
             <hr/>
@@ -1422,8 +1444,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3508.04.html">42-3508.04</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (c), substituted “individuals with disabilities” for “the handicapped”; and, in subsec. (e)(3), substituted “A single, elderly person or single person with a disability” for “An elderly, handicapped, or disable single person”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in subsec. (e)(2), substituted “other than spouses” for “other than the husband and wife”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (c), substituted “individuals with disabilities” for “the handicapped”; and, in subsec. (e)(3), substituted “A single, elderly person or single person with a disability” for “An elderly, handicapped, or disable single person”.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(f)-(i) of Tenant Assistance Program Amendment Temporary Act of 1987 (D.C. Law 7-48, December 10, 1987, law notification  34 DCR 8107).</p>
                 <h4>Short Title</h4>
@@ -1506,8 +1528,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 45-2535.</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Rental Housing Act of 1985 Temporary Amendment Act of 1987 (D.C. Law 7-1, May 13, 1987, law notification  34 DCR 3645).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(k) of Tenant Assistance Program Amendment Temporary Act of 1987 (D.C. Law 7-48, December 10, 1987, law notification  34 DCR 8107).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Rental Housing Act of 1985 Temporary Amendment Act of 1987 (D.C. Law 7-1, May 13, 1987, law notification  34 DCR 3645).</p>
               </section>
             </section>
             <hr/>
@@ -1589,34 +1611,34 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 45-2541.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> added the proviso at the end of the third sentence.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> substituted “$16” for “$15” and substituted “; provided, that a portion of fees collected shall be deposited in a special account to fund a tenant ombudsman and a housing provider ombudsman and an Advisory Neighborhood Commission liaison.” for “; provided, that fees collected during fiscal year 2001 shall be deposited in the fund established by § <a class="internal-link" href="/dc/council/code/sections/6-711.01.html">6-711.01</a> to be used for the purposes of the fund.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> substituted “$17” for “$16”; deleted “tenant ombudsman and a” following “special account to fund a”; and substituted “liaison; provided further, that a portion of fees collected shall be deposited in a special account for use by the Office of the Chief Tenant Advocate.” for “liaison.”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote the section, which had read as follows: “Each housing provider required to register under this chapter, including those otherwise exempt from rental control and registration pursuant to § <a class="internal-link" href="/dc/council/code/sections/42-3502.05.html">42-3502.05</a>(a)(3), shall pay a fee of $17 for each rental unit in a housing accommodation registered by the housing provider. The fee shall be paid annually to the District government at the time the housing provider applies for a business license or a renewal of the license; or in the case of a housing accommodation for which no license is required, at the time and in the manner the Commission may determine. Fees shall be deposited in a timely manner in depositories designated by the District government for those purposes; provided, that a portion of fees collected shall be deposited in a special account to fund a housing provider ombudsman and an Advisory Neighborhood Commission liaison; provided further, that a portion of fees collected shall be deposited in a special account for use by the Office of the Chief Tenant Advocate.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (a), substituted “basic business license” for “business license”, “the basic business license” for “the license”, “no license” for “no basic business license”, and “The fees shall be deposited in the fund established pursuant to § <a class="internal-link" href="/dc/council/code/sections/42-3131.01.html">42-3131.01</a>(b).” for “Fees shall be deposited in a timely manner in depositories designated by the District government for those purposes; provided, that a portion of fees collected shall be deposited in the fund established by subsection (b) of this section to fund a housing provider ombudsman and an Advisory Neighborhood Commission liaison; provided further, that a portion of fees collected from the prior fiscal year shall be deposited in the fund established by subsection (b) of this section for use by the Office of the Chief Tenant Advocate.”; and repealed subsec. (b), which had read as follows: “(b) There is established as a nonlapsing fund the Office of the Chief Tenant Advocate Rental Accommodations Fee Fund (’Fund’). All funds deposited into the Fund, and any interest earned on those funds, shall not revert to the unrestricted fund balance of the General Fund of the District of Columbia at the end of a fiscal year, or at any other time, but shall be continually available for the uses and purposes set forth in this section without regard to fiscal year limitation, subject to authorization by Congress.”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> added (c) and (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (a), substituted “basic business license” for “business license”, “the basic business license” for “the license”, “no license” for “no basic business license”, and “The fees shall be deposited in the fund established pursuant to § <a class="internal-link" href="/dc/council/code/sections/42-3131.01.html">42-3131.01</a>(b).” for “Fees shall be deposited in a timely manner in depositories designated by the District government for those purposes; provided, that a portion of fees collected shall be deposited in the fund established by subsection (b) of this section to fund a housing provider ombudsman and an Advisory Neighborhood Commission liaison; provided further, that a portion of fees collected from the prior fiscal year shall be deposited in the fund established by subsection (b) of this section for use by the Office of the Chief Tenant Advocate.”; and repealed subsec. (b), which had read as follows: “(b) There is established as a nonlapsing fund the Office of the Chief Tenant Advocate Rental Accommodations Fee Fund (’Fund’). All funds deposited into the Fund, and any interest earned on those funds, shall not revert to the unrestricted fund balance of the General Fund of the District of Columbia at the end of a fiscal year, or at any other time, but shall be continually available for the uses and purposes set forth in this section without regard to fiscal year limitation, subject to authorization by Congress.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote the section, which had read as follows: “Each housing provider required to register under this chapter, including those otherwise exempt from rental control and registration pursuant to § <a class="internal-link" href="/dc/council/code/sections/42-3502.05.html">42-3502.05</a>(a)(3), shall pay a fee of $17 for each rental unit in a housing accommodation registered by the housing provider. The fee shall be paid annually to the District government at the time the housing provider applies for a business license or a renewal of the license; or in the case of a housing accommodation for which no license is required, at the time and in the manner the Commission may determine. Fees shall be deposited in a timely manner in depositories designated by the District government for those purposes; provided, that a portion of fees collected shall be deposited in a special account to fund a housing provider ombudsman and an Advisory Neighborhood Commission liaison; provided further, that a portion of fees collected shall be deposited in a special account for use by the Office of the Chief Tenant Advocate.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> substituted “$17” for “$16”; deleted “tenant ombudsman and a” following “special account to fund a”; and substituted “liaison; provided further, that a portion of fees collected shall be deposited in a special account for use by the Office of the Chief Tenant Advocate.” for “liaison.”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> substituted “$16” for “$15” and substituted “; provided, that a portion of fees collected shall be deposited in a special account to fund a tenant ombudsman and a housing provider ombudsman and an Advisory Neighborhood Commission liaison.” for “; provided, that fees collected during fiscal year 2001 shall be deposited in the fund established by § <a class="internal-link" href="/dc/council/code/sections/6-711.01.html">6-711.01</a> to be used for the purposes of the fund.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> added the proviso at the end of the third sentence.</p>
                 <h4>Cross References</h4>
                 <p>Housing Finance Agency, assisted housing projects, eviction procedures, see § <a class="internal-link" href="/dc/council/code/sections/42-2703.08.html">42-2703.08</a>.</p>
                 <h4>Expiration of Law</h4>
                 <p>Section 907 of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, as amended by § 2(d) of <a class="internal-link" href="/dc/council/laws/8-48.html">D.C. Law 8-48</a> and § 818 of <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a>, provided that all subchapters of the act, except III and V, shall terminate on December 31, 2000.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 1202(a) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
-                <p>For temporary (90 day) amendment of section, see § 1202(a) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
-                <p>For temporary (90 day) amendment of section, see § 2092 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
-                <p>For temporary (90 day) amendment of section, see § 2092 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
-                <p>For temporary (90 day) amendment of section, see § 2172 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) amendment of section, see § 2172 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
-                <p>For temporary (90 day) amendment of section, see § 2172 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
-                <p>For temporary (90 day) amendment of section, see § 2131 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 2131 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§2212(b)">§ 2212(b) of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2131 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 2131 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 2172 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) amendment of section, see § 2172 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) amendment of section, see § 2172 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
+                <p>For temporary (90 day) amendment of section, see § 2092 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 2092 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
+                <p>For temporary (90 day) amendment of section, see § 1202(a) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) amendment of section, see § 1202(a) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 401 of Omnibus Budget Support Temporary Act of 1993 (<a class="internal-link" href="/dc/council/laws/10-11.html">D.C. Law 10-11</a>, August 6, 1993, law notification  40 DCR 6213).</p>
                 <h4>Short Title</h4>
-                <p>Short title of subtitle H of title II of Law 15-205: Section 2091 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle H of title II of the act may be cited as the Tenant and Housing Provider Ombudsmen Amendment Act of 2004.</p>
-                <p>Short title: Section 2171 of <a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> provided that subtitle N of title II of the act may be cited as the “Office of the Chief Tenant Advocate Funding Act of 2006”.</p>
-                <p>Short title: Section 2130 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle N of title II of the act may be cited as the “Rental Unit Fee Amendment Act of 2009”.</p>
                 <p>Short title: Section 2001 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided that subtitle A of title II of the act may be cited as “Housing Business License Rental Unit Fee Clarification Amendment Act of 2011”.</p>
+                <p>Short title: Section 2130 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle N of title II of the act may be cited as the “Rental Unit Fee Amendment Act of 2009”.</p>
+                <p>Short title: Section 2171 of <a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> provided that subtitle N of title II of the act may be cited as the “Office of the Chief Tenant Advocate Funding Act of 2006”.</p>
+                <p>Short title of subtitle H of title II of Law 15-205: Section 2091 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle H of title II of the act may be cited as the Tenant and Housing Provider Ombudsmen Amendment Act of 2004.</p>
               </section>
             </section>
             <hr/>
@@ -1741,46 +1763,46 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-231.03.html">8-231.03</a>, § <a class="internal-link" href="/dc/council/code/sections/42-2857.01.html">42-2857.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3401.04.html">42-3401.04</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3402.02.html">42-3402.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3507.01.html">42-3507.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3507.02.html">42-3507.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3509.02.html">42-3509.02</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3602.html">42-3602</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> added subsec. (l).</p>
-                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> added subsec. (n).</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>, in subsec. (n), validated a previously made technical correction.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-140.html">D.C. Law 16-140</a>, added pars. (f)(5) and (f)(6) and rewrote pars. (f)(1) and (f)(2).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-273.html">D.C. Law 16-273</a> added subsec. (c-1).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-146.html">D.C. Law 17-146</a> added subsecs. (o) and (p).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (p).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-368.html">D.C. Law 17-368</a>, in subsec. (c-1)(1), substituted “§ <a class="internal-link" href="/dc/council/code/sections/16-1001.html">16-1001</a>(8)” for “§ <a class="internal-link" href="/dc/council/code/sections/16-1001.html">16-1001</a>(5)”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsecs. (o)(1)(B) and (10), substituted “Department of Housing and Community Development” for “Department of Human Services”; and rewrote subsec. (o)(2), which had read as follows: “(2) This subsection shall be subject to the availability of funds.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-368.html">D.C. Law 17-368</a>, in subsec. (c-1)(1), substituted “§ <a class="internal-link" href="/dc/council/code/sections/16-1001.html">16-1001</a>(8)” for “§ <a class="internal-link" href="/dc/council/code/sections/16-1001.html">16-1001</a>(5)”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (p).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-146.html">D.C. Law 17-146</a> added subsecs. (o) and (p).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-273.html">D.C. Law 16-273</a> added subsec. (c-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-140.html">D.C. Law 16-140</a>, added pars. (f)(5) and (f)(6) and rewrote pars. (f)(1) and (f)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>, in subsec. (n), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> added subsec. (n).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> added subsec. (l).</p>
                 <h4>Cross References</h4>
                 <p>Housing accommodation conversion prerequisites and exemptions, persons with standing, see § <a class="internal-link" href="/dc/council/code/sections/42-3402.02.html">42-3402.02</a>.</p>
                 <h4>Expiration of Law</h4>
-                <p>Expiration of Law 8-139</p>
                 <p>Section 12(b) of <a class="internal-link" href="/dc/council/laws/8-139.html">D.C. Law 8-139</a> provided that the act shall expire 10 years after the effective date of the act. <a class="internal-link" href="/dc/council/laws/8-139.html">D.C. Law 8-139</a> became effective on June 13, 1990.</p>
+                <p>Expiration of Law 8-139</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2 of the Rental Housing Act of 1985 Winter of 1994 Emergency Amendment Act of 1994 (D.C. Act 10-179, January 25, 1994,  41 DCR 520).</p>
-                <p>For temporary repeal of the Rental Housing Act of 1985 Freezing Temperature Emergency Amendment Act of 1993, effective December 16, 1993 (D.C. Act 10-161;  40 DCR 8874), see § 3 of the Rental Housing Act of 1985 Winter of 1994 Emergency Amendment Act of 1994 (D.C. Act 10-179, January 25, 1994,  41 DCR 520).</p>
-                <p>For temporary amendment of section, see § 3 of the Drug House Abatement Emergency Amendment Act of 1996 (D.C. Act 11-446, December 5, 1996,  43 DCR 6664).</p>
-                <p>For temporary amendment of section, see § 4 of the Real Property Tax Reassessment Second Emergency Act of 1997 (D.C. Act 12-244, January 13, 1998,  45 DCR 652).</p>
-                <p>For temporary amendment of section, see § 4 of the Real Property Tax Reassessment Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-293, February 27, 1998,  45 DCR 1758).</p>
-                <p>For temporary amendment of section, see § 4 of the Real Property Tax Reassessment and Cold Weather Eviction Emergency Amendment Act of 1999 (D.C. Act 13-18, February 17, 1999,  46 DCR 2354).</p>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Tenant Protection Emergency Amendment Act of 2000 (D.C. Act 13-328, May 9, 2000,  47 DCR 4347).</p>
-                <p>For temporary (90-day) amendment of section, see § 1312 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Tenant Protection Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-411, August 14, 2000,  47 DCR 7285).</p>
-                <p>For temporary (90 day) amendment of section, see § 1312 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Tenant Evictions Emergency Amendment Act of 2005 (D.C. Act 16-244, December 22, 2005,  53 DCR 268).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Tenant Evictions Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-327, March 23, 2006,  53 DCR 2582).</p>
-                <p>For temporary (90 day) amendment of section, see §§ 2182, 7039 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see §§ 2182, 7039 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7045">§ 7045 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see §§ 2182, 7039 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 2182, 7039 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Tenant Evictions Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-327, March 23, 2006,  53 DCR 2582).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Tenant Evictions Emergency Amendment Act of 2005 (D.C. Act 16-244, December 22, 2005,  53 DCR 268).</p>
+                <p>For temporary (90 day) amendment of section, see § 1312 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Tenant Protection Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-411, August 14, 2000,  47 DCR 7285).</p>
+                <p>For temporary (90-day) amendment of section, see § 1312 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Tenant Protection Emergency Amendment Act of 2000 (D.C. Act 13-328, May 9, 2000,  47 DCR 4347).</p>
+                <p>For temporary amendment of section, see § 4 of the Real Property Tax Reassessment and Cold Weather Eviction Emergency Amendment Act of 1999 (D.C. Act 13-18, February 17, 1999,  46 DCR 2354).</p>
+                <p>For temporary amendment of section, see § 4 of the Real Property Tax Reassessment Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-293, February 27, 1998,  45 DCR 1758).</p>
+                <p>For temporary amendment of section, see § 4 of the Real Property Tax Reassessment Second Emergency Act of 1997 (D.C. Act 12-244, January 13, 1998,  45 DCR 652).</p>
+                <p>For temporary amendment of section, see § 3 of the Drug House Abatement Emergency Amendment Act of 1996 (D.C. Act 11-446, December 5, 1996,  43 DCR 6664).</p>
+                <p>For temporary repeal of the Rental Housing Act of 1985 Freezing Temperature Emergency Amendment Act of 1993, effective December 16, 1993 (D.C. Act 10-161;  40 DCR 8874), see § 3 of the Rental Housing Act of 1985 Winter of 1994 Emergency Amendment Act of 1994 (D.C. Act 10-179, January 25, 1994,  41 DCR 520).</p>
+                <p>For temporary amendment of section, see § 2 of the Rental Housing Act of 1985 Winter of 1994 Emergency Amendment Act of 1994 (D.C. Act 10-179, January 25, 1994,  41 DCR 520).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Rental Housing Act of 1985 Frigid Temperature Temporary Amendment Act of 1993 (D.C. Law 10-2, May 14, 1993, law notification  40 DCR 3403).</p>
-                <p>For temporary (225 day) amendment of section, see § 2 of Rental Housing Act of 1985 Frigid Temperature Temporary Amendment Act of 1994 (D.C. Law 10-97, March 23, 1994, law notification  40 DCR 1812.)</p>
-                <p>For temporary (225 day) amendment of section, see § 4 of Real Property Tax Reassessment Temporary Amendment Act of 1998 (D.C. Law 12-125, June 10, 1998, law notification  45 DCR 5883).</p>
-                <p>For temporary (225 day) amendment of section, see § 4 of Real Property Tax Reassessment and Cold Weather Eviction Temporary Act of 1999 (D.C. Law 13-1, May 20, 1999, law notification  46 DCR 5301).</p>
-                <p>For temporary (225 day) amendment of section, see § 2 of Tenant Protection Temporary Amendment Act of 2000 (D.C. Law 13-158, September 16, 2000, law notification  47 DCR 8064).</p>
                 <p>For temporary (225 day) amendment of section, see § 2 of Tenant Evictions Temporary Amendment Act of 2006 (D.C. Law 16-76, April 4, 2006, law notification  53 DCR 3335).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Tenant Protection Temporary Amendment Act of 2000 (D.C. Law 13-158, September 16, 2000, law notification  47 DCR 8064).</p>
+                <p>For temporary (225 day) amendment of section, see § 4 of Real Property Tax Reassessment and Cold Weather Eviction Temporary Act of 1999 (D.C. Law 13-1, May 20, 1999, law notification  46 DCR 5301).</p>
+                <p>For temporary (225 day) amendment of section, see § 4 of Real Property Tax Reassessment Temporary Amendment Act of 1998 (D.C. Law 12-125, June 10, 1998, law notification  45 DCR 5883).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Rental Housing Act of 1985 Frigid Temperature Temporary Amendment Act of 1994 (D.C. Law 10-97, March 23, 1994, law notification  40 DCR 1812.)</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Rental Housing Act of 1985 Frigid Temperature Temporary Amendment Act of 1993 (D.C. Law 10-2, May 14, 1993, law notification  40 DCR 3403).</p>
                 <h4>Editor's Notes</h4>
-                <p>Subsection (o)(2), added by Law 17-146 states that this subsection shall not apply until its fiscal effect is included in an approved budget and financial plan.</p>
                 <p>The Budget Director of the Council of the District of Columbia has determined, as of February 15, 2012, that the fiscal effect of subsection (o)(2), added by Law 17-146, has not been included in an approved budget and financial plan. Therefore, the provisions of subsection (o), enacted by Law 17-146, are not in effect.</p>
+                <p>Subsection (o)(2), added by Law 17-146 states that this subsection shall not apply until its fiscal effect is included in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -2102,8 +2124,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 45-2562.</p>
                 <h4>Cross References</h4>
-                <p>Housing Finance Agency, exempt housing projects, displaced tenants, establishment of procedures for relocation assistance, see § <a class="internal-link" href="/dc/council/code/sections/42-2703.08.html">42-2703.08</a>.</p>
                 <p>Rental housing, tenant evictions, notice to vacate, relocation assistance, see § <a class="internal-link" href="/dc/council/code/sections/42-3505.01.html">42-3505.01</a>.</p>
+                <p>Housing Finance Agency, exempt housing projects, displaced tenants, establishment of procedures for relocation assistance, see § <a class="internal-link" href="/dc/council/code/sections/42-2703.08.html">42-2703.08</a>.</p>
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3506.01.html">42-3506.01</a>.</p>
                 <h4>Short Title</h4>
@@ -2244,8 +2266,8 @@
                 <h4>Expiration of Law</h4>
                 <p>Section 907 of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, as amended by § 2(d) of <a class="internal-link" href="/dc/council/laws/8-48.html">D.C. Law 8-48</a> and § 818 of <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a>, provided that all subchapters of the act, except III and V, shall terminate on December 31, 2000.</p>
                 <h4>Editor's Notes</h4>
-                <p>For temporary amendment to the termination provision of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, see § 818 of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
                 <p>Mayor authorized to issue rules: Section 2(d) of <a class="internal-link" href="/dc/council/laws/10-155.html">D.C. Law 10-155</a> provided in part that pursuant to subchapter 1 of Chapter 5 of Title 2, the Mayor shall issue rules to implement this subchapter. The proposed rules shall be submitted to the Council for a 45-day period of review, excluding Saturdays, Sundays, legal holidays, and days of Council recess. If the Council does not approve or disapprove the proposed rules, in whole or in part, by resolution within this 45-day review period, the proposed rules shall be deemed approved. Nothing in this section shall affect any requirements imposed upon the Mayor by subchapter 1 of Chapter 5 of Title 2.</p>
+                <p>For temporary amendment to the termination provision of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, see § 818 of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
               </section>
             </section>
             <hr/>
@@ -2410,8 +2432,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3505.05.html">42-3505.05</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsec. (a), substituted “rent charged” for “rent ceiling”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (g), substituted “tenant or tenant with a disability” for “or disabled tenant”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsec. (a), substituted “rent charged” for “rent ceiling”.</p>
                 <h4>Expiration of Law</h4>
                 <p>Section 907 of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, as amended by § 2(d) of <a class="internal-link" href="/dc/council/laws/8-48.html">D.C. Law 8-48</a> and § 818 of <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a>, provided that all subchapters of the act, except III and V, shall terminate on December 31, 2000.</p>
                 <h4>Emergency Legislation</h4>
@@ -2419,8 +2441,8 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 4 of Tenant Assistance Program Amendment Temporary Act of 1987 (D.C. Law 7-48, December 10, 1987, law notification  34 DCR 8107).</p>
                 <h4>Editor's Notes</h4>
-                <p>Application of 9-154: Section 3 of <a class="internal-link" href="/dc/council/laws/9-154.html">D.C. Law 9-154</a> provided that the act shall not apply to any increase in a rent ceiling for a rental unit, or to any increase in the rent charged for a rental unit, when the capital improvement petition has been approved by the Rent Administrator and the resultant rent increase was implemented prior to September 26, 1992.</p>
                 <p>For temporary amendment to the termination provision of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, see § 818 of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
+                <p>Application of 9-154: Section 3 of <a class="internal-link" href="/dc/council/laws/9-154.html">D.C. Law 9-154</a> provided that the act shall not apply to any increase in a rent ceiling for a rental unit, or to any increase in the rent charged for a rental unit, when the capital improvement petition has been approved by the Rent Administrator and the resultant rent increase was implemented prior to September 26, 1992.</p>
               </section>
             </section>
             <hr/>
@@ -2482,8 +2504,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3502.08.html">42-3502.08</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.09.html">42-3502.09</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3502.16.html">42-3502.16</a>.</p>
                 <h4>Cross References</h4>
-                <p>Rental Accommodations Act of 1975, and the Rental Housing Acts of 1977 and 1980, definitions, see § <a class="internal-link" href="/dc/council/code/sections/42-3501.03.html">42-3501.03</a>.</p>
                 <p>Rent increases above base rent, notice of increase in compliance with this section, see § <a class="internal-link" href="/dc/council/code/sections/42-3502.08.html">42-3502.08</a>.</p>
+                <p>Rental Accommodations Act of 1975, and the Rental Housing Acts of 1977 and 1980, definitions, see § <a class="internal-link" href="/dc/council/code/sections/42-3501.03.html">42-3501.03</a>.</p>
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3509.01.html">42-3509.01</a>.</p>
               </section>
@@ -2504,22 +2526,22 @@
       (<a class="internal-link" href="/dc/council/laws/6-10.html#§907">July 17, 1985, D.C. Law 6-10, § 907, 32 DCR 3089</a>; <a class="internal-link" href="/dc/council/laws/8-48.html">Oct. 19, 1989, D.C. Law 8-48, § 2(c), 36 DCR 5788</a>; <a class="internal-link" href="/dc/council/laws/11-52.html">Sept. 26, 1995, D.C. Law 11-52, § 818, 42 DCR 3684</a>; <a class="internal-link" href="/dc/council/laws/13-172.html">Oct. 19, 2000, D.C. Law 13-172, § 1202(b), 47 DCR 6308</a>; <a class="internal-link" href="/dc/council/laws/16-10.html">July 22, 2005, D.C. Law 16-10, § 2, 52 DCR 5244</a>; <a class="internal-link" href="/dc/council/laws/17-319.html">Mar. 21, 2009, D.C. Law 17-319,§ 4(a), 56 DCR 214</a>; <a class="internal-link" href="/dc/council/laws/18-328.html">Mar. 12, 2011, D.C. Law 18-328, § 2, 58 DCR 16</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 105, 59 DCR 6190</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> amended the termination date.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-10.html">D.C. Law 16-10</a> rewrote the section which had read:</p>
-                <p>“All subchapters of this chapter, except subchapters III and V, shall terminate on December 31, 2005.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-319.html">D.C. Law 17-319</a> substituted “except subchapters III and V and § <a class="internal-link" href="/dc/council/code/sections/42-3509.08.html">42-3509.08</a>” for “except subchapters III and V”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-328.html">D.C. Law 18-328</a> rewrote the section, which formerly read:</p>
-                <p>“All subchapters of this chapter, except subchapters III and V and § <a class="internal-link" href="/dc/council/code/sections/42-3509.08.html">42-3509.08</a>, shall terminate on December 31, 2010.”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> added “and § <a class="internal-link" href="/dc/council/code/sections/42-3509.08.html">42-3509.08</a>.”</p>
+                <p>“All subchapters of this chapter, except subchapters III and V and § <a class="internal-link" href="/dc/council/code/sections/42-3509.08.html">42-3509.08</a>, shall terminate on December 31, 2010.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-328.html">D.C. Law 18-328</a> rewrote the section, which formerly read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-319.html">D.C. Law 17-319</a> substituted “except subchapters III and V and § <a class="internal-link" href="/dc/council/code/sections/42-3509.08.html">42-3509.08</a>” for “except subchapters III and V”.</p>
+                <p>“All subchapters of this chapter, except subchapters III and V, shall terminate on December 31, 2005.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-10.html">D.C. Law 16-10</a> rewrote the section which had read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> amended the termination date.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 1202(b) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
-                <p>For temporary (90 day) amendment of section, see § 1202(b) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
-                <p>For temporary (90 day) amendment, see § 4(a) of Abatement of Nuisance Properties and Tenant Receivership Emergency Amendment Act of 2008 (D.C. Act 17-420, July 8, 2008,  55 DCR 7703).</p>
-                <p>For temporary (90 day) addition, see § 4(b) of Abatement of Nuisance Properties and Tenant Receivership Emergency Amendment Act of 2008 (D.C. Act 17-420, July 8, 2008,  55 DCR 7703).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(a) of Abatement of Nuisance Properties and Tenant Receivership Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-563, October 27, 2008,  55 DCR 12019).</p>
-                <p>For temporary (90 day) addition, see § 4(b) of Abatement of Nuisance Properties and Tenant Receivership Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-563, October 27, 2008,  55 DCR 12019).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Rental Housing Act Extension Emergency Amendment Act of 2010 (D.C. Act 18-675, December 28, 2010,  58 DCR 132).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Rental Housing Act Extension Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-31, March 15, 2011,  58 DCR 2604).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Rental Housing Act Extension Emergency Amendment Act of 2010 (D.C. Act 18-675, December 28, 2010,  58 DCR 132).</p>
+                <p>For temporary (90 day) addition, see § 4(b) of Abatement of Nuisance Properties and Tenant Receivership Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-563, October 27, 2008,  55 DCR 12019).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(a) of Abatement of Nuisance Properties and Tenant Receivership Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-563, October 27, 2008,  55 DCR 12019).</p>
+                <p>For temporary (90 day) addition, see § 4(b) of Abatement of Nuisance Properties and Tenant Receivership Emergency Amendment Act of 2008 (D.C. Act 17-420, July 8, 2008,  55 DCR 7703).</p>
+                <p>For temporary (90 day) amendment, see § 4(a) of Abatement of Nuisance Properties and Tenant Receivership Emergency Amendment Act of 2008 (D.C. Act 17-420, July 8, 2008,  55 DCR 7703).</p>
+                <p>For temporary (90 day) amendment of section, see § 1202(b) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) amendment of section, see § 1202(b) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 4(a) of Abatement of Nuisance Properties and Tenant Receivership Temporary amendment Act of 2008 (D.C. Law 17-237, October 21, 2008, law notification  55 DCR 11700).</p>
               </section>
@@ -2547,8 +2569,8 @@
       (<a class="internal-link" href="/dc/council/laws/6-10.html#§908">July 17, 1985, D.C. Law 6-10, § 908</a>; <a class="internal-link" href="/dc/council/laws/17-319.html">as added Mar. 21, 2009, D.C. Law 17-319, § 4(b), 56 DCR 214</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 4(b) of Abatement of Nuisance Properties and Tenant Receivership Emergency Amendment Act of 2008 (D.C. Act 17-420, July 8, 2008,  55 DCR 7703).</p>
                 <p>For temporary (90 day) addition, see § 4(b) of Abatement of Nuisance Properties and Tenant Receivership Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-563, October 27, 2008,  55 DCR 12019).</p>
+                <p>For temporary (90 day) addition, see § 4(b) of Abatement of Nuisance Properties and Tenant Receivership Emergency Amendment Act of 2008 (D.C. Act 17-420, July 8, 2008,  55 DCR 7703).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition, see § 4(b) of Abatement of Nuisance Properties and Tenant Receivership Temporary amendment Act of 2008 (D.C. Law 17-237, October 21, 2008, law notification  55 DCR 11700).</p>
               </section>

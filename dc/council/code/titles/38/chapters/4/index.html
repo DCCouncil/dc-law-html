@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/38/chapters/4A/">Chapter 4A. Office of Public Education Facilities Modernization.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/38/chapters/4/">Report Error</a>
@@ -87,17 +87,39 @@
         <section class="col8 body">
           <h1>Chapter 4. Use of School Buildings.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/38-401.html">§ 38–401. Control of school buildings; disposition of proceeds.</a>
-            <a href="/dc/council/code/sections/38-401.01.html">§ 38–401.01. Annual report.</a>
-            <a href="/dc/council/code/sections/38-401.02.html">§ 38–401.02. Public liability insurance.</a>
-            <a href="/dc/council/code/sections/38-402.html">§ 38–402. Control of school construction and repairs.</a>
-            <a href="/dc/council/code/sections/38-403.html">§ 38–403. Use of Franklin School for office purposes.</a>
-            <a href="/dc/council/code/sections/38-404.html">§ 38–404. Restriction on lot 14 in square 263.</a>
-            <a href="/dc/council/code/sections/38-405.html">§ 38–405. Sale of part of lot 14 in square 263.</a>
-            <a href="/dc/council/code/sections/38-406.html">§ 38–406. Certain land granted for colored schools to revert to United States. [Repealed]</a>
-            <a href="/dc/council/code/sections/38-407.html">§ 38–407. Property exclusively for school purposes.</a>
-            <a href="/dc/council/code/sections/38-408.html">§ 38–408. Utilization of Business High School building.</a>
-            <a href="/dc/council/code/sections/38-409.html">§ 38–409. Control of school buildings; disposition of proceeds.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-401.html">§ 38–401. Control of school buildings; disposition of proceeds.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-401.01.html">§ 38–401.01. Annual report.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-401.02.html">§ 38–401.02. Public liability insurance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-402.html">§ 38–402. Control of school construction and repairs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-403.html">§ 38–403. Use of Franklin School for office purposes.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-404.html">§ 38–404. Restriction on lot 14 in square 263.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-405.html">§ 38–405. Sale of part of lot 14 in square 263.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-406.html">§ 38–406. Certain land granted for colored schools to revert to United States. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-407.html">§ 38–407. Property exclusively for school purposes.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-408.html">§ 38–408. Utilization of Business High School building.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-409.html">§ 38–409. Control of school buildings; disposition of proceeds.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -129,8 +151,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/63-3-ch165.html#§1">Mar. 4, 1915, 38 Stat. 1190, ch. 165, § 1</a>; <a class="internal-link" href="/dc/council/laws/4-158.html">Sept. 29, 1982, D.C. Law 4-158,§§ 2, 5, 29 DCR 3632</a>; <a class="internal-link" href="/dc/council/laws/8-158.html">Sept. 11, 1990, D.C. Law 8-158, § 5, 37 DCR 4167</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 9062, 58 DCR 6226</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-201.</p>
                 <p>1973 Ed., § 31-801.</p>
+                <p>1981 Ed., § 31-201.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-401.01.html">38-401.01</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -195,8 +217,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/45-3-ch182.html">Mar. 3, 1879, 20 Stat. 408, ch. 182</a>; <a class="internal-link" href="/dc/council/laws/8-143.html">June 22, 1990, D.C. Law 8-143, § 4, 37 DCR 2972</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-202.</p>
                 <p>1973 Ed., § 31-803.</p>
+                <p>1981 Ed., § 31-202.</p>
                 <h4>Cross References</h4>
                 <p>Minor repairs by janitors, see § <a class="internal-link" href="/dc/council/code/sections/38-903.html">38-903</a>.</p>
               </section>
@@ -213,8 +235,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/64-2-ch160.html">Mar. 3, 1917, 39 Stat. 1026, ch. 160</a>; June 5, 1920, 41 Stat. 855, ch. 234; Feb. 26, 1925, 43 Stat. 993, ch. 342, § 5.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-203.</p>
                 <p>1973 Ed., § 31-804.</p>
+                <p>1981 Ed., § 31-203.</p>
               </section>
             </section>
             <hr/>
@@ -229,8 +251,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§317">R.S., D.C., § 317</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-204.</p>
                 <p>1973 Ed., § 31-805.</p>
+                <p>1981 Ed., § 31-204.</p>
               </section>
             </section>
             <hr/>
@@ -245,8 +267,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§318">R.S., D.C., § 318</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-205.</p>
                 <p>1973 Ed., § 31-806.</p>
+                <p>1981 Ed., § 31-205.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-404.html">38-404</a>.</p>
               </section>
@@ -263,13 +285,13 @@
       (<a class="internal-link" href="/dc/council/laws/7-45.html#§2">Dec. 10, 1987, D.C. Law 7-45, § 2, 34 DCR 6845</a>; <a class="internal-link" href="/dc/council/laws/8-149.html">July 25, 1990, D.C. Law 8-149, § 2, 37 DCR 3717</a>; <a class="internal-link" href="/dc/council/laws/9-29.html">Aug. 17, 1991, D.C. Law 9-29, § 2, 38 DCR 4213</a>; <a class="internal-link" href="/dc/council/laws/12-60.html">Mar. 20, 1998, D.C. Law 12-60, § 401, 44 DCR 7378</a>; <a class="internal-link" href="/dc/council/laws/12-224.html">Apr. 13, 1999, D.C. Law 12-224, § 2, 46 DCR 483</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-206.</p>
                 <p>1973 Ed., § 31-807.</p>
+                <p>1981 Ed., § 31-206.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) repeal of section, see § 2 of the Lovejoy School new Housing and Economic Development Emergency Act of 2000 (D.C. Act 13-461, November 7, 2000,  47 DCR 9440).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/13-220.html">D.C. Law 13-220</a> repealed this section.</p>
                 <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/13-220.html">D.C. Law 13-220</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/13-220.html">D.C. Law 13-220</a> repealed this section.</p>
               </section>
             </section>
             <hr/>
@@ -284,8 +306,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§320">R.S., D.C., § 320</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-207.</p>
                 <p>1973 Ed., § 31-808.</p>
+                <p>1981 Ed., § 31-207.</p>
               </section>
             </section>
             <hr/>
@@ -300,8 +322,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/71-3-ch282.html#§1">Feb. 23, 1931, 46 Stat. 1395, ch. 282, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-208.</p>
                 <p>1973 Ed., § 31-809.</p>
+                <p>1981 Ed., § 31-208.</p>
               </section>
             </section>
             <hr/>
@@ -316,29 +338,29 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-2-ch300.html#§1">June 28, 1944, 58 Stat. 515, ch. 300, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-209.</p>
                 <p>1973 Ed., § 31-812.</p>
+                <p>1981 Ed., § 31-209.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary authorization, on an emergency basis, to privately develop a portion of the James F. Oyster School site, and to fund improvements to the Oyster School and other public school facilities through payments in lieu of taxes on the privately developed portion of the Oyster School site and for the issuance of rules to implement these provisions, see §§ 2, 3, and 5 of the Oyster Elementary School Modernization and Development Project Emergency Act of 1996 (D.C. Act 11-385, August 28, 1996,  43 DCR 4799) and §§ 2, 3, and 5 of the Oyster Elementary School Modernization and Development Project Congressional Adjournment Emergency Act of 1996 (D.C. Act 11-437, December 4, 1996,  44 DCR 104).</p>
-                <p>For temporary addition of provisions concerning the use of District public schools for school-based enrichment programs and the development of a plan for that use, see §§ 2 and 3 of the School-Based Enrichment Programs Emergency Act of 2012 (D.C. Act 19-529, November 2, 2012,  59 DCR 13330).</p>
                 <p>For temporary (90 days) school-based enrichment programs, see §§ 2 and 3 of the School-Based Enrichment Program Congressional Review Emergency Act of 2013 of 2013 (D.C. Act 20-1, January 25, 2013,  60 DCR 2758, 20 DCSTAT 407).</p>
+                <p>For temporary addition of provisions concerning the use of District public schools for school-based enrichment programs and the development of a plan for that use, see §§ 2 and 3 of the School-Based Enrichment Programs Emergency Act of 2012 (D.C. Act 19-529, November 2, 2012,  59 DCR 13330).</p>
+                <p>For temporary authorization, on an emergency basis, to privately develop a portion of the James F. Oyster School site, and to fund improvements to the Oyster School and other public school facilities through payments in lieu of taxes on the privately developed portion of the Oyster School site and for the issuance of rules to implement these provisions, see §§ 2, 3, and 5 of the Oyster Elementary School Modernization and Development Project Emergency Act of 1996 (D.C. Act 11-385, August 28, 1996,  43 DCR 4799) and §§ 2, 3, and 5 of the Oyster Elementary School Modernization and Development Project Congressional Adjournment Emergency Act of 1996 (D.C. Act 11-437, December 4, 1996,  44 DCR 104).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Temporary Oyster Elementary School modernization and development project: Section 2 of D.C Law 11-215 provided: “Sec. 2. Definitions. For purposes of this chapter, the terms: (1) ‘Board’ means the Board of Education of the District of Columbia. (2) ‘Council’ means the Council of the District of Columbia. (3) ‘District means the District of Columbia Government. (4) ‘Mayor’ means the Mayor of the District of Columbia. (5) ‘Payments in lieu of taxes’ means payments into the Board of Education Real Property Improvement and Maintenance Fund, established by § 9-402(b)(1)), of the equivalent of Class II property taxes at 100% of the assessed valuation of the privately owned building or structure occupying any portion of the Oyster School site. (6) ‘Privately owned structure’ means any building or structure not owned by the District of Columbia government or any of its agencies that is erected on the Oyster School site under a long-term lease or other agreement between a developer and the District of Columbia Public Schools.” Section 3 of D.C Law 11-215 provided: “Sec. 3. Authorization of private development of the Oyster Elementary School site. (a) The Board of Education, pursuant to § <a class="internal-link" href="/dc/council/code/sections/31-201.html">31-201</a> § <a class="internal-link" href="/dc/council/code/sections/38-401.html">38-401</a>, 2001 Ed., is authorized to enter into a long-term land lease for private development of part of the James F. Oyster Elementary School site. Pursuant to § <a class="internal-link" href="/dc/council/code/sections/31-201.html">31-201</a>(c) § <a class="internal-link" href="/dc/council/code/sections/38-401.html">38-401</a>, 2001 Ed., all proceeds derived from the private development, including payments in lieu of taxes (‘PILOTS’), shall be deposited into the Board of Education Real Property Improvement and Maintenance Fund. Any proceeds which remain after paying the costs of modernizing Oyster Elementary School shall be used for repair, modernization and improvements of other school system facilities. (b) Privately owned or used structure, erected or constructed on the Oyster School site, shall annually pay in lieu of taxes an amount that is equivalent to Class II property taxes at 100% of the assessed valuation of the privately owned or used structure.”</p>
-                <p>Section 5 of <a class="internal-link" href="/dc/council/laws/11-215.html">D.C. Law 11-215</a> provided that “the Mayor, or in a control year, the Chief Financial Officer on behalf of the Mayor, shall issue rules to implement the provisions of this act. The rules shall be submitted to the Council of the District of Columbia within 60 days of enactment of this act.”</p>
-                <p>Section 7(b) of D.C Law 11-215 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Sections 2 and 3 of D.C. Law 19-227 added provisions concerning school-based enrichment programs to read as follows:</p>
-                <p>“Sec. 2. Notwithstanding any other provision of law, during the 2012-13 school year, the District shall not charge rent to a parent-run, before- or after-school enrichment program operating in a District public school; provided, that the program:</p>
-                <p>“(1) Operates on a not-for-profit basis;</p>
-                <p>“(2) Has been approved by the school to operate during the 2012-2013 school year;</p>
-                <p>“(3) Has an approved building use agreement for 2012-2013 with the District;</p>
-                <p>“(4) Meets the District’s insurance requirements; and</p>
-                <p>“(5) Pays any actual costs for security, custodial, or other services that the District requires.</p>
-                <p>“Sec. 3. (a) The Department of General Services (”DGS“) shall develop a District-wide procedure for the use of District schools by parent-run, nonprofit enrichment programs, including a process for obtaining permission to use spaces in school, the amount of insurance the programs are required to obtain, and any operational fees or costs that the programs shall be required to pay to the District.</p>
-                <p>“(b) On or before March 15, 2013, DGS shall:</p>
-                <p>“(1) Post a draft of the procedure set forth in subsection (a) of this section on its website for public comment; and</p>
-                <p>“(2) E-mail notice of the draft procedure with information on how to provide comment to the chairs of all Local School Advisory Teams.</p>
-                <p>“(c) On or before May 15, 2013, DGS shall finalize the procedure set forth in subsection (a) of this section, which shall take effect at the start of the 2013-2014 school year, and shall post details about the procedure on its website.”</p>
                 <p>Section 5(b) of D.C. Law 19-227 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(c) On or before May 15, 2013, DGS shall finalize the procedure set forth in subsection (a) of this section, which shall take effect at the start of the 2013-2014 school year, and shall post details about the procedure on its website.”</p>
+                <p>“(2) E-mail notice of the draft procedure with information on how to provide comment to the chairs of all Local School Advisory Teams.</p>
+                <p>“(1) Post a draft of the procedure set forth in subsection (a) of this section on its website for public comment; and</p>
+                <p>“(b) On or before March 15, 2013, DGS shall:</p>
+                <p>“Sec. 3. (a) The Department of General Services (”DGS“) shall develop a District-wide procedure for the use of District schools by parent-run, nonprofit enrichment programs, including a process for obtaining permission to use spaces in school, the amount of insurance the programs are required to obtain, and any operational fees or costs that the programs shall be required to pay to the District.</p>
+                <p>“(5) Pays any actual costs for security, custodial, or other services that the District requires.</p>
+                <p>“(4) Meets the District’s insurance requirements; and</p>
+                <p>“(3) Has an approved building use agreement for 2012-2013 with the District;</p>
+                <p>“(2) Has been approved by the school to operate during the 2012-2013 school year;</p>
+                <p>“(1) Operates on a not-for-profit basis;</p>
+                <p>“Sec. 2. Notwithstanding any other provision of law, during the 2012-13 school year, the District shall not charge rent to a parent-run, before- or after-school enrichment program operating in a District public school; provided, that the program:</p>
+                <p>Sections 2 and 3 of D.C. Law 19-227 added provisions concerning school-based enrichment programs to read as follows:</p>
+                <p>Section 7(b) of D.C Law 11-215 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 5 of <a class="internal-link" href="/dc/council/laws/11-215.html">D.C. Law 11-215</a> provided that “the Mayor, or in a control year, the Chief Financial Officer on behalf of the Mayor, shall issue rules to implement the provisions of this act. The rules shall be submitted to the Council of the District of Columbia within 60 days of enactment of this act.”</p>
+                <p>Temporary Oyster Elementary School modernization and development project: Section 2 of D.C Law 11-215 provided: “Sec. 2. Definitions. For purposes of this chapter, the terms: (1) ‘Board’ means the Board of Education of the District of Columbia. (2) ‘Council’ means the Council of the District of Columbia. (3) ‘District means the District of Columbia Government. (4) ‘Mayor’ means the Mayor of the District of Columbia. (5) ‘Payments in lieu of taxes’ means payments into the Board of Education Real Property Improvement and Maintenance Fund, established by § 9-402(b)(1)), of the equivalent of Class II property taxes at 100% of the assessed valuation of the privately owned building or structure occupying any portion of the Oyster School site. (6) ‘Privately owned structure’ means any building or structure not owned by the District of Columbia government or any of its agencies that is erected on the Oyster School site under a long-term lease or other agreement between a developer and the District of Columbia Public Schools.” Section 3 of D.C Law 11-215 provided: “Sec. 3. Authorization of private development of the Oyster Elementary School site. (a) The Board of Education, pursuant to § <a class="internal-link" href="/dc/council/code/sections/31-201.html">31-201</a> § <a class="internal-link" href="/dc/council/code/sections/38-401.html">38-401</a>, 2001 Ed., is authorized to enter into a long-term land lease for private development of part of the James F. Oyster Elementary School site. Pursuant to § <a class="internal-link" href="/dc/council/code/sections/31-201.html">31-201</a>(c) § <a class="internal-link" href="/dc/council/code/sections/38-401.html">38-401</a>, 2001 Ed., all proceeds derived from the private development, including payments in lieu of taxes (‘PILOTS’), shall be deposited into the Board of Education Real Property Improvement and Maintenance Fund. Any proceeds which remain after paying the costs of modernizing Oyster Elementary School shall be used for repair, modernization and improvements of other school system facilities. (b) Privately owned or used structure, erected or constructed on the Oyster School site, shall annually pay in lieu of taxes an amount that is equivalent to Class II property taxes at 100% of the assessed valuation of the privately owned or used structure.”</p>
               </section>
             </section>
             <hr/>

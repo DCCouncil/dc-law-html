@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2-712.html">§ 28:2-712. “Cover”; buyer’s procurement of substitute goods.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2-711.html">Report Error</a>
@@ -105,31 +105,31 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 667, Pub. L. 88-243, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:2-711.</p>
                 <p>1973 Ed., § 28:2-711.</p>
+                <p>1981 Ed., § 28:2-711.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:2-602.html">28:2-602</a>, § <a class="internal-link" href="/dc/council/code/sections/28:2-603.html">28:2-603</a>, § <a class="internal-link" href="/dc/council/code/sections/28:2-610.html">28:2-610</a>, § <a class="internal-link" href="/dc/council/code/sections/28:2-706.html">28:2-706</a>, and § <a class="internal-link" href="/dc/council/code/sections/28:9-325.html">28:9-325</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Prior Uniform Statutory Provision:</strong> No comparable index section; Subsection (3)—Section 69(5), Uniform Sales Act.</p>
-                <p><strong>Changes:</strong> The prior uniform statutory provision is generally continued and expanded in Subsection (3).</p>
-                <p><strong>Purposes of Changes and New Matter:</strong> 1. To index in this section the buyer’s remedies, subsection (1) covering those remedies permitting the recovery of money damages, and subsection (2) covering those which permit reaching the goods themselves. The remedies listed here are those available to a buyer who has not accepted the goods or who has justifiably revoked his acceptance. The remedies available to a buyer with regard to goods finally accepted appear in the section dealing with breach in regard to accepted goods. The buyer’s right to proceed as to all goods when the breach is as to only some of the goods is determined by the section on breach in installment contracts and by the section on partial acceptance.</p>
-                <p>Despite the seller’s breach, proper retender of delivery under the section on cure of improper tender or replacement can effectively preclude the buyer’s remedies under this section, except for any delay involved.</p>
-                <p>2. To make it clear is subsection (3) that the buyer may hold and resell rejected goods if he has paid a part of the price or incurred expenses of the type specified. “Paid” as used here includes acceptance of a draft or other time negotiable instrument or the signing of a negotiable note. His freedom of resale is coextensive with that of a seller under this Article except that the buyer may not keep any profit resulting from the resale and is limited to retaining only the amount of the price paid and the costs involved in the inspection and handling of the goods. The buyer’s security interest in the goods is intended to be limited to the items listed in subsection (3), and the buyer is not permitted to retain such funds as he might believe adequate for his damages. The buyer’s right to cover, or to have damages for non-delivery, is not impaired by his exercise of his right of resale.</p>
-                <p>3. It should also be noted that this Act requires its remedies to be liberally administered and provides that any right or obligation which it declares is enforceable by action unless a different effect is specifically prescribed ( Section 1-106).</p>
-                <p><strong>Cross References:</strong> Point 1:  Sections 2-508,  2-601(c),  2-608,  2-612 and  2-714.</p>
-                <p>Point 2:  Section 2-706.</p>
-                <p>Point 3:  Section 1-106.</p>
-                <p><strong>Definitional Cross References:</strong> “Aggrieved party”.  Section 1-201.</p>
-                <p>“Buyer”.  Section 2-103.</p>
-                <p>“Cancellation”.  Section 2-106.</p>
-                <p>“Contract”.  Section 1-201.</p>
-                <p>“Cover”.  Section 2-712.</p>
-                <p>“Goods”.  Section 2-105.</p>
-                <p>“Notifies”.  Section 1-201.</p>
-                <p>“Receipt” of goods.  Section 2-103.</p>
-                <p>“Remedy”.  Section 1-201.</p>
-                <p>“Security interest”.  Section 1-201.</p>
                 <p>“Seller”.  Section 2-103.</p>
+                <p>“Security interest”.  Section 1-201.</p>
+                <p>“Remedy”.  Section 1-201.</p>
+                <p>“Receipt” of goods.  Section 2-103.</p>
+                <p>“Notifies”.  Section 1-201.</p>
+                <p>“Goods”.  Section 2-105.</p>
+                <p>“Cover”.  Section 2-712.</p>
+                <p>“Contract”.  Section 1-201.</p>
+                <p>“Cancellation”.  Section 2-106.</p>
+                <p>“Buyer”.  Section 2-103.</p>
+                <p><strong>Definitional Cross References:</strong> “Aggrieved party”.  Section 1-201.</p>
+                <p>Point 3:  Section 1-106.</p>
+                <p>Point 2:  Section 2-706.</p>
+                <p><strong>Cross References:</strong> Point 1:  Sections 2-508,  2-601(c),  2-608,  2-612 and  2-714.</p>
+                <p>3. It should also be noted that this Act requires its remedies to be liberally administered and provides that any right or obligation which it declares is enforceable by action unless a different effect is specifically prescribed ( Section 1-106).</p>
+                <p>2. To make it clear is subsection (3) that the buyer may hold and resell rejected goods if he has paid a part of the price or incurred expenses of the type specified. “Paid” as used here includes acceptance of a draft or other time negotiable instrument or the signing of a negotiable note. His freedom of resale is coextensive with that of a seller under this Article except that the buyer may not keep any profit resulting from the resale and is limited to retaining only the amount of the price paid and the costs involved in the inspection and handling of the goods. The buyer’s security interest in the goods is intended to be limited to the items listed in subsection (3), and the buyer is not permitted to retain such funds as he might believe adequate for his damages. The buyer’s right to cover, or to have damages for non-delivery, is not impaired by his exercise of his right of resale.</p>
+                <p>Despite the seller’s breach, proper retender of delivery under the section on cure of improper tender or replacement can effectively preclude the buyer’s remedies under this section, except for any delay involved.</p>
+                <p><strong>Purposes of Changes and New Matter:</strong> 1. To index in this section the buyer’s remedies, subsection (1) covering those remedies permitting the recovery of money damages, and subsection (2) covering those which permit reaching the goods themselves. The remedies listed here are those available to a buyer who has not accepted the goods or who has justifiably revoked his acceptance. The remedies available to a buyer with regard to goods finally accepted appear in the section dealing with breach in regard to accepted goods. The buyer’s right to proceed as to all goods when the breach is as to only some of the goods is determined by the section on breach in installment contracts and by the section on partial acceptance.</p>
+                <p><strong>Changes:</strong> The prior uniform statutory provision is generally continued and expanded in Subsection (3).</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> No comparable index section; Subsection (3)—Section 69(5), Uniform Sales Act.</p>
               </section>
             </section>
           </section>

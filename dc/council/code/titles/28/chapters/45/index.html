@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/28/chapters/45A/">Chapter 45A. Cigarette Sales Below Cost.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/28/chapters/45/">Report Error</a>
@@ -87,24 +87,60 @@
         <section class="col8 body">
           <h1>Chapter 45. Restraints of Trade.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/28-4501.html">§ 28–4501. Definition and purpose.</a>
-            <a href="/dc/council/code/sections/28-4502.html">§ 28–4502. Contract, combination, or conspiracy to restrain trade.</a>
-            <a href="/dc/council/code/sections/28-4503.html">§ 28–4503. Monopolization.</a>
-            <a href="/dc/council/code/sections/28-4504.html">§ 28–4504. Exclusions.</a>
-            <a href="/dc/council/code/sections/28-4505.html">§ 28–4505. Civil investigative demand.</a>
-            <a href="/dc/council/code/sections/28-4506.html">§ 28–4506. Criminal enforcement by the District of Columbia.</a>
-            <a href="/dc/council/code/sections/28-4507.html">§ 28–4507. Damages and injunctive relief for injuries to or within the District of Columbia.</a>
-            <a href="/dc/council/code/sections/28-4508.html">§ 28–4508. Relief for private parties.</a>
-            <a href="/dc/council/code/sections/28-4509.html">§ 28–4509. Indirect purchasers.</a>
-            <a href="/dc/council/code/sections/28-4510.html">§ 28–4510. Judgment in favor of the District of Columbia as prima facie evidence.</a>
-            <a href="/dc/council/code/sections/28-4511.html">§ 28–4511. Limitations on actions.</a>
-            <a href="/dc/council/code/sections/28-4512.html">§ 28–4512. Assurance of discontinuance.</a>
-            <a href="/dc/council/code/sections/28-4513.html">§ 28–4513. Cooperation with federal government and states.</a>
-            <a href="/dc/council/code/sections/28-4514.html">§ 28–4514. Remedies cumulative.</a>
-            <a href="/dc/council/code/sections/28-4515.html">§ 28–4515. Uniformity.</a>
-            <a href="/dc/council/code/sections/28-4516.html">§ 28–4516. District of Columbia Antitrust Fund. [Repealed]</a>
-            <a href="/dc/council/code/sections/28-4517.html">§ 28–4517. Severability.</a>
-            <a href="/dc/council/code/sections/28-4518.html">§ 28–4518. Relation to other law.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4501.html">§ 28–4501. Definition and purpose.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4502.html">§ 28–4502. Contract, combination, or conspiracy to restrain trade.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4503.html">§ 28–4503. Monopolization.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4504.html">§ 28–4504. Exclusions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4505.html">§ 28–4505. Civil investigative demand.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4506.html">§ 28–4506. Criminal enforcement by the District of Columbia.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4507.html">§ 28–4507. Damages and injunctive relief for injuries to or within the District of Columbia.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4508.html">§ 28–4508. Relief for private parties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4509.html">§ 28–4509. Indirect purchasers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4510.html">§ 28–4510. Judgment in favor of the District of Columbia as prima facie evidence.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4511.html">§ 28–4511. Limitations on actions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4512.html">§ 28–4512. Assurance of discontinuance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4513.html">§ 28–4513. Cooperation with federal government and states.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4514.html">§ 28–4514. Remedies cumulative.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4515.html">§ 28–4515. Uniformity.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4516.html">§ 28–4516. District of Columbia Antitrust Fund. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4517.html">§ 28–4517. Severability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-4518.html">§ 28–4518. Relation to other law.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -437,8 +473,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 28-4516.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3302 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see § 3302 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 3302 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle C of title III of Law 15-205: Section 3301 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle C of title III of the act may be cited as the Antitrust Fund Cap Increase Act of 2004.</p>
               </section>

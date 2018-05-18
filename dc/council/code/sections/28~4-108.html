@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:4-109.html">§ 28:4-109. Delays.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:4-108.html">Report Error</a>
@@ -100,13 +100,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 697, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/10-249.html">Mar. 23, 1995, D.C. Law 10-249, § 2(e), 42 DCR 467</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:4-108.</p>
                 <p>1973 Ed., § 28:4-107.</p>
+                <p>1981 Ed., § 28:4-108.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Each of the huge volume of checks processed each day must go through a series of accounting procedures that consume time. Many banks have found it necessary to establish a cutoff hour to allow time for these procedures to be completed within the time limits imposed by Article 4. Subsection (a) approves a cutoff hour of this type provided it is not earlier than 2 P.M. Subsection (b) provides that if such a cutoff hour is fixed, items received after the cutoff hour may be treated as being received at the opening of the next banking day. If the number of items received either through the mail or over the counter tends to taper off radically as the afternoon hours progress, a 2 P.M. cutoff hour does not involve a large portion of the items received but at the same time permits a bank using such a cutoff hour to leave its doors open later in the afternoon without forcing into the evening the completion of its settling and proving process.</p>
-                <p>2. The provision in subsection (b) that items or deposits received after the close of the banking day may be treated as received at the opening of the next banking day is important in cases in which a bank closes at twelve or one o’clock, e.g., on a Saturday, but continues to receive some items by mail or over the counter if, for example, it opens Saturday evening for the limited purpose of receiving deposits and cashing checks.</p>
-                <p>Reason for 1990 Change [<a class="internal-link" href="/dc/council/laws/10-249.html">D.C. Law 10-249</a>]</p>
                 <p>Modified to conform with current drafting practices; no intent to change substance.</p>
+                <p>Reason for 1990 Change [<a class="internal-link" href="/dc/council/laws/10-249.html">D.C. Law 10-249</a>]</p>
+                <p>2. The provision in subsection (b) that items or deposits received after the close of the banking day may be treated as received at the opening of the next banking day is important in cases in which a bank closes at twelve or one o’clock, e.g., on a Saturday, but continues to receive some items by mail or over the counter if, for example, it opens Saturday evening for the limited purpose of receiving deposits and cashing checks.</p>
+                <p>1. Each of the huge volume of checks processed each day must go through a series of accounting procedures that consume time. Many banks have found it necessary to establish a cutoff hour to allow time for these procedures to be completed within the time limits imposed by Article 4. Subsection (a) approves a cutoff hour of this type provided it is not earlier than 2 P.M. Subsection (b) provides that if such a cutoff hour is fixed, items received after the cutoff hour may be treated as being received at the opening of the next banking day. If the number of items received either through the mail or over the counter tends to taper off radically as the afternoon hours progress, a 2 P.M. cutoff hour does not involve a large portion of the items received but at the same time permits a bank using such a cutoff hour to leave its doors open later in the afternoon without forcing into the evening the completion of its settling and proving process.</p>
               </section>
             </section>
           </section>

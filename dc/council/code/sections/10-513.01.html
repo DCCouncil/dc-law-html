@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/10/chapters/5A/">Chapter 5A. Department of General Services.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/10-513.01.html">Report Error</a>
@@ -101,9 +101,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 9-1001.</p>
                 <h4>Editor's Notes</h4>
-                <p>Pub. L. 105-33, title XI, § 11715, Aug. 5, 1997, 111 Stat. 784, added this section.</p>
-                <p>Pub. L. 105-100, title I, § 157(f), Nov. 19, 1997, 111 Stat. 2186, provided:</p>
                 <p>“(f) Repeal of prior notice requirement for Federal activities affecting real property in District of Columbia. Effective October 1, 1997, the Balanced Budget Act of 1997 (Public Law 105-33) is amended by striking section 11715.”</p>
+                <p>Pub. L. 105-100, title I, § 157(f), Nov. 19, 1997, 111 Stat. 2186, provided:</p>
+                <p>Pub. L. 105-33, title XI, § 11715, Aug. 5, 1997, 111 Stat. 784, added this section.</p>
               </section>
             </section>
           </section>

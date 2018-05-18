@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/10/chapters/7/">Chapter 7. Repairs and Improvements of Public Buildings.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/10/chapters/6/">Report Error</a>
@@ -87,26 +87,66 @@
         <section class="col8 body">
           <h1>Chapter 6. Construction of Public Buildings.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/10-601.html">§ 10–601. Municipal Center — Authorization to acquire property.</a>
-            <a href="/dc/council/code/sections/10-602.html">§ 10–602. Municipal Center — Rental.</a>
-            <a href="/dc/council/code/sections/10-603.html">§ 10–603. Public buildings — Loans for construction authorized; projects enumerated.</a>
-            <a href="/dc/council/code/sections/10-604.html">§ 10–604. Public buildings — Availability of funds for acquiring lands for public uses.</a>
-            <a href="/dc/council/code/sections/10-605.html">§ 10–605. Public buildings — Reimbursement.</a>
-            <a href="/dc/council/code/sections/10-606.html">§ 10–606. Public buildings — Annual report submitted to Congress.</a>
-            <a href="/dc/council/code/sections/10-607.html">§ 10–607. Authorization to borrow money from the United States for public works.</a>
-            <a href="/dc/council/code/sections/10-608.html">§ 10–608. Purposes for which borrowed moneys may be used.</a>
-            <a href="/dc/council/code/sections/10-609.html">§ 10–609. Repayment of borrowed moneys.</a>
-            <a href="/dc/council/code/sections/10-610.html">§ 10–610. Annual report concerning borrowed moneys submitted to Congress.</a>
-            <a href="/dc/council/code/sections/10-611.html">§ 10–611. Limitations on borrowing.</a>
-            <a href="/dc/council/code/sections/10-612.html">§ 10–612. Interest on funds borrowed from Administrator of General Services.</a>
-            <a href="/dc/council/code/sections/10-613.html">§ 10–613. Advice of Secretary of Treasury regarding interest rate.</a>
-            <a href="/dc/council/code/sections/10-614.html">§ 10–614. Authorization for advancements for Office of Recorder of Deeds.</a>
-            <a href="/dc/council/code/sections/10-615.html">§ 10–615. Purposes for which advancements may be used.</a>
-            <a href="/dc/council/code/sections/10-616.html">§ 10–616. Repayment of advancements; interest.</a>
-            <a href="/dc/council/code/sections/10-617.html">§ 10–617. Annual report submitted to Congress.</a>
-            <a href="/dc/council/code/sections/10-618.html">§ 10–618. Preparation of plans and specifications.</a>
-            <a href="/dc/council/code/sections/10-619.html">§ 10–619. Program of construction to meet capital needs authorized; contents.</a>
-            <a href="/dc/council/code/sections/10-620.html">§ 10–620. Construction Services Fund.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-601.html">§ 10–601. Municipal Center — Authorization to acquire property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-602.html">§ 10–602. Municipal Center — Rental.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-603.html">§ 10–603. Public buildings — Loans for construction authorized; projects enumerated.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-604.html">§ 10–604. Public buildings — Availability of funds for acquiring lands for public uses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-605.html">§ 10–605. Public buildings — Reimbursement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-606.html">§ 10–606. Public buildings — Annual report submitted to Congress.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-607.html">§ 10–607. Authorization to borrow money from the United States for public works.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-608.html">§ 10–608. Purposes for which borrowed moneys may be used.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-609.html">§ 10–609. Repayment of borrowed moneys.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-610.html">§ 10–610. Annual report concerning borrowed moneys submitted to Congress.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-611.html">§ 10–611. Limitations on borrowing.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-612.html">§ 10–612. Interest on funds borrowed from Administrator of General Services.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-613.html">§ 10–613. Advice of Secretary of Treasury regarding interest rate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-614.html">§ 10–614. Authorization for advancements for Office of Recorder of Deeds.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-615.html">§ 10–615. Purposes for which advancements may be used.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-616.html">§ 10–616. Repayment of advancements; interest.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-617.html">§ 10–617. Annual report submitted to Congress.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-618.html">§ 10–618. Preparation of plans and specifications.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-619.html">§ 10–619. Program of construction to meet capital needs authorized; contents.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-620.html">§ 10–620. Construction Services Fund.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -121,42 +161,42 @@
       (<a class="internal-link" href="/us/congress/laws/public/70-2-ch379.html#§1">Feb. 28, 1929, 45 Stat. 1408, ch. 379, § 1</a>; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 571, Pub. L. 91-358, title I,§ 155(c)(29)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-201.</p>
                 <p>1973 Ed., § 9-201.</p>
+                <p>1981 Ed., § 9-201.</p>
                 <h4>Cross References</h4>
                 <p>Wharf property, rules and regulations, see §§ <a class="internal-link" href="/dc/council/code/sections/10-501.01.html">10-501.01</a>, <a class="internal-link" href="/dc/council/code/sections/10-501.02.html">10-501.02</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) provisions for private financing of a stadium provisions, see §§ 2 and 3 of Private or Alternative Stadium Financing Emergency Act of 2004 (D.C. Act 15-642, December 20, 2004,  51 DCR 11830).</p>
-                <p>For temporary (90 day) provisions for private or alternative financing of a stadium, see §§ 2 to 4 of Private or Alternative Stadium Financing and Cost Trigger Emergency Amendment Act of 2004 (D.C. Act 15-718, December 29, 2004,  52 DCR 1786).</p>
-                <p>For temporary (90 day) provisions for private or alternative financing of a stadium, see §§ 2 to 4 of Private or Alternative Stadium Financing and Cost Trigger Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-55, March 17, 2005,  52 DCR 3174).</p>
                 <p>For temporary (90 day) additions, see §§ 2 and 3 of Boys and Girls Club of Greater Washington Property Acquisition Emergency Act of 2009 (D.C. Act 18-130, July 6, 2009,  56 DCR 5510).</p>
+                <p>For temporary (90 day) provisions for private or alternative financing of a stadium, see §§ 2 to 4 of Private or Alternative Stadium Financing and Cost Trigger Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-55, March 17, 2005,  52 DCR 3174).</p>
+                <p>For temporary (90 day) provisions for private or alternative financing of a stadium, see §§ 2 to 4 of Private or Alternative Stadium Financing and Cost Trigger Emergency Amendment Act of 2004 (D.C. Act 15-718, December 29, 2004,  52 DCR 1786).</p>
+                <p>For temporary (90 day) provisions for private financing of a stadium provisions, see §§ 2 and 3 of Private or Alternative Stadium Financing Emergency Act of 2004 (D.C. Act 15-642, December 20, 2004,  51 DCR 11830).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Sections 2 and 3 of D.C. Law 18-58 added sections to read as follows:</p>
-                <p>“Sec. 2. (a) The Mayor is authorized to enter into an agreement with the Boys and Girls Club of Greater Washington (‘BGCGW’) (‘agreement’), for the acquisition of the following real property:</p>
-                <p>“(1) Frank R. Jelleff Branch property;</p>
-                <p>“(2) Mary &amp; Daniel Loughran Clubhouse # 10; and</p>
-                <p>“(3) Eastern Branch.</p>
-                <p>“(b) The agreement shall provide that:</p>
-                <p>“(1) BGCGW and the District’s obligations are contingent upon a payment to BGCGW:</p>
-                <p>“(A) In the amount of $7.5 million at settlement;</p>
-                <p>“(B) In the amount of $3.125 million by October 1, 2010;</p>
-                <p>“(C) In the amount of $3.125 million by October 1, 2011;</p>
-                <p>“(D) In the amount of $3.125 million by October 1, 2012; and</p>
-                <p>“(E) In the amount of $3.125 million by October 1, 2013;</p>
-                <p>“(2) All income from leases and other revenue attributable to the properties after the date of closing shall accrue to the District; and</p>
-                <p>“(3) The properties shall be accepted in ‘as is’ condition at closing.</p>
-                <p>“(c) The agreement shall contain such other terms and conditions as the Mayor determines to be in the best interest of the District of Columbia.</p>
-                <p>“Sec. 3. (a) The Mayor is authorized to contract with BGCGW for the operation of a summer camp during the summer of 2009 and for continued after-school programming through the closing on the sale of the Frank R. Jelleff Branch property, but no later than December 31, 2009, for which the District shall pay BGCGW $60,000 before July 1, 2009, and $20,000 before the end of 2009.</p>
-                <p>“(b) The Mayor is authorized to contract with BGCGW to open and operate the Mary &amp; Daniel Loughran Clubhouse #10 from 4 p.m., to 10 p.m., through the summer of 2009, to provide teen recreation opportunities and a summer day camp for children from 6 through 12 years of age, for which BGCGW will receive $33,000 before July 1, 2009. The Mayor shall negotiate with BGCGW to continue providing its customary and usual program operations through closing, but no later than December 31, 2009.</p>
-                <p>“(c)(1) The Mayor is authorized to contract with BGCGW to provide transportation for up to 26 youths currently served at Hopkins Branch and Hopkins Branch’s current Branch Director to BGCGW summer camp at the Richard England Clubhouse #14. BGCGW shall use its best efforts to identify adequate space at Hopkins Branch to provide programming in its 5 core programming areas, to serve at least 45 youths on a daily basis.</p>
-                <p>“(2) For fiscal year 2010, the District shall pay up to 50% of the budget for programming at Hopkins Branch, if the District of Columbia Housing Authority identifies adequate space in reasonably close proximity to the existing facility, in an amount not to exceed $121,000 for the operations during fiscal year 2010.</p>
-                <p>“(d)(1) Within 60 days after execution of the agreement, the Mayor shall enter into discussions with BGCGW as to the terms and conditions for BGCGW to continue to provide programs and services at Frank R. Jelleff Branch, the Mary &amp; Daniel Loughran Clubhouse #10, and Eastern Branch prior to completion of the sale. BGCGW shall competitively bid for the operation of programs as soon as practicable following the sale.</p>
-                <p>“(2) The Mayor shall encourage BGCGW to explore options to re-establish programs at the Eastern Branch prior to the transfer of ownership to the District of Columbia, contingent upon obtaining a valid certificate of occupancy for the Eastern Branch building.</p>
-                <p>“(e) In addition to the operating funds described in subsections (a), (b), and (c) of this section, the District shall:</p>
-                <p>“(1) Contract with BGCGW for the services identified in the fiscal year 2010 budget, approved on May 12, 2009, totaling $450,000;</p>
-                <p>“(2) Pay $200,000 from funds identified in the fiscal year 2010 budget to BGCGW to assist BGCGW in making payments required under its lease at THEARC, located at 1901 Mississippi Avenue, S.E.; and</p>
-                <p>“(3) Subject to the availability of funds, reimburse BGCGW up to $150,000 for the expenses associated with office renovations and other costs related to BGCGW’s planned relocation of its headquarters operations and 25 employees from the current location in Silver Spring, Maryland to the Richard England Clubhouse #14, located at 4103 Benning Road, N.E., in the District.”</p>
                 <p>Section 6(b) of D.C. Law 18-58 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(3) Subject to the availability of funds, reimburse BGCGW up to $150,000 for the expenses associated with office renovations and other costs related to BGCGW’s planned relocation of its headquarters operations and 25 employees from the current location in Silver Spring, Maryland to the Richard England Clubhouse #14, located at 4103 Benning Road, N.E., in the District.”</p>
+                <p>“(2) Pay $200,000 from funds identified in the fiscal year 2010 budget to BGCGW to assist BGCGW in making payments required under its lease at THEARC, located at 1901 Mississippi Avenue, S.E.; and</p>
+                <p>“(1) Contract with BGCGW for the services identified in the fiscal year 2010 budget, approved on May 12, 2009, totaling $450,000;</p>
+                <p>“(e) In addition to the operating funds described in subsections (a), (b), and (c) of this section, the District shall:</p>
+                <p>“(2) The Mayor shall encourage BGCGW to explore options to re-establish programs at the Eastern Branch prior to the transfer of ownership to the District of Columbia, contingent upon obtaining a valid certificate of occupancy for the Eastern Branch building.</p>
+                <p>“(d)(1) Within 60 days after execution of the agreement, the Mayor shall enter into discussions with BGCGW as to the terms and conditions for BGCGW to continue to provide programs and services at Frank R. Jelleff Branch, the Mary &amp; Daniel Loughran Clubhouse #10, and Eastern Branch prior to completion of the sale. BGCGW shall competitively bid for the operation of programs as soon as practicable following the sale.</p>
+                <p>“(2) For fiscal year 2010, the District shall pay up to 50% of the budget for programming at Hopkins Branch, if the District of Columbia Housing Authority identifies adequate space in reasonably close proximity to the existing facility, in an amount not to exceed $121,000 for the operations during fiscal year 2010.</p>
+                <p>“(c)(1) The Mayor is authorized to contract with BGCGW to provide transportation for up to 26 youths currently served at Hopkins Branch and Hopkins Branch’s current Branch Director to BGCGW summer camp at the Richard England Clubhouse #14. BGCGW shall use its best efforts to identify adequate space at Hopkins Branch to provide programming in its 5 core programming areas, to serve at least 45 youths on a daily basis.</p>
+                <p>“(b) The Mayor is authorized to contract with BGCGW to open and operate the Mary &amp; Daniel Loughran Clubhouse #10 from 4 p.m., to 10 p.m., through the summer of 2009, to provide teen recreation opportunities and a summer day camp for children from 6 through 12 years of age, for which BGCGW will receive $33,000 before July 1, 2009. The Mayor shall negotiate with BGCGW to continue providing its customary and usual program operations through closing, but no later than December 31, 2009.</p>
+                <p>“Sec. 3. (a) The Mayor is authorized to contract with BGCGW for the operation of a summer camp during the summer of 2009 and for continued after-school programming through the closing on the sale of the Frank R. Jelleff Branch property, but no later than December 31, 2009, for which the District shall pay BGCGW $60,000 before July 1, 2009, and $20,000 before the end of 2009.</p>
+                <p>“(c) The agreement shall contain such other terms and conditions as the Mayor determines to be in the best interest of the District of Columbia.</p>
+                <p>“(3) The properties shall be accepted in ‘as is’ condition at closing.</p>
+                <p>“(2) All income from leases and other revenue attributable to the properties after the date of closing shall accrue to the District; and</p>
+                <p>“(E) In the amount of $3.125 million by October 1, 2013;</p>
+                <p>“(D) In the amount of $3.125 million by October 1, 2012; and</p>
+                <p>“(C) In the amount of $3.125 million by October 1, 2011;</p>
+                <p>“(B) In the amount of $3.125 million by October 1, 2010;</p>
+                <p>“(A) In the amount of $7.5 million at settlement;</p>
+                <p>“(1) BGCGW and the District’s obligations are contingent upon a payment to BGCGW:</p>
+                <p>“(b) The agreement shall provide that:</p>
+                <p>“(3) Eastern Branch.</p>
+                <p>“(2) Mary &amp; Daniel Loughran Clubhouse # 10; and</p>
+                <p>“(1) Frank R. Jelleff Branch property;</p>
+                <p>“Sec. 2. (a) The Mayor is authorized to enter into an agreement with the Boys and Girls Club of Greater Washington (‘BGCGW’) (‘agreement’), for the acquisition of the following real property:</p>
+                <p>Sections 2 and 3 of D.C. Law 18-58 added sections to read as follows:</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 402(191) of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to the District of Columbia Council, subject to the right of the Commissioner as provided in § 406 of the Plan. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -173,8 +213,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/71-2-ch848.html">July 3, 1930, 46 Stat. 957, ch. 848</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-202.</p>
                 <p>1973 Ed., § 9-202.</p>
+                <p>1981 Ed., § 9-202.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -191,13 +231,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/73-2-ch743.html#§1">June 25, 1934, 48 Stat. 1215, ch. 743, § 1</a>; May 6, 1935, 49 Stat. 174, ch. 91, § 1.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-203.</p>
                 <p>1973 Ed., § 9-204.</p>
+                <p>1981 Ed., § 9-203.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/10-604.html">10-604</a>, § <a class="internal-link" href="/dc/council/code/sections/10-605.html">10-605</a>, § <a class="internal-link" href="/dc/council/code/sections/10-606.html">10-606</a>, § <a class="internal-link" href="/dc/council/code/sections/10-611.html">10-611</a>, and § <a class="internal-link" href="/dc/council/code/sections/10-612.html">10-612</a>.</p>
                 <h4>Transfer of Functions</h4>
-                <p>The Federal Emergency Administration of Public Works was consolidated into the Federal Works Agency to be administered by the Public Works Administration by 1939 Reorganization Plan No. 1, §§ 301, 305, 4 F.R. 2729, 53 Stat. 1426. All functions of the Public Works Administration and the Commissioner of Public Works, in the Federal Works Agency, were transferred to the  Federal Works Administrator by Executive Order No. 9357, June 30, 1943, 8 F.R. 9041. All functions of the Federal Works Agency and of all agencies thereof, together with all functions of the Federal Works Administrator, were transferred to the Administrator of General Services by § 103(a) of the Act of June 30, 1949, 63 Stat. 380, ch. 288. Both the Federal Works Agency and the Office of Federal Works Administrator were abolished by § 103(b) of the Act of June 30, 1949.</p>
                 <p>The functions, powers and duties of the National Capital Park and Planning Commission were transferred to the National Capital Planning Commission by the Act of June 6, 1924, ch. 270, § 9, as added by the Act of July 19, 1952, 66 Stat. 790, ch. 949, § 1.</p>
+                <p>The Federal Emergency Administration of Public Works was consolidated into the Federal Works Agency to be administered by the Public Works Administration by 1939 Reorganization Plan No. 1, §§ 301, 305, 4 F.R. 2729, 53 Stat. 1426. All functions of the Public Works Administration and the Commissioner of Public Works, in the Federal Works Agency, were transferred to the  Federal Works Administrator by Executive Order No. 9357, June 30, 1943, 8 F.R. 9041. All functions of the Federal Works Agency and of all agencies thereof, together with all functions of the Federal Works Administrator, were transferred to the Administrator of General Services by § 103(a) of the Act of June 30, 1949, 63 Stat. 380, ch. 288. Both the Federal Works Agency and the Office of Federal Works Administrator were abolished by § 103(b) of the Act of June 30, 1949.</p>
                 <h4>References in Text</h4>
                 <p>Act of April 1, 1942, 56 Stat. 190, ch. 207, § 1, consolidated the Police Court and the Municipal Court into a single court, to be known as “The Municipal Court for the District of Columbia”. Act of July 8, 1963, 77 Stat. 77, Pub. L. 88-60, § 1, changed the name of the court to the “District of Columbia Court of General Sessions”. Act of July 29, 1970, 84 Stat. 570, Pub. L. 91-358, § 155(a), changed the name of the court to Superior Court of the District of Columbia.</p>
                 <h4>Change in Government</h4>
@@ -216,8 +256,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/73-2-ch743.html#§2">June 25, 1934, 48 Stat. 1215, ch. 743, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-204.</p>
                 <p>1973 Ed., § 9-205.</p>
+                <p>1981 Ed., § 9-204.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -234,8 +274,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/73-2-ch743.html#§3">June 25, 1934, 48 Stat. 1215, ch. 743, § 3</a>; May 6, 1935, 49 Stat. 175, ch. 91, § 2.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-205.</p>
                 <p>1973 Ed., § 9-206.</p>
+                <p>1981 Ed., § 9-205.</p>
                 <h4>Transfer of Functions</h4>
                 <p>The Federal Emergency Administration of Public Works was consolidated into the Federal Works Agency to be administered by the Public Works Administration by 1939 Reorganization Plan No. 1, §§ 301, 305, 4 F.R. 2729, 53 Stat. 1426. All functions of the Public Works Administration and the Commissioner of Public Works, in the Federal Works Agency, were transferred to the  Federal Works Administrator by Executive Order No. 9357, June 30, 1943, 8 F.R. 9041. All functions of the Federal Works Agency and of all agencies thereof, together with all functions of the Federal Works Administrator, were transferred to the Administrator of General Services by § 103(a) of the Act of June 30, 1949, 63 Stat. 380, ch. 288. Both the Federal Works Agency and the Office of Federal Works Administrator were abolished by § 103(b) of the Act of June 30, 1949.</p>
                 <h4>Change in Government</h4>
@@ -254,8 +294,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/73-2-ch743.html#§4">June 25, 1934, 48 Stat. 1216, ch. 743, § 4</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-206.</p>
                 <p>1973 Ed., § 9-207.</p>
+                <p>1981 Ed., § 9-206.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -272,8 +312,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch704.html#§1">June 25, 1938, 52 Stat. 1203, ch. 704, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-207.</p>
                 <p>1973 Ed., § 9-208.</p>
+                <p>1981 Ed., § 9-207.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/10-608.html">10-608</a>, § <a class="internal-link" href="/dc/council/code/sections/10-609.html">10-609</a>, and § <a class="internal-link" href="/dc/council/code/sections/10-610.html">10-610</a>.</p>
                 <h4>Transfer of Functions</h4>
@@ -294,8 +334,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch704.html#§2">June 25, 1938, 52 Stat. 1204, ch. 704, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-208.</p>
                 <p>1973 Ed., § 9-209.</p>
+                <p>1981 Ed., § 9-208.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -312,8 +352,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch704.html#§3">June 25, 1938, 52 Stat. 1204, ch. 704, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-209.</p>
                 <p>1973 Ed., § 9-210.</p>
+                <p>1981 Ed., § 9-209.</p>
                 <h4>Transfer of Functions</h4>
                 <p>The Federal Emergency Administration of Public Works was consolidated into the Federal Works Agency to be administered by the Public Works Administration by 1939 Reorganization Plan No. 1, §§ 301, 305, 4 F.R. 2729, 53 Stat. 1426. All functions of the Public Works Administration and the Commissioner of Public Works, in the Federal Works Agency, were transferred to the  Federal Works Administrator by Executive Order No. 9357, June 30, 1943, 8 F.R. 9041. All functions of the Federal Works Agency and of all agencies thereof, together with all functions of the Federal Works Administrator, were transferred to the Administrator of General Services by § 103(a) of the Act of June 30, 1949, 63 Stat. 380, ch. 288. Both the Federal Works Agency and the Office of Federal Works Administrator were abolished by § 103(b) of the Act of June 30, 1949.</p>
                 <h4>Change in Government</h4>
@@ -332,8 +372,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch704.html#§4">June 25, 1938, 52 Stat. 1204, ch. 704, § 4</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-210.</p>
                 <p>1973 Ed., § 9-211.</p>
+                <p>1981 Ed., § 9-210.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -350,8 +390,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch704.html#§5">June 25, 1938, 52 Stat. 1204, ch. 704, § 5</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-211.</p>
                 <p>1973 Ed., § 9-212.</p>
+                <p>1981 Ed., § 9-211.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/10-612.html">10-612</a>.</p>
                 <h4>Change in Government</h4>
@@ -370,8 +410,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/76-3-ch494.html#§1">July 1, 1940, 54 Stat. 706, ch. 494, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-212.</p>
                 <p>1973 Ed., § 9-213.</p>
+                <p>1981 Ed., § 9-212.</p>
                 <h4>Transfer of Functions</h4>
                 <p>The Federal Emergency Administration of Public Works was consolidated into the Federal Works Agency to be administered by the Public Works Administration by 1939 Reorganization Plan No. 1, §§ 301, 305, 4 F.R. 2729, 53 Stat. 1426. All functions of the Public Works Administration and the Commissioner of Public Works, in the Federal Works Agency, were transferred to the  Federal Works Administrator by Executive Order No. 9357, June 30, 1943, 8 F.R. 9041. All functions of the Federal Works Agency and of all agencies thereof, together with all functions of the Federal Works Administrator, were transferred to the Administrator of General Services by § 103(a) of the Act of June 30, 1949, 63 Stat. 380, ch. 288. Both the Federal Works Agency and the Office of Federal Works Administrator were abolished by § 103(b) of the Act of June 30, 1949.</p>
                 <h4>Change in Government</h4>
@@ -390,8 +430,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/76-3-ch494.html#§2">July 1, 1940, 54 Stat. 706, ch. 494, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-213.</p>
                 <p>1973 Ed., § 9-214.</p>
+                <p>1981 Ed., § 9-213.</p>
                 <h4>Transfer of Functions</h4>
                 <p>The Federal Emergency Administration of Public Works was consolidated into the Federal Works Agency to be administered by the Public Works Administration by 1939 Reorganization Plan No. 1, §§ 301, 305, 4 F.R. 2729, 53 Stat. 1426. All functions of the Public Works Administration and the Commissioner of Public Works, in the Federal Works Agency, were transferred to the  Federal Works Administrator by Executive Order No. 9357, June 30, 1943, 8 F.R. 9041. All functions of the Federal Works Agency and of all agencies thereof, together with all functions of the Federal Works Administrator, were transferred to the Administrator of General Services by § 103(a) of the Act of June 30, 1949, 63 Stat. 380, ch. 288. Both the Federal Works Agency and the Office of Federal Works Administrator were abolished by § 103(b) of the Act of June 30, 1949.</p>
                 <h4>Change in Government</h4>
@@ -410,8 +450,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/76-3-ch583.html#§1">July 11, 1940, 54 Stat. 757, ch. 583, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-214.</p>
                 <p>1973 Ed., § 9-215.</p>
+                <p>1981 Ed., § 9-214.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/10-615.html">10-615</a>, § <a class="internal-link" href="/dc/council/code/sections/10-616.html">10-616</a>, and § <a class="internal-link" href="/dc/council/code/sections/10-617.html">10-617</a>.</p>
                 <h4>Transfer of Functions</h4>
@@ -434,8 +474,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/76-3-ch583.html#§2">July 11, 1940, 54 Stat. 757, ch. 583, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-215.</p>
                 <p>1973 Ed., § 9-216.</p>
+                <p>1981 Ed., § 9-215.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -452,8 +492,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/76-3-ch583.html#§3">July 11, 1940, 54 Stat. 757, ch. 583, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-216.</p>
                 <p>1973 Ed., § 9-217.</p>
+                <p>1981 Ed., § 9-216.</p>
                 <h4>Transfer of Functions</h4>
                 <p>The Federal Emergency Administration of Public Works was consolidated into the Federal Works Agency to be administered by the Public Works Administration by 1939 Reorganization Plan No. 1, §§ 301, 305, 4 F.R. 2729, 53 Stat. 1426. All functions of the Public Works Administration and the Commissioner of Public Works, in the Federal Works Agency, were transferred to the  Federal Works Administrator by Executive Order No. 9357, June 30, 1943, 8 F.R. 9041. All functions of the Federal Works Agency and of all agencies thereof, together with all functions of the Federal Works Administrator, were transferred to the Administrator of General Services by § 103(a) of the Act of June 30, 1949, 63 Stat. 380, ch. 288. Both the Federal Works Agency and the Office of Federal Works Administrator were abolished by § 103(b) of the Act of June 30, 1949.</p>
                 <h4>Change in Government</h4>
@@ -472,8 +512,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/76-3-ch583.html#§4">July 11, 1940, 54 Stat. 758, ch. 583, § 4</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-217.</p>
                 <p>1973 Ed., § 9-218.</p>
+                <p>1981 Ed., § 9-217.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -490,8 +530,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/10-618.html">July 1, 1943, 57 Stat. 324, ch. 184, § 1, par. 4</a>; <a class="internal-link" href="/dc/council/laws/8-131.html">May 23, 1990, D.C. Law 8-131, § 3, 37 DCR 2211</a>; <a class="internal-link" href="/dc/council/laws/8-143.html">June 22, 1990, D.C. Law 8-143, § 3, 37 DCR 2972</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-218.</p>
                 <p>1973 Ed., § 9-219.</p>
+                <p>1981 Ed., § 9-218.</p>
                 <h4>Change in Government</h4>
                 <p>Change in government This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -508,16 +548,16 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-451.html#§1">June 6, 1958, 72 Stat. 183, Pub. L. 85-451, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/88-104.html">Aug. 27, 1963, 77 Stat. 130, Pub. L. 88-104, § 2(a), (b)</a>; <a class="internal-link" href="/us/congress/laws/public/89-173.html">Sept. 8, 1965, 79 Stat. 665, Pub. L. 89-173, § 5(b)</a>; <a class="internal-link" href="/us/congress/laws/public/89-610.html">Sept. 30, 1966, 80 Stat. 857, Pub. L. 89-610, title VI, § 601</a>; <a class="internal-link" href="/us/congress/laws/public/89-791.html">Nov. 7, 1966, 80 Stat. 1434, Pub. L. 89-791, title III, § 301(b)</a>; <a class="internal-link" href="/us/congress/laws/public/90-120.html">Nov. 3, 1967, 81 Stat. 339, Pub. L. 90-120, title II, §§ 201, 202</a>; Dec. 9, 1969, 83 Stat. 321, Pub. L. 91-143, § 4(b); <a class="internal-link" href="/us/congress/laws/public/91-650.html">Jan. 5, 1971, 84 Stat. 1930, Pub. L. 91-650, title I, § 103(a)</a>; <a class="internal-link" href="/us/congress/laws/public/92-349.html">July 13, 1972, 86 Stat. 466, Pub. L. 92-349, title II, § 201(b)</a>; <a class="internal-link" href="/us/congress/laws/public/92-517.html">Oct. 21, 1972, 86 Stat. 1002, Pub. L. 92-517, title II, § 201(b)</a>; <a class="internal-link" href="/us/congress/laws/public/93-198.html">Dec. 24, 1973, 87 Stat. 832, Pub. L. 93-198, title VII,§ 743(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-219.</p>
                 <p>1973 Ed., § 9-220.</p>
+                <p>1981 Ed., § 9-219.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-1106.html">38-1106</a>.</p>
                 <h4>Cross References</h4>
-                <p>Appropriations, public higher educational institutions, see § <a class="internal-link" href="/dc/council/code/sections/38-1106.html">38-1106</a>.</p>
                 <p>Multiyear capital improvements plan, see § <a class="internal-link" href="/dc/council/code/sections/1-204.44.html">1-204.44</a>.</p>
+                <p>Appropriations, public higher educational institutions, see § <a class="internal-link" href="/dc/council/code/sections/38-1106.html">38-1106</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Appropriations authorized: Public Law 103-334, 108 Stat. 2581, the District of Columbia Appropriations Act, 1995, provided for construction projects $5,600,000, as authorized by §§ <a class="internal-link" href="/dc/council/code/sections/34-2405.01.html">34-2405.01</a> through <a class="internal-link" href="/dc/council/code/sections/34-2405.08.html">34-2405.08</a>; the District of Columbia Public Works Act of 1954, approved May 18, 1954 (68 Stat. 101; Public Law 83-364 [34-2413.08 and 34-2413.10] ); §§ <a class="internal-link" href="/dc/council/code/sections/10-610.html">10-610</a> and <a class="internal-link" href="/dc/council/code/sections/47-3404.html">47-3404</a>) [section 3(g) of the District of Columbia Motor Vehicle Parking Facility Act of 1942, approved August 20, 1958 (72 Stat. 686; Public Law 85-692; D.C. Code, sec 40-805(7)); and the National Capital Transportation Act of 1969, approved December 9, 1969 (83 Stat. 320; Public Law 91-143;  D.C. Code, secs. 9-1111.01,  9-1111.02,  9-1111.03,  9-1111.04 and  9-1111.05)]; including acquisition of sites, preparation of plans and specifications, conducting preliminary surveys, erection of structures, including building improvement and alteration and treatment of grounds, to remain available until expended: Provided, That $140,000 shall be available for project management and $110,000 shall be available for design by the Director of the Department of Public Works or by contract for architectural engineering services, as may be determined by the Mayor: Provided further, That funds for use of each capital project implementing agency shall be managed and controlled in accordance with all procedures and limitations established under the Financial Management System: Provided further, That all funds provided by this appropriation title shall be available only for the specific projects and purposes intended: Provided further, That notwithstanding the foregoing, all authorizations for capital outlay projects, except those projects covered by the first sentence of section 23(a) of the Federal-Aid Highway Act of 1968, approved August 23, 1968 (82 Stat. 827; Public Law 90-495;  D.C. Code, sec. 9-107.01, note), for which funds are provided by this appropriation title, shall expire on September 30, 1996, except authorizations for projects as to which funds have been obligated in whole or in part prior to September 30, 1996: Provided further, That upon expiration of any such project authorization the funds provided herein for the project shall lapse.</p>
                 <p>Appropriations authorized: Public Law 104-194, 110 Stat. 2362, the District of Columbia Appropriations Act, 1997, provided for construction projects an increase of $46,923,000 (including an increase of $34,000,000 for the highway trust fund, reallocations and rescissions for a net rescission of $120,496,000 from local funds appropriated under this heading in prior fiscal years and an additional $133,419,000 in Federal funds), as authorized by §§ <a class="internal-link" href="/dc/council/code/sections/34-2405.01.html">34-2405.01</a> through <a class="internal-link" href="/dc/council/code/sections/34-2405.08.html">34-2405.08</a>; §§ <a class="internal-link" href="/dc/council/code/sections/34-2413.08.html">34-2413.08</a>, <a class="internal-link" href="/dc/council/code/sections/34-2413.10.html">34-2413.10</a> and <a class="internal-link" href="/dc/council/code/sections/34-2304.html">34-2304</a>; and §§ <a class="internal-link" href="/dc/council/code/sections/10-619.html">10-619</a> and <a class="internal-link" href="/dc/council/code/sections/47-3404.html">47-3404</a>; including acquisition of sites, preparation of plans and specifications, conducting preliminary surveys, erection of structures, including building improvement and alteration and treatment of grounds, to remain available until expended: Provided, That funds for use of each capital project implementing agency shall be managed and controlled in accordance with all procedures and limitations established under the Financial Management System: Provided further, That all funds provided by this appropriation title shall be available only for the specific projects and purposes intended: Provided further, That notwithstanding the foregoing, all authorizations for capital outlay projects, except those projects covered by the first sentence of section 23(a) of the Federal-Aid Highway Act of 1968, approved August 23, 1968 (82 Stat. 827; Public Law 90-495;  D.C. Code, sec. 9-107.01, note), for which funds are provided by this appropriation title, shall expire on September 30, 1998, except authorizations for projects as to which funds have been obligated in whole or in part prior to September 30, 1998: Provided further, That upon expiration of any such project authorization the funds provided herein for the project shall lapse.</p>
+                <p>Appropriations authorized: Public Law 103-334, 108 Stat. 2581, the District of Columbia Appropriations Act, 1995, provided for construction projects $5,600,000, as authorized by §§ <a class="internal-link" href="/dc/council/code/sections/34-2405.01.html">34-2405.01</a> through <a class="internal-link" href="/dc/council/code/sections/34-2405.08.html">34-2405.08</a>; the District of Columbia Public Works Act of 1954, approved May 18, 1954 (68 Stat. 101; Public Law 83-364 [34-2413.08 and 34-2413.10] ); §§ <a class="internal-link" href="/dc/council/code/sections/10-610.html">10-610</a> and <a class="internal-link" href="/dc/council/code/sections/47-3404.html">47-3404</a>) [section 3(g) of the District of Columbia Motor Vehicle Parking Facility Act of 1942, approved August 20, 1958 (72 Stat. 686; Public Law 85-692; D.C. Code, sec 40-805(7)); and the National Capital Transportation Act of 1969, approved December 9, 1969 (83 Stat. 320; Public Law 91-143;  D.C. Code, secs. 9-1111.01,  9-1111.02,  9-1111.03,  9-1111.04 and  9-1111.05)]; including acquisition of sites, preparation of plans and specifications, conducting preliminary surveys, erection of structures, including building improvement and alteration and treatment of grounds, to remain available until expended: Provided, That $140,000 shall be available for project management and $110,000 shall be available for design by the Director of the Department of Public Works or by contract for architectural engineering services, as may be determined by the Mayor: Provided further, That funds for use of each capital project implementing agency shall be managed and controlled in accordance with all procedures and limitations established under the Financial Management System: Provided further, That all funds provided by this appropriation title shall be available only for the specific projects and purposes intended: Provided further, That notwithstanding the foregoing, all authorizations for capital outlay projects, except those projects covered by the first sentence of section 23(a) of the Federal-Aid Highway Act of 1968, approved August 23, 1968 (82 Stat. 827; Public Law 90-495;  D.C. Code, sec. 9-107.01, note), for which funds are provided by this appropriation title, shall expire on September 30, 1996, except authorizations for projects as to which funds have been obligated in whole or in part prior to September 30, 1996: Provided further, That upon expiration of any such project authorization the funds provided herein for the project shall lapse.</p>
               </section>
             </section>
             <hr/>
@@ -534,8 +574,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-140.html#§13">Oct. 26, 1973, 87 Stat. 506, Pub. L. 93-140, § 13</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-220.</p>
                 <p>1973 Ed., § 9-221.</p>
+                <p>1981 Ed., § 9-220.</p>
                 <h4>Transfer of Functions</h4>
                 <p>The functions of the Department of General Services were transferred, in part, to the Department of Public Works by Reorganization Plan No. 4 of 1983, effective March 1, 1984, and transferred, in part, to the Department of Administrative Services by Reorganization Plan No. 5 of 1983, effective March 1, 1984.</p>
                 <h4>Change in Government</h4>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-339.html">§ 28:9-339. Priority subject to subordination.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-338.html">Report Error</a>
@@ -106,9 +106,9 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-299.html">D.C. Law 19-299</a> substituted “tangible chattel paper, tangible documents” for “chattel paper, documents” in (2).</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. New.</p>
-                <p>2. Effect of Incorrect Information in Financing Statement.  Section 9-520(a) requires the filing office to reject financing statements that do not contain information concerning the debtor as specified in  Section 9-516(b)(5). An error in this information does not render the financing statement ineffective. On rare occasions, a subsequent purchaser of the collateral (i.e., a buyer or secured party) may rely on the misinformation to its detriment. This section subordinates a security interest or agricultural lien perfected by an effective, but flawed, financing statement to the rights of a buyer or holder of a perfected security interest to the extent that, in reasonable reliance on the incorrect information, the purchaser gives value and, in the case of tangible collateral, receives delivery of the collateral. A purchaser who has not made itself aware of the information in the filing office with respect to the debtor cannot act in “reasonable reliance” upon incorrect information.</p>
                 <p>3. Relationship to  Section 9-507. This section applies to financing statements that contain information that is incorrect at the time of filing and imposes a small risk of subordination on the filer. In contrast,  Section 9-507 deals with financing statements containing information that is correct at the time of filing but which becomes incorrect later. Except as provided in  Section 9-507 with respect to changes in the debtor’s name, an otherwise effective financing statement does not become ineffective if the information contained in it becomes inaccurate.</p>
+                <p>2. Effect of Incorrect Information in Financing Statement.  Section 9-520(a) requires the filing office to reject financing statements that do not contain information concerning the debtor as specified in  Section 9-516(b)(5). An error in this information does not render the financing statement ineffective. On rare occasions, a subsequent purchaser of the collateral (i.e., a buyer or secured party) may rely on the misinformation to its detriment. This section subordinates a security interest or agricultural lien perfected by an effective, but flawed, financing statement to the rights of a buyer or holder of a perfected security interest to the extent that, in reasonable reliance on the incorrect information, the purchaser gives value and, in the case of tangible collateral, receives delivery of the collateral. A purchaser who has not made itself aware of the information in the filing office with respect to the debtor cannot act in “reasonable reliance” upon incorrect information.</p>
+                <p>1. Source. New.</p>
               </section>
             </section>
           </section>

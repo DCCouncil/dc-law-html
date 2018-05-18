@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/29/chapters/8/subchapters/III/">Subchapter III. Relations of Members and Managers to Persons Dealing with Limited Liability Company.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29/chapters/8/subchapters/II/">Report Error</a>
@@ -88,12 +88,24 @@
         <section class="col8 body">
           <h1>Subchapter II. Formation; Certificate of Organization, and Other Filings.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/29-802.01.html">§ 29–802.01. Formation of limited liability company; certificate of organization.</a>
-            <a href="/dc/council/code/sections/29-802.02.html">§ 29–802.02. Amendment or restatement of certificate of organization.</a>
-            <a href="/dc/council/code/sections/29-802.03.html">§ 29–802.03. Signing of records to be delivered for filing to Mayor.</a>
-            <a href="/dc/council/code/sections/29-802.04.html">§ 29–802.04. Signing and filing pursuant to judicial order.</a>
-            <a href="/dc/council/code/sections/29-802.05.html">§ 29–802.05. Liability for inaccurate information in filed record.</a>
-            <a href="/dc/council/code/sections/29-802.06.html">§ 29–802.06. Series of members, managers, or interests of limited liability company.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-802.01.html">§ 29–802.01. Formation of limited liability company; certificate of organization.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-802.02.html">§ 29–802.02. Amendment or restatement of certificate of organization.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-802.03.html">§ 29–802.03. Signing of records to be delivered for filing to Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-802.04.html">§ 29–802.04. Signing and filing pursuant to judicial order.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-802.05.html">§ 29–802.05. Liability for inaccurate information in filed record.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-802.06.html">§ 29–802.06. Series of members, managers, or interests of limited liability company.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -118,8 +130,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote (c) and (d); and repealed (e) which read “If a filed certificate of organization contains a statement as provided in subsection (b)(3) of this section, the following rules shall apply: (1) The certificate shall lapse and be void unless, within 90 days from the date the Mayor files the certificate, an organizer signs and delivers to the Mayor for filing a notice stating: (A) That the limited liability company has at least one member; and (B) The date on which a person or persons became the company’s initial member or members. (2) If an organizer complies with paragraph (1) of this subsection, a limited liability company shall be deemed formed as of the date of initial membership stated in the notice delivered pursuant to paragraph (1) of this subsection. (3) Except in a proceeding by the District to dissolve a limited liability company, the filing of the notice described in paragraph (1) of this subsection by the Mayor shall be conclusive proof that the organizer satisfied all conditions to the formation of a limited liability company.”</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 201 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 201 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -147,8 +159,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “initial certificate” for “certificate” in (b)(2); deleted “stating” following “heading” at the end of (c) and substituted a closing period for the semicolon; repealed (c)(1) through (c)(3); repealed (d), which read: “Subject to §§ <a class="internal-link" href="/dc/council/code/sections/29-801.09.html">29-801.09</a>(c) and <a class="internal-link" href="/dc/council/code/sections/29-802.05.html">29-802.05</a>(c), an amendment to or restatement of a certificate of organization shall be effective when filed by the Mayor.”; and redesignated former (e) and (f) as (d) and (e), respectively.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 202 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 202 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -173,8 +185,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 203 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 203 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -198,8 +210,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> added (c).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 204 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 204 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -227,8 +239,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “making false statements” for “perjury” in (c).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 207 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 207 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>

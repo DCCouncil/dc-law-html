@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/42-2105.html">§ 42–2105. Program inventory.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-2104.html">Report Error</a>
@@ -114,15 +114,15 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-2103.html">42-2103</a>, § <a class="internal-link" href="/dc/council/code/sections/42-2106.html">42-2106</a>, § <a class="internal-link" href="/dc/council/code/sections/42-2107.html">42-2107</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-2111.html">42-2111</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-226.html">D.C. Law 13-226</a>, in subsec. (a), substituted “§ <a class="internal-link" href="/dc/council/code/sections/47-847.html">47-847</a> and 47-1303” for “§ <a class="internal-link" href="/dc/council/code/sections/47-847.html">47-847</a>”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-114.html">D.C. Law 14-114</a>, in subsec. (a), substituted “, to be administered by the Mayor” for “for the District” and substituted “or through District-initiated foreclosure, donation, or purchase, may be transferred” for “may be transferred”; in subsec. (b), substituted “Mayor through” for “Administrator of”; and repealed subsec. (e) which, prior to repeal, read:</p>
-                <p>“(e) There is hereby established within the District of Columbia Department of Housing and Community Development, a Homestead Program Administration, to be headed by an Administrator, to be appointed by the Mayor with the advice and consent of the Council. In nominating the Administrator, the Mayor shall give preference to a person who has demonstrated administrative experience with a homesteading program.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/14-310.html">D.C. Law 14-310</a>, in subsec. (a), validated a previously made technical correction.</p>
+                <p>“(e) There is hereby established within the District of Columbia Department of Housing and Community Development, a Homestead Program Administration, to be headed by an Administrator, to be appointed by the Mayor with the advice and consent of the Council. In nominating the Administrator, the Mayor shall give preference to a person who has demonstrated administrative experience with a homesteading program.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-114.html">D.C. Law 14-114</a>, in subsec. (a), substituted “, to be administered by the Mayor” for “for the District” and substituted “or through District-initiated foreclosure, donation, or purchase, may be transferred” for “may be transferred”; in subsec. (b), substituted “Mayor through” for “Administrator of”; and repealed subsec. (e) which, prior to repeal, read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-226.html">D.C. Law 13-226</a>, in subsec. (a), substituted “§ <a class="internal-link" href="/dc/council/code/sections/47-847.html">47-847</a> and 47-1303” for “§ <a class="internal-link" href="/dc/council/code/sections/47-847.html">47-847</a>”.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 3(c) and 6(b) of the Redevelopment Land Agency Disposition Review Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-524, January 5, 2001,  48 DCR 624).</p>
                 <h4>Editor's Notes</h4>
-                <p>Approval of amendments to rules for real property taxes: Pursuant to Resolution 7-72, the “Homestead Housing Tax Sale Amendment Approval Resolution of 1987,” effective June 2, 1987, the Council approved proposed amendments to Chapter 3, Title 9 DCMR, rules for real property taxes which were transmitted to Council by the District of Columbia Homestead Program Administration, Department of Housing and Community Development.</p>
                 <p>Approval, in part, and disapproval, in part, of proposed rules and administrative plan: Pursuant to Resolution 7-97, the “Homestead Housing Program Approval and Disapproval Resolution of 1987,” effective July 14, 1987, the Council, approved, in part, and disapproved, in part, the proposed rules and administrative plan for the Homestead Housing Preservation Program.</p>
+                <p>Approval of amendments to rules for real property taxes: Pursuant to Resolution 7-72, the “Homestead Housing Tax Sale Amendment Approval Resolution of 1987,” effective June 2, 1987, the Council approved proposed amendments to Chapter 3, Title 9 DCMR, rules for real property taxes which were transmitted to Council by the District of Columbia Homestead Program Administration, Department of Housing and Community Development.</p>
               </section>
             </section>
           </section>

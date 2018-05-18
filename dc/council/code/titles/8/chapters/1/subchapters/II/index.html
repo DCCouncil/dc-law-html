@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/1/subchapters/II-A/">Subchapter II-A. Anacostia River Clean Up and Protection Fertilizer Act.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/8/chapters/1/subchapters/II/">Report Error</a>
@@ -88,33 +88,87 @@
         <section class="col8 body">
           <h1>Subchapter II. Water Pollution Control.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/8-103.01.html">§ 8–103.01. Definitions.</a>
-            <a href="/dc/council/code/sections/8-103.02.html">§ 8–103.02. Discharge of pollutants prohibited; exception.</a>
-            <a href="/dc/council/code/sections/8-103.03.html">§ 8–103.03. Protection of aquatic life.</a>
-            <a href="/dc/council/code/sections/8-103.03a.html">§ 8–103.03a. Fishing License Fund.</a>
-            <a href="/dc/council/code/sections/8-103.04.html">§ 8–103.04. Classification of beneficial uses of waters.</a>
-            <a href="/dc/council/code/sections/8-103.05.html">§ 8–103.05. Monitoring for compliance with subchapter.</a>
-            <a href="/dc/council/code/sections/8-103.06.html">§ 8–103.06. Certain discharges permitted; terms of permit; additional enforcement procedures; effect of federal permit; public hearing on permit; special requirements for treatment facilities; permits for industrial discharges; certain discharges from watercraft prohibited.</a>
-            <a href="/dc/council/code/sections/8-103.07.html">§ 8–103.07. Location of discharge; recognition of reduction of pollutants; restrictions on quantity of materials discharged; discharge of used motor oil to sewer prohibited.</a>
-            <a href="/dc/council/code/sections/8-103.08.html">§ 8–103.08. Discharge of pollutant from vessel or onshore or offshore facility; removal of these pollutants; contingency plan for environmental emergencies.</a>
-            <a href="/dc/council/code/sections/8-103.09.html">§ 8–103.09. Accounting for revenues and expenses of pollutant removal; available funds for future years; District of Columbia Wetland and Stream Mitigation Trust Fund.</a>
-            <a href="/dc/council/code/sections/8-103.09a.html">§ 8–103.09a. District of Columbia Wells Maintenance Fund; establishment; financing. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-103.09b.html">§ 8–103.09b. Stormwater In-Lieu Fee Payment Fund.</a>
-            <a href="/dc/council/code/sections/8-103.09c.html">§ 8–103.09c. Soil Erosion and Sediment Control Fund.</a>
-            <a href="/dc/council/code/sections/8-103.09d.html">§ 8–103.09d. Stormwater Fees Fund.</a>
-            <a href="/dc/council/code/sections/8-103.10.html">§ 8–103.10. Spill prevention and cleanup plan for onshore or offshore facility; discharge from underground facility; testing of underground tanks for leaks.</a>
-            <a href="/dc/council/code/sections/8-103.11.html">§ 8–103.11. Water quality management plan.</a>
-            <a href="/dc/council/code/sections/8-103.12.html">§ 8–103.12. Mayor authorized to issue research grants.</a>
-            <a href="/dc/council/code/sections/8-103.13.html">§ 8–103.13. Mayor authorized to regulate construction.</a>
-            <a href="/dc/council/code/sections/8-103.13a.html">§ 8–103.13a. Well construction, maintenance, and abandonment.</a>
-            <a href="/dc/council/code/sections/8-103.13b.html">§ 8–103.13b. Fees, reimbursements, and costs.</a>
-            <a href="/dc/council/code/sections/8-103.14.html">§ 8–103.14. Use of sludge from treatment facilities.</a>
-            <a href="/dc/council/code/sections/8-103.15.html">§ 8–103.15. Subpoena and inspection powers of Mayor.</a>
-            <a href="/dc/council/code/sections/8-103.16.html">§ 8–103.16. Penalties.</a>
-            <a href="/dc/council/code/sections/8-103.17.html">§ 8–103.17. Enforcement of subchapter.</a>
-            <a href="/dc/council/code/sections/8-103.18.html">§ 8–103.18. Civil actions.</a>
-            <a href="/dc/council/code/sections/8-103.19.html">§ 8–103.19. Private rights of action permitted; prior notice to Mayor; regulations and investigations concerning reported violations.</a>
-            <a href="/dc/council/code/sections/8-103.20.html">§ 8–103.20. Rules.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.01.html">§ 8–103.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.02.html">§ 8–103.02. Discharge of pollutants prohibited; exception.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.03.html">§ 8–103.03. Protection of aquatic life.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.03a.html">§ 8–103.03a. Fishing License Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.04.html">§ 8–103.04. Classification of beneficial uses of waters.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.05.html">§ 8–103.05. Monitoring for compliance with subchapter.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.06.html">§ 8–103.06. Certain discharges permitted; terms of permit; additional enforcement procedures; effect of federal permit; public hearing on permit; special requirements for treatment facilities; permits for industrial discharges; certain discharges from watercraft prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.07.html">§ 8–103.07. Location of discharge; recognition of reduction of pollutants; restrictions on quantity of materials discharged; discharge of used motor oil to sewer prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.08.html">§ 8–103.08. Discharge of pollutant from vessel or onshore or offshore facility; removal of these pollutants; contingency plan for environmental emergencies.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.09.html">§ 8–103.09. Accounting for revenues and expenses of pollutant removal; available funds for future years; District of Columbia Wetland and Stream Mitigation Trust Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.09a.html">§ 8–103.09a. District of Columbia Wells Maintenance Fund; establishment; financing. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.09b.html">§ 8–103.09b. Stormwater In-Lieu Fee Payment Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.09c.html">§ 8–103.09c. Soil Erosion and Sediment Control Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.09d.html">§ 8–103.09d. Stormwater Fees Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.10.html">§ 8–103.10. Spill prevention and cleanup plan for onshore or offshore facility; discharge from underground facility; testing of underground tanks for leaks.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.11.html">§ 8–103.11. Water quality management plan.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.12.html">§ 8–103.12. Mayor authorized to issue research grants.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.13.html">§ 8–103.13. Mayor authorized to regulate construction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.13a.html">§ 8–103.13a. Well construction, maintenance, and abandonment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.13b.html">§ 8–103.13b. Fees, reimbursements, and costs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.14.html">§ 8–103.14. Use of sludge from treatment facilities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.15.html">§ 8–103.15. Subpoena and inspection powers of Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.16.html">§ 8–103.16. Penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.17.html">§ 8–103.17. Enforcement of subchapter.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.18.html">§ 8–103.18. Civil actions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.19.html">§ 8–103.19. Private rights of action permitted; prior notice to Mayor; regulations and investigations concerning reported violations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-103.20.html">§ 8–103.20. Rules.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -165,21 +219,21 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a> added pars. (1A), (23A), and (26A); and rewrote par. (16) which had read as follows: “(16) ‘Owner’ or ‘operator’ means for a vessel or onshore or offshore facilities, a person owning, operating or chartering by demise the vessel or the facilities.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(a) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) amendment of section, see § 612(a) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(a) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle B of title VI of Law 15-39: Section 611 of <a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a> provided that subtitle B of title VI of the act may be cited as the Water Pollution Control Amendment Act of 2003.</p>
                 <h4>References in Text</h4>
-                <p>The “Water Pollution Control Act of 1984,” referred to in paragraph (1) of this section, is <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>.</p>
-                <p>The Federal Water Pollution Control Act, referred to in paragraph (8), is now codified at  33 U.S.C § 1251 et seq.</p>
-                <p>“Section 307(a) of the Federal Water Pollution Control Act,” referred to in paragraph (10) of this section, is codified as  33 U.S.C. § 1317 (a).</p>
-                <p>“Section 311(b)(2)(A) of the Federal Water Pollution Control Act,” referred to in paragraph (10) of this section, is classified as  33 U.S.C. § 1321(b)(2)(A).</p>
                 <p>The “District of Columbia Hazardous Waste Management Act of 1977,” referred to in paragraph (10) of this section, is D.C. Law</p>
+                <p>“Section 311(b)(2)(A) of the Federal Water Pollution Control Act,” referred to in paragraph (10) of this section, is classified as  33 U.S.C. § 1321(b)(2)(A).</p>
+                <p>“Section 307(a) of the Federal Water Pollution Control Act,” referred to in paragraph (10) of this section, is codified as  33 U.S.C. § 1317 (a).</p>
+                <p>The Federal Water Pollution Control Act, referred to in paragraph (8), is now codified at  33 U.S.C § 1251 et seq.</p>
+                <p>The “Water Pollution Control Act of 1984,” referred to in paragraph (1) of this section, is <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>.</p>
                 <h4>Mayor's Orders</h4>
                 <p>Spring Valley Scientific Advisory Panel, see Mayor’s Order 2001-32, March 1, 2001 ( 48 DCR 2387).</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>, see Mayor’s Order 85-152, September 12, 1985.</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>, the “Water Pollution Control Act of 1984”, see Mayor’s Order 98-50, April 15, 1998 ( 45 DCR 2696).</p>
+                <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>, see Mayor’s Order 85-152, September 12, 1985.</p>
               </section>
             </section>
             <hr/>
@@ -218,10 +272,10 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-57.html">D.C. Law 16-57</a> rewrote subsec. (b)(3) which had read as follows: “(3) Revenues from a licensing regulatory scheme under this section shall be used only for protecting and managing aquatic life.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2004 (D.C. Act 15-655, December 29, 2004,  52 DCR 477).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-54, March 17, 2005,  52 DCR 3172).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2005 (D.C. Act 16-201, November 17, 2005,  52 DCR 10509).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-280, February 27, 2006,  53 DCR 1626).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2005 (D.C. Act 16-201, November 17, 2005,  52 DCR 10509).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-54, March 17, 2005,  52 DCR 3172).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2004 (D.C. Act 15-655, December 29, 2004,  52 DCR 477).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Water Pollution Control Temporary Amendment Act of 2004 (D.C. Law 15-321, April 8, 2005, law notification  52 DCR 4710).</p>
               </section>
@@ -333,11 +387,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-103.02.html">8-103.02</a>, § <a class="internal-link" href="/dc/council/code/sections/8-103.09.html">8-103.09</a>, and § <a class="internal-link" href="/dc/council/code/sections/8-103.13b.html">8-103.13b</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in subsec. (a), made a nonsubstantive change in par. (2), rewrote par. (3), and added par. (4); and rewrote subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsecs. (b)(2) and (d), validated previously made technical corrections.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in subsec. (a), made a nonsubstantive change in par. (2), rewrote par. (3), and added par. (4); and rewrote subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(b) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) amendment of section, see § 612(b) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(b) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <h4>References in Text</h4>
                 <p>The Federal Water Pollution Control Act, referred to in subsections (b)(1) and (j), is codified at  33 U.S.C. § 1251 et seq.</p>
               </section>
@@ -413,18 +467,18 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-103.06.html">8-103.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in the section heading, substituted “District of Columbia Wetland and Stream Mitigation Trust Fund” for “District of Columbia Water Pollution Control Fund”; repealed subsec. (c); and added subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in the section heading, validated previously made technical corrections.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in the section heading, substituted “District of Columbia Wetland and Stream Mitigation Trust Fund” for “District of Columbia Water Pollution Control Fund”; repealed subsec. (c); and added subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
-                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§6062">§ 6062 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <h4>Editor's Notes</h4>
-                <p>Sections 9087 and 9088 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided:</p>
-                <p>“Sec. 9087. Adjudication Hearings (Air Quality) Fund.</p>
-                <p>“Notwithstanding any other law, the funds which are deposited in the fund designated for accounting purposes by the Office of the Chief Financial Officer as fund 0664 within the District Department of the Environment pursuant to the Water Pollution Control Act of 1984, effective March 16, 1985 (<a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> et seq.), shall be deposited in the General Fund of the District of Columbia and shall not be accounted for by a separate fund or account within the General Fund of the District of Columbia. Any unexpended funds in the fund on the effective date of this subtitle shall be transferred to the unrestricted fund balance of the General Fund of the District of Columbia.</p>
-                <p>“Sec. 9088. Adjudication Hearings (Water Quality) Fund.</p>
                 <p>“Notwithstanding any other law, the funds which are deposited in the fund designated for accounting purposes by the Office of the Chief Financial Officer as fund 0665 within the District Department of the Environment pursuant to the Water Pollution Control Act of 1984, effective March 16, 1985 (<a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> et seq.), shall be deposited in the General Fund of the District of Columbia and shall not be accounted for by a separate fund or account within the General Fund of the District of Columbia. Any unexpended funds in the fund on the effective date of this subtitle shall be transferred to the unrestricted fund balance of the General Fund of the District of Columbia.”</p>
+                <p>“Sec. 9088. Adjudication Hearings (Water Quality) Fund.</p>
+                <p>“Notwithstanding any other law, the funds which are deposited in the fund designated for accounting purposes by the Office of the Chief Financial Officer as fund 0664 within the District Department of the Environment pursuant to the Water Pollution Control Act of 1984, effective March 16, 1985 (<a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> et seq.), shall be deposited in the General Fund of the District of Columbia and shall not be accounted for by a separate fund or account within the General Fund of the District of Columbia. Any unexpended funds in the fund on the effective date of this subtitle shall be transferred to the unrestricted fund balance of the General Fund of the District of Columbia.</p>
+                <p>“Sec. 9087. Adjudication Hearings (Air Quality) Fund.</p>
+                <p>Sections 9087 and 9088 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided:</p>
               </section>
             </section>
             <hr/>
@@ -439,8 +493,8 @@
       (<a class="internal-link" href="/dc/council/laws/5-188.html#§10a">Mar. 16, 1985, D.C. Law 5-188, § 10a</a>; <a class="internal-link" href="/dc/council/laws/15-39.html">as added Nov. 13, 2003, D.C. Law 15-39, § 612(d), 50 DCR 5668</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 9089, 58 DCR 6226</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 612(d) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) addition, see § 612(d) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) addition, see § 612(d) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
             <hr/>
@@ -467,8 +521,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> added this section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 6022 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) addition of this section, see § 6022 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) addition of this section, see § 6022 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 6021 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle C of Title VI of the act may be cited as the “Stormwater In-Lieu Fee Special Purpose Revenue Fund Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -574,8 +628,8 @@
                 <h4>Editor's Notes</h4>
                 <p>Extension of authority: The authority of the Mayor to issue grants under this section was extended to both the Department of Regulatory Affairs and the Department of Public Works by Reorganization Plan No. 2 of 1987, effective July 3, 1987.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to Law 5-188, see Mayor’s Order 87-278, December 11, 1987.</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>, the “Water Pollution Control Act of 1984”, see Mayor’s Order 98-50, April 15, 1998 ( 45 DCR 2696).</p>
+                <p>Delegation of authority pursuant to Law 5-188, see Mayor’s Order 87-278, December 11, 1987.</p>
               </section>
             </section>
             <hr/>
@@ -611,8 +665,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a>, § <a class="internal-link" href="/dc/council/code/sections/8-103.13b.html">8-103.13b</a>, and § <a class="internal-link" href="/dc/council/code/sections/8-103.16.html">8-103.16</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
             <hr/>
@@ -631,8 +685,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> and § <a class="internal-link" href="/dc/council/code/sections/8-103.13a.html">8-103.13a</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
             <hr/>
@@ -675,8 +729,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, rewrote subsecs. (a) and (b); and added subsec. (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(f) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) amendment of section, see § 612(f) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(f) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
             <hr/>
@@ -703,8 +757,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in subsec. (a), inserted “except that any person who violates § 8-103.14a, or the regulations promulgated thereunder, shall be fined not more than $5,000, imprisoned for no more than 90 days, or both” before the period in par. (2), and inserted “except that any person who violates § 8-103.14a, or the regulations promulgated thereunder, shall be fined not more than $10,000, imprisoned for no more than one year, or both” before the period in par. (3).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(g) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) amendment of section, see § 612(g) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(g) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
             <hr/>

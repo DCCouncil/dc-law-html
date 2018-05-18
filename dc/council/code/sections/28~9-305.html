@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-306.html">§ 28:9-306. Law governing perfection and priority of security interests in letter-of-credit rights.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-305.html">Report Error</a>
@@ -116,17 +116,17 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:9-316.html">28:9-316</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. Former  Section 9-103(6).</p>
-                <p>2. Investment Property: General Rules. This section specifies choice-of-law rules for perfection and priority of security interests in investment property. Subsection (a)(1) covers security interests in certificated securities. Subsection (a)(2) covers security interests in uncertificated securities. Subsection (a)(3) covers security interests in security entitlements and securities accounts. Subsection (a)(4) covers security interests in commodity contracts and commodity accounts. The approach of each of these paragraphs is essentially the same. They identify the jurisdiction’s law that governs questions of perfection and priority by using the same principles that Article 8 uses to determine other questions concerning that form of investment property.</p>
-                <p>Thus, for certificated securities, the law of the jurisdiction in which the certificate is located governs. Cf.  Section 8-110(c).</p>
-                <p>For uncertificated securities, the law of the issuer’s jurisdiction governs. Cf.  Section 8-110(a). For security entitlements and securities accounts, the law of the securities intermediary’s jurisdiction governs. Cf.  Section 8-110(b). For commodity contracts and commodity accounts, the law of the commodity intermediary’s jurisdiction governs. Because commodity contracts and commodity accounts are not governed by Article 8, subsection (b) contains rules that specify the commodity intermediary’s jurisdiction. These are analogous to the rules in  Section 8-110(e) specifying a securities intermediary’s jurisdiction. Subsection (b)(1) affords the parties greater flexibility than did former  Section 9-103(6)(3). See also  Section 9-304(b) (bank’s jurisdiction); Revised  Section 8-110(e)(1) (securities intermediary’s jurisdiction).</p>
-                <p>3. Investment Property: Exceptions. Subsection (c) establishes an exception to the general rules set out in subsection (a). It provides that perfection of a security interest by filing, automatic perfection of a security interest in investment property created by a debtor who is a broker or securities intermediary (see  Section 9-309(10)), and automatic perfection of a security interest in a commodity contract or commodity account of a debtor who is a commodity intermediary (see  Section 9-309(11) are governed by the law of the jurisdiction in which the debtor is located, as determined under  Section 9-307.</p>
-                <p>4. Examples: The following examples illustrate the rules in this section:</p>
-                <p>Example 1: A customer residing in New Jersey maintains a securities account with Able &amp; Co. The agreement between the customer and Able specifies that it is governed by Pennsylvania law but expressly provides that the law of California is Able’s jurisdiction for purposes of the Uniform Commercial Code. Through the account the customer holds securities of a Massachusetts corporation, which Able holds through a clearing corporation located in New York. The customer obtains a margin loan from Able. Subsection (a)(3) provides that California law-the law of the securities intermediary’s jurisdiction-governs perfection and priority of the security interest, even if California has no other relationship to the parties or the transaction.</p>
-                <p>Example 2: A customer residing in New Jersey maintains a securities account with Able &amp; Co. The agreement between the customer and Able specifies that it is governed by Pennsylvania law. Through the account the customer holds securities of a Massachusetts corporation, which Able holds through a clearing corporation located in New York. The customer obtains a loan from a lender located in Illinois. The lender takes a security interest and perfects by obtaining an agreement among the debtor, itself, and Able, which satisfies the requirement of  Section 8-106(d)(2) to give the lender control. Subsection (a)(3) provides that Pennsylvania law-the law of the securities intermediary’s jurisdiction-governs perfection and priority of the security interest, even if Pennsylvania has no other relationship to the parties or the transaction.</p>
-                <p>Example 3: A customer residing in New Jersey maintains a securities account with Able &amp; Co. The agreement between the customer and Able specifies that it is governed by Pennsylvania law. Through the account, the customer holds securities of a Massachusetts corporation, which Able holds through a clearing corporation located in New York. The customer borrows from SP-1, and SP-1 files a financing statement in New Jersey. Later, the customer obtains a loan from SP-2. SP-2 takes a security interest and perfects by obtaining an agreement among the debtor, itself, and Able, which satisfies the requirement of  Section 8-106(d)(2) to give the SP-2 control. Subsection (c) provides that perfection of SP-1’s security interest by filing is governed by the location of the debtor, so the filing in New Jersey was appropriate. Subsection (a)(3), however, provides that Pennsylvania law-the law of the securities intermediary’s jurisdiction-governs all other questions of perfection and priority. Thus, Pennsylvania law governs perfection of SP-2’s security interest, and Pennsylvania law also governs the priority of the security interests of SP-1 and SP-2.</p>
-                <p>5. Change in Law Governing Perfection. When the issuer’s jurisdiction, the securities intermediary’s jurisdiction, or commodity intermediary’s jurisdiction changes, the jurisdiction whose law governs perfection under subsection (a) changes, as well.</p>
                 <p>Similarly, the law governing perfection of a possessory security interest in a certificated security changes when the collateral is removed to another jurisdiction, see subsection (a)(1), and the law governing perfection by filing changes when the debtor changes its location. See subsection (c). Nevertheless, these changes will not result in an immediate loss of perfection. See  Section 9-316.</p>
+                <p>5. Change in Law Governing Perfection. When the issuer’s jurisdiction, the securities intermediary’s jurisdiction, or commodity intermediary’s jurisdiction changes, the jurisdiction whose law governs perfection under subsection (a) changes, as well.</p>
+                <p>Example 3: A customer residing in New Jersey maintains a securities account with Able &amp; Co. The agreement between the customer and Able specifies that it is governed by Pennsylvania law. Through the account, the customer holds securities of a Massachusetts corporation, which Able holds through a clearing corporation located in New York. The customer borrows from SP-1, and SP-1 files a financing statement in New Jersey. Later, the customer obtains a loan from SP-2. SP-2 takes a security interest and perfects by obtaining an agreement among the debtor, itself, and Able, which satisfies the requirement of  Section 8-106(d)(2) to give the SP-2 control. Subsection (c) provides that perfection of SP-1’s security interest by filing is governed by the location of the debtor, so the filing in New Jersey was appropriate. Subsection (a)(3), however, provides that Pennsylvania law-the law of the securities intermediary’s jurisdiction-governs all other questions of perfection and priority. Thus, Pennsylvania law governs perfection of SP-2’s security interest, and Pennsylvania law also governs the priority of the security interests of SP-1 and SP-2.</p>
+                <p>Example 2: A customer residing in New Jersey maintains a securities account with Able &amp; Co. The agreement between the customer and Able specifies that it is governed by Pennsylvania law. Through the account the customer holds securities of a Massachusetts corporation, which Able holds through a clearing corporation located in New York. The customer obtains a loan from a lender located in Illinois. The lender takes a security interest and perfects by obtaining an agreement among the debtor, itself, and Able, which satisfies the requirement of  Section 8-106(d)(2) to give the lender control. Subsection (a)(3) provides that Pennsylvania law-the law of the securities intermediary’s jurisdiction-governs perfection and priority of the security interest, even if Pennsylvania has no other relationship to the parties or the transaction.</p>
+                <p>Example 1: A customer residing in New Jersey maintains a securities account with Able &amp; Co. The agreement between the customer and Able specifies that it is governed by Pennsylvania law but expressly provides that the law of California is Able’s jurisdiction for purposes of the Uniform Commercial Code. Through the account the customer holds securities of a Massachusetts corporation, which Able holds through a clearing corporation located in New York. The customer obtains a margin loan from Able. Subsection (a)(3) provides that California law-the law of the securities intermediary’s jurisdiction-governs perfection and priority of the security interest, even if California has no other relationship to the parties or the transaction.</p>
+                <p>4. Examples: The following examples illustrate the rules in this section:</p>
+                <p>3. Investment Property: Exceptions. Subsection (c) establishes an exception to the general rules set out in subsection (a). It provides that perfection of a security interest by filing, automatic perfection of a security interest in investment property created by a debtor who is a broker or securities intermediary (see  Section 9-309(10)), and automatic perfection of a security interest in a commodity contract or commodity account of a debtor who is a commodity intermediary (see  Section 9-309(11) are governed by the law of the jurisdiction in which the debtor is located, as determined under  Section 9-307.</p>
+                <p>For uncertificated securities, the law of the issuer’s jurisdiction governs. Cf.  Section 8-110(a). For security entitlements and securities accounts, the law of the securities intermediary’s jurisdiction governs. Cf.  Section 8-110(b). For commodity contracts and commodity accounts, the law of the commodity intermediary’s jurisdiction governs. Because commodity contracts and commodity accounts are not governed by Article 8, subsection (b) contains rules that specify the commodity intermediary’s jurisdiction. These are analogous to the rules in  Section 8-110(e) specifying a securities intermediary’s jurisdiction. Subsection (b)(1) affords the parties greater flexibility than did former  Section 9-103(6)(3). See also  Section 9-304(b) (bank’s jurisdiction); Revised  Section 8-110(e)(1) (securities intermediary’s jurisdiction).</p>
+                <p>Thus, for certificated securities, the law of the jurisdiction in which the certificate is located governs. Cf.  Section 8-110(c).</p>
+                <p>2. Investment Property: General Rules. This section specifies choice-of-law rules for perfection and priority of security interests in investment property. Subsection (a)(1) covers security interests in certificated securities. Subsection (a)(2) covers security interests in uncertificated securities. Subsection (a)(3) covers security interests in security entitlements and securities accounts. Subsection (a)(4) covers security interests in commodity contracts and commodity accounts. The approach of each of these paragraphs is essentially the same. They identify the jurisdiction’s law that governs questions of perfection and priority by using the same principles that Article 8 uses to determine other questions concerning that form of investment property.</p>
+                <p>1. Source. Former  Section 9-103(6).</p>
               </section>
             </section>
           </section>

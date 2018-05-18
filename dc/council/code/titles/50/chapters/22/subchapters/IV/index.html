@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/50/chapters/22/subchapters/V/">Subchapter V. Automated Traffic Enforcement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/50/chapters/22/subchapters/IV/">Report Error</a>
@@ -88,8 +88,12 @@
         <section class="col8 body">
           <h1>Subchapter IV. Obscured Vision.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/50-2207.01.html">§ 50–2207.01. Smoke screens prohibited. [Repealed]</a>
-            <a href="/dc/council/code/sections/50-2207.02.html">§ 50–2207.02. Tinted windows prohibited.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2207.01.html">§ 50–2207.01. Smoke screens prohibited. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2207.02.html">§ 50–2207.02. Tinted windows prohibited.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -104,8 +108,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/68-2-ch443.html#§11">Mar. 3, 1925, 43 Stat. 1124, ch. 443, § 11</a>; <a class="internal-link" href="/dc/council/laws/4-145.html">Sept. 14, 1982, D.C. Law 4-145, § 7, 29 DCR 3138</a>; <a class="internal-link" href="/dc/council/laws/15-154.html">Apr. 29, 2004, D.C. Law 15-154, § 12, 50 DCR 10996</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-718.</p>
                 <p>1973 Ed., § 40-610.</p>
+                <p>1981 Ed., § 40-718.</p>
                 <h4>Editor's Notes</h4>
                 <p>Definitions applicable: For definitions applicable in this section, see § <a class="internal-link" href="/dc/council/code/sections/50-2201.02.html">50-2201.02</a>.</p>
               </section>
@@ -154,8 +158,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 40-718.1.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> rewrote subsecs. (a) and (h); and added subsec. (j).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a> added subsecs. (k) to (p).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> rewrote subsecs. (a) and (h); and added subsec. (j).</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 1002 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), § 1002 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669), and § 1002 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1999 (D.C. Act 13-41, March 31, 1999,  46 DCR 3446).</p>
               </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/10/chapters/11/subchapters/II/">Subchapter II. Rental of Airspace.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/10/chapters/11/subchapters/I/parts/D/">Report Error</a>
@@ -89,15 +89,33 @@
         <section class="col8 body">
           <h1>Part D. General.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/10-1104.01.html">§ 10–1104.01. Regulations authorized.</a>
-            <a href="/dc/council/code/sections/10-1104.02.html">§ 10–1104.02. Insurance requirements.</a>
-            <a href="/dc/council/code/sections/10-1104.03.html">§ 10–1104.03. Service of orders and notices.</a>
-            <a href="/dc/council/code/sections/10-1104.04.html">§ 10–1104.04. Enforcement; penalties.</a>
-            <a href="/dc/council/code/sections/10-1104.05.html">§ 10–1104.05. Deposit of rents collected. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1104.06.html">§ 10–1104.06. Appropriations. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1104.07.html">§ 10–1104.07. Separability. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1104.08.html">§ 10–1104.08. Subchapter not to affect provisions of § 9-113.04.</a>
-            <a href="/dc/council/code/sections/10-1104.09.html">§ 10–1104.09. Effective dates. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1104.01.html">§ 10–1104.01. Regulations authorized.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1104.02.html">§ 10–1104.02. Insurance requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1104.03.html">§ 10–1104.03. Service of orders and notices.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1104.04.html">§ 10–1104.04. Enforcement; penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1104.05.html">§ 10–1104.05. Deposit of rents collected. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1104.06.html">§ 10–1104.06. Appropriations. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1104.07.html">§ 10–1104.07. Separability. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1104.08.html">§ 10–1104.08. Subchapter not to affect provisions of § 9-113.04.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1104.09.html">§ 10–1104.09. Effective dates. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -112,8 +130,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/90-596.html#§401">Oct. 17, 1968, 82 Stat. 1162, Pub. L. 90-596, title IV, § 401</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-1016.</p>
                 <p>1973 Ed., § 7-917.</p>
+                <p>1981 Ed., § 7-1016.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to the District of Columbia Council and to a Commissioner of the District of Columbia. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -130,8 +148,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/90-596.html#§402">Oct. 17, 1968, 82 Stat. 1162, Pub. L. 90-596, title IV, § 402</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-1017.</p>
                 <p>1973 Ed., § 7-918.</p>
+                <p>1981 Ed., § 7-1017.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to the District of Columbia Council and to a Commissioner of the District of Columbia. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -157,8 +175,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/90-596.html#§403">Oct. 17, 1968, 82 Stat. 1163, Pub. L. 90-596, title IV, § 403</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-1018.</p>
                 <p>1973 Ed., § 7-919.</p>
+                <p>1981 Ed., § 7-1018.</p>
               </section>
             </section>
             <hr/>
@@ -174,8 +192,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/90-596.html#§404">Oct. 17, 1968, 82 Stat. 1163, Pub. L. 90-596, title IV, § 404</a>; <a class="internal-link" href="/dc/council/laws/20-207.html">Mar. 11, 2015, D.C. Law 20-207, § 6(b), 61 DCR 12690</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-1019.</p>
                 <p>1973 Ed., § 7-920.</p>
+                <p>1981 Ed., § 7-1019.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-207.html">D.C. Law 20-207</a> rewrote this section.</p>
                 <h4>Editor's Notes</h4>
@@ -196,8 +214,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/90-596.html#§405">Oct. 17, 1968, 82 Stat. 1164, Pub. L. 90-596, title IV, § 405</a>; <a class="internal-link" href="/dc/council/laws/20-207.html">Mar. 11, 2015, D.C. Law 20-207, § 6(c), 61 DCR 12690</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-1020.</p>
                 <p>1973 Ed., § 7-921.</p>
+                <p>1981 Ed., § 7-1020.</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-207.html">D.C. Law 20-207</a>: Section 12(a) of <a class="internal-link" href="/dc/council/laws/20-207.html">D.C. Law 20-207</a> provided that §§ 2(a), 2(b)(1), 2(b)(2)(A), 2(b)(2)(B), 2(b)(2)(C), 2(c), 3, 4, 6, 7, 8, 9, 10, and 11 shall apply as of March 11, 2015.</p>
                 <h4>Change in Government</h4>
@@ -216,8 +234,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/90-596.html#§406">Oct. 17, 1968, 82 Stat. 1164, Pub. L. 90-596, title IV, § 406</a>; <a class="internal-link" href="/dc/council/laws/20-207.html">Mar. 11, 2015, D.C. Law 20-207, § 6(c), 61 DCR 12690</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-1021.</p>
                 <p>1973 Ed., § 7-922.</p>
+                <p>1981 Ed., § 7-1021.</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-207.html">D.C. Law 20-207</a>: Section 12(a) of <a class="internal-link" href="/dc/council/laws/20-207.html">D.C. Law 20-207</a> provided that §§ 2(a), 2(b)(1), 2(b)(2)(A), 2(b)(2)(B), 2(b)(2)(C), 2(c), 3, 4, 6, 7, 8, 9, 10, and 11 shall apply as of March 11, 2015.</p>
               </section>
@@ -234,8 +252,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/90-596.html#§407">Oct. 17, 1968, 82 Stat. 1164, Pub. L. 90-596, title IV, § 407</a>; <a class="internal-link" href="/dc/council/laws/20-207.html">Mar. 11, 2015, D.C. Law 20-207, § 6(c), 61 DCR 12690</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-1022.</p>
                 <p>1973 Ed., § 7-923.</p>
+                <p>1981 Ed., § 7-1022.</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-207.html">D.C. Law 20-207</a>: Section 12(a) of <a class="internal-link" href="/dc/council/laws/20-207.html">D.C. Law 20-207</a> provided that §§ 2(a), 2(b)(1), 2(b)(2)(A), 2(b)(2)(B), 2(b)(2)(C), 2(c), 3, 4, 6, 7, 8, 9, 10, and 11 shall apply as of March 11, 2015.</p>
               </section>
@@ -252,8 +270,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/90-596.html#§408">Oct. 17, 1968, 82 Stat. 1164, Pub. L. 90-596, title IV, § 408</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-1023.</p>
                 <p>1973 Ed., § 7-924.</p>
+                <p>1981 Ed., § 7-1023.</p>
                 <h4>References in Text</h4>
                 <p>Section 7-117 referred to in the first sentence was repealed, effective March 10, 1983, by <a class="internal-link" href="/dc/council/laws/4-201.html">D.C. Law 4-201</a>, § 713. For present provisions regarding the naming of public places, see subchapter IV of Chapter 4 of this title.</p>
               </section>
@@ -270,8 +288,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/90-596.html#§409">Oct. 17, 1968, 82 Stat. 1164, Pub. L. 90-596, title IV, § 409</a>; <a class="internal-link" href="/dc/council/laws/20-207.html">Mar. 11, 2015, D.C. Law 20-207, § 6(c), 61 DCR 12690</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-1024.</p>
                 <p>1973 Ed., § 7-925.</p>
+                <p>1981 Ed., § 7-1024.</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-207.html">D.C. Law 20-207</a>: Section 12(a) of <a class="internal-link" href="/dc/council/laws/20-207.html">D.C. Law 20-207</a> provided that §§ 2(a), 2(b)(1), 2(b)(2)(A), 2(b)(2)(B), 2(b)(2)(C), 2(c), 3, 4, 6, 7, 8, 9, 10, and 11 shall apply as of March 11, 2015.</p>
                 <h4>Change in Government</h4>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/6-808.html">§ 6–808. Occupation of unsafe structure.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/6-807.html">Report Error</a>
@@ -99,8 +99,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/55-3-ch323.html#§7">Mar. 1, 1899, 30 Stat. 923, ch. 323, § 5</a>; as added Apr. 5, 1935, 49 Stat. 107, ch. 41; <a class="internal-link" href="/us/congress/laws/public/88-486.html">redesignated as §7, Aug. 22, 1964, 78 Stat. 600, Pub. L. 88-486, § 6</a>; <a class="internal-link" href="/dc/council/laws/21-118.html#§3(d)">May 18, 2016, D.C. Law 21-118, § 3(d), 63 DCR 4645</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-607.</p>
                 <p>1973 Ed., § 5-507.</p>
+                <p>1981 Ed., § 5-607.</p>
               </section>
             </section>
           </section>

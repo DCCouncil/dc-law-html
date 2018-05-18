@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -60,19 +72,7 @@
           <p>
             <a href="/dc/council/code/titles/50/">Title 50. Motor and Non-Motor Vehicles and Traffic.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/49/">Report Error</a>
@@ -87,30 +87,52 @@
           <h1>Title 49. Military.</h1>
           <section class="line-group toc child-link">
             <h2 class="line subheading">Subtitle I. District of Columbia Military Organization.</h2>
-            <a href="/dc/council/code/titles/49/chapters/1/">Chapter 1. Active Military Duty.</a>
-            <p>§§ 49-101 - 49-107</p>
-            <a href="/dc/council/code/titles/49/chapters/2/">Chapter 2. Armament, Equipment, and Supplies.</a>
-            <p>§§ 49-201 - 49-217</p>
-            <a href="/dc/council/code/titles/49/chapters/3/">Chapter 3. Commissioned Officers.</a>
-            <p>§§ 49-301 - 49-313</p>
-            <a href="/dc/council/code/titles/49/chapters/4/">Chapter 4. Composition, Organization, and Control.</a>
-            <p>§§ 49-401 - 49-434</p>
-            <a href="/dc/council/code/titles/49/chapters/5/">Chapter 5. Courts-Martial.</a>
-            <p>§§ 49-501 - 49-509</p>
-            <a href="/dc/council/code/titles/49/chapters/6/">Chapter 6. Enlisted Personnel.</a>
-            <p>§§ 49-601 - 49-602</p>
-            <a href="/dc/council/code/titles/49/chapters/7/">Chapter 7. Noncommissioned Officers.</a>
-            <p>§§ 49-701 - 49-701</p>
-            <a href="/dc/council/code/titles/49/chapters/8/">Chapter 8. Miscellaneous Provisions.</a>
-            <p>§§ 49-801 - 49-807</p>
-            <a href="/dc/council/code/titles/49/chapters/9/">Chapter 9. Pay and Allowances.</a>
-            <p>§§ 49-901 - 49-906</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/1/">Chapter 1. Active Military Duty.</a>
+            </p>
+            <p>§§ 49-101 – 49-107</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/2/">Chapter 2. Armament, Equipment, and Supplies.</a>
+            </p>
+            <p>§§ 49-201 – 49-217</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/3/">Chapter 3. Commissioned Officers.</a>
+            </p>
+            <p>§§ 49-301 – 49-313</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/4/">Chapter 4. Composition, Organization, and Control.</a>
+            </p>
+            <p>§§ 49-401 – 49-434</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/5/">Chapter 5. Courts-Martial.</a>
+            </p>
+            <p>§§ 49-501 – 49-509</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/6/">Chapter 6. Enlisted Personnel.</a>
+            </p>
+            <p>§§ 49-601 – 49-602</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/7/">Chapter 7. Noncommissioned Officers.</a>
+            </p>
+            <p>§§ 49-701 – 49-701</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/8/">Chapter 8. Miscellaneous Provisions.</a>
+            </p>
+            <p>§§ 49-801 – 49-807</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/9/">Chapter 9. Pay and Allowances.</a>
+            </p>
+            <p>§§ 49-901 – 49-906</p>
             <h2 class="line subheading">Subtitle II. Office of Veterans Affairs.</h2>
-            <a href="/dc/council/code/titles/49/chapters/10/">Chapter 10. Office of Veterans Affairs.</a>
-            <p>§§ 49-1001 - 49-1006</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/10/">Chapter 10. Office of Veterans Affairs.</a>
+            </p>
+            <p>§§ 49-1001 – 49-1006</p>
             <h2 class="line subheading">Subtitle III. Military Compacts.</h2>
-            <a href="/dc/council/code/titles/49/chapters/11/">Chapter 11. Interstate Compact on Educational Opportunity for Military Children.</a>
-            <p>§§ 49-1101.01 - 49-1101.20</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/49/chapters/11/">Chapter 11. Interstate Compact on Educational Opportunity for Military Children.</a>
+            </p>
+            <p>§§ 49-1101.01 – 49-1101.20</p>
           </section>
           <section class="content"/>
         </section>

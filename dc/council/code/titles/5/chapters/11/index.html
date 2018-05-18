@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/5/chapters/12/">Chapter 12. Registration of State Officials Entering District.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/5/chapters/11/">Report Error</a>
@@ -87,10 +87,14 @@
         <section class="col8 body">
           <h1>Chapter 11. Review of Citizen Complaints Involving Police.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/5/chapters/11/subchapters/I/">Subchapter I. Police Complaints Board; Office of Police Complaints.</a>
-            <p>§§ 5-1101 - 5-1115</p>
-            <a href="/dc/council/code/titles/5/chapters/11/subchapters/II/">Subchapter II. Civilian Complaint Review Board. [Repealed].</a>
-            <p>§§ 5-1131 - 5-1140</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/5/chapters/11/subchapters/I/">Subchapter I. Police Complaints Board; Office of Police Complaints.</a>
+            </p>
+            <p>§§ 5-1101 – 5-1115</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/5/chapters/11/subchapters/II/">Subchapter II. Civilian Complaint Review Board. [Repealed].</a>
+            </p>
+            <p>§§ 5-1131 – 5-1140</p>
           </section>
           <section class="content">
             <hr/>
@@ -156,8 +160,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 4-913.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-194.html">D.C. Law 15-194</a>, in pars. (1), (3), and (4), substituted “Police Complaints” for “Citizen Complaint Review”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-177.html">D.C. Law 17-177</a> added par. (3A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-194.html">D.C. Law 15-194</a>, in pars. (1), (3), and (4), substituted “Police Complaints” for “Citizen Complaint Review”.</p>
               </section>
             </section>
             <hr/>
@@ -193,13 +197,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-194.html">D.C. Law 15-194</a>, in the section heading and subsec. (a), substituted “Police Complaints Board” for “Citizen Complaint Review Board”; in subsec. (d), deleted “the Financial Responsibility and Management Assistance Authority,” following “the Council”; and in subsec. (e), substituted “Police Complaints” for “Citizen Complaint Review”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-352.html">D.C. Law 15-352</a> added subsec. (d-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-194.html">D.C. Law 15-194</a>, in the section heading and subsec. (a), substituted “Police Complaints Board” for “Citizen Complaint Review Board”; in subsec. (d), deleted “the Financial Responsibility and Management Assistance Authority,” following “the Council”; and in subsec. (e), substituted “Police Complaints” for “Citizen Complaint Review”.</p>
                 <h4>Cross References</h4>
                 <p>Mayoral nomination of agency heads, Police Complaints Board, see § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 4(e) of the Confirmation Emergency Amendment Act of 1999 (D.C. Act 13-25, March 15, 1999,  46 DCR 2971).</p>
                 <p>For temporary (90-day) amendment of section, see § 4(e) of the Confirmation Act Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-92, June 4, 1999,  46 DCR 5330).</p>
+                <p>For temporary amendment of section, see § 4(e) of the Confirmation Emergency Amendment Act of 1999 (D.C. Act 13-25, March 15, 1999,  46 DCR 2971).</p>
               </section>
             </section>
             <hr/>
@@ -284,11 +288,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-1109.html">5-1109</a>, § <a class="internal-link" href="/dc/council/code/sections/5-1110.html">5-1110</a>, § <a class="internal-link" href="/dc/council/code/sections/5-1111.html">5-1111</a>, and § <a class="internal-link" href="/dc/council/code/sections/5-1114.html">5-1114</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-100.html">D.C. Law 13-100</a>, in subsec. (a), substituted “MPD, and any other agency pursuant to subsection (j) of this section” for the acronym “MPD”, and added subsec. (j), relating to additional applicability of the chapter.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-352.html">D.C. Law 15-352</a>, in subsec. (a), deleted “or” from the end of par. (4), substituted “; or” for a period at the end of par. (5), and added par. (6).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (a)(4), substituted “disability” for “handicap”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-177.html">D.C. Law 17-177</a>, in subsec. (a)(4), substituted “sexual orientation, gender identity or expression” for “sexual orientation”.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> added (k).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-177.html">D.C. Law 17-177</a>, in subsec. (a)(4), substituted “sexual orientation, gender identity or expression” for “sexual orientation”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (a)(4), substituted “disability” for “handicap”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-352.html">D.C. Law 15-352</a>, in subsec. (a), deleted “or” from the end of par. (4), substituted “; or” for a period at the end of par. (5), and added par. (6).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-100.html">D.C. Law 13-100</a>, in subsec. (a), substituted “MPD, and any other agency pursuant to subsection (j) of this section” for the acronym “MPD”, and added subsec. (j), relating to additional applicability of the chapter.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 3005 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
               </section>
@@ -482,8 +486,8 @@
                 <h4>Effective Dates</h4>
                 <p>Section 803(a) of <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a> repealed §§ <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a> to 5-1140 on the effective Dates of the Omnibus Budget Support Act of 1995. The Omnibus Budget Support Act of 1995, <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a>, was effective September 26, 1995.</p>
                 <h4>Editor's Notes</h4>
-                <p>Transfer of pending cases: For temporary transfer of all cases pending with the Civilian Complaint Review Board to the Internal Affairs Division of the Metropolitan Police Department, see § 503(b) of the Omnibus Budget Support Emergency Act of 1995 (D.C. Act 11-44, April 28, 1995,  42 DCR 2217) and § 803(b) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
                 <p>Section 803(b) of <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a> provided that all cases pending with the Civilian Complaint Review Board on the effective date of the Omnibus Budget Support Act of 1995 shall be transferred to, and adjudicated according to the procedures of, the Internal Affairs Division of the Metropolitan Police Department.</p>
+                <p>Transfer of pending cases: For temporary transfer of all cases pending with the Civilian Complaint Review Board to the Internal Affairs Division of the Metropolitan Police Department, see § 503(b) of the Omnibus Budget Support Emergency Act of 1995 (D.C. Act 11-44, April 28, 1995,  42 DCR 2217) and § 803(b) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of Authority—Secretary of the District of Columbia, see Mayor’s Order 95-26, January 27, 1995.</p>
               </section>
@@ -536,9 +540,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 4-904.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(a) of the Civilian Complaint Review Board Emergency Amendment Act of 1992 (D.C. Act 9-274, July 23, 1992,  39 DCR 5846).</p>
-                <p>For temporary amendment of section, see § 2(a) of the Civilian Complaint Review Board Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-292, October 19, 1992,  39 DCR 7934).</p>
                 <p>For temporary amendment of section, see § 2(a) of the Civilian Complaint Review Board Second Congressional Adjournment Emergency Act of 1992 (D.C. Act 9-379, January 5, 1993,  40 DCR 640).</p>
+                <p>For temporary amendment of section, see § 2(a) of the Civilian Complaint Review Board Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-292, October 19, 1992,  39 DCR 7934).</p>
+                <p>For temporary amendment of section, see § 2(a) of the Civilian Complaint Review Board Emergency Amendment Act of 1992 (D.C. Act 9-274, July 23, 1992,  39 DCR 5846).</p>
                 <h4>Effective Dates</h4>
                 <p>For effective date of repeal of §§ <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a> to 5-1140, see Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -559,9 +563,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 4-905.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(b) of the Civilian Complaint Review Board Emergency Amendment Act of 1992 (D.C. Act 9-274, July 23, 1992,  39 DCR 5846).</p>
-                <p>For temporary amendment of section, see § 2(b) of the Civilian Complaint Review Board Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-292, October 19, 1992,  39 DCR 7934).</p>
                 <p>For temporary amendment of section, see § 2(b) of the Civilian Complaint Review Board Second Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-379, January 5, 1993,  40 DCR 640).</p>
+                <p>For temporary amendment of section, see § 2(b) of the Civilian Complaint Review Board Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-292, October 19, 1992,  39 DCR 7934).</p>
+                <p>For temporary amendment of section, see § 2(b) of the Civilian Complaint Review Board Emergency Amendment Act of 1992 (D.C. Act 9-274, July 23, 1992,  39 DCR 5846).</p>
                 <h4>Effective Dates</h4>
                 <p>For effective date of repeal of §§ <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a> to 5-1140, see Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a>.</p>
               </section>
@@ -597,9 +601,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 4-907.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(c) of the Civilian Complaint Review Board Emergency Amendment Act of 1992 (D.C. Act 9-274, July 23, 1992,  39 DCR 5846).</p>
-                <p>For temporary amendment of section, see § 2(c) of the Civilian Complaint Review Board Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-292, October 19, 1992,  39 DCR 7934).</p>
                 <p>For temporary amendment of section, see § 2(c) of the Civilian Complaint Review Board Second Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-379, January 5, 1993,  40 DCR 640).</p>
+                <p>For temporary amendment of section, see § 2(c) of the Civilian Complaint Review Board Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-292, October 19, 1992,  39 DCR 7934).</p>
+                <p>For temporary amendment of section, see § 2(c) of the Civilian Complaint Review Board Emergency Amendment Act of 1992 (D.C. Act 9-274, July 23, 1992,  39 DCR 5846).</p>
                 <h4>Effective Dates</h4>
                 <p>For effective date of repeal of §§ <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a> to 5-1140, see Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a>.</p>
               </section>
@@ -618,9 +622,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 4-908.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(d) of the Civilian Complaint Review Board Emergency Amendment Act of 1992 (D.C. Act 9-274, July 23, 1992,  39 DCR 5846).</p>
-                <p>For temporary amendment of section, see § 2(d) of the Civilian Complaint Review Board Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-292, October 19, 1992,  39 DCR 7934).</p>
                 <p>For temporary amendment of section, see § 2(d) of the Civilian Complaint Review Board Second Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-379, January 5, 1993,  40 DCR 640).</p>
+                <p>For temporary amendment of section, see § 2(d) of the Civilian Complaint Review Board Congressional Adjournment Emergency Amendment Act of 1992 (D.C. Act 9-292, October 19, 1992,  39 DCR 7934).</p>
+                <p>For temporary amendment of section, see § 2(d) of the Civilian Complaint Review Board Emergency Amendment Act of 1992 (D.C. Act 9-274, July 23, 1992,  39 DCR 5846).</p>
                 <h4>Effective Dates</h4>
                 <p>For effective date of repeal of §§ <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a> to 5-1140, see Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a>.</p>
               </section>
@@ -656,8 +660,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 4-910.</p>
                 <h4>Effective Dates</h4>
-                <p>Section 12 of <a class="internal-link" href="/dc/council/laws/3-158.html">D.C. Law 3-158</a> provided that: “This chapter shall take effect after a 30-day period of Congressional review following approval by the Mayor (or in the event of veto by the Mayor action by the Council of the District of Columbia to override the veto as provided in § 1-233(c)(1)): Provided, that this chapter shall not take effect prior to October 1, 1981, at which time complaints may be made to the Board.”.</p>
                 <p>For effective date of repeal of §§ <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a> to 5-1140, see Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/5-1131.html">5-1131</a>.</p>
+                <p>Section 12 of <a class="internal-link" href="/dc/council/laws/3-158.html">D.C. Law 3-158</a> provided that: “This chapter shall take effect after a 30-day period of Congressional review following approval by the Mayor (or in the event of veto by the Mayor action by the Council of the District of Columbia to override the veto as provided in § 1-233(c)(1)): Provided, that this chapter shall not take effect prior to October 1, 1981, at which time complaints may be made to the Board.”.</p>
               </section>
             </section>
             <hr/>

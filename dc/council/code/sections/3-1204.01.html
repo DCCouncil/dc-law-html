@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/3-1204.02.html">§ 3–1204.02. Terms of members; filling of vacancies.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-1204.01.html">Report Error</a>
@@ -113,16 +113,16 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/3-1202.03.html">3-1202.03</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-88.html">D.C. Law 15-88</a>, in subsec. (b)(2), inserted “marriage and family therapist members initially appointed to the Board of Marriage and Family Therapy,” after “Board of Professional Counseling”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-172.html">D.C. Law 15-172</a>, in par. (2) of subsec. (b), substituted “Counseling, the naturopathic physician member initially appointed to the Advisory Committee on Naturopathic Medicine,” for “Counseling,”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-237.html">D.C. Law 15-237</a>, in par. (2) of subsec. (b), inserted “the anesthesiologist assistant member initially appointed to the Advisory Committee on Anesthesiologist Assistants,”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-219.html">D.C. Law 16-219</a>, in subsec. (b)(2), substituted “appointed to the Board of Professional Counseling, the audiologist and speech-language pathologist members initially appointed to the Board” for “appointed to the Board of Professional Counseling”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-228.html">D.C. Law 16-228</a>, in subsec. (b)(2), inserted “the surgical assistant member initially appointed to the Advisory Committee on Surgical Assistants” following “the Advisory Committee on Physician Assistants,”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in subsec. (d), substituted “by blood, marriage, or domestic partnership” for “by blood or marriage”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-12.html">D.C. Law 18-12</a>, in subsec. (b)(2), substituted “Physician Assistants, the polysomnographic technologist members initially appointed to the Advisory Committee on Polysomnography, the surgical” for “Physician Assistants, the surgical”.</p>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-64.html">D.C. Law 20-64</a> added “the trauma technologist member initially appointed to the Advisory Committee on Trauma Technologists” in (b)(2).</p>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-96.html">D.C. Law 20-96</a> added the last sentence of (b)(2).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-272.html">D.C. Law 20-272</a> added “the clinical laboratory practitioner members initially appointed to the Board” in (b)(2).</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-96.html">D.C. Law 20-96</a> added the last sentence of (b)(2).</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-64.html">D.C. Law 20-64</a> added “the trauma technologist member initially appointed to the Advisory Committee on Trauma Technologists” in (b)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-12.html">D.C. Law 18-12</a>, in subsec. (b)(2), substituted “Physician Assistants, the polysomnographic technologist members initially appointed to the Advisory Committee on Polysomnography, the surgical” for “Physician Assistants, the surgical”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in subsec. (d), substituted “by blood, marriage, or domestic partnership” for “by blood or marriage”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-228.html">D.C. Law 16-228</a>, in subsec. (b)(2), inserted “the surgical assistant member initially appointed to the Advisory Committee on Surgical Assistants” following “the Advisory Committee on Physician Assistants,”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-219.html">D.C. Law 16-219</a>, in subsec. (b)(2), substituted “appointed to the Board of Professional Counseling, the audiologist and speech-language pathologist members initially appointed to the Board” for “appointed to the Board of Professional Counseling”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-237.html">D.C. Law 15-237</a>, in par. (2) of subsec. (b), inserted “the anesthesiologist assistant member initially appointed to the Advisory Committee on Anesthesiologist Assistants,”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-172.html">D.C. Law 15-172</a>, in par. (2) of subsec. (b), substituted “Counseling, the naturopathic physician member initially appointed to the Advisory Committee on Naturopathic Medicine,” for “Counseling,”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-88.html">D.C. Law 15-88</a>, in subsec. (b)(2), inserted “marriage and family therapist members initially appointed to the Board of Marriage and Family Therapy,” after “Board of Professional Counseling”.</p>
               </section>
             </section>
           </section>

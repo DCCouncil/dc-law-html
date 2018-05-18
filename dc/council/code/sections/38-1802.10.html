@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/38-1802.11.html">§ 38–1802.11. Powers and duties of eligible chartering authorities.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-1802.10.html">Report Error</a>
@@ -134,18 +134,18 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 31-2853.20.</p>
                 <h4>Effect of Amendments</h4>
-                <p>Section 120 (b)(1) of Public Law 106-522 added subsec. (d) providing for waiver of application of duplicate and conflicting provisions. Section 120 (e) of Public Law 106-522 added subsec. (e) pertaining to participation in GSA programs.</p>
-                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-196.html">D.C. Law 20-196</a> rewrote (c); and added (c-1).</p>
                 <p>Section 9215(z) of Public Law 114-95 rewrote (a)(6).</p>
+                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-196.html">D.C. Law 20-196</a> rewrote (c); and added (c-1).</p>
+                <p>Section 120 (b)(1) of Public Law 106-522 added subsec. (d) providing for waiver of application of duplicate and conflicting provisions. Section 120 (e) of Public Law 106-522 added subsec. (e) pertaining to participation in GSA programs.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 7 of Tax Clarity and Recorder of Deeds Emergency Act of 2002 (D.C. Act 14-381, June 6, 2002,  49 DCR 5674).</p>
-                <p>For temporary (90 day) amendment of section, see § 7 of Tax Clarity and Related Amendments Emergency Act of 2002 (D.C. Act 14-456, July 23, 2002,  49 DCR 8107).</p>
                 <p>For temporary (90 day) amendment of section, see § 7 of Tax Clarity and Related Amendments Congressional Review Emergency Act of 2002 (D.C. Act 14-510, October 23, 2002,  49 DCR 10247).</p>
+                <p>For temporary (90 day) amendment of section, see § 7 of Tax Clarity and Related Amendments Emergency Act of 2002 (D.C. Act 14-456, July 23, 2002,  49 DCR 8107).</p>
+                <p>For temporary (90 day) amendment of section, see § 7 of Tax Clarity and Recorder of Deeds Emergency Act of 2002 (D.C. Act 14-381, June 6, 2002,  49 DCR 5674).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 7 of <a class="internal-link" href="/dc/council/laws/14-191.html">D.C. Law 14-191</a> repealed subsec. (b).</p>
-                <p>Section 16(b) of <a class="internal-link" href="/dc/council/laws/14-191.html">D.C. Law 14-191</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 7 of <a class="internal-link" href="/dc/council/laws/14-228.html">D.C. Law 14-228</a> repealed subsec. (b).</p>
                 <p>Section 18(b) of <a class="internal-link" href="/dc/council/laws/14-228.html">D.C. Law 14-228</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 7 of <a class="internal-link" href="/dc/council/laws/14-228.html">D.C. Law 14-228</a> repealed subsec. (b).</p>
+                <p>Section 16(b) of <a class="internal-link" href="/dc/council/laws/14-191.html">D.C. Law 14-191</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 7 of <a class="internal-link" href="/dc/council/laws/14-191.html">D.C. Law 14-191</a> repealed subsec. (b).</p>
                 <h4>Effective Dates</h4>
                 <p>Section 120 (b)(2) provided: “(2) Effective Date.—The amendments made by this subsection shall take effect as if included in the enactment of the District of Columbia School Reform Act of 1995.”</p>
               </section>

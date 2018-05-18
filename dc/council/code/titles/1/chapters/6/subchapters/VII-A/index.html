@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/6/subchapters/VIII/">Subchapter VIII. Career Service.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/6/subchapters/VII-A/">Report Error</a>
@@ -88,7 +88,9 @@
         <section class="col8 body">
           <h1>Subchapter VII-A. Residency Requirement. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-607.51.html">§ 1–607.51. Residency requirement. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-607.51.html">§ 1–607.51. Residency requirement. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -105,21 +107,21 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-607.51.</p>
                 <h4>Cross References</h4>
-                <p>Employee deferred compensation program, office of employee appeals, review, see § <a class="internal-link" href="/dc/council/code/sections/47-3601.html">47-3601</a>.</p>
-                <p>Equal opportunity employment, veterans’ preference, see § <a class="internal-link" href="/dc/council/code/sections/1-607.03.html">1-607.03</a>.</p>
-                <p>Health and hospitals public benefit corporation, personnel administration, see § <a class="internal-link" href="/dc/council/code/sections/44-1102.08.html">44-1102.08</a>.</p>
-                <p>Merit system, coverage, agreements to provide coverage, see § <a class="internal-link" href="/dc/council/code/sections/1-602.01.html">1-602.01</a>.</p>
-                <p>Merit system, educational employees, coverage, see § <a class="internal-link" href="/dc/council/code/sections/1-602.03.html">1-602.03</a>.</p>
-                <p>Merit system, educational service, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/1-608.01a.html">1-608.01a</a>.</p>
-                <p>Merit system, effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
-                <p>Merit system, equal employment opportunity, physically handicapped and developmentally disabled persons, see § <a class="internal-link" href="/dc/council/code/sections/1-607.02.html">1-607.02</a>.</p>
-                <p>Merit system, excepted service, transitional appointments or reassignments of nontemporary appointments, see § <a class="internal-link" href="/dc/council/code/sections/1-609.07.html">1-609.07</a>.</p>
-                <p>Merit system, personnel system, transition, rights and benefits, see § <a class="internal-link" href="/dc/council/code/sections/1-602.04.html">1-602.04</a>.</p>
-                <p>Organization for personnel management, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/1-604.04.html">1-604.04</a>.</p>
-                <p>Public employee relations board, transfer of property, personnel and cases, see § <a class="internal-link" href="/dc/council/code/sections/1-605.03.html">1-605.03</a>.</p>
-                <p>Public libraries, board of trustees, powers and duties, see § <a class="internal-link" href="/dc/council/code/sections/39-105.html">39-105</a>.</p>
-                <p>Public service commission, office of general counsel, powers and duties, see § <a class="internal-link" href="/dc/council/code/sections/34-803.html">34-803</a>.</p>
                 <p>Washington convention center authority, merit personnel system inapplicable, see § <a class="internal-link" href="/dc/council/code/sections/10-1202.16.html">10-1202.16</a>.</p>
+                <p>Public service commission, office of general counsel, powers and duties, see § <a class="internal-link" href="/dc/council/code/sections/34-803.html">34-803</a>.</p>
+                <p>Public libraries, board of trustees, powers and duties, see § <a class="internal-link" href="/dc/council/code/sections/39-105.html">39-105</a>.</p>
+                <p>Public employee relations board, transfer of property, personnel and cases, see § <a class="internal-link" href="/dc/council/code/sections/1-605.03.html">1-605.03</a>.</p>
+                <p>Organization for personnel management, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/1-604.04.html">1-604.04</a>.</p>
+                <p>Merit system, personnel system, transition, rights and benefits, see § <a class="internal-link" href="/dc/council/code/sections/1-602.04.html">1-602.04</a>.</p>
+                <p>Merit system, excepted service, transitional appointments or reassignments of nontemporary appointments, see § <a class="internal-link" href="/dc/council/code/sections/1-609.07.html">1-609.07</a>.</p>
+                <p>Merit system, equal employment opportunity, physically handicapped and developmentally disabled persons, see § <a class="internal-link" href="/dc/council/code/sections/1-607.02.html">1-607.02</a>.</p>
+                <p>Merit system, effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
+                <p>Merit system, educational service, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/1-608.01a.html">1-608.01a</a>.</p>
+                <p>Merit system, educational employees, coverage, see § <a class="internal-link" href="/dc/council/code/sections/1-602.03.html">1-602.03</a>.</p>
+                <p>Merit system, coverage, agreements to provide coverage, see § <a class="internal-link" href="/dc/council/code/sections/1-602.01.html">1-602.01</a>.</p>
+                <p>Health and hospitals public benefit corporation, personnel administration, see § <a class="internal-link" href="/dc/council/code/sections/44-1102.08.html">44-1102.08</a>.</p>
+                <p>Equal opportunity employment, veterans’ preference, see § <a class="internal-link" href="/dc/council/code/sections/1-607.03.html">1-607.03</a>.</p>
+                <p>Employee deferred compensation program, office of employee appeals, review, see § <a class="internal-link" href="/dc/council/code/sections/47-3601.html">47-3601</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 2(c) of <a class="internal-link" href="/dc/council/laws/12-138.html">D.C. Law 12-138</a> had added this section, effective July 24, 1998; this section was subsequently repealed by Pub. L. 105-277, § 153, effective Oct. 21, 1998.</p>
               </section>

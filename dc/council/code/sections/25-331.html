@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/25-332.html">§ 25–332. Moratorium on class B licenses.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/25-331.html">Report Error</a>
@@ -112,13 +112,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/25-112.html">25-112</a> and § <a class="internal-link" href="/dc/council/code/sections/25-332.html">25-332</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> rewrote par. (5) of subsec. (d) which had read as follows: “(5) The opinion of the ANC in which the establishment is located has been given great weight as specified in Chapter 4.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/19-23.html">D.C. Law 19-23</a>, in subsec. (d)(3), substituted “or, if located within the Southeast Federal Center, in the SEFC/C-R zone;” for a semicolon.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> rewrote par. (5) of subsec. (d) which had read as follows: “(5) The opinion of the ANC in which the establishment is located has been given great weight as specified in Chapter 4.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2(d) of Southeast Federal Center/Yards Non-Discriminatory Grocery Store Emergency Act of 2010 (D.C. Act 18-674, December 28, 2010,  58 DCR 130).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(d) of D.C. Law 18-346, in subsec. (d)(3), substituted “or, if located within the Southeast Federal Center, in the SEFC/C-R zone;” for a semicolon at the end.</p>
                 <p>Section 4(b) of D.C. Law 18-346 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(d) of D.C. Law 18-346, in subsec. (d)(3), substituted “or, if located within the Southeast Federal Center, in the SEFC/C-R zone;” for a semicolon at the end.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/44/chapters/1A/">Chapter 1A. Continuing Care Retirement Communities.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/chapters/1/">Report Error</a>
@@ -87,34 +87,62 @@
         <section class="col8 body">
           <h1>Chapter 1. Assisted Living Residence Regulation.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/I/">Subchapter I. Purpose and Philosophy of Care.</a>
-            <p>§§ 44-101.01 - 44-101.02</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/II/">Subchapter II. Definitions.</a>
-            <p>§§ 44-102.01 - 44-102.01</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/III/">Subchapter III. Licensure and Inspection.</a>
-            <p>§§ 44-103.01 - 44-103.08</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/IV/">Subchapter IV. Sanctions and Penalties.</a>
-            <p>§§ 44-104.01 - 44-104.04</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/V/">Subchapter V. Resident’s Rights and Quality of Life.</a>
-            <p>§§ 44-105.01 - 44-105.09</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/VI/">Subchapter VI. Admissions; Residential Agreements; Quality of Care; Discharge; Transfer.</a>
-            <p>§§ 44-106.01 - 44-106.08</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/VII/">Subchapter VII. Staffing and Training.</a>
-            <p>§§ 44-107.01 - 44-107.02</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/VIII/">Subchapter VIII. Resident Assessment.</a>
-            <p>§§ 44-108.01 - 44-108.05</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/IX/">Subchapter IX. Medication Management.</a>
-            <p>§§ 44-109.01 - 44-109.07</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/X/">Subchapter X. Facility Regulations.</a>
-            <p>§§ 44-110.01 - 44-110.12</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/XI/">Subchapter XI. Insurance.</a>
-            <p>§§ 44-111.01 - 44-111.01</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/XII/">Subchapter XII. Appeals.</a>
-            <p>§§ 44-112.01 - 44-112.01</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/XIII/">Subchapter XIII. Rulemaking.</a>
-            <p>§§ 44-113.01 - 44-113.01</p>
-            <a href="/dc/council/code/titles/44/chapters/1/subchapters/XIV/">Subchapter XIV. Applicability.</a>
-            <p>§§ 44-114.01 - 44-114.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/I/">Subchapter I. Purpose and Philosophy of Care.</a>
+            </p>
+            <p>§§ 44-101.01 – 44-101.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/II/">Subchapter II. Definitions.</a>
+            </p>
+            <p>§§ 44-102.01 – 44-102.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/III/">Subchapter III. Licensure and Inspection.</a>
+            </p>
+            <p>§§ 44-103.01 – 44-103.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/IV/">Subchapter IV. Sanctions and Penalties.</a>
+            </p>
+            <p>§§ 44-104.01 – 44-104.04</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/V/">Subchapter V. Resident’s Rights and Quality of Life.</a>
+            </p>
+            <p>§§ 44-105.01 – 44-105.09</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/VI/">Subchapter VI. Admissions; Residential Agreements; Quality of Care; Discharge; Transfer.</a>
+            </p>
+            <p>§§ 44-106.01 – 44-106.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/VII/">Subchapter VII. Staffing and Training.</a>
+            </p>
+            <p>§§ 44-107.01 – 44-107.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/VIII/">Subchapter VIII. Resident Assessment.</a>
+            </p>
+            <p>§§ 44-108.01 – 44-108.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/IX/">Subchapter IX. Medication Management.</a>
+            </p>
+            <p>§§ 44-109.01 – 44-109.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/X/">Subchapter X. Facility Regulations.</a>
+            </p>
+            <p>§§ 44-110.01 – 44-110.12</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/XI/">Subchapter XI. Insurance.</a>
+            </p>
+            <p>§§ 44-111.01 – 44-111.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/XII/">Subchapter XII. Appeals.</a>
+            </p>
+            <p>§§ 44-112.01 – 44-112.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/XIII/">Subchapter XIII. Rulemaking.</a>
+            </p>
+            <p>§§ 44-113.01 – 44-113.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/subchapters/XIV/">Subchapter XIV. Applicability.</a>
+            </p>
+            <p>§§ 44-114.01 – 44-114.01</p>
           </section>
           <section class="content">
             <hr/>
@@ -191,8 +219,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/3-1201.02.html">3-1201.02</a>, § <a class="internal-link" href="/dc/council/code/sections/4-205.49.html">4-205.49</a>, § <a class="internal-link" href="/dc/council/code/sections/44-151.01.html">44-151.01</a>, § <a class="internal-link" href="/dc/council/code/sections/44-401.html">44-401</a>, and § <a class="internal-link" href="/dc/council/code/sections/44-1001.01.html">44-1001.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (4), substituted “persons with mental retardation” for “mentally retarded persons”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “intellectual disabilities” for “mental retardation” in the second sentence of (4).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (4), substituted “persons with mental retardation” for “mentally retarded persons”.</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
               </section>

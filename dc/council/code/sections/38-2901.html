@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/38-2902.html">§ 38–2902. Applicability of Formula.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-2901.html">Report Error</a>
@@ -161,42 +161,42 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-1804.01.html">38-1804.01</a>, § <a class="internal-link" href="/dc/council/code/sections/38-2601.02.html">38-2601.02</a>, § <a class="internal-link" href="/dc/council/code/sections/38-2652.html">38-2652</a>, § <a class="internal-link" href="/dc/council/code/sections/38-2831.html">38-2831</a>, and § <a class="internal-link" href="/dc/council/code/sections/38-2905.html">38-2905</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> added par. (11A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-348.html">D.C. Law 15-348</a> added par. (10A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> added par. (1A); repealed par. (2); and rewrote pars. (6) and (13).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (12), substituted “students with disabilities” for “handicapped students” and “children with disabilities” for “handicapped children”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> added pars. (6A) and (10B).</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> redesignated par. (1A) as (1B) and par. (11A) as (11D); and added pars. (1A) and (11A) to (11C).</p>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-87.html">D.C. Law 20-87</a> added (2A) and (2B).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> rewrote (1B).</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-87.html">D.C. Law 20-87</a> added (2A) and (2B).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> redesignated par. (1A) as (1B) and par. (11A) as (11D); and added pars. (1A) and (11A) to (11C).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> added pars. (6A) and (10B).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (12), substituted “students with disabilities” for “handicapped students” and “children with disabilities” for “handicapped children”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> added par. (1A); repealed par. (2); and rewrote pars. (6) and (13).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-348.html">D.C. Law 15-348</a> added par. (10A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> added par. (11A).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of chapter, see §§ 2-15 of the Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Second Emergency Act of 1998 (D.C. Act 12-392, July 17, 1998,  45 DCR 6433), and §§ 2-15 of the Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Congressional Review Emergency Act of 1999 (D.C. Act 13-15, February 10,</p>
-                <p>For temporary (90 days) amendment of this section, see §  4012 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see §  4012 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
-                <p>For temporary (90 days) amendment of this section, see §  4012 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
                 <p>For temporary (90 days) requirement that each public charter school that received Fiscal-Year-2017-based uniform per student funding formula payments shall receive certain payment in Fiscal Year 2018, see <a class="internal-link" href="/dc/council/acts/22-163.html#§203">§ 203 of Fiscal Year 2018 Budget Support Clarification Emergency Amendment Act of 2017 (D.C. Act 22-163, Oct. 23, 2017, 64 DCR 10778)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see §  4012 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see §  4012 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see §  4012 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary addition of chapter, see §§ 2-15 of the Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Second Emergency Act of 1998 (D.C. Act 12-392, July 17, 1998,  45 DCR 6433), and §§ 2-15 of the Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Congressional Review Emergency Act of 1999 (D.C. Act 13-15, February 10,</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(a) of D.C. Laws 13-427 added paragraph 10A to read as follows:</p>
-                <p>“(10A) ‘Resident student’ means a student who is enrolled in a District of Columbia public school or a public charter school, and is an adult who resides in the District of Columbia, or is a minor who has a parent, guardian, or custodian residing in the District of Columbia.”.</p>
-                <p>Section 6(b) of D.C. Laws 13-427 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(a) of <a class="internal-link" href="/dc/council/laws/13-262.html">D.C. Law 13-262</a> added (11A) to read as follows:</p>
-                <p>“(11A) ‘Special education school’ means a specialized instructional program for students with disabilities as described in paragraph (11) of this section whose individual education plan calls for full-time placement in special education services.”</p>
-                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/13-262.html">D.C. Law 13-262</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(a) of <a class="internal-link" href="/dc/council/laws/14-6.html">D.C. Law 14-6</a> added a new par. (11A) to read as follows:</p>
-                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/14-6.html">D.C. Law 14-6</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(a) of <a class="internal-link" href="/dc/council/laws/14-38.html">D.C. Law 14-38</a> added a new paragraph (10A) to read as follows:</p>
-                <p>Section 6(b) of <a class="internal-link" href="/dc/council/laws/14-38.html">D.C. Law 14-38</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(a) of <a class="internal-link" href="/dc/council/laws/15-67.html">D.C. Law 15-67</a> added par. (10A) to read as follows:</p>
-                <p>“(10A) ‘Resident student’ means a minor enrolled in a District of Columbia public school or public charter school who has a parent, guardian, or custodian residing in the District of Columbia or an adult enrolled in a District of Columbia public school or a public charter school who resides in the District of Columbia.”</p>
-                <p>Section 6(b) of <a class="internal-link" href="/dc/council/laws/15-67.html">D.C. Law 15-67</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2 of D.C. Law 12-180 enacted §§ 31-2901 through 31-2912, comprising Chapter 29 of Title 31 1981 Ed. .</p>
-                <p>Section 18(b) of <a class="internal-link" href="/dc/council/laws/12-180.html">D.C. Law 12-180</a> provided that this act shall expire after 225 days of its having taken effect.</p>
                 <p>For temporary (225 days) provision regarding payments to public charter schools, see <a class="internal-link" href="/dc/council/laws/22-44.html#§204">§ 204 of Fiscal Year 2018 Budget Support Clarification Temporary Amendment Act of 2017 (D.C. Law 22-44, Jan. 25, 2018, 64 DCR 12387)</a>.</p>
+                <p>Section 18(b) of <a class="internal-link" href="/dc/council/laws/12-180.html">D.C. Law 12-180</a> provided that this act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 12-180 enacted §§ 31-2901 through 31-2912, comprising Chapter 29 of Title 31 1981 Ed. .</p>
+                <p>Section 6(b) of <a class="internal-link" href="/dc/council/laws/15-67.html">D.C. Law 15-67</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(10A) ‘Resident student’ means a minor enrolled in a District of Columbia public school or public charter school who has a parent, guardian, or custodian residing in the District of Columbia or an adult enrolled in a District of Columbia public school or a public charter school who resides in the District of Columbia.”</p>
+                <p>Section 2(a) of <a class="internal-link" href="/dc/council/laws/15-67.html">D.C. Law 15-67</a> added par. (10A) to read as follows:</p>
+                <p>Section 6(b) of <a class="internal-link" href="/dc/council/laws/14-38.html">D.C. Law 14-38</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(a) of <a class="internal-link" href="/dc/council/laws/14-38.html">D.C. Law 14-38</a> added a new paragraph (10A) to read as follows:</p>
+                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/14-6.html">D.C. Law 14-6</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(a) of <a class="internal-link" href="/dc/council/laws/14-6.html">D.C. Law 14-6</a> added a new par. (11A) to read as follows:</p>
+                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/13-262.html">D.C. Law 13-262</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(11A) ‘Special education school’ means a specialized instructional program for students with disabilities as described in paragraph (11) of this section whose individual education plan calls for full-time placement in special education services.”</p>
+                <p>Section 2(a) of <a class="internal-link" href="/dc/council/laws/13-262.html">D.C. Law 13-262</a> added (11A) to read as follows:</p>
+                <p>Section 6(b) of D.C. Laws 13-427 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(10A) ‘Resident student’ means a student who is enrolled in a District of Columbia public school or a public charter school, and is an adult who resides in the District of Columbia, or is a minor who has a parent, guardian, or custodian residing in the District of Columbia.”.</p>
+                <p>Section 2(a) of D.C. Laws 13-427 added paragraph 10A to read as follows:</p>
                 <h4>Short Title</h4>
-                <p>Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Act: <a class="internal-link" href="/dc/council/laws/12-207.html">D.C. Law 12-207</a> provided that this chapter may be cited as the “Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Act of 1998.”</p>
-                <p>Short title of subtitle A of title XXXIV of Law 14-190: Section 3401 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided that subtitle A of title XXXIV of the act may be cited as the Uniform Per Student Funding Formula for Public School and Public Charter Schools Amendment Act of 2002.</p>
-                <p>Short title: Section 4001 of <a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> provided that subtitle A of title IV of the act may be cited as the “Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Amendment Act of 2006”.</p>
                 <p>Short title: Section 4001 of <a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> provided that subtitle A of title IV of the act may be cited as the “Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Amendment Act of 2007”.</p>
+                <p>Short title: Section 4001 of <a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> provided that subtitle A of title IV of the act may be cited as the “Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Amendment Act of 2006”.</p>
+                <p>Short title of subtitle A of title XXXIV of Law 14-190: Section 3401 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided that subtitle A of title XXXIV of the act may be cited as the Uniform Per Student Funding Formula for Public School and Public Charter Schools Amendment Act of 2002.</p>
+                <p>Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Act: <a class="internal-link" href="/dc/council/laws/12-207.html">D.C. Law 12-207</a> provided that this chapter may be cited as the “Uniform Per Student Funding Formula for Public Schools and Public Charter Schools Act of 1998.”</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1083.html">§ 47–1083. Building Bridges Across the River, Inc., Lots 2 and 6, Square 5894.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1082.html">Report Error</a>
@@ -106,14 +106,14 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> repealed subsecs. (c) and (d), which had read as follows:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) repeal of section 3 of <a class="internal-link" href="/dc/council/laws/18-96.html">D.C. Law 18-96</a>, see § 7003(a) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
                 <p>For temporary (90 day) amendment of section, see § 7003(b) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) repeal of section 3 of <a class="internal-link" href="/dc/council/laws/18-96.html">D.C. Law 18-96</a>, see § 7003(a) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
                 <h4>Temporary Legislation</h4>
-                <p>“(c) Real property taxes, interest, penalties, fees, and other related charges assessed against the real properties described in subsection (a) of this section, for the period of January 1, 2005 through December 17, 2009, shall be forgiven, and any payments made for such period shall be refunded.</p>
                 <p>“(d) The tax imposed by § <a class="internal-link" href="/dc/council/code/sections/42-1103.html">42-1103</a> and § <a class="internal-link" href="/dc/council/code/sections/47-903.html">47-903</a> and paid by The Studio Theatre, Inc., on the real properties described in subsection (a) of this section shall be forgiven, and any payments made for such period shall be refunded.”</p>
+                <p>“(c) Real property taxes, interest, penalties, fees, and other related charges assessed against the real properties described in subsection (a) of this section, for the period of January 1, 2005 through December 17, 2009, shall be forgiven, and any payments made for such period shall be refunded.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/18-96.html">D.C. Law 18-96</a> provided: “This act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.”</p>
                 <p>Section 7003(a) of <a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> repealed section 3 of <a class="internal-link" href="/dc/council/laws/18-96.html">D.C. Law 18-96</a>.</p>
+                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/18-96.html">D.C. Law 18-96</a> provided: “This act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.”</p>
               </section>
             </section>
           </section>

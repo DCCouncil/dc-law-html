@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/31/chapters/16A/">Chapter 16A. Public Insurance Adjuster Licensure.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/31/chapters/16/">Report Error</a>
@@ -87,16 +87,36 @@
         <section class="col8 body">
           <h1>Chapter 16. Prohibition of Discrimination in the Provision of Insurance on Basis of AIDS Test.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/31-1601.html">§ 31–1601. Definitions.</a>
-            <a href="/dc/council/code/sections/31-1602.html">§ 31–1602. Application of chapter.</a>
-            <a href="/dc/council/code/sections/31-1603.html">§ 31–1603. Prohibited actions.</a>
-            <a href="/dc/council/code/sections/31-1604.html">§ 31–1604. AIDS testing standards, protocols, and appeals.</a>
-            <a href="/dc/council/code/sections/31-1605.html">§ 31–1605. Diagnosis of AIDS.</a>
-            <a href="/dc/council/code/sections/31-1606.html">§ 31–1606. Informed consent requirements; restrictions on disclosure.</a>
-            <a href="/dc/council/code/sections/31-1607.html">§ 31–1607. Contestability.</a>
-            <a href="/dc/council/code/sections/31-1608.html">§ 31–1608. Special enforcement provisions.</a>
-            <a href="/dc/council/code/sections/31-1609.html">§ 31–1609. Rules.</a>
-            <a href="/dc/council/code/sections/31-1610.html">§ 31–1610. Prohibition against discrimination in use of AIDS tests.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-1601.html">§ 31–1601. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-1602.html">§ 31–1602. Application of chapter.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-1603.html">§ 31–1603. Prohibited actions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-1604.html">§ 31–1604. AIDS testing standards, protocols, and appeals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-1605.html">§ 31–1605. Diagnosis of AIDS.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-1606.html">§ 31–1606. Informed consent requirements; restrictions on disclosure.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-1607.html">§ 31–1607. Contestability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-1608.html">§ 31–1608. Special enforcement provisions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-1609.html">§ 31–1609. Rules.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-1610.html">§ 31–1610. Prohibition against discrimination in use of AIDS tests.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -121,8 +141,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 35-221.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-312.html">D.C. Law 14-312</a> rewrote par. (4) which had read as follows: “(4) ‘Health maintenance organization’ means a public or private organization that is a qualifying health maintenance organization under federal regulations, or has been determined to be a health maintenance organization pursuant to regulations adopted by the State Health Planning and Development Agency of the District of Columbia.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-177.html">D.C. Law 17-177</a> added par. (3A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-312.html">D.C. Law 14-312</a> rewrote par. (4) which had read as follows: “(4) ‘Health maintenance organization’ means a public or private organization that is a qualifying health maintenance organization under federal regulations, or has been determined to be a health maintenance organization pursuant to regulations adopted by the State Health Planning and Development Agency of the District of Columbia.”</p>
               </section>
             </section>
             <hr/>

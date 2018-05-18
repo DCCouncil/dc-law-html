@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-618.html">§ 28:9-618. Rights and duties of certain secondary obligors.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-617.html">Report Error</a>
@@ -108,11 +108,11 @@
       (<a class="internal-link" href="/dc/council/laws/13-201.html">Oct. 26, 2000, D.C. Law 13-201, § 101, 47 DCR 7576</a>.)
     </p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. Former  Section 9-504(4).</p>
-                <p>2. Title Taken by Good-Faith Transferee. Subsection (a) sets forth the rights acquired by persons who qualify under subsection (b)-transferees who act in good faith. Such a person is a “transferee,” inasmuch as a buyer at a foreclosure sale does not meet the definition of “purchaser” in  Section 1-201 (the transfer is not, vis-à-vis the debtor, “voluntary”). By virtue of the expanded definition of the term “debtor” in  Section 9-102, subsection (a) makes clear that the ownership interest of a person who bought the collateral subject to the security interest is terminated by a subsequent disposition under this Part. Such a person is a debtor under this Article. Under former Article 9, the result arguably was the same, but the statute was less clear. Under subsection (a), a disposition normally discharges the security interest being foreclosed and any subordinate security interests and other liens.</p>
-                <p>A disposition has the effect specified in subsection (a), even if the secured party fails to comply with this Article. An aggrieved person (e.g., the holder of a subordinate security interest to whom a notification required by  Section 9-611 was not sent) has a right to recover any loss under  Section 9-625(b).</p>
-                <p>3. Unitary Standard in Public and Private Dispositions. Subsection (b) now contains a unitary standard that applies to transferees in both private and public dispositions—acting in good faith. However, this change from former  Section 9-504(4) should not be interpreted to mean that a transferee acts in good faith even though it has knowledge of defects or buys in collusion, standards applicable to public dispositions under the former section. Properly understood, those standards were specific examples of the absence of good faith.</p>
                 <p>4. Title Taken by Nonqualifying Transferee. Subsection (c) specifies the consequences for a transferee who does not qualify for protection under subsections (a) and (b) (i.e., a transferee who does not act in good faith). The transferee takes subject to the rights of the debtor, the enforcing secured party, and other security interests or other liens.</p>
+                <p>3. Unitary Standard in Public and Private Dispositions. Subsection (b) now contains a unitary standard that applies to transferees in both private and public dispositions—acting in good faith. However, this change from former  Section 9-504(4) should not be interpreted to mean that a transferee acts in good faith even though it has knowledge of defects or buys in collusion, standards applicable to public dispositions under the former section. Properly understood, those standards were specific examples of the absence of good faith.</p>
+                <p>A disposition has the effect specified in subsection (a), even if the secured party fails to comply with this Article. An aggrieved person (e.g., the holder of a subordinate security interest to whom a notification required by  Section 9-611 was not sent) has a right to recover any loss under  Section 9-625(b).</p>
+                <p>2. Title Taken by Good-Faith Transferee. Subsection (a) sets forth the rights acquired by persons who qualify under subsection (b)-transferees who act in good faith. Such a person is a “transferee,” inasmuch as a buyer at a foreclosure sale does not meet the definition of “purchaser” in  Section 1-201 (the transfer is not, vis-à-vis the debtor, “voluntary”). By virtue of the expanded definition of the term “debtor” in  Section 9-102, subsection (a) makes clear that the ownership interest of a person who bought the collateral subject to the security interest is terminated by a subsequent disposition under this Part. Such a person is a debtor under this Article. Under former Article 9, the result arguably was the same, but the statute was less clear. Under subsection (a), a disposition normally discharges the security interest being foreclosed and any subordinate security interests and other liens.</p>
+                <p>1. Source. Former  Section 9-504(4).</p>
               </section>
             </section>
           </section>

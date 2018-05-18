@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1215.57.html">§ 2–1215.57. NoMa Improvement Association BID.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1215.56.html">Report Error</a>
@@ -104,10 +104,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-161.html">D.C. Law 20-161</a> substituted “taxable property” for “nonexempt real property” in (a); and, in (c), substituted the first occurrence of “taxable properties” for “nonexempt real properties” and the second occurrence of “taxable properties” for “nonexempt properties.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(b) of Adams Morgan Business Improvement District Emergency Amendment Act of 2005 (D.C. Act 16-80, May 18, 2005,  52 DCR 5254).</p>
-                <p>For temporary (90 day) addition, see § 2(b) of Adams Morgan Business Improvement District Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-142, July 26, 2005,  52 DCR 7169).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(u) of the  Business Improvement Districts Emergency Amendment Act of 2014 (D.C. Act 20-435, Oct. 7, 2014, 61 DCR 10717, 20 STAT 4154).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(u) of the  Business Improvement Districts Congressional Review Emergency Amendment Act of 2014 (D.C. Act 20-582, Jan. 13, 2015, 62 DCR 1269, 21 STAT 735).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(u) of the  Business Improvement Districts Emergency Amendment Act of 2014 (D.C. Act 20-435, Oct. 7, 2014, 61 DCR 10717, 20 STAT 4154).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Adams Morgan Business Improvement District Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-142, July 26, 2005,  52 DCR 7169).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Adams Morgan Business Improvement District Emergency Amendment Act of 2005 (D.C. Act 16-80, May 18, 2005,  52 DCR 5254).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition of section, see § 2(b) of the Adams Morgan Business Improvement District Temporary Amendment Act of 2005 (D.C. Law 16-16, Sept. 14, 2005, law notification  52 DCR 9774).</p>
                 <h4>Mayor's Orders</h4>

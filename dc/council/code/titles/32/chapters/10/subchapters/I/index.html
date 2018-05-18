@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/32/chapters/10/subchapters/II/">Subchapter II. Repealed Provisions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/32/chapters/10/subchapters/I/">Report Error</a>
@@ -88,26 +88,66 @@
         <section class="col8 body">
           <h1>Subchapter I. General.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/32-1001.html">§ 32–1001. Findings and declaration of policy.</a>
-            <a href="/dc/council/code/sections/32-1002.html">§ 32–1002. Definitions.</a>
-            <a href="/dc/council/code/sections/32-1003.html">§ 32–1003. Requirements.</a>
-            <a href="/dc/council/code/sections/32-1004.html">§ 32–1004. Exceptions.</a>
-            <a href="/dc/council/code/sections/32-1005.html">§ 32–1005. Authority of Mayor.</a>
-            <a href="/dc/council/code/sections/32-1006.html">§ 32–1006. Regulatory powers of Mayor.</a>
-            <a href="/dc/council/code/sections/32-1007.html">§ 32–1007. Investigatory powers of Mayor.</a>
-            <a href="/dc/council/code/sections/32-1007.01.html">§ 32–1007.01. Reporting.</a>
-            <a href="/dc/council/code/sections/32-1008.html">§ 32–1008. Duties of employers; open records.</a>
-            <a href="/dc/council/code/sections/32-1008.01.html">§ 32–1008.01. Notice requirements for temporary staffing firms.</a>
-            <a href="/dc/council/code/sections/32-1009.html">§ 32–1009. Posting of act and regulations on premises; distribution of copies to employers.</a>
-            <a href="/dc/council/code/sections/32-1009.01.html">§ 32–1009.01. Notice requirements for tipped wages.</a>
-            <a href="/dc/council/code/sections/32-1010.html">§ 32–1010. Violations.</a>
-            <a href="/dc/council/code/sections/32-1011.html">§ 32–1011. Penalties; prosecution.</a>
-            <a href="/dc/council/code/sections/32-1011.01.html">§ 32–1011.01. Remedies.</a>
-            <a href="/dc/council/code/sections/32-1012.html">§ 32–1012. Civil actions.</a>
-            <a href="/dc/council/code/sections/32-1012.01.html">§ 32–1012.01. Administrative actions.</a>
-            <a href="/dc/council/code/sections/32-1013.html">§ 32–1013. Limitations. [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1014.html">§ 32–1014. Collective bargaining.</a>
-            <a href="/dc/council/code/sections/32-1015.html">§ 32–1015. Application to revised wage orders.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1001.html">§ 32–1001. Findings and declaration of policy.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1002.html">§ 32–1002. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1003.html">§ 32–1003. Requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1004.html">§ 32–1004. Exceptions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1005.html">§ 32–1005. Authority of Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1006.html">§ 32–1006. Regulatory powers of Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1007.html">§ 32–1007. Investigatory powers of Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1007.01.html">§ 32–1007.01. Reporting.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1008.html">§ 32–1008. Duties of employers; open records.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1008.01.html">§ 32–1008.01. Notice requirements for temporary staffing firms.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1009.html">§ 32–1009. Posting of act and regulations on premises; distribution of copies to employers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1009.01.html">§ 32–1009.01. Notice requirements for tipped wages.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1010.html">§ 32–1010. Violations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1011.html">§ 32–1011. Penalties; prosecution.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1011.01.html">§ 32–1011.01. Remedies.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1012.html">§ 32–1012. Civil actions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1012.01.html">§ 32–1012.01. Administrative actions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1013.html">§ 32–1013. Limitations. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1014.html">§ 32–1014. Collective bargaining.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1015.html">§ 32–1015. Application to revised wage orders.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -164,16 +204,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 36-220.1.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-114.html">D.C. Law 17-114</a> added pars. (6A) and (7A).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> added “general contractor, subcontractor” in (3).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-114.html">D.C. Law 17-114</a> added pars. (6A) and (7A).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-428.html#§2(a)">§ 2(a) of Fair Shot Minimum Wage Emergency Amendment Act of 2016 (D.C. Act 21-428, June 28, 2016, 63 DCR 9271)</a>.</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <h4>References in Text</h4>
                 <p>The “Portal-to-Portal Act”, referred to in (10), is  29 U.S.C. § 251 et seq.</p>
                 <h4>Editor's Notes</h4>
@@ -228,19 +268,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/4-205.19k.html">4-205.19k</a>, § <a class="internal-link" href="/dc/council/code/sections/32-1002.html">32-1002</a>, § <a class="internal-link" href="/dc/council/code/sections/32-1004.html">32-1004</a>, § <a class="internal-link" href="/dc/council/code/sections/32-1006.html">32-1006</a>, and § <a class="internal-link" href="/dc/council/code/sections/32-1607.html">32-1607</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-296.html">D.C. Law 15-296</a> rewrote subsecs. (a) and (f) which had read:</p>
-                <p>“(a) On October 1, 1993, the minimum wage required to be paid to any employee by any employer in the District of Columbia shall be the minimum wage set by the United States government from time to time pursuant to the Fair Labor Standards Act ( 29 U.S.C. § 206 et seq.) (”Fair Labor Standards Act“), plus $1.”</p>
-                <p>“(f) In determining the wage of an employee who receives gratuities, the amount paid to the employee by the employer shall be deemed to be increased on account of gratuities by an amount determined by the employer, but not by an amount in excess of 55% of the minimum wage as set by subsection (a) of this section, except that the amount of the increase on account of gratuities determined by the employer shall not exceed the value of gratuities received by the employee.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (d), substituted “workers with disabilities” for “handicapped workers”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-114.html">D.C. Law 17-114</a>, in subsecs. (a)(1) and (2), substituted “Except as provided in subsection (h) of this section, as” for “As”; and added subsec. (h).</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> added (a)(3), (a)(4), (a)(5) and (a)(6).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-114.html">D.C. Law 17-114</a>, in subsecs. (a)(1) and (2), substituted “Except as provided in subsection (h) of this section, as” for “As”; and added subsec. (h).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (d), substituted “workers with disabilities” for “handicapped workers”.</p>
+                <p>“(f) In determining the wage of an employee who receives gratuities, the amount paid to the employee by the employer shall be deemed to be increased on account of gratuities by an amount determined by the employer, but not by an amount in excess of 55% of the minimum wage as set by subsection (a) of this section, except that the amount of the increase on account of gratuities determined by the employer shall not exceed the value of gratuities received by the employee.”</p>
+                <p>“(a) On October 1, 1993, the minimum wage required to be paid to any employee by any employer in the District of Columbia shall be the minimum wage set by the United States government from time to time pursuant to the Fair Labor Standards Act ( 29 U.S.C. § 206 et seq.) (”Fair Labor Standards Act“), plus $1.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-296.html">D.C. Law 15-296</a> rewrote subsecs. (a) and (f) which had read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Minimum Wage Emergency Amendment Act of 2004 (D.C. Act 15-614, November 30, 2004,  51 DCR 11438).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Minimum Wage Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-19, February 17, 2005,  52 DCR 20965).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-428.html#§2(b)">§ 2(b) of Fair Shot Minimum Wage Emergency Amendment Act of 2016 (D.C. Act 21-428, June 28, 2016, 63 DCR 9271)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Minimum Wage Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-19, February 17, 2005,  52 DCR 20965).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Minimum Wage Emergency Amendment Act of 2004 (D.C. Act 15-614, November 30, 2004,  51 DCR 11438).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> provided that § 2(b)-(d) of the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Section 7004 of Law 20-155 repealed <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3.</p>
+                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> provided that § 2(b)-(d) of the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -268,8 +308,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/32-1015.html">32-1015</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-127.html">D.C. Law 19-127</a> repealed subsec. (b)(4), which formerly read:</p>
                 <p>“(4) Any employee employed primarily to wash automobiles by an employer whose annual dollar volume of sales is derived by more than 50% from washing automobiles, and for the employee’s employment in excess of 160 hours over a period of 4 consecutive workweeks, the employee receives compensation at a rate of 1 1/2 times or more the regular rate at which he is employed;”</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-127.html">D.C. Law 19-127</a> repealed subsec. (b)(4), which formerly read:</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-33.html#§3(a)">§ 3(a) of Wage Theft Prevention Clarification and Overtime Fairness Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-33, Mar. 28, 2017, 64 DCR 3089)</a>.</p>
               </section>
@@ -297,12 +337,12 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> added (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, §  7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
                 <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, §  7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
               </section>
@@ -415,25 +455,25 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> added “or whatever the prevailing federal standard is, whichever is greater” in the introductory paragraph of (a)(1); substituted “precise time worked” for “hours worked” in (a)(1)(D); and added (c)-(e).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 2(b)(1) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(a) of the Wage Theft Prevention Clarification Emergency Amendment Act of 2015 (D.C. Act 21-8, Feb. 26, 2015,  62 DCR 2669, 21 STAT 830).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(a) of the Wage Theft Prevention Clarification Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-66, May 22, 2015,  62 DCR 6867, 21 DCSTAT 1446).</p>
-                <p>For temporary (90 days) amendment of section, see § 3(a) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3(a) of the Wage Theft Prevention Clarification Emergency Amendment Act of 2016 (D.C. Act 21-291, Jan. 27, 2016,  63 DCR 1207).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3(a) of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-33.html#§3(c)">§ 3(c) of Wage Theft Prevention Clarification and Overtime Fairness Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-33, Mar. 28, 2017, 64 DCR 3089)</a>.</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3(a) of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3(a) of the Wage Theft Prevention Clarification Emergency Amendment Act of 2016 (D.C. Act 21-291, Jan. 27, 2016,  63 DCR 1207).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) amendment of section, see § 3(a) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(a) of the Wage Theft Prevention Clarification Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-66, May 22, 2015,  62 DCR 6867, 21 DCSTAT 1446).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(a) of the Wage Theft Prevention Clarification Emergency Amendment Act of 2015 (D.C. Act 21-8, Feb. 26, 2015,  62 DCR 2669, 21 STAT 830).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b)(1) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) amendment of this section, see §  3(a) of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015, 62 DCR 1332).</p>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
-                <p>For temporary (225 days) amendment of this section, see § 2(a) of the Wage Theft Prevention Clarification Temporary Amendment Act of 2015 (D.C. Law 21-2, June 4, 2015,  62 DCR 4552).</p>
-                <p>For temporary (225 days) amendment of this section, see § 3(a) of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
-                <p>For temporary (225 days) amendment of section, see § 3(a) of the Wage Theft Prevention Clarification Temporary Amendment Act of 2016  D.C. Law 21-101, April 6, 2016, 63 DCR 2220, 20 DCSTAT 3142).</p>
-                <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-170.html#§3(a)">§ 3(a) of Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2016 (D.C. Law 21-170, Nov. 30, 2016, 63 DCR 12600)</a>.</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-206.html#§2(a)">§ 2(a) of Revised Wage Theft Prevention Clarification Temporary Amendment Act of 2016 (D.C. Law 21-206, Feb. 18, 2017, 63 DCR 15051)</a>.</p>
+                <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-170.html#§3(a)">§ 3(a) of Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2016 (D.C. Law 21-170, Nov. 30, 2016, 63 DCR 12600)</a>.</p>
+                <p>For temporary (225 days) amendment of section, see § 3(a) of the Wage Theft Prevention Clarification Temporary Amendment Act of 2016  D.C. Law 21-101, April 6, 2016, 63 DCR 2220, 20 DCSTAT 3142).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) amendment of this section, see § 3(a) of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) amendment of this section, see § 2(a) of the Wage Theft Prevention Clarification Temporary Amendment Act of 2015 (D.C. Law 21-2, June 4, 2015,  62 DCR 4552).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
+                <p>For temporary (225 days) amendment of this section, see §  3(a) of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015, 62 DCR 1332).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
               </section>
@@ -467,19 +507,19 @@
       (<a class="internal-link" href="/dc/council/laws/9-248.html#§9a">Mar. 25, 1993, D.C. Law 9-248, § 9a</a>; <a class="internal-link" href="/dc/council/laws/20-157.html">as added Feb. 26, 2015, D.C. Law 20-157, § 3(d), 61 DCR 10157</a>; <a class="internal-link" href="/dc/council/laws/21-266.html#§3(d)">Apr. 7, 2017, D.C. Law 21-266, § 3(d), 64 DCR 2140</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Wage Theft Prevention Clarification Emergency Amendment Act of 2015 (D.C. Act 21-8, Feb. 26, 2015,  62 DCR 2669, 21 STAT 830).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Wage Theft Prevention Clarification Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-66, May 22, 2015,  62 DCR 6867, 21 DCSTAT 1446).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, §  7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3(b) of the Wage Theft Prevention Clarification Emergency Amendment Act of 2016 (D.C. Act 21-291, Jan. 27, 2016,  63 DCR 1207).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-33.html#§3(d)">§ 3(d) of Wage Theft Prevention Clarification and Overtime Fairness Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-33, Mar. 28, 2017, 64 DCR 3089)</a>.</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3(b) of the Wage Theft Prevention Clarification Emergency Amendment Act of 2016 (D.C. Act 21-291, Jan. 27, 2016,  63 DCR 1207).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, §  7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Wage Theft Prevention Clarification Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-66, May 22, 2015,  62 DCR 6867, 21 DCSTAT 1446).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Wage Theft Prevention Clarification Emergency Amendment Act of 2015 (D.C. Act 21-8, Feb. 26, 2015,  62 DCR 2669, 21 STAT 830).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
-                <p>For temporary (225 days) amendment of this section, see § 2(b) of the Wage Theft Prevention Clarification Temporary Amendment Act of 2015 (D.C. Law 21-2, June 4, 2015,  62 DCR 4552).</p>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
-                <p>For temporary (225 days) amendment of section, see § 3(b) of the Wage Theft Prevention Clarification Temporary Amendment Act of 2016  D.C. Law 21-101, April 6, 2016, 63 DCR 2220, 20 DCSTAT 3142).</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-206.html#§2(b)">§ 2(b) of Revised Wage Theft Prevention Clarification Temporary Amendment Act of 2016 (D.C. Law 21-206, Feb. 18, 2017, 63 DCR 15051)</a>.</p>
+                <p>For temporary (225 days) amendment of section, see § 3(b) of the Wage Theft Prevention Clarification Temporary Amendment Act of 2016  D.C. Law 21-101, April 6, 2016, 63 DCR 2220, 20 DCSTAT 3142).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) amendment of this section, see § 2(b) of the Wage Theft Prevention Clarification Temporary Amendment Act of 2015 (D.C. Law 21-2, June 4, 2015,  62 DCR 4552).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
               </section>
@@ -502,28 +542,28 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/32-1010.html">32-1010</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> deleted “on request” preceding “without charge” in (b).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> added the last sentence in (a); added “in accordance with subchapter II of Chapter 19 of Title 2” in (b); and added (c).</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> deleted “on request” preceding “without charge” in (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> § 3, see § 7004 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b)(2) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
-                <p>For temporary (90 days) amendment of section, see § 3(b) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3(b) of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
                 <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3(b) of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) amendment of section, see § 3(b) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b)(2) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> § 3, see § 7004 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) amendment of this section, see § 3(b) of the  Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015, 62 DCR 1332).</p>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
-                <p>For temporary (225 days) amendment of this section, see § 3(b) of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-170.html#§3(b)">§ 3(b) of Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2016 (D.C. Law 21-170, Nov. 30, 2016, 63 DCR 12600)</a>.</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) amendment of this section, see § 3(b) of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
+                <p>For temporary (225 days) amendment of this section, see § 3(b) of the  Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015, 62 DCR 1332).</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> provided that sections 2(b)-(d) of the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
-                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> was repealed by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7004.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
+                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> was repealed by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7004.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> provided that sections 2(b)-(d) of the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -546,19 +586,19 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> added this section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> § 3, see § 7004 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-428.html#§2(c)">§ 2(c) of Fair Shot Minimum Wage Emergency Amendment Act of 2016 (D.C. Act 21-428, June 28, 2016, 63 DCR 9271)</a>.</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> § 3, see § 7004 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> was repealed by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7003, effective Feb. 26, 2015.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> provided that sections 2(b)-(d) of the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> provided that sections 2(b)-(d) of the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
+                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> was repealed by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7003, effective Feb. 26, 2015.</p>
               </section>
             </section>
             <hr/>
@@ -587,36 +627,36 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/32-1011.html">32-1011</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, in (2), substituted “§§ <a class="internal-link" href="/dc/council/code/sections/32-1008.html">32-1008</a>, <a class="internal-link" href="/dc/council/code/sections/32-1009.html">32-1009</a>, and <a class="internal-link" href="/dc/council/code/sections/32-1009.01.html">32-1009.01</a>” for “§§ <a class="internal-link" href="/dc/council/code/sections/32-1008.html">32-1008</a> and <a class="internal-link" href="/dc/council/code/sections/32-1009.html">32-1009</a>” and substituted “§§ <a class="internal-link" href="/dc/council/code/sections/32-1008.html">32-1008</a> and <a class="internal-link" href="/dc/council/code/sections/32-1009.01.html">32-1009.01</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/32-1008.html">32-1008</a>”.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> designated the existing text as (a); rewrote (a)(3); and added (b).</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, in (2), substituted “§§ <a class="internal-link" href="/dc/council/code/sections/32-1008.html">32-1008</a>, <a class="internal-link" href="/dc/council/code/sections/32-1009.html">32-1009</a>, and <a class="internal-link" href="/dc/council/code/sections/32-1009.01.html">32-1009.01</a>” for “§§ <a class="internal-link" href="/dc/council/code/sections/32-1008.html">32-1008</a> and <a class="internal-link" href="/dc/council/code/sections/32-1009.html">32-1009</a>” and substituted “§§ <a class="internal-link" href="/dc/council/code/sections/32-1008.html">32-1008</a> and <a class="internal-link" href="/dc/council/code/sections/32-1009.01.html">32-1009.01</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/32-1008.html">32-1008</a>”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2, of Rhode Island Place Shopping Center Working Group Emergency Act of 2009 (D.C. Act 18-315, February 23, 2010,  57 DCR 1652).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> § 3, see § 7004 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
                 <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>, § 3, see § 7004 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> § 3, see § 7004 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) amendment of section, see § 2, of Rhode Island Place Shopping Center Working Group Emergency Act of 2009 (D.C. Act 18-315, February 23, 2010,  57 DCR 1652).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 18-150 added a section to read as follows:</p>
-                <p>“Sec. 2. (a) The Mayor shall implement a Rhode Island Place Working Group (’working group’) within 30 days to collaborate with businesses located in the Rhode Island Place Shopping Center bordered by Rhode Island Avenue, N.E., and Brentwood Road, N.E., in Ward 5 to address the challenge of day laborers congregating at the site.</p>
-                <p>“(b) The working group shall make recommendations for a civil resolution to the day-laborer concern at the Rhode Island Place Shopping Center site.</p>
-                <p>“(c) The working group shall meet at least every 2 weeks. The members of the working group shall include:</p>
-                <p>“(1) The Ward 5 Councilmember, or his designee;</p>
-                <p>“(2) The Chairperson of Advisory Neighborhood Commission 5B;</p>
-                <p>“(3) The Attorney General, or a designated staff attorney;</p>
-                <p>“(4) The Director of the Office of Latino Affairs, or her designee;</p>
-                <p>“(5) Representatives from businesses located in the Rhode Island Place Shopping Center;</p>
-                <p>“(6) Representatives from other District agencies as determined by the Mayor; and</p>
-                <p>“(7) Other workers’ rights stakeholders as determined by the Ward 5 Councilmember.</p>
-                <p>“(d) The Mayor shall submit a report regarding the District’s proposed course of action to resolve the challenge of day laborers in the Rhode Island Place Shopping Center, based on the working group recommendations, by July 1, 2010.”</p>
-                <p>Section 4(b) of D.C. Law 18-150 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
+                <p>Section 4(b) of D.C. Law 18-150 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(d) The Mayor shall submit a report regarding the District’s proposed course of action to resolve the challenge of day laborers in the Rhode Island Place Shopping Center, based on the working group recommendations, by July 1, 2010.”</p>
+                <p>“(7) Other workers’ rights stakeholders as determined by the Ward 5 Councilmember.</p>
+                <p>“(6) Representatives from other District agencies as determined by the Mayor; and</p>
+                <p>“(5) Representatives from businesses located in the Rhode Island Place Shopping Center;</p>
+                <p>“(4) The Director of the Office of Latino Affairs, or her designee;</p>
+                <p>“(3) The Attorney General, or a designated staff attorney;</p>
+                <p>“(2) The Chairperson of Advisory Neighborhood Commission 5B;</p>
+                <p>“(1) The Ward 5 Councilmember, or his designee;</p>
+                <p>“(c) The working group shall meet at least every 2 weeks. The members of the working group shall include:</p>
+                <p>“(b) The working group shall make recommendations for a civil resolution to the day-laborer concern at the Rhode Island Place Shopping Center site.</p>
+                <p>“Sec. 2. (a) The Mayor shall implement a Rhode Island Place Working Group (’working group’) within 30 days to collaborate with businesses located in the Rhode Island Place Shopping Center bordered by Rhode Island Avenue, N.E., and Brentwood Road, N.E., in Ward 5 to address the challenge of day laborers congregating at the site.</p>
+                <p>Section 2 of D.C. Law 18-150 added a section to read as follows:</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> provided that sections 2(b)-(d) of the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
-                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> was repealed by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7004.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
+                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> was repealed by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7004.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-91.html">D.C. Law 20-91</a> provided that sections 2(b)-(d) of the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -646,28 +686,28 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 36-220.10.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-245.html">D.C. Law 13-245</a> added subsecs. (d) and (e).</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> added (f).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> substituted “willfully or negligently” for “willfully” in (a); substituted “committed willfully or” for “committed” in (b); substituted “Attorney General” for “Corporation Counsel” in (c); rewrote (d); repealed (e); and added (g).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> added (f).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-245.html">D.C. Law 13-245</a> added subsecs. (d) and (e).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 112(d) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b)(3) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) amendment of section, see § 3(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3(c) of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-33.html#§3(e)">§ 3(e) of Wage Theft Prevention Clarification and Overtime Fairness Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-33, Mar. 28, 2017, 64 DCR 3089)</a>.</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3(c) of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) amendment of section, see § 3(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b)(3) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
+                <p>For temporary (90 days) amendment of this section, see § 112(d) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) amendment of this section, see § 3(c) of the  Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015, 62 DCR 1332).</p>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
-                <p>For temporary (225 days) amendment of this section, see § 3(c) of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-170.html#§3(c)">§ 3(c) of Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2016 (D.C. Law 21-170, Nov. 30, 2016, 63 DCR 12600)</a>.</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) amendment of this section, see § 3(c) of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
+                <p>For temporary (225 days) amendment of this section, see § 3(c) of the  Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015, 62 DCR 1332).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 4 of <a class="internal-link" href="/dc/council/laws/13-245.html">D.C. Law 13-245</a> provided: “The Mayor, pursuant to title 1 of the District of Columbia Administrative Procedure Act shall issue regulations to implement the provisions of this act.”</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
+                <p>Section 4 of <a class="internal-link" href="/dc/council/laws/13-245.html">D.C. Law 13-245</a> provided: “The Mayor, pursuant to title 1 of the District of Columbia Administrative Procedure Act shall issue regulations to implement the provisions of this act.”</p>
               </section>
             </section>
             <hr/>
@@ -682,13 +722,13 @@
       (<a class="internal-link" href="/dc/council/laws/9-248.html#§12a">Mar. 25, 1993, D.C. Law 9-248, § 12a</a>; <a class="internal-link" href="/dc/council/laws/20-157.html">as added Feb. 26, 2015, D.C. Law 20-157, § 3(h), 61 DCR 10157</a>; <a class="internal-link" href="/dc/council/laws/21-266.html#§3(f)">Apr. 7, 2017, D.C. Law 21-266, § 3(f), 64 DCR 2140</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-33.html#§3(f)">§ 3(f) of Wage Theft Prevention Clarification and Overtime Fairness Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-33, Mar. 28, 2017, 64 DCR 3089)</a>.</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
               </section>
@@ -720,28 +760,28 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/32-1011.html">32-1011</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> substituted “wages and liquidated damages owed” for “wages owed” in (f).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> rewrote this section.</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> substituted “wages and liquidated damages owed” for “wages owed” in (f).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 2063 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2063 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b)(4) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243,  20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243,  20 STAT 4458).</p>
-                <p>For temporary (90 days) amendment of section, see § 3(d) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3(d) of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-33.html#§3(g)">§ 3(g) of Wage Theft Prevention Clarification and Overtime Fairness Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-33, Mar. 28, 2017, 64 DCR 3089)</a>.</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3(d) of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) amendment of section, see § 3(d) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243,  20 STAT 4458).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b)(4) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243,  20 STAT 4458).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2063 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2063 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
-                <p>For temporary (225 days) amendment of this section, see § 3(d) of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-170.html#§3(d)">§ 3(d) of Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2016 (D.C. Law 21-170, Nov. 30, 2016, 63 DCR 12600)</a>.</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) amendment of this section, see § 3(d) of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <h4>Short Title</h4>
                 <p>Section 2061 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle G of Title II of the act may be cited as the “Wage Theft Prevention Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>: Section 11001 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that, except as otherwise provided, the act shall apply as of October 1, 2013.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>: Section 11001 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that, except as otherwise provided, the act shall apply as of October 1, 2013.</p>
               </section>
             </section>
             <hr/>
@@ -756,13 +796,13 @@
       (<a class="internal-link" href="/dc/council/laws/9-248.html#§13a">Mar. 25, 1993, D.C. Law 9-248, § 13a</a>; <a class="internal-link" href="/dc/council/laws/20-157.html">as added Feb. 26, 2015, D.C. Law 20-157, § 3(j), 61 DCR 10157</a>; <a class="internal-link" href="/dc/council/laws/21-266.html#§3(h)">Apr. 7, 2017, D.C. Law 21-266, § 3(h), 64 DCR 2140</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-33.html#§3(h)">§ 3(h) of Wage Theft Prevention Clarification and Overtime Fairness Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-33, Mar. 28, 2017, 64 DCR 3089)</a>.</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
               </section>
@@ -781,12 +821,12 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 36-220.12.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
                 <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-293, Jan. 27, 2016,  63 DCR 1215).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2015 (D.C. Act 21-188, Oct. 27, 2015,  62 DCR 14224).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 2(c) of the Wage Theft Prevention Correction and Clarification Emergency Amendment Act of 2014 (D.C. Act 20-544, Dec. 29, 2014,  62 DCR 243, 20 STAT 4458).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2015 (D.C. Law 21-57, Jan. 30, 2016,  62 DCR 15602).</p>
+                <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>, § 7, see § 4 of the Wage Theft Prevention Correction and Clarification Temporary Amendment Act of 2014 (D.C. Law 20-240, March 13, 2015,  62 DCR 1332).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a>: Section 7 of <a class="internal-link" href="/dc/council/laws/20-157.html">D.C. Law 20-157</a> provided that the act shall apply as of October 1, 2014, and that the act shall apply to violations occurring after October 1, 2014.</p>
               </section>

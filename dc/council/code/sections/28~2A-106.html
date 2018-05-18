@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-107.html">§ 28:2A-107. Waiver or renunciation of claim or right after default.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-106.html">Report Error</a>
@@ -104,17 +104,17 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:1-301.html">28:1-301</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong> Unif. Consumer Credit Code s 1.201(8), 7A U.L.A. 36 (1974).</p>
-                <p><strong>Changes:</strong> Substantially revised.</p>
-                <p><strong>Purposes:</strong> There is a real danger that a lessor may induce a consumer lessee to agree that the applicable law will be a jurisdiction that has little effective consumer protection, or to agree that the applicable forum will be a forum that is inconvenient for the lessee in the event of litigation. As a result, this section invalidates these choice of law or forum clauses, except where the law chosen is that of the state of the consumer’s residence or where the goods will be kept, or the forum chosen is one that otherwise would have jurisdiction over the lessee.</p>
-                <p>Subsection (1) limits potentially abusive choice of law clauses in consumer leases. The 30-day rule in subsection (1) was suggested by  Section 9-103(1)(c). This section has no effect on choice of law clauses in leases that are not consumer leases. Such clauses would be governed by other law.</p>
-                <p>Subsection (2) prevents enforcement of potentially abusive jurisdictional consent clauses in consumer leases. By using the term judicial forum, this section does not limit selection of a nonjudicial forum, such as arbitration. This section has no effect on choice of forum clauses in leases that are not consumer leases; such clauses are, as a matter of current law, “prima facie valid“.  The Bremen v. Zapata Off-Shore, Co., 407 U.S. 1, 10 (1972). Such clauses would be governed by other law, including the Model Choice of Forum Act (1968).</p>
-                <p><strong>Cross Reference:</strong>Section 9-103(1)(c).</p>
-                <p><strong>Definitional Cross Reference:</strong> “Consumer lease”. Section 2A-103(1)(e).</p>
-                <p>“Lease agreement”. Section 2A-103(1)(k).</p>
-                <p>“Lessee”. Section 2A-103(1)(n).</p>
-                <p>“Goods”. Section 2A-103(1)(h).</p>
                 <p>“Party”.  Section 1-201(29).</p>
+                <p>“Goods”. Section 2A-103(1)(h).</p>
+                <p>“Lessee”. Section 2A-103(1)(n).</p>
+                <p>“Lease agreement”. Section 2A-103(1)(k).</p>
+                <p><strong>Definitional Cross Reference:</strong> “Consumer lease”. Section 2A-103(1)(e).</p>
+                <p><strong>Cross Reference:</strong>Section 9-103(1)(c).</p>
+                <p>Subsection (2) prevents enforcement of potentially abusive jurisdictional consent clauses in consumer leases. By using the term judicial forum, this section does not limit selection of a nonjudicial forum, such as arbitration. This section has no effect on choice of forum clauses in leases that are not consumer leases; such clauses are, as a matter of current law, “prima facie valid“.  The Bremen v. Zapata Off-Shore, Co., 407 U.S. 1, 10 (1972). Such clauses would be governed by other law, including the Model Choice of Forum Act (1968).</p>
+                <p>Subsection (1) limits potentially abusive choice of law clauses in consumer leases. The 30-day rule in subsection (1) was suggested by  Section 9-103(1)(c). This section has no effect on choice of law clauses in leases that are not consumer leases. Such clauses would be governed by other law.</p>
+                <p><strong>Purposes:</strong> There is a real danger that a lessor may induce a consumer lessee to agree that the applicable law will be a jurisdiction that has little effective consumer protection, or to agree that the applicable forum will be a forum that is inconvenient for the lessee in the event of litigation. As a result, this section invalidates these choice of law or forum clauses, except where the law chosen is that of the state of the consumer’s residence or where the goods will be kept, or the forum chosen is one that otherwise would have jurisdiction over the lessee.</p>
+                <p><strong>Changes:</strong> Substantially revised.</p>
+                <p><strong>Uniform Statutory Source:</strong> Unif. Consumer Credit Code s 1.201(8), 7A U.L.A. 36 (1974).</p>
               </section>
             </section>
           </section>

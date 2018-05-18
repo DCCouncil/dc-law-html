@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/8/">Chapter 8. District of Columbia Retirement Funds.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-753.html">Report Error</a>
@@ -105,8 +105,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary establishment of an actuarially sound retirement replacement plan for pension benefits accrued after June 30, 1997, for police officers, fire fighters, and teachers, see §§ 101-204 of the Police Officers, Fire Fighters, and Teachers Retirement Benefit Replacement Plan Emergency Act of 1997 (D.C. Act 12-155, October 1, 1997,  44 DCR 5896), see §§ 101-204 of the Police Officers, Fire Fighters, and Teachers Retirement Benefit Replacement Plan Congressional Review Emergency Act of 1997 (D.C. Act 12-240, January 13, 1998,  45 DCR 531), see §§ 101-204 of the Police Officers, Fire Fighters, and Teachers Retirement Benefit Replacement Plan and Fiscal Year 1998 Revised Budget Support Act of 1997 Technical Amendments Emergency Act of 1998 (D.C. Act 12-351, May 20, 1998,  45 DCR 3673), and see §§ 101-204 of the Police Officers, Fire Fighters, and Teachers Retirement Benefit Replacement Plan and Fiscal Year 1998 Revised Budget Support Act of 1997 Technical Amendments Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-432, August 6, 1998,  45 DCR 5920).</p>
                 <h4>Editor's Notes</h4>
-                <p>Retirement replacement plan: Sections 101 through 204 of <a class="internal-link" href="/dc/council/laws/12-58.html">D.C. Law 12-58</a> provide for the temporary establishment of replacement retirement plans for pension benefits accrued after June 30, 1997, for police officers, fire fighters, and teachers, and provide for the full funding and management on an actuarially sound basis of all retirement funds entrusted to the District government for the benefit of teachers, members and officers of the Metropolitan Police Department, and employees of the D.C. Fire and Emergency Medical Services Department.</p>
                 <p>Section 209(b) of <a class="internal-link" href="/dc/council/laws/12-58.html">D.C. Law 12-58</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Retirement replacement plan: Sections 101 through 204 of <a class="internal-link" href="/dc/council/laws/12-58.html">D.C. Law 12-58</a> provide for the temporary establishment of replacement retirement plans for pension benefits accrued after June 30, 1997, for police officers, fire fighters, and teachers, and provide for the full funding and management on an actuarially sound basis of all retirement funds entrusted to the District government for the benefit of teachers, members and officers of the Metropolitan Police Department, and employees of the D.C. Fire and Emergency Medical Services Department.</p>
               </section>
             </section>
           </section>

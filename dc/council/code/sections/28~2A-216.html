@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-217.html">§ 28:2A-217. Identification.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-216.html">Report Error</a>
@@ -101,19 +101,19 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 28:2A-216.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Section 2-318.</p>
-                <p><strong>Changes:</strong> The provisions of  Section 2-318 have been included in this section, modified in two respects: first, to reflect leasing practice, including the special practices of the lessor under a finance lease; second, to reflect and thus codify elements of the official comment to  Section 2-318 with respect to the effect of disclaimers and limitations of remedies against third parties.</p>
-                <p><strong>Purposes:</strong> [Mississippi has adopted Alternative A.]. Alternative A is based on the 1962 version of  Section 2-318 and is least favorable to the injured person as the doctrine of privity imposed by other law is abrogated to only a limited extent. Alternatives B and C are based on later additions to  Section 2-318 and are more favorable to the injured person. In determining which alternative to select, the state legislature should consider making its choice parallel to the choice it made with respect to  Section 2-318, as interpreted by the courts.</p>
-                <p>The last sentence of each of Alternatives A, B and C does not preclude the lessor from excluding or modifying an express or implied warranty under a lease. Section 2A-214. Further, that sentence does not preclude the lessor from limiting the rights and remedies of the lessee and from liquidating damages. Sections 2A-503 and 2A-504. If the lease excludes or modifies warranties, limits remedies for breach, or liquidates damages with respect to the lessee, such provisions are enforceable against the beneficiaries designated under this section. However, this last sentence forbids selective discrimination against the beneficiaries designated under this section, i.e., exclusion of the lessor’s liability to the beneficiaries with respect to warranties made by the lessor to the lessee.</p>
-                <p>Other law, including the Article on Sales (Article 2), may apply in determining the extent to which a warranty to or for the benefit of the lessor extends to the lessee and third parties. This is in part a function of whether the lessor has bought or leased the goods.</p>
-                <p>This Article does not purport to change the development of the relationship of the common law, with respect to products liability, including strict liability in tort (as restated in Restatement (Second) of Torts, s 402A (1965)), to the provisions of this Act. Compare  Cline v. Prowler Indus. of Maryland, 418 A.2d 968 (Del.1980) and  Hawkins Constr. Co. v. Matthews Co., 190 Neb. 546, 209 N.W.2d 643 (1973) with  Dippel v. Sciano, 37 Wis.2d 443, 155 N.W.2d 55 (1967).</p>
-                <p><strong>Cross References:</strong> Article 2, esp.  Section 2-318, and Sections 2A-214, 2A-503 and 2A-504.</p>
-                <p><strong>Definitional Cross References:</strong> “Goods”. Section 2A-103(1)(h).</p>
-                <p>“Lessee”. Section 2A-103(1)(n).</p>
-                <p>“Person”.  Section 1-201(30).</p>
-                <p>“Remedy”.  Section 1-201(34).</p>
-                <p>“Rights”.  Section 1-201(36).</p>
                 <p>HISTORICAL NOTES</p>
+                <p>“Rights”.  Section 1-201(36).</p>
+                <p>“Remedy”.  Section 1-201(34).</p>
+                <p>“Person”.  Section 1-201(30).</p>
+                <p>“Lessee”. Section 2A-103(1)(n).</p>
+                <p><strong>Definitional Cross References:</strong> “Goods”. Section 2A-103(1)(h).</p>
+                <p><strong>Cross References:</strong> Article 2, esp.  Section 2-318, and Sections 2A-214, 2A-503 and 2A-504.</p>
+                <p>This Article does not purport to change the development of the relationship of the common law, with respect to products liability, including strict liability in tort (as restated in Restatement (Second) of Torts, s 402A (1965)), to the provisions of this Act. Compare  Cline v. Prowler Indus. of Maryland, 418 A.2d 968 (Del.1980) and  Hawkins Constr. Co. v. Matthews Co., 190 Neb. 546, 209 N.W.2d 643 (1973) with  Dippel v. Sciano, 37 Wis.2d 443, 155 N.W.2d 55 (1967).</p>
+                <p>Other law, including the Article on Sales (Article 2), may apply in determining the extent to which a warranty to or for the benefit of the lessor extends to the lessee and third parties. This is in part a function of whether the lessor has bought or leased the goods.</p>
+                <p>The last sentence of each of Alternatives A, B and C does not preclude the lessor from excluding or modifying an express or implied warranty under a lease. Section 2A-214. Further, that sentence does not preclude the lessor from limiting the rights and remedies of the lessee and from liquidating damages. Sections 2A-503 and 2A-504. If the lease excludes or modifies warranties, limits remedies for breach, or liquidates damages with respect to the lessee, such provisions are enforceable against the beneficiaries designated under this section. However, this last sentence forbids selective discrimination against the beneficiaries designated under this section, i.e., exclusion of the lessor’s liability to the beneficiaries with respect to warranties made by the lessor to the lessee.</p>
+                <p><strong>Purposes:</strong> [Mississippi has adopted Alternative A.]. Alternative A is based on the 1962 version of  Section 2-318 and is least favorable to the injured person as the doctrine of privity imposed by other law is abrogated to only a limited extent. Alternatives B and C are based on later additions to  Section 2-318 and are more favorable to the injured person. In determining which alternative to select, the state legislature should consider making its choice parallel to the choice it made with respect to  Section 2-318, as interpreted by the courts.</p>
+                <p><strong>Changes:</strong> The provisions of  Section 2-318 have been included in this section, modified in two respects: first, to reflect leasing practice, including the special practices of the lessor under a finance lease; second, to reflect and thus codify elements of the official comment to  Section 2-318 with respect to the effect of disclaimers and limitations of remedies against third parties.</p>
+                <p><strong>Uniform Statutory Source:</strong>Section 2-318.</p>
               </section>
             </section>
           </section>

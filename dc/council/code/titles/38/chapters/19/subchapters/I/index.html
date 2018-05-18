@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/38/chapters/19/subchapters/II/">Subchapter II. Foreign Exchange Program.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/38/chapters/19/subchapters/I/">Report Error</a>
@@ -88,16 +88,36 @@
         <section class="col8 body">
           <h1>Subchapter I. General.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/38-1901.html">§ 38–1901. Sexual discrimination; salary deductions; employment as clerk or librarian.</a>
-            <a href="/dc/council/code/sections/38-1902.html">§ 38–1902. Installment payments to certain teachers.</a>
-            <a href="/dc/council/code/sections/38-1903.html">§ 38–1903. Teachers in the Americanization schools; custodial staff.</a>
-            <a href="/dc/council/code/sections/38-1904.html">§ 38–1904. Teaching vacancies.</a>
-            <a href="/dc/council/code/sections/38-1905.html">§ 38–1905. Vocational education.</a>
-            <a href="/dc/council/code/sections/38-1906.html">§ 38–1906. Classification of research assistants.</a>
-            <a href="/dc/council/code/sections/38-1907.html">§ 38–1907. Employment of substitutes for engineer, janitor, laborer, fireman, or caretaker; salary deductions.</a>
-            <a href="/dc/council/code/sections/38-1908.html">§ 38–1908. Heads of certain departments; compensation.</a>
-            <a href="/dc/council/code/sections/38-1909.html">§ 38–1909. Employment of substitutes — Authorized; compensation.</a>
-            <a href="/dc/council/code/sections/38-1910.html">§ 38–1910. Employment of substitutes — Retired teachers.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1901.html">§ 38–1901. Sexual discrimination; salary deductions; employment as clerk or librarian.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1902.html">§ 38–1902. Installment payments to certain teachers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1903.html">§ 38–1903. Teachers in the Americanization schools; custodial staff.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1904.html">§ 38–1904. Teaching vacancies.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1905.html">§ 38–1905. Vocational education.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1906.html">§ 38–1906. Classification of research assistants.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1907.html">§ 38–1907. Employment of substitutes for engineer, janitor, laborer, fireman, or caretaker; salary deductions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1908.html">§ 38–1908. Heads of certain departments; compensation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1909.html">§ 38–1909. Employment of substitutes — Authorized; compensation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1910.html">§ 38–1910. Employment of substitutes — Retired teachers.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -112,8 +132,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/64-1-ch433.html#§1">Sept. 1, 1916, 39 Stat. 695, ch. 433, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1001.</p>
                 <p>1973 Ed., § 31-608.</p>
+                <p>1981 Ed., § 31-1001.</p>
               </section>
             </section>
             <hr/>
@@ -128,8 +148,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-1-ch184.html">July 1, 1943, 57 Stat. 322, ch. 184, § 1, par. 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1003.</p>
                 <p>1973 Ed., § 31-609a.</p>
+                <p>1981 Ed., § 31-1003.</p>
               </section>
             </section>
             <hr/>
@@ -145,8 +165,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-1-ch184.html">July 1, 1943, 57 Stat. 322, ch. 184, § 1, par. 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1018.</p>
                 <p>1973 Ed., § 31-681.</p>
+                <p>1981 Ed., § 31-1018.</p>
               </section>
             </section>
             <hr/>
@@ -161,8 +181,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-1-ch184.html">July 1, 1943, 57 Stat. 322, ch. 184, § 1, par. 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1019.</p>
                 <p>1973 Ed., § 31-682.</p>
+                <p>1981 Ed., § 31-1019.</p>
               </section>
             </section>
             <hr/>
@@ -177,8 +197,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/74-2-ch175.html#§4">Apr. 10, 1936, 49 Stat. 1194, ch. 175, § 4</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1004.</p>
                 <p>1973 Ed., § 31-614.</p>
+                <p>1981 Ed., § 31-1004.</p>
               </section>
             </section>
             <hr/>
@@ -193,8 +213,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/76-1-ch39.html#§4">Apr. 5, 1939, 53 Stat. 568, ch. 39, § 4</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1006.</p>
                 <p>1973 Ed., § 31-623.</p>
+                <p>1981 Ed., § 31-1006.</p>
               </section>
             </section>
             <hr/>
@@ -209,8 +229,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/62-3-ch150.html#§1">Mar. 4, 1913, 37 Stat. 956, ch. 150, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1007.</p>
                 <p>1973 Ed., § 31-625.</p>
+                <p>1981 Ed., § 31-1007.</p>
               </section>
             </section>
             <hr/>
@@ -225,8 +245,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-838.html#§3">Aug. 28, 1958, 72 Stat. 1012, Pub. L. 85-838, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1017.</p>
                 <p>1973 Ed., § 31-680.</p>
+                <p>1981 Ed., § 31-1017.</p>
               </section>
             </section>
             <hr/>
@@ -241,13 +261,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/81-1-ch686.html#§6">Oct. 13, 1949, 63 Stat. 843, ch. 686, § 6</a>; Aug. 5, 1953, 67 Stat. 362, ch. 319, § 1; Aug. 5, 1955, 69 Stat. 530, ch. 569, title V, § 22; <a class="internal-link" href="/us/congress/laws/public/92-454.html">Oct. 2, 1972, 86 Stat. 760, Pub. L. 92-454, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1028.</p>
                 <p>1973 Ed., § 31-696.</p>
+                <p>1981 Ed., § 31-1028.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-1103.html">38-1103</a>.</p>
                 <h4>Cross References</h4>
-                <p>Board of higher education, crediting of leave accumulated pursuant to this section, see § <a class="internal-link" href="/dc/council/code/sections/38-1103.html">38-1103</a>.</p>
                 <p>Teachers’ retirement system coverage, see §§ <a class="internal-link" href="/dc/council/code/sections/38-2021.08.html">38-2021.08</a>, <a class="internal-link" href="/dc/council/code/sections/38-2021.13.html">38-2021.13</a>.</p>
+                <p>Board of higher education, crediting of leave accumulated pursuant to this section, see § <a class="internal-link" href="/dc/council/code/sections/38-1103.html">38-1103</a>.</p>
               </section>
             </section>
             <hr/>
@@ -262,8 +282,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-385.html#§1">Apr. 24, 1958, 72 Stat. 98, Pub. L. 85-385, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1029.</p>
                 <p>1973 Ed., § 31-696a.</p>
+                <p>1981 Ed., § 31-1029.</p>
               </section>
             </section>
             <hr/>

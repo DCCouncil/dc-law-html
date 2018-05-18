@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/3-342.01.html">§ 3–342.01. Definitions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-342.html">Report Error</a>
@@ -99,11 +99,11 @@
       (<a class="internal-link" href="/dc/council/laws/2-37.html#§3">Nov. 3, 1977, D.C. Law 2-37, § 3, 24 DCR 4058</a>; <a class="internal-link" href="/dc/council/laws/10-152.html">Aug. 23, 1994, D.C. Law 10-152, § 21(b), 41 DCR 4636</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-342.</p>
                 <p>1973 Ed., § 2-1742.</p>
+                <p>1981 Ed., § 2-342.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition (90 days) of section, see § 3 of the Omnibus Sports Consolidation Act of 1994 Emergency Amendment Act of 1995 (D.C. Act 11-102, July 21, 1995,  42 DCR 4009).</p>
                 <p>For temporary (90 day) addition, see § 2(a) of Ballpark Public Safety Emergency Amendment Act of 2008 (D.C. Act 17-316, March 19, 2008,  55 DCR 3412).</p>
+                <p>For temporary addition (90 days) of section, see § 3 of the Omnibus Sports Consolidation Act of 1994 Emergency Amendment Act of 1995 (D.C. Act 11-102, July 21, 1995,  42 DCR 4009).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition, see § 3 of Omnibus Sports Consolidation Act of 1994 Temporary Amendment Act of 1995 (D.C. Law 11-67, October 26, 1995, law notification 42 DCR ).</p>
               </section>

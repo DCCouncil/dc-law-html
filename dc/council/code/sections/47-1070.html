@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1071.html">§ 47–1071. National Community Reinvestment Coalition; lot 20, square 222.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1070.html">Report Error</a>
@@ -98,10 +98,10 @@
       (<a class="internal-link" href="/dc/council/laws/16-36.html">Dec. 10, 2005, D.C. Law 16-36, § 2(b), 52 DCR 9059</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(b) of Walter Reed Property Tax Exemption Reconfirmation Emergency Act of 2004 (D.C. Act 15-447, June 23, 2004,  51 DCR 6562).</p>
-                <p>For temporary (90 day) addition, see § 2(b) of Walter Reed Property tax Exemption Reconfirmation Congressional Review Emergency Act of 2004 (D.C. Act 15-629, November 30, 2004,  52 DCR 1141).</p>
-                <p>For temporary (90 day) addition, see § 2(b) of Walter Reed Property Tax Exemption Reconfirmation Emergency Act of 2005 (D.C. Act 16-144, July 26, 2005,  52 DCR 7181).</p>
                 <p>For temporary (90 day) addition, see § 2(b) of Walter Reed Property Tax Exemption Reconfirmation Congressional Review Emergency Act of 2005 (D.C. Act 16-185, October 28, 2005,  52 DCR 10010).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Walter Reed Property Tax Exemption Reconfirmation Emergency Act of 2005 (D.C. Act 16-144, July 26, 2005,  52 DCR 7181).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Walter Reed Property tax Exemption Reconfirmation Congressional Review Emergency Act of 2004 (D.C. Act 15-629, November 30, 2004,  52 DCR 1141).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Walter Reed Property Tax Exemption Reconfirmation Emergency Act of 2004 (D.C. Act 15-447, June 23, 2004,  51 DCR 6562).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For Temporary (225 day) addition, see § 2 of Walter Reed Property Tax Exemption Reconfirmation Temporary Act of 2004 (D.C. Law 15-197, December 7, 2004, law notification  52 DCR 441).</p>
                 <h4>Mayor's Orders</h4>

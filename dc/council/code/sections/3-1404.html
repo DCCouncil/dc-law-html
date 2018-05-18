@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/3-1405.html">§ 3–1405. Executive Director. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-1404.html">Report Error</a>
@@ -100,20 +100,20 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 2-4004.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 8 (c) of the Recreation Emergency Act of 1995 (D.C. Act 11-20, February 28, 1995,  42 DCR 1175).</p>
-                <p>For temporary amendment of section, see § 2 of the Omnibus Sports Consolidation Act of 1994 Emergency Amendment Act of 1995 (D.C. Act 11-102, July 21, 1995,  42 DCR 4009).</p>
-                <p>For temporary amendment of section, see § 2(a) and (b) of the Omnibus Sports Consolidation Act Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-275, May 29, 1996,  43 DCR 2966).</p>
-                <p>For temporary amendment of section, see § 4(b) of the Confirmation Emergency Amendment Act of 1999 (D.C. Act 13-25, March 15, 1999,  46 DCR 2971).</p>
-                <p>For temporary amendment of section, see § 4(b) of the Confirmation Act Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-92, June 4, 1999,  46 DCR 5330).</p>
-                <p>For temporary (90-day) amendment of section, see § 4(b) of the Confirmation Act Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-92, June 4, 1999,  46 DCR 5330).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Omnibus Sports Consolidation Emergency Amendment Act of 2007 (D.C. Act 17-76, July 25, 2007,  54 DCR 7628).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Omnibus Sports Consolidation Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-151, October 18, 2007,  54 DCR 10898).</p>
-                <p>For temporary (90 day) repeal, see § 2082(j) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) repeal, see § 2082(j) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) repeal, see § 2082(j) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Omnibus Sports Consolidation Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-151, October 18, 2007,  54 DCR 10898).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Omnibus Sports Consolidation Emergency Amendment Act of 2007 (D.C. Act 17-76, July 25, 2007,  54 DCR 7628).</p>
+                <p>For temporary (90-day) amendment of section, see § 4(b) of the Confirmation Act Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-92, June 4, 1999,  46 DCR 5330).</p>
+                <p>For temporary amendment of section, see § 4(b) of the Confirmation Act Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-92, June 4, 1999,  46 DCR 5330).</p>
+                <p>For temporary amendment of section, see § 4(b) of the Confirmation Emergency Amendment Act of 1999 (D.C. Act 13-25, March 15, 1999,  46 DCR 2971).</p>
+                <p>For temporary amendment of section, see § 2(a) and (b) of the Omnibus Sports Consolidation Act Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-275, May 29, 1996,  43 DCR 2966).</p>
+                <p>For temporary amendment of section, see § 2 of the Omnibus Sports Consolidation Act of 1994 Emergency Amendment Act of 1995 (D.C. Act 11-102, July 21, 1995,  42 DCR 4009).</p>
+                <p>For temporary amendment of section, see § 8 (c) of the Recreation Emergency Act of 1995 (D.C. Act 11-20, February 28, 1995,  42 DCR 1175).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Omnibus Sports Consolidation Act of 1994 Temporary Amendment Act of 1995 (D.C. Law 11-67, October 26, 1995, law notification  42 DCR 6172).</p>
-                <p>Section 2 of D.C. Law 17-48, in subsec. (a), substituted “13” for “11”, “9” for “8”, and “with similar responsibilities, and a District government official designated by the Mayor,” for “with similar responsibilities,”.</p>
                 <p>Section 4(b) of D.C. Law 17-48 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 17-48, in subsec. (a), substituted “13” for “11”, “9” for “8”, and “with similar responsibilities, and a District government official designated by the Mayor,” for “with similar responsibilities,”.</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Omnibus Sports Consolidation Act of 1994 Temporary Amendment Act of 1995 (D.C. Law 11-67, October 26, 1995, law notification  42 DCR 6172).</p>
                 <h4>Editor's Notes</h4>
                 <p>Construction of Law 10-152: See note to § <a class="internal-link" href="/dc/council/code/sections/3-1401.html">3-1401</a>.</p>
               </section>

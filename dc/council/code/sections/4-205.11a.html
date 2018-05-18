@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/4-205.11b.html">§ 4–205.11b. Reduction of benefits for long-term TANF recipients. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/4-205.11a.html">Report Error</a>
@@ -117,12 +117,12 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/4-205.72.html">4-205.72</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 2(f) of the Public Assistance Emergency Amendment Act of 1997 (D.C. Act 12-25, February 27, 1997,  44 DCR 1778), § 2(f) of the Public Assistance Emergency Amendment Act of 1997 (D.C. Act 12-77, May 27, 1997,  44 DCR 3181), § 2(f) of the Public Assistance Emergency Amendment Act of 1997 (D.C. Act 12-306, March 20, 1998,  44 DCR 1900).</p>
                 <p>For temporary addition of section, see § 2(n) of the Self-Sufficiency Promotion Emergency Amendment Act of 1998 (D.C. Act 12-372, June 9, 1998,  45 DCR 4270), § 2(n) of the Self-Sufficiency Promotion Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-425, July 31, 1998,  45 DCR 5682), § 2(n) of the Self-Sufficiency Promotion Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-552, December 24, 1998,  46 DCR 521), and § 2(n) of the Self-Sufficiency Promotion Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-19, February 17, 1999,  46 DCR 2492).</p>
+                <p>For temporary addition of section, see § 2(f) of the Public Assistance Emergency Amendment Act of 1997 (D.C. Act 12-25, February 27, 1997,  44 DCR 1778), § 2(f) of the Public Assistance Emergency Amendment Act of 1997 (D.C. Act 12-77, May 27, 1997,  44 DCR 3181), § 2(f) of the Public Assistance Emergency Amendment Act of 1997 (D.C. Act 12-306, March 20, 1998,  44 DCR 1900).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) addition of section, see § 2(f) of Public Assistance Temporary Amendment Act of 1997 (<a class="internal-link" href="/dc/council/laws/12-7.html">D.C. Law 12-7</a>, August 1, 1997, law notification  44 DCR 4639).</p>
-                <p>For temporary (225 day) addition of section, see § 2(f) of Public Assistance Temporary Amendment Act of 1998 (<a class="internal-link" href="/dc/council/laws/12-130.html">D.C. Law 12-130</a>, July 24, 1998, law notification  45 DCR 6501).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(n) of Self-Sufficiency Promotion Temporary Amendment Act of 1998 (<a class="internal-link" href="/dc/council/laws/12-230.html">D.C. Law 12-230</a>, April 20, 1999, law notification  46 DCR 4143).</p>
+                <p>For temporary (225 day) addition of section, see § 2(f) of Public Assistance Temporary Amendment Act of 1998 (<a class="internal-link" href="/dc/council/laws/12-130.html">D.C. Law 12-130</a>, July 24, 1998, law notification  45 DCR 6501).</p>
+                <p>For temporary (225 day) addition of section, see § 2(f) of Public Assistance Temporary Amendment Act of 1997 (<a class="internal-link" href="/dc/council/laws/12-7.html">D.C. Law 12-7</a>, August 1, 1997, law notification  44 DCR 4639).</p>
               </section>
             </section>
           </section>

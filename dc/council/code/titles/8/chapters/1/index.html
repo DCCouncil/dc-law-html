@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/1A/">Chapter 1A. District Department of the Environment.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/8/chapters/1/">Report Error</a>
@@ -87,34 +87,62 @@
         <section class="col8 body">
           <h1>Chapter 1. Environmental Controls.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/I/">Subchapter I. Air Pollution Control.</a>
-            <p>§§ 8-101.01 - 8-101.14</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/I-A/">Subchapter I-A. Anacostia River Clean Up and Protection.</a>
-            <p>§§ 8-102.01 - 8-102.07</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/II/">Subchapter II. Water Pollution Control.</a>
-            <p>§§ 8-103.01 - 8-103.20</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/II-A/">Subchapter II-A. Anacostia River Clean Up and Protection Fertilizer Act.</a>
-            <p>§§ 8-104.01 - 8-104.07</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/II-B/">Subchapter II-B. Anacostia River Toxics Remediation.</a>
-            <p>§§ 8-104.31 - 8-104.31</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/III/">Subchapter III. Wastewater Control.</a>
-            <p>§§ 8-105.01 - 8-105.15</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/III-A/">Subchapter III-A. Bloomingdale and LeDroit Park Backwater Valves. [Expired]</a>
-            <p>§§ 8-105.51 - 8-105.58</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/III-B/">Subchapter III-B. District of Columbia Flood Assistance Fund.</a>
-            <p>§§ 8-105.71 - 8-105.75</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/IV/">Subchapter IV. Restrictions on Phosphate Cleaners.</a>
-            <p>§§ 8-107.01 - 8-107.04</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/IV-A/">Subchapter IV-A. Restrictions on Bisphenol-A, Polybrominated Diphenyl Ethers, and Perchloroethylene.</a>
-            <p>§§ 8-108.01 - 8-108.05</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/V/">Subchapter V. Environmental Impact Statements.</a>
-            <p>§§ 8-109.01 - 8-109.12</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/VI/">Subchapter VI. Asbestos Licensing and Control.</a>
-            <p>§§ 8-111.01 - 8-111.14</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/VII/">Subchapter VII. Underground Storage Tank Management.</a>
-            <p>§§ 8-113.01 - 8-113.12</p>
-            <a href="/dc/council/code/titles/8/chapters/1/subchapters/VIII/">Subchapter VIII. Lead-Based Paint Abatement and Control.</a>
-            <p>§§ 8-115.01 - 8-115.14</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/I/">Subchapter I. Air Pollution Control.</a>
+            </p>
+            <p>§§ 8-101.01 – 8-101.14</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/I-A/">Subchapter I-A. Anacostia River Clean Up and Protection.</a>
+            </p>
+            <p>§§ 8-102.01 – 8-102.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/II/">Subchapter II. Water Pollution Control.</a>
+            </p>
+            <p>§§ 8-103.01 – 8-103.20</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/II-A/">Subchapter II-A. Anacostia River Clean Up and Protection Fertilizer Act.</a>
+            </p>
+            <p>§§ 8-104.01 – 8-104.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/II-B/">Subchapter II-B. Anacostia River Toxics Remediation.</a>
+            </p>
+            <p>§§ 8-104.31 – 8-104.31</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/III/">Subchapter III. Wastewater Control.</a>
+            </p>
+            <p>§§ 8-105.01 – 8-105.15</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/III-A/">Subchapter III-A. Bloomingdale and LeDroit Park Backwater Valves. [Expired]</a>
+            </p>
+            <p>§§ 8-105.51 – 8-105.58</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/III-B/">Subchapter III-B. District of Columbia Flood Assistance Fund.</a>
+            </p>
+            <p>§§ 8-105.71 – 8-105.75</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/IV/">Subchapter IV. Restrictions on Phosphate Cleaners.</a>
+            </p>
+            <p>§§ 8-107.01 – 8-107.04</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/IV-A/">Subchapter IV-A. Restrictions on Bisphenol-A, Polybrominated Diphenyl Ethers, and Perchloroethylene.</a>
+            </p>
+            <p>§§ 8-108.01 – 8-108.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/V/">Subchapter V. Environmental Impact Statements.</a>
+            </p>
+            <p>§§ 8-109.01 – 8-109.12</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/VI/">Subchapter VI. Asbestos Licensing and Control.</a>
+            </p>
+            <p>§§ 8-111.01 – 8-111.14</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/VII/">Subchapter VII. Underground Storage Tank Management.</a>
+            </p>
+            <p>§§ 8-113.01 – 8-113.12</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/1/subchapters/VIII/">Subchapter VIII. Lead-Based Paint Abatement and Control.</a>
+            </p>
+            <p>§§ 8-115.01 – 8-115.14</p>
           </section>
           <section class="content">
             <hr/>
@@ -133,12 +161,12 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., §§ 6-901 to 6-903.</p>
                 <h4>Cross References</h4>
-                <p>Acid rain, research and plan, see  42 U.S.C. § 8901 et seq.</p>
-                <p>Air pollution prevention and control, Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
-                <p>Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
-                <p>Pollution Prevention Act of 1990, see  42 U.S.C. § 13101 et seq.</p>
-                <p>Stratospheric Ozone Protection, see  42 U.S.C. § 7671 et seq.</p>
                 <p>Sulfur dioxide, acid deposition control, air pollution prevention and control, see  42 U.S.C. § 7651 et seq.</p>
+                <p>Stratospheric Ozone Protection, see  42 U.S.C. § 7671 et seq.</p>
+                <p>Pollution Prevention Act of 1990, see  42 U.S.C. § 13101 et seq.</p>
+                <p>Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
+                <p>Air pollution prevention and control, Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
+                <p>Acid rain, research and plan, see  42 U.S.C. § 8901 et seq.</p>
                 <h4>Editor's Notes</h4>
                 <p>Due to the codification of Title II of <a class="internal-link" href="/dc/council/laws/20-135.html">D.C. Law 20-135</a> as Part B of this subchapter, the existing sections of this chapter were designated as Part A.</p>
                 <h4>Delegation of Authority</h4>
@@ -159,12 +187,12 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., §§ 6-901 to 6-903.</p>
                 <h4>Cross References</h4>
-                <p>Acid rain, research and plan, see  42 U.S.C. § 8901 et seq.</p>
-                <p>Air pollution prevention and control, Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
-                <p>Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
-                <p>Pollution Prevention Act of 1990, see  42 U.S.C. § 13101 et seq.</p>
-                <p>Stratospheric Ozone Protection, see  42 U.S.C. § 7671 et seq.</p>
                 <p>Sulfur dioxide, acid deposition control, air pollution prevention and control, see  42 U.S.C. § 7651 et seq.</p>
+                <p>Stratospheric Ozone Protection, see  42 U.S.C. § 7671 et seq.</p>
+                <p>Pollution Prevention Act of 1990, see  42 U.S.C. § 13101 et seq.</p>
+                <p>Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
+                <p>Air pollution prevention and control, Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
+                <p>Acid rain, research and plan, see  42 U.S.C. § 8901 et seq.</p>
                 <h4>Editor's Notes</h4>
                 <p>Due to the codification of Title II of <a class="internal-link" href="/dc/council/laws/20-135.html">D.C. Law 20-135</a> as Part B of this subchapter, the existing sections of this chapter were designated as Part A.</p>
                 <h4>Delegation of Authority</h4>
@@ -185,12 +213,12 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., §§ 6-901 to 6-903.</p>
                 <h4>Cross References</h4>
-                <p>Acid rain, research and plan, see  42 U.S.C. § 8901 et seq.</p>
-                <p>Air pollution prevention and control, Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
-                <p>Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
-                <p>Pollution Prevention Act of 1990, see  42 U.S.C. § 13101 et seq.</p>
-                <p>Stratospheric Ozone Protection, see  42 U.S.C. § 7671 et seq.</p>
                 <p>Sulfur dioxide, acid deposition control, air pollution prevention and control, see  42 U.S.C. § 7651 et seq.</p>
+                <p>Stratospheric Ozone Protection, see  42 U.S.C. § 7671 et seq.</p>
+                <p>Pollution Prevention Act of 1990, see  42 U.S.C. § 13101 et seq.</p>
+                <p>Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
+                <p>Air pollution prevention and control, Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
+                <p>Acid rain, research and plan, see  42 U.S.C. § 8901 et seq.</p>
                 <h4>Editor's Notes</h4>
                 <p>Due to the codification of Title II of <a class="internal-link" href="/dc/council/laws/20-135.html">D.C. Law 20-135</a> as Part B of this subchapter, the existing sections of this chapter were designated as Part A.</p>
                 <h4>Delegation of Authority</h4>
@@ -211,12 +239,12 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-904.</p>
                 <h4>Cross References</h4>
-                <p>Acid rain, research and plan, see  42 U.S.C. § 8901 et seq.</p>
-                <p>Air pollution prevention and control, Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
-                <p>Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
-                <p>Pollution Prevention Act of 1990, see  42 U.S.C. § 13101 et seq.</p>
-                <p>Stratospheric Ozone Protection, see  42 U.S.C. § 7671 et seq.</p>
                 <p>Sulfur dioxide, acid deposition control, air pollution prevention and control, see  42 U.S.C. § 7651 et seq.</p>
+                <p>Stratospheric Ozone Protection, see  42 U.S.C. § 7671 et seq.</p>
+                <p>Pollution Prevention Act of 1990, see  42 U.S.C. § 13101 et seq.</p>
+                <p>Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
+                <p>Air pollution prevention and control, Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
+                <p>Acid rain, research and plan, see  42 U.S.C. § 8901 et seq.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 2 of the Air Pollution Control Emergency Amendment Act of 1996 (D.C. Act 11-450, December 5, 1996,  43 DCR 6682), and § 2 of the Air Pollution Control Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-16, March 3, 1997,  44 DCR 1754).</p>
                 <h4>Temporary Legislation</h4>
@@ -224,8 +252,8 @@
                 <h4>Editor's Notes</h4>
                 <p>Air quality control regulations: <a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>, § 3, the “District of Columbia Air Pollution Control Act of 1984”, enacted the air quality control regulations of the District of Columbia as Title 20 of the District of Columbia Municipal Regulations (20 DCMR Chapters 1-9).</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority under <a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>, the District of Columbia Air Pollution Control Act of 1984, see Mayor’s Order 93-12, February 16, 1993.</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>, the “D.C. Air Pollution Control Act of 1984”, see Mayor’s Order 98-44, April</p>
+                <p>Delegation of authority under <a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>, the District of Columbia Air Pollution Control Act of 1984, see Mayor’s Order 93-12, February 16, 1993.</p>
               </section>
             </section>
             <hr/>
@@ -273,8 +301,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2 of Lamond-Riggs Air Quality Study Emergency Act of 2006 (D.C. Act 16-284, February 27, 2006,  53 DCR 1635).</p>
                 <h4>Editor's Notes</h4>
-                <p>Air Quality Control Regulations amended: Section 485 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/18/">D.C. Law 6-42</a> amended §§ 100.4 and 105.1 of the Air Quality Control Regulations, effective March 15, 1985, (<a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>; 20 DCMR Chapters 1 through 9) to provide for adjudication of infractions pursuant to Chapter 18 of Title 2. Section 501(b) of <a class="internal-link" href="/dc/council/code/titles/2/chapters/18/">D.C. Law 6-42</a> provided that the provisions of the act shall apply only to infractions which occur or are discovered by inspection after October 5, 1985.</p>
                 <p>Section 2(v) of <a class="internal-link" href="/dc/council/laws/8-237.html">D.C. Law 8-237</a> amended § 485 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/18/">D.C. Law 6-42</a>, effective March 8, 1991, to insert subsections 105.2 and 3013.4 regarding the imposition of civil fines, penalties, and fees as alternative sanctions.</p>
+                <p>Air Quality Control Regulations amended: Section 485 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/18/">D.C. Law 6-42</a> amended §§ 100.4 and 105.1 of the Air Quality Control Regulations, effective March 15, 1985, (<a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>; 20 DCMR Chapters 1 through 9) to provide for adjudication of infractions pursuant to Chapter 18 of Title 2. Section 501(b) of <a class="internal-link" href="/dc/council/code/titles/2/chapters/18/">D.C. Law 6-42</a> provided that the provisions of the act shall apply only to infractions which occur or are discovered by inspection after October 5, 1985.</p>
               </section>
             </section>
             <hr/>
@@ -447,8 +475,8 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 3 of Air Pollution Control Act of 1984 National Ambient Air Quality Standards Attainment Temporary Amendment Act of 1992 (D.C. Law 9-262, March 27, 1993, law notification  40 DCR 2332).</p>
                 <h4>Editor's Notes</h4>
-                <p>Application of 10-106: Section 6(b) of <a class="internal-link" href="/dc/council/laws/10-106.html">D.C. Law 10-106</a> provided that § 5 of the act shall apply as of September 30, 1993.</p>
                 <p>District of Columbia Air Pollution Control Act of 1984 Proposed Rulemaking Approval Resolution of 1998: Pursuant to Resolution 12-(PR12-693), effective June 19, 1998, the Council approved the proposed rulemaking to amend Chapters 1 through 5 and Chapters 7 and 8 of Title 20 (Environment) DCMR, issued pursuant to the “District of Columbia Air Pollution Control Act of 1984”.</p>
+                <p>Application of 10-106: Section 6(b) of <a class="internal-link" href="/dc/council/laws/10-106.html">D.C. Law 10-106</a> provided that § 5 of the act shall apply as of September 30, 1993.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>, District of Columbia Air Pollution Control Act of 1984, see Mayor’s Order 88-62, March 15, 1988.</p>
                 <h4>Resolutions</h4>
@@ -546,8 +574,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section 10 of <a class="internal-link" href="/dc/council/laws/18-55.html">D.C. Law 18-55</a>, see § 2 of Anacostia River Clean Up and Protection Clarification Emergency Act of 2009 (D.C. Act 18-282, January 11, 2010,  57 DCR 950).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 18-140 amended section 10 of <a class="internal-link" href="/dc/council/laws/18-55.html">D.C. Law 18-55</a> to read as follows: “Sec. 10. Applicability. ”Sections 2 and 4 through 6 shall apply as of January 1, 2010. Section 3 shall apply as of April 1, 2010.“.</p>
                 <p>Section 4(b) of D.C. Law 18-140 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 18-140 amended section 10 of <a class="internal-link" href="/dc/council/laws/18-55.html">D.C. Law 18-55</a> to read as follows: “Sec. 10. Applicability. ”Sections 2 and 4 through 6 shall apply as of January 1, 2010. Section 3 shall apply as of April 1, 2010.“.</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 10 of <a class="internal-link" href="/dc/council/laws/18-55.html">D.C. Law 18-55</a> provided: “Sec. 10. Applicability. Sections 2 through 6 shall apply as of January 1, 2010.”</p>
               </section>
@@ -625,8 +653,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-102.02.html">8-102.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (b)(2)(A), substituted “warning” for “warning in a calendar year”; and, in subsecs. (b)(2)(B) and (C), substituted “violation” for “violation in the same calendar year”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-188.html">D.C. Law 19-188</a> rewrote (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (b)(2)(A), substituted “warning” for “warning in a calendar year”; and, in subsecs. (b)(2)(B) and (C), substituted “violation” for “violation in the same calendar year”.</p>
               </section>
             </section>
             <hr/>
@@ -662,19 +690,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1226.36.html">2-1226.36</a>, § <a class="internal-link" href="/dc/council/code/sections/8-102.01.html">8-102.01</a>, § <a class="internal-link" href="/dc/council/code/sections/8-102.03.html">8-102.03</a>, § <a class="internal-link" href="/dc/council/code/sections/8-102.07.html">8-102.07</a>, § <a class="internal-link" href="/dc/council/code/sections/47-1812.11d.html">47-1812.11d</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-1501.03.html">50-1501.03</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (c), designated the existing text as par. (1) and added par. (2).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-188.html">D.C. Law 19-188</a> added (b)(1A); and in (b)(8), inserted “signs and” and “anti-littering signs to be installed in areas where littering would impact the Anacostia River.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> deleted “in the following order of priority” following “Funds shall be used for the following projects” in (b).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-188.html">D.C. Law 19-188</a> added (b)(1A); and in (b)(8), inserted “signs and” and “anti-littering signs to be installed in areas where littering would impact the Anacostia River.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (c), designated the existing text as par. (1) and added par. (2).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 802 of Fiscal Year 2010 Balanced Budget Support Emergency Act of 2010 (D.C. Act 18-450, June 28, 2010,  57 DCR 5635).</p>
-                <p>For temporary (90 day) amendment of section, see § 802 of Fiscal Year 2010 Balanced Budget Support Congressional Review Emergency Act of 2010 (D.C. Act 18-531, August 6, 2010,  57 DCR 8109).</p>
-                <p>For temporary (90 day) amendment of section, see § 1132 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
                 <p>For temporary (90 days) amendment of this section, see § 6052 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 day) amendment of section, see § 1132 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) amendment of section, see § 802 of Fiscal Year 2010 Balanced Budget Support Congressional Review Emergency Act of 2010 (D.C. Act 18-531, August 6, 2010,  57 DCR 8109).</p>
+                <p>For temporary (90 day) amendment of section, see § 802 of Fiscal Year 2010 Balanced Budget Support Emergency Act of 2010 (D.C. Act 18-450, June 28, 2010,  57 DCR 5635).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 802 of D.C. Law 18-222 rewrote subsec. (c) to read as follows:</p>
-                <p>“(c)(1) The Fund shall not be used to supplant funds appropriated as part of an approved annual budget for Anacostia River cleaning activities.</p>
-                <p>“(2) The Fund shall not be used to fund street sweeping activities.”.</p>
                 <p>Section 2002(b) of D.C. Law 18-222 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) The Fund shall not be used to fund street sweeping activities.”.</p>
+                <p>“(c)(1) The Fund shall not be used to supplant funds appropriated as part of an approved annual budget for Anacostia River cleaning activities.</p>
+                <p>Section 802 of D.C. Law 18-222 rewrote subsec. (c) to read as follows:</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 1131 of <a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> provided that subtitle N of title I of the act may be cited as the “Anacostia River Clean Up and Protection Clarification Amendment Act of 2010”.</p>
               </section>
@@ -787,21 +815,21 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a> added pars. (1A), (23A), and (26A); and rewrote par. (16) which had read as follows: “(16) ‘Owner’ or ‘operator’ means for a vessel or onshore or offshore facilities, a person owning, operating or chartering by demise the vessel or the facilities.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(a) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) amendment of section, see § 612(a) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(a) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle B of title VI of Law 15-39: Section 611 of <a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a> provided that subtitle B of title VI of the act may be cited as the Water Pollution Control Amendment Act of 2003.</p>
                 <h4>References in Text</h4>
-                <p>The “Water Pollution Control Act of 1984,” referred to in paragraph (1) of this section, is <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>.</p>
-                <p>The Federal Water Pollution Control Act, referred to in paragraph (8), is now codified at  33 U.S.C § 1251 et seq.</p>
-                <p>“Section 307(a) of the Federal Water Pollution Control Act,” referred to in paragraph (10) of this section, is codified as  33 U.S.C. § 1317 (a).</p>
-                <p>“Section 311(b)(2)(A) of the Federal Water Pollution Control Act,” referred to in paragraph (10) of this section, is classified as  33 U.S.C. § 1321(b)(2)(A).</p>
                 <p>The “District of Columbia Hazardous Waste Management Act of 1977,” referred to in paragraph (10) of this section, is D.C. Law</p>
+                <p>“Section 311(b)(2)(A) of the Federal Water Pollution Control Act,” referred to in paragraph (10) of this section, is classified as  33 U.S.C. § 1321(b)(2)(A).</p>
+                <p>“Section 307(a) of the Federal Water Pollution Control Act,” referred to in paragraph (10) of this section, is codified as  33 U.S.C. § 1317 (a).</p>
+                <p>The Federal Water Pollution Control Act, referred to in paragraph (8), is now codified at  33 U.S.C § 1251 et seq.</p>
+                <p>The “Water Pollution Control Act of 1984,” referred to in paragraph (1) of this section, is <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>.</p>
                 <h4>Mayor's Orders</h4>
                 <p>Spring Valley Scientific Advisory Panel, see Mayor’s Order 2001-32, March 1, 2001 ( 48 DCR 2387).</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>, see Mayor’s Order 85-152, September 12, 1985.</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>, the “Water Pollution Control Act of 1984”, see Mayor’s Order 98-50, April 15, 1998 ( 45 DCR 2696).</p>
+                <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>, see Mayor’s Order 85-152, September 12, 1985.</p>
               </section>
             </section>
             <hr/>
@@ -840,10 +868,10 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-57.html">D.C. Law 16-57</a> rewrote subsec. (b)(3) which had read as follows: “(3) Revenues from a licensing regulatory scheme under this section shall be used only for protecting and managing aquatic life.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2004 (D.C. Act 15-655, December 29, 2004,  52 DCR 477).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-54, March 17, 2005,  52 DCR 3172).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2005 (D.C. Act 16-201, November 17, 2005,  52 DCR 10509).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-280, February 27, 2006,  53 DCR 1626).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2005 (D.C. Act 16-201, November 17, 2005,  52 DCR 10509).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-54, March 17, 2005,  52 DCR 3172).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2004 (D.C. Act 15-655, December 29, 2004,  52 DCR 477).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Water Pollution Control Temporary Amendment Act of 2004 (D.C. Law 15-321, April 8, 2005, law notification  52 DCR 4710).</p>
               </section>
@@ -955,11 +983,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-103.02.html">8-103.02</a>, § <a class="internal-link" href="/dc/council/code/sections/8-103.09.html">8-103.09</a>, and § <a class="internal-link" href="/dc/council/code/sections/8-103.13b.html">8-103.13b</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in subsec. (a), made a nonsubstantive change in par. (2), rewrote par. (3), and added par. (4); and rewrote subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsecs. (b)(2) and (d), validated previously made technical corrections.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in subsec. (a), made a nonsubstantive change in par. (2), rewrote par. (3), and added par. (4); and rewrote subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(b) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) amendment of section, see § 612(b) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(b) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <h4>References in Text</h4>
                 <p>The Federal Water Pollution Control Act, referred to in subsections (b)(1) and (j), is codified at  33 U.S.C. § 1251 et seq.</p>
               </section>
@@ -1035,18 +1063,18 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-103.06.html">8-103.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in the section heading, substituted “District of Columbia Wetland and Stream Mitigation Trust Fund” for “District of Columbia Water Pollution Control Fund”; repealed subsec. (c); and added subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in the section heading, validated previously made technical corrections.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in the section heading, substituted “District of Columbia Wetland and Stream Mitigation Trust Fund” for “District of Columbia Water Pollution Control Fund”; repealed subsec. (c); and added subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
-                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§6062">§ 6062 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <h4>Editor's Notes</h4>
-                <p>Sections 9087 and 9088 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided:</p>
-                <p>“Sec. 9087. Adjudication Hearings (Air Quality) Fund.</p>
-                <p>“Notwithstanding any other law, the funds which are deposited in the fund designated for accounting purposes by the Office of the Chief Financial Officer as fund 0664 within the District Department of the Environment pursuant to the Water Pollution Control Act of 1984, effective March 16, 1985 (<a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> et seq.), shall be deposited in the General Fund of the District of Columbia and shall not be accounted for by a separate fund or account within the General Fund of the District of Columbia. Any unexpended funds in the fund on the effective date of this subtitle shall be transferred to the unrestricted fund balance of the General Fund of the District of Columbia.</p>
-                <p>“Sec. 9088. Adjudication Hearings (Water Quality) Fund.</p>
                 <p>“Notwithstanding any other law, the funds which are deposited in the fund designated for accounting purposes by the Office of the Chief Financial Officer as fund 0665 within the District Department of the Environment pursuant to the Water Pollution Control Act of 1984, effective March 16, 1985 (<a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> et seq.), shall be deposited in the General Fund of the District of Columbia and shall not be accounted for by a separate fund or account within the General Fund of the District of Columbia. Any unexpended funds in the fund on the effective date of this subtitle shall be transferred to the unrestricted fund balance of the General Fund of the District of Columbia.”</p>
+                <p>“Sec. 9088. Adjudication Hearings (Water Quality) Fund.</p>
+                <p>“Notwithstanding any other law, the funds which are deposited in the fund designated for accounting purposes by the Office of the Chief Financial Officer as fund 0664 within the District Department of the Environment pursuant to the Water Pollution Control Act of 1984, effective March 16, 1985 (<a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> et seq.), shall be deposited in the General Fund of the District of Columbia and shall not be accounted for by a separate fund or account within the General Fund of the District of Columbia. Any unexpended funds in the fund on the effective date of this subtitle shall be transferred to the unrestricted fund balance of the General Fund of the District of Columbia.</p>
+                <p>“Sec. 9087. Adjudication Hearings (Air Quality) Fund.</p>
+                <p>Sections 9087 and 9088 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided:</p>
               </section>
             </section>
             <hr/>
@@ -1061,8 +1089,8 @@
       (<a class="internal-link" href="/dc/council/laws/5-188.html#§10a">Mar. 16, 1985, D.C. Law 5-188, § 10a</a>; <a class="internal-link" href="/dc/council/laws/15-39.html">as added Nov. 13, 2003, D.C. Law 15-39, § 612(d), 50 DCR 5668</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 9089, 58 DCR 6226</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 612(d) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) addition, see § 612(d) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) addition, see § 612(d) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
             <hr/>
@@ -1089,8 +1117,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> added this section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 6022 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) addition of this section, see § 6022 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) addition of this section, see § 6022 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 6021 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle C of Title VI of the act may be cited as the “Stormwater In-Lieu Fee Special Purpose Revenue Fund Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -1196,8 +1224,8 @@
                 <h4>Editor's Notes</h4>
                 <p>Extension of authority: The authority of the Mayor to issue grants under this section was extended to both the Department of Regulatory Affairs and the Department of Public Works by Reorganization Plan No. 2 of 1987, effective July 3, 1987.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to Law 5-188, see Mayor’s Order 87-278, December 11, 1987.</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>, the “Water Pollution Control Act of 1984”, see Mayor’s Order 98-50, April 15, 1998 ( 45 DCR 2696).</p>
+                <p>Delegation of authority pursuant to Law 5-188, see Mayor’s Order 87-278, December 11, 1987.</p>
               </section>
             </section>
             <hr/>
@@ -1233,8 +1261,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a>, § <a class="internal-link" href="/dc/council/code/sections/8-103.13b.html">8-103.13b</a>, and § <a class="internal-link" href="/dc/council/code/sections/8-103.16.html">8-103.16</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
             <hr/>
@@ -1253,8 +1281,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> and § <a class="internal-link" href="/dc/council/code/sections/8-103.13a.html">8-103.13a</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) addition, see § 612(e) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
             <hr/>
@@ -1297,8 +1325,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, rewrote subsecs. (a) and (b); and added subsec. (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(f) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) amendment of section, see § 612(f) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(f) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
             <hr/>
@@ -1325,8 +1353,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in subsec. (a), inserted “except that any person who violates § 8-103.14a, or the regulations promulgated thereunder, shall be fined not more than $5,000, imprisoned for no more than 90 days, or both” before the period in par. (2), and inserted “except that any person who violates § 8-103.14a, or the regulations promulgated thereunder, shall be fined not more than $10,000, imprisoned for no more than one year, or both” before the period in par. (3).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(g) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) amendment of section, see § 612(g) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(g) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
             <hr/>
@@ -1590,9 +1618,9 @@
       (<a class="internal-link" href="/dc/council/laws/20-155.html#§6092">Feb. 26, 2015, D.C. Law 20-155, §  6092, 61 DCR 9990</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 6102 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) addition of this section, see § 6092 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) addition of this section, see § 6092 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) addition of this section, see § 6092 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) addition of this section, see § 6102 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>
@@ -1699,9 +1727,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.06.html">8-105.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (3A), validated a previously made technical amendment.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction in (3E).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (3A), validated a previously made technical amendment.</p>
                 <h4>References in Text</h4>
                 <p>“Section 307(b) and (c) of the Clean Water Act”, referred to in (1E), (3E), (5E) and (5A), is  33 U.S.C. § 1317(b) and (c).</p>
               </section>
@@ -1725,8 +1753,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-953.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
                 <p>“Nothing in this subchapter shall be construed as prohibiting any agreement between the District and any user of the wastewater system under which wastewater of specific strength or character is accepted into the wastewater system and treated subject to any payments or fees as may be applicable, except that national pretreatment standards shall not be waived.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
               </section>
             </section>
             <hr/>
@@ -1814,8 +1842,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.02.html">8-105.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (l), substituted “promulgated by WASA.” for “promulgated by WASA; and”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a> rewrote subsecs. (b) and (m); in subsec. (c), substituted “National standard” for “national standard”; repealed subsec. (e); and added subsec. (m).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (l), substituted “promulgated by WASA.” for “promulgated by WASA; and”.</p>
               </section>
             </section>
             <hr/>
@@ -1888,13 +1916,13 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-959.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
-                <p>“(a) User information and data provided to the District shall be available to the public or to any government agency without restriction unless the user specifically requests and is able to demonstrate to the satisfaction of the Mayor that the release of the information would divulge information, processes, or methods of operation entitled to protection as trade secrets, pursuant to § <a class="internal-link" href="/dc/council/code/sections/2-534.html">2-534</a>(a)(1).</p>
-                <p>“(b) When requested by the user in writing, information and data which might disclose trade secrets or secret processes shall not be made available for public inspection. However, the information and data shall be immediately available to the EPA for any purpose, and to WASA and the District in administrative and judicial review or enforcement proceedings to which the user is a party or in which the user has standing. Additionally, upon written request, WASA and the District may release such information and data to other government agencies in connection with uses related to this subchapter or to pretreatment programs.</p>
-                <p>“(c) Wastewater constituents and characteristics shall not be considered confidential information.</p>
-                <p>“(d) Information accepted by the Mayor as confidential shall not be transmitted to any governmental agency unless written notification is sent to the user at least 10 days before transmitting the information.</p>
-                <p>“(e)(1) All users shall retain and preserve any records, books, documents, memoranda, reports, correspondence, and any summaries of these materials relating to testing, internal or external monitoring, sampling, investigative and chemical analyses made by or in behalf of a user in connection with its discharge for no less than 3 years from the date of preparation, drafting, or memorialization.</p>
                 <p>“(2) All records which pertain to or may pertain to matters which are the subject of enforcement or litigation activities initiated by the District shall be retained and preserved by the user until all the enforcement activities have concluded and all periods of appeal have expired.”</p>
+                <p>“(e)(1) All users shall retain and preserve any records, books, documents, memoranda, reports, correspondence, and any summaries of these materials relating to testing, internal or external monitoring, sampling, investigative and chemical analyses made by or in behalf of a user in connection with its discharge for no less than 3 years from the date of preparation, drafting, or memorialization.</p>
+                <p>“(d) Information accepted by the Mayor as confidential shall not be transmitted to any governmental agency unless written notification is sent to the user at least 10 days before transmitting the information.</p>
+                <p>“(c) Wastewater constituents and characteristics shall not be considered confidential information.</p>
+                <p>“(b) When requested by the user in writing, information and data which might disclose trade secrets or secret processes shall not be made available for public inspection. However, the information and data shall be immediately available to the EPA for any purpose, and to WASA and the District in administrative and judicial review or enforcement proceedings to which the user is a party or in which the user has standing. Additionally, upon written request, WASA and the District may release such information and data to other government agencies in connection with uses related to this subchapter or to pretreatment programs.</p>
+                <p>“(a) User information and data provided to the District shall be available to the public or to any government agency without restriction unless the user specifically requests and is able to demonstrate to the satisfaction of the Mayor that the release of the information would divulge information, processes, or methods of operation entitled to protection as trade secrets, pursuant to § <a class="internal-link" href="/dc/council/code/sections/2-534.html">2-534</a>(a)(1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
               </section>
             </section>
             <hr/>
@@ -1939,8 +1967,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.12.html">8-105.12</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (d), substituted “Office of Administrative Hearings (‘Office’)” for “Board of Appeals and Review (‘Board’)” and substituted “Office” for “Board”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, in subsec. (b)(1), substituted “believe that a person or” for “believe that a”; in subsec. (b)(2)(E), substituted “Comply with the” for “A”; in subsec. (d), substituted “Court of Appeals (‘Court’)” for “Office of Administrative Hearings (‘Office’)” and “Court” for “Office”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (d), substituted “Office of Administrative Hearings (‘Office’)” for “Board of Appeals and Review (‘Board’)” and substituted “Office” for “Board”.</p>
               </section>
             </section>
             <hr/>
@@ -1981,9 +2009,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.13.html">8-105.13</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (d), substituted “WASA” for “the Mayor”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (c), substituted “Office of Administrative Hearings” for “Board of Appeals and Review”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a> rewrote subsec. (c), which had read as follows: “(c) WASA’s decision to suspend service may be appealed to the Office of Administrative Hearings as set forth in § <a class="internal-link" href="/dc/council/code/sections/8-105.10.html">8-105.10</a>.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (c), substituted “Office of Administrative Hearings” for “Board of Appeals and Review”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (d), substituted “WASA” for “the Mayor”.</p>
               </section>
             </section>
             <hr/>
@@ -2012,19 +2040,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.02.html">8-105.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
-                <p>“(a) A list of the users in significant noncompliance with the Pretreatment Standards and Requirements in the preceding 12 months shall be published annually by WASA in the local daily newspaper with the largest circulation.</p>
-                <p>“(b) The notification shall summarize the nature of the significant noncompliance and any enforcement action taken against the user during the same 12-month period.</p>
-                <p>“(c) For the purposes of this section, a user is in significant noncompliance with the Pretreatment Standards and Requirements if its violation meets one or more of the following criteria:</p>
-                <p>“(1) Chronic violations of wastewater discharge limits, are violations in which 66% or more of all the measurements taken during a 6-month period exceed (by any magnitude) the daily maximum limit or the average limit for the same pollutant parameter;</p>
-                <p>“(2) Technical Review Criteria (‘TRC’) violations, are violations in which 33% or more of all the measurements for each pollutant parameter taken during a 6-month period equal or exceed the product of the daily maximum limit or the average limit multiplied by the applicable TRC (TRC = 1.4 for Biochemical Oxygen Demand, TSS, fats, oil, and grease, and 1.2 for all other pollutants except pH);</p>
-                <p>“(3) Any other violation of pretreatment effluent limits (daily maximum or longer term average) that WASA determines has caused, alone or in combination with other discharges, interference or pass through (including endangering the health of WASA or District personnel or the general public);</p>
-                <p>“(4) Any violation of the terms of a wastewater discharge permit which remains uncorrected 45 days after notification of the violation is received by the user, or any failure to meet a compliance schedule milestone or enforcement order issued by WASA within 90 days after the scheduled date for achievement of the compliance schedule milestone;</p>
-                <p>“(5) Failure to provide required reports, such as baseline monitoring reports, periodic self-monitoring reports, and reports on progress with compliance schedules or orders, within 30 days after the due date;</p>
-                <p>“(6) Failure to timely and accurately report an instance of noncompliance with the Pretreatment Standards and Requirements;</p>
-                <p>“(7) Any violation which results in WASA exercising its emergency authority pursuant to § <a class="internal-link" href="/dc/council/code/sections/8-105.12.html">8-105.12</a>; and</p>
-                <p>“(8) Any violation WASA considers significant in light of the circumstances.”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> added “of this subsection” in the introductory language of (c).</p>
+                <p>“(8) Any violation WASA considers significant in light of the circumstances.”</p>
+                <p>“(7) Any violation which results in WASA exercising its emergency authority pursuant to § <a class="internal-link" href="/dc/council/code/sections/8-105.12.html">8-105.12</a>; and</p>
+                <p>“(6) Failure to timely and accurately report an instance of noncompliance with the Pretreatment Standards and Requirements;</p>
+                <p>“(5) Failure to provide required reports, such as baseline monitoring reports, periodic self-monitoring reports, and reports on progress with compliance schedules or orders, within 30 days after the due date;</p>
+                <p>“(4) Any violation of the terms of a wastewater discharge permit which remains uncorrected 45 days after notification of the violation is received by the user, or any failure to meet a compliance schedule milestone or enforcement order issued by WASA within 90 days after the scheduled date for achievement of the compliance schedule milestone;</p>
+                <p>“(3) Any other violation of pretreatment effluent limits (daily maximum or longer term average) that WASA determines has caused, alone or in combination with other discharges, interference or pass through (including endangering the health of WASA or District personnel or the general public);</p>
+                <p>“(2) Technical Review Criteria (‘TRC’) violations, are violations in which 33% or more of all the measurements for each pollutant parameter taken during a 6-month period equal or exceed the product of the daily maximum limit or the average limit multiplied by the applicable TRC (TRC = 1.4 for Biochemical Oxygen Demand, TSS, fats, oil, and grease, and 1.2 for all other pollutants except pH);</p>
+                <p>“(1) Chronic violations of wastewater discharge limits, are violations in which 66% or more of all the measurements taken during a 6-month period exceed (by any magnitude) the daily maximum limit or the average limit for the same pollutant parameter;</p>
+                <p>“(c) For the purposes of this section, a user is in significant noncompliance with the Pretreatment Standards and Requirements if its violation meets one or more of the following criteria:</p>
+                <p>“(b) The notification shall summarize the nature of the significant noncompliance and any enforcement action taken against the user during the same 12-month period.</p>
+                <p>“(a) A list of the users in significant noncompliance with the Pretreatment Standards and Requirements in the preceding 12 months shall be published annually by WASA in the local daily newspaper with the largest circulation.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
               </section>
             </section>
             <hr/>
@@ -2078,8 +2106,8 @@
       (<a class="internal-link" href="/dc/council/laws/19-292.html#§2">Apr. 27, 2013, D.C. Law 19-292, § 2, 60 DCR 2354</a>.)
     </p>
                 <h4>Editor's Notes</h4>
-                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Section 9 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall expire on September 30, 2014.</p>
+                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -2094,8 +2122,8 @@
       (<a class="internal-link" href="/dc/council/laws/19-292.html#§3">Apr. 27, 2013, D.C. Law 19-292, § 3, 60 DCR 2354</a>.)
     </p>
                 <h4>Editor's Notes</h4>
-                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Section 9 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall expire on September 30, 2014.</p>
+                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -2110,8 +2138,8 @@
       (<a class="internal-link" href="/dc/council/laws/19-292.html#§4">Apr. 27, 2013, D.C. Law 19-292, § 4, 60 DCR 2354</a>.)
     </p>
                 <h4>Editor's Notes</h4>
-                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Section 9 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall expire on September 30, 2014.</p>
+                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -2126,8 +2154,8 @@
       (<a class="internal-link" href="/dc/council/laws/19-292.html#§5">Apr. 27, 2013, D.C. Law 19-292, § 5, 60 DCR 2354</a>.)
     </p>
                 <h4>Editor's Notes</h4>
-                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Section 9 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall expire on September 30, 2014.</p>
+                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -2142,8 +2170,8 @@
       (<a class="internal-link" href="/dc/council/laws/19-292.html#§6">Apr. 27, 2013, D.C. Law 19-292, § 6, 60 DCR 2354</a>.)
     </p>
                 <h4>Editor's Notes</h4>
-                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Section 9 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall expire on September 30, 2014.</p>
+                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -2158,8 +2186,8 @@
       (<a class="internal-link" href="/dc/council/laws/19-292.html#§7">Apr. 27, 2013, D.C. Law 19-292, § 7, 60 DCR 2354</a>.)
     </p>
                 <h4>Editor's Notes</h4>
-                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Section 9 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall expire on September 30, 2014.</p>
+                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -2174,8 +2202,8 @@
       (<a class="internal-link" href="/dc/council/laws/19-292.html#§8">Apr. 27, 2013, D.C. Law 19-292, § 8, 60 DCR 2354</a>.)
     </p>
                 <h4>Editor's Notes</h4>
-                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Section 9 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall expire on September 30, 2014.</p>
+                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -2190,8 +2218,8 @@
       (<a class="internal-link" href="/dc/council/laws/19-292.html#§9">Apr. 27, 2013, D.C. Law 19-292, § 9, 60 DCR 2354</a>.)
     </p>
                 <h4>Editor's Notes</h4>
-                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Section 9 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall expire on September 30, 2014.</p>
+                <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-292.html">D.C. Law 19-292</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
               </section>
             </section>
             <hr/>
@@ -2250,11 +2278,11 @@
       (<a class="internal-link" href="/dc/council/laws/19-293.html#§5">Apr. 27, 2013, D.C. Law 19-293, § 5, 60 DCR 2613</a>; <a class="internal-link" href="/dc/council/laws/20-61.html">Dec. 24, 2013, D.C. Law 20-61, § 7013, 60 DCR 12472</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary repeal of section, see § 5 of the Fiscal Year 2013 Revised Budget Request Emergency Adjustment Act of 2013 (D.C. Act 20-74, May 23, 2013,  60 DCR 7592).</p>
-                <p>For temporary repeal of section, see § 7013 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384).</p>
-                <p>For temporary (90 days) repeal of this section, see § 5 of the Fiscal Year 2013 Revised Budget Request Emergency Adjustment Act of 2013 (D.C. Act 20-74, May 23, 2013,  60 DCR 7592, 20 DCSTAT 1424).</p>
-                <p>For temporary repeal of this section, see § 7013 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary repeal of this section, see § 7013 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary repeal of this section, see § 7013 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 days) repeal of this section, see § 5 of the Fiscal Year 2013 Revised Budget Request Emergency Adjustment Act of 2013 (D.C. Act 20-74, May 23, 2013,  60 DCR 7592, 20 DCSTAT 1424).</p>
+                <p>For temporary repeal of section, see § 7013 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384).</p>
+                <p>For temporary repeal of section, see § 5 of the Fiscal Year 2013 Revised Budget Request Emergency Adjustment Act of 2013 (D.C. Act 20-74, May 23, 2013,  60 DCR 7592).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) repeal of this section, see § 5 of the Fiscal Year 2013 Revised Budget Request Temporary Adjustment Act of 2013 (D.C. Law 20-14, September 19, 2013,  60 DCR 9554, 20 DCSTAT 1764).</p>
                 <h4>Short Title</h4>
@@ -2473,8 +2501,8 @@
       (<a class="internal-link" href="/dc/council/laws/18-336.html#§3b">Mar. 31, 2011, D.C. Law 18-336, § 3b</a>; <a class="internal-link" href="/dc/council/laws/21-108.html#§2(a)">as added May 12, 2016, D.C. Law 21-108, § 2(a), 63 DCR 4315</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-108.html">D.C. Law 21-108</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/21-108.html">D.C. Law 21-108</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7012">Section 7012 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-108.html#§3">§ 3 of D.C. Law 21-108</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-108.html">D.C. Law 21-108</a> has been given effect.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-108.html">D.C. Law 21-108</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/21-108.html">D.C. Law 21-108</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 3 of D.C. Law 21-108, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7012">§ 7012 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -2528,8 +2556,8 @@
       (<a class="internal-link" href="/dc/council/laws/18-336.html#§5a">Mar. 31, 2011, D.C. Law 18-336, § 5a</a>; <a class="internal-link" href="/dc/council/laws/21-108.html#§2(b)">as added May 12, 2016, D.C. Law 21-108, § 2(b), 63 DCR 4315</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-108.html">D.C. Law 21-108</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/21-108.html">D.C. Law 21-108</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7012">Section 7012 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-108.html#§3">§ 3 of D.C. Law 21-108</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-108.html">D.C. Law 21-108</a> has been given effect.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-108.html">D.C. Law 21-108</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/21-108.html">D.C. Law 21-108</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 3 of D.C. Law 21-108, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7012">§ 7012 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -2548,9 +2576,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-108.04.html">8-108.04</a>.</p>
                 <h4>Cross References</h4>
-                <p>Public utilities, environmental impact statement requirements, see § <a class="internal-link" href="/dc/council/code/sections/34-2601.html">34-2601</a>.</p>
-                <p>Environmental Quality Improvement Act of 1970, see  42 U.S.C. § 4321 et seq.</p>
                 <p>National Environmental Policy Act of 1969, see  42 U.S.C. § 4321 et seq.</p>
+                <p>Environmental Quality Improvement Act of 1970, see  42 U.S.C. § 4321 et seq.</p>
+                <p>Public utilities, environmental impact statement requirements, see § <a class="internal-link" href="/dc/council/code/sections/34-2601.html">34-2601</a>.</p>
               </section>
             </section>
             <hr/>
@@ -2570,9 +2598,9 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 12 of the Solid Waste Facility Permit Emergency Act of 1995 (D.C. Act 11-144, October 23, 1995,  42 DCR 6044).</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/8-36.html">D.C. Law 8-36</a>, see Mayor’s Order 92-151, December 1, 1992.</p>
-                <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/8-116.html">D.C. Law 8-116</a>, the “Asbestos Licensing and Control Act of 1990”, see Mayor’s Order 98-51, April 15, 1998 ( 45 DCR 2697).</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/8-36.html">D.C. Law 8-36</a>, the “District of Columbia Environmental Policy Act of 1989”, see Mayor’s Order 98-86, May 29, 1998 ( 45 DCR 3980).</p>
+                <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/8-116.html">D.C. Law 8-116</a>, the “Asbestos Licensing and Control Act of 1990”, see Mayor’s Order 98-51, April 15, 1998 ( 45 DCR 2697).</p>
+                <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/8-36.html">D.C. Law 8-36</a>, see Mayor’s Order 92-151, December 1, 1992.</p>
               </section>
             </section>
             <hr/>
@@ -2696,8 +2724,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 12 of the Solid Waste Facility Permit Emergency Act of 1994 (D.C. Act 10-384, December 28, 1994,  42 DCR 45).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 12 of Solid Waste Facility Permit Temporary Act of 1994 (D.C. Law 10-251, March 23, 1995, law notification  42 DCR 1650).</p>
                 <p>For temporary (225 day) amendment of section, see § 12 of Solid Waste Facility Permit Temporary Act of 1995 (D.C. Law 11-80, February 6, 1996, law notification  43 DCR 776).</p>
+                <p>For temporary (225 day) amendment of section, see § 12 of Solid Waste Facility Permit Temporary Act of 1994 (D.C. Law 10-251, March 23, 1995, law notification  42 DCR 1650).</p>
               </section>
             </section>
             <hr/>
@@ -2754,8 +2782,8 @@
                 <h4>Short Title</h4>
                 <p>Short title: Section 6061 of <a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> provided that subtitle G of title VI of the act may be cited as the “Environmental Impact Screening Forms and Environmental Impact Statements Amendment Act of 2010”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Approval and disapproval of proposed Environmental Policy Act rules: Pursuant to Resolution 8-314, the “District of Columbia Environmental Policy Act of 1989 Proposed Rulemaking Approval &amp; Disapproval Resolution of 1990,” effective December 21, 1990, the Council approved, in part, and disapproved, in part, the proposed rules to implement the District of Columbia Environmental Policy Act of 1989.</p>
                 <p>District of Columbia Environmental Policy Act Proposed Rulemaking Approval Resolution of 1994: Pursuant to Proposed Resolution 11-25, deemed approved February 18, 1995, Council approved the proposed rulemaking adopting Chapter 72 (Environmental Policy Act Regulations) of Title 20, DCMR, issued pursuant to the “District of Columbia Environmental Policy Act of 1989.”</p>
+                <p>Approval and disapproval of proposed Environmental Policy Act rules: Pursuant to Resolution 8-314, the “District of Columbia Environmental Policy Act of 1989 Proposed Rulemaking Approval &amp; Disapproval Resolution of 1990,” effective December 21, 1990, the Council approved, in part, and disapproved, in part, the proposed rules to implement the District of Columbia Environmental Policy Act of 1989.</p>
               </section>
             </section>
             <hr/>
@@ -2830,8 +2858,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-991.1.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/8-116.html">D.C. Law 8-116</a>, the “Asbestos Licensing and Control Act of 1990”, see Mayor’s Order 98-51, April 15, 1998 ( 45 DCR 2697).</p>
                 <p>Delegation of authority under D.C. Act 8-116, the District of Columbia Asbestos Licensing and Control Act of 1990, see Mayor’s Order 92-152, December 1, 1992.</p>
+                <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/8-116.html">D.C. Law 8-116</a>, the “Asbestos Licensing and Control Act of 1990”, see Mayor’s Order 98-51, April 15, 1998 ( 45 DCR 2697).</p>
               </section>
             </section>
             <hr/>
@@ -3164,8 +3192,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-995.1.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-242.html">D.C. Law 8-242</a>, the “D.C. Underground Storage Tank Management Act of 1990”, see Mayor’s Order 91-160, October 9, 1991.</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/8-242.html">D.C. Law 8-242</a>, the “District of Columbia Underground Storage Tank Management Act of 1990”, see Mayor’s Order 98-58, April 17, 1998 ( 45 DCR 2871).</p>
+                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-242.html">D.C. Law 8-242</a>, the “D.C. Underground Storage Tank Management Act of 1990”, see Mayor’s Order 91-160, October 9, 1991.</p>
               </section>
             </section>
             <hr/>
@@ -3420,16 +3448,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.1.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-468, July 19, 2004,  51 DCR 7587).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(a) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2004 (D.C. Law 15-180, September 8, 2004, law notification  51 DCR 9222).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(a) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/11-221.html">D.C. Law 11-221</a>, “Lead-Based Paint Abatement and Control Act of 1996”, see Mayor’s Order 98-54, April 15, 1998 ( 45 DCR 2702); Mayor’s Order 98-124, August 7, 1998 ( 45 DCR 6386).</p>
               </section>
@@ -3482,16 +3510,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.4.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-468, July 19, 2004,  51 DCR 7587).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(b) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2004 (D.C. Law 15-180, September 8, 2004, law notification  51 DCR 9222).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(b) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
               </section>
             </section>
             <hr/>
@@ -3562,16 +3590,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.7.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-468, July 19, 2004,  51 DCR 7587).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(c) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(c) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2004 (D.C. Law 15-180, September 8, 2004, law notification  51 DCR 9222).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(c) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 21(b) of <a class="internal-link" href="/dc/council/laws/17-381.html">D.C. Law 17-381</a> provided that section 8 shall be deemed repealed upon issuance of rules by the Mayor under this act regarding abatement permit requirements.</p>
               </section>
@@ -3663,16 +3691,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.12.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-468, July 19, 2004,  51 DCR 7587).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(d) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(d) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2004 (D.C. Law 15-180, September 8, 2004, law notification  51 DCR 9222).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(d) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/15-347.html">D.C. Law 15-347</a> provided: “Sec. 5. Applicability. Section 2(l) and (m) shall apply upon publication in the District of Columbia Register by the Mayor of a list of civil infraction fines and a recommended schedule of fines or penalties for the Superior Court of the District of Columbia to consider.”</p>
               </section>
@@ -3691,19 +3719,19 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.13.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-468, July 19, 2004,  51 DCR 7587).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(e) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(e) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2004 (D.C. Law 15-180, September 8, 2004, law notification  51 DCR 9222).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(e) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 5 of <a class="internal-link" href="/dc/council/laws/15-347.html">D.C. Law 15-347</a> provided: “Sec. 5. Applicability. Section 2(l) and (m) shall apply upon publication in the District of Columbia Register by the Mayor of a list of civil infraction fines and a recommended schedule of fines or penalties for the Superior Court of the District of Columbia to consider.”</p>
                 <p>For Law 17-381, see notes following § <a class="internal-link" href="/dc/council/code/sections/8-115.01.html">8-115.01</a>.</p>
+                <p>Section 5 of <a class="internal-link" href="/dc/council/laws/15-347.html">D.C. Law 15-347</a> provided: “Sec. 5. Applicability. Section 2(l) and (m) shall apply upon publication in the District of Columbia Register by the Mayor of a list of civil infraction fines and a recommended schedule of fines or penalties for the Superior Court of the District of Columbia to consider.”</p>
               </section>
             </section>
             <hr/>
@@ -3720,8 +3748,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.14.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 3 of the Multiple Dwelling Residence Water Lead Level Test Emergency Act of 2004 (D.C. Act 15-483, July 19, 2004,  51 DCR 7833).</p>
                 <p>For temporary (90 day) addition, see § 3 of Multiple Dwelling Residence Water Lead Level Test Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-560, October 26, 2004,  51 DCR 10382).</p>
+                <p>For temporary (90 day) addition, see § 3 of the Multiple Dwelling Residence Water Lead Level Test Emergency Act of 2004 (D.C. Act 15-483, July 19, 2004,  51 DCR 7833).</p>
               </section>
             </section>
             <hr/>

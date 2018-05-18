@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/44/chapters/18/">Chapter 18. Certificate of Need. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/chapters/17/">Report Error</a>
@@ -87,20 +87,48 @@
         <section class="col8 body">
           <h1>Chapter 17. Charitable Solicitations.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/44-1701.html">§ 44–1701. Definitions.</a>
-            <a href="/dc/council/code/sections/44-1702.html">§ 44–1702. Powers of Mayor and Council.</a>
-            <a href="/dc/council/code/sections/44-1703.html">§ 44–1703. Certificate of Registration — Required; exception.</a>
-            <a href="/dc/council/code/sections/44-1704.html">§ 44–1704. Certificate of registration — Application; issuance.</a>
-            <a href="/dc/council/code/sections/44-1705.html">§ 44–1705. Solicitor information cards.</a>
-            <a href="/dc/council/code/sections/44-1706.html">§ 44–1706. Report of contributions secured.</a>
-            <a href="/dc/council/code/sections/44-1707.html">§ 44–1707. Representations as to finding by Mayor in regard to registration certificate or solicitor card prohibited.</a>
-            <a href="/dc/council/code/sections/44-1708.html">§ 44–1708. Compensation for telephone solicitation prohibited.</a>
-            <a href="/dc/council/code/sections/44-1709.html">§ 44–1709. Advisory committee.</a>
-            <a href="/dc/council/code/sections/44-1710.html">§ 44–1710. Regulations.</a>
-            <a href="/dc/council/code/sections/44-1711.html">§ 44–1711. Registered solicitor’s use of name of other person; publication of names of contributors.</a>
-            <a href="/dc/council/code/sections/44-1712.html">§ 44–1712. Penalties; prosecutions; actions to enjoin.</a>
-            <a href="/dc/council/code/sections/44-1713.html">§ 44–1713. Severability.</a>
-            <a href="/dc/council/code/sections/44-1714.html">§ 44–1714. Appropriations.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1701.html">§ 44–1701. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1702.html">§ 44–1702. Powers of Mayor and Council.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1703.html">§ 44–1703. Certificate of Registration — Required; exception.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1704.html">§ 44–1704. Certificate of registration — Application; issuance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1705.html">§ 44–1705. Solicitor information cards.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1706.html">§ 44–1706. Report of contributions secured.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1707.html">§ 44–1707. Representations as to finding by Mayor in regard to registration certificate or solicitor card prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1708.html">§ 44–1708. Compensation for telephone solicitation prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1709.html">§ 44–1709. Advisory committee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1710.html">§ 44–1710. Regulations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1711.html">§ 44–1711. Registered solicitor’s use of name of other person; publication of names of contributors.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1712.html">§ 44–1712. Penalties; prosecutions; actions to enjoin.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1713.html">§ 44–1713. Severability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-1714.html">§ 44–1714. Appropriations.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -126,8 +154,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§2">July 10, 1957, 71 Stat. 278, Pub. L. 85-87, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-701.</p>
                 <p>1973 Ed., § 2-2101.</p>
+                <p>1981 Ed., § 2-701.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -154,8 +182,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§3">July 10, 1957, 71 Stat. 278, Pub. L. 85-87, § 3</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2003(b), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/15-38.html">Oct. 28, 2003, D.C. Law 15-38, § 3(gg), 50 DCR 6913</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-702.</p>
                 <p>1973 Ed., § 2-2102.</p>
+                <p>1981 Ed., § 2-702.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (c), substituted “General Business endorsement to a basic business license under the basic” for “Class B General Business endorsement to a master business license under the master”.</p>
                 <h4>Emergency Legislation</h4>
@@ -183,12 +211,12 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§4">July 10, 1957, 71 Stat. 279, Pub. L. 85-87, § 4</a>; <a class="internal-link" href="/dc/council/laws/21-202.html#§2">Feb. 18, 2017, D.C. Law 21-202, § 2, 63 DCR 15043</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-703.</p>
                 <p>1973 Ed., § 2-2103.</p>
+                <p>1981 Ed., § 2-703.</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-202.html">D.C. Law 21-202</a>: <a class="internal-link" href="/dc/council/laws/21-202.html#§3">§ 3 of D.C. Law 21-202</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-202.html#§2">§ 2 of D.C. Law 21-202</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7019">Section 7019 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-202.html#§4">§ 4 of D.C. Law 21-202</a>. Therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-202.html">D.C. Law 21-202</a> have been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-202.html">D.C. Law 21-202</a>: <a class="internal-link" href="/dc/council/laws/21-202.html#§3">§ 3 of D.C. Law 21-202</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-202.html#§2">§ 2 of D.C. Law 21-202</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 4 of D.C. Law 21-202, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7019">§ 7019 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
                 <h4>Change in Government</h4>
@@ -209,8 +237,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§5">July 10, 1957, 71 Stat. 280, Pub. L. 85-87, § 5</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-704.</p>
                 <p>1973 Ed., § 2-2104.</p>
+                <p>1981 Ed., § 2-704.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/44-1703.html">44-1703</a>.</p>
                 <h4>Change in Government</h4>
@@ -230,8 +258,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§6">July 10, 1957, 71 Stat. 280, Pub. L. 85-87, § 6</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-705.</p>
                 <p>1973 Ed., § 2-2105.</p>
+                <p>1981 Ed., § 2-705.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/44-1703.html">44-1703</a>.</p>
               </section>
@@ -248,8 +276,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§7">July 10, 1957, 71 Stat. 280, Pub. L. 85-87, § 7</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-706.</p>
                 <p>1973 Ed., § 2-2106.</p>
+                <p>1981 Ed., § 2-706.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/44-1703.html">44-1703</a>.</p>
                 <h4>Change in Government</h4>
@@ -271,8 +299,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§8">July 10, 1957, 71 Stat. 281, Pub. L. 85-87, § 8</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-707.</p>
                 <p>1973 Ed., § 2-2107.</p>
+                <p>1981 Ed., § 2-707.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -289,8 +317,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§9">July 10, 1957, 71 Stat. 281, Pub. L. 85-87, § 9</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-708.</p>
                 <p>1973 Ed., § 2-2108.</p>
+                <p>1981 Ed., § 2-708.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/44-1703.html">44-1703</a>.</p>
               </section>
@@ -307,8 +335,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§10">July 10, 1957, 71 Stat. 281, Pub. L. 85-87, § 10</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-709.</p>
                 <p>1973 Ed., § 2-2109.</p>
+                <p>1981 Ed., § 2-709.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -325,8 +353,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§11">July 10, 1957, 71 Stat. 281, Pub. L. 85-87, § 11</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-710.</p>
                 <p>1973 Ed., § 2-2110.</p>
+                <p>1981 Ed., § 2-710.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 402(77) of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to the District of Columbia Council, subject to the right of the Commissioner as provided in § 406 of the Plan. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -345,8 +373,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§12">July 10, 1957, 71 Stat. 281, Pub. L. 85-87, § 12</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-711.</p>
                 <p>1973 Ed., § 2-2111.</p>
+                <p>1981 Ed., § 2-711.</p>
               </section>
             </section>
             <hr/>
@@ -367,12 +395,12 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§13">July 10, 1957, 71 Stat. 281, Pub. L. 85-87, § 13</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 571, Pub. L. 91-358, title I, § 155(c)(10)</a>; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42,§ 438, 32 DCR 4450</a>; <a class="internal-link" href="/dc/council/laws/15-354.html">Apr. 13, 2005, D.C. Law 15-354, § 69, 52 DCR 2638</a>; <a class="internal-link" href="/dc/council/laws/16-191.html">Mar 2, 2007, D.C. Law 16-191, § 70, 53 DCR 6794</a>; <a class="internal-link" href="/dc/council/laws/17-4.html">June 12, 2007, D.C. Law 17-4, § 4, 54 DCR 4085</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-712.</p>
                 <p>1973 Ed., § 2-2112.</p>
+                <p>1981 Ed., § 2-712.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “Attorney General for the District of Columbia” for “Corporation Counsel”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsec. (c), validated a previously made technical correction.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-4.html">D.C. Law 17-4</a>, in subsec. (c), designated the existing text as par. (1) and added pars. (2), (3), and (4).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsec. (c), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “Attorney General for the District of Columbia” for “Corporation Counsel”.</p>
               </section>
             </section>
             <hr/>
@@ -387,8 +415,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§15">July 10, 1957, 71 Stat. 282, Pub. L. 85-87, § 15</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-713.</p>
                 <p>1973 Ed., § 2-2113.</p>
+                <p>1981 Ed., § 2-713.</p>
               </section>
             </section>
             <hr/>
@@ -403,8 +431,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/85-87.html#§16">July 10, 1957, 71 Stat. 282, Pub. L. 85-87, § 16</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-714.</p>
                 <p>1973 Ed., § 2-2114.</p>
+                <p>1981 Ed., § 2-714.</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/47/chapters/38/">Chapter 38. Supermarket Tax Incentives.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/47/chapters/37/">Report Error</a>
@@ -87,29 +87,75 @@
         <section class="col8 body">
           <h1>Chapter 37. Inheritance and Estate Taxes.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/47-3701.html">§ 47–3701. Definitions.</a>
-            <a href="/dc/council/code/sections/47-3702.html">§ 47–3702. Tax on transfer of taxable estate of residents; amounts; credit; property of resident defined.</a>
-            <a href="/dc/council/code/sections/47-3703.html">§ 47–3703. Tax on transfer of taxable estate of nonresidents; property of nonresident defined.</a>
-            <a href="/dc/council/code/sections/47-3704.html">§ 47–3704. Authority for Mayor to compromise tax.</a>
-            <a href="/dc/council/code/sections/47-3705.html">§ 47–3705. Filing returns; payment of tax due.</a>
-            <a href="/dc/council/code/sections/47-3706.html">§ 47–3706. Jeopardy assessments. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-3707.html">§ 47–3707. Authority for Mayor to file.</a>
-            <a href="/dc/council/code/sections/47-3708.html">§ 47–3708. Amended returns.</a>
-            <a href="/dc/council/code/sections/47-3709.html">§ 47–3709. Testimony; production of books and records. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-3710.html">§ 47–3710. Certification of payment by Mayor.</a>
-            <a href="/dc/council/code/sections/47-3711.html">§ 47–3711. Lien for taxes. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-3712.html">§ 47–3712. Liability of personal representative.</a>
-            <a href="/dc/council/code/sections/47-3713.html">§ 47–3713. Duty of personal representative.</a>
-            <a href="/dc/council/code/sections/47-3714.html">§ 47–3714. Apportionment required.</a>
-            <a href="/dc/council/code/sections/47-3715.html">§ 47–3715. Monthly report of Register of Wills.</a>
-            <a href="/dc/council/code/sections/47-3716.html">§ 47–3716. Final account.</a>
-            <a href="/dc/council/code/sections/47-3717.html">§ 47–3717. Authority of Mayor to determine tax; deficiencies in tax.</a>
-            <a href="/dc/council/code/sections/47-3718.html">§ 47–3718. Penalties. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-3719.html">§ 47–3719. Secrecy of returns.</a>
-            <a href="/dc/council/code/sections/47-3720.html">§ 47–3720. Rules.</a>
-            <a href="/dc/council/code/sections/47-3721.html">§ 47–3721. Report by Mayor concerning amendment, repeal, or replacement of Internal Revenue Code of 1954.</a>
-            <a href="/dc/council/code/sections/47-3722.html">§ 47–3722. Effect of repealers.</a>
-            <a href="/dc/council/code/sections/47-3723.html">§ 47–3723. Applicability. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3701.html">§ 47–3701. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3702.html">§ 47–3702. Tax on transfer of taxable estate of residents; amounts; credit; property of resident defined.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3703.html">§ 47–3703. Tax on transfer of taxable estate of nonresidents; property of nonresident defined.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3704.html">§ 47–3704. Authority for Mayor to compromise tax.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3705.html">§ 47–3705. Filing returns; payment of tax due.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3706.html">§ 47–3706. Jeopardy assessments. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3707.html">§ 47–3707. Authority for Mayor to file.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3708.html">§ 47–3708. Amended returns.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3709.html">§ 47–3709. Testimony; production of books and records. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3710.html">§ 47–3710. Certification of payment by Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3711.html">§ 47–3711. Lien for taxes. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3712.html">§ 47–3712. Liability of personal representative.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3713.html">§ 47–3713. Duty of personal representative.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3714.html">§ 47–3714. Apportionment required.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3715.html">§ 47–3715. Monthly report of Register of Wills.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3716.html">§ 47–3716. Final account.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3717.html">§ 47–3717. Authority of Mayor to determine tax; deficiencies in tax.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3718.html">§ 47–3718. Penalties. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3719.html">§ 47–3719. Secrecy of returns.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3720.html">§ 47–3720. Rules.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3721.html">§ 47–3721. Report by Mayor concerning amendment, repeal, or replacement of Internal Revenue Code of 1954.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3722.html">§ 47–3722. Effect of repealers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-3723.html">§ 47–3723. Applicability. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -170,62 +216,62 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-3701.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a> rewrote pars. (4), (5), and (6).</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in par. (4)(B), substituted “$345,800” for “$675,000” in subpar. (ii), and substituted “$1 million” for “$675,000” in subpar. (iii).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a> rewrote par. (4)(B) and added par. (4)(C). Prior to amendment, par. (4)(B) read as follows: “(B) For a decedent whose death occurs on or after January 1, 2002: (i) The maximum amount of credit for state death taxes allowed by  section 2011 of the Internal Revenue Code; (ii) Any scheduled increase in the unified credit provided in  section 2010 of the Internal Revenue Code or thereafter shall not apply and the amount of the unified credit shall be $345,800; and (iii) An estate tax return shall not be required to be filed if the decedent’s gross estate does not exceed $1 million.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a> added par. (3A); and rewrote pars. (5) and (12), which had read as follows: “(5) ‘Gross estate’ means gross estate as defined in the Internal Revenue Code.” “(12) ‘Taxable estate’ means taxable estate as defined in  2051 of the Internal Revenue Code of 1954.”</p>
-                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> rewrote the introductory language of (4)(C); added the proviso in (6); substituted “decedent dying after December 31, 2007, but before January 1, 2015” for “decedent whose death occurs on or subsequent to January 1, 2008” in (12)(B); added (12)(C); added (12A) and (14); and rewrote (13).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> rewrote (14).</p>
+                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> rewrote the introductory language of (4)(C); added the proviso in (6); substituted “decedent dying after December 31, 2007, but before January 1, 2015” for “decedent whose death occurs on or subsequent to January 1, 2008” in (12)(B); added (12)(C); added (12A) and (14); and rewrote (13).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a> added par. (3A); and rewrote pars. (5) and (12), which had read as follows: “(5) ‘Gross estate’ means gross estate as defined in the Internal Revenue Code.” “(12) ‘Taxable estate’ means taxable estate as defined in  2051 of the Internal Revenue Code of 1954.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a> rewrote par. (4)(B) and added par. (4)(C). Prior to amendment, par. (4)(B) read as follows: “(B) For a decedent whose death occurs on or after January 1, 2002: (i) The maximum amount of credit for state death taxes allowed by  section 2011 of the Internal Revenue Code; (ii) Any scheduled increase in the unified credit provided in  section 2010 of the Internal Revenue Code or thereafter shall not apply and the amount of the unified credit shall be $345,800; and (iii) An estate tax return shall not be required to be filed if the decedent’s gross estate does not exceed $1 million.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in par. (4)(B), substituted “$345,800” for “$675,000” in subpar. (ii), and substituted “$1 million” for “$675,000” in subpar. (iii).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a> rewrote pars. (4), (5), and (6).</p>
                 <h4>Applicability</h4>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7174">Section 7174 of Law 22-33</a> provided that the changes made to this section by Law 22-33 shall apply as of January 1, 2018.
         </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1402(a) of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Inheritance and Estate Tax Emergency Act of 2002 (D.C. Act 14-448, July 23, 2002,  49 DCR 7865).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Inheritance and Estate Tax Congressional Review Emergency Act of 2002 (D.C. Act 14-507, October 23, 2002,  49 DCR 10219).</p>
-                <p>For temporary (90 day) amendment of section, see § 1402(a) of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
-                <p>For temporary (90 day) amendment of section, see § 1402(a) of Fiscal Year 2003 Budget Support Amendment Second Congressional Review Emergency Act of 2003 (D.C. Act 15-103, June 20, 2003,  50 DCR 5499).</p>
-                <p>For temporary (90 day) amendment of section, see § 2002(a) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
-                <p>For temporary (90 day) amendment of section, see § 2002(a) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Emergency Act of 2003 (D.C. Act 15-281, December 18, 2003,  51 DCR 187).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Congressional Review Emergency Act of 2004 (D.C. Act 15-398, March 18, 2004,  51 DCR 3630).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Emergency Act of 2004 (D.C. Act 15-620, November 30, 2004,  51 DCR 11455).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Congressional Review Emergency Act of 2005 (D.C. Act 16-32, February 17, 2005,  52 DCR 3016).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Emergency Act of 2005 (D.C. Act 16-203, November 17, 2005,  52 DCR 10513).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Congressional Review Emergency Act of 2006 (D.C. Act 16-283, February 27, 2006,  53 DCR 1633).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Emergency Act of 2006 (D.C. Act 16-510, October 25, 2006,  53 DCR 9082).</p>
-                <p>For temporary (90 day) amendment of section, see § 25(e) of Finance and Revenue Technical Amendments Second Emergency Amendment  Act of 2006 (D.C. Act 16-585, December 28, 2006,  54 DCR 340).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7022(f)(1) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(f)(1) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(f)(1) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7016(t) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7173">§ 7173 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 7016(t) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(f)(1) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(f)(1) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(f)(1) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) amendment of section, see § 25(e) of Finance and Revenue Technical Amendments Second Emergency Amendment  Act of 2006 (D.C. Act 16-585, December 28, 2006,  54 DCR 340).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Emergency Act of 2006 (D.C. Act 16-510, October 25, 2006,  53 DCR 9082).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Congressional Review Emergency Act of 2006 (D.C. Act 16-283, February 27, 2006,  53 DCR 1633).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Emergency Act of 2005 (D.C. Act 16-203, November 17, 2005,  52 DCR 10513).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Congressional Review Emergency Act of 2005 (D.C. Act 16-32, February 17, 2005,  52 DCR 3016).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Emergency Act of 2004 (D.C. Act 15-620, November 30, 2004,  51 DCR 11455).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Congressional Review Emergency Act of 2004 (D.C. Act 15-398, March 18, 2004,  51 DCR 3630).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Estate and Inheritance Tax Clarification Emergency Act of 2003 (D.C. Act 15-281, December 18, 2003,  51 DCR 187).</p>
+                <p>For temporary (90 day) amendment of section, see § 2002(a) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 2002(a) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
+                <p>For temporary (90 day) amendment of section, see § 1402(a) of Fiscal Year 2003 Budget Support Amendment Second Congressional Review Emergency Act of 2003 (D.C. Act 15-103, June 20, 2003,  50 DCR 5499).</p>
+                <p>For temporary (90 day) amendment of section, see § 1402(a) of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Inheritance and Estate Tax Congressional Review Emergency Act of 2002 (D.C. Act 14-507, October 23, 2002,  49 DCR 10219).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Inheritance and Estate Tax Emergency Act of 2002 (D.C. Act 14-448, July 23, 2002,  49 DCR 7865).</p>
+                <p>For temporary (90 day) amendment of section, see § 1402(a) of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Inheritance and Estate Tax Temporary Act of 2002 (D.C. Law 14-227, March 25, 2003, law notification  50 DCR 2740).</p>
-                <p>For temporary (225 day) amendment of section, see § 2 of Inheritance and Estate Tax Clarification Temporary Act of 2004 (D.C. Law 15-119, March 30, 2004, law notification  51 DCR 3806).</p>
-                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/15-315.html">D.C. Law 15-315</a>, in par. (4), rewrote subpar. (B), and added subpar. (C) to read as follows:</p>
-                <p>“(B) For a decedent whose death occurs on or after January 1, 2002:</p>
-                <p>“(i) The maximum amount of credit for state death taxes allowed by  section 2011 of the Internal Revenue Code;</p>
-                <p>“(ii) Any scheduled increase in the unified credit provided in  section 2010 of the Internal Revenue Code or thereafter shall not apply and the amount of the unified credit shall be $675,000; and</p>
-                <p>“(iii) An estate tax return shall not be required to be filed if the decedent’s gross estate does not exceed $675,000.</p>
-                <p>“(C) For a decedent whose death occurs on or after January 1, 2003:</p>
-                <p>“(ii) Any scheduled increase in the unified credit provided in  section 2010 of the Internal Revenue Code or thereafter shall not apply and the amount of the unified credit shall be $345,800; and</p>
-                <p>“(iii) An estate tax return shall not be required to be filed if the decedent’s gross estate does not exceed $1 million.”</p>
-                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/15-315.html">D.C. Law 15-315</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2 of D.C. Law 16-62 amended par. (4)(B) and added par. (4)(C) to read as follows:</p>
-                <p>“(ii) Any scheduled increase in the unified credit provided in  section 2010 of the Internal Revenue Code or thereafter shall not apply and the amount of the unified credit shall be $130,300; and</p>
                 <p>Section 4(b) of D.C. Law 16-62 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(ii) Any scheduled increase in the unified credit provided in  section 2010 of the Internal Revenue Code or thereafter shall not apply and the amount of the unified credit shall be $130,300; and</p>
+                <p>Section 2 of D.C. Law 16-62 amended par. (4)(B) and added par. (4)(C) to read as follows:</p>
+                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/15-315.html">D.C. Law 15-315</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(iii) An estate tax return shall not be required to be filed if the decedent’s gross estate does not exceed $1 million.”</p>
+                <p>“(ii) Any scheduled increase in the unified credit provided in  section 2010 of the Internal Revenue Code or thereafter shall not apply and the amount of the unified credit shall be $345,800; and</p>
+                <p>“(C) For a decedent whose death occurs on or after January 1, 2003:</p>
+                <p>“(iii) An estate tax return shall not be required to be filed if the decedent’s gross estate does not exceed $675,000.</p>
+                <p>“(ii) Any scheduled increase in the unified credit provided in  section 2010 of the Internal Revenue Code or thereafter shall not apply and the amount of the unified credit shall be $675,000; and</p>
+                <p>“(i) The maximum amount of credit for state death taxes allowed by  section 2011 of the Internal Revenue Code;</p>
+                <p>“(B) For a decedent whose death occurs on or after January 1, 2002:</p>
+                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/15-315.html">D.C. Law 15-315</a>, in par. (4), rewrote subpar. (B), and added subpar. (C) to read as follows:</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Inheritance and Estate Tax Clarification Temporary Act of 2004 (D.C. Law 15-119, March 30, 2004, law notification  51 DCR 3806).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Inheritance and Estate Tax Temporary Act of 2002 (D.C. Law 14-227, March 25, 2003, law notification  50 DCR 2740).</p>
                 <h4>Short Title</h4>
-                <p>Short title of title XXI of Law 15-39: Section 2101 of <a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a> provided that title XXI of the act may be cited as the Inheritance and Estate Tax Parity Act of 2003.</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/47-3701.html">47-3701</a>.</p>
+                <p>Short title of title XXI of Law 15-39: Section 2101 of <a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a> provided that title XXI of the act may be cited as the Inheritance and Estate Tax Parity Act of 2003.</p>
                 <h4>References in Text</h4>
-                <p>Section 2011 of the Internal Revenue Code, referred to in par. (4)(B)(i), is classified to  26 U.S.C. § 2011.</p>
                 <p>Section 2010 of the Internal Revenue Code, referred to in par. (4)(B)(ii), is classified to  26 U.S.C. § 2010.</p>
+                <p>Section 2011 of the Internal Revenue Code, referred to in par. (4)(B)(i), is classified to  26 U.S.C. § 2011.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 601(b) of <a class="internal-link" href="/dc/council/laws/6-209.html">D.C. Law 6-209</a> provided that title III and sections 401, 402, 404, 405 and 406 of the act shall take effect on October 1, 1987.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 2103 of <a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a> provided: “Section 2102 shall apply as of January 1, 2003.”</p>
                 <p>Section 109(f) of <a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a> provided: “Subsections (b) and (c) of this section shall apply as of April 1, 2004.”</p>
+                <p>Section 2103 of <a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a> provided: “Section 2102 shall apply as of January 1, 2003.”</p>
               </section>
             </section>
             <hr/>
@@ -261,15 +307,15 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-3702.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> substituted “resident decedent dying after March 31, 1987, but before January 1, 2015” for “resident dying on or after April 1, 1987” in (a): added (a-1); added “For a decedent dying before January 1, 2015” in (b); and repealed (c).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> substituted “before January 1, 2016” for “before January 1, 2015” in (a) and (b); and rewrote (a-1)(1).</p>
+                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> substituted “resident decedent dying after March 31, 1987, but before January 1, 2015” for “resident dying on or after April 1, 1987” in (a): added (a-1); added “For a decedent dying before January 1, 2015” in (b); and repealed (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 7022(f)(2) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(f)(2) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
-                <p>For temporary (90 days) amendment of this section, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7012(f)(2), see § 2(l)(4) of the Fiscal Year 2015 Budget Support Clarification Emergency Act of 2014 (D.C. Act 20-461, November 6, 2014,  61 DCR 11784, 20 STAT 4368).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(f)(2) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(l)(4) of the Fiscal Year 2015 Budget Support Clarification Emergency Act of 2014 (D.C. Act 20-587, January 13, 2015,  62 DCR 1294, 21 STAT 758).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7016(u) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(l)(4) of the Fiscal Year 2015 Budget Support Clarification Emergency Act of 2014 (D.C. Act 20-587, January 13, 2015,  62 DCR 1294, 21 STAT 758).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(f)(2) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7012(f)(2), see § 2(l)(4) of the Fiscal Year 2015 Budget Support Clarification Emergency Act of 2014 (D.C. Act 20-461, November 6, 2014,  61 DCR 11784, 20 STAT 4368).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(f)(2) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(f)(2) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 2(q) of the Fiscal Year 2015 Budget Support Clarification Temporary Amendment Act of 2014 (D.C. Law 20-179, March 7, 2015,  62 DCR 424).</p>
               </section>
@@ -293,9 +339,9 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added “For every nonresident decedent dying before January 1, 2016” in (b); added (b-1); and repealed (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 7022(f)(3) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(f)(3) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7012(f)(3) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(f)(3) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(f)(3) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>
@@ -333,24 +379,24 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-3705.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a>, in subsec. (c), deleted the second sentence which read: “If the tax is paid pursuant to subsection (b) of this section, interest shall be added to the tax in accordance with 47-453 through 47-458 for the period between the date when the tax would have been due had no extension been granted and the date of full payment.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a> rewrote subsec. (a).</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in subsec. (a), substituted “$1 million” for “$675,000” in subpar. (2).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> rewrote (a)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in subsec. (a), substituted “$1 million” for “$675,000” in subpar. (2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a> rewrote subsec. (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a>, in subsec. (c), deleted the second sentence which read: “If the tax is paid pursuant to subsection (b) of this section, interest shall be added to the tax in accordance with 47-453 through 47-458 for the period between the date when the tax would have been due had no extension been granted and the date of full payment.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1402(b) of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
-                <p>For temporary (90 day) amendment of section, see § 1402(b) of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
-                <p>For temporary (90 day) amendment of section, see § 1402(b) of Fiscal Year 2003 Budget Support Amendment Second Congressional Review Emergency Act of 2003 (D.C. Act 15-103, June 20, 2003,  50 DCR 5499).</p>
-                <p>For temporary (90 day) amendment of section, see § 2002(b) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
-                <p>For temporary (90 day) amendment of section, see § 2002(b) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7022(f)(4) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(f)(4) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7012(f)(4) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(f)(4) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(f)(4) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) amendment of section, see § 2002(b) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 2002(b) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
+                <p>For temporary (90 day) amendment of section, see § 1402(b) of Fiscal Year 2003 Budget Support Amendment Second Congressional Review Emergency Act of 2003 (D.C. Act 15-103, June 20, 2003,  50 DCR 5499).</p>
+                <p>For temporary (90 day) amendment of section, see § 1402(b) of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
+                <p>For temporary (90 day) amendment of section, see § 1402(b) of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
                 <h4>Effective Dates</h4>
                 <p>Section 601(b) of <a class="internal-link" href="/dc/council/laws/6-209.html">D.C. Law 6-209</a> provided that title III and sections 401, 402, 404, 405 and 406 of the act shall take effect on October 1, 1987.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 410(e) of <a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> provided: “Section 406(b), (d), (f), (l), (n), (o), (r), (v), (x)through (aa), (cc), (ff), (gg), (ll), (pp), (vv), (ww), (aaa), (ccc), (eee), and (ggg) shall apply as of January 1, 2001.”</p>
                 <p>Section 2103 of <a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a> provided: “Section 2102 shall apply as of January 1, 2003.”</p>
+                <p>Section 410(e) of <a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> provided: “Section 406(b), (d), (f), (l), (n), (o), (r), (v), (x)through (aa), (cc), (ff), (gg), (ll), (pp), (vv), (ww), (aaa), (ccc), (eee), and (ggg) shall apply as of January 1, 2001.”</p>
               </section>
             </section>
             <hr/>
@@ -384,8 +430,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-3707.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> rewrote the section which had read:</p>
                 <p>“If any person fails to file a return at the time prescribed by law, or files a false or fraudulent return, the Mayor shall make a return from his or her own knowledge and from other information as he or she can obtain. Any return made by the Mayor pursuant to this section shall constitute prima facie evidence of the amount due.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> rewrote the section which had read:</p>
               </section>
             </section>
             <hr/>
@@ -553,8 +599,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-217.html">D.C. Law 15-217</a> rewrote subsecs. (a) and (b); and, in subsec. (c), substituted “Except as provided in § <a class="internal-link" href="/dc/council/code/sections/47-4312.html">47-4312</a>, any person aggrieved by an assessment of a deficiency in tax” for “Any person aggrieved by an assessment of a deficiency in tax finally determined by the Mayor”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(h) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(h) of Office of Administrative Hearings Establishment Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-553, October 26, 2004,  51 DCR 10359).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(h) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
               </section>
             </section>
             <hr/>
@@ -595,9 +641,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-3719.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “Attorney General for the District of Columbia” for “Corporation Counsel”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsec. (f), validated a previously made technical correction.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “of not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “not to exceed $1,000” in (f).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsec. (f), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “Attorney General for the District of Columbia” for “Corporation Counsel”.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 286(aa) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
                 <h4>Editor's Notes</h4>
@@ -670,12 +716,12 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-3723.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of this section, see § 7022(f)( 5) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) repeal of this section, see § 7012(f)( 5) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
-                <p>For temporary (90 days) repeal of this section, see § 7012(f)( 5) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
-                <p>For temporary (90 days) repeal of this section, see § 7022(f)(5) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) repeal of this section, see § 7012(f)(5) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) repeal of this section, see § 7012(f)(5) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) repeal of this section, see § 7012(f)(5) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) repeal of this section, see § 7022(f)(5) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 days) repeal of this section, see § 7012(f)( 5) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) repeal of this section, see § 7012(f)( 5) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) repeal of this section, see § 7022(f)( 5) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>

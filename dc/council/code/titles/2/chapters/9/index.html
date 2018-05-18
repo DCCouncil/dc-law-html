@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/2/chapters/10/">Chapter 10. National Capital Planning Commission.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/2/chapters/9/">Report Error</a>
@@ -87,10 +87,14 @@
         <section class="col8 body">
           <h1>Chapter 9. Submission of State Energy Plans. [Recodified].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/2/chapters/9/subchapters/I/">Subchapter I. General Provisions.</a>
-            <p>§§ 2-901 - 2-907</p>
-            <a href="/dc/council/code/titles/2/chapters/9/subchapters/II/">Subchapter II. Submission of State Energy Plans.</a>
-            <p>§§ 2-911 - 2-913</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/9/subchapters/I/">Subchapter I. General Provisions.</a>
+            </p>
+            <p>§§ 2-901 – 2-907</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/9/subchapters/II/">Subchapter II. Submission of State Energy Plans.</a>
+            </p>
+            <p>§§ 2-911 – 2-913</p>
           </section>
           <section class="content">
             <hr/>
@@ -106,14 +110,14 @@
       (<a class="internal-link" href="/dc/council/laws/3-132.html#§2">Mar. 4, 1981, D.C. Law 3-132, § 2, 28 DCR 445</a>.)
     </p>
                 <h4>Cross References</h4>
-                <p>Energy Conservation and Production Act, see  42 U.S.C. § 6801 et seq.</p>
-                <p>Energy Policy Act of 1992, see  42 U.S.C. § 13201 et seq.</p>
-                <p>Energy Policy and Conservation Act, see  42 U.S.C. § 6201 et seq.</p>
-                <p>Nonnuclear energy research and development, see  42 U.S.C. § 5901 et seq.</p>
-                <p>Residential energy conservation, see  42 U.S.C. § 8231 et seq.</p>
-                <p>Solar energy research and development, see  42 U.S.C. § 5581.</p>
-                <p>Solar heating and cooling, see  42 U.S.C. § 5501 et seq.</p>
                 <p>Wind Energy Systems Act, see  42 U.S.C. § 9201 et seq.</p>
+                <p>Solar heating and cooling, see  42 U.S.C. § 5501 et seq.</p>
+                <p>Solar energy research and development, see  42 U.S.C. § 5581.</p>
+                <p>Residential energy conservation, see  42 U.S.C. § 8231 et seq.</p>
+                <p>Nonnuclear energy research and development, see  42 U.S.C. § 5901 et seq.</p>
+                <p>Energy Policy and Conservation Act, see  42 U.S.C. § 6201 et seq.</p>
+                <p>Energy Policy Act of 1992, see  42 U.S.C. § 13201 et seq.</p>
+                <p>Energy Conservation and Production Act, see  42 U.S.C. § 6801 et seq.</p>
               </section>
             </section>
             <hr/>

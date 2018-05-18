@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1215.09a.html">§ 2–1215.09a. Adjacent or abutting properties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1215.09.html">Report Error</a>
@@ -122,22 +122,22 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1215.15.html">2-1215.15</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-213.html">D.C. Law 13-213</a> rewrote subpar. (B) of par. (1) of subsec. (a) which prior thereto read:</p>
-                <p>“(B) With respect to areas outside the central employment area and Georgetown, owners who own at least 51% of the interest in the assessed value of the commercial properties, owners who own at least 51% of the individual properties, and at least 51% of the number of commercial tenants petition the existing BID to join the BID;”</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-183.html">D.C. Law 14-183</a>, added subsec. (a)(3A); in subsec. (a)(4), substituted “§ <a class="internal-link" href="/dc/council/code/sections/2-1215.05.html">2-1215.05</a> and § <a class="internal-link" href="/dc/council/code/sections/2-1215.06.html">2-1215.06</a>; provided, that wherever the word ‘application’ or phrase ‘BID application’ appears in § <a class="internal-link" href="/dc/council/code/sections/2-1215.05.html">2-1215.05</a> or § <a class="internal-link" href="/dc/council/code/sections/2-1215.06.html">2-1215.06</a>, the word or phrase shall be considered to refer to the expansion petition, and wherever reference is made to the registration of the BID and the nonprofit corporation in § <a class="internal-link" href="/dc/council/code/sections/2-1215.06.html">2-1215.06</a>, the reference shall be considered to refer to registration of the expanded BID” for “§ <a class="internal-link" href="/dc/council/code/sections/2-1215.05.html">2-1215.05</a>” and substituted “Deputy Mayor for Planning and Economic Development, or a successor thereto,” for “Deputy City Administrator for Business Services and Economic Development”; and added subsec. (a)(5).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-363.html">D.C. Law 18-363</a>, in subsec. (a)(3A)(C), substituted “Real Property Tax Appeals Commission for the District of Columbia” for “District’s Board of Real Property Assessments and Appeals”.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-161.html">D.C. Law 20-161</a> added “Except as provided in § <a class="internal-link" href="/dc/council/code/sections/2-1215.09a.html">2-1215.09a</a>” in the introductory language of (a); in (a)(1)(A), substituted “taxable properties” for “nonexempt real properties” and deleted “or” from the end; repealed (a)(1)(B); substituted “taxable property” for “nonexempt real property” in (a)(3A)(C); and substituted “taxable BID properties” for “nonexempt properties” throughout (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-363.html">D.C. Law 18-363</a>, in subsec. (a)(3A)(C), substituted “Real Property Tax Appeals Commission for the District of Columbia” for “District’s Board of Real Property Assessments and Appeals”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-183.html">D.C. Law 14-183</a>, added subsec. (a)(3A); in subsec. (a)(4), substituted “§ <a class="internal-link" href="/dc/council/code/sections/2-1215.05.html">2-1215.05</a> and § <a class="internal-link" href="/dc/council/code/sections/2-1215.06.html">2-1215.06</a>; provided, that wherever the word ‘application’ or phrase ‘BID application’ appears in § <a class="internal-link" href="/dc/council/code/sections/2-1215.05.html">2-1215.05</a> or § <a class="internal-link" href="/dc/council/code/sections/2-1215.06.html">2-1215.06</a>, the word or phrase shall be considered to refer to the expansion petition, and wherever reference is made to the registration of the BID and the nonprofit corporation in § <a class="internal-link" href="/dc/council/code/sections/2-1215.06.html">2-1215.06</a>, the reference shall be considered to refer to registration of the expanded BID” for “§ <a class="internal-link" href="/dc/council/code/sections/2-1215.05.html">2-1215.05</a>” and substituted “Deputy Mayor for Planning and Economic Development, or a successor thereto,” for “Deputy City Administrator for Business Services and Economic Development”; and added subsec. (a)(5).</p>
+                <p>“(B) With respect to areas outside the central employment area and Georgetown, owners who own at least 51% of the interest in the assessed value of the commercial properties, owners who own at least 51% of the individual properties, and at least 51% of the number of commercial tenants petition the existing BID to join the BID;”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-213.html">D.C. Law 13-213</a> rewrote subpar. (B) of par. (1) of subsec. (a) which prior thereto read:</p>
                 <h4>Expiration of Law</h4>
-                <p>Expiration of Law 11-134</p>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/2-1215.01.html">2-1215.01</a>.</p>
+                <p>Expiration of Law 11-134</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2 of the Business Improvement Districts Emergency Amendment Act of 1997 (D.C. Act 12-89, June 19, 1997,  44 DCR 3747), and § 2 of the Business Improvement Districts Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-146, August 12, 1997,  44 DCR 5054).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of North Capital Expansion and Expansion of Business Improvement District Emergency Amendment Act of 2002 (D.C. Act 14-258, January 30, 2002,  49 DCR 1420).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(h) of the  Business Improvement Districts Emergency Amendment Act of 2014 (D.C. Act 20-435, Oct. 7, 2014, 61 DCR 10717, 20 STAT 4154).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(h) of the  Business Improvement Districts Congressional Review Emergency Amendment Act of 2014 (D.C. Act 20-582, Jan. 13, 2015, 62 DCR 1269, 21 STAT 735).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(h) of the  Business Improvement Districts Emergency Amendment Act of 2014 (D.C. Act 20-435, Oct. 7, 2014, 61 DCR 10717, 20 STAT 4154).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of North Capital Expansion and Expansion of Business Improvement District Emergency Amendment Act of 2002 (D.C. Act 14-258, January 30, 2002,  49 DCR 1420).</p>
+                <p>For temporary amendment of section, see § 2 of the Business Improvement Districts Emergency Amendment Act of 1997 (D.C. Act 12-89, June 19, 1997,  44 DCR 3747), and § 2 of the Business Improvement Districts Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-146, August 12, 1997,  44 DCR 5054).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of the Business Improvement Districts Temporary Amendment Act of 1997 (<a class="internal-link" href="/dc/council/laws/12-23.html">D.C. Law 12-23</a>, September 23, 1997, law notification  44 DCR 5762).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of the North Capitol Expansion and Expansion of Business Improvement Districts Temporary Amendment Act of 2002 (D.C. Law 14-118, May 2, 2002, law notification  49 DCR 4393).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of the Business Improvement Districts Temporary Amendment Act of 1997 (<a class="internal-link" href="/dc/council/laws/12-23.html">D.C. Law 12-23</a>, September 23, 1997, law notification  44 DCR 5762).</p>
                 <h4>Mayor's Orders</h4>
                 <p>Expansion of the Golden Triangle Business Improvement District Pursuant to the Business Improvement Districts Act of 1996, see Mayor’s Order 2003-153, October 31, 2003 ( 50 DCR 9985).</p>
               </section>

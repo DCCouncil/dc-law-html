@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/34/chapters/24/subchapters/IV/">Subchapter IV. Discontinuance of Service.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/34-2405.08.html">Report Error</a>
@@ -99,8 +99,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/58-2-ch1417.html#§9">Apr. 22, 1904, 33 Stat. 246, ch. 1417, § 9</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-1519.</p>
                 <p>1973 Ed., § 43-1517.</p>
+                <p>1981 Ed., § 43-1519.</p>
                 <h4>Transfer of Functions</h4>
                 <p>Reorganization Order No. 28 of the Board of Commissioners, dated April 3, 1953, now redesignated Organization Order No. 147, dated August 19, 1965, established a Department of Sanitary Engineering headed by a Director. The Department performed sanitary engineering services and operations for the District including water distribution, sanitary, storm, and combined sewer systems, sewage treatment, and collection and disposal of waste material. The Office of the Water Registrar and the previously existing Department of Sanitary Engineering (which included the Sewer Division, Water Division, Sanitation Division, and the Sewage Treatment Plant) were abolished and their functions transferred to this Department. The Orders were issued pursuant to Reorganization Plan No. 5 of 1952. Functions of the Department of Sanitary Engineering as set forth in Organization Order No. 147, as amended, were transferred to the Department of Environmental Services by Commissioner’s Order No. 71-255, dated July 27, 1971.</p>
               </section>

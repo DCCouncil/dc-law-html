@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-3802.html">§ 47–3802. Tax exemption.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-3801.html">Report Error</a>
@@ -129,30 +129,30 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-1002.html">47-1002</a>, § <a class="internal-link" href="/dc/council/code/sections/47-1508.html">47-1508</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2005.html">47-2005</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2827.html">47-2827</a>, § <a class="internal-link" href="/dc/council/code/sections/47-3805.html">47-3805</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-4630.html">47-4630</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-166.html">D.C. Law 13-166</a> rewrote this section, which previously read:</p>
-                <p>“For the purposes of this chapter, the term:</p>
-                <p>“(1) ‘Fair market rent’ means an amount as determined by the Mayor with reference to the average rent charged to tenants for occupancy of comparable space in other buildings in the underserved area.</p>
-                <p>“(2)(A) ‘Supermarket’ means a self-service retail establishment, independently owned or part of a corporation operating a chain of supermarkets under the same name, that:</p>
-                <p>“(i) Is licensed as a grocery store pursuant to § <a class="internal-link" href="/dc/council/code/sections/47-2827.html">47-2827</a>;</p>
-                <p>“(ii) Offers for sale a full line of meat, seafood, fruits, vegetables, dairy products, and dry groceries, household products, and sundries; and</p>
-                <p>“(iii) Occupies at least 6,000 square feet of space.</p>
-                <p>“(B) The term ‘supermarket’ shall include related service departments, such as kitchens, bakeries, pharmacies, or flower shops of a retail establishment that meet the criteria set by subparagraph (A) of this paragraph.</p>
-                <p>“(3) ‘Supermarket development’ means a new supermarket for which construction begins on or after September 29, 1988, or an expansion or modernization of an existing supermarket if the expansion or modernization begins on or after September 29, 1988.</p>
-                <p>“(4) ‘Underserved area’ means an area of no more than one square mile within the District having a ratio of less than 2 supermarkets per 10,000 residents or having less than 1 supermarket.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-138.html">D.C. Law 17-138</a> designated the existing text of par. (1) as subpar. (A); added pars. (1)(B), (1A), (1B); and, in par. (2), deleted “as defined in § <a class="internal-link" href="/dc/council/code/sections/2-1219.20.html">2-1219.20</a>” following “area”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-353.html">D.C. Law 18-353</a>, in pars. (1B) and (2), substituted “eligible area” for “priority development area”; and added pars. (1C) and (1D).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “an eligible” for “a eligible” in (1B) and (2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-353.html">D.C. Law 18-353</a>, in pars. (1B) and (2), substituted “eligible area” for “priority development area”; and added pars. (1C) and (1D).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-138.html">D.C. Law 17-138</a> designated the existing text of par. (1) as subpar. (A); added pars. (1)(B), (1A), (1B); and, in par. (2), deleted “as defined in § <a class="internal-link" href="/dc/council/code/sections/2-1219.20.html">2-1219.20</a>” following “area”.</p>
+                <p>“(4) ‘Underserved area’ means an area of no more than one square mile within the District having a ratio of less than 2 supermarkets per 10,000 residents or having less than 1 supermarket.”</p>
+                <p>“(3) ‘Supermarket development’ means a new supermarket for which construction begins on or after September 29, 1988, or an expansion or modernization of an existing supermarket if the expansion or modernization begins on or after September 29, 1988.</p>
+                <p>“(B) The term ‘supermarket’ shall include related service departments, such as kitchens, bakeries, pharmacies, or flower shops of a retail establishment that meet the criteria set by subparagraph (A) of this paragraph.</p>
+                <p>“(iii) Occupies at least 6,000 square feet of space.</p>
+                <p>“(ii) Offers for sale a full line of meat, seafood, fruits, vegetables, dairy products, and dry groceries, household products, and sundries; and</p>
+                <p>“(i) Is licensed as a grocery store pursuant to § <a class="internal-link" href="/dc/council/code/sections/47-2827.html">47-2827</a>;</p>
+                <p>“(2)(A) ‘Supermarket’ means a self-service retail establishment, independently owned or part of a corporation operating a chain of supermarkets under the same name, that:</p>
+                <p>“(1) ‘Fair market rent’ means an amount as determined by the Mayor with reference to the average rent charged to tenants for occupancy of comparable space in other buildings in the underserved area.</p>
+                <p>“For the purposes of this chapter, the term:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-166.html">D.C. Law 13-166</a> rewrote this section, which previously read:</p>
                 <h4>Cross References</h4>
-                <p>License law, supermarket developments, exemption conditions, see § <a class="internal-link" href="/dc/council/code/sections/47-2827.html">47-2827</a>.</p>
                 <p>Real property exempt from taxation, enumerated, see § <a class="internal-link" href="/dc/council/code/sections/47-1002.html">47-1002</a>.</p>
+                <p>License law, supermarket developments, exemption conditions, see § <a class="internal-link" href="/dc/council/code/sections/47-2827.html">47-2827</a>.</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-204.html">D.C. Law 21-204</a>: <a class="internal-link" href="/dc/council/laws/21-204.html#§4">§ 4 of D.C. Law 21-204</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-204.html#§3">§ 3 of D.C. Law 21-204</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7020">Section 7020 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-204.html#§4">§ 4 of D.C. Law 21-204</a>. Therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-204.html">D.C. Law 21-204</a> have been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-204.html">D.C. Law 21-204</a>: <a class="internal-link" href="/dc/council/laws/21-204.html#§4">§ 4 of D.C. Law 21-204</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-204.html#§3">§ 3 of D.C. Law 21-204</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Supermarket Tax Incentives Clarification Emergency Act of 2008 (D.C. Act 17-268, January 23, 2008,  55 DCR 1499).</p>
-                <p>For temporary (90 days) repeal of § 4 of D.C. Law 21-204, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7020">§ 7020 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7113">§ 7113 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) repeal of § 4 of D.C. Law 21-204, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7020">§ 7020 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Supermarket Tax Incentives Clarification Emergency Act of 2008 (D.C. Act 17-268, January 23, 2008,  55 DCR 1499).</p>
               </section>
             </section>
           </section>

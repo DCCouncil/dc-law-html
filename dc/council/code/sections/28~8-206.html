@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:8-207.html">§ 28:8-207. Rights and duties of issuer with respect to registered owners.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:8-206.html">Report Error</a>
@@ -102,18 +102,18 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 735, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/9-196.html">Mar. 16, 1993, D.C. Law 9-196, § 4, 39 DCR 9165</a>; <a class="internal-link" href="/dc/council/laws/11-240.html">Apr. 9, 1997, D.C. Law 11-240, § 2, 44 DCR 1087</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:8-206.</p>
                 <p>1973 Ed., § 28:8-206.</p>
+                <p>1981 Ed., § 28:8-206.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. The problem of forged or unauthorized signatures necessary for the issue or transfer of a security is not involved here, and a person in possession of a blank certificate is not, by this section, given authority to fill in blanks with such signatures. Completion of blanks left in a transfer instruction is dealt with elsewhere ( Section 8-305(a) ).</p>
-                <p>2. Blanks left upon issue of a security certificate are the only ones dealt with here, and a purchaser for value without notice is protected. A purchaser is not in a good position to determine whether blanks were completed by the issuer or by some person not authorized to complete them. On the other hand the issuer can protect itself by not placing its signature on the writing until the blanks are completed or, if it does sign before all blanks are completed, by carefully selecting the agents and employees to whom it entrusts the writing after authentication. With respect to a security certificate that is completed by the issuer but later is altered, the issuer has done everything it can to protect the purchaser and thus is not charged with the terms as altered. However, it is charged according to the original terms, since it is not thereby prejudiced. If the completion or alteration is obviously irregular, the purchaser may not qualify as a purchaser who took without notice under this section.</p>
-                <p>3. Only the purchaser who physically takes the certificate is directly protected. However, a transferee may receive protection indirectly through  Section 8-302(a).</p>
-                <p>4. The protection granted a purchaser for value without notice under this section is modified to the extent that an overissue may result where an incorrect amount is inserted into a blank ( Section 8-210). Definitional Cross References</p>
-                <p><strong>Definitional Cross References</strong> “Notice”.  Section 1-201(25).</p>
-                <p>“Purchaser”.  Sections 1-201(33) and  8-116.</p>
-                <p>“Security certificate”.  Section 8-102(a)(16).</p>
-                <p>“Unauthorized signature”.  Section 1-201(43).</p>
                 <p>“Value”.  Sections 1-201(44) and  8-116.</p>
+                <p>“Unauthorized signature”.  Section 1-201(43).</p>
+                <p>“Security certificate”.  Section 8-102(a)(16).</p>
+                <p>“Purchaser”.  Sections 1-201(33) and  8-116.</p>
+                <p><strong>Definitional Cross References</strong> “Notice”.  Section 1-201(25).</p>
+                <p>4. The protection granted a purchaser for value without notice under this section is modified to the extent that an overissue may result where an incorrect amount is inserted into a blank ( Section 8-210). Definitional Cross References</p>
+                <p>3. Only the purchaser who physically takes the certificate is directly protected. However, a transferee may receive protection indirectly through  Section 8-302(a).</p>
+                <p>2. Blanks left upon issue of a security certificate are the only ones dealt with here, and a purchaser for value without notice is protected. A purchaser is not in a good position to determine whether blanks were completed by the issuer or by some person not authorized to complete them. On the other hand the issuer can protect itself by not placing its signature on the writing until the blanks are completed or, if it does sign before all blanks are completed, by carefully selecting the agents and employees to whom it entrusts the writing after authentication. With respect to a security certificate that is completed by the issuer but later is altered, the issuer has done everything it can to protect the purchaser and thus is not charged with the terms as altered. However, it is charged according to the original terms, since it is not thereby prejudiced. If the completion or alteration is obviously irregular, the purchaser may not qualify as a purchaser who took without notice under this section.</p>
+                <p>1. The problem of forged or unauthorized signatures necessary for the issue or transfer of a security is not involved here, and a person in possession of a blank certificate is not, by this section, given authority to fill in blanks with such signatures. Completion of blanks left in a transfer instruction is dealt with elsewhere ( Section 8-305(a) ).</p>
               </section>
             </section>
           </section>

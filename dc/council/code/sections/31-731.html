@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/31-732.html">§ 31–732. Merger of policyholder membership interests.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-731.html">Report Error</a>
@@ -106,10 +106,10 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-734.html">31-734</a> and § <a class="internal-link" href="/dc/council/code/sections/31-735.html">31-735</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of §§ 35-3721 through 35-3728 1981 Ed., see § 2-9 of the Mutual Holding Company Emergency Act of 1996 (D.C. Act 11-288, July 1, 1996,  43 DCR 3707).</p>
-                <p>For temporary addition of §§ 35-3721 through 35-3728 1981 Ed., see § 2-9 of the Mutual Holding Company Congressional Review Emergency Act of 1996 (D.C. Act 11-368, August 21, 1996,  43 DCR 3721).</p>
-                <p>For temporary repeal of the Mutual Holding Company Emergency Act of 1996 (D.C. Act 11-288, July 1, 1996,  43 DCR 3707), see § 12 of the Mutual Holding Company Congressional Review Emergency Act of 1996 (D.C. Act 11-368, August 21, 1996,  43 DCR 4633).</p>
                 <p>For temporary amendment of section, see § 2(a) of the Mutual Holding Company Mergers and Acquisition Emergency Amendment Act of 1998 (D.C. Act 12-295, March 4, 1998,  45 DCR 1764), § 2(a) of the Mutual Holding Company Mergers and Acquisition Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-364, June 5, 1998,  45 DCR 3875), and § 2(a) of the Mutual Holding Company Mergers and Acquisition Second Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-550, December 18, 1998,  46 DCR 512).</p>
+                <p>For temporary repeal of the Mutual Holding Company Emergency Act of 1996 (D.C. Act 11-288, July 1, 1996,  43 DCR 3707), see § 12 of the Mutual Holding Company Congressional Review Emergency Act of 1996 (D.C. Act 11-368, August 21, 1996,  43 DCR 4633).</p>
+                <p>For temporary addition of §§ 35-3721 through 35-3728 1981 Ed., see § 2-9 of the Mutual Holding Company Congressional Review Emergency Act of 1996 (D.C. Act 11-368, August 21, 1996,  43 DCR 3721).</p>
+                <p>For temporary addition of §§ 35-3721 through 35-3728 1981 Ed., see § 2-9 of the Mutual Holding Company Emergency Act of 1996 (D.C. Act 11-288, July 1, 1996,  43 DCR 3707).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of the Mutual Holding Company Mergers and Acquisition Temporary Amendment Act of 1998 (D.C. Law 12-119, June 11, 1998, law notification  45 DCR 4036).</p>
               </section>

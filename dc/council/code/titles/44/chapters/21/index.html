@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/45/">Title 45. Compilation and Construction of Code.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/chapters/21/">Report Error</a>
@@ -87,20 +87,48 @@
         <section class="col8 body">
           <h1>Chapter 21. Saint Elizabeths’ Hospital. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/44-2101.html">§ 44–2101. Expenses of indigent patients — Payment from District revenues [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2102.html">§ 44–2102. Expenses of indigent patients — Payment by Treasury Department [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2103.html">§ 44–2103. Payments to Superintendent to be credited to appropriations for care of patients. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2104.html">§ 44–2104. Collections or reimbursements of charges to be credited to District. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2105.html">§ 44–2105. Admission of indigent insane of District. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2106.html">§ 44–2106. Private patients. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2107.html">§ 44–2107. Patients of District and federal government. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2108.html">§ 44–2108. Admission of insane convicts. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2109.html">§ 44–2109. Gifts to Hospital — Authorization to accept. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2110.html">§ 44–2110. Custody and investment. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2111.html">§ 44–2111. Intangible personal property. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2112.html">§ 44–2112. Real property or tangible personal property. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2113.html">§ 44–2113. Superintendent authorized to prescribe regulations. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-2114.html">§ 44–2114. Mayor authorized to prescribe regulations. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2101.html">§ 44–2101. Expenses of indigent patients — Payment from District revenues [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2102.html">§ 44–2102. Expenses of indigent patients — Payment by Treasury Department [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2103.html">§ 44–2103. Payments to Superintendent to be credited to appropriations for care of patients. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2104.html">§ 44–2104. Collections or reimbursements of charges to be credited to District. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2105.html">§ 44–2105. Admission of indigent insane of District. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2106.html">§ 44–2106. Private patients. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2107.html">§ 44–2107. Patients of District and federal government. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2108.html">§ 44–2108. Admission of insane convicts. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2109.html">§ 44–2109. Gifts to Hospital — Authorization to accept. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2110.html">§ 44–2110. Custody and investment. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2111.html">§ 44–2111. Intangible personal property. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2112.html">§ 44–2112. Real property or tangible personal property. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2113.html">§ 44–2113. Superintendent authorized to prescribe regulations. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-2114.html">§ 44–2114. Mayor authorized to prescribe regulations. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -115,8 +143,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/44-2-ch105.html">Mar. 3, 1877, 19 Stat. 347, ch. 105</a>; July 1, 1916, 39 Stat. 309, ch. 209, § 1; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(u)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-601.</p>
                 <p>1973 Ed., § 32-401.</p>
+                <p>1981 Ed., § 32-601.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -133,8 +161,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/45-3-ch182.html#§1">Mar. 3, 1879, 20 Stat. 395, ch. 182, § 1</a>; July 1, 1916, 39 Stat. 309, ch. 209, § 1; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(v)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-602.</p>
                 <p>1973 Ed., § 32-402.</p>
+                <p>1981 Ed., § 32-602.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -151,8 +179,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch478.html#§3">Aug. 4, 1947, 61 Stat. 751, ch. 478, § 3</a>; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(d)(1)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-603.</p>
                 <p>1973 Ed., § 32-403.</p>
+                <p>1981 Ed., § 32-603.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -169,8 +197,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/62-3-ch149.html">Mar. 4, 1913, 37 Stat. 917, ch. 149</a>; July 1, 1916, 39 Stat. 309, ch. 209, § 1; Feb. 22, 1921, 41 Stat. 1144, ch. 70, § 7; June 28, 1944, 58 Stat. 533, ch. 300, § 18; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(w)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-604.</p>
                 <p>1973 Ed., § 32-404.</p>
+                <p>1981 Ed., § 32-604.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -187,8 +215,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§4844">R.S., D.C., § 4844</a>; Mar. 3, 1877, 19 Stat. 347, ch. 105; July 1, 1916, 39 Stat. 309, ch. 209, § 1; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(a), (u)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-605.</p>
                 <p>1973 Ed., § 32-405.</p>
+                <p>1981 Ed., § 32-605.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -205,8 +233,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html">R.S., D.C., §§ 4853, 4854</a>; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-606.</p>
                 <p>1973 Ed., § 32-406.</p>
+                <p>1981 Ed., § 32-606.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -223,8 +251,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch478.html#§2">Aug. 4, 1947, 61 Stat. 751, ch. 478, § 2</a>; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(d)(1)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-607.</p>
                 <p>1973 Ed., § 32-406a.</p>
+                <p>1981 Ed., § 32-607.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -241,8 +269,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§4852">R.S., D.C., § 4852</a>; July 1, 1916, 39 Stat. 309, ch. 209, § 1; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-608.</p>
                 <p>1973 Ed., § 32-407</p>
+                <p>1981 Ed., § 32-608.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -259,8 +287,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/77-1-ch469.html#§1">Nov. 7, 1941, 55 Stat. 760, ch. 469, § 1</a>; Reorg. Plan No. 1 (1953), 67 Stat. 631, 18 F.R. 2053, § 5; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(j)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-609.</p>
                 <p>1973 Ed., § 32-408.</p>
+                <p>1981 Ed., § 32-609.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -277,8 +305,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/77-1-ch469.html#§2">Nov. 7, 1941, 55 Stat. 760, ch. 469, § 2</a>; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(j)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-610.</p>
                 <p>1973 Ed., § 32-409.</p>
+                <p>1981 Ed., § 32-610.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -295,8 +323,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/77-1-ch469.html#§3">Nov. 7, 1941, 55 Stat. 760, ch. 469, § 3</a>; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(j)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-611.</p>
                 <p>1973 Ed., § 32-410.</p>
+                <p>1981 Ed., § 32-611.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -313,8 +341,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/77-1-ch469.html#§4">Nov. 7, 1941, 55 Stat. 761, ch. 469, § 4</a>; Reorg. Plan No. 1 (1953), 67 Stat. 631, 18 F.R. 2053, § 5; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(j)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-612.</p>
                 <p>1973 Ed., § 32-411.</p>
+                <p>1981 Ed., § 32-612.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -331,8 +359,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch597.html#§4">June 22, 1948, 62 Stat. 574, ch. 597, § 4</a>; Reorg. Plan No. 1 (1953), 67 Stat. 631, 18 F.R. 2053, § 5; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(x)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-613.</p>
                 <p>1973 Ed., § 32-415.</p>
+                <p>1981 Ed., § 32-613.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>
@@ -349,8 +377,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch597.html#§5">June 22, 1948, 62 Stat. 574, ch. 597, § 5</a>; <a class="internal-link" href="/us/congress/laws/public/98-621.html">Nov. 8, 1984, 98 Stat. 3369, Pub. L. 98-621, § 10(x)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-614.</p>
                 <p>1973 Ed., § 32-416.</p>
+                <p>1981 Ed., § 32-614.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 11(b) of Pub. L. 98-621 makes § 10 of that act effective on October 1, 1987.</p>
               </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1065.html">§ 47–1065. Douglass Knoll, Golden Rule, 1728 W Street and Wagner Gainsville Rehabilitation Projects, lot 840 in Square 525, lots 33 through 36 in square 5734, lots 42 through 44 in square 5835, lot 166 in square 5778, lots 38 through 44 in square 5894, and lots 69 through 72 in square 5895.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1064.html">Report Error</a>
@@ -103,14 +103,14 @@
       (<a class="internal-link" href="/dc/council/laws/15-266.html">Apr. 5, 2005, D.C. Law 15-266, § 2(b), 52 DCR 468</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(b) of Freedom Forum Real Property Tax Exemption and Equitable Real Property Tax Relief Emergency Act of 2002 (D.C. Act 14-423, July 17, 2002,  49 DCR 7623).</p>
-                <p>For temporary (90 day) addition, see § 2(b) of Freedom Forum Real Property Tax Exemption and Equitable Real Property Tax Relief Congressional Review Emergency Act of 2002 (D.C. Act 14-511, October 23, 2002,  49 DCR 10469).</p>
-                <p>For temporary (90 day) addition, see § 2 of Freedom Forum Real Property Tax Exemption and Equitable Real Property Tax Relief Congressional Review Emergency Act of 2003 (D.C. Act 15-1, January 22, 2003,  50 DCR 1419).</p>
-                <p>For temporary (90 day) addition, see § 2(b) of Freedom Forum Newseum Real Property Tax Exemption and Equitable Real Property Tax Relief Emergency Act of 2003 (D.C. Act 15-202, October 24, 2003,  50 DCR 9834).</p>
                 <p>For temporary (90 day) addition, see § 2(b) of Freedom Forum Newseum Real Property Tax Exemption and Equitable Real Property Tax Relief Congressional Review Emergency Act of 2004 (D.C. Act 15-318, January 28, 2004,  51 DCR 1557).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Freedom Forum Newseum Real Property Tax Exemption and Equitable Real Property Tax Relief Emergency Act of 2003 (D.C. Act 15-202, October 24, 2003,  50 DCR 9834).</p>
+                <p>For temporary (90 day) addition, see § 2 of Freedom Forum Real Property Tax Exemption and Equitable Real Property Tax Relief Congressional Review Emergency Act of 2003 (D.C. Act 15-1, January 22, 2003,  50 DCR 1419).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Freedom Forum Real Property Tax Exemption and Equitable Real Property Tax Relief Congressional Review Emergency Act of 2002 (D.C. Act 14-511, October 23, 2002,  49 DCR 10469).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Freedom Forum Real Property Tax Exemption and Equitable Real Property Tax Relief Emergency Act of 2002 (D.C. Act 14-423, July 17, 2002,  49 DCR 7623).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For Temporary (225 day) addition of section, see § 2(b) of Freedom Forum Real Property Tax Exemption and Equitable Real Property Tax Relief Temporary Act of 2002 (D.C. Law 14-222, March 25, 2003, law notification  50 DCR 2735).</p>
                 <p>For Temporary (225 day) addition of section, see § 2 of Freedom Forum Newseum Real Property Tax Exemption and Equitable Real Property Tax Relief Temporary Act of 2003 (D.C. Law 15-76, March 10, 2004, law notification  51 DCR 3368).</p>
+                <p>For Temporary (225 day) addition of section, see § 2(b) of Freedom Forum Real Property Tax Exemption and Equitable Real Property Tax Relief Temporary Act of 2002 (D.C. Law 14-222, March 25, 2003, law notification  50 DCR 2735).</p>
                 <h4>References in Text</h4>
                 <p>Chapter 13A, referred to in subsec. (b)(1), is Chapter 13A of this title.</p>
               </section>

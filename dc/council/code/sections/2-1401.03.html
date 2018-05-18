@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1401.04.html">§ 2–1401.04. Severability of provisions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1401.03.html">Report Error</a>
@@ -107,13 +107,13 @@
       (<a class="internal-link" href="/dc/council/laws/2-38.html#§103">Dec. 13, 1977, D.C. Law 2-38, title I, § 103, 24 DCR 6038</a>; <a class="internal-link" href="/dc/council/laws/12-242.html">Apr. 20, 1999, D.C. Law 12-242, § 2(c), 46 DCR 952</a>; <a class="internal-link" href="/dc/council/laws/13-91.html">Apr. 12, 2000, D.C. Law 13-91, § 159(b), 47 DCR 520</a>; <a class="internal-link" href="/dc/council/laws/15-263.html">Apr. 5, 2005, D.C. Law 15-263, § 2(c), 52 DCR 237</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2503.</p>
                 <p>1973 Ed., § 6-2203.</p>
+                <p>1981 Ed., § 1-2503.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1402.41.html">2-1402.41</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a> validated a previously made technical correction in subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-263.html">D.C. Law 15-263</a> added subsecs. (e) and (f).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a> validated a previously made technical correction in subsec. (d).</p>
               </section>
             </section>
           </section>

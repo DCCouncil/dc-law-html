@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/38-203.html">§ 38–203. Enforcement; penalties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-202.html">Report Error</a>
@@ -103,31 +103,31 @@
       (<a class="internal-link" href="/us/congress/laws/public/68-2-ch140.html#§1">Feb. 4, 1925, 43 Stat. 806, ch. 140, Art. I, §§ 1, 2</a>; <a class="internal-link" href="/dc/council/laws/8-247.html">renumbered as Art. II, § 1 and amended, Mar. 8, 1991, D.C. Law 8-247, § 2(a), 38 DCR 376</a>; <a class="internal-link" href="/dc/council/laws/17-202.html">July 18, 2008, D.C. Law 17-202, § 604, 55 DCR 6297</a>; <a class="internal-link" href="/dc/council/laws/20-17.html">Sept. 19, 2013, D.C. Law 20-17, § 303(a), 60 DCR 9839</a>; <a class="internal-link" href="/dc/council/laws/21-140.html#§2(b)">July 26, 2016, D.C. Law 21-140, § 2(b), 63 DCR 8207</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-402.</p>
                 <p>1973 Ed., §§ 31-201, 31-202.</p>
+                <p>1981 Ed., § 31-402.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1571.html">2-1571</a>, § <a class="internal-link" href="/dc/council/code/sections/16-2309.html">16-2309</a>, § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>, § <a class="internal-link" href="/dc/council/code/sections/38-206.html">38-206</a>, § <a class="internal-link" href="/dc/council/code/sections/38-1800.02.html">38-1800.02</a>, and § <a class="internal-link" href="/dc/council/code/sections/38-2605.html">38-2605</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-202.html">D.C. Law 17-202</a>, in subsec. (a), substituted “September 30th” for “December 31st”.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-17.html">D.C. Law 20-17</a> substituted “an educational institution” for “a public, independent, private, or parochial school, or in private instruction” in (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-202.html">D.C. Law 17-202</a>, in subsec. (a), substituted “September 30th” for “December 31st”.</p>
                 <h4>Cross References</h4>
-                <p>Additional powers and duties of Superintendent, see § <a class="internal-link" href="/dc/council/code/sections/38-105.html">38-105</a>.</p>
                 <p>Belief that child is of compulsory school age, taking into custody, see § <a class="internal-link" href="/dc/council/code/sections/16-2309.html">16-2309</a>.</p>
+                <p>Additional powers and duties of Superintendent, see § <a class="internal-link" href="/dc/council/code/sections/38-105.html">38-105</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2 of Class Exclusion Standards Emergency Amendment Act of 2007 (D.C. Act 17-23, March</p>
-                <p>For temporary (90 days) amendment of this section, see § 303(a) of the Attendance Accountability Emergency Act of 2013 (D.C. Act 20-133, July 30, 2013,  60 DCR 11531, 20 DCSTAT 1973).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-410.html#§2(b)">§ 2(b) of School Attendance Clarification Emergency Amendment Act of 2016 (D.C. Act 21-410, June 1, 2016, 63 DCR 8202)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 303(a) of the Attendance Accountability Emergency Act of 2013 (D.C. Act 20-133, July 30, 2013,  60 DCR 11531, 20 DCSTAT 1973).</p>
+                <p>For temporary (90 day) addition, see § 2 of Class Exclusion Standards Emergency Amendment Act of 2007 (D.C. Act 17-23, March</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 17-8 added provisions to read as follows:</p>
-                <p>“Sec. 1a. Establishment of standards for class exclusions and suspensions.</p>
-                <p>“(a) The Board of Education (‘Board’) shall adopt uniform disciplinary standards:</p>
-                <p>“(1) To determine when class exclusions will be the appropriate disciplinary measure for students;</p>
-                <p>“(2) To promote the education of students in the school, except for those students who may be a danger to the school’s faculty, students, or others, where the student was placed prior to disciplinary action, and that prioritize consideration of the student’s academic standing, the educational needs of the students, and the number of previous offenses.</p>
-                <p>“(b) The standards adopted under subsection (a) of this section shall include a progressive schedule of discipline which promotes the goal of in-class education for students subject to disciplinary action, beginning with in-class intervention strategies and ending with expulsion as the final and most extreme form of discipline, and to the extent consistent with this progressive schedule, it shall be the policy of the District of Columbia to prefer in-school disciplinary action, except for those students who may be a danger to the school’s faculty, students, or others.</p>
-                <p>“(c) The Board shall require a monthly report of disciplinary measures taken by each school regarding class exclusions and suspensions, including the rationale for the particular choice of discipline.</p>
-                <p>“(d) The Mayor shall provide for comprehensive inter-agency collaborative support programs, such as programs offered by the Department of Mental Health, the Department of Human Services, the Child and Family Services Agency, and the Department of Parks and Recreation, to assist the student subject to class exclusion at the school, except for those students who may be a danger to the school’s faculty, students, or others, where the student was placed prior to the disciplinary action.</p>
-                <p>“(e) The Mayor shall make resources available to support the programs in subsection (d) of this section within the context of appropriated funds within the budget and financial plan.”</p>
                 <p>Section 4(b) of D.C. Law 17-8 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(e) The Mayor shall make resources available to support the programs in subsection (d) of this section within the context of appropriated funds within the budget and financial plan.”</p>
+                <p>“(d) The Mayor shall provide for comprehensive inter-agency collaborative support programs, such as programs offered by the Department of Mental Health, the Department of Human Services, the Child and Family Services Agency, and the Department of Parks and Recreation, to assist the student subject to class exclusion at the school, except for those students who may be a danger to the school’s faculty, students, or others, where the student was placed prior to the disciplinary action.</p>
+                <p>“(c) The Board shall require a monthly report of disciplinary measures taken by each school regarding class exclusions and suspensions, including the rationale for the particular choice of discipline.</p>
+                <p>“(b) The standards adopted under subsection (a) of this section shall include a progressive schedule of discipline which promotes the goal of in-class education for students subject to disciplinary action, beginning with in-class intervention strategies and ending with expulsion as the final and most extreme form of discipline, and to the extent consistent with this progressive schedule, it shall be the policy of the District of Columbia to prefer in-school disciplinary action, except for those students who may be a danger to the school’s faculty, students, or others.</p>
+                <p>“(2) To promote the education of students in the school, except for those students who may be a danger to the school’s faculty, students, or others, where the student was placed prior to disciplinary action, and that prioritize consideration of the student’s academic standing, the educational needs of the students, and the number of previous offenses.</p>
+                <p>“(1) To determine when class exclusions will be the appropriate disciplinary measure for students;</p>
+                <p>“(a) The Board of Education (‘Board’) shall adopt uniform disciplinary standards:</p>
+                <p>“Sec. 1a. Establishment of standards for class exclusions and suspensions.</p>
+                <p>Section 2 of D.C. Law 17-8 added provisions to read as follows:</p>
               </section>
             </section>
           </section>

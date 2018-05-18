@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/47-820.02.html">§ 47–820.02. Residential real property subject to certain affordability and resale restrictions; Mayor to issue rules.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-820.01.html">Report Error</a>
@@ -149,13 +149,13 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see §§ 1276(b), 1277, 1278 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
                 <h4>Editor's Notes</h4>
-                <p>Approval of proposed rules to implement provisions of Cooperative Housing Assessment Procedure and Lower Income Homeownership Tax Amendment Act of 1988: Pursuant to Resolution 8-80, the “Cooperative Housing Assessment Procedure Rulemaking Approval Resolution of 1989,” effective July 11, 1989, the Council approved the proposed rules to implement provisions of the Cooperative Housing Assessment Procedure and Lower Income Homeownership Tax Amendment Act of 1988 regarding the assessment of real property owned by cooperative housing associations.</p>
-                <p>Applicability and expiration of subtitle GG of title I, §§ 1275 to 1279, of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>: Sections 1277 and 1278 of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, as amended by <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, § 7068(e), provided:</p>
-                <p>“Sec. 1277. Applicability; conditional effect.”</p>
-                <p>“(a) Section 1276 shall apply for taxable years beginning after September 30, 2005.</p>
-                <p>“(b) Repealed.</p>
-                <p>“Sec. 1278. Sunset.</p>
                 <p>“This act shall expire on August 5, 2006 if this act has not taken effect under section 1277.”.</p>
+                <p>“Sec. 1278. Sunset.</p>
+                <p>“(b) Repealed.</p>
+                <p>“(a) Section 1276 shall apply for taxable years beginning after September 30, 2005.</p>
+                <p>“Sec. 1277. Applicability; conditional effect.”</p>
+                <p>Applicability and expiration of subtitle GG of title I, §§ 1275 to 1279, of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>: Sections 1277 and 1278 of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, as amended by <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, § 7068(e), provided:</p>
+                <p>Approval of proposed rules to implement provisions of Cooperative Housing Assessment Procedure and Lower Income Homeownership Tax Amendment Act of 1988: Pursuant to Resolution 8-80, the “Cooperative Housing Assessment Procedure Rulemaking Approval Resolution of 1989,” effective July 11, 1989, the Council approved the proposed rules to implement provisions of the Cooperative Housing Assessment Procedure and Lower Income Homeownership Tax Amendment Act of 1988 regarding the assessment of real property owned by cooperative housing associations.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/7-205.html">D.C. Law 7-205</a> “Cooperative Housing Assessment Procedure and Lower Income Homeownership Tax Abatement and Incentives Act of 1983 Amendment Act of 1988”, see Mayor’s Order 89-136, June 12, 1989.</p>
               </section>

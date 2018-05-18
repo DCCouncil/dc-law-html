@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/9/chapters/11/subchapters/IX/">Subchapter IX. Potomac River Bridges Towing Compact.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/9/chapters/11/subchapters/VIII/">Report Error</a>
@@ -88,10 +88,18 @@
         <section class="col8 body">
           <h1>Subchapter VIII. Woodrow Wilson Bridge and Tunnel Compact.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/9-1115.01.html">§ 9–1115.01. Authority to enter into Compact.</a>
-            <a href="/dc/council/code/sections/9-1115.02.html">§ 9–1115.02. Preamble to Compact.</a>
-            <a href="/dc/council/code/sections/9-1115.03.html">§ 9–1115.03. Woodrow Wilson Bridge and Tunnel Compact.</a>
-            <a href="/dc/council/code/sections/9-1115.04.html">§ 9–1115.04. Compact provisions as law.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1115.01.html">§ 9–1115.01. Authority to enter into Compact.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1115.02.html">§ 9–1115.02. Preamble to Compact.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1115.03.html">§ 9–1115.03. Woodrow Wilson Bridge and Tunnel Compact.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1115.04.html">§ 9–1115.04. Compact provisions as law.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -315,10 +323,10 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-2484.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of § 1-2485.1 1981 Ed., see § 2 of the Potomac River Bridges Towing Compact Emergency Act of 1999 (D.C. Act 13-16, February 10, 1999,  46 DCR 2349).</p>
-                <p>For temporary authorization for the District to remove disabled vehicles from any portion of the Potomac River Bridges, see §§ 2-6 of the Potomac River Bridges Towing Compact Emergency Act of 1999 (D.C. Act 13-16, February 10, 1999,  46 DCR 2349).</p>
-                <p>For temporary (90-day) authorization of continued participation in related compact, see §§ 2 to 6 of the Potomac River Bridges Towing Compact Congressional Review Emergency Act of 1999 (D.C. Act 13-88, June 4, 1999,  46 DCR 5319).</p>
                 <p>For temporary (90-day) authorization of continued participation in related compact, see §§ 2 to 6 of the Potomac River Bridges Towing Compact Congressional Review Emergency Act of 1999 (D.C. Act 13-222, January 11, 2000,  47 DCR 470).</p>
+                <p>For temporary (90-day) authorization of continued participation in related compact, see §§ 2 to 6 of the Potomac River Bridges Towing Compact Congressional Review Emergency Act of 1999 (D.C. Act 13-88, June 4, 1999,  46 DCR 5319).</p>
+                <p>For temporary authorization for the District to remove disabled vehicles from any portion of the Potomac River Bridges, see §§ 2-6 of the Potomac River Bridges Towing Compact Emergency Act of 1999 (D.C. Act 13-16, February 10, 1999,  46 DCR 2349).</p>
+                <p>For temporary addition of § 1-2485.1 1981 Ed., see § 2 of the Potomac River Bridges Towing Compact Emergency Act of 1999 (D.C. Act 13-16, February 10, 1999,  46 DCR 2349).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) authority of Mayor to execute Compact, see § 2 of Potomac River Bridges Towing Compact Temporary Act of 1999 (D.C. Law 13-4, May 28, 1999, law notification  46 DCR 5304).</p>
               </section>

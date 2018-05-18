@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/42/chapters/31/">Chapter 31. Drug-, Firearm-, or Prostitution-Related Nuisance Abatement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/42/chapters/30/">Report Error</a>
@@ -87,8 +87,12 @@
         <section class="col8 body">
           <h1>Chapter 30. Servicemen’s Readjustment.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/42-3001.html">§ 42–3001. Disability of minority removed; investments by building, building and loan, and savings and loan associations.</a>
-            <a href="/dc/council/code/sections/42-3002.html">§ 42–3002. Direct-reduction loans authorized; obligor to be member of lending association.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-3001.html">§ 42–3001. Disability of minority removed; investments by building, building and loan, and savings and loan associations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-3002.html">§ 42–3002. Direct-reduction loans authorized; obligor to be member of lending association.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -107,8 +111,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/79-2-ch245.html#§2">May 1, 1946, 60 Stat. 159, ch. 245, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-2301.</p>
                 <p>1973 Ed., § 45-1701.</p>
+                <p>1981 Ed., § 45-2301.</p>
                 <h4>References in Text</h4>
                 <p>The Servicemen’s Readjustment Act of 1944, referred to in subsections (a) and (b)(2) of this section, is the Act of June 22, 1944, 58 Stat. 284, codified primarily as former  38 U.S.C. § 693 et seq., and repealed by the Act of Sept. 2, 1958, 72 Stat. 1273, Pub. L. 85-857. See now  38 U.S.C. § 3701 et seq.</p>
               </section>
@@ -125,8 +129,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/79-2-ch245.html#§3">May 1, 1946, 60 Stat. 159, ch. 245, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-2302.</p>
                 <p>1973 Ed., § 45-1702.</p>
+                <p>1981 Ed., § 45-2302.</p>
               </section>
             </section>
             <hr/>

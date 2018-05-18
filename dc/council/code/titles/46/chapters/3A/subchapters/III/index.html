@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/46/chapters/3A/subchapters/IV/">Subchapter IV. Establishment of Support Order or Determination of Parentage.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/46/chapters/3A/subchapters/III/">Report Error</a>
@@ -88,25 +88,63 @@
         <section class="col8 body">
           <h1>Subchapter III. Civil Provisions of General Application.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/46-353.01.html">§ 46–353.01.</a>
-            <a href="/dc/council/code/sections/46-353.02.html">§ 46–353.02. Proceeding by minor parent.</a>
-            <a href="/dc/council/code/sections/46-353.03.html">§ 46–353.03. Application of law of the District.</a>
-            <a href="/dc/council/code/sections/46-353.04.html">§ 46–353.04. Duties of initiating tribunal.</a>
-            <a href="/dc/council/code/sections/46-353.05.html">§ 46–353.05. Duties and powers of responding tribunal.</a>
-            <a href="/dc/council/code/sections/46-353.06.html">§ 46–353.06. Inappropriate tribunal.</a>
-            <a href="/dc/council/code/sections/46-353.07.html">§ 46–353.07. Duties of support enforcement agency.</a>
-            <a href="/dc/council/code/sections/46-353.08.html">§ 46–353.08. Duty of Office of the Attorney General.</a>
-            <a href="/dc/council/code/sections/46-353.09.html">§ 46–353.09. Private counsel.</a>
-            <a href="/dc/council/code/sections/46-353.10.html">§ 46–353.10. Duties of Office of the Attorney General as state information agency.</a>
-            <a href="/dc/council/code/sections/46-353.11.html">§ 46–353.11. Pleadings and accompanying documents.</a>
-            <a href="/dc/council/code/sections/46-353.12.html">§ 46–353.12. Nondisclosure of information in exceptional circumstances.</a>
-            <a href="/dc/council/code/sections/46-353.13.html">§ 46–353.13. Costs and fees.</a>
-            <a href="/dc/council/code/sections/46-353.14.html">§ 46–353.14. Limited immunity of petitioner.</a>
-            <a href="/dc/council/code/sections/46-353.15.html">§ 46–353.15. Nonparentage as defense.</a>
-            <a href="/dc/council/code/sections/46-353.16.html">§ 46–353.16. Special rules of evidence and procedure.</a>
-            <a href="/dc/council/code/sections/46-353.17.html">§ 46–353.17. Communications between tribunals.</a>
-            <a href="/dc/council/code/sections/46-353.18.html">§ 46–353.18. Assistance with discovery.</a>
-            <a href="/dc/council/code/sections/46-353.19.html">§ 46–353.19. Receipt and disbursement of payments.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.01.html">§ 46–353.01.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.02.html">§ 46–353.02. Proceeding by minor parent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.03.html">§ 46–353.03. Application of law of the District.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.04.html">§ 46–353.04. Duties of initiating tribunal.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.05.html">§ 46–353.05. Duties and powers of responding tribunal.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.06.html">§ 46–353.06. Inappropriate tribunal.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.07.html">§ 46–353.07. Duties of support enforcement agency.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.08.html">§ 46–353.08. Duty of Office of the Attorney General.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.09.html">§ 46–353.09. Private counsel.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.10.html">§ 46–353.10. Duties of Office of the Attorney General as state information agency.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.11.html">§ 46–353.11. Pleadings and accompanying documents.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.12.html">§ 46–353.12. Nondisclosure of information in exceptional circumstances.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.13.html">§ 46–353.13. Costs and fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.14.html">§ 46–353.14. Limited immunity of petitioner.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.15.html">§ 46–353.15. Nonparentage as defense.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.16.html">§ 46–353.16. Special rules of evidence and procedure.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.17.html">§ 46–353.17. Communications between tribunals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.18.html">§ 46–353.18. Assistance with discovery.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/46-353.19.html">§ 46–353.19. Receipt and disbursement of payments.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/46-214.html">§ 46–214. Termination of withholding.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/46-213.html">Report Error</a>
@@ -104,22 +104,22 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/46-211.html">46-211</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-269.html">D.C. Law 13-269</a> rewrote subsec. (a) which had read:</p>
-                <p>“(a) Except as provided in subsection (b) of this section, if a holder fails to withhold earnings or other income in accordance with this chapter, judgment shall be entered against the holder for any amount not withheld and for any reasonable counsel fees and Court costs incurred by the obligor, caretaker, custodian, or their representative.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-100.html">D.C. Law 16-100</a>, in subsec. (a), substituted “earnings or other income” for “income or other earnings”, substituted “obligor, obligee,” for “obligor,”, and deleted “responsible relative,” following “custodian”; and in subsec. (b), substituted “failure to withhold or make payment” for “failure to withhold”.</p>
+                <p>“(a) Except as provided in subsection (b) of this section, if a holder fails to withhold earnings or other income in accordance with this chapter, judgment shall be entered against the holder for any amount not withheld and for any reasonable counsel fees and Court costs incurred by the obligor, caretaker, custodian, or their representative.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-269.html">D.C. Law 13-269</a> rewrote subsec. (a) which had read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 107(m) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 1999 (D.C. Act 13-126, August 4, 1999,  46 DCR 6606).</p>
-                <p>For temporary (90-day) amendment of section, see § 107(m) of the Child Support and Welfare Reform Compliance Legislative Review Emergency Amendment Act of 1999 (D.C. Act 13-177, November 2, 1999,  46 DCR 9678).</p>
-                <p>For temporary (90-day) amendment of section, see § 107(m) of the Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-241, January 11, 2000,  47 DCR 581).</p>
-                <p>For temporary (90 day) amendment of section, see § 107(m) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 2000 (D.C. Act 13-446, November 7, 2000,  47 DCR 9213).</p>
-                <p>For temporary (90 day) amendment of section, see § 108(m) of Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-5, February 13, 2001,  48 DCR 2440).</p>
-                <p>For temporary (90 day) amendment of section, see § 3(n) of Income Withholding Transfer and Revision Emergency Amendment Act of 2005 (D.C. Act 16-167, July 26, 2005,  52 DCR 7648).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(n) of Income Withholding Transfer and Revision Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-200, November 17, 2005,  52 DCR 10490).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(n) of Income Withholding Transfer and Revision Emergency Amendment Act of 2005 (D.C. Act 16-167, July 26, 2005,  52 DCR 7648).</p>
+                <p>For temporary (90 day) amendment of section, see § 108(m) of Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-5, February 13, 2001,  48 DCR 2440).</p>
+                <p>For temporary (90 day) amendment of section, see § 107(m) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 2000 (D.C. Act 13-446, November 7, 2000,  47 DCR 9213).</p>
+                <p>For temporary (90-day) amendment of section, see § 107(m) of the Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-241, January 11, 2000,  47 DCR 581).</p>
+                <p>For temporary (90-day) amendment of section, see § 107(m) of the Child Support and Welfare Reform Compliance Legislative Review Emergency Amendment Act of 1999 (D.C. Act 13-177, November 2, 1999,  46 DCR 9678).</p>
+                <p>For temporary (90-day) amendment of section, see § 107(m) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 1999 (D.C. Act 13-126, August 4, 1999,  46 DCR 6606).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 107(m) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1999 (D.C. Law 13-57, March 7, 2000, law notification  47 DCR 1979).</p>
-                <p>For temporary (225 day) amendment of section, see § 107(m) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-207.html">D.C. Law 13-207</a>, March 31, 2001, law notification  48 DCR 3238).</p>
-                <p>Section 3(n) of D.C. Law 16-42, in subsec. (a), substituted “earnings or other income” for “income or other earnings”, substituted “obligor, obligee,” for “obligor,”, and deleted “responsible relative,”; and in subsec. (b), substituted “failure to withhold or make payment” for “failure to withhold”.</p>
                 <p>Section 5(b) of D.C. Law 16-42 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 3(n) of D.C. Law 16-42, in subsec. (a), substituted “earnings or other income” for “income or other earnings”, substituted “obligor, obligee,” for “obligor,”, and deleted “responsible relative,”; and in subsec. (b), substituted “failure to withhold or make payment” for “failure to withhold”.</p>
+                <p>For temporary (225 day) amendment of section, see § 107(m) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-207.html">D.C. Law 13-207</a>, March 31, 2001, law notification  48 DCR 3238).</p>
+                <p>For temporary (225 day) amendment of section, see § 107(m) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1999 (D.C. Law 13-57, March 7, 2000, law notification  47 DCR 1979).</p>
               </section>
             </section>
           </section>

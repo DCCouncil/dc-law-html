@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/26/chapters/14/">Chapter 14. Universal Bank Certification.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/26/chapters/13/">Report Error</a>
@@ -87,10 +87,14 @@
         <section class="col8 body">
           <h1>Chapter 13. Trust, Loan, Mortgage, Safe Deposit and Title Corporations.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/26/chapters/13/subchapters/I/">Subchapter I. General.</a>
-            <p>§§ 26-1301 - 26-1336</p>
-            <a href="/dc/council/code/titles/26/chapters/13/subchapters/II/">Subchapter II. Existing Trust Companies; Perpetual Succession of Trust Companies.</a>
-            <p>§§ 26-1351 - 26-1352</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/26/chapters/13/subchapters/I/">Subchapter I. General.</a>
+            </p>
+            <p>§§ 26-1301 – 26-1336</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/26/chapters/13/subchapters/II/">Subchapter II. Existing Trust Companies; Perpetual Succession of Trust Companies.</a>
+            </p>
+            <p>§§ 26-1351 – 26-1352</p>
           </section>
           <section class="content">
             <hr/>
@@ -106,13 +110,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§715">Mar. 3, 1901, 31 Stat. 1303, ch. 854, § 715</a>; <a class="internal-link" href="/us/congress/laws/public/89-399.html">Apr. 16, 1966, 80 Stat. 121, Pub. L. 89-399, § 1(b)</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 24(a), 44 DCR 1271</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-401.</p>
                 <p>1973 Ed., § 26-301.</p>
+                <p>1981 Ed., § 26-401.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-702.01.html">26-702.01</a>, § <a class="internal-link" href="/dc/council/code/sections/26-710.html">26-710</a>, § <a class="internal-link" href="/dc/council/code/sections/26-1304.html">26-1304</a>, § <a class="internal-link" href="/dc/council/code/sections/26-1309.html">26-1309</a>, § <a class="internal-link" href="/dc/council/code/sections/26-1310.html">26-1310</a>, and § <a class="internal-link" href="/dc/council/code/sections/26-1313.html">26-1313</a>.</p>
                 <h4>Transfer of Functions</h4>
-                <p>Pursuant to Reorganization Plan No. 3 of 1992, effective January 20, 1993, unless another date was designated by the Mayor under Sec V of the Plan, the D.C. Office of Banking and Financial Institutions (“OBFI”) is hereby transferred from the Deputy Mayor for Economic Development (“DMED”) control center to a separate OBFI control center/responsibility center. OBFI will continue to be administered by the Superintendent and will remain a part of the economic development cluster reporting to the Mayor.</p>
                 <p>[Reserved].</p>
+                <p>Pursuant to Reorganization Plan No. 3 of 1992, effective January 20, 1993, unless another date was designated by the Mayor under Sec V of the Plan, the D.C. Office of Banking and Financial Institutions (“OBFI”) is hereby transferred from the Deputy Mayor for Economic Development (“DMED”) control center to a separate OBFI control center/responsibility center. OBFI will continue to be administered by the Superintendent and will remain a part of the economic development cluster reporting to the Mayor.</p>
               </section>
             </section>
             <hr/>
@@ -132,8 +136,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§716">Mar. 3, 1901, 31 Stat. 1303, ch. 854, § 716</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 24(b), 44 DCR 1271</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-404.</p>
                 <p>1973 Ed., § 26-304.</p>
+                <p>1981 Ed., § 26-404.</p>
               </section>
             </section>
             <hr/>
@@ -148,8 +152,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§717">Mar. 3, 1901, 31 Stat. 1303, ch. 854, § 717</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-405.</p>
                 <p>1973 Ed., § 26-305.</p>
+                <p>1981 Ed., § 26-405.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 402(223) of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to the District of Columbia Council, subject to the right of the Commissioner as provided in § 406 of the Plan. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -166,8 +170,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§718">Mar. 3, 1901, 31 Stat. 1303, ch. 854, § 718</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-406.</p>
                 <p>1973 Ed., § 26-306.</p>
+                <p>1981 Ed., § 26-406.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 402(223) of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to the District of Columbia Council, subject to the right of the Commissioner as provided in § 406 of the Plan. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -184,8 +188,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§719">Mar. 3, 1901, 31 Stat. 1304, ch. 854, § 719</a>; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63,§ 106(a)(6)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-407.</p>
                 <p>1973 Ed., § 26-307.</p>
+                <p>1981 Ed., § 26-407.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 402(223) of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to the District of Columbia Council, subject to the right of the Commissioner as provided in § 406 of the Plan. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -202,8 +206,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§720">Mar. 3, 1901, 31 Stat. 1304, ch. 854, § 720</a>; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63,§ 106(a)(7)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-408.</p>
                 <p>1973 Ed., § 26-308.</p>
+                <p>1981 Ed., § 26-408.</p>
               </section>
             </section>
             <hr/>
@@ -223,11 +227,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§721">Mar. 3, 1901, 31 Stat. 1304, ch. 854, § 721</a>; <a class="internal-link" href="/dc/council/laws/3-72.html">June 24, 1980, D.C. Law 3-72, § 207(a), 27 DCR 2155</a>; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63, § 106(a)(8)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 24(c), 44 DCR 1271</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 38, 53 DCR 6198</a>; <a class="internal-link" href="/dc/council/laws/19-169.html">Sept. 26, 2012, D.C. Law 19-169, § 23(b), 59 DCR 5567</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-409.</p>
                 <p>1973 Ed., § 26-309.</p>
+                <p>1981 Ed., § 26-409.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (5), substituted “people with mental illness or mental retardation” for “lunatics and idiots”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “intellectual disabilities” for “mental retardation” in (5).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (5), substituted “people with mental illness or mental retardation” for “lunatics and idiots”.</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
               </section>
@@ -244,8 +248,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§722">Mar. 3, 1901, 31 Stat. 1305, ch. 854, § 722</a>; <a class="internal-link" href="/dc/council/laws/3-72.html">June 24, 1980, D.C. Law 3-72,§ 207(b), 27 DCR 2155</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 39(a), 53 DCR 6198</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-410.</p>
                 <p>1973 Ed., § 26-310.</p>
+                <p>1981 Ed., § 26-410.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “person with mental illness” for “lunatic”.</p>
               </section>
@@ -262,8 +266,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§723">Mar. 3, 1901, 31 Stat. 1305, ch. 854, § 723</a>; <a class="internal-link" href="/dc/council/laws/3-72.html">June 24, 1980, D.C. Law 3-72,§ 207(c), 27 DCR 2155</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-411.</p>
                 <p>1973 Ed., § 26-311.</p>
+                <p>1981 Ed., § 26-411.</p>
                 <h4>References in Text</h4>
                 <p>“Code” means An Act To establish a code of law for the District of Columbia, ch. 854, §§ 1 through 1642.</p>
               </section>
@@ -313,8 +317,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§724">Mar. 3, 1901, 31 Stat. 1305, ch. 854, § 724</a>; <a class="internal-link" href="/dc/council/laws/3-72.html">June 24, 1980, D.C. Law 3-72, § 207(d), 27 DCR 2155</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-412.</p>
                 <p>1973 Ed., § 26-312.</p>
+                <p>1981 Ed., § 26-412.</p>
               </section>
             </section>
             <hr/>
@@ -329,8 +333,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§725">Mar. 3, 1901, 31 Stat. 1306, ch. 854, § 725</a>; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63, § 106(a)(9)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-413.</p>
                 <p>1973 Ed., § 26-313.</p>
+                <p>1981 Ed., § 26-413.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-1307.html">26-1307</a> and § <a class="internal-link" href="/dc/council/code/sections/26-1322.html">26-1322</a>.</p>
               </section>
@@ -347,8 +351,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§726">Mar. 3, 1901, 31 Stat. 1306, ch. 854, § 726</a>; Apr. 19, 1920, 41 Stat. 566, ch. 153.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-414.</p>
                 <p>1973 Ed., § 26-314.</p>
+                <p>1981 Ed., § 26-414.</p>
               </section>
             </section>
             <hr/>
@@ -363,8 +367,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§727">Mar. 3, 1901, 31 Stat. 1306, ch. 854, § 727</a>; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63,§ 106(a)(10)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-415.</p>
                 <p>1973 Ed., § 26-315.</p>
+                <p>1981 Ed., § 26-415.</p>
               </section>
             </section>
             <hr/>
@@ -379,8 +383,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§728">Mar. 3, 1901, 31 Stat. 1306, ch. 854, § 728</a>; <a class="internal-link" href="/dc/council/laws/3-72.html">June 24, 1980, D.C. Law 3-72,§ 207(e), 27 DCR 2155</a>; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63, § 106(a)(11)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-416.</p>
                 <p>1973 Ed., § 26-316.</p>
+                <p>1981 Ed., § 26-416.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-1317.html">26-1317</a>.</p>
               </section>
@@ -397,8 +401,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§729">Mar. 3, 1901, 31 Stat. 1306, ch. 854, § 729</a>; June 20, 1938, 52 Stat. 780, ch. 527; <a class="internal-link" href="/dc/council/laws/6-34.html">Sept. 10, 1985, D.C. Law 6-34, § 2, 32 DCR 3776</a>; <a class="internal-link" href="/dc/council/laws/6-91.html">Mar. 12, 1986, D.C. Law 6-91, § 2, 33 DCR 310</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-417.</p>
                 <p>1973 Ed., § 26-317.</p>
+                <p>1981 Ed., § 26-417.</p>
               </section>
             </section>
             <hr/>
@@ -413,8 +417,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§730">Mar. 3, 1901, 31 Stat. 1307, ch. 854, § 730</a>; July 1, 1902, 32 Stat. 619, ch. 1352, § 6(5); Nov. 30, 1945, 59 Stat. 588, ch. 499; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63, § 106(a)(12)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-418.</p>
                 <p>1973 Ed., § 26-318.</p>
+                <p>1981 Ed., § 26-418.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-1319.html">26-1319</a>.</p>
               </section>
@@ -431,8 +435,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§731">Mar. 3, 1901, 31 Stat. 1307, ch. 854, § 731</a>; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63,§ 106(a)(13)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-419.</p>
                 <p>1973 Ed., § 26-319.</p>
+                <p>1981 Ed., § 26-419.</p>
               </section>
             </section>
             <hr/>
@@ -447,8 +451,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§732">Mar. 3, 1901, 31 Stat. 1307, ch. 854, § 732</a>; <a class="internal-link" href="/dc/council/laws/4-164.html">Dec. 1, 1982, D.C. Law 4-164,§ 601(h), 29 DCR 3976</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-420.</p>
                 <p>1973 Ed., § 26-320.</p>
+                <p>1981 Ed., § 26-420.</p>
               </section>
             </section>
             <hr/>
@@ -463,8 +467,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§733">Mar. 3, 1901, 31 Stat. 1307, ch. 854, § 733</a>; July 1, 1902, 32 Stat. 619, ch. 1352, § 6(5).)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-421.</p>
                 <p>1973 Ed., § 26-321.</p>
+                <p>1981 Ed., § 26-421.</p>
               </section>
             </section>
             <hr/>
@@ -479,8 +483,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§734">Mar. 3, 1901, 31 Stat. 1307, ch. 854, § 734</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-422.</p>
                 <p>1973 Ed., § 26-322.</p>
+                <p>1981 Ed., § 26-422.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-105.html">26-105</a>.</p>
               </section>
@@ -497,8 +501,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§735">Mar. 3, 1901, 31 Stat. 1308, ch. 854, § 735</a>; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63,§ 106(a)(14)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-423.</p>
                 <p>1973 Ed., § 26-323.</p>
+                <p>1981 Ed., § 26-423.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-1313.html">26-1313</a> and § <a class="internal-link" href="/dc/council/code/sections/26-1316.html">26-1316</a>.</p>
               </section>
@@ -515,8 +519,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§736">Mar. 3, 1901, 31 Stat. 1308, ch. 854, § 736</a>; <a class="internal-link" href="/us/congress/laws/public/85-199.html">Aug. 28, 1957, 71 Stat. 474, Pub. L. 85-199, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-424.</p>
                 <p>1973 Ed., § 26-324.</p>
+                <p>1981 Ed., § 26-424.</p>
               </section>
             </section>
             <hr/>
@@ -531,8 +535,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§737">Mar. 3, 1901, 31 Stat. 1308, ch. 854, § 737</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-425.</p>
                 <p>1973 Ed., § 26-325.</p>
+                <p>1981 Ed., § 26-425.</p>
               </section>
             </section>
             <hr/>
@@ -547,8 +551,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§738">Mar. 3, 1901, 31 Stat. 1308, ch. 854, § 738</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-426.</p>
                 <p>1973 Ed., § 26-326.</p>
+                <p>1981 Ed., § 26-426.</p>
               </section>
             </section>
             <hr/>
@@ -563,8 +567,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§739">Mar. 3, 1901, 31 Stat. 1308, ch. 854, § 739</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-427.</p>
                 <p>1973 Ed., § 26-327.</p>
+                <p>1981 Ed., § 26-427.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-1328.html">26-1328</a>.</p>
               </section>
@@ -581,8 +585,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§740">Mar. 3, 1901, 31 Stat. 1308, ch. 854, § 740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-428.</p>
                 <p>1973 Ed., § 26-328.</p>
+                <p>1981 Ed., § 26-428.</p>
               </section>
             </section>
             <hr/>
@@ -597,8 +601,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§741">Mar. 3, 1901, 31 Stat. 1308, ch. 854, § 741</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-429.</p>
                 <p>1973 Ed., § 26-329.</p>
+                <p>1981 Ed., § 26-429.</p>
               </section>
             </section>
             <hr/>
@@ -613,8 +617,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§742">Mar. 3, 1901, 31 Stat. 1308, ch. 854, § 742</a>; <a class="internal-link" href="/dc/council/laws/3-72.html">June 24, 1980, D.C. Law 3-72,§ 207(f), 27 DCR 2155</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-430.</p>
                 <p>1973 Ed., § 26-330.</p>
+                <p>1981 Ed., § 26-430.</p>
               </section>
             </section>
             <hr/>
@@ -630,8 +634,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§743">Mar. 3, 1901, 31 Stat. 1309, ch. 854, § 743</a>; June 20, 1938, 52 Stat. 780, ch. 527; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63, § 106(a)(15)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-431.</p>
                 <p>1973 Ed., § 26-331.</p>
+                <p>1981 Ed., § 26-431.</p>
               </section>
             </section>
             <hr/>
@@ -646,8 +650,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§744">Mar. 3, 1901, 31 Stat. 1309, ch. 854, § 744</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-432.</p>
                 <p>1973 Ed., § 26-332.</p>
+                <p>1981 Ed., § 26-432.</p>
               </section>
             </section>
             <hr/>
@@ -662,11 +666,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§745">Mar. 3, 1901, 31 Stat. 1309, ch. 854, § 745</a>; <a class="internal-link" href="/dc/council/laws/3-72.html">June 24, 1980, D.C. Law 3-72,§ 207(g), 27 DCR 2155</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 39(b), 53 DCR 6198</a>; <a class="internal-link" href="/dc/council/laws/19-169.html">Sept. 26, 2012, D.C. Law 19-169, § 23(c), 59 DCR 5567</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-433.</p>
                 <p>1973 Ed., § 26-333.</p>
+                <p>1981 Ed., § 26-433.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “person with mental illness or mental retardation” for “lunatic or idiot” and “lunatics, idiots”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “an intellectual disability” for “mental retardation” twice.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “person with mental illness or mental retardation” for “lunatic or idiot” and “lunatics, idiots”.</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
               </section>
@@ -683,11 +687,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§746">Mar. 3, 1901, 31 Stat. 1309, ch. 854, § 746</a>; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(a), (b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 576, Pub. L. 91-358, title I, § 158(c)(4)</a>; <a class="internal-link" href="/dc/council/laws/3-72.html">June 24, 1980, D.C. Law 3-72, § 207(h), 27 DCR 2155</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 39(c), 53 DCR 6198</a>; <a class="internal-link" href="/dc/council/laws/19-169.html">Sept. 26, 2012, D.C. Law 19-169, § 23(d), 59 DCR 5567</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-434.</p>
                 <p>1973 Ed., § 26-334.</p>
+                <p>1981 Ed., § 26-434.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “person with mental illness or mental retardation” for “lunatic, idiot,” and “lunatic or idiot,”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “an intellectual disability” for “mental retardation” both times it appears.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “person with mental illness or mental retardation” for “lunatic, idiot,” and “lunatic or idiot,”.</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
               </section>
@@ -704,8 +708,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§747">Mar. 3, 1901, 31 Stat. 1309, ch. 854, § 747</a>; Mar. 4, 1933, 47 Stat. 1567, ch. 274, § 5.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-435.</p>
                 <p>1973 Ed., § 26-335.</p>
+                <p>1981 Ed., § 26-435.</p>
               </section>
             </section>
             <hr/>
@@ -720,8 +724,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§748">Mar. 3, 1901, 31 Stat. 1309, ch. 854, § 748</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-436.</p>
                 <p>1973 Ed., § 26-336.</p>
+                <p>1981 Ed., § 26-436.</p>
               </section>
             </section>
             <hr/>
@@ -737,8 +741,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§641">Mar. 3, 1901, 31 Stat. 1289, ch. 854, § 641</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-402.</p>
                 <p>1973 Ed., § 26-302.</p>
+                <p>1981 Ed., § 26-402.</p>
               </section>
             </section>
             <hr/>
@@ -753,8 +757,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§641">Mar. 3, 1901, 31 Stat. 1289, ch. 854, § 641</a>; June 24, 1936, 49 Stat. 1898, ch. 743; <a class="internal-link" href="/dc/council/laws/6-63.html">Nov. 23, 1985, D.C. Law 6-63, § 106(a)(1)</a>; <a class="internal-link" href="/dc/council/laws/6-107.html">as added Apr. 11, 1986, D.C. Law 6-107, § 2(k), 33 DCR 1168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-403.</p>
                 <p>1973 Ed., § 26-303.</p>
+                <p>1981 Ed., § 26-403.</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/38-2703.html">§ 38–2703. Assistance to the University of the District of Columbia.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-2702.html">Report Error</a>
@@ -161,9 +161,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-2704.html">38-2704</a>, § <a class="internal-link" href="/dc/council/code/sections/38-2705.html">38-2705</a>, and § <a class="internal-link" href="/dc/council/code/sections/38-2706.html">38-2706</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>Public Law 107-157 rewrote subsecs. (c)(2)(A), (B), and (C); and, in subsec. (i), substituted “and (subject to § <a class="internal-link" href="/dc/council/code/sections/38-2706.html">38-2706</a>) such sums” for “and such sums”.</p>
-                <p>Section 9215(y) of Public Law 114-95 substituted “section 8101 of the Elementary and Secondary Education Act of 1965” for “section 14101 of the Elementary and Secondary Education Act of 1965 (20 U.S.C. 8801)” in (c)(5).</p>
                 <p>The 2015 amendment by Pub. L. 114-113 rewrote (c)(2)(G).</p>
+                <p>Section 9215(y) of Public Law 114-95 substituted “section 8101 of the Elementary and Secondary Education Act of 1965” for “section 14101 of the Elementary and Secondary Education Act of 1965 (20 U.S.C. 8801)” in (c)(5).</p>
+                <p>Public Law 107-157 rewrote subsecs. (c)(2)(A), (B), and (C); and, in subsec. (i), substituted “and (subject to § <a class="internal-link" href="/dc/council/code/sections/38-2706.html">38-2706</a>) such sums” for “and such sums”.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority under Public Law 106-98, the “District of Columbia College Access Act of 1999”, see Mayor’s Order 2000-45, March 24, 2000 ( 47 DCR 4720).</p>
               </section>

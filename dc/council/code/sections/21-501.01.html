@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/21-502.html">§ 21–502. Commission on Mental Health; composition; appointment and terms of members; organization; chairperson; salaries.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/21-501.01.html">Report Error</a>
@@ -104,14 +104,14 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-283.html">D.C. Law 14-283</a> rewrote subsec. (b) which had read as follows: “(b) Whenever a qualified psychologist may have the responsibility for the voluntary, nonprotesting, emergency, or court-ordered hospitalization of a mentally ill patient, that qualified psychologist or the hospital shall, prior to or at the time of hospital admission, identify a psychiatrist or other appropriate physician with admitting privileges at the hospital who shall be responsible for the medical evaluation and medical management of the patient for the duration of the patient’s hospitalization. The qualified psychologist shall be responsible for all other evaluation and management of the patient.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Mental Health Commitment Emergency Amendment Act of 2002 (D.C. Act 14-265, January 30, 2002,  49 DCR 1450).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Mental Health Commitment Congressional Review Emergency Act of 2002 (D.C. Act 14-350, April 24, 2002,  49 DCR 4417).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Mental Health Civil Commitment Emergency Act of 2002 (D.C. Act 14-546, December 12, 2002,  50 DCR 199).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(c) of Mental Health Civil Commitment Congressional Review Emergency Act of 2003 (D.C. Act 15-41, March 24, 2003,  50 DCR 2784).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Mental Health Civil Commitment Emergency Act of 2002 (D.C. Act 14-546, December 12, 2002,  50 DCR 199).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Mental Health Commitment Congressional Review Emergency Act of 2002 (D.C. Act 14-350, April 24, 2002,  49 DCR 4417).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Mental Health Commitment Emergency Amendment Act of 2002 (D.C. Act 14-265, January 30, 2002,  49 DCR 1450).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(c) of <a class="internal-link" href="/dc/council/laws/14-131.html">D.C. Law 14-131</a> amended subsec. (b) to read as follows:</p>
-                <p>“(b) Whenever a qualified psychologist may have the responsibility for the voluntary, nonprotesting, emergency, or court-ordered admission or hospitalization of a person who is mentally ill, that qualified psychologist or the provider shall, prior to or at the time of admission or commitment, identify a psychiatrist or other appropriate physician who shall be responsible for the medical evaluation and medical management of the person who is mentally ill during the period in which the person is receiving treatment from that provider. The qualified psychologist shall be responsible for all other evaluation and management of the mental health services or mental health supports for the person who is mentally ill.”</p>
                 <p>Section 5(b) of <a class="internal-link" href="/dc/council/laws/14-131.html">D.C. Law 14-131</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(b) Whenever a qualified psychologist may have the responsibility for the voluntary, nonprotesting, emergency, or court-ordered admission or hospitalization of a person who is mentally ill, that qualified psychologist or the provider shall, prior to or at the time of admission or commitment, identify a psychiatrist or other appropriate physician who shall be responsible for the medical evaluation and medical management of the person who is mentally ill during the period in which the person is receiving treatment from that provider. The qualified psychologist shall be responsible for all other evaluation and management of the mental health services or mental health supports for the person who is mentally ill.”</p>
+                <p>Section 2(c) of <a class="internal-link" href="/dc/council/laws/14-131.html">D.C. Law 14-131</a> amended subsec. (b) to read as follows:</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 33(b) of <a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> provided that the section designation of § 21-501.1 of the District of Columbia Official Code is redesignated as § <a class="internal-link" href="/dc/council/code/sections/21-501.01.html">21-501.01</a>.</p>
               </section>

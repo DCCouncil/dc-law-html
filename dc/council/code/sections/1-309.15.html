@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/3/subchapters/V/parts/B/">Part B. Additional Period for Circulation of Petitions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-309.15.html">Report Error</a>
@@ -108,15 +108,15 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-80.html">D.C. Law 14-80</a> rewrote subsec. (b) and added subsec. (c).</p>
                 <h4>Applicability</h4>
-                <p>Section 7036 of D.C. Law 22-33 amended <a class="internal-link" href="/dc/council/laws/21-269.html#§3">§ 3 of D.C. Law 21-269</a> to delay the applicability of part of this section. Therefore some of the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-269.html">D.C. Law 21-269</a> have not been given effect.</p>
                 <p>
             Section 3(d) of Law 21-269 provided that section 2(g)(1)(A), (h)(4)(B), (h)(5)(A), (h)(7), (h)(8), and (i) of Law 21-269 shall apply on April 1st, 2017.
           </p>
+                <p>Section 7036 of D.C. Law 22-33 amended <a class="internal-link" href="/dc/council/laws/21-269.html#§3">§ 3 of D.C. Law 21-269</a> to delay the applicability of part of this section. Therefore some of the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-269.html">D.C. Law 21-269</a> have not been given effect.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Advisory Neighborhood Commission Emergency Amendment Act of 2001 (D.C. Act 14-56, May 2, 2001,  48 DCR 4410).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Advisory Neighborhood Commission Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-104, July 23, 2001,  48 DCR 7149).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-35.html#§2(d)">§ 2(d) of Advisory Neighborhood Commissions Transfer Authorization Emergency Amendment Act of 2017 (D.C. Act 22-35, Mar. 28, 2017, 64 DCR 3103)</a>.</p>
                 <p>For temporary (90 days) amendment § 3 of D.C. Law 21-269, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7036">§ 7036 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-35.html#§2(d)">§ 2(d) of Advisory Neighborhood Commissions Transfer Authorization Emergency Amendment Act of 2017 (D.C. Act 22-35, Mar. 28, 2017, 64 DCR 3103)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Advisory Neighborhood Commission Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-104, July 23, 2001,  48 DCR 7149).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Advisory Neighborhood Commission Emergency Amendment Act of 2001 (D.C. Act 14-56, May 2, 2001,  48 DCR 4410).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of Advisory Neighborhood Commission Temporary Amendment Act of 2001 (D.C. Law 14-21, September 6, 2001, law notification  48 DCR 9091).</p>
               </section>

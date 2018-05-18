@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/1-623.25.html">§ 1–623.25. Misbehavior at proceedings.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-623.24.html">Report Error</a>
@@ -130,23 +130,23 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§2324">Mar. 3, 1979, D.C. Law 2-139, § 2324, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/3-81.html">Aug. 7, 1980, D.C. Law 3-81, § 2(z), 27 DCR 2632</a>; <a class="internal-link" href="/dc/council/laws/8-198.html">Mar. 6, 1991, D.C. Law 8-198, § 3(e), 37 DCR 6890</a>; <a class="internal-link" href="/us/congress/laws/public/105-100.html">Nov. 19, 1997, 111 Stat. 2181, Pub. L. 105-100, § 150(c)(3)</a>; <a class="internal-link" href="/dc/council/laws/12-175.html">Mar. 26, 1999, D.C. Law 12-175, § 2102(c), 45 DCR 7193</a>; <a class="internal-link" href="/dc/council/laws/14-28.html">Oct. 3, 2001, D.C. Law 14-28, § 1203(e), 48 DCR 6981</a>; <a class="internal-link" href="/dc/council/laws/15-290.html">Apr. 5, 2005, D.C. Law 15-290, § 2(e), 52 DCR 1449</a>; <a class="internal-link" href="/dc/council/laws/16-231.html">Mar. 8, 2007, D.C. Law 16-231, § 2(b), 54 DCR 365</a>; <a class="internal-link" href="/dc/council/laws/18-223.html">Sept. 24, 2010, D.C. Law 18-223, § 1062(b)(14), 57 DCR 6242</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-624.24.</p>
                 <p>1973 Ed., § 1-353.24.</p>
+                <p>1981 Ed., § 1-624.24.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-623.06a.html">1-623.06a</a>, § <a class="internal-link" href="/dc/council/code/sections/1-623.20.html">1-623.20</a>, § <a class="internal-link" href="/dc/council/code/sections/1-623.27.html">1-623.27</a>, § <a class="internal-link" href="/dc/council/code/sections/1-623.28.html">1-623.28</a>, § <a class="internal-link" href="/dc/council/code/sections/1-623.35.html">1-623.35</a>, § <a class="internal-link" href="/dc/council/code/sections/1-623.42.html">1-623.42</a>, and § <a class="internal-link" href="/dc/council/code/sections/1-623.44.html">1-623.44</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a>, in subsec. (b)(1), substituted “before a Department of Employment Services Disability Compensation Administrative Law Judge” for “before a representative of the Mayor” in the first sentence and substituted “Office of Personnel” for “Benefits Administration Office of the Department of Employment Services” in the last sentence; and, in subsec. (d), in the third sentence, substituted “Director of the Department of Employment Services” for “Mayor or his or her designee”, and substituted “Office of Personnel” for “Benefits Administration Office of the Department of Employment Services”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-290.html">D.C. Law 15-290</a> rewrote subsecs. (a) and (d); and added subsecs. (a-1) to (a-4), par. (3) of subsec. (b), and subsecs. (e) and (f).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-231.html">D.C. Law 16-231</a> added subsec. (g).</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (a-3)(1), substituted “against payment of compensation on a newly filed claim” for “against payment of compensation”; repealed subsec. (a-4); rewrote subsecs. (d)(3)(C), (E), and (4)(D).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-231.html">D.C. Law 16-231</a> added subsec. (g).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-290.html">D.C. Law 15-290</a> rewrote subsecs. (a) and (d); and added subsecs. (a-1) to (a-4), par. (3) of subsec. (b), and subsecs. (e) and (f).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a>, in subsec. (b)(1), substituted “before a Department of Employment Services Disability Compensation Administrative Law Judge” for “before a representative of the Mayor” in the first sentence and substituted “Office of Personnel” for “Benefits Administration Office of the Department of Employment Services” in the last sentence; and, in subsec. (d), in the third sentence, substituted “Director of the Department of Employment Services” for “Mayor or his or her designee”, and substituted “Office of Personnel” for “Benefits Administration Office of the Department of Employment Services”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 1702(c) of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1702(c) of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
-                <p>For temporary (90-day) amendment of section, see § 1702(c) of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1999 (D.C. Act 13-41, March 31, 1999,  46 DCR 3446).</p>
-                <p>For temporary (90 day) amendment of section, see § 1103(e) of Fiscal Year 2002 Budget Support Emergency Act of 2001 (D.C. Act 14-124, August 3, 2001,  48 DCR 7861).</p>
                 <p>For temporary (90 day) amendment of section, see § 1062(b)(14) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) amendment of section, see § 1103(e) of Fiscal Year 2002 Budget Support Emergency Act of 2001 (D.C. Act 14-124, August 3, 2001,  48 DCR 7861).</p>
+                <p>For temporary (90-day) amendment of section, see § 1702(c) of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1999 (D.C. Act 13-41, March 31, 1999,  46 DCR 3446).</p>
+                <p>For temporary amendment of section, see § 1702(c) of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1702(c) of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
                 <h4>Editor's Notes</h4>
-                <p>Mayor authorized to issue rules: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/1-623.01.html">1-623.01</a>.</p>
                 <p>Application of § 150(c) of Pub. L. 105-100: Section 150(c)(5) of Pub. L. 105-100, 111 Stat. 2181, the District of Columbia Appropriations Act, 1998, provided that the amendments made by subsection (c) shall apply with respect to services, supplies, or appliances furnished under title XXIII of the District of Columbia Merit Personnel Act of 1978 on or after the date of the enactment of this Act. Public Law 105-100 was approved November 19, 1997.</p>
+                <p>Mayor authorized to issue rules: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/1-623.01.html">1-623.01</a>.</p>
               </section>
             </section>
           </section>

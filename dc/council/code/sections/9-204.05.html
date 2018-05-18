@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/9-204.06.html">§ 9–204.06. Extent of name to be used; use on street signs. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/9-204.05.html">Report Error</a>
@@ -104,11 +104,11 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2016 amendment by <a class="internal-link" href="/dc/council/laws/21-68.html">D.C. Law 21-68</a> added “Except as provided in § <a class="internal-link" href="/dc/council/code/sections/9-204.10.html">9-204.10</a>” in the first sentence.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary designation of minor street as “Harry Thomas Way”, see § 2(b) of the Dedication and Designation of Harry Thomas Way Emergency Act of 1998 (D.C. Act 12-579, January 12, 1999,  45 DCR 966).</p>
-                <p>For designation of certain dedicated land, see § 2(b) of the Dedication and Designation of Harry Thomas Way, N.E. Emergency Act of 1999 (D.C. Act 13-198, December 1, 1999,  46 DCR 10444).</p>
-                <p>For designation of certain dedicated land, see § 2(b) of the Dedication and Designation of Harry Thomas Way, N.E. Congressional Review Emergency Act of 2000 (D.C. Act 13-277, March 7, 2000,  47 DCR 2017).</p>
-                <p>For temporary (90 days) amendment of section, see § 2(a) of the Athletic Field Naming and Sponsorship Emergency Amendment Act of 2015 (D.C. Act 21-201, Nov. 23, 2015,  62 DCR 15274).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(a) of the Athletic Field Naming and Sponsorship Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-302, Feb. 18, 2016,  63 DCR 2171).</p>
+                <p>For temporary (90 days) amendment of section, see § 2(a) of the Athletic Field Naming and Sponsorship Emergency Amendment Act of 2015 (D.C. Act 21-201, Nov. 23, 2015,  62 DCR 15274).</p>
+                <p>For designation of certain dedicated land, see § 2(b) of the Dedication and Designation of Harry Thomas Way, N.E. Congressional Review Emergency Act of 2000 (D.C. Act 13-277, March 7, 2000,  47 DCR 2017).</p>
+                <p>For designation of certain dedicated land, see § 2(b) of the Dedication and Designation of Harry Thomas Way, N.E. Emergency Act of 1999 (D.C. Act 13-198, December 1, 1999,  46 DCR 10444).</p>
+                <p>For temporary designation of minor street as “Harry Thomas Way”, see § 2(b) of the Dedication and Designation of Harry Thomas Way Emergency Act of 1998 (D.C. Act 12-579, January 12, 1999,  45 DCR 966).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) acceptance of dedication, see § 2 of Dedication and Designation of Harry Thomas Way Temporary Act of 1998 (D.C. Law 12-251, April 20, 1999, law notification  46 DCR 4164).</p>
               </section>

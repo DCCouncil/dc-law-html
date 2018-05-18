@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/48-502.html">§ 48–502. Sale of horse meat and horse meat product—Violations. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/48-501.html">Report Error</a>
@@ -98,11 +98,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-1-ch188.html#§1">July 3, 1943, 57 Stat. 372, ch. 188, § 1</a>; <a class="internal-link" href="/dc/council/laws/14-116.html">May 2, 2002, D.C. Law 14-116, § 8(e), 49 DCR 1945</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 33-401.</p>
                 <p>1973 Ed., § 33-501.</p>
+                <p>1981 Ed., § 33-401.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) repeal of section, see § 8(e) of Food Regulation Emergency Amendment Act of 2001 (D.C. Act 14-128, August 3, 2001,  48 DCR 7939).</p>
                 <p>For temporary (90 day) repeal of section, see § 8(e) of Food Regulation Legislative Review Emergency Amendment Act of 2001 (D.C. Act 14-147, October 23, 2001,  48 DCR 10183).</p>
+                <p>For temporary (90 day) repeal of section, see § 8(e) of Food Regulation Emergency Amendment Act of 2001 (D.C. Act 14-128, August 3, 2001,  48 DCR 7939).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) repeal of §§ <a class="internal-link" href="/dc/council/code/sections/48-501.html">48-501</a> to 48-503, see § 8(e) of Food Regulation Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-55.html">D.C. Law 14-55</a>, December 6, 2001, law notification  49 DCR 356).</p>
               </section>

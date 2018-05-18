@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/7-1204.02.html">§ 7–1204.02. Civil commitment proceedings.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-1204.01.html">Report Error</a>
@@ -99,13 +99,13 @@
       (<a class="internal-link" href="/dc/council/laws/2-136.html#§401">Mar. 3, 1979, D.C. Law 2-136, § 401, 25 DCR 5055</a>; <a class="internal-link" href="/dc/council/laws/14-56.html">Dec. 18, 2001, D.C. Law 14-56, § 116(f)(6), 48 DCR 7674</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2031.</p>
                 <p>1973 Ed., § 6-1628.</p>
+                <p>1981 Ed., § 6-2031.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-56.html">D.C. Law 14-56</a>, inserted “or by order of the court.”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 16(f)(6) of Department of Mental Health Establishment Emergency Amendment Act of 2001 (D.C. Act 14-55, May 2, 2001,  48 DCR 4390).</p>
                 <p>For temporary (90 day) amendment of section, see § 16(f)(6) of Department of Mental Health Establishment Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-101, July 23, 2001,  48 DCR 7123).</p>
+                <p>For temporary (90 day) amendment of section, see § 16(f)(6) of Department of Mental Health Establishment Emergency Amendment Act of 2001 (D.C. Act 14-55, May 2, 2001,  48 DCR 4390).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 16(f)(6) of Department of Mental Health Establishment Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-51.html">D.C. Law 14-51</a>, October 30, 2001, law notification  48 DCR 10807).</p>
               </section>

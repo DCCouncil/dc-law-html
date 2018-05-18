@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1226.33.html">§ 2–1226.33. Applicability of part.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1226.32.html">Report Error</a>
@@ -113,8 +113,8 @@
       (<a class="internal-link" href="/dc/council/laws/17-138.html#§452">Mar. 26, 2008, D.C. Law 17-138, § 452, 55 DCR 1689</a>; <a class="internal-link" href="/dc/council/laws/18-349.html">Mar. 31, 2011, D.C. Law 18-349, § 4(a), 58 DCR 724</a>; <a class="internal-link" href="/dc/council/laws/19-192.html">Oct. 23, 2012, D.C. Law 19-192, § 2(b), 59 DCR 10174</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-349.html">D.C. Law 18-349</a> added subsecs. (a)(1A) and (3A); and rewrote subsec. (a)(3), which formerly read as follows: “(3) ‘LEED’, ‘LEED-CI’, ‘LEED-CS’, and ‘LEED-NC’ shall have the same meanings as set forth in § <a class="internal-link" href="/dc/council/code/sections/6-1451.01.html">6-1451.01</a>(26), (27), (28), and (30).”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-192.html">D.C. Law 19-192</a> redesignated (1A) as (1B); added (1A), (1C), (1D), and (1E); and repealed (6).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-349.html">D.C. Law 18-349</a> added subsecs. (a)(1A) and (3A); and rewrote subsec. (a)(3), which formerly read as follows: “(3) ‘LEED’, ‘LEED-CI’, ‘LEED-CS’, and ‘LEED-NC’ shall have the same meanings as set forth in § <a class="internal-link" href="/dc/council/code/sections/6-1451.01.html">6-1451.01</a>(26), (27), (28), and (30).”</p>
               </section>
             </section>
           </section>

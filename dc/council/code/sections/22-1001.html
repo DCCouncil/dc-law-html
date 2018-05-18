@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/22-1002.html">§ 22–1002. Other cruelties to animals.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/22-1001.html">Report Error</a>
@@ -113,19 +113,19 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§1">Aug. 23, 1871, Leg. Assem., p. 135, ch. 106, § 1</a>; <a class="internal-link" href="/dc/council/laws/10-151.html">Aug. 20, 1994, D.C. Law 10-151, § 102(a), 41 DCR 2608</a>; <a class="internal-link" href="/dc/council/laws/13-303.html">June 8, 2001, D.C. Law 13-303, § 2(a), 47 DCR 7307</a>; <a class="internal-link" href="/dc/council/laws/17-281.html">Dec. 5, 2008, D.C. Law 17-281, § 108(a), 55 DCR 9186</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-801.</p>
                 <p>1973 Ed., § 22-801.</p>
+                <p>1981 Ed., § 22-801.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-2033.html">8-2033</a>, § <a class="internal-link" href="/dc/council/code/sections/22-951.html">22-951</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1002.html">22-1002</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1006.html">22-1006</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1006.01.html">22-1006.01</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1007.html">22-1007</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1009.html">22-1009</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1011.html">22-1011</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1012.html">22-1012</a>, and § <a class="internal-link" href="/dc/council/code/sections/22-1013.html">22-1013</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-303.html">D.C. Law 13-303</a> rewrote the section which had read:</p>
-                <p>“Whoever overdrives, overloads, drives when overloaded, overworks, tortures, torments, deprives of necessary sustenance, cruelly beats, mutilates, or cruelly kills, or causes or procures to be so overdriven, overloaded, driven when overloaded, overworked, tortured, tormented, deprived of necessary sustenance, cruelly beaten, mutilated, or cruelly killed any animal, and whoever, having the charge or custody of any animal, either as owner or otherwise, inflicts unnecessary cruelty upon the same, or unnecessarily fails to provide the same with proper food, drink, shelter, or protection from the weather, shall for every such offense be punished by imprisonment in jail not exceeding 180 days, or by fine not exceeding $250, or by both such fine and imprisonment.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a>, in subsec. (a), designated par. (1) and added pars. (2) and (3).</p>
+                <p>“Whoever overdrives, overloads, drives when overloaded, overworks, tortures, torments, deprives of necessary sustenance, cruelly beats, mutilates, or cruelly kills, or causes or procures to be so overdriven, overloaded, driven when overloaded, overworked, tortured, tormented, deprived of necessary sustenance, cruelly beaten, mutilated, or cruelly killed any animal, and whoever, having the charge or custody of any animal, either as owner or otherwise, inflicts unnecessary cruelty upon the same, or unnecessarily fails to provide the same with proper food, drink, shelter, or protection from the weather, shall for every such offense be punished by imprisonment in jail not exceeding 180 days, or by fine not exceeding $250, or by both such fine and imprisonment.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-303.html">D.C. Law 13-303</a> rewrote the section which had read:</p>
                 <h4>Cross References</h4>
                 <p>Elderly or handicapped tenants, removal of dangerous pets, see § <a class="internal-link" href="/dc/council/code/sections/8-2203.html">8-2203</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 102(a) of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-8.html#§2">§ 2 of Extreme Weather Protection for Animals Emergency Amendment Act of 2017 (D.C. Act 22-8, Feb. 21, 2017, 64 DCR 2345)</a>.</p>
+                <p>For temporary amendment of section, see § 102(a) of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
               </section>
             </section>
           </section>

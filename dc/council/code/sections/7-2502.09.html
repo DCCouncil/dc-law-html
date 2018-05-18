@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/7-2502.10.html">§ 7–2502.10. Procedure for denial and revocation of registration certificate.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-2502.09.html">Report Error</a>
@@ -104,19 +104,19 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§209">Sept. 24, 1976, D.C. Law 1-85, title II, § 209, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/17-372.html">Mar. 31, 2009, D.C. Law 17-372, § 3(h), 56 DCR 1365</a>; <a class="internal-link" href="/dc/council/laws/18-377.html">June 3, 2011, D.C. Law 18-377,§ 2(d), 58 DCR 1174</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2319.</p>
                 <p>1973 Ed., § 6-1819.</p>
+                <p>1981 Ed., § 6-2319.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1831.03.html">2-1831.03</a> and § <a class="internal-link" href="/dc/council/code/sections/24-261.02a.html">24-261.02a</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a> designated subsec. (a); in subsec. (a), inserted “or” at the end of par. (2), substituted a period for “; and” at the end of par. (3), and repealed par. (4); and added subsec. (b). Prior to repeal, par. (4) of subsec. (a) read as follows: “(4) There is a violation or omission of the duties, obligations or requirements imposed by § <a class="internal-link" href="/dc/council/code/sections/7-2502.08.html">7-2502.08</a>.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a>, in subsec. (a)(1), substituted “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>(a)” for “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>”; and rewrote subsec. (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a> designated subsec. (a); in subsec. (a), inserted “or” at the end of par. (2), substituted a period for “; and” at the end of par. (3), and repealed par. (4); and added subsec. (b). Prior to repeal, par. (4) of subsec. (a) read as follows: “(4) There is a violation or omission of the duties, obligations or requirements imposed by § <a class="internal-link" href="/dc/council/code/sections/7-2502.08.html">7-2502.08</a>.”</p>
                 <h4>Cross References</h4>
                 <p>Applicability to private operator, see § <a class="internal-link" href="/dc/council/code/sections/24-261.02a.html">24-261.02a</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(h) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
-                <p>For temporary (90 day) amendment of section, see § 502(d) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
                 <p>For temporary (90 day) amendment of section, see § 502(d) of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
+                <p>For temporary (90 day) amendment of section, see § 502(d) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(h) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
               </section>
             </section>
           </section>

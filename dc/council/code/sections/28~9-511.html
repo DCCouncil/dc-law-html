@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-512.html">§ 28:9-512. Amendment of financing statement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-511.html">Report Error</a>
@@ -102,9 +102,9 @@
       (<a class="internal-link" href="/dc/council/laws/13-201.html">Oct. 26, 2000, D.C. Law 13-201, § 101, 47 DCR 7576</a>.)
     </p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. New.</p>
-                <p>2. Secured Party of Record. This new section explains how the secured party of record is to be determined. If SP-1 is named as the secured party in an initial financing statement, it is the secured party of record. Similarly, if an initial financing statement reflects a total assignment from SP-0 to SP-1, then SP-1 is the secured party of record. See subsection (a). If, subsequently, an amendment is filed assigning SP-1’s status to SP-2, then SP-2 becomes the secured party of record in place of SP-1. The same result obtains if a subsequent amendment deletes the reference to SP-1 and substitutes therefor a reference to SP-2. If, however, a subsequent amendment adds SP-2 as a secured party but does not purport to remove SP-1 as a secured party, then SP-2 and SP-1 each is a secured party of record. See subsection (b). An amendment purporting to remove the only secured party of record without providing a successor is ineffective. See  Section 9-512(e). At any point in time, all effective records that comprise a financing statement must be examined to determine the person or persons that have the status of secured party of record.</p>
                 <p>3. Successor to Secured Party of Record. Application of other law may result in a person succeeding to the powers of a secured party of record. For example, if the secured party of record (A) merges into another corporation (B) and the other corporation (B) survives, other law may provide that B has all of A’s powers. In that case, B is authorized to take all actions under this Part that A would have been authorized to take. Similarly, acts taken by a person who is authorized under generally applicable principles of agency to act on behalf of the secured party of record are effective under this Part.</p>
+                <p>2. Secured Party of Record. This new section explains how the secured party of record is to be determined. If SP-1 is named as the secured party in an initial financing statement, it is the secured party of record. Similarly, if an initial financing statement reflects a total assignment from SP-0 to SP-1, then SP-1 is the secured party of record. See subsection (a). If, subsequently, an amendment is filed assigning SP-1’s status to SP-2, then SP-2 becomes the secured party of record in place of SP-1. The same result obtains if a subsequent amendment deletes the reference to SP-1 and substitutes therefor a reference to SP-2. If, however, a subsequent amendment adds SP-2 as a secured party but does not purport to remove SP-1 as a secured party, then SP-2 and SP-1 each is a secured party of record. See subsection (b). An amendment purporting to remove the only secured party of record without providing a successor is ineffective. See  Section 9-512(e). At any point in time, all effective records that comprise a financing statement must be examined to determine the person or persons that have the status of secured party of record.</p>
+                <p>1. Source. New.</p>
               </section>
             </section>
           </section>

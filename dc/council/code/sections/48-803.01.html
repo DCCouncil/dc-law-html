@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/48-803.02.html">§ 48–803.02. Dispensing of generically equivalent drug products.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/48-803.01.html">Report Error</a>
@@ -106,8 +106,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-81.html#§301">Sept. 10, 1976, D.C. Law 1-81, title III, § 301, 23 DCR 2460</a>; <a class="internal-link" href="/dc/council/laws/1-114.html">Apr. 7, 1977, D.C. Law 1-114, § 4(a), 23 DCR 8743</a>; <a class="internal-link" href="/dc/council/laws/18-118.html">Mar. 11, 2010, D.C. Law 18-118, § 2(a), 57 DCR 901</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 33-731.</p>
                 <p>1973 Ed., § 33-831.</p>
+                <p>1981 Ed., § 33-731.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-118.html">D.C. Law 18-118</a> rewrote the section, which had read as follows: “The Department of Human Services shall publish a formulary of drug products, with the chemical or generic name of each, that are determined to be therapeutically equivalent to specified brand name drug products. The Department shall determine the contents of the formulary only after recommendations are made by a committee of 9 members appointed by the Director of that Department. The committee shall consist of one licensed physician and one licensed pharmacist employed by the Department, 2 licensed physicians and 3 licensed pharmacists in private practice in the District, and 2 pharmacologists on the faculty of a university in the District. The recommendations of the committee shall require concurrence of a majority of the members of the committee. The committee’s recommendations shall be published in the District of Columbia Register as proposed regulations of the Department. The Department’s determinations shall be made in accordance with §§ <a class="internal-link" href="/dc/council/code/sections/2-503.html">2-503</a>, <a class="internal-link" href="/dc/council/code/sections/2-504.html">2-504</a> and <a class="internal-link" href="/dc/council/code/sections/2-505.html">2-505</a> and published in the District of Columbia Register as final regulations. The committee shall review the published formulary annually, or whenever an amendment to it appears necessary. The committee shall publish its 1st recommendations no later than 8 months after April 7, 1977.”</p>
               </section>

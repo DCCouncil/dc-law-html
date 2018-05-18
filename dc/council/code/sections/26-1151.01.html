@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/26-1151.02.html">§ 26–1151.02. Federally regulated, supervised, and insured entities and the Federal National Mortgage Association and Federal Home Loan Corporation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/26-1151.01.html">Report Error</a>
@@ -145,12 +145,12 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-166.html">D.C. Law 15-166</a> rewrote pars. (6) and (8).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 101 of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(d) of Consolidation of Financial Services Emergency Amendment Act of 2004 (D.C. Act 15-381, February 27, 2004,  51 DCR 2653).</p>
                 <p>For temporary (90 days) addition of a subchapter concerning conformity with the Nationwide Mortgage Licensing System, see §§ 2-11 of the Nationwide Mortgage Licensing System Conformity Emergency Act of 2014 (D.C. Act 20-374, July 10, 2014,  61 DCR 7230).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(d) of Consolidation of Financial Services Emergency Amendment Act of 2004 (D.C. Act 15-381, February 27, 2004,  51 DCR 2653).</p>
+                <p>For temporary (90 day) addition of section, see § 101 of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
                 <h4>References in Text</h4>
-                <p>The “Truth in Lending Act”, referred to in par. (1), is classified to  15 U.S.C. § 1601 et seq.</p>
                 <p>Section 103(aa) of the “Truth and Lending Act”, referred to in par. (7)(B), is classified to  15 U.S.C. § 1602(aa).</p>
+                <p>The “Truth in Lending Act”, referred to in par. (1), is classified to  15 U.S.C. § 1601 et seq.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of Authority Pursuant to <a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a>, “The Home Loan Protection Act of 2002”, see Mayor’s Order 2002-154, September 13, 2002 ( 49 DCR 8622).</p>
               </section>

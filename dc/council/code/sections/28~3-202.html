@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:3-203.html">§ 28:3-203. Transfer of instrument; rights acquired by transfer.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:3-202.html">Report Error</a>
@@ -100,13 +100,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 678, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/10-249.html">Mar. 23, 1995, D.C. Law 10-249, § 2(d), 42 DCR 467</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:3-202.</p>
                 <p>1973 Ed., § 28:3-207.</p>
+                <p>1981 Ed., § 28:3-202.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. This section is based on former  Section 3-207. Subsection (2) of former  Section 3-207 prohibited rescission of a negotiation against holders in due course. Subsection (b) of  Section 3-202 extends this protection to payor banks.</p>
-                <p>2. Subsection (a) applies even though the lack of capacity or the illegality, is of a character which goes to the essence of the transaction and makes it entirely void. It is inherent in the character of negotiable instruments that any person in possession of an instrument which by its terms is payable to that person or to bearer is a holder and may be dealt with by anyone as a holder. The principle finds its most extreme application in the well settled rule that a holder in due course may take the instrument even from a thief and be protected against the claim of the rightful owner. The policy of subsection (a) is that any person to whom an instrument is negotiated is a holder until the instrument has been recovered from that person’s possession. The remedy of a person with a claim to an instrument is to recover the instrument by replevin or otherwise; to impound it or to enjoin its enforcement, collection or negotiation; to recover its proceeds from the holder; or to intervene in any action brought by the holder against the obligor. As provided in  Section 3-305(c), the claim of the claimant is not a defense to the obligor unless the claimant defends the action.</p>
-                <p>3. There can be no rescission or other remedy against a holder in due course or a person who pays in good faith and without notice, even though the prior negotiation may have been fraudulent or illegal in its essence and entirely void. As against any other party the claimant may have any remedy permitted by law. This section is not intended to specify what that remedy may be, or to prevent any court from imposing conditions or limitations such as prompt action or return of the consideration received.</p>
                 <p>All such questions are left to the law of the particular jurisdiction.  Section 3-202 gives no right that would not otherwise exist. The section is intended to mean that any remedies afforded by other law are cut off only by a holder in due course.</p>
+                <p>3. There can be no rescission or other remedy against a holder in due course or a person who pays in good faith and without notice, even though the prior negotiation may have been fraudulent or illegal in its essence and entirely void. As against any other party the claimant may have any remedy permitted by law. This section is not intended to specify what that remedy may be, or to prevent any court from imposing conditions or limitations such as prompt action or return of the consideration received.</p>
+                <p>2. Subsection (a) applies even though the lack of capacity or the illegality, is of a character which goes to the essence of the transaction and makes it entirely void. It is inherent in the character of negotiable instruments that any person in possession of an instrument which by its terms is payable to that person or to bearer is a holder and may be dealt with by anyone as a holder. The principle finds its most extreme application in the well settled rule that a holder in due course may take the instrument even from a thief and be protected against the claim of the rightful owner. The policy of subsection (a) is that any person to whom an instrument is negotiated is a holder until the instrument has been recovered from that person’s possession. The remedy of a person with a claim to an instrument is to recover the instrument by replevin or otherwise; to impound it or to enjoin its enforcement, collection or negotiation; to recover its proceeds from the holder; or to intervene in any action brought by the holder against the obligor. As provided in  Section 3-305(c), the claim of the claimant is not a defense to the obligor unless the claimant defends the action.</p>
+                <p>1. This section is based on former  Section 3-207. Subsection (2) of former  Section 3-207 prohibited rescission of a negotiation against holders in due course. Subsection (b) of  Section 3-202 extends this protection to payor banks.</p>
               </section>
             </section>
           </section>

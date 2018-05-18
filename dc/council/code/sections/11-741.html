@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/11-742.html">§ 11–742. Oaths, affirmations, and acknowledgments.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/11-741.html">Report Error</a>
@@ -106,8 +106,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 481, Pub. L. 91-358, title I, § 111</a>; <a class="internal-link" href="/us/congress/laws/public/101-97.html">Sept. 23, 1989, 103 Stat. 634, Pub. L. 101-97, § 2(b)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 11-741.</p>
                 <p>1973 Ed., § 11-741.</p>
+                <p>1981 Ed., § 11-741.</p>
                 <h4>Editor's Notes</h4>
                 <p>Application of §§ 2 and 3 of Pub. L. 101-97: Section 5 of Pub. L. 101-97 provided that the amendments made by §§ 2 and 3 shall apply with respect to any individual imprisoned before the expiration of the 18-month period that begins on the date of the enactment of this Act for disobedience of an order or for contempt committed in the presence of the Superior Court of the District of Columbia or the District of Columbia Court of Appeals.</p>
               </section>

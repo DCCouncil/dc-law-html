@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/1/subchapters/II/parts/E/">Part E. Home Rule Act 40th Anniversary Celebration and Commemoration. [Expired.]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-136.03.html">Report Error</a>
@@ -100,13 +100,13 @@
       (<a class="internal-link" href="/dc/council/laws/18-127.html#§4">Mar. 23, 2010, D.C. Law 18-127, § 4, 57 DCR 1183</a>; <a class="internal-link" href="/dc/council/laws/20-271.html">May 2, 2015, D.C. Law 20-271, § 102, 62 DCR 1884</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of sections, see §§ 1081 to 1089 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
-                <p>For temporary (90 day) addition of sections, see §§ 1081 to 1089 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
-                <p>For temporary (90 days) repeal of this section, see §  102 of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
                 <p>For temporary (90 days) repeal of this section, see § 102 of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-7, Feb. 26, 2015,  62 DCR 2646, 21 STAT 807).</p>
+                <p>For temporary (90 days) repeal of this section, see §  102 of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
+                <p>For temporary (90 day) addition of sections, see §§ 1081 to 1089 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) addition of sections, see §§ 1081 to 1089 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 4 of <a class="internal-link" href="/dc/council/laws/18-127.html">D.C. Law 18-127</a> provided that this act shall apply upon inclusion of its fiscal effect in an approved budget and financial plan.</p>
                 <p>The Budget Director of the Council of the District of Columbia has determined, as of February 15, 2012, that the fiscal effect of Law 18-127 has not been included in an approved budget and financial plan. Therefore, the provisions of this section, enacted by Law 18-127, are not in effect.</p>
+                <p>Section 4 of <a class="internal-link" href="/dc/council/laws/18-127.html">D.C. Law 18-127</a> provided that this act shall apply upon inclusion of its fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
           </section>

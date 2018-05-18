@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/21-2061.html">§ 21–2061. Death, resignation, or removal of conservator.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/21-2060.html">Report Error</a>
@@ -111,47 +111,47 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/21-2047.html">21-2047</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-249.html">D.C. Law 17-249</a> added subsec. (a-1).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> added a comma following “requirements” in (a-1)(3).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-230.html">D.C. Law 20-230</a> substituted “As approved by order of the court, any case reviewer, visitor” for “As approved by order of the court, any visitor” at the beginning of (a).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> added a comma following “requirements” in (a-1)(3).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-249.html">D.C. Law 17-249</a> added subsec. (a-1).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(j) of Health-Care Decisions for Persons with Developmental Disabilities Emergency Act of 2007 (D.C. Act 17-161, October 18, 2007,  54 DCR 10932).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(j) of Health-Care Decisions for Persons with Developmental Disabilities Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-245, January 23, 2008,  55 DCR 1230).</p>
                 <p>For temporary (90 day) amendment, see § 2(j) of Health-Care Decisions for Persons with Developmental Disabilities Emergency Act of 2008 (D.C. Act 17-492, August 4, 2008,  55 DCR 9167).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(j) of Health-Care Decisions for Persons with Developmental Disabilities Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-245, January 23, 2008,  55 DCR 1230).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(j) of Health-Care Decisions for Persons with Developmental Disabilities Emergency Act of 2007 (D.C. Act 17-161, October 18, 2007,  54 DCR 10932).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(j) of D.C. Law 17-100 added subsec. (a-1) to read as follows:</p>
-                <p>“(a-1) The estate of a person or ward shall be deemed depleted for purposes of this chapter, and all compensation, expenses, and payouts made under this section shall be paid from a fund established by the District:</p>
-                <p>“(1) If the person or ward qualifies for federal Supplemental Security Income under Title XVI of the Social Security Act;</p>
-                <p>“(2) If the person or ward qualifies for Medicaid or Medicaid Expansion Programs as allowed by federal, state, or local requirements;</p>
-                <p>“(3) If the person or ward qualifies for other means-tested public assistance programs as allowed by federal, state, or local requirements, including Temporary Assistance for Needy Families, Interim Disability Assistance, Food Stamps, or D.C. Healthcare Alliance;</p>
-                <p>“(4) If the person or ward qualifies for federal disability benefits, including Old Age, Survivors, and Disability Insurance Benefits under Title II of the Social Security Act, Rehabilitation Services Administration Payments, Railroad Retirement Board, or Veterans benefits and such benefits constitute the person or ward’s sole source of income;</p>
-                <p>“(5) If the person or ward has been found to be unable to pay for habilitation, care, or legal services by any branch of the Superior Court of the District of Columbia; or</p>
-                <p>“(6) If the circumstances listed in paragraphs (1), (2), (3), (4), or (5) of this subsection do not apply, the person or ward establishes, by affidavit or other proof satisfactory to the court, the inability to pay any costs without substantial financial hardship to himself or herself or his or her family.”</p>
                 <p>Section 6(b) of D.C. Law 17-100 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(6) If the circumstances listed in paragraphs (1), (2), (3), (4), or (5) of this subsection do not apply, the person or ward establishes, by affidavit or other proof satisfactory to the court, the inability to pay any costs without substantial financial hardship to himself or herself or his or her family.”</p>
+                <p>“(5) If the person or ward has been found to be unable to pay for habilitation, care, or legal services by any branch of the Superior Court of the District of Columbia; or</p>
+                <p>“(4) If the person or ward qualifies for federal disability benefits, including Old Age, Survivors, and Disability Insurance Benefits under Title II of the Social Security Act, Rehabilitation Services Administration Payments, Railroad Retirement Board, or Veterans benefits and such benefits constitute the person or ward’s sole source of income;</p>
+                <p>“(3) If the person or ward qualifies for other means-tested public assistance programs as allowed by federal, state, or local requirements, including Temporary Assistance for Needy Families, Interim Disability Assistance, Food Stamps, or D.C. Healthcare Alliance;</p>
+                <p>“(2) If the person or ward qualifies for Medicaid or Medicaid Expansion Programs as allowed by federal, state, or local requirements;</p>
+                <p>“(1) If the person or ward qualifies for federal Supplemental Security Income under Title XVI of the Social Security Act;</p>
+                <p>“(a-1) The estate of a person or ward shall be deemed depleted for purposes of this chapter, and all compensation, expenses, and payouts made under this section shall be paid from a fund established by the District:</p>
+                <p>Section 2(j) of D.C. Law 17-100 added subsec. (a-1) to read as follows:</p>
                 <h4>References in Text</h4>
-                <p>Title XVI of the Social Security Act, referred to in subsection (a-1) of this section, is codified as  42 U.S.C. § 1381 et seq.</p>
                 <p>Title II of the Social Security Act, referred to in subdivision (a-1) of this section, is codified as  42 U.S.C. §§ 401 to  433.</p>
+                <p>Title XVI of the Social Security Act, referred to in subsection (a-1) of this section, is codified as  42 U.S.C. § 1381 et seq.</p>
                 <h4>Editor's Notes</h4>
-                <p>Appropriations approved: Public Law 104-194, 110 Stat. 2358, the District of Columbia Appropriations Act, 1997, provided that funds appropriated for expenses under § <a class="internal-link" href="/dc/council/code/sections/21-2060.html">21-2060</a>, for fiscal year ending September 30, 1997, shall be available for obligations incurred under that Act in each fiscal year since inception in fiscal year 1989.</p>
-                <p>Prompt Payment of Appointed Counsel. Section 129 of Pub. L. 107-96, Dec. 21, 2001, 115 Stat. 923, provided:</p>
-                <p>“(a) ASSESSMENT OF INTEREST FOR DELAYED PAYMENTS—If the Superior Court of the District of Columbia or the District of Columbia Court of Appeals does not make a payment described in subsection (b) prior to the expiration of the 45-day period which begins on the date the Court receives a completed voucher for a claim for the payment, interest shall be assessed against the amount of the payment which would otherwise be made to take into account the period which begins on the day after the expiration of such 45-day period and which ends on the day the Court makes the payment.</p>
-                <p>“(b) PAYMENTS DESCRIBED.—A payment described in this subsection is —</p>
-                <p>“(1) a payment authorized under  section 11-2604 and  section 11-2605, D.C. Code (relating to representation provided under the District of Columbia Criminal Justice Act);</p>
-                <p>“(2) a payment for counsel appointed in proceedings in the Family Division of the Superior Court of the District of Columbia under chapter 23 of title 16, D.C. Code; or</p>
-                <p>“(3) a payment for counsel authorized under  section 21-2060, D.C. Code (relating to representation provided under the District of Columbia Guardianship, Protective Proceedings, and Durable Power of Attorney Act of 1986).</p>
-                <p>“(c) STANDARDS FOR SUBMISSION OF COMPLETED VOUCHERS.—The chief judges of the Superior Court of the District of Columbia and the District of Columbia Court of Appeals shall establish standards and criteria for determining whether vouchers submitted for claims for payments described in subsection (b) are complete, and shall publish and make such standards and criteria available to attorneys who practice before such Courts.</p>
-                <p>“(d) RULE OF CONSTRUCTION.—Nothing in this section shall be construed to require the assessment of interest against any claim (or portion of any claim) which is denied by the Court involved.</p>
-                <p>“(e) Effective Date.—This section shall apply with respect to claims received by the Superior Court of the District of Columbia or the District of Columbia Court of Appeals during fiscal year 2002, and claims received previously that remain unpaid at the end of fiscal year 2001, and would have qualified for interest payment under this section.”</p>
-                <p>Prompt Payment of Appointed Counsel. Section 128 of Pub. L. 108-7, Feb. 20, 2003, 117 Stat. 127, provided:</p>
-                <p>“(a) If the Superior Court of the District of Columbia or the District of Columbia Court of Appeals does not make a payment described in subsection (b) prior to the expiration of the 45-day period which begins on the date the Court receives a completed voucher for a claim for the payment, interest shall be assessed against the amount of the payment which would otherwise be made to take into account the period which begins on the day after the expiration of such 45-day period and which ends on the day the Court makes the payment.</p>
-                <p>“(b) A payment described in this subsection is—</p>
-                <p>“(1) a payment authorized under  section 11-2604 and  section 11-2605, D.C. Official Code (relating to representation provided under the District of Columbia Criminal Justice Act);</p>
-                <p>“(2) a payment for counsel appointed in proceedings in the Family Court of the Superior Court of the District of Columbia under chapter 23 of title 16, D.C. Official Code; or</p>
-                <p>“(3) a payment for counsel authorized under  section 21-2060, D.C. Official Code (relating to representation provided under the District of Columbia Guardianship, Protective Proceedings, and Durable Power of Attorney Act of 1986).</p>
-                <p>“(c) The chief judges of the Superior Court of the District of Columbia and the District of Columbia Court of Appeals shall establish standards and criteria for determining whether vouchers submitted for claims for payments described in subsection (b) are complete, and shall publish and make such standards and criteria available to attorneys who practice before such Courts.</p>
-                <p>“(d) Nothing in this section shall be construed to require the assessment of interest against any claim (or portion of any claim) which is denied by the Court involved.</p>
-                <p>“(e) This section shall apply with respect to claims received by the Superior Court of the District of Columbia or the District of Columbia Court of Appeals during fiscal year 2003 and any subsequent fiscal year.”</p>
                 <p>Uniform Law: This section is based upon § 2-313 of the Uniform Guardianship and Protective Proceedings Act (1982 Act).</p>
+                <p>“(e) This section shall apply with respect to claims received by the Superior Court of the District of Columbia or the District of Columbia Court of Appeals during fiscal year 2003 and any subsequent fiscal year.”</p>
+                <p>“(d) Nothing in this section shall be construed to require the assessment of interest against any claim (or portion of any claim) which is denied by the Court involved.</p>
+                <p>“(c) The chief judges of the Superior Court of the District of Columbia and the District of Columbia Court of Appeals shall establish standards and criteria for determining whether vouchers submitted for claims for payments described in subsection (b) are complete, and shall publish and make such standards and criteria available to attorneys who practice before such Courts.</p>
+                <p>“(3) a payment for counsel authorized under  section 21-2060, D.C. Official Code (relating to representation provided under the District of Columbia Guardianship, Protective Proceedings, and Durable Power of Attorney Act of 1986).</p>
+                <p>“(2) a payment for counsel appointed in proceedings in the Family Court of the Superior Court of the District of Columbia under chapter 23 of title 16, D.C. Official Code; or</p>
+                <p>“(1) a payment authorized under  section 11-2604 and  section 11-2605, D.C. Official Code (relating to representation provided under the District of Columbia Criminal Justice Act);</p>
+                <p>“(b) A payment described in this subsection is—</p>
+                <p>“(a) If the Superior Court of the District of Columbia or the District of Columbia Court of Appeals does not make a payment described in subsection (b) prior to the expiration of the 45-day period which begins on the date the Court receives a completed voucher for a claim for the payment, interest shall be assessed against the amount of the payment which would otherwise be made to take into account the period which begins on the day after the expiration of such 45-day period and which ends on the day the Court makes the payment.</p>
+                <p>Prompt Payment of Appointed Counsel. Section 128 of Pub. L. 108-7, Feb. 20, 2003, 117 Stat. 127, provided:</p>
+                <p>“(e) Effective Date.—This section shall apply with respect to claims received by the Superior Court of the District of Columbia or the District of Columbia Court of Appeals during fiscal year 2002, and claims received previously that remain unpaid at the end of fiscal year 2001, and would have qualified for interest payment under this section.”</p>
+                <p>“(d) RULE OF CONSTRUCTION.—Nothing in this section shall be construed to require the assessment of interest against any claim (or portion of any claim) which is denied by the Court involved.</p>
+                <p>“(c) STANDARDS FOR SUBMISSION OF COMPLETED VOUCHERS.—The chief judges of the Superior Court of the District of Columbia and the District of Columbia Court of Appeals shall establish standards and criteria for determining whether vouchers submitted for claims for payments described in subsection (b) are complete, and shall publish and make such standards and criteria available to attorneys who practice before such Courts.</p>
+                <p>“(3) a payment for counsel authorized under  section 21-2060, D.C. Code (relating to representation provided under the District of Columbia Guardianship, Protective Proceedings, and Durable Power of Attorney Act of 1986).</p>
+                <p>“(2) a payment for counsel appointed in proceedings in the Family Division of the Superior Court of the District of Columbia under chapter 23 of title 16, D.C. Code; or</p>
+                <p>“(1) a payment authorized under  section 11-2604 and  section 11-2605, D.C. Code (relating to representation provided under the District of Columbia Criminal Justice Act);</p>
+                <p>“(b) PAYMENTS DESCRIBED.—A payment described in this subsection is —</p>
+                <p>“(a) ASSESSMENT OF INTEREST FOR DELAYED PAYMENTS—If the Superior Court of the District of Columbia or the District of Columbia Court of Appeals does not make a payment described in subsection (b) prior to the expiration of the 45-day period which begins on the date the Court receives a completed voucher for a claim for the payment, interest shall be assessed against the amount of the payment which would otherwise be made to take into account the period which begins on the day after the expiration of such 45-day period and which ends on the day the Court makes the payment.</p>
+                <p>Prompt Payment of Appointed Counsel. Section 129 of Pub. L. 107-96, Dec. 21, 2001, 115 Stat. 923, provided:</p>
+                <p>Appropriations approved: Public Law 104-194, 110 Stat. 2358, the District of Columbia Appropriations Act, 1997, provided that funds appropriated for expenses under § <a class="internal-link" href="/dc/council/code/sections/21-2060.html">21-2060</a>, for fiscal year ending September 30, 1997, shall be available for obligations incurred under that Act in each fiscal year since inception in fiscal year 1989.</p>
               </section>
             </section>
           </section>

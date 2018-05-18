@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/2-213.02.html">§ 2–213.02. Automatic data processing — Duties of Mayor.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-213.01.html">Report Error</a>
@@ -108,8 +108,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-1134.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary establishment of an Office of the Chief Technology Officer, see § 1412 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and see § 1412 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
                 <p>Section 2101 of D.C. Act 12-564 provided for the application of the act.</p>
+                <p>For temporary establishment of an Office of the Chief Technology Officer, see § 1412 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and see § 1412 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
                 <h4>Editor's Notes</h4>
                 <p>Establishment of Office of the Chief Technology Officer: Section 1812 of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a> established, in the Executive Branch of the government of the District of Columbia, an Office of the Chief Technology Officer under the supervision of a Chief Technology Officer, who shall carry out the functions and authorities assigned to that office.</p>
               </section>

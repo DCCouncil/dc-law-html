@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/2/chapters/8/subchapters/II/">Subchapter II. After August 6, 1956.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/2/chapters/8/subchapters/I/">Report Error</a>
@@ -88,16 +88,36 @@
         <section class="col8 body">
           <h1>Subchapter I. After August 12, 1998.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/2-801.html">§ 2–801. Definitions.</a>
-            <a href="/dc/council/code/sections/2-802.html">§ 2–802. Regulations, licenses, and registration tags.</a>
-            <a href="/dc/council/code/sections/2-803.html">§ 2–803. Use of reservations, grounds, and public spaces.</a>
-            <a href="/dc/council/code/sections/2-804.html">§ 2–804. Installation and removal of electrical facilities.</a>
-            <a href="/dc/council/code/sections/2-805.html">§ 2–805. Extension of wires along parade routes.</a>
-            <a href="/dc/council/code/sections/2-806.html">§ 2–806. Duration of regulations and licenses and publication of regulations.</a>
-            <a href="/dc/council/code/sections/2-807.html">§ 2–807. Application to other property.</a>
-            <a href="/dc/council/code/sections/2-808.html">§ 2–808. Enforcement.</a>
-            <a href="/dc/council/code/sections/2-809.html">§ 2–809. Penalty.</a>
-            <a href="/dc/council/code/sections/2-810.html">§ 2–810. Authorization of appropriations.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-801.html">§ 2–801. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-802.html">§ 2–802. Regulations, licenses, and registration tags.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-803.html">§ 2–803. Use of reservations, grounds, and public spaces.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-804.html">§ 2–804. Installation and removal of electrical facilities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-805.html">§ 2–805. Extension of wires along parade routes.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-806.html">§ 2–806. Duration of regulations and licenses and publication of regulations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-807.html">§ 2–807. Application to other property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-808.html">§ 2–808. Enforcement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-809.html">§ 2–809. Penalty.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/2-810.html">§ 2–810. Authorization of appropriations.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

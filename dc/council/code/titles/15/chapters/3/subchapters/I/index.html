@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/15/chapters/3/subchapters/II/">Subchapter II. Foreign Judgments.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/15/chapters/3/subchapters/I/">Report Error</a>
@@ -88,29 +88,75 @@
         <section class="col8 body">
           <h1>Subchapter I. Local Judgments and Decrees.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/15-301.html">§ 15–301. Definition and applicability.</a>
-            <a href="/dc/council/code/sections/15-302.html">§ 15–302. Period during which writ of execution may issue; returnable period.</a>
-            <a href="/dc/council/code/sections/15-303.html">§ 15–303. Alias writs.</a>
-            <a href="/dc/council/code/sections/15-304.html">§ 15–304. Return of writ.</a>
-            <a href="/dc/council/code/sections/15-305.html">§ 15–305. Issuance of writ after expiration of period.</a>
-            <a href="/dc/council/code/sections/15-306.html">§ 15–306. Election to move for new judgment in lieu of execution.</a>
-            <a href="/dc/council/code/sections/15-307.html">§ 15–307. Lien of execution.</a>
-            <a href="/dc/council/code/sections/15-308.html">§ 15–308. Endorsement, by marshal, of date of receipt of writ.</a>
-            <a href="/dc/council/code/sections/15-309.html">§ 15–309. Death of judgment debtor after delivery of execution.</a>
-            <a href="/dc/council/code/sections/15-310.html">§ 15–310. Lien of execution on Court of General Sessions judgment; levy. [Repealed]</a>
-            <a href="/dc/council/code/sections/15-311.html">§ 15–311. Property subject to levy.</a>
-            <a href="/dc/council/code/sections/15-312.html">§ 15–312. Levy on money and evidences of debt.</a>
-            <a href="/dc/council/code/sections/15-313.html">§ 15–313. Levy on equitable interest in chattels pledged.</a>
-            <a href="/dc/council/code/sections/15-314.html">§ 15–314. Appraisement; notice of sale.</a>
-            <a href="/dc/council/code/sections/15-315.html">§ 15–315. Death, removal, or disqualification of marshal.</a>
-            <a href="/dc/council/code/sections/15-316.html">§ 15–316. Subrogation of purchaser after defective sale; no refund.</a>
-            <a href="/dc/council/code/sections/15-317.html">§ 15–317. Remedy of marshal for erroneous sale made in good faith.</a>
-            <a href="/dc/council/code/sections/15-318.html">§ 15–318. Remedies of purchaser upon refusal to deliver possession.</a>
-            <a href="/dc/council/code/sections/15-319.html">§ 15–319. Execution of final decree after death; other appropriate proceedings.</a>
-            <a href="/dc/council/code/sections/15-320.html">§ 15–320. Enforcement of decrees.</a>
-            <a href="/dc/council/code/sections/15-321.html">§ 15–321. Enforcement of interlocutory decrees.</a>
-            <a href="/dc/council/code/sections/15-322.html">§ 15–322. Enforcement of decrees for delivery of chattels.</a>
-            <a href="/dc/council/code/sections/15-323.html">§ 15–323. Limitation on seizure of real property.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-301.html">§ 15–301. Definition and applicability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-302.html">§ 15–302. Period during which writ of execution may issue; returnable period.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-303.html">§ 15–303. Alias writs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-304.html">§ 15–304. Return of writ.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-305.html">§ 15–305. Issuance of writ after expiration of period.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-306.html">§ 15–306. Election to move for new judgment in lieu of execution.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-307.html">§ 15–307. Lien of execution.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-308.html">§ 15–308. Endorsement, by marshal, of date of receipt of writ.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-309.html">§ 15–309. Death of judgment debtor after delivery of execution.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-310.html">§ 15–310. Lien of execution on Court of General Sessions judgment; levy. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-311.html">§ 15–311. Property subject to levy.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-312.html">§ 15–312. Levy on money and evidences of debt.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-313.html">§ 15–313. Levy on equitable interest in chattels pledged.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-314.html">§ 15–314. Appraisement; notice of sale.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-315.html">§ 15–315. Death, removal, or disqualification of marshal.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-316.html">§ 15–316. Subrogation of purchaser after defective sale; no refund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-317.html">§ 15–317. Remedy of marshal for erroneous sale made in good faith.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-318.html">§ 15–318. Remedies of purchaser upon refusal to deliver possession.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-319.html">§ 15–319. Execution of final decree after death; other appropriate proceedings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-320.html">§ 15–320. Enforcement of decrees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-321.html">§ 15–321. Enforcement of interlocutory decrees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-322.html">§ 15–322. Enforcement of decrees for delivery of chattels.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-323.html">§ 15–323. Limitation on seizure of real property.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -125,8 +171,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 525, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 553, Pub. L. 91-358, title I, § 144(6)(B)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-301.</p>
                 <p>1973 Ed., § 15-301.</p>
+                <p>1981 Ed., § 15-301.</p>
               </section>
             </section>
             <hr/>
@@ -144,22 +190,22 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 525, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-302.</p>
                 <p>1973 Ed., § 15-302.</p>
+                <p>1981 Ed., § 15-302.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/15-301.html">15-301</a> and § <a class="internal-link" href="/dc/council/code/sections/15-303.html">15-303</a>.</p>
                 <h4>Cross References</h4>
-                <p>Disability insurance benefits, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-4716.01.html">31-4716.01</a>.</p>
-                <p>Exemptions from executions generally, see § <a class="internal-link" href="/dc/council/code/sections/15-101.html">15-101</a> et seq.</p>
-                <p>forfeited recognizances and judgments, executions upon, see § <a class="internal-link" href="/dc/council/code/sections/16-709.html">16-709</a>.</p>
-                <p>Fraternal benefit association benefits, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-5711.html">31-5711</a>.</p>
-                <p>Group life policies and proceeds, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-4717.html">31-4717</a>.</p>
-                <p>Landlord’s lien for rent, enforcement by execution, see §§ <a class="internal-link" href="/dc/council/code/sections/42-3214.html">42-3214</a> and <a class="internal-link" href="/dc/council/code/sections/42-3215.html">42-3215</a>.</p>
-                <p>Public assistance, exemption from assignment and execution, see § <a class="internal-link" href="/dc/council/code/sections/4-217.01.html">4-217.01</a>.</p>
-                <p>Seizure by execution of goods located on leased premises, payment of rent due as prerequisite, see § <a class="internal-link" href="/dc/council/code/sections/42-3216.html">42-3216</a>.</p>
-                <p>Teacher retirement annuities, exemption from assignment or execution, see § <a class="internal-link" href="/dc/council/code/sections/38-2001.17.html">38-2001.17</a>.</p>
-                <p>Unemployment compensation benefits, exemption from execution, except for debts accrued for necessaries, see § <a class="internal-link" href="/dc/council/code/sections/51-118.html">51-118</a>.</p>
                 <p>Wrongful death damages, exemption from appropriation for payment of debts and liabilities, see § <a class="internal-link" href="/dc/council/code/sections/16-2703.html">16-2703</a>.</p>
+                <p>Unemployment compensation benefits, exemption from execution, except for debts accrued for necessaries, see § <a class="internal-link" href="/dc/council/code/sections/51-118.html">51-118</a>.</p>
+                <p>Teacher retirement annuities, exemption from assignment or execution, see § <a class="internal-link" href="/dc/council/code/sections/38-2001.17.html">38-2001.17</a>.</p>
+                <p>Seizure by execution of goods located on leased premises, payment of rent due as prerequisite, see § <a class="internal-link" href="/dc/council/code/sections/42-3216.html">42-3216</a>.</p>
+                <p>Public assistance, exemption from assignment and execution, see § <a class="internal-link" href="/dc/council/code/sections/4-217.01.html">4-217.01</a>.</p>
+                <p>Landlord’s lien for rent, enforcement by execution, see §§ <a class="internal-link" href="/dc/council/code/sections/42-3214.html">42-3214</a> and <a class="internal-link" href="/dc/council/code/sections/42-3215.html">42-3215</a>.</p>
+                <p>Group life policies and proceeds, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-4717.html">31-4717</a>.</p>
+                <p>Fraternal benefit association benefits, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-5711.html">31-5711</a>.</p>
+                <p>forfeited recognizances and judgments, executions upon, see § <a class="internal-link" href="/dc/council/code/sections/16-709.html">16-709</a>.</p>
+                <p>Exemptions from executions generally, see § <a class="internal-link" href="/dc/council/code/sections/15-101.html">15-101</a> et seq.</p>
+                <p>Disability insurance benefits, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-4716.01.html">31-4716.01</a>.</p>
               </section>
             </section>
             <hr/>
@@ -174,8 +220,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 525, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-303.</p>
                 <p>1973 Ed., § 15-303.</p>
+                <p>1981 Ed., § 15-303.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/15-301.html">15-301</a>.</p>
               </section>
@@ -192,8 +238,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 525, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-304.</p>
                 <p>1973 Ed., § 15-304.</p>
+                <p>1981 Ed., § 15-304.</p>
               </section>
             </section>
             <hr/>
@@ -208,8 +254,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 525, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-305.</p>
                 <p>1973 Ed., § 15-305.</p>
+                <p>1981 Ed., § 15-305.</p>
                 <h4>Cross References</h4>
                 <p>Extension of lien of judgment or decree by order of revival, see § <a class="internal-link" href="/dc/council/code/sections/15-102.html">15-102</a>.</p>
               </section>
@@ -226,8 +272,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 526, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-306.</p>
                 <p>1973 Ed., § 15-306.</p>
+                <p>1981 Ed., § 15-306.</p>
               </section>
             </section>
             <hr/>
@@ -242,8 +288,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 526, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 553, Pub. L. 91-358, title I, § 144(5)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-307.</p>
                 <p>1973 Ed., § 15-307.</p>
+                <p>1981 Ed., § 15-307.</p>
               </section>
             </section>
             <hr/>
@@ -258,8 +304,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 526, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-308.</p>
                 <p>1973 Ed., § 15-308.</p>
+                <p>1981 Ed., § 15-308.</p>
               </section>
             </section>
             <hr/>
@@ -274,8 +320,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 526, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-309.</p>
                 <p>1973 Ed., § 15-309.</p>
+                <p>1981 Ed., § 15-309.</p>
               </section>
             </section>
             <hr/>
@@ -305,19 +351,19 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 526, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/89-493.html">July 5, 1966, 80 Stat. 264, Pub. L. 89-493, § 12</a>; <a class="internal-link" href="/us/congress/laws/public/89-745.html">Nov. 2, 1966, 80 Stat. 1178, Pub. L. 89-745,§ 5</a>; <a class="internal-link" href="/us/congress/laws/public/90-263.html">Mar. 11, 1968, 82 Stat. 42, Pub. L. 90-263, § 3</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 553, Pub. L. 91-358, title I, § 144(7)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-311.</p>
                 <p>1973 Ed., § 15-311.</p>
+                <p>1981 Ed., § 15-311.</p>
                 <h4>Cross References</h4>
-                <p>Disability insurance benefits, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-4716.01.html">31-4716.01</a>.</p>
-                <p>Exemptions from executions generally, see § <a class="internal-link" href="/dc/council/code/sections/15-101.html">15-101</a> et seq.</p>
-                <p>Fraternal benefit association benefits, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-5711.html">31-5711</a>.</p>
-                <p>Group life policies and proceeds exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-4717.html">31-4717</a>.</p>
-                <p>Notary’s official seal and documents, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/1-1206.html">1-1206</a>.</p>
-                <p>Public assistance exemption from assignment or execution, see § <a class="internal-link" href="/dc/council/code/sections/4-217.01.html">4-217.01</a>.</p>
-                <p>Seizure by execution of goods located on leased premises, payment of rent due as prerequisite, see § <a class="internal-link" href="/dc/council/code/sections/42-3216.html">42-3216</a>.</p>
-                <p>Teacher retirement annuities, exemption from assignment or execution, see § <a class="internal-link" href="/dc/council/code/sections/38-2001.17.html">38-2001.17</a>.</p>
-                <p>Unemployment compensation benefits, partial exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/51-118.html">51-118</a>.</p>
                 <p>Wrongful death damages, exemption from appropriation for payment of debts and liabilities, see § <a class="internal-link" href="/dc/council/code/sections/16-2703.html">16-2703</a>.</p>
+                <p>Unemployment compensation benefits, partial exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/51-118.html">51-118</a>.</p>
+                <p>Teacher retirement annuities, exemption from assignment or execution, see § <a class="internal-link" href="/dc/council/code/sections/38-2001.17.html">38-2001.17</a>.</p>
+                <p>Seizure by execution of goods located on leased premises, payment of rent due as prerequisite, see § <a class="internal-link" href="/dc/council/code/sections/42-3216.html">42-3216</a>.</p>
+                <p>Public assistance exemption from assignment or execution, see § <a class="internal-link" href="/dc/council/code/sections/4-217.01.html">4-217.01</a>.</p>
+                <p>Notary’s official seal and documents, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/1-1206.html">1-1206</a>.</p>
+                <p>Group life policies and proceeds exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-4717.html">31-4717</a>.</p>
+                <p>Fraternal benefit association benefits, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-5711.html">31-5711</a>.</p>
+                <p>Exemptions from executions generally, see § <a class="internal-link" href="/dc/council/code/sections/15-101.html">15-101</a> et seq.</p>
+                <p>Disability insurance benefits, exemption from execution, see § <a class="internal-link" href="/dc/council/code/sections/31-4716.01.html">31-4716.01</a>.</p>
               </section>
             </section>
             <hr/>
@@ -332,8 +378,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 526, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-312.</p>
                 <p>1973 Ed., § 15-312.</p>
+                <p>1981 Ed., § 15-312.</p>
               </section>
             </section>
             <hr/>
@@ -348,8 +394,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 526, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-313.</p>
                 <p>1973 Ed., § 15-313.</p>
+                <p>1981 Ed., § 15-313.</p>
               </section>
             </section>
             <hr/>
@@ -366,8 +412,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 527, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-314.</p>
                 <p>1973 Ed., § 15-314.</p>
+                <p>1981 Ed., § 15-314.</p>
               </section>
             </section>
             <hr/>
@@ -382,8 +428,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 527, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-315.</p>
                 <p>1973 Ed., § 15-315.</p>
+                <p>1981 Ed., § 15-315.</p>
               </section>
             </section>
             <hr/>
@@ -398,8 +444,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 527, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-316.</p>
                 <p>1973 Ed., § 15-316.</p>
+                <p>1981 Ed., § 15-316.</p>
               </section>
             </section>
             <hr/>
@@ -414,8 +460,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 527, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-317.</p>
                 <p>1973 Ed., § 15-317.</p>
+                <p>1981 Ed., § 15-317.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/15-301.html">15-301</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2851.01.html">47-2851.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2851.03.html">47-2851.03</a>.</p>
               </section>
@@ -435,8 +481,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 527, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 553, Pub. L. 91-358, title I, § 144(7)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-318.</p>
                 <p>1973 Ed., § 15-318.</p>
+                <p>1981 Ed., § 15-318.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/15-301.html">15-301</a>.</p>
               </section>
@@ -453,8 +499,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 527, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-319.</p>
                 <p>1973 Ed., § 15-319.</p>
+                <p>1981 Ed., § 15-319.</p>
               </section>
             </section>
             <hr/>
@@ -479,8 +525,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 528, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 553, Pub. L. 91-358, title I, § 144(7)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-320.</p>
                 <p>1973 Ed., § 15-320.</p>
+                <p>1981 Ed., § 15-320.</p>
                 <h4>Editor's Notes</h4>
                 <p>Because of the codification of §§ <a class="internal-link" href="/dc/council/code/sections/15-351.html">15-351</a>—15-357 as subchapter II of this chapter, and the designation of the preexisting text of Chapter 3 as subchapter I, “subchapter” should be substituted for “chapter” in the introductory language of (a).</p>
               </section>
@@ -497,8 +543,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 528, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-321.</p>
                 <p>1973 Ed., § 15-321.</p>
+                <p>1981 Ed., § 15-321.</p>
               </section>
             </section>
             <hr/>
@@ -513,8 +559,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 528, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-322.</p>
                 <p>1973 Ed., § 15-322.</p>
+                <p>1981 Ed., § 15-322.</p>
               </section>
             </section>
             <hr/>
@@ -529,8 +575,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 528, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 15-323.</p>
                 <p>1973 Ed., § 15-323.</p>
+                <p>1981 Ed., § 15-323.</p>
               </section>
             </section>
             <hr/>

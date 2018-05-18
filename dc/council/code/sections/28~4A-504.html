@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:4A-505.html">§ 28:4A-505. Preclusion of objection to debit of customer’s account.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:4A-504.html">Report Error</a>
@@ -102,9 +102,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 28:4A-504.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Subsection (a) concerns priority among various obligations that are to be paid from the same account. A customer may have written checks on its account with the receiving bank and may have issued one or more payment orders payable from the same account.</p>
-                <p>If the account balance is not sufficient to cover all of the checks and payment orders, some checks may be dishonored and some payment orders may not be accepted. Although there is no concept of wrongful dishonor of a payment order in Article 4A in the absence of an agreement to honor by the receiving bank, some rights and obligations may depend on the amount in the customer’s account. Section 4A-209(b)(3) and Section 4A-210(b). Whether dishonor of a check is wrongful also may depend upon the balance in the customer’s account. Under subsection (a), the bank is not required to consider the competing items and payment orders in any particular order. Rather it may charge the customer’s account for the various items and orders in any order. Suppose there is $12,000 in the customer’s account. If a check for $5,000 is presented for payment and the bank receives a $10,000 payment order from the customer, the bank could dishonor the check and accept the payment order. Dishonor of the check is not wrongful because the account balance was less than the amount of the check after the bank charged the account $10,000 on account of the payment order. Or, the bank could pay the check and not execute the payment order because the amount of the order is not covered by the balance in the account.</p>
                 <p>2. Subsection (b) follows  Section 4-208(b) in using the first-in-first-out rule for determining the order in which credits to an account are withdrawn.</p>
+                <p>If the account balance is not sufficient to cover all of the checks and payment orders, some checks may be dishonored and some payment orders may not be accepted. Although there is no concept of wrongful dishonor of a payment order in Article 4A in the absence of an agreement to honor by the receiving bank, some rights and obligations may depend on the amount in the customer’s account. Section 4A-209(b)(3) and Section 4A-210(b). Whether dishonor of a check is wrongful also may depend upon the balance in the customer’s account. Under subsection (a), the bank is not required to consider the competing items and payment orders in any particular order. Rather it may charge the customer’s account for the various items and orders in any order. Suppose there is $12,000 in the customer’s account. If a check for $5,000 is presented for payment and the bank receives a $10,000 payment order from the customer, the bank could dishonor the check and accept the payment order. Dishonor of the check is not wrongful because the account balance was less than the amount of the check after the bank charged the account $10,000 on account of the payment order. Or, the bank could pay the check and not execute the payment order because the amount of the order is not covered by the balance in the account.</p>
+                <p>1. Subsection (a) concerns priority among various obligations that are to be paid from the same account. A customer may have written checks on its account with the receiving bank and may have issued one or more payment orders payable from the same account.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/29-604.07.html">§ 29–604.07. General standards of partner’s conduct.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/29-604.06.html">Report Error</a>
@@ -103,17 +103,17 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>; <a class="internal-link" href="/dc/council/laws/19-210.html">Mar. 5, 2013, D.C. Law 19-210, §§ 2(f)(4)(C), (D), 59 DCR 13171</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 41-154.3.</p>
-                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/33-104.03.html">33-104.03</a>.</p>
                 <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/29-604.03.html">29-604.03</a>.</p>
+                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/33-104.03.html">33-104.03</a>.</p>
+                <p>1981 Ed., § 41-154.3.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/29-605.05.html">29-605.05</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-604.03 as § <a class="internal-link" href="/dc/council/code/sections/29-604.06.html">29-604.06</a>; and apparently intended to substitute “activities” for “business” twice in (c).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 403 of the Uniform Partnership Act (1997 Act).</p>
-                <p>Section 2(f)(4)(C) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-604.06 as § <a class="internal-link" href="/dc/council/code/sections/29-604.09.html">29-604.09</a>.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Section 2(f)(4)(C) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-604.06 as § <a class="internal-link" href="/dc/council/code/sections/29-604.09.html">29-604.09</a>.</p>
+                <p>Uniform Law: This section is based on § 403 of the Uniform Partnership Act (1997 Act).</p>
               </section>
             </section>
           </section>

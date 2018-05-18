@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/50-301.24.html">§ 50–301.24. Wheelchair-Accessible Taxicab Promotion Fund. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/50-301.23.html">Report Error</a>
@@ -105,9 +105,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (a), which had read as follows: “(a) There is hereby established the Taxicab Commission Fingerprinting Fund which shall be a revolving, nonlapsing fund that shall not revert to the General Fund at the end of any fiscal year or at any other time but shall be continually available to the Taxicab Commission for the purpose of the fund, subject to authorization by Congress, into which shall be deposited funds from appropriations and from fees from applicants for hacker and limousine licenses to obtain fingerprint records through the Metropolitan Police Department; which funds shall be used to make payment to the Metropolitan Police Department for the cost of obtaining the fingerprint records.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2022 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) addition of section, see § 2022 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
                 <p>For temporary (90 day) addition of section, see § 2022 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) addition of section, see § 2022 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) addition of section, see § 2022 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 2022 of <a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> provided that subtitle C of title II of the act may be cited as the “District of Columbia Taxicab Commission Establishment Fingerprinting Fund Amendment Act of 2006”.</p>
               </section>

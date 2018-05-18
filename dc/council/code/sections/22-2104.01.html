@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/22-2105.html">§ 22–2105. Penalty for manslaughter.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/22-2104.01.html">Report Error</a>
@@ -117,13 +117,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/22-2104.html">22-2104</a>, § <a class="internal-link" href="/dc/council/code/sections/22-4502.html">22-4502</a>, and § <a class="internal-link" href="/dc/council/code/sections/24-403.01.html">24-403.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-302.html">D.C. Law 13-302</a> substituted “release” for “parole” throughout the section; in subsec. (a), substituted “more than 60 years up to, and including,” for “life imprisonment or”; in subsec. (b), substituted “a finding shall be made” for “the court shall consider”; and, in subsec. (c), substituted “finding shall” for “court shall”, deleted “the court finds that” following “If”, and inserted “more than 60 years up to, and including”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-177.html">D.C. Law 17-177</a>, in subsec. (b)(7), substituted “sexual orientation, gender identity or expression (as defined in § <a class="internal-link" href="/dc/council/code/sections/2-1401.02.html">2-1401.02</a>(12A))” for “or sexual orientation”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-302.html">D.C. Law 13-302</a> substituted “release” for “parole” throughout the section; in subsec. (a), substituted “more than 60 years up to, and including,” for “life imprisonment or”; in subsec. (b), substituted “a finding shall be made” for “the court shall consider”; and, in subsec. (c), substituted “finding shall” for “court shall”, deleted “the court finds that” following “If”, and inserted “more than 60 years up to, and including”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 4(e) of the Sentencing Reform Emergency Amendment Act of 2000 (D.C. Act 13-410, August 11, 2000,  47 DCR 7271).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(e) of the Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 13-462, November 7, 2000,  47 DCR 9443).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(e) of Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-2, February 2, 2001,  48 DCR 2239).</p>
                 <p>For temporary (90 day) amendment of section, see § 4(e) of Sentencing Reform Second Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-51, May 2, 2001,  48 DCR 4370).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(e) of Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-2, February 2, 2001,  48 DCR 2239).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(e) of the Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 13-462, November 7, 2000,  47 DCR 9443).</p>
+                <p>For temporary (90-day) amendment of section, see § 4(e) of the Sentencing Reform Emergency Amendment Act of 2000 (D.C. Act 13-410, August 11, 2000,  47 DCR 7271).</p>
               </section>
             </section>
           </section>

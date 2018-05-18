@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:8-402.html">§ 28:8-402. Assurance that indorsement or instruction is effective.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:8-401.html">Report Error</a>
@@ -107,22 +107,22 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 742, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/9-196.html">Mar. 16, 1993, D.C. Law 9-196, § 4, 39 DCR 9165</a>; <a class="internal-link" href="/dc/council/laws/11-240.html">Apr. 9, 1997, D.C. Law 11-240, § 2, 44 DCR 1087</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:8-401.</p>
                 <p>1973 Ed., § 28:8-401.</p>
+                <p>1981 Ed., § 28:8-401.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. This section states the duty of the issuer to register transfers. A duty exists only if certain preconditions exist. If any of the preconditions do not exist, there is no duty to register transfer. If an indorsement on a security certificate is a forgery, there is no duty. If an instruction to transfer an uncertificated security is not originated by an appropriate person, there is no duty. If there has not been compliance with applicable tax laws, there is no duty. If a security certificate is properly indorsed but nevertheless the transfer is in fact wrongful, there is no duty unless the transfer is to a protected purchaser (and the other preconditions exist).</p>
-                <p>This section does not constitute a mandate that the issuer must establish that all preconditions are met before the issuer registers a transfer. The issuer may waive the reasonable assurances specified in paragraph (a)(3). If it has confidence in the responsibility of the persons requesting transfer, it may ignore questions of compliance with tax laws. Although an issuer has no duty if the transfer is wrongful, the issuer has no duty to inquire into adverse claims, see  Section 8-404.</p>
-                <p>2. By subsection (b) the person entitled to registration may not only compel it but may hold the issuer liable in damages for unreasonable delay.</p>
-                <p>3.  Section 8-201(c) provides that with respect to registration of transfer, “issuer” means the person on whose behalf transfer books are maintained. Transfer agents, registrars or the like within the scope of their respective functions have rights and duties under this Part similar to those of the issuer. See  Section 8-407.</p>
-                <p><strong>Definitional Cross References</strong> “Appropriate person”.  Section 8-107.</p>
-                <p>“Certificated security”.  Section 8-102(a)(4).</p>
-                <p>“Genuine”.  Section 1-201(18).</p>
-                <p>“Indorsement”.  Section 8-102(a)(11).</p>
-                <p>“Instruction”.  Section 8-102(a)(12).</p>
-                <p>“Issuer”.  Section 8-201.</p>
-                <p>“Protected purchaser”.  Section 8-303.</p>
-                <p>“Registered form”.  Section 8-102(a)(13).</p>
                 <p>“Uncertificated security”.  Section 8-102(a)(18).</p>
+                <p>“Registered form”.  Section 8-102(a)(13).</p>
+                <p>“Protected purchaser”.  Section 8-303.</p>
+                <p>“Issuer”.  Section 8-201.</p>
+                <p>“Instruction”.  Section 8-102(a)(12).</p>
+                <p>“Indorsement”.  Section 8-102(a)(11).</p>
+                <p>“Genuine”.  Section 1-201(18).</p>
+                <p>“Certificated security”.  Section 8-102(a)(4).</p>
+                <p><strong>Definitional Cross References</strong> “Appropriate person”.  Section 8-107.</p>
+                <p>3.  Section 8-201(c) provides that with respect to registration of transfer, “issuer” means the person on whose behalf transfer books are maintained. Transfer agents, registrars or the like within the scope of their respective functions have rights and duties under this Part similar to those of the issuer. See  Section 8-407.</p>
+                <p>2. By subsection (b) the person entitled to registration may not only compel it but may hold the issuer liable in damages for unreasonable delay.</p>
+                <p>This section does not constitute a mandate that the issuer must establish that all preconditions are met before the issuer registers a transfer. The issuer may waive the reasonable assurances specified in paragraph (a)(3). If it has confidence in the responsibility of the persons requesting transfer, it may ignore questions of compliance with tax laws. Although an issuer has no duty if the transfer is wrongful, the issuer has no duty to inquire into adverse claims, see  Section 8-404.</p>
+                <p>1. This section states the duty of the issuer to register transfers. A duty exists only if certain preconditions exist. If any of the preconditions do not exist, there is no duty to register transfer. If an indorsement on a security certificate is a forgery, there is no duty. If an instruction to transfer an uncertificated security is not originated by an appropriate person, there is no duty. If there has not been compliance with applicable tax laws, there is no duty. If a security certificate is properly indorsed but nevertheless the transfer is in fact wrongful, there is no duty unless the transfer is to a protected purchaser (and the other preconditions exist).</p>
               </section>
             </section>
           </section>

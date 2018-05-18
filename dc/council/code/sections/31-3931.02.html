@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/31-3931.03.html">§ 31–3931.03. Organizational requirements for transacting business; incorporation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-3931.02.html">Report Error</a>
@@ -114,8 +114,8 @@
       (<a class="internal-link" href="/dc/council/laws/15-262.html#§3">Mar. 17, 2005, D.C. Law 15-262, § 3, 52 DCR 1205</a>; <a class="internal-link" href="/dc/council/laws/16-91.html">Apr. 7, 2006, D.C. Law 16-91, § 102(a), 52 DCR 10637</a>; <a class="internal-link" href="/dc/council/laws/16-191.html">Mar. 2, 2007, D.C. Law 16-191, § 54(a), 53 DCR 6794</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-91.html">D.C. Law 16-91</a>, in par. (b)(2), substituted “§ <a class="internal-link" href="/dc/council/code/sections/31-3931.08.html">31-3931.08</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/31-3931.07.html">31-3931.07</a>”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsec. (b)(2), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-91.html">D.C. Law 16-91</a>, in par. (b)(2), substituted “§ <a class="internal-link" href="/dc/council/code/sections/31-3931.08.html">31-3931.08</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/31-3931.07.html">31-3931.07</a>”.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition of section, see § 3 of Captive Insurance Company Emergency Act of 2004 (D.C. Act 15-640, November</p>
               </section>

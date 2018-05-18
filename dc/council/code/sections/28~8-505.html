@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:8-506.html">§ 28:8-506. Duty of securities intermediary to exercise rights as directed by entitlement holder.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:8-505.html">Report Error</a>
@@ -106,14 +106,14 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:8-503.html">28:8-503</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. One of the core elements of the securities account relationships for which the Part 5 rules were designed is that the securities intermediary passes through to the entitlement holders the economic benefit of ownership of the financial asset, such as payments and distributions made by the issuer. Subsection (a) expresses the ordinary understanding that a securities intermediary will take appropriate action to see to it that any payments or distributions made by the issuer are received. One of the main reasons that investors make use of securities intermediaries is to obtain the services of a professional in performing the record-keeping and other functions necessary to ensure that payments and other distributions are received.</p>
-                <p>2. Subsection (a) incorporates the same “agreement/due care” formula as the other provisions of Part 5 dealing with the duties of a securities intermediary. See Comment 4 to  Section 8-504. This formulation permits the parties to specify by agreement what action, if any, the intermediary is to take with respect to the duty to obtain payments and distributions. In the absence of specification by agreement, the intermediary satisfies the duty if the intermediary exercises due care in accordance with reasonable commercial standards. The provisions of  Section 8-509 also apply to the  Section 8-505 duty, so that compliance with applicable regulatory requirements constitutes compliance with the  Section 8-505 duty.</p>
-                <p>3. Subsection (b) provides that a securities intermediary is obligated to its entitlement holder for those payments or distributions made by the issuer that are in fact received by the intermediary. It does not deal with the details of the time and manner of payment. Moreover, as with any other monetary obligation, the obligation to pay may be subject to other rights of the obligor, by way of set-off counterclaim or the like.  Section 8-509(c) makes this point explicit.</p>
-                <p><strong>Definitional Cross References</strong> “Agreement”.  Section 1-201(3).</p>
-                <p>“Entitlement holder”.  Section 8-102(a)(7).</p>
-                <p>“Financial asset”.  Section 8-102(a)(9).</p>
-                <p>“Securities intermediary”.  Section 8-102(a)(14).</p>
                 <p>“Security entitlement”.  Section 8-102(a)(17).</p>
+                <p>“Securities intermediary”.  Section 8-102(a)(14).</p>
+                <p>“Financial asset”.  Section 8-102(a)(9).</p>
+                <p>“Entitlement holder”.  Section 8-102(a)(7).</p>
+                <p><strong>Definitional Cross References</strong> “Agreement”.  Section 1-201(3).</p>
+                <p>3. Subsection (b) provides that a securities intermediary is obligated to its entitlement holder for those payments or distributions made by the issuer that are in fact received by the intermediary. It does not deal with the details of the time and manner of payment. Moreover, as with any other monetary obligation, the obligation to pay may be subject to other rights of the obligor, by way of set-off counterclaim or the like.  Section 8-509(c) makes this point explicit.</p>
+                <p>2. Subsection (a) incorporates the same “agreement/due care” formula as the other provisions of Part 5 dealing with the duties of a securities intermediary. See Comment 4 to  Section 8-504. This formulation permits the parties to specify by agreement what action, if any, the intermediary is to take with respect to the duty to obtain payments and distributions. In the absence of specification by agreement, the intermediary satisfies the duty if the intermediary exercises due care in accordance with reasonable commercial standards. The provisions of  Section 8-509 also apply to the  Section 8-505 duty, so that compliance with applicable regulatory requirements constitutes compliance with the  Section 8-505 duty.</p>
+                <p>1. One of the core elements of the securities account relationships for which the Part 5 rules were designed is that the securities intermediary passes through to the entitlement holders the economic benefit of ownership of the financial asset, such as payments and distributions made by the issuer. Subsection (a) expresses the ordinary understanding that a securities intermediary will take appropriate action to see to it that any payments or distributions made by the issuer are received. One of the main reasons that investors make use of securities intermediaries is to obtain the services of a professional in performing the record-keeping and other functions necessary to ensure that payments and other distributions are received.</p>
               </section>
             </section>
           </section>

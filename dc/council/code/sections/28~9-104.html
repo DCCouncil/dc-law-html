@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-105.html">§ 28:9-105. Control of electronic chattel paper.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-104.html">Report Error</a>
@@ -106,13 +106,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:9-203.html">28:9-203</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-207.html">28:9-207</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-208.html">28:9-208</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-314.html">28:9-314</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-327.html">28:9-327</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-340.html">28:9-340</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-342.html">28:9-342</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-601.html">28:9-601</a>, and § <a class="internal-link" href="/dc/council/code/sections/28:9-607.html">28:9-607</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. New; derived from  Section 8-106.</p>
-                <p>2. Why “Control” Matters. This section explains the concept of “control” of a deposit account. “Control” under this section may serve two functions. First, “control ... pursuant to the debtor’s agreement” may substitute for an authenticated security agreement as an element of attachment. See  Section 9-203(b)(3)(D). Second, when a deposit account is taken as original collateral, the only method of perfection is obtaining control under this section. See  Section 9-312(b)(1).</p>
-                <p>3. Requirements for “Control.” This section derives from  Section 8-106 of Revised Article 8, which defines “control” of securities and certain other investment property. Under subsection (a)(1), the bank with which the deposit account is maintained has control. The effect of this provision is to afford the bank automatic perfection. No other form of public notice is necessary; all actual and potential creditors of the debtor are always on notice that the bank with which the debtor’s deposit account is maintained may assert a claim against the deposit account.</p>
-                <p>Under subsection (a)(2), a secured party may obtain control by obtaining the bank’s authenticated agreement that it will comply with the secured party’s instructions without further consent by the debtor. The analogous provision in  Section 8-106 does not require that the agreement be authenticated. An agreement to comply with the secured party’s instructions suffices for “control” of a deposit account under this section even if the bank’s agreement is subject to specified conditions, e.g., that the secured party’s instructions are accompanied by a certification that the debtor is in default. (Of course, if the condition is the debtor’s further consent, the statute explicitly provides that the agreement would not confer control.) See revised  Section 8-106, Comment 7.</p>
-                <p>Under subsection (a)(3), a secured party may obtain control by becoming the bank’s “customer,” as defined in  Section 4-104. As the customer, the secured party would enjoy the right (but not necessarily the exclusive right) to withdraw funds from, or close, the deposit account. See  Sections 4-401(a),  4-403(a).</p>
-                <p>Although the arrangements giving rise to control may themselves prevent, or may enable the secured party at its discretion to prevent, the debtor from reaching the funds on deposit, subsection (b) makes clear that the debtor’s ability to reach the funds is not inconsistent with “control.”</p>
                 <p>Perfection by control is not available for bank accounts evidenced by an instrument (e.g., certain certificates of deposit), which by definition are “instruments” and not “deposit accounts.” See  Section 9-102 (defining “deposit account” and “instrument”).</p>
+                <p>Although the arrangements giving rise to control may themselves prevent, or may enable the secured party at its discretion to prevent, the debtor from reaching the funds on deposit, subsection (b) makes clear that the debtor’s ability to reach the funds is not inconsistent with “control.”</p>
+                <p>Under subsection (a)(3), a secured party may obtain control by becoming the bank’s “customer,” as defined in  Section 4-104. As the customer, the secured party would enjoy the right (but not necessarily the exclusive right) to withdraw funds from, or close, the deposit account. See  Sections 4-401(a),  4-403(a).</p>
+                <p>Under subsection (a)(2), a secured party may obtain control by obtaining the bank’s authenticated agreement that it will comply with the secured party’s instructions without further consent by the debtor. The analogous provision in  Section 8-106 does not require that the agreement be authenticated. An agreement to comply with the secured party’s instructions suffices for “control” of a deposit account under this section even if the bank’s agreement is subject to specified conditions, e.g., that the secured party’s instructions are accompanied by a certification that the debtor is in default. (Of course, if the condition is the debtor’s further consent, the statute explicitly provides that the agreement would not confer control.) See revised  Section 8-106, Comment 7.</p>
+                <p>3. Requirements for “Control.” This section derives from  Section 8-106 of Revised Article 8, which defines “control” of securities and certain other investment property. Under subsection (a)(1), the bank with which the deposit account is maintained has control. The effect of this provision is to afford the bank automatic perfection. No other form of public notice is necessary; all actual and potential creditors of the debtor are always on notice that the bank with which the debtor’s deposit account is maintained may assert a claim against the deposit account.</p>
+                <p>2. Why “Control” Matters. This section explains the concept of “control” of a deposit account. “Control” under this section may serve two functions. First, “control ... pursuant to the debtor’s agreement” may substitute for an authenticated security agreement as an element of attachment. See  Section 9-203(b)(3)(D). Second, when a deposit account is taken as original collateral, the only method of perfection is obtaining control under this section. See  Section 9-312(b)(1).</p>
+                <p>1. Source. New; derived from  Section 8-106.</p>
               </section>
             </section>
           </section>

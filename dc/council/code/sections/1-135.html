@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/1/subchapters/II/parts/D/">Part D. 51st State Commission.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-135.html">Report Error</a>
@@ -106,8 +106,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-124.html">D.C. Law 19-124</a> substituted “subchapter III of Chapter 11A of this title” for “subchapter I of Chapter 11 of this title”.</p>
                 <h4>Expiration of Law</h4>
-                <p>Expiration of Law 4-138</p>
                 <p>Section 4 of <a class="internal-link" href="/dc/council/laws/4-138.html">D.C. Law 4-138</a> provided that the provisions of § 1-119 (§ <a class="internal-link" href="/dc/council/code/sections/1-135.html">1-135</a>, 2001 Ed.) shall expire 30 days after the date that the provisions of the Federal Election Campaign Act of 1971 ( 2 U.S.C. § 431 et seq.) are determined by appropriate federal authorities to apply to the Senators and Representative from the District of Columbia.</p>
+                <p>Expiration of Law 4-138</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 401(m) of Board of Ethics and Government Accountability Establishment and Comprehensive Ethics Reform Emergency Amendment Act of 2012 (D.C. Act 19-298, January 29, 2012,  59 DCR 683).</p>
               </section>

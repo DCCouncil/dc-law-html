@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/44/chapters/10/">Chapter 10. Nursing Homes and Community Residence Facilities Protections.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/chapters/9A/">Report Error</a>
@@ -87,24 +87,60 @@
         <section class="col8 body">
           <h1>Chapter 9A. Not-for-Profit Hospital Corporation.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/44-951.01.html">§ 44–951.01. Definitions.</a>
-            <a href="/dc/council/code/sections/44-951.02.html">§ 44–951.02. Establishment of the Not-for-Profit Hospital Corporation.</a>
-            <a href="/dc/council/code/sections/44-951.03.html">§ 44–951.03. Not-for-Profit Hospital Corporation Fund.</a>
-            <a href="/dc/council/code/sections/44-951.04.html">§ 44–951.04. Board of Directors.</a>
-            <a href="/dc/council/code/sections/44-951.05.html">§ 44–951.05. Governance of the Corporation.</a>
-            <a href="/dc/council/code/sections/44-951.06.html">§ 44–951.06. Powers of the Corporation.</a>
-            <a href="/dc/council/code/sections/44-951.07.html">§ 44–951.07. Transfer of assets under Deed of Trust.</a>
-            <a href="/dc/council/code/sections/44-951.08.html">§ 44–951.08. Personnel administration.</a>
-            <a href="/dc/council/code/sections/44-951.09.html">§ 44–951.09. Budget.</a>
-            <a href="/dc/council/code/sections/44-951.10.html">§ 44–951.10. Transfer of employees.</a>
-            <a href="/dc/council/code/sections/44-951.11.html">§ 44–951.11. Procurement law inapplicable.</a>
-            <a href="/dc/council/code/sections/44-951.12.html">§ 44–951.12. Exemption from taxation.</a>
-            <a href="/dc/council/code/sections/44-951.13.html">§ 44–951.13. Reports to the Mayor and the Council.</a>
-            <a href="/dc/council/code/sections/44-951.14.html">§ 44–951.14. Representation and indemnification.</a>
-            <a href="/dc/council/code/sections/44-951.15.html">§ 44–951.15. General Counsel.</a>
-            <a href="/dc/council/code/sections/44-951.16.html">§ 44–951.16. Debts and borrowing.</a>
-            <a href="/dc/council/code/sections/44-951.17.html">§ 44–951.17. Continuation of privileges to practice.</a>
-            <a href="/dc/council/code/sections/44-951.18.html">§ 44–951.18. Authority of the Chief Financial Officer.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.01.html">§ 44–951.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.02.html">§ 44–951.02. Establishment of the Not-for-Profit Hospital Corporation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.03.html">§ 44–951.03. Not-for-Profit Hospital Corporation Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.04.html">§ 44–951.04. Board of Directors.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.05.html">§ 44–951.05. Governance of the Corporation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.06.html">§ 44–951.06. Powers of the Corporation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.07.html">§ 44–951.07. Transfer of assets under Deed of Trust.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.08.html">§ 44–951.08. Personnel administration.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.09.html">§ 44–951.09. Budget.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.10.html">§ 44–951.10. Transfer of employees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.11.html">§ 44–951.11. Procurement law inapplicable.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.12.html">§ 44–951.12. Exemption from taxation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.13.html">§ 44–951.13. Reports to the Mayor and the Council.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.14.html">§ 44–951.14. Representation and indemnification.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.15.html">§ 44–951.15. General Counsel.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.16.html">§ 44–951.16. Debts and borrowing.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.17.html">§ 44–951.17. Continuation of privileges to practice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-951.18.html">§ 44–951.18. Authority of the Chief Financial Officer.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -381,8 +417,8 @@
       (<a class="internal-link" href="/dc/council/laws/19-21.html#§5124">Sept. 14, 2011, D.C. Law 19-21, § 5124, 58 DCR 6226</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 5016 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <p>For temporary (90 day) addition of section, see § 5016 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) addition of section, see § 5016 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <h4>Editor's Notes</h4>
                 <p>For Not-for-Profit Hospital Corporation reporting requirements to Council, see § 5016 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>.</p>
               </section>

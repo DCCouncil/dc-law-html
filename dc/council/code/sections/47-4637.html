@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-4638.html">§ 47–4638. 2323 Pennsylvania Avenue, S.E., redevelopment project.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-4637.html">Report Error</a>
@@ -98,9 +98,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-223.html">Sept. 24, 2010, D.C. Law 18-223, § 7122(b), 57 DCR 6242</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 7122(b) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
-                <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/47-4646.html">47-4646</a>, see §§ 2 and 3 of Samuel J. Simmons NCBA Estates No. 1 Limited Partnership Real Property Tax Exemption and Equitable Real Property Tax Relief Emergency Act of 2010 (D.C. Act 18-604, November 17, 2010,  57 DCR 11048).</p>
                 <p>For temporary (90 day) repeal of § 3 of D.C. Act 18-612, see § 713 of Fiscal Year 2011 Supplemental Budget Support Emergency Act of 2010 (D.C. Act 18-694, January 19, 2011,  58 DCR 662).</p>
+                <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/47-4646.html">47-4646</a>, see §§ 2 and 3 of Samuel J. Simmons NCBA Estates No. 1 Limited Partnership Real Property Tax Exemption and Equitable Real Property Tax Relief Emergency Act of 2010 (D.C. Act 18-604, November 17, 2010,  57 DCR 11048).</p>
+                <p>For temporary (90 day) addition, see § 7122(b) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 7121 of <a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> provided that subtitle M of title VII of the act may be cited as the “Pew Charitable Trusts Limited Tax Abatement Act of 2010”.</p>
               </section>

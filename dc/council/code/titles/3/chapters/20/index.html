@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/3/chapters/21/">Chapter 21. Dentistry. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/3/chapters/20/">Report Error</a>
@@ -87,34 +87,90 @@
         <section class="col8 body">
           <h1>Chapter 20. Cosmetologists. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/3-2001.html">§ 3–2001. Definitions. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2002.html">§ 3–2002. Board of Cosmetology created; composition; qualifications; term of office; oath; vacancies; removal; officers; seal; quorum; meetings; records. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2003.html">§ 3–2003. Rules and regulations. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2004.html">§ 3–2004. Procedure for refusal, revocation, or suspension of license or certificate; reissuance. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2005.html">§ 3–2005. Appeal from action of Board. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2006.html">§ 3–2006. Practice of teaching of cosmetology without certificate of registration prohibited; exception. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2007.html">§ 3–2007. Requirements to practice or teach. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2008.html">§ 3–2008. Requirements for examination. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2009.html">§ 3–2009. Limited certificate of registration. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2010.html">§ 3–2010. School of cosmetology — Requirements for certificate of registration. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2011.html">§ 3–2011. Student practice upon public. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2012.html">§ 3–2012. Practice limited to registered beauty shops; exception; manager required. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2013.html">§ 3–2013. Exceptions to examination requirements; temporary permits. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2014.html">§ 3–2014. Apprentices in beauty shops. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2015.html">§ 3–2015. Demonstrators. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2016.html">§ 3–2016. Reciprocity. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2017.html">§ 3–2017. Issuance of certificate or license; display. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2018.html">§ 3–2018. Conduct of examinations. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2019.html">§ 3–2019. Fees; expenses of Board; unexpended funds. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2020.html">§ 3–2020. Persons called to aid of Board. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2021.html">§ 3–2021. Sanitary regulations. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2022.html">§ 3–2022. Hearings. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2023.html">§ 3–2023. Temporary licenses. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2024.html">§ 3–2024. Exemptions from chapter. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2025.html">§ 3–2025. Expiration and renewal of certificate of registration. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2026.html">§ 3–2026. Penalties. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2027.html">§ 3–2027. Prosecution by Corporation Counsel. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2028.html">§ 3–2028. Severability. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2001.html">§ 3–2001. Definitions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2002.html">§ 3–2002. Board of Cosmetology created; composition; qualifications; term of office; oath; vacancies; removal; officers; seal; quorum; meetings; records. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2003.html">§ 3–2003. Rules and regulations. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2004.html">§ 3–2004. Procedure for refusal, revocation, or suspension of license or certificate; reissuance. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2005.html">§ 3–2005. Appeal from action of Board. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2006.html">§ 3–2006. Practice of teaching of cosmetology without certificate of registration prohibited; exception. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2007.html">§ 3–2007. Requirements to practice or teach. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2008.html">§ 3–2008. Requirements for examination. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2009.html">§ 3–2009. Limited certificate of registration. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2010.html">§ 3–2010. School of cosmetology — Requirements for certificate of registration. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2011.html">§ 3–2011. Student practice upon public. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2012.html">§ 3–2012. Practice limited to registered beauty shops; exception; manager required. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2013.html">§ 3–2013. Exceptions to examination requirements; temporary permits. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2014.html">§ 3–2014. Apprentices in beauty shops. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2015.html">§ 3–2015. Demonstrators. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2016.html">§ 3–2016. Reciprocity. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2017.html">§ 3–2017. Issuance of certificate or license; display. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2018.html">§ 3–2018. Conduct of examinations. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2019.html">§ 3–2019. Fees; expenses of Board; unexpended funds. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2020.html">§ 3–2020. Persons called to aid of Board. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2021.html">§ 3–2021. Sanitary regulations. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2022.html">§ 3–2022. Hearings. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2023.html">§ 3–2023. Temporary licenses. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2024.html">§ 3–2024. Exemptions from chapter. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2025.html">§ 3–2025. Expiration and renewal of certificate of registration. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2026.html">§ 3–2026. Penalties. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2027.html">§ 3–2027. Prosecution by Corporation Counsel. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2028.html">§ 3–2028. Severability. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -129,11 +185,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§1">June 7, 1938, 52 Stat. 611, ch. 321, § 1</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-901.</p>
                 <p>1973 Ed. § 2-1301.</p>
+                <p>1981 Ed., § 2-901.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>Section 1236 of <a class="internal-link" href="/dc/council/laws/12-261.html">D.C. Law 12-261</a> transfers authority to the Board of Barber and Cosmetology established by § 47-2853.6 [§ <a class="internal-link" href="/dc/council/code/sections/47-2853.06.html">47-2853.06</a>, 2001 Ed.].</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -148,11 +204,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§2">June 7, 1938, 52 Stat. 612, ch. 321, § 2</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-902.</p>
                 <p>1973 Ed., § 2-1302.</p>
+                <p>1981 Ed., § 2-902.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -167,11 +223,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§3">June 7, 1938, 52 Stat. 613, ch. 321, § 3</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-903.</p>
                 <p>1973 Ed., § 2-1303.</p>
+                <p>1981 Ed., § 2-903.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -186,11 +242,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§4">June 7, 1938, 52 Stat. 613, ch. 321, § 4</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-904.</p>
                 <p>1973 Ed., § 2-1304.</p>
+                <p>1981 Ed., § 2-904.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -205,11 +261,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§5">June 7, 1938, 52 Stat. 613, ch. 321, § 5</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-905.</p>
                 <p>1973 Ed., § 2-1305.</p>
+                <p>1981 Ed., § 2-905.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -224,11 +280,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§6">June 7, 1938, 52 Stat. 613, ch. 321, § 6</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-906.</p>
                 <p>1973 Ed., § 2-1306.</p>
+                <p>1981 Ed., § 2-906.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -243,11 +299,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§7">June 7, 1938, 52 Stat. 614, ch. 321, § 7</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-907.</p>
                 <p>1973 Ed., § 2-1307.</p>
+                <p>1981 Ed., § 2-907.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -262,11 +318,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§8">June 7, 1938, 52 Stat. 614, ch. 321, § 8</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-908.</p>
                 <p>1973 Ed., § 2-1308.</p>
+                <p>1981 Ed., § 2-908.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -281,11 +337,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§9">June 7, 1938, 52 Stat. 614, ch. 321, § 9</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-909.</p>
                 <p>1973 Ed., § 2-1309.</p>
+                <p>1981 Ed., § 2-909.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -300,11 +356,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§10">June 7, 1938, 52 Stat. 614, ch. 321, § 10</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-910.</p>
                 <p>1973 Ed., § 2-1310.</p>
+                <p>1981 Ed., § 2-910.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -319,11 +375,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§11">June 7, 1938, 52 Stat. 615, ch. 321, § 11</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-911.</p>
                 <p>1973 Ed., § 2-1311.</p>
+                <p>1981 Ed., § 2-911.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -338,11 +394,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§12">June 7, 1938, 52 Stat. 615, ch. 321, § 12</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-912.</p>
                 <p>1973 Ed., § 2-1312.</p>
+                <p>1981 Ed., § 2-912.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -357,11 +413,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§13">June 7, 1938, 52 Stat. 615, ch. 321, § 13</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-913.</p>
                 <p>1973 Ed., § 2-1313.</p>
+                <p>1981 Ed., § 2-913.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -376,11 +432,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§14">June 7, 1938, 52 Stat. 616, ch. 321, § 14</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-914.</p>
                 <p>1973 Ed., § 2-1314.</p>
+                <p>1981 Ed., § 2-914.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -395,11 +451,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§15">June 7, 1938, 52 Stat. 616, ch. 321, § 15</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-915.</p>
                 <p>1973 Ed., § 2-1315.</p>
+                <p>1981 Ed., § 2-915.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -414,11 +470,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§16">June 7, 1938, 52 Stat. 616, ch. 321, § 16</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-916.</p>
                 <p>1973 Ed., § 2-1316.</p>
+                <p>1981 Ed., § 2-916.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -433,11 +489,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§17">June 7, 1938, 52 Stat. 617, ch. 321, § 17</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-917.</p>
                 <p>1973 Ed., § 2-1317.</p>
+                <p>1981 Ed., § 2-917.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -452,11 +508,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§18">June 7, 1938, 52 Stat. 617, ch. 321, § 18</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-918.</p>
                 <p>1973 Ed., § 2-1318.</p>
+                <p>1981 Ed., § 2-918.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -471,11 +527,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§19">June 7, 1938, 52 Stat. 617, ch. 321, § 19</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-919.</p>
                 <p>1973 Ed., § 2-1319.</p>
+                <p>1981 Ed., § 2-919.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -490,11 +546,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§20">June 7, 1938, 52 Stat. 618, ch. 321, § 20</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-920.</p>
                 <p>1973 Ed., § 2-1320.</p>
+                <p>1981 Ed., § 2-920.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -509,11 +565,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§21">June 7, 1938, 52 Stat. 618, ch. 321, § 21</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-921.</p>
                 <p>1973 Ed., § 2-1321.</p>
+                <p>1981 Ed., § 2-921.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -528,11 +584,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§22">June 7, 1938, 52 Stat. 618, ch. 321, § 22</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-922.</p>
                 <p>1973 Ed., § 2-1322.</p>
+                <p>1981 Ed., § 2-922.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -547,11 +603,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§23">June 7, 1938, 52 Stat. 618, ch. 321, § 23</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-923.</p>
                 <p>1973 Ed., § 2-1323.</p>
+                <p>1981 Ed., § 2-923.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -566,11 +622,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§24">June 7, 1938, 52 Stat. 619, ch. 321, § 24</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-924.</p>
                 <p>1973 Ed., § 2-1324.</p>
+                <p>1981 Ed., § 2-924.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -585,11 +641,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§25">June 7, 1938, 52 Stat. 619, ch. 321, § 25</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-925.</p>
                 <p>1973 Ed., § 2-1325.</p>
+                <p>1981 Ed., § 2-925.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -604,11 +660,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§26">June 7, 1938, 52 Stat. 619, ch. 321, § 26</a>; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42, § 452, 32 DCR 4450</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245, § 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-926.</p>
                 <p>1973 Ed., § 2-1326.</p>
+                <p>1981 Ed., § 2-926.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -623,11 +679,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§27">June 7, 1938, 52 Stat. 619, ch. 321, § 27</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-927.</p>
                 <p>1973 Ed., § 2-1327.</p>
+                <p>1981 Ed., § 2-927.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>
@@ -642,11 +698,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§28">June 7, 1938, 52 Stat. 620, ch. 321, § 28</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-928.</p>
                 <p>1973 Ed., § 2-1328.</p>
+                <p>1981 Ed., § 2-928.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
             <hr/>

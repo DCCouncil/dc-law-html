@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/47-2851.08.html">§ 47–2851.08. Basic business license application fees; renewal fees.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-2851.07.html">Report Error</a>
@@ -112,14 +112,14 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-2851.7.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a), substituted “basic business license application” for “master application” in two places; in subsecs. (b) and (e)(1), substituted “basic” for “master”; repealed subsec. (c)(2); and in subsec. (f), substituted “basic business license application” for “master application”. Prior to repeal, subsec. (c)(2) had read as follows: “(2) The Center shall have the authority to issue, without endorsement, a Class B license for which the proper fee payment and a completed application form has been received and for which no pre-licensing or renewal approval action is required by any regulatory agency.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a>, in subsec. (a), substituted “business license application, along with proof of Workers’ Compensation insurance coverage, or an exemption therefrom, to the Center” for “business license application to the Center”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a), substituted “basic business license application” for “master application” in two places; in subsecs. (b) and (e)(1), substituted “basic” for “master”; repealed subsec. (c)(2); and in subsec. (f), substituted “basic business license application” for “master application”. Prior to repeal, subsec. (c)(2) had read as follows: “(2) The Center shall have the authority to issue, without endorsement, a Class B license for which the proper fee payment and a completed application form has been received and for which no pre-licensing or renewal approval action is required by any regulatory agency.”</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(i) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
-                <p>For temporary (90 day) amendment of section, see §  1104 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see §  1104 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see §  1104 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(i) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
               </section>
             </section>
           </section>

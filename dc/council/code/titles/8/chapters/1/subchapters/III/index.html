@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/1/subchapters/III-A/">Subchapter III-A. Bloomingdale and LeDroit Park Backwater Valves. [Expired]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/8/chapters/1/subchapters/III/">Report Error</a>
@@ -88,21 +88,51 @@
         <section class="col8 body">
           <h1>Subchapter III. Wastewater Control.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/8-105.01.html">§ 8–105.01. Purpose.</a>
-            <a href="/dc/council/code/sections/8-105.02.html">§ 8–105.02. Definitions.</a>
-            <a href="/dc/council/code/sections/8-105.03.html">§ 8–105.03. Special agreements.</a>
-            <a href="/dc/council/code/sections/8-105.04.html">§ 8–105.04. Falsifying information.</a>
-            <a href="/dc/council/code/sections/8-105.05.html">§ 8–105.05. Tampering and misuse.</a>
-            <a href="/dc/council/code/sections/8-105.06.html">§ 8–105.06. Regulation.</a>
-            <a href="/dc/council/code/sections/8-105.07.html">§ 8–105.07. Administration.</a>
-            <a href="/dc/council/code/sections/8-105.08.html">§ 8–105.08. Inspection authority.</a>
-            <a href="/dc/council/code/sections/8-105.09.html">§ 8–105.09. Information and confidentiality.</a>
-            <a href="/dc/council/code/sections/8-105.10.html">§ 8–105.10. Administrative enforcement.</a>
-            <a href="/dc/council/code/sections/8-105.11.html">§ 8–105.11. Injunction.</a>
-            <a href="/dc/council/code/sections/8-105.12.html">§ 8–105.12. Emergency suspension of service.</a>
-            <a href="/dc/council/code/sections/8-105.13.html">§ 8–105.13. Annual publication.</a>
-            <a href="/dc/council/code/sections/8-105.14.html">§ 8–105.14. Penalties.</a>
-            <a href="/dc/council/code/sections/8-105.15.html">§ 8–105.15. Authority to issue regulations.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.01.html">§ 8–105.01. Purpose.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.02.html">§ 8–105.02. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.03.html">§ 8–105.03. Special agreements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.04.html">§ 8–105.04. Falsifying information.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.05.html">§ 8–105.05. Tampering and misuse.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.06.html">§ 8–105.06. Regulation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.07.html">§ 8–105.07. Administration.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.08.html">§ 8–105.08. Inspection authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.09.html">§ 8–105.09. Information and confidentiality.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.10.html">§ 8–105.10. Administrative enforcement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.11.html">§ 8–105.11. Injunction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.12.html">§ 8–105.12. Emergency suspension of service.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.13.html">§ 8–105.13. Annual publication.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.14.html">§ 8–105.14. Penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-105.15.html">§ 8–105.15. Authority to issue regulations.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -208,9 +238,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.06.html">8-105.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (3A), validated a previously made technical amendment.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction in (3E).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (3A), validated a previously made technical amendment.</p>
                 <h4>References in Text</h4>
                 <p>“Section 307(b) and (c) of the Clean Water Act”, referred to in (1E), (3E), (5E) and (5A), is  33 U.S.C. § 1317(b) and (c).</p>
               </section>
@@ -234,8 +264,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-953.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
                 <p>“Nothing in this subchapter shall be construed as prohibiting any agreement between the District and any user of the wastewater system under which wastewater of specific strength or character is accepted into the wastewater system and treated subject to any payments or fees as may be applicable, except that national pretreatment standards shall not be waived.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
               </section>
             </section>
             <hr/>
@@ -323,8 +353,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.02.html">8-105.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (l), substituted “promulgated by WASA.” for “promulgated by WASA; and”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a> rewrote subsecs. (b) and (m); in subsec. (c), substituted “National standard” for “national standard”; repealed subsec. (e); and added subsec. (m).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (l), substituted “promulgated by WASA.” for “promulgated by WASA; and”.</p>
               </section>
             </section>
             <hr/>
@@ -397,13 +427,13 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-959.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
-                <p>“(a) User information and data provided to the District shall be available to the public or to any government agency without restriction unless the user specifically requests and is able to demonstrate to the satisfaction of the Mayor that the release of the information would divulge information, processes, or methods of operation entitled to protection as trade secrets, pursuant to § <a class="internal-link" href="/dc/council/code/sections/2-534.html">2-534</a>(a)(1).</p>
-                <p>“(b) When requested by the user in writing, information and data which might disclose trade secrets or secret processes shall not be made available for public inspection. However, the information and data shall be immediately available to the EPA for any purpose, and to WASA and the District in administrative and judicial review or enforcement proceedings to which the user is a party or in which the user has standing. Additionally, upon written request, WASA and the District may release such information and data to other government agencies in connection with uses related to this subchapter or to pretreatment programs.</p>
-                <p>“(c) Wastewater constituents and characteristics shall not be considered confidential information.</p>
-                <p>“(d) Information accepted by the Mayor as confidential shall not be transmitted to any governmental agency unless written notification is sent to the user at least 10 days before transmitting the information.</p>
-                <p>“(e)(1) All users shall retain and preserve any records, books, documents, memoranda, reports, correspondence, and any summaries of these materials relating to testing, internal or external monitoring, sampling, investigative and chemical analyses made by or in behalf of a user in connection with its discharge for no less than 3 years from the date of preparation, drafting, or memorialization.</p>
                 <p>“(2) All records which pertain to or may pertain to matters which are the subject of enforcement or litigation activities initiated by the District shall be retained and preserved by the user until all the enforcement activities have concluded and all periods of appeal have expired.”</p>
+                <p>“(e)(1) All users shall retain and preserve any records, books, documents, memoranda, reports, correspondence, and any summaries of these materials relating to testing, internal or external monitoring, sampling, investigative and chemical analyses made by or in behalf of a user in connection with its discharge for no less than 3 years from the date of preparation, drafting, or memorialization.</p>
+                <p>“(d) Information accepted by the Mayor as confidential shall not be transmitted to any governmental agency unless written notification is sent to the user at least 10 days before transmitting the information.</p>
+                <p>“(c) Wastewater constituents and characteristics shall not be considered confidential information.</p>
+                <p>“(b) When requested by the user in writing, information and data which might disclose trade secrets or secret processes shall not be made available for public inspection. However, the information and data shall be immediately available to the EPA for any purpose, and to WASA and the District in administrative and judicial review or enforcement proceedings to which the user is a party or in which the user has standing. Additionally, upon written request, WASA and the District may release such information and data to other government agencies in connection with uses related to this subchapter or to pretreatment programs.</p>
+                <p>“(a) User information and data provided to the District shall be available to the public or to any government agency without restriction unless the user specifically requests and is able to demonstrate to the satisfaction of the Mayor that the release of the information would divulge information, processes, or methods of operation entitled to protection as trade secrets, pursuant to § <a class="internal-link" href="/dc/council/code/sections/2-534.html">2-534</a>(a)(1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
               </section>
             </section>
             <hr/>
@@ -448,8 +478,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.12.html">8-105.12</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (d), substituted “Office of Administrative Hearings (‘Office’)” for “Board of Appeals and Review (‘Board’)” and substituted “Office” for “Board”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, in subsec. (b)(1), substituted “believe that a person or” for “believe that a”; in subsec. (b)(2)(E), substituted “Comply with the” for “A”; in subsec. (d), substituted “Court of Appeals (‘Court’)” for “Office of Administrative Hearings (‘Office’)” and “Court” for “Office”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (d), substituted “Office of Administrative Hearings (‘Office’)” for “Board of Appeals and Review (‘Board’)” and substituted “Office” for “Board”.</p>
               </section>
             </section>
             <hr/>
@@ -490,9 +520,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.13.html">8-105.13</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (d), substituted “WASA” for “the Mayor”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (c), substituted “Office of Administrative Hearings” for “Board of Appeals and Review”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a> rewrote subsec. (c), which had read as follows: “(c) WASA’s decision to suspend service may be appealed to the Office of Administrative Hearings as set forth in § <a class="internal-link" href="/dc/council/code/sections/8-105.10.html">8-105.10</a>.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (c), substituted “Office of Administrative Hearings” for “Board of Appeals and Review”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (d), substituted “WASA” for “the Mayor”.</p>
               </section>
             </section>
             <hr/>
@@ -521,19 +551,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.02.html">8-105.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
-                <p>“(a) A list of the users in significant noncompliance with the Pretreatment Standards and Requirements in the preceding 12 months shall be published annually by WASA in the local daily newspaper with the largest circulation.</p>
-                <p>“(b) The notification shall summarize the nature of the significant noncompliance and any enforcement action taken against the user during the same 12-month period.</p>
-                <p>“(c) For the purposes of this section, a user is in significant noncompliance with the Pretreatment Standards and Requirements if its violation meets one or more of the following criteria:</p>
-                <p>“(1) Chronic violations of wastewater discharge limits, are violations in which 66% or more of all the measurements taken during a 6-month period exceed (by any magnitude) the daily maximum limit or the average limit for the same pollutant parameter;</p>
-                <p>“(2) Technical Review Criteria (‘TRC’) violations, are violations in which 33% or more of all the measurements for each pollutant parameter taken during a 6-month period equal or exceed the product of the daily maximum limit or the average limit multiplied by the applicable TRC (TRC = 1.4 for Biochemical Oxygen Demand, TSS, fats, oil, and grease, and 1.2 for all other pollutants except pH);</p>
-                <p>“(3) Any other violation of pretreatment effluent limits (daily maximum or longer term average) that WASA determines has caused, alone or in combination with other discharges, interference or pass through (including endangering the health of WASA or District personnel or the general public);</p>
-                <p>“(4) Any violation of the terms of a wastewater discharge permit which remains uncorrected 45 days after notification of the violation is received by the user, or any failure to meet a compliance schedule milestone or enforcement order issued by WASA within 90 days after the scheduled date for achievement of the compliance schedule milestone;</p>
-                <p>“(5) Failure to provide required reports, such as baseline monitoring reports, periodic self-monitoring reports, and reports on progress with compliance schedules or orders, within 30 days after the due date;</p>
-                <p>“(6) Failure to timely and accurately report an instance of noncompliance with the Pretreatment Standards and Requirements;</p>
-                <p>“(7) Any violation which results in WASA exercising its emergency authority pursuant to § <a class="internal-link" href="/dc/council/code/sections/8-105.12.html">8-105.12</a>; and</p>
-                <p>“(8) Any violation WASA considers significant in light of the circumstances.”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> added “of this subsection” in the introductory language of (c).</p>
+                <p>“(8) Any violation WASA considers significant in light of the circumstances.”</p>
+                <p>“(7) Any violation which results in WASA exercising its emergency authority pursuant to § <a class="internal-link" href="/dc/council/code/sections/8-105.12.html">8-105.12</a>; and</p>
+                <p>“(6) Failure to timely and accurately report an instance of noncompliance with the Pretreatment Standards and Requirements;</p>
+                <p>“(5) Failure to provide required reports, such as baseline monitoring reports, periodic self-monitoring reports, and reports on progress with compliance schedules or orders, within 30 days after the due date;</p>
+                <p>“(4) Any violation of the terms of a wastewater discharge permit which remains uncorrected 45 days after notification of the violation is received by the user, or any failure to meet a compliance schedule milestone or enforcement order issued by WASA within 90 days after the scheduled date for achievement of the compliance schedule milestone;</p>
+                <p>“(3) Any other violation of pretreatment effluent limits (daily maximum or longer term average) that WASA determines has caused, alone or in combination with other discharges, interference or pass through (including endangering the health of WASA or District personnel or the general public);</p>
+                <p>“(2) Technical Review Criteria (‘TRC’) violations, are violations in which 33% or more of all the measurements for each pollutant parameter taken during a 6-month period equal or exceed the product of the daily maximum limit or the average limit multiplied by the applicable TRC (TRC = 1.4 for Biochemical Oxygen Demand, TSS, fats, oil, and grease, and 1.2 for all other pollutants except pH);</p>
+                <p>“(1) Chronic violations of wastewater discharge limits, are violations in which 66% or more of all the measurements taken during a 6-month period exceed (by any magnitude) the daily maximum limit or the average limit for the same pollutant parameter;</p>
+                <p>“(c) For the purposes of this section, a user is in significant noncompliance with the Pretreatment Standards and Requirements if its violation meets one or more of the following criteria:</p>
+                <p>“(b) The notification shall summarize the nature of the significant noncompliance and any enforcement action taken against the user during the same 12-month period.</p>
+                <p>“(a) A list of the users in significant noncompliance with the Pretreatment Standards and Requirements in the preceding 12 months shall be published annually by WASA in the local daily newspaper with the largest circulation.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
               </section>
             </section>
             <hr/>

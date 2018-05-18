@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/29/chapters/5/">Chapter 5. Professional Corporations.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29/chapters/4/">Report Error</a>
@@ -87,34 +87,62 @@
         <section class="col8 body">
           <h1>Chapter 4. Nonprofit Corporations.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/I/">Subchapter I. General Provisions.</a>
-            <p>§§ 29-401.01 - 29-401.60</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/II/">Subchapter II. Incorporation.</a>
-            <p>§§ 29-402.01 - 29-402.06</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/III/">Subchapter III. Purposes and Powers.</a>
-            <p>§§ 29-403.01 - 29-403.04</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/IV/">Subchapter IV. Memberships and Financial Provisions.</a>
-            <p>§§ 29-404.01 - 29-404.43</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/V/">Subchapter V. Member Meetings.</a>
-            <p>§§ 29-405.01 - 29-405.40</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/VI/">Subchapter VI. Directors, Officers, and Employees.</a>
-            <p>§§ 29-406.01 - 29-406.91</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/VII/">Subchapter VII. Domestication.</a>
-            <p>§§ 29-407.01 - 29-407.06</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/VIII/">Subchapter VIII. Amendment of Articles of Incorporation and Bylaws.</a>
-            <p>§§ 29-408.01 - 29-408.40</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/IX/">Subchapter IX. Mergers and Membership Exchanges.</a>
-            <p>§§ 29-409.01 - 29-409.08</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/X/">Subchapter X. Disposition of Assets.</a>
-            <p>§§ 29-410.01 - 29-410.03</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/XI/">Subchapter XI. Derivative Proceedings.</a>
-            <p>§§ 29-411.01 - 29-411.09</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/XII/">Subchapter XII. Dissolution.</a>
-            <p>§§ 29-412.01 - 29-412.30</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/XIII/">Subchapter XIII. Records and Reports.</a>
-            <p>§§ 29-413.01 - 29-413.20</p>
-            <a href="/dc/council/code/titles/29/chapters/4/subchapters/XIV/">Subchapter XIV. Transition Provisions.</a>
-            <p>§§ 29-414.01 - 29-414.04</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/I/">Subchapter I. General Provisions.</a>
+            </p>
+            <p>§§ 29-401.01 – 29-401.60</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/II/">Subchapter II. Incorporation.</a>
+            </p>
+            <p>§§ 29-402.01 – 29-402.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/III/">Subchapter III. Purposes and Powers.</a>
+            </p>
+            <p>§§ 29-403.01 – 29-403.04</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/IV/">Subchapter IV. Memberships and Financial Provisions.</a>
+            </p>
+            <p>§§ 29-404.01 – 29-404.43</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/V/">Subchapter V. Member Meetings.</a>
+            </p>
+            <p>§§ 29-405.01 – 29-405.40</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/VI/">Subchapter VI. Directors, Officers, and Employees.</a>
+            </p>
+            <p>§§ 29-406.01 – 29-406.91</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/VII/">Subchapter VII. Domestication.</a>
+            </p>
+            <p>§§ 29-407.01 – 29-407.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/VIII/">Subchapter VIII. Amendment of Articles of Incorporation and Bylaws.</a>
+            </p>
+            <p>§§ 29-408.01 – 29-408.40</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/IX/">Subchapter IX. Mergers and Membership Exchanges.</a>
+            </p>
+            <p>§§ 29-409.01 – 29-409.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/X/">Subchapter X. Disposition of Assets.</a>
+            </p>
+            <p>§§ 29-410.01 – 29-410.03</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/XI/">Subchapter XI. Derivative Proceedings.</a>
+            </p>
+            <p>§§ 29-411.01 – 29-411.09</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/XII/">Subchapter XII. Dissolution.</a>
+            </p>
+            <p>§§ 29-412.01 – 29-412.30</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/XIII/">Subchapter XIII. Records and Reports.</a>
+            </p>
+            <p>§§ 29-413.01 – 29-413.20</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/4/subchapters/XIV/">Subchapter XIV. Transition Provisions.</a>
+            </p>
+            <p>§§ 29-414.01 – 29-414.04</p>
           </section>
           <section class="content">
             <hr/>
@@ -131,12 +159,12 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Cross References</h4>
-                <p>Licenses to conduct bingo games, raffles, or Monte Carlo night parties, see § <a class="internal-link" href="/dc/council/code/sections/3-1323.html">3-1323</a>.</p>
-                <p>Child abuse and neglect prevention children’s trust fund, see § <a class="internal-link" href="/dc/council/code/sections/4-1341.06.html">4-1341.06</a>.</p>
-                <p>Financial institutions, licensing of money lenders, “community development corporation” defined, see § <a class="internal-link" href="/dc/council/code/sections/26-910.html">26-910</a>.</p>
-                <p>Cable television, Public Access Corporation, formation, see § <a class="internal-link" href="/dc/council/code/sections/34-1229.html">34-1229</a>.</p>
-                <p>Museum of the City of Washington, powers, see § <a class="internal-link" href="/dc/council/code/sections/39-303.html">39-303</a>.</p>
                 <p>Nonprofit healthcare entities, sale, lease, or exchange of assets with for-profit entities, see § <a class="internal-link" href="/dc/council/code/sections/44-603.html">44-603</a>.</p>
+                <p>Museum of the City of Washington, powers, see § <a class="internal-link" href="/dc/council/code/sections/39-303.html">39-303</a>.</p>
+                <p>Cable television, Public Access Corporation, formation, see § <a class="internal-link" href="/dc/council/code/sections/34-1229.html">34-1229</a>.</p>
+                <p>Financial institutions, licensing of money lenders, “community development corporation” defined, see § <a class="internal-link" href="/dc/council/code/sections/26-910.html">26-910</a>.</p>
+                <p>Child abuse and neglect prevention children’s trust fund, see § <a class="internal-link" href="/dc/council/code/sections/4-1341.06.html">4-1341.06</a>.</p>
+                <p>Licenses to conduct bingo games, raffles, or Monte Carlo night parties, see § <a class="internal-link" href="/dc/council/code/sections/3-1323.html">3-1323</a>.</p>
               </section>
             </section>
             <hr/>

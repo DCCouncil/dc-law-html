@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/5-105.06.html">§ 5–105.06. Assistant to inspector commanding detective bureau.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/5-105.05.html">Report Error</a>
@@ -99,30 +99,30 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch623.html#§1">Feb. 28, 1901, 31 Stat. 819, ch. 623, § 1</a>; Mar. 3, 1905, 33 Stat. 902, ch. 1406; June 8, 1906, 34 Stat. 221, ch. 3056; May 9, 1956, 70 Stat. 148, ch. 243, § 1; <a class="internal-link" href="/us/congress/laws/public/87-60.html">June 27, 1961, 75 Stat. 121, Pub. L. 87-60, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-107.</p>
                 <p>1973 Ed., § 4-106.</p>
+                <p>1981 Ed., § 4-107.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-603.01.html">1-603.01</a> and § <a class="internal-link" href="/dc/council/code/sections/1-632.03.html">1-632.03</a>.</p>
                 <h4>Cross References</h4>
-                <p>Adult protective services, reports of abuse or neglect, see § <a class="internal-link" href="/dc/council/code/sections/7-1903.html">7-1903</a>.</p>
-                <p>Criminal offenses, harbor regulations, see § <a class="internal-link" href="/dc/council/code/sections/22-4401.html">22-4401</a>.</p>
-                <p>Criminal offenses, impersonating police officers, see § <a class="internal-link" href="/dc/council/code/sections/22-1404.html">22-1404</a>.</p>
-                <p>Criminal offenses, prostitution, assessment of taxes against property used for, see § <a class="internal-link" href="/dc/council/code/sections/22-2720.html">22-2720</a>.</p>
-                <p>Criminal proceedings, service of process, see § <a class="internal-link" href="/dc/council/code/sections/16-703.html">16-703</a>.</p>
-                <p>Designation of officer to take bonds or collateral, see § <a class="internal-link" href="/dc/council/code/sections/23-1110.html">23-1110</a>.</p>
-                <p>Firearms control provisions, administration by Chief of Police, see § <a class="internal-link" href="/dc/council/code/sections/7-2501.01.html">7-2501.01</a> et seq.</p>
-                <p>Merit system, application to police officers and firefighters, see § <a class="internal-link" href="/dc/council/code/sections/1-632.03.html">1-632.03</a>.</p>
-                <p>Merit system, metropolitan police force, see § <a class="internal-link" href="/dc/council/code/sections/1-603.01.html">1-603.01</a>.</p>
-                <p>Pistols, issuance of licenses to carry, see § <a class="internal-link" href="/dc/council/code/sections/22-4506.html">22-4506</a>.</p>
-                <p>Prevention of cruelty to animals and children, detailing officer to Humane Society, see §§ <a class="internal-link" href="/dc/council/code/sections/44-1509.html">44-1509</a> and <a class="internal-link" href="/dc/council/code/sections/44-1510.html">44-1510</a>.</p>
-                <p>Uniform Controlled Substances Acts, enforcement, see § <a class="internal-link" href="/dc/council/code/sections/48-905.01.html">48-905.01</a> et seq.</p>
-                <p>Weapons, permission to sell to designated classes of persons, see §§ <a class="internal-link" href="/dc/council/code/sections/22-4508.html">22-4508</a>, <a class="internal-link" href="/dc/council/code/sections/22-4510.html">22-4510</a>, and <a class="internal-link" href="/dc/council/code/sections/22-4514.html">22-4514</a>.</p>
-                <p>Weapons, sales of, copying of records, see § <a class="internal-link" href="/dc/council/code/sections/22-4510.html">22-4510</a>.</p>
                 <p>Wharves, control, see § <a class="internal-link" href="/dc/council/code/sections/10-501.01.html">10-501.01</a> et seq.</p>
+                <p>Weapons, sales of, copying of records, see § <a class="internal-link" href="/dc/council/code/sections/22-4510.html">22-4510</a>.</p>
+                <p>Weapons, permission to sell to designated classes of persons, see §§ <a class="internal-link" href="/dc/council/code/sections/22-4508.html">22-4508</a>, <a class="internal-link" href="/dc/council/code/sections/22-4510.html">22-4510</a>, and <a class="internal-link" href="/dc/council/code/sections/22-4514.html">22-4514</a>.</p>
+                <p>Uniform Controlled Substances Acts, enforcement, see § <a class="internal-link" href="/dc/council/code/sections/48-905.01.html">48-905.01</a> et seq.</p>
+                <p>Prevention of cruelty to animals and children, detailing officer to Humane Society, see §§ <a class="internal-link" href="/dc/council/code/sections/44-1509.html">44-1509</a> and <a class="internal-link" href="/dc/council/code/sections/44-1510.html">44-1510</a>.</p>
+                <p>Pistols, issuance of licenses to carry, see § <a class="internal-link" href="/dc/council/code/sections/22-4506.html">22-4506</a>.</p>
+                <p>Merit system, metropolitan police force, see § <a class="internal-link" href="/dc/council/code/sections/1-603.01.html">1-603.01</a>.</p>
+                <p>Merit system, application to police officers and firefighters, see § <a class="internal-link" href="/dc/council/code/sections/1-632.03.html">1-632.03</a>.</p>
+                <p>Firearms control provisions, administration by Chief of Police, see § <a class="internal-link" href="/dc/council/code/sections/7-2501.01.html">7-2501.01</a> et seq.</p>
+                <p>Designation of officer to take bonds or collateral, see § <a class="internal-link" href="/dc/council/code/sections/23-1110.html">23-1110</a>.</p>
+                <p>Criminal proceedings, service of process, see § <a class="internal-link" href="/dc/council/code/sections/16-703.html">16-703</a>.</p>
+                <p>Criminal offenses, prostitution, assessment of taxes against property used for, see § <a class="internal-link" href="/dc/council/code/sections/22-2720.html">22-2720</a>.</p>
+                <p>Criminal offenses, impersonating police officers, see § <a class="internal-link" href="/dc/council/code/sections/22-1404.html">22-1404</a>.</p>
+                <p>Criminal offenses, harbor regulations, see § <a class="internal-link" href="/dc/council/code/sections/22-4401.html">22-4401</a>.</p>
+                <p>Adult protective services, reports of abuse or neglect, see § <a class="internal-link" href="/dc/council/code/sections/7-1903.html">7-1903</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Office of Major and Superintendent of Metropolitan Police abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/5-105.01.html">5-105.01</a>.</p>
-                <p>Establishment of drug free zones: For provisions regarding procedures for the establishment of a public area as a drug free zone by the Chief of Police, see § <a class="internal-link" href="/dc/council/code/sections/48-1002.html">48-1002</a>.</p>
                 <p>For temporary provisions regarding procedures for the establishment of a public area as a drug free zone by the Chief of Police, see § 3 of the Anti-Loitering/Drug Free Zone Emergency Act of 1996 (D.C. Act 11-278, May 29, 1996,  43 DCR 2974), § 3 of the Anti-Loitering/Drug Free Zone Legislative Review Emergency Act of 1996 (D.C. Act 11-319, July 31, 1996,  43 DCR 4487), § 3 of the Anti-Loitering/Drug Free Zone Congressional Review Emergency Act of 1996 (D.C. Act 11-426, October 28, 1996,  43 DCR 6331), § 3 of the Anti-Loitering/Drug Free Zone Second Congressional Review Emergency Act of 1996 (D.C. Act 11-468, December 30, 1996,  44 DCR 175), and § 3 of the Anti-Loitering/Drug Free Zone Congressional Review Emergency Act of 1997 (D.C. Act 12-55, March 31, 1997,  44 DCR 2219).</p>
+                <p>Establishment of drug free zones: For provisions regarding procedures for the establishment of a public area as a drug free zone by the Chief of Police, see § <a class="internal-link" href="/dc/council/code/sections/48-1002.html">48-1002</a>.</p>
+                <p>Office of Major and Superintendent of Metropolitan Police abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/5-105.01.html">5-105.01</a>.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>

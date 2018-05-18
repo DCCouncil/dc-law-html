@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -65,19 +77,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1402.67.html">§ 2–1402.67. District of Columbia.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1402.66.html">Report Error</a>
@@ -107,12 +107,12 @@
       (<a class="internal-link" href="/dc/council/laws/2-38.html#§266">Dec. 13, 1977, D.C. Law 2-38, title II, § 266, 24 DCR 6038</a>; <a class="internal-link" href="/dc/council/laws/19-319.html">June 15, 2013, D.C. Law 19-319, § 3, 60 DCR 2333</a>; <a class="internal-link" href="/dc/council/laws/20-186.html">Mar. 10, 2015, D.C. Law 20-186, § 3, 61 DCR 12108</a>; <a class="internal-link" href="/dc/council/laws/20-243.html">Apr. 24, 2015, D.C. Law 20-243, §  4, 61 DCR 8320</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2530.</p>
                 <p>1973 Ed., § 6-2276.</p>
+                <p>1981 Ed., § 1-2530.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-319.html">D.C. Law 19-319</a> rewrote the section.</p>
-                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-186.html">D.C. Law 20-186</a> redesignated (a)(1) through (3) as (a)(1)(A) through (a)(1)(C); and added (a)(2).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-243.html">D.C. Law 20-243</a> added “provided, that forfeitures of collateral in a court proceeding shall not include any forfeiture of collateral that was made pursuant to the post-and-forfeit procedure, as that term is defined in § <a class="internal-link" href="/dc/council/code/sections/5-335.01.html">5-335.01</a>(a)” in (b)(1)(C).</p>
+                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-186.html">D.C. Law 20-186</a> redesignated (a)(1) through (3) as (a)(1)(A) through (a)(1)(C); and added (a)(2).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-319.html">D.C. Law 19-319</a> rewrote the section.</p>
               </section>
             </section>
           </section>

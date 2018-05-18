@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/2-303.22.html">§ 2–303.22. Energy performance-based contract procedures; required contract provisions. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-303.21.html">Report Error</a>
@@ -102,11 +102,11 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-1183.21.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2 of the Small Purchase Authority Congressional Recess Emergency Amendment Act of 1997 (D.C. Act 12-237, January 13, 1998,  45 DCR 501).</p>
-                <p>For temporary addition of section, see § 2 of the Small Purchase Authority Emergency Amendment Act of 1997 (D.C. Act 12-82, June 19, 1997,  44 DCR 3719), and § 2 of the Small Purchase Authority Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-162, October 16, 1997,  44 DCR 6059).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Procurement Practices Small Purchase Emergency Amendment Act of 2001 (D.C. Act 14-176, November 19, 2001,  48 DCR 11055).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Procurement Practices Small Purchase Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-308, March 25, 2002,  49 DCR 3413).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Suspension of Purchase Authority in the District of Columbia Government Purchase Card Program Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-221, November 7, 2003,  50 DCR 10051).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Procurement Practices Small Purchase Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-308, March 25, 2002,  49 DCR 3413).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Procurement Practices Small Purchase Emergency Amendment Act of 2001 (D.C. Act 14-176, November 19, 2001,  48 DCR 11055).</p>
+                <p>For temporary addition of section, see § 2 of the Small Purchase Authority Emergency Amendment Act of 1997 (D.C. Act 12-82, June 19, 1997,  44 DCR 3719), and § 2 of the Small Purchase Authority Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-162, October 16, 1997,  44 DCR 6059).</p>
+                <p>For temporary amendment of section, see § 2 of the Small Purchase Authority Congressional Recess Emergency Amendment Act of 1997 (D.C. Act 12-237, January 13, 1998,  45 DCR 501).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of the Procurement Practices Small Purchase Temporary Amendment Act of 2001 (D.C. Law 14-87, March 19, 2002, law notification  49 DCR 2992).</p>
                 <h4>Editor's Notes</h4>

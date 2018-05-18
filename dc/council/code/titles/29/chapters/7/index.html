@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/29/chapters/8/">Chapter 8. Limited Liability Companies.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29/chapters/7/">Report Error</a>
@@ -87,28 +87,50 @@
         <section class="col8 body">
           <h1>Chapter 7. Limited Partnerships.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/I/">Subchapter I. General Provisions.</a>
-            <p>§§ 29-701.01 - 29-701.13</p>
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/II/">Subchapter II. Formation; Certificate of Limited Partnership and Other Filings.</a>
-            <p>§§ 29-702.01 - 29-702.06</p>
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/III/">Subchapter III. Limited Partners.</a>
-            <p>§§ 29-703.01 - 29-703.06</p>
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/IV/">Subchapter IV. General Partners.</a>
-            <p>§§ 29-704.01 - 29-704.09</p>
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/V/">Subchapter V. Contributions and Distributions.</a>
-            <p>§§ 29-705.01 - 29-705.09</p>
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/VI/">Subchapter VI. Dissociation.</a>
-            <p>§§ 29-706.01 - 29-706.07</p>
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/VII/">Subchapter VII. Transferable Interests and Rights of Transferees and Creditors.</a>
-            <p>§§ 29-707.01 - 29-707.04</p>
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/VIII/">Subchapter VIII. Dissolution.</a>
-            <p>§§ 29-708.01 - 29-708.11</p>
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/IX/">Subchapter IX. Actions by Partners.</a>
-            <p>§§ 29-709.01 - 29-709.06</p>
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/X/">Subchapter X. Merger.</a>
-            <p>§§ 29-710.01 - 29-710.08</p>
-            <a href="/dc/council/code/titles/29/chapters/7/subchapters/XI/">Subchapter XI. Transition Provisions.</a>
-            <p>§§ 29-711.01 - 29-711.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/I/">Subchapter I. General Provisions.</a>
+            </p>
+            <p>§§ 29-701.01 – 29-701.13</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/II/">Subchapter II. Formation; Certificate of Limited Partnership and Other Filings.</a>
+            </p>
+            <p>§§ 29-702.01 – 29-702.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/III/">Subchapter III. Limited Partners.</a>
+            </p>
+            <p>§§ 29-703.01 – 29-703.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/IV/">Subchapter IV. General Partners.</a>
+            </p>
+            <p>§§ 29-704.01 – 29-704.09</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/V/">Subchapter V. Contributions and Distributions.</a>
+            </p>
+            <p>§§ 29-705.01 – 29-705.09</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/VI/">Subchapter VI. Dissociation.</a>
+            </p>
+            <p>§§ 29-706.01 – 29-706.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/VII/">Subchapter VII. Transferable Interests and Rights of Transferees and Creditors.</a>
+            </p>
+            <p>§§ 29-707.01 – 29-707.04</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/VIII/">Subchapter VIII. Dissolution.</a>
+            </p>
+            <p>§§ 29-708.01 – 29-708.11</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/IX/">Subchapter IX. Actions by Partners.</a>
+            </p>
+            <p>§§ 29-709.01 – 29-709.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/X/">Subchapter X. Merger.</a>
+            </p>
+            <p>§§ 29-710.01 – 29-710.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/7/subchapters/XI/">Subchapter XI. Transition Provisions.</a>
+            </p>
+            <p>§§ 29-711.01 – 29-711.01</p>
           </section>
           <section class="content">
             <hr/>
@@ -170,8 +192,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 102 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 102 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -228,8 +250,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a>, in (b), substituted “formed” for “organized” and added “regardless of whether for profit.”</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 104 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 104 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -248,8 +270,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities or affairs” for “activities.”</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 105 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 105 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -268,8 +290,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 106 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 106 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -324,8 +346,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote (b); and added (c) and (d).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 110 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 110 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -344,8 +366,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/29-701.02.html">29-701.02</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 2(g)(2)(F) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-701.08 as § <a class="internal-link" href="/dc/council/code/sections/29-701.10.html">29-701.10</a>.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Section 2(g)(2)(F) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-701.08 as § <a class="internal-link" href="/dc/council/code/sections/29-701.10.html">29-701.10</a>.</p>
               </section>
             </section>
             <hr/>
@@ -367,8 +389,8 @@
       (<a class="internal-link" href="/dc/council/laws/19-210.html">Mar. 5, 2013, D.C. Law 19-210, § 2(g)(2)(G), 59 DCR 13171</a>.)
     </p>
                 <h4>Editor's Notes</h4>
-                <p>Section 2(g)(2)(F) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-701.09 as § <a class="internal-link" href="/dc/council/code/sections/29-701.11.html">29-701.11</a>.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Section 2(g)(2)(F) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-701.09 as § <a class="internal-link" href="/dc/council/code/sections/29-701.11.html">29-701.11</a>.</p>
               </section>
             </section>
             <hr/>
@@ -400,9 +422,9 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § <a class="internal-link" href="/dc/council/code/sections/29-701.08.html">29-701.08</a> as § <a class="internal-link" href="/dc/council/code/sections/29-701.10.html">29-701.10</a>; and substituted “A description of the agreed value of contributions other than money made” for “The amount of cash, and a description and statement of the agreed value of the other benefits, contributed” in (9)(A); and substituted “activities or affairs” for “activities” in (9)(D).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 111 of the Uniform Limited Partnership Act (2001 Act).</p>
-                <p>Section 2(g)(2)(F) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-701.10 as § <a class="internal-link" href="/dc/council/code/sections/29-701.12.html">29-701.12</a>.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Section 2(g)(2)(F) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-701.10 as § <a class="internal-link" href="/dc/council/code/sections/29-701.12.html">29-701.12</a>.</p>
+                <p>Uniform Law: This section is based on § 111 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -419,9 +441,9 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § <a class="internal-link" href="/dc/council/code/sections/29-701.09.html">29-701.09</a> as § <a class="internal-link" href="/dc/council/code/sections/29-701.11.html">29-701.11</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 112 of the Uniform Limited Partnership Act (2001 Act).</p>
-                <p>Section 2(g)(2)(F) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-701.11 as § <a class="internal-link" href="/dc/council/code/sections/29-701.13.html">29-701.13</a>.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Section 2(g)(2)(F) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § 20-701.11 as § <a class="internal-link" href="/dc/council/code/sections/29-701.13.html">29-701.13</a>.</p>
+                <p>Uniform Law: This section is based on § 112 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -438,8 +460,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § <a class="internal-link" href="/dc/council/code/sections/29-701.10.html">29-701.10</a> as § <a class="internal-link" href="/dc/council/code/sections/29-701.12.html">29-701.12</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 113 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 113 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -456,8 +478,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> redesignated former § <a class="internal-link" href="/dc/council/code/sections/29-701.11.html">29-701.11</a> as § <a class="internal-link" href="/dc/council/code/sections/29-701.13.html">29-701.13</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 118 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 118 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -491,8 +513,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “general partner and the limited partnership’s principal office” for “general partner” in (a)(3); and rewrote (c).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 201 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 201 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -525,8 +547,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities or affairs” for “activities” in (b)(3); and substituted “inaccurate” for “false” in (c).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 202 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 202 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -585,8 +607,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities or affairs” for “activities” in (a)(4) and (a)(7).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 204 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 204 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -628,8 +650,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “inaccurate” for “false” in (a) and in the section heading; and substituted “making false statements” for “perjury” in (b).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 208 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 208 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -658,8 +680,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 301 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 301 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -677,8 +699,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 302 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 302 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -696,8 +718,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 303 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 303 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -735,8 +757,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” throughout (b).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 304 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 304 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -758,8 +780,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “does” for “shall” in (c); and added (d).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 305 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 305 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -811,8 +833,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> added the (a) designation; rewrote (a)(1) and (a)(2); and added (b).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 401 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 401 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -833,8 +855,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” in (a); and substituted “activities or affairs or activities or affairs” for “activities or activities” in (b) and (c).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 402 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 402 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -852,8 +874,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities or affairs” for “activities” in (a) and (b).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 403 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 403 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -876,8 +898,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 404 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 404 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -926,8 +948,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” twice in (a).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 406 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 406 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -988,8 +1010,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> added (f), (g), and (h).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 408 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 408 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1025,8 +1047,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “property transferred, services performed, or another benefit provided to the partnership or an agreement to transfer property, perform services, or provide another benefit to the partnership” for “tangible or intangible property or other benefit to the limited partnership, including money, services performed, promissory notes, other agreements to contribute cash or property, and contracts for services to be performed.”</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 501 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 501 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1047,8 +1069,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “contributions” for “contribution” in the section heading.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 502 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 502 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1112,8 +1134,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “money” for “cash.”</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 506 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 506 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1130,8 +1152,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “If” for “When.”</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 507 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 507 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1166,8 +1188,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote (b) and (d); and added (h).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 508 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 508 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1232,8 +1254,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “completion of the winding up” for “termination” in (a).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 601 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 601 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1256,8 +1278,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “does not itself discharge the person from any debt, liability, or other obligation” for “shall not of itself discharge the person from any obligation” in (b).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 602 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 602 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1306,8 +1328,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> deleted “shall” at the end of the introductory language of (12); substituted “Does not” for “Not” in (12)(A); and substituted “Survives” for “Survive” in (12)(B).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 603 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 603 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1334,8 +1356,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “completion of the winding up” for “termination” in (b)(2).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 604 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 604 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1360,8 +1382,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” in (a)(1); and substituted “debt, liability, or other obligation” for “obligation” in (b).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 605 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 605 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1385,8 +1407,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “merged out of existence, converted, or domesticated” for “merged” in (a).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 606 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 606 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1413,8 +1435,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “a debt, obligation, or other liability” for “an obligation” or variants thereof in (a), (d) and (e); and substituted “activities and affairs” for “activities” in (b) and (c).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 607 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 607 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1432,8 +1454,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 701 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 701 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1464,8 +1486,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” in (a)(2), (a)(3), and (b)(2); and added (h).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 702 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 702 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1492,8 +1514,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 703 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 703 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1512,8 +1534,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “legal representative” for “estate” in the section heading.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 704 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 704 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1542,8 +1564,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” in the introductory language and in (3)(B)(i).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 801 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 801 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1562,8 +1584,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 802 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 802 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1594,8 +1616,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” throughout the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 803 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 803 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1623,8 +1645,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” in (a)(1); and substituted “notice or knowledge” for “notice” in (a)(2) and (b)(2)(B).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 804 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 804 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1646,8 +1668,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” in (a).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 805 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 805 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1748,8 +1770,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” in (a).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 812 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 812 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1813,8 +1835,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” in (a).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 1001 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 1001 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>
@@ -1886,8 +1908,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> added (c).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 1005 of the Uniform Limited Partnership Act (2001 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 1005 of the Uniform Limited Partnership Act (2001 Act).</p>
               </section>
             </section>
             <hr/>

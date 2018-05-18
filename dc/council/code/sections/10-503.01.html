@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/10-503.02.html">§ 10–503.02. Duty of Capitol Police.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/10-503.01.html">Report Error</a>
@@ -100,11 +100,11 @@
       (<a class="internal-link" href="/us/congress/revised-statutes.html#§1820">R.S., § 1820</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-105.</p>
                 <p>1973 Ed., § 9-105.</p>
+                <p>1981 Ed., § 9-105.</p>
                 <h4>Cross References</h4>
-                <p>Metropolitan Police jurisdiction, see § <a class="internal-link" href="/dc/council/code/sections/5-133.02.html">5-133.02</a>.</p>
                 <p>United States Park Police, see § <a class="internal-link" href="/dc/council/code/sections/5-201.html">5-201</a> et seq.</p>
+                <p>Metropolitan Police jurisdiction, see § <a class="internal-link" href="/dc/council/code/sections/5-133.02.html">5-133.02</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Enlargement of Capitol Grounds: Act of March 4, 1929, 45 Stat. 1694, ch. 708, as amended, provided for the enlargement of the Capitol Grounds.</p>
               </section>

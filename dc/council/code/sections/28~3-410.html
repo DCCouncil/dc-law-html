@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:3-411.html">§ 28:3-411. Refusal to pay cashier’s checks, teller’s checks, and certified checks.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:3-410.html">Report Error</a>
@@ -101,13 +101,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 684, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/10-249.html">Mar. 23, 1995, D.C. Law 10-249, § 2(d), 42 DCR 467</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:3-410.</p>
                 <p>1973 Ed., § 28:3-412.</p>
+                <p>1981 Ed., § 28:3-410.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. This section is a restatement of former  Section 3-412. It applies to conditional acceptances, acceptances for part of the amount, acceptances to pay at a different time from that required by the draft, or to the acceptance of less than all of the drawees. It applies to any other engagement changing the essential terms of the draft. If the drawee makes a varied acceptance the holder may either reject it or assent to it. The holder may reject by insisting on acceptance of the draft as presented. Refusal by the drawee to accept the draft as presented is dishonor. In that event the drawee is not bound by the varied acceptance and is entitled to have it canceled.</p>
-                <p>If the holder assents to the varied acceptance, the drawee’s obligation as acceptor is according to the terms of the varied acceptance. Under subsection (c) the effect of the holder’s assent is to discharge any drawer or indorser who does not also assent. The assent of the drawer or indorser must be affirmatively expressed. Mere failure to object within a reasonable time is not assent which will prevent the discharge.</p>
-                <p>2. Under subsection (b) an acceptance does not vary from the terms of the draft if it provides for payment at any particular bank or place in the United States unless the acceptance states that the draft is to be paid only at such bank or place.</p>
                 <p>Section 3-501(b)(1) states that if an instrument is payable at a bank in the United States presentment must be made at the place of payment ( Section 3-111) which in this case is at the designated bank.</p>
+                <p>2. Under subsection (b) an acceptance does not vary from the terms of the draft if it provides for payment at any particular bank or place in the United States unless the acceptance states that the draft is to be paid only at such bank or place.</p>
+                <p>If the holder assents to the varied acceptance, the drawee’s obligation as acceptor is according to the terms of the varied acceptance. Under subsection (c) the effect of the holder’s assent is to discharge any drawer or indorser who does not also assent. The assent of the drawer or indorser must be affirmatively expressed. Mere failure to object within a reasonable time is not assent which will prevent the discharge.</p>
+                <p>1. This section is a restatement of former  Section 3-412. It applies to conditional acceptances, acceptances for part of the amount, acceptances to pay at a different time from that required by the draft, or to the acceptance of less than all of the drawees. It applies to any other engagement changing the essential terms of the draft. If the drawee makes a varied acceptance the holder may either reject it or assent to it. The holder may reject by insisting on acceptance of the draft as presented. Refusal by the drawee to accept the draft as presented is dishonor. In that event the drawee is not bound by the varied acceptance and is entitled to have it canceled.</p>
               </section>
             </section>
           </section>

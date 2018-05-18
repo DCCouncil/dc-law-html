@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1806.09f.html">§ 47–1806.09f. Tax on residents and nonresidents; credits; lower income, long-term homeowner credit — Applicability date; Mayoral certification.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1806.09e.html">Report Error</a>
@@ -101,9 +101,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> substituted “§ <a class="internal-link" href="/dc/council/code/sections/47-1806.09a.html">47-1806.09a</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/47-1806.08a.html">47-1806.08a</a>” and substituted “tax” for “taxable”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(f) of Lower Income, Long-term Homeowner Credit Administration Emergency Act of 2004 (D.C. Act 15-421, May 10, 2004,  51 DCR 5174).</p>
-                <p>For temporary (90 day) amendment of section, see § 1172(f) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see § 1172(f) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 1172(f) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(f) of Lower Income, Long-term Homeowner Credit Administration Emergency Act of 2004 (D.C. Act 15-421, May 10, 2004,  51 DCR 5174).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(f) of Lower Income, Long-Term Homeowner Credit Administration Temporary Act of 2004 (D.C. Law 15-179, September 8, 2004, law notification  51 DCR 9221).</p>
               </section>

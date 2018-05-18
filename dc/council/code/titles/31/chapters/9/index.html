@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/31/chapters/10/">Chapter 10. Insurance Industry Material Transactions Disclosures.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/31/chapters/9/">Report Error</a>
@@ -87,22 +87,54 @@
         <section class="col8 body">
           <h1>Chapter 9. Insurance Demutualization.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/31-901.html">§ 31–901. Definitions.</a>
-            <a href="/dc/council/code/sections/31-902.html">§ 31–902. Adoption of the plan of conversion by the board of directors.</a>
-            <a href="/dc/council/code/sections/31-903.html">§ 31–903. Approval of the plan of conversion by the Commissioner of the Department of Insurance, Securities, and Banking.</a>
-            <a href="/dc/council/code/sections/31-904.html">§ 31–904. Approval of the plan by the members.</a>
-            <a href="/dc/council/code/sections/31-905.html">§ 31–905. Adoption of revised articles of incorporation.</a>
-            <a href="/dc/council/code/sections/31-905.01.html">§ 31–905.01. Acquiring, offering securities issued in connection with a plan of conversion.</a>
-            <a href="/dc/council/code/sections/31-906.html">§ 31–906. Required provisions in a plan of conversion.</a>
-            <a href="/dc/council/code/sections/31-907.html">§ 31–907. Optional provisions in a plan of conversion.</a>
-            <a href="/dc/council/code/sections/31-908.html">§ 31–908. Alternative plan of conversion.</a>
-            <a href="/dc/council/code/sections/31-909.html">§ 31–909. Effective date of the plan.</a>
-            <a href="/dc/council/code/sections/31-910.html">§ 31–910. Rights of members whose policies are issued after adoption of the plan and before its effective date.</a>
-            <a href="/dc/council/code/sections/31-911.html">§ 31–911. Corporate existence.</a>
-            <a href="/dc/council/code/sections/31-912.html">§ 31–912. Conflict of interest.</a>
-            <a href="/dc/council/code/sections/31-913.html">§ 31–913. Costs and expenses.</a>
-            <a href="/dc/council/code/sections/31-914.html">§ 31–914. Failure to give notice.</a>
-            <a href="/dc/council/code/sections/31-915.html">§ 31–915. Limitation of actions.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-901.html">§ 31–901. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-902.html">§ 31–902. Adoption of the plan of conversion by the board of directors.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-903.html">§ 31–903. Approval of the plan of conversion by the Commissioner of the Department of Insurance, Securities, and Banking.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-904.html">§ 31–904. Approval of the plan by the members.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-905.html">§ 31–905. Adoption of revised articles of incorporation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-905.01.html">§ 31–905.01. Acquiring, offering securities issued in connection with a plan of conversion.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-906.html">§ 31–906. Required provisions in a plan of conversion.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-907.html">§ 31–907. Optional provisions in a plan of conversion.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-908.html">§ 31–908. Alternative plan of conversion.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-909.html">§ 31–909. Effective date of the plan.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-910.html">§ 31–910. Rights of members whose policies are issued after adoption of the plan and before its effective date.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-911.html">§ 31–911. Corporate existence.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-912.html">§ 31–912. Conflict of interest.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-913.html">§ 31–913. Costs and expenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-914.html">§ 31–914. Failure to give notice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-915.html">§ 31–915. Limitation of actions.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -182,8 +214,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-1371.05.html">31-1371.05</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-214.html">D.C. Law 13-214</a> inserted subsecs. (a-1) and (a-2).</p>
                 <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>, in subsec. (a-2), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-214.html">D.C. Law 13-214</a> inserted subsecs. (a-1) and (a-2).</p>
               </section>
             </section>
             <hr/>
@@ -223,8 +255,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 35-4205.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(a) of the Insurance Demutualization Emergency Amendment Act of 1998 (D.C. Act 12-528, December 16, 1998,  45 DCR 476).</p>
                 <p>For temporary (90-day) amendment of section, see § 2(a) of the Insurance Demutualization Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-35, March 18, 1999,  46 DCR 3004).</p>
+                <p>For temporary amendment of section, see § 2(a) of the Insurance Demutualization Emergency Amendment Act of 1998 (D.C. Act 12-528, December 16, 1998,  45 DCR 476).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of the Insurance Demutualization Temporary Amendment Act of 1998 (D.C. Law 12-221, April 13, 1999, law notification  46 DCR 3843).</p>
               </section>
@@ -276,9 +308,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-902.html">31-902</a>, § <a class="internal-link" href="/dc/council/code/sections/31-903.html">31-903</a>, § <a class="internal-link" href="/dc/council/code/sections/31-905.01.html">31-905.01</a>, § <a class="internal-link" href="/dc/council/code/sections/31-907.html">31-907</a>, and § <a class="internal-link" href="/dc/council/code/sections/31-913.html">31-913</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-214.html">D.C. Law 13-214</a> designated the existing text of subsec. (e) as par. (1) and added par. (2); and rewrote subsecs. (i) and (j) which had read:</p>
-                <p>“(i) The plan shall set the total price of the capital stock equal to the estimated pro forma market value of the converted stock company based upon an independent evaluation by a qualified person. The pro forma market value may be the value that is estimated to be necessary to attract full subscription for shares as indicated by the independent evaluation.</p>
                 <p>“(j) The plan shall set the purchase price of each share of capital stock equal to any reasonable amount that will not inhibit the purchase of shares by members. The purchase price of each share shall be uniform for all purchasers, except the price may be modified by the Commissioner by reason of his or her consideration of a plan for the purchase of unsubscribed stock pursuant to subsection (h) of this section.”</p>
+                <p>“(i) The plan shall set the total price of the capital stock equal to the estimated pro forma market value of the converted stock company based upon an independent evaluation by a qualified person. The pro forma market value may be the value that is estimated to be necessary to attract full subscription for shares as indicated by the independent evaluation.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-214.html">D.C. Law 13-214</a> designated the existing text of subsec. (e) as par. (1) and added par. (2); and rewrote subsecs. (i) and (j) which had read:</p>
               </section>
             </section>
             <hr/>
@@ -304,8 +336,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-13.html">D.C. Law 13-13</a> in subsecs. (a) and (b) modified the statutory referents.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 2(b) of the Insurance Demutualization Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-35, March 18, 1999,  46 DCR 3004).</p>
                 <p>For temporary amendment of section, see § 2(b) of the Insurance Demutualization Emergency Amendment Act of 1998 (D.C. Act 12-528, December 16, 1998,  45 DCR 476).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(b) of the Insurance Demutualization Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-35, March 18, 1999,  46 DCR 3004).</p>
               </section>
             </section>
             <hr/>
@@ -337,8 +369,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 35-4209.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-214.html">D.C. Law 13-214</a> rewrote the section which had read:</p>
                 <p>“A plan shall become effective when the Commissioner has approved the plan, the members have approved the plan, and the revised articles of incorporation have been filed.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-214.html">D.C. Law 13-214</a> rewrote the section which had read:</p>
               </section>
             </section>
             <hr/>
@@ -358,8 +390,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-901.html">31-901</a> and § <a class="internal-link" href="/dc/council/code/sections/31-903.html">31-903</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-214.html">D.C. Law 13-214</a>, in subsec. (a), substituted “terminate” for “rescind”, and substituted “30” for “45”; and rewrote subsec. (b) which had read:</p>
                 <p>“(b) Any member entitled to receive the notice described in subsection (a) of this section shall be entitled to rescind his or her policy and receive a full refund of any amounts paid for the policy or contract within 10 days after the receipt of the notice.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-214.html">D.C. Law 13-214</a>, in subsec. (a), substituted “terminate” for “rescind”, and substituted “30” for “45”; and rewrote subsec. (b) which had read:</p>
               </section>
             </section>
             <hr/>
@@ -407,8 +439,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 35-4213.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-214.html">D.C. Law 13-214</a> rewrote the section which had read:</p>
                 <p>“All the costs and expenses connected with a plan of conversion shall be paid for or reimbursed by the mutual company or the converted stock company except where the plan provides either for a holding company to acquire the stock of the converted stock company or for the merger of the mutual company into a stock insurance company as provided in § <a class="internal-link" href="/dc/council/code/sections/31-906.html">31-906</a>(e). In those cases, the acquiring holding company or the stock insurance company shall pay for or reimburse all the costs and expenses connected with the plan.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-214.html">D.C. Law 13-214</a> rewrote the section which had read:</p>
               </section>
             </section>
             <hr/>

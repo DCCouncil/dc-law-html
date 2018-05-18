@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/47/chapters/3/subchapters/II-C/">Subchapter II-C. Industrial Revenue Bond Fees.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/47/chapters/3/subchapters/II-B/">Report Error</a>
@@ -88,22 +88,54 @@
         <section class="col8 body">
           <h1>Subchapter II-B. Industrial Revenue Bond Forward Commitment Program.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/47-340.01.html">§ 47–340.01. Revenue bonds and other obligations.</a>
-            <a href="/dc/council/code/sections/47-340.02.html">§ 47–340.02. Bond authorization.</a>
-            <a href="/dc/council/code/sections/47-340.03.html">§ 47–340.03. Council review for each individual project.</a>
-            <a href="/dc/council/code/sections/47-340.04.html">§ 47–340.04. Details of each series of bonds.</a>
-            <a href="/dc/council/code/sections/47-340.05.html">§ 47–340.05. Sale of the bonds.</a>
-            <a href="/dc/council/code/sections/47-340.06.html">§ 47–340.06. Payment and security.</a>
-            <a href="/dc/council/code/sections/47-340.07.html">§ 47–340.07. Financing and closing documents.</a>
-            <a href="/dc/council/code/sections/47-340.08.html">§ 47–340.08. Authorized delegation of authority.</a>
-            <a href="/dc/council/code/sections/47-340.09.html">§ 47–340.09. Limited liability.</a>
-            <a href="/dc/council/code/sections/47-340.10.html">§ 47–340.10. District officials.</a>
-            <a href="/dc/council/code/sections/47-340.11.html">§ 47–340.11. Maintenance of documents.</a>
-            <a href="/dc/council/code/sections/47-340.12.html">§ 47–340.12. Information reporting.</a>
-            <a href="/dc/council/code/sections/47-340.13.html">§ 47–340.13. Disclaimer.</a>
-            <a href="/dc/council/code/sections/47-340.14.html">§ 47–340.14. Expiration.</a>
-            <a href="/dc/council/code/sections/47-340.15.html">§ 47–340.15. Severability.</a>
-            <a href="/dc/council/code/sections/47-340.16.html">§ 47–340.16. Conflict of laws.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.01.html">§ 47–340.01. Revenue bonds and other obligations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.02.html">§ 47–340.02. Bond authorization.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.03.html">§ 47–340.03. Council review for each individual project.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.04.html">§ 47–340.04. Details of each series of bonds.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.05.html">§ 47–340.05. Sale of the bonds.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.06.html">§ 47–340.06. Payment and security.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.07.html">§ 47–340.07. Financing and closing documents.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.08.html">§ 47–340.08. Authorized delegation of authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.09.html">§ 47–340.09. Limited liability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.10.html">§ 47–340.10. District officials.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.11.html">§ 47–340.11. Maintenance of documents.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.12.html">§ 47–340.12. Information reporting.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.13.html">§ 47–340.13. Disclaimer.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.14.html">§ 47–340.14. Expiration.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.15.html">§ 47–340.15. Severability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-340.16.html">§ 47–340.16. Conflict of laws.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -137,12 +169,12 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-340.1.</p>
                 <h4>Editor's Notes</h4>
-                <p>Medlantic Healthcare Group, Inc., Revenue Bond Project Approval Resolution of 1995: Pursuant to Resolution 11-163, effective November 7, 1995, the Council approved the loan of proceeds from the issuance and sale of District of Columbia Revenue bonds to Medlantic Healthcare Group, Inc., d/b/a/ Washington Hospital Center and National Rehabilitation Hospital.</p>
-                <p>American University Revenue Bond Project Approval Resolution of 1996: Pursuant to Resolution 11-416, effective July 3, 1996, the Council approved the loan of proceeds from the issuance and sale of District of Columbia revenue bonds to the American University Revenue Bond Project.</p>
-                <p>Georgetown University Revenue Bond Project Approval Resolution of 1996: Pursuant to Resolution 11-417, effective July 3, 1996, the Council approved the loan of proceeds from the issuance and sale of District of Columbia revenue bonds to the Georgetown University Revenue Bond Project.</p>
-                <p>Howard University Revenue Bond Project Approval Resolution of 1996: Pursuant to Resolution 11-418, effective July 3, 1996, the Council approved the loan of proceeds from the issuance and sale of District of Columbia revenue bonds to the Howard University Revenue Bond Project.</p>
-                <p>Lucy Webb Hayes National Training School for Deaconesses and Missionaries, in care of Sibley Memorial Hospital, Hospital Revenue Bond Project Approval Resolution of 1996: Pursuant to Resolution 11-524, effective October 1, 1996, the Council approved the issuance, sale, and delivery of District of Columbia Revenue Bonds and the loan of proceeds thereof to assist in the financing, refinancing, or reimbursing of costs related to the Lucy Webb Hayes National Training School for Deaconesses and Missionaries, in care of Sibley Memorial Hospital.</p>
                 <p>Individual Development, Inc. (Successor to We Care Projects, Inc.) Revenue Bond Project Emergency Approval Resolution of 1996: Pursuant to Resolution 11-670, effective December 3, 1996, the Council approved, on an emergency basis, the issuance, sale, and delivery of District of Columbia revenue bonds and the loan of proceeds thereof to assist in the financing, refinancing, or reimbursing of costs related to certain intermediate care residential facilities for the mentally retarded owned and operated by Individual Development, Inc. (Successor to We Care Projects, Inc.).</p>
+                <p>Lucy Webb Hayes National Training School for Deaconesses and Missionaries, in care of Sibley Memorial Hospital, Hospital Revenue Bond Project Approval Resolution of 1996: Pursuant to Resolution 11-524, effective October 1, 1996, the Council approved the issuance, sale, and delivery of District of Columbia Revenue Bonds and the loan of proceeds thereof to assist in the financing, refinancing, or reimbursing of costs related to the Lucy Webb Hayes National Training School for Deaconesses and Missionaries, in care of Sibley Memorial Hospital.</p>
+                <p>Howard University Revenue Bond Project Approval Resolution of 1996: Pursuant to Resolution 11-418, effective July 3, 1996, the Council approved the loan of proceeds from the issuance and sale of District of Columbia revenue bonds to the Howard University Revenue Bond Project.</p>
+                <p>Georgetown University Revenue Bond Project Approval Resolution of 1996: Pursuant to Resolution 11-417, effective July 3, 1996, the Council approved the loan of proceeds from the issuance and sale of District of Columbia revenue bonds to the Georgetown University Revenue Bond Project.</p>
+                <p>American University Revenue Bond Project Approval Resolution of 1996: Pursuant to Resolution 11-416, effective July 3, 1996, the Council approved the loan of proceeds from the issuance and sale of District of Columbia revenue bonds to the American University Revenue Bond Project.</p>
+                <p>Medlantic Healthcare Group, Inc., Revenue Bond Project Approval Resolution of 1995: Pursuant to Resolution 11-163, effective November 7, 1995, the Council approved the loan of proceeds from the issuance and sale of District of Columbia Revenue bonds to Medlantic Healthcare Group, Inc., d/b/a/ Washington Hospital Center and National Rehabilitation Hospital.</p>
               </section>
             </section>
             <hr/>

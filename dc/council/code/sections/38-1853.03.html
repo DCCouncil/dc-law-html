@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/38-1853.04.html">§ 38–1853.04. General authority.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-1853.03.html">Report Error</a>
@@ -101,16 +101,16 @@
                 <p>Section 9215(ppp)(1) of Public Law 114-95 substituted “implementing comprehensive support and improvement activities or targeted support and improvement activities under section 1111(d) of the Elementary and Secondary Education Act of 1965” for “identified for improvement, corrective action, or restructuring under section 1116 of the Elementary and Secondary Education Act of 1965 (20 U.S.C. 6316).”</p>
                 <h4>Editor's Notes</h4>
                 <p>
-           Section 901(b) of Div. E, Title IX, of Public Law 115-31 provided that: "Except as otherwise expressly provided, whenever in this title an amendment is expressed in terms of an amendment to or repeal of a section or other provision, the reference shall be considered to be made to that section or other provision of the Scholarships for Opportunity and Results Act (division C of Public Law 112-10; sec. 38-1853.01 et seq., D.C. Official Code)."
-          </p>
-                <p>
-           Section 902 of Div. E, Title IX, of Public Law 115-31 provided that: "Section 817 of the Consolidated Appropriations Act, 2016 (Public Law 114-113) is repealed, and any provision of law amended or repealed by such section is restored or revived as if such section had not been enacted into law."
-          </p>
-                <p>
         Section 3014 of Div. E, Title IX, of Public Law 115-31 provided that:        
         Except as otherwise provided, the amendments made by this title   
         shall apply with respect to school year 2018-2019 and each succeeding school year.
       </p>
+                <p>
+           Section 902 of Div. E, Title IX, of Public Law 115-31 provided that: "Section 817 of the Consolidated Appropriations Act, 2016 (Public Law 114-113) is repealed, and any provision of law amended or repealed by such section is restored or revived as if such section had not been enacted into law."
+          </p>
+                <p>
+           Section 901(b) of Div. E, Title IX, of Public Law 115-31 provided that: "Except as otherwise expressly provided, whenever in this title an amendment is expressed in terms of an amendment to or repeal of a section or other provision, the reference shall be considered to be made to that section or other provision of the Scholarships for Opportunity and Results Act (division C of Public Law 112-10; sec. 38-1853.01 et seq., D.C. Official Code)."
+          </p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-106.html">§ 28:2A-106. Limitation on power of parties to consumer lease to choose applicable law and judicial forum.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-105.html">Report Error</a>
@@ -103,11 +103,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:1-301.html">28:1-301</a> and § 28:2A-104.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Section 9-103(2)(a) and (b).</p>
-                <p><strong>Changes:</strong> Substantially revised. The provisions of the last sentence of  Section 9-103(2)(b) have not been incorporated as it is superfluous in this context. The provisions of  Section 9-103(2)(d) have not been incorporated because the problems dealt with are adequately addressed by this section and Sections 2A-304(3) and 305(3).</p>
-                <p><strong>Purposes:</strong> The new certificate referred to in (b) must be permanent, not temporary. Generally, the lessor or creditor whose interest is indicated on the most recently issued certificate of title will prevail over interests indicated on certificates issued previously by other jurisdictions. This provision reflects a policy that it is reasonable to require holders of interests in goods covered by a certificate of title to police the goods or risk losing their interests when a new certificate of title is issued by another jurisdiction.</p>
-                <p><strong>Cross References:</strong> Sections 2A-304(3), 2A-305(3), 9-103(2)(b) and 9-103(2)(d).</p>
                 <p><strong>Definitional Cross Reference:</strong> “Goods”. Section 2A-103(1)(h).</p>
+                <p><strong>Cross References:</strong> Sections 2A-304(3), 2A-305(3), 9-103(2)(b) and 9-103(2)(d).</p>
+                <p><strong>Purposes:</strong> The new certificate referred to in (b) must be permanent, not temporary. Generally, the lessor or creditor whose interest is indicated on the most recently issued certificate of title will prevail over interests indicated on certificates issued previously by other jurisdictions. This provision reflects a policy that it is reasonable to require holders of interests in goods covered by a certificate of title to police the goods or risk losing their interests when a new certificate of title is issued by another jurisdiction.</p>
+                <p><strong>Changes:</strong> Substantially revised. The provisions of the last sentence of  Section 9-103(2)(b) have not been incorporated as it is superfluous in this context. The provisions of  Section 9-103(2)(d) have not been incorporated because the problems dealt with are adequately addressed by this section and Sections 2A-304(3) and 305(3).</p>
+                <p><strong>Uniform Statutory Source:</strong>Section 9-103(2)(a) and (b).</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/7/chapters/2/">Chapter 2. Vital Records.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-180.html">Report Error</a>
@@ -99,14 +99,14 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-1-ch403.html#§1">June 29, 1937, 50 Stat. 376, ch. 403, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-116.</p>
                 <p>1973 Ed., § 6-117.</p>
+                <p>1981 Ed., § 6-116.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 3 of the District of Columbia Health and Hospitals Public Benefit Corporation Emergency Amendment Act of 2000 (D.C. Act 13-454, November 7, 2000,  47 DCR 9413).</p>
                 <h4>Editor's Notes</h4>
-                <p>Health Department abolished: The Health Department of the District of Columbia, including the office of the head thereof, was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. Reorganization Order No. 57 of the Board of Commissioners, dated June 30, 1953, and Reorganization Order No. 52, dated June 30, 1953, combined and redesignated Organization Order No. 141, dated February 11, 1964, established under the direction and control of a Commissioner, a Department of Public Health headed by a Director, for the purpose of planning, implementing, and directing public health and hospital care programs, and for performing certain other allied medical and paramedical functions. The Anatomical Board was established under the direction and control of the Director of Public Health consisting of members as prescribed in the D.C. Code. Prior to redesignation, the Order abolished the previously existing Health Department, Gallinger Hospital, Glenn Dale Sanatorium, and the Anatomical Board, and transferred their functions and positions to the new Department. The organization of the new Department was set out in the Order. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967. Functions stated in Organization Order No. 141 were transferred to the Director of the Department of Human Resources by Commissioner’s Order No. 69-96, dated March 7, 1969, as amended by Commissioner’s Order No. 70-83, dated March 6, 1970. The Department of Human Resources was replaced by Reorganization Plan No. 2 of 1979, dated February 21, 1980, which Plan established the Department of Human Services.</p>
-                <p>Tuberculosis Hospital and Gallinger Municipal Hospital abolished: The Tuberculosis Hospital and Gallinger Municipal Hospital were abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. Reorganization Order No. 57 as amended, redesignated as Organization Order No. 141 and amended, established under the direction and control of a Commissioner, a Department of Public Health headed by a Director, for the purpose of planning, implementing, and directing public health and hospital care programs, and for performing certain other allied medical functions. Prior to its redesignation, the Order abolished the previously existing Gallinger Municipal Hospital and transferred all of its positions and functions to the new Department. It further provided that within the Department, the District of Columbia General Hospital would perform all functions previously performed by Gallinger Municipal Hospital. Functions of the Department of Public Health as set forth in Organization Order No. 141 were transferred to the Director of the Department of Human Resources by Commissioner’s Order No. 69-96, dated March 7, 1969, as amended by Commissioner’s Order No. 70-83, dated March 6, 1970. The Department of Human Resources was replaced by Reorganization Plan No. 2 of 1979, dated February 21, 1980, which Plan established the Department of Human Services.</p>
                 <p>Revision of chapter: D.C. Law 4-34 repealed former Chapter 2, containing §§ 6-201 to 6-204 [1981 Ed.], and enacted present Chapter 2 of former Title 6, containing §§ 7-201 to 7-228 [2001 Edition], in lieu thereof.</p>
+                <p>Tuberculosis Hospital and Gallinger Municipal Hospital abolished: The Tuberculosis Hospital and Gallinger Municipal Hospital were abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. Reorganization Order No. 57 as amended, redesignated as Organization Order No. 141 and amended, established under the direction and control of a Commissioner, a Department of Public Health headed by a Director, for the purpose of planning, implementing, and directing public health and hospital care programs, and for performing certain other allied medical functions. Prior to its redesignation, the Order abolished the previously existing Gallinger Municipal Hospital and transferred all of its positions and functions to the new Department. It further provided that within the Department, the District of Columbia General Hospital would perform all functions previously performed by Gallinger Municipal Hospital. Functions of the Department of Public Health as set forth in Organization Order No. 141 were transferred to the Director of the Department of Human Resources by Commissioner’s Order No. 69-96, dated March 7, 1969, as amended by Commissioner’s Order No. 70-83, dated March 6, 1970. The Department of Human Resources was replaced by Reorganization Plan No. 2 of 1979, dated February 21, 1980, which Plan established the Department of Human Services.</p>
+                <p>Health Department abolished: The Health Department of the District of Columbia, including the office of the head thereof, was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. Reorganization Order No. 57 of the Board of Commissioners, dated June 30, 1953, and Reorganization Order No. 52, dated June 30, 1953, combined and redesignated Organization Order No. 141, dated February 11, 1964, established under the direction and control of a Commissioner, a Department of Public Health headed by a Director, for the purpose of planning, implementing, and directing public health and hospital care programs, and for performing certain other allied medical and paramedical functions. The Anatomical Board was established under the direction and control of the Director of Public Health consisting of members as prescribed in the D.C. Code. Prior to redesignation, the Order abolished the previously existing Health Department, Gallinger Hospital, Glenn Dale Sanatorium, and the Anatomical Board, and transferred their functions and positions to the new Department. The organization of the new Department was set out in the Order. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967. Functions stated in Organization Order No. 141 were transferred to the Director of the Department of Human Resources by Commissioner’s Order No. 69-96, dated March 7, 1969, as amended by Commissioner’s Order No. 70-83, dated March 6, 1970. The Department of Human Resources was replaced by Reorganization Plan No. 2 of 1979, dated February 21, 1980, which Plan established the Department of Human Services.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>

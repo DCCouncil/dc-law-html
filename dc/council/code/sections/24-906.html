@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/24-907.html">§ 24–907. Rules.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/24-906.html">Report Error</a>
@@ -116,19 +116,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-903.html">24-903</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-302.html">D.C. Law 13-302</a> rewrote the section which had read:</p>
-                <p>“(a) Upon the unconditional discharge of a committed youth offender before the expiration of the maximum sentence imposed, the District of Columbia Board of Parole shall automatically set aside the conviction.</p>
-                <p>“(b) If the maximum sentence of a committed youth offender expires before unconditional discharge, the District of Columbia Board of Parole may, in its discretion, set aside the conviction.</p>
-                <p>“(c) In any case in which the District of Columbia Board of Parole sets aside the conviction of a committed youth offender, the Board shall issue to the youth offender a certificate to that effect.</p>
-                <p>“(d) Where a youth offender has been placed on probation by the court, the court may, in its discretion, unconditionally discharge the youth offender from probation before the end of the maximum period of probation previously fixed by the court. The discharge shall automatically set aside the conviction and the court shall issue to the youth offender a certification to that effect.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a>, in subsec. (f), deleted “or” from the end of par. (5), substituted a semicolon for a period at the end of par. (6), and added pars. (7) and (8).</p>
+                <p>“(d) Where a youth offender has been placed on probation by the court, the court may, in its discretion, unconditionally discharge the youth offender from probation before the end of the maximum period of probation previously fixed by the court. The discharge shall automatically set aside the conviction and the court shall issue to the youth offender a certification to that effect.”</p>
+                <p>“(c) In any case in which the District of Columbia Board of Parole sets aside the conviction of a committed youth offender, the Board shall issue to the youth offender a certificate to that effect.</p>
+                <p>“(b) If the maximum sentence of a committed youth offender expires before unconditional discharge, the District of Columbia Board of Parole may, in its discretion, set aside the conviction.</p>
+                <p>“(a) Upon the unconditional discharge of a committed youth offender before the expiration of the maximum sentence imposed, the District of Columbia Board of Parole shall automatically set aside the conviction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-302.html">D.C. Law 13-302</a> rewrote the section which had read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 9(e) of the Sentencing Reform Emergency Amendment Act of 2000 (D.C. Act 13-410, August 11, 2000,  47 DCR 7271).</p>
-                <p>For temporary (90 day) amendment of section, see § 9(e) of the Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 13-462, November 7, 2000,  47 DCR 9443).</p>
-                <p>For temporary (90 day) amendment of section, see § 9(e) of Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-2, February 2, 2001,  48 DCR 2239).</p>
-                <p>For temporary (90 day) amendment of section, see § 9(e) of Sentencing Reform Second Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-51, May 2, 2001,  48 DCR 4370).</p>
-                <p>For temporary (90 day) amendment of section, see § 517 of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
                 <p>For temporary (90 day) amendment of section, see § 517 of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
+                <p>For temporary (90 day) amendment of section, see § 517 of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
+                <p>For temporary (90 day) amendment of section, see § 9(e) of Sentencing Reform Second Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-51, May 2, 2001,  48 DCR 4370).</p>
+                <p>For temporary (90 day) amendment of section, see § 9(e) of Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-2, February 2, 2001,  48 DCR 2239).</p>
+                <p>For temporary (90 day) amendment of section, see § 9(e) of the Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 13-462, November 7, 2000,  47 DCR 9443).</p>
+                <p>For temporary (90-day) amendment of section, see § 9(e) of the Sentencing Reform Emergency Amendment Act of 2000 (D.C. Act 13-410, August 11, 2000,  47 DCR 7271).</p>
               </section>
             </section>
           </section>

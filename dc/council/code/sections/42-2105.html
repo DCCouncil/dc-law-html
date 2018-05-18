@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/42-2105.01.html">§ 42–2105.01. Privatization of title services.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-2105.html">Report Error</a>
@@ -103,17 +103,17 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 45-2705.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-11.html">D.C. Law 13-11</a> struck the phrase “a semiannual” and inserted the phrase “an annual” in its place.</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-114.html">D.C. Law 14-114</a>, in subsec. (a), substituted “Mayor” for “Administrator”; in subsec. (b), substituted “Mayor” for “Administrator” and substituted “development, repair” for “repair” in the third sentence; and added subsec. (c).</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a> made a technical change in the enacting clause of <a class="internal-link" href="/dc/council/laws/14-114.html">D.C. Law 14-114</a>, § 801(d)(2)(B), which resulted in no change in text.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a> attempted to make the same technical amendment as <a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>, therefore, the amendment was ineffective.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> added subsec. (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a> attempted to make the same technical amendment as <a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>, therefore, the amendment was ineffective.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a> made a technical change in the enacting clause of <a class="internal-link" href="/dc/council/laws/14-114.html">D.C. Law 14-114</a>, § 801(d)(2)(B), which resulted in no change in text.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-114.html">D.C. Law 14-114</a>, in subsec. (a), substituted “Mayor” for “Administrator”; in subsec. (b), substituted “Mayor” for “Administrator” and substituted “development, repair” for “repair” in the third sentence; and added subsec. (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-11.html">D.C. Law 13-11</a> struck the phrase “a semiannual” and inserted the phrase “an annual” in its place.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(e) of the Homestead Housing Preservation Emergency Amendment Act of 1998 (D.C. Act 12-556, January 12, 1999,  45 DCR 625).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(c) of the Homestead Housing Preservation Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-62, May 10, 1999,  46 DCR 4454).</p>
-                <p>For temporary (90 day) amendment of section, see § 2112 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) amendment of section, see § 2112 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
                 <p>For temporary (90 day) amendment of section, see § 2112 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) amendment of section, see § 2112 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) amendment of section, see § 2112 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(c) of the Homestead Housing Preservation Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-62, May 10, 1999,  46 DCR 4454).</p>
+                <p>For temporary amendment of section, see § 2(e) of the Homestead Housing Preservation Emergency Amendment Act of 1998 (D.C. Act 12-556, January 12, 1999,  45 DCR 625).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(e) of Homestead Housing Preservation Temporary Amendment Act of 1998 (D.C. Law 12-245, April 20, 1999, law notification  46 DCR 4158).</p>
                 <h4>Short Title</h4>

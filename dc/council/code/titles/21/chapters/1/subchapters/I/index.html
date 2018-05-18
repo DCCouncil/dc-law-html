@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/21/chapters/1/subchapters/II/">Subchapter II. Property of Infants.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/21/chapters/1/subchapters/I/">Report Error</a>
@@ -88,26 +88,66 @@
         <section class="col8 body">
           <h1>Subchapter I. Appointment of Guardian; Bond.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/21-101.html">§ 21–101. Natural guardians of the person.</a>
-            <a href="/dc/council/code/sections/21-102.html">§ 21–102. Testamentary guardians of the person.</a>
-            <a href="/dc/council/code/sections/21-103.html">§ 21–103. Appointment of guardians of the person by court; limitation of number of wards.</a>
-            <a href="/dc/council/code/sections/21-104.html">§ 21–104. Termination of guardianship of the person.</a>
-            <a href="/dc/council/code/sections/21-105.html">§ 21–105. Appointment by deed or will for child inheriting from parent.</a>
-            <a href="/dc/council/code/sections/21-106.html">§ 21–106. Guardian of estate.</a>
-            <a href="/dc/council/code/sections/21-107.html">§ 21–107. Preferences in appointment of guardian of estate.</a>
-            <a href="/dc/council/code/sections/21-108.html">§ 21–108. Selection of guardian by infant.</a>
-            <a href="/dc/council/code/sections/21-109.html">§ 21–109. Spouse as guardian of estate.</a>
-            <a href="/dc/council/code/sections/21-110.html">§ 21–110. Service on nonresident guardian; failure to give power of attorney.</a>
-            <a href="/dc/council/code/sections/21-111.html">§ 21–111. Ancillary guardian of estate of nonresident infant.</a>
-            <a href="/dc/council/code/sections/21-112.html">§ 21–112. Suits by ancillary guardian.</a>
-            <a href="/dc/council/code/sections/21-113.html">§ 21–113. Enjoining spouse, parent, or testamentary guardian from interfering with minor’s estate.</a>
-            <a href="/dc/council/code/sections/21-114.html">§ 21–114. Bond from parents of child entitled to property.</a>
-            <a href="/dc/council/code/sections/21-115.html">§ 21–115. Bond of guardian of estate.</a>
-            <a href="/dc/council/code/sections/21-116.html">§ 21–116. One bond for several wards.</a>
-            <a href="/dc/council/code/sections/21-117.html">§ 21–117. Additional bond.</a>
-            <a href="/dc/council/code/sections/21-118.html">§ 21–118. Counter security; petition by surety.</a>
-            <a href="/dc/council/code/sections/21-119.html">§ 21–119. Allowances made before bond given.</a>
-            <a href="/dc/council/code/sections/21-120.html">§ 21–120. Settlement of actions involving minor children; appointment of guardian of estate.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-101.html">§ 21–101. Natural guardians of the person.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-102.html">§ 21–102. Testamentary guardians of the person.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-103.html">§ 21–103. Appointment of guardians of the person by court; limitation of number of wards.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-104.html">§ 21–104. Termination of guardianship of the person.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-105.html">§ 21–105. Appointment by deed or will for child inheriting from parent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-106.html">§ 21–106. Guardian of estate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-107.html">§ 21–107. Preferences in appointment of guardian of estate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-108.html">§ 21–108. Selection of guardian by infant.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-109.html">§ 21–109. Spouse as guardian of estate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-110.html">§ 21–110. Service on nonresident guardian; failure to give power of attorney.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-111.html">§ 21–111. Ancillary guardian of estate of nonresident infant.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-112.html">§ 21–112. Suits by ancillary guardian.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-113.html">§ 21–113. Enjoining spouse, parent, or testamentary guardian from interfering with minor’s estate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-114.html">§ 21–114. Bond from parents of child entitled to property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-115.html">§ 21–115. Bond of guardian of estate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-116.html">§ 21–116. One bond for several wards.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-117.html">§ 21–117. Additional bond.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-118.html">§ 21–118. Counter security; petition by surety.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-119.html">§ 21–119. Allowances made before bond given.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/21-120.html">§ 21–120. Settlement of actions involving minor children; appointment of guardian of estate.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -123,20 +163,20 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 737, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-101.</p>
                 <p>1973 Ed., § 21-101.</p>
+                <p>1981 Ed., § 21-101.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/21-106.html">21-106</a>.</p>
                 <h4>Cross References</h4>
-                <p>Adoption, see § <a class="internal-link" href="/dc/council/code/sections/16-301.html">16-301</a> et seq.</p>
-                <p>Infant owners of condemned buildings, appointment of guardian, see § <a class="internal-link" href="/dc/council/code/sections/6-909.html">6-909</a>.</p>
-                <p>Life estate and contingency remainder sale, guardian ad litem, see § <a class="internal-link" href="/dc/council/code/sections/42-1402.html">42-1402</a>.</p>
-                <p>Nonresident infants, appointment of ancillary guardian, see §§ <a class="internal-link" href="/dc/council/code/sections/21-111.html">21-111</a>, <a class="internal-link" href="/dc/council/code/sections/21-112.html">21-112</a>.</p>
                 <p>Trust companies, authority to act as guardian, see § <a class="internal-link" href="/dc/council/code/sections/26-1309.html">26-1309</a> et seq.</p>
+                <p>Nonresident infants, appointment of ancillary guardian, see §§ <a class="internal-link" href="/dc/council/code/sections/21-111.html">21-111</a>, <a class="internal-link" href="/dc/council/code/sections/21-112.html">21-112</a>.</p>
+                <p>Life estate and contingency remainder sale, guardian ad litem, see § <a class="internal-link" href="/dc/council/code/sections/42-1402.html">42-1402</a>.</p>
+                <p>Infant owners of condemned buildings, appointment of guardian, see § <a class="internal-link" href="/dc/council/code/sections/6-909.html">6-909</a>.</p>
+                <p>Adoption, see § <a class="internal-link" href="/dc/council/code/sections/16-301.html">16-301</a> et seq.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 33(a) of <a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, as amended by section 48(a) of <a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, provided that Title 21 is designated Title 21 of the District of Columbia Official Code.</p>
-                <p>Section 21(a) of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “Persons with Mental Illness” for “the Mentally Ill” in the Title heading.</p>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
+                <p>Section 21(a) of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “Persons with Mental Illness” for “the Mentally Ill” in the Title heading.</p>
+                <p>Section 33(a) of <a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, as amended by section 48(a) of <a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, provided that Title 21 is designated Title 21 of the District of Columbia Official Code.</p>
               </section>
             </section>
             <hr/>
@@ -151,8 +191,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 737, Pub. L. 89-183, § 1</a>; <a class="internal-link" href="/dc/council/laws/1-87.html">Oct. 1, 1976, D.C. Law 1-87, § 27, 23 DCR 2544</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-102.</p>
                 <p>1973 Ed., § 21-102.</p>
+                <p>1981 Ed., § 21-102.</p>
                 <h4>Cross References</h4>
                 <p>Abuse of adults, duty to report, see § <a class="internal-link" href="/dc/council/code/sections/7-1903.html">7-1903</a>.</p>
               </section>
@@ -170,11 +210,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 738, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-103.</p>
                 <p>1973 Ed., § 21-103.</p>
+                <p>1981 Ed., § 21-103.</p>
                 <h4>Cross References</h4>
-                <p>Abuse of adults, duty to report, see § <a class="internal-link" href="/dc/council/code/sections/7-1903.html">7-1903</a>.</p>
                 <p>Probate Court, jurisdiction, pleadings and practice, see §§ <a class="internal-link" href="/dc/council/code/sections/11-921.html">11-921</a>, <a class="internal-link" href="/dc/council/code/sections/16-3101.html">16-3101</a> et seq.</p>
+                <p>Abuse of adults, duty to report, see § <a class="internal-link" href="/dc/council/code/sections/7-1903.html">7-1903</a>.</p>
               </section>
             </section>
             <hr/>
@@ -189,8 +229,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 738, Pub. L. 89-183, § 1</a>; <a class="internal-link" href="/dc/council/laws/1-75.html">July 22, 1976, D.C. Law 1-75, § 4(d), 23 DCR 1181</a>; <a class="internal-link" href="/dc/council/laws/1-107.html">Apr. 7, 1977, D.C. Law 1-107, title I, § 115, 23 DCR 8737</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-104.</p>
                 <p>1973 Ed., § 21-104.</p>
+                <p>1981 Ed., § 21-104.</p>
               </section>
             </section>
             <hr/>
@@ -206,8 +246,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 738, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-105.</p>
                 <p>1973 Ed., § 21-105.</p>
+                <p>1981 Ed., § 21-105.</p>
               </section>
             </section>
             <hr/>
@@ -224,8 +264,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 738, Pub. L. 89-183, § 1</a>; <a class="internal-link" href="/dc/council/laws/1-75.html">July 22, 1976, D.C. Law 1-75, § 4(e), 23 DCR 1181</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-106.</p>
                 <p>1973 Ed., § 21-106.</p>
+                <p>1981 Ed., § 21-106.</p>
               </section>
             </section>
             <hr/>
@@ -243,8 +283,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 738, Pub. L. 89-183, § 1</a>; <a class="internal-link" href="/dc/council/laws/1-87.html">Oct. 1, 1976, D.C. Law 1-87, § 28, 23 DCR 2544</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-107.</p>
                 <p>1973 Ed., § 21-107.</p>
+                <p>1981 Ed., § 21-107.</p>
               </section>
             </section>
             <hr/>
@@ -265,8 +305,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 738, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-108.</p>
                 <p>1973 Ed., § 21-108.</p>
+                <p>1981 Ed., § 21-108.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/21-107.html">21-107</a>.</p>
               </section>
@@ -283,8 +323,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 739, Pub. L. 89-183, § 1</a>; <a class="internal-link" href="/dc/council/laws/1-87.html">Oct. 1, 1976, D.C. Law 1-87, § 29(a), 23 DCR 2544</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-109.</p>
                 <p>1973 Ed., § 21-109.</p>
+                <p>1981 Ed., § 21-109.</p>
               </section>
             </section>
             <hr/>
@@ -300,8 +340,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 739, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-110.</p>
                 <p>1973 Ed., § 21-110.</p>
+                <p>1981 Ed., § 21-110.</p>
                 <h4>Cross References</h4>
                 <p>Trust company fiduciaries, bonding, see §§ <a class="internal-link" href="/dc/council/code/sections/26-1333.html">26-1333</a> and <a class="internal-link" href="/dc/council/code/sections/26-1334.html">26-1334</a>.</p>
               </section>
@@ -318,8 +358,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 739, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-111.</p>
                 <p>1973 Ed., § 21-111.</p>
+                <p>1981 Ed., § 21-111.</p>
               </section>
             </section>
             <hr/>
@@ -335,8 +375,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 740, Pub. L. 89-183, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 567, Pub. L. 91-358, title I, § 150(a)(1)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-112.</p>
                 <p>1973 Ed., § 21-112.</p>
+                <p>1981 Ed., § 21-112.</p>
               </section>
             </section>
             <hr/>
@@ -351,8 +391,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 740, Pub. L. 89-183, § 1</a>; <a class="internal-link" href="/dc/council/laws/1-87.html">Oct. 1, 1976, D.C. Law 1-87, § 30(a), 23 DCR 2544</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-113.</p>
                 <p>1973 Ed., § 21-113.</p>
+                <p>1981 Ed., § 21-113.</p>
               </section>
             </section>
             <hr/>
@@ -367,8 +407,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 740, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-114.</p>
                 <p>1973 Ed., § 21-114.</p>
+                <p>1981 Ed., § 21-114.</p>
                 <h4>Cross References</h4>
                 <p>Undertaking in lieu of fiduciary bond, see § <a class="internal-link" href="/dc/council/code/sections/16-601.html">16-601</a>.</p>
               </section>
@@ -385,8 +425,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 740, Pub. L. 89-183, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 567, Pub. L. 91-358, title I, § 150(a) (2)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-115.</p>
                 <p>1973 Ed., § 21-115.</p>
+                <p>1981 Ed., § 21-115.</p>
                 <h4>Cross References</h4>
                 <p>Undertaking in lieu of fiduciary bond, see § <a class="internal-link" href="/dc/council/code/sections/16-601.html">16-601</a>.</p>
               </section>
@@ -403,8 +443,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 740, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-116.</p>
                 <p>1973 Ed., § 21-116.</p>
+                <p>1981 Ed., § 21-116.</p>
               </section>
             </section>
             <hr/>
@@ -419,8 +459,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 740, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-117.</p>
                 <p>1973 Ed., § 21-117.</p>
+                <p>1981 Ed., § 21-117.</p>
               </section>
             </section>
             <hr/>
@@ -435,8 +475,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 740, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-118.</p>
                 <p>1973 Ed., § 21-118.</p>
+                <p>1981 Ed., § 21-118.</p>
               </section>
             </section>
             <hr/>
@@ -451,8 +491,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 741, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-119.</p>
                 <p>1973 Ed., § 21-119.</p>
+                <p>1981 Ed., § 21-119.</p>
               </section>
             </section>
             <hr/>
@@ -468,8 +508,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-183.html">Sept. 14, 1965, 79 Stat. 741, Pub. L. 89-183, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 21-120.</p>
                 <p>1973 Ed., § 21-120.</p>
+                <p>1981 Ed., § 21-120.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/21-307.html">21-307</a>.</p>
               </section>

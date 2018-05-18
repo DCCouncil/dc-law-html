@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/5-723.html">§ 5–723. Accruement and payment of annuities; persons who may accept payment; waiver; reduction.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/5-722.html">Report Error</a>
@@ -112,8 +112,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-407.html#§122">Sept. 3, 1974, 88 Stat. 1041, Pub. L. 93-407, title I, § 122</a>; <a class="internal-link" href="/us/congress/laws/public/93-635.html">Jan. 3, 1975, 88 Stat. 2179, Pub. L. 93-635, § 19</a>; <a class="internal-link" href="/us/congress/laws/public/95-179.html">Nov. 15, 1977, 91 Stat. 1371, Pub. L. 95-179</a>; <a class="internal-link" href="/dc/council/laws/10-174.html">Sept. 22, 1994, D.C. Law 10-174, § 2, 41 DCR 5171</a>; <a class="internal-link" href="/dc/council/laws/20-198.html">Mar. 10, 2015, D.C. Law 20-198, § 3, 61 DCR 12450</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-628.</p>
                 <p>1973 Ed., § 4-533a.</p>
+                <p>1981 Ed., § 4-628.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-732.html">1-732</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -121,11 +121,11 @@
                 <h4>Cross References</h4>
                 <p>Employees retirement program management, annual report, see § <a class="internal-link" href="/dc/council/code/sections/1-732.html">1-732</a>.</p>
                 <h4>References in Text</h4>
-                <p>Office of Personnel was substituted for Personnel Office in subsection (a)(1)(A) of this section pursuant to Mayor’s Order No. 79-84, dated May 10, 1979.</p>
                 <p>Department of Human Services was substituted for Department of Human Resources in subsection (a)(1)(A) and (a)(2) pursuant to Reorganization Plan No. 2 of 1979, dated February 21, 1980.</p>
+                <p>Office of Personnel was substituted for Personnel Office in subsection (a)(1)(A) of this section pursuant to Mayor’s Order No. 79-84, dated May 10, 1979.</p>
                 <h4>Editor's Notes</h4>
-                <p>Order establishing Board: See Organization Order No. 48, dated September 25, 1974.</p>
                 <p>Coverage Under Federal Employees’ Retirement Act: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/5-742.html">5-742</a>.</p>
+                <p>Order establishing Board: See Organization Order No. 48, dated September 25, 1974.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of Rulemaking Authority under D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/5-722.html">5-722</a>(c) Regarding the Police and Firemen’s Retirement and Relief Board, see Mayor’s Order 2010-44, March 19, 2010 ( 57 DCR 2349).</p>
                 <h4>Change in Government</h4>

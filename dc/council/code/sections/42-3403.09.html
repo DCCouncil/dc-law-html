@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/42/chapters/34/subchapters/IV/">Subchapter IV. Opportunity to Purchase.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-3403.09.html">Report Error</a>
@@ -101,16 +101,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 45-1628.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(c) of the Rental Housing Conversion and Sale Act of 1980 Extension Emergency Amendment Act of 1994 (D.C. Act 10-235, April 28, 1994,  41 DCR 2599).</p>
-                <p>For temporary amendment of section, see § 3(h) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1994 (D.C. Act 10-285, July 8, 1994,  41 DCR 4904).</p>
                 <p>For temporary amendment of section, see § 3(h) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1995 (D.C. Act 11-47, May 4, 1995,  42 DCR 2410) and § 3(h) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Congressional Recess Emergency Act of 1995 (D.C. Act 11-96, July 19, 1995,  42 DCR 3837).</p>
+                <p>For temporary amendment of section, see § 3(h) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1994 (D.C. Act 10-285, July 8, 1994,  41 DCR 4904).</p>
+                <p>For temporary amendment of section, see § 2(c) of the Rental Housing Conversion and Sale Act of 1980 Extension Emergency Amendment Act of 1994 (D.C. Act 10-235, April 28, 1994,  41 DCR 2599).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(b) of Rental Housing Conversion and Sale Act of 1980 Temporary Extension Amendment Act of 1988 (D.C. Law 7-140, September 21, 2008, law notification  35 DCR 7279).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(b) of Rental Housing Conversion and Sale Act of 1980 Temporary Extension Amendment Act of 1993 (D.C. Law 10-13, September 11, 1993, law notification  40 DCR 6835).</p>
                 <p>For temporary (225 day) amendment of section, see § 3(h) of Rental Housing Conversion and Sale Act of 1980 Temporary Extension Amendment Act of 1994 (D.C. Law 10-176, September 22, 1994, law notification  41 DCR 6706).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(b) of Rental Housing Conversion and Sale Act of 1980 Temporary Extension Amendment Act of 1993 (D.C. Law 10-13, September 11, 1993, law notification  40 DCR 6835).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(b) of Rental Housing Conversion and Sale Act of 1980 Temporary Extension Amendment Act of 1988 (D.C. Law 7-140, September 21, 2008, law notification  35 DCR 7279).</p>
                 <h4>Editor's Notes</h4>
-                <p>Reenactment of Law 3-86: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3401.01.html">42-3401.01</a>.</p>
                 <p>Amendment of section by Law 10-144: Section 2(h) of <a class="internal-link" href="/dc/council/laws/10-144.html">D.C. Law 10-144</a> purported to amend this section to read as follows: “This subchapter shall remain in effect until the Mayor declares that a housing crisis no longer exists pursuant to § 45-1662.” Expiration of subchapter: For provisions regarding the expiration of this subchapter, see § <a class="internal-link" href="/dc/council/code/sections/42-3404.12.html">42-3404.12</a>.</p>
+                <p>Reenactment of Law 3-86: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3401.01.html">42-3401.01</a>.</p>
               </section>
             </section>
           </section>

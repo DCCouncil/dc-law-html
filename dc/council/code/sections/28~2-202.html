@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2-203.html">§ 28:2-203. Seals inoperative.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2-202.html">Report Error</a>
@@ -101,27 +101,27 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 642, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/19-299.html">Apr. 27, 2013, D.C. Law 19-299, § 3(c), 60 DCR 2634</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:2-202.</p>
                 <p>1973 Ed., § 28:2-202.</p>
+                <p>1981 Ed., § 28:2-202.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:2-316.html">28:2-316</a> and § <a class="internal-link" href="/dc/council/code/sections/28:2-326.html">28:2-326</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-299.html">D.C. Law 19-299</a> rewrote (a).</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Prior Uniform Statutory Provision:</strong> None.</p>
-                <p><strong>Purposes:</strong> 1. This section definitely rejects:</p>
-                <p>(a) Any assumption that because a writing has been worked out which is final on some matters, it is to be taken as including all the matters agreed upon;</p>
-                <p>(b) The premise that the language used has the meaning attributable to such language by rules of construction existing in the law rather than the meaning which arises out of the commercial context in which it was used; and</p>
-                <p>(c) The requirement that a condition precedent to the admissibility of the type of evidence specified in paragraph (a) is an original determination by the court that the language used is ambiguous.</p>
-                <p>2. Paragraph (a) makes admissible evidence of course of dealing, usage of trade and course of performance to explain or supplement the terms of any writing stating the agreement of the parties in order that the true understanding of the parties as to the agreement may be reached. Such writings are to be read on the assumption that the course of prior dealings between the parties and the usages of trade were taken for granted when the document was phrased. Unless carefully negated they have become an element of the meaning of the words used. Similarly, the course of actual performance by the parties is considered the best indication of what they intended the writing to mean.</p>
-                <p>3. Under paragraph (b) consistent additional terms, not reduced to writing, may be proved unless the court finds that the writing was intended by both parties as a complete and exclusive statement of all the terms. If the additional terms are such that, if agreed upon, they would certainly have been included in the document in the view of the court, then evidence of their alleged making must be kept from the trier of fact.</p>
-                <p><strong>Cross References:</strong> Point 3:  Sections 1-205,  2-207,  2-302 and  2-316.</p>
-                <p><strong>Definitional Cross References:</strong> “Agreed” and “agreement”.  Section 1-201.</p>
-                <p>“Course of dealing”.  Section 1-205.</p>
-                <p>“Parties”.  Section 1-201.</p>
-                <p>“Term”.  Section 1-201.</p>
-                <p>“Usage of trade”.  Section 1-205.</p>
                 <p>“Written” and “writing”.  Section 1-201.</p>
+                <p>“Usage of trade”.  Section 1-205.</p>
+                <p>“Term”.  Section 1-201.</p>
+                <p>“Parties”.  Section 1-201.</p>
+                <p>“Course of dealing”.  Section 1-205.</p>
+                <p><strong>Definitional Cross References:</strong> “Agreed” and “agreement”.  Section 1-201.</p>
+                <p><strong>Cross References:</strong> Point 3:  Sections 1-205,  2-207,  2-302 and  2-316.</p>
+                <p>3. Under paragraph (b) consistent additional terms, not reduced to writing, may be proved unless the court finds that the writing was intended by both parties as a complete and exclusive statement of all the terms. If the additional terms are such that, if agreed upon, they would certainly have been included in the document in the view of the court, then evidence of their alleged making must be kept from the trier of fact.</p>
+                <p>2. Paragraph (a) makes admissible evidence of course of dealing, usage of trade and course of performance to explain or supplement the terms of any writing stating the agreement of the parties in order that the true understanding of the parties as to the agreement may be reached. Such writings are to be read on the assumption that the course of prior dealings between the parties and the usages of trade were taken for granted when the document was phrased. Unless carefully negated they have become an element of the meaning of the words used. Similarly, the course of actual performance by the parties is considered the best indication of what they intended the writing to mean.</p>
+                <p>(c) The requirement that a condition precedent to the admissibility of the type of evidence specified in paragraph (a) is an original determination by the court that the language used is ambiguous.</p>
+                <p>(b) The premise that the language used has the meaning attributable to such language by rules of construction existing in the law rather than the meaning which arises out of the commercial context in which it was used; and</p>
+                <p>(a) Any assumption that because a writing has been worked out which is final on some matters, it is to be taken as including all the matters agreed upon;</p>
+                <p><strong>Purposes:</strong> 1. This section definitely rejects:</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> None.</p>
               </section>
             </section>
           </section>

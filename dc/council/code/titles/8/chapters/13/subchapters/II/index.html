@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/14/">Chapter 14. Hazardous Materials Transportation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/8/chapters/13/subchapters/II/">Report Error</a>
@@ -88,14 +88,30 @@
         <section class="col8 body">
           <h1>Subchapter II. Toxic Source Reduction.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/8-1315.html">§ 8–1315. Hazardous waste and toxic chemical source reduction.</a>
-            <a href="/dc/council/code/sections/8-1316.html">§ 8–1316. Identification of major generators of hazardous waste and releasers of toxic chemicals.</a>
-            <a href="/dc/council/code/sections/8-1317.html">§ 8–1317. Annual hazardous waste and toxic chemical reports.</a>
-            <a href="/dc/council/code/sections/8-1318.html">§ 8–1318. Hazardous waste and toxic chemical source reduction plans.</a>
-            <a href="/dc/council/code/sections/8-1319.html">§ 8–1319. Establishment of a Hazardous Waste and Toxic Chemical Release Source Reduction Fund and fee. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-1320.html">§ 8–1320. Hazardous waste and toxic chemical fee waivers.</a>
-            <a href="/dc/council/code/sections/8-1321.html">§ 8–1321. Confidential business information.</a>
-            <a href="/dc/council/code/sections/8-1322.html">§ 8–1322. Rules.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1315.html">§ 8–1315. Hazardous waste and toxic chemical source reduction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1316.html">§ 8–1316. Identification of major generators of hazardous waste and releasers of toxic chemicals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1317.html">§ 8–1317. Annual hazardous waste and toxic chemical reports.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1318.html">§ 8–1318. Hazardous waste and toxic chemical source reduction plans.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1319.html">§ 8–1319. Establishment of a Hazardous Waste and Toxic Chemical Release Source Reduction Fund and fee. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1320.html">§ 8–1320. Hazardous waste and toxic chemical fee waivers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1321.html">§ 8–1321. Confidential business information.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1322.html">§ 8–1322. Rules.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -256,8 +272,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-1318.html">8-1318</a> and § <a class="internal-link" href="/dc/council/code/sections/8-1320.html">8-1320</a>.</p>
                 <h4>Cross References</h4>
-                <p>Motor vehicles, moving infractions, application of law, see § <a class="internal-link" href="/dc/council/code/sections/50-2302.01.html">50-2302.01</a>.</p>
                 <p>Motor vehicles and traffic, uniform classification and commercial drivers’ licenses, “commercial motor vehicle” defined, see § <a class="internal-link" href="/dc/council/code/sections/50-401.html">50-401</a>.</p>
+                <p>Motor vehicles, moving infractions, application of law, see § <a class="internal-link" href="/dc/council/code/sections/50-2302.01.html">50-2302.01</a>.</p>
               </section>
             </section>
             <hr/>

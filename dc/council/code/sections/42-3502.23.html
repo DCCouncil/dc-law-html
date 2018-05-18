@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/42-3502.24.html">§ 42–3502.24. Elderly tenants and tenants with disabilities.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-3502.23.html">Report Error</a>
@@ -104,8 +104,8 @@
       (<a class="internal-link" href="/dc/council/laws/6-10.html#§223">July 17, 1985, D.C. Law 6-10, § 223</a>; <a class="internal-link" href="/dc/council/laws/16-145.html">as added Aug. 5, 2006, D.C. Law 16-145, § 2(g), 53 DCR 4889</a>; <a class="internal-link" href="/dc/council/laws/21-239.html#§3(f)">Apr. 7, 2017, D.C. Law 21-239, § 3(f), 64 DCR 1588</a>.)
     </p>
                 <h4>Cross References</h4>
-                <p>Homestead housing preservation, “low-income persons” defined, see § <a class="internal-link" href="/dc/council/code/sections/42-2103.html">42-2103</a>.</p>
                 <p>Housing Finance Agency, assisted housing projects, eligibility for rent supplements, see § <a class="internal-link" href="/dc/council/code/sections/42-2703.08.html">42-2703.08</a>.</p>
+                <p>Homestead housing preservation, “low-income persons” defined, see § <a class="internal-link" href="/dc/council/code/sections/42-2103.html">42-2103</a>.</p>
               </section>
             </section>
           </section>

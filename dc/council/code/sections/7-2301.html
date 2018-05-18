@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/7-2302.html">§ 7–2302. Establishment of program of public emergency preparedness; publication.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-2301.html">Report Error</a>
@@ -117,13 +117,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-534.html">2-534</a>, § <a class="internal-link" href="/dc/council/code/sections/5-132.04.html">5-132.04</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2361.01.html">7-2361.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/8-634.01.html">8-634.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-194.html">D.C. Law 14-194</a>, in par. (1), substituted “District of Columbia response plan” for “Emergency operations plan”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/14-194.html">D.C. Law 14-194</a> redesignated par. (1) as par. (1A); added a new par. (1); in par. (1A), substituted “District of Columbia response plan” for “Emergency operations plan”; added par. (1B); made nonsubstantive changes in pars. (3)(G) and (3)(H); and added par. (3)(I).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-194.html">D.C. Law 14-194</a>, in par. (1), substituted “District of Columbia response plan” for “Emergency operations plan”.</p>
                 <h4>Mayor's Orders</h4>
-                <p>Establishment of the Mayor’s Emergency Preparedness Council, see Mayor’s Order 2002-1, February 1, 2002 ( 49 DCR 896).</p>
-                <p>Amendment of Mayor’s Order 2002-1, dated January 2, 2002, Establishment of the Mayor’s Emergency Preparedness Council (EPC), see Mayor’s Order 2003-121, August 15, 2003 ( 50 DCR 7246).</p>
-                <p>Declaration of Public Emergency, see Mayor’s Order 2003-135, September 17, 2003 ( 50 DCR 8294).</p>
                 <p>Declaration of Termination of Public Emergency, see Mayor’s Order 2003-139, September 29, 2003 ( 50 DCR 9958).</p>
+                <p>Declaration of Public Emergency, see Mayor’s Order 2003-135, September 17, 2003 ( 50 DCR 8294).</p>
+                <p>Amendment of Mayor’s Order 2002-1, dated January 2, 2002, Establishment of the Mayor’s Emergency Preparedness Council (EPC), see Mayor’s Order 2003-121, August 15, 2003 ( 50 DCR 7246).</p>
+                <p>Establishment of the Mayor’s Emergency Preparedness Council, see Mayor’s Order 2002-1, February 1, 2002 ( 49 DCR 896).</p>
               </section>
             </section>
           </section>

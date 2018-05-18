@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/50-2201.04.html">§ 50–2201.04. Speeding and reckless driving.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/50-2201.03a.html">Report Error</a>
@@ -107,9 +107,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-224.html">D.C. Law 16-224</a> revived the provisions of <a class="internal-link" href="/dc/council/laws/14-235.html">D.C. Law 14-235</a> that expired on October 1, 2005.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 10(b) of Motor Vehicle Definition Electric Personal Assistive Mobility Device Exemption Emergency Amendment Act of 2005 (D.C. Act 16-237, December 22, 2005,  53 DCR 249).</p>
-                <p>For temporary (90 day) addition, see § 10(b) of Motor Vehicle Definition Electric Personal Assistive Mobility Device Exemption Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-323, March 23, 2006,  53 DCR 2567).</p>
                 <p>For temporary (90 day) addition, see § 101(b) of Personal Mobility Device Emergency Amendment Act of 2006 (D.C. Act 16-528, December 4, 2006,  53 DCR 9826).</p>
+                <p>For temporary (90 day) addition, see § 10(b) of Motor Vehicle Definition Electric Personal Assistive Mobility Device Exemption Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-323, March 23, 2006,  53 DCR 2567).</p>
+                <p>For temporary (90 day) addition, see § 10(b) of Motor Vehicle Definition Electric Personal Assistive Mobility Device Exemption Emergency Amendment Act of 2005 (D.C. Act 16-237, December 22, 2005,  53 DCR 249).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition, see § 10(b) of Motor Vehicle Definition Electric Personal Assistive Mobility Device Exemption Temporary Amendment Act of 2006 (D.C. Law 16-85, April 4, 2006, law notification  53 DCR 3344).</p>
                 <h4>Editor's Notes</h4>

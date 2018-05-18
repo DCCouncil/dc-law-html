@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/44-1102.19a.html">§ 44–1102.19a. Repayment of funds. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/44-1102.19.html">Report Error</a>
@@ -101,9 +101,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 32-262.19.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/44-1101.01.html">44-1101.01</a>.</p>
-                <p>For temporary (90-day) amendment of section, see § 1602(b) of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
                 <p>For temporary (90-day) authorization of application date of section, see § 1603 of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
+                <p>For temporary (90-day) amendment of section, see § 1602(b) of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
+                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/44-1101.01.html">44-1101.01</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-38.html">D.C. Law 13-38</a>, title XVI, § 1603, provided: “Sec. 1603. Applicability date. Section 1602(b) of this title shall be applicable from the date of the Board’s first meeting under section 204(h) of the Health and Hospitals Public Benefit Corporation Act of 1996, effective April 9, 1997 (<a class="internal-link" href="/dc/council/laws/11-212.html">D.C. Law 11-212</a>;  D.C. Code § 32-262.4(h) [§ <a class="internal-link" href="/dc/council/code/sections/44-1102.04.html">44-1102.04</a>(h), 2001 Ed.])”.</p>
               </section>

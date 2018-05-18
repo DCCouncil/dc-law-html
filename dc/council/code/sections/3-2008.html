@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/3-2009.html">§ 3–2009. Limited certificate of registration. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-2008.html">Report Error</a>
@@ -98,11 +98,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/75-3-ch321.html#§8">June 7, 1938, 52 Stat. 614, ch. 321, § 8</a>; <a class="internal-link" href="/dc/council/laws/9-245.html">Mar. 17, 1993, D.C. Law 9-245,§ 38(b), 40 DCR 660</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 1236, 46 DCR 3142</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-908.</p>
                 <p>1973 Ed., § 2-1308.</p>
+                <p>1981 Ed., § 2-908.</p>
                 <h4>Repeal of Law</h4>
-                <p>Repeal of Law 9-245</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/3-2001.html">3-2001</a>.</p>
+                <p>Repeal of Law 9-245</p>
               </section>
             </section>
           </section>

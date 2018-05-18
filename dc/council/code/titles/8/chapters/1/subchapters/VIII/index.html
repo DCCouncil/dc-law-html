@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/1A/">Chapter 1A. District Department of the Environment.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/8/chapters/1/subchapters/VIII/">Report Error</a>
@@ -88,22 +88,54 @@
         <section class="col8 body">
           <h1>Subchapter VIII. Lead-Based Paint Abatement and Control.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/8-115.01.html">§ 8–115.01. Definitions. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.02.html">§ 8–115.02. Establishment of lead-based paint abatement and control program [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.03.html">§ 8–115.03. Prohibition on lead-based paint activities. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.04.html">§ 8–115.04. Exemptions from provisions of this subchapter. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.05.html">§ 8–115.05. Certification requirements for individuals and business entities to conduct lead-based paint abatement; risk assessment and inspection of lead-based paint hazards, lead-contaminated dust, and lead-contaminated soil; or planning, project designing, and supervision of lead-based paint activities. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.05a.html">§ 8–115.05a. Required training of employees of a business entity performing interim controls and certain lead-based paint activities. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.06.html">§ 8–115.06. Accreditation of training providers. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.07.html">§ 8–115.07. Permit requirements.</a>
-            <a href="/dc/council/code/sections/8-115.07a.html">§ 8–115.07a. Clearance report required; Record keeping requirements. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.08.html">§ 8–115.08. Record keeping requirements. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.09.html">§ 8–115.09. Inspections by the Mayor. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.10.html">§ 8–115.10. Denial, suspension, or revocation. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.11.html">§ 8–115.11. Hearings. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.12.html">§ 8–115.12. Criminal penalties/fines. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.13.html">§ 8–115.13. Civil penalties/fines; civil infractions. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-115.14.html">§ 8–115.14. Rulemaking. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.01.html">§ 8–115.01. Definitions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.02.html">§ 8–115.02. Establishment of lead-based paint abatement and control program [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.03.html">§ 8–115.03. Prohibition on lead-based paint activities. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.04.html">§ 8–115.04. Exemptions from provisions of this subchapter. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.05.html">§ 8–115.05. Certification requirements for individuals and business entities to conduct lead-based paint abatement; risk assessment and inspection of lead-based paint hazards, lead-contaminated dust, and lead-contaminated soil; or planning, project designing, and supervision of lead-based paint activities. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.05a.html">§ 8–115.05a. Required training of employees of a business entity performing interim controls and certain lead-based paint activities. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.06.html">§ 8–115.06. Accreditation of training providers. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.07.html">§ 8–115.07. Permit requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.07a.html">§ 8–115.07a. Clearance report required; Record keeping requirements. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.08.html">§ 8–115.08. Record keeping requirements. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.09.html">§ 8–115.09. Inspections by the Mayor. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.10.html">§ 8–115.10. Denial, suspension, or revocation. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.11.html">§ 8–115.11. Hearings. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.12.html">§ 8–115.12. Criminal penalties/fines. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.13.html">§ 8–115.13. Civil penalties/fines; civil infractions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-115.14.html">§ 8–115.14. Rulemaking. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -120,16 +152,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.1.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-468, July 19, 2004,  51 DCR 7587).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(a) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2004 (D.C. Law 15-180, September 8, 2004, law notification  51 DCR 9222).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(a) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(a) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/11-221.html">D.C. Law 11-221</a>, “Lead-Based Paint Abatement and Control Act of 1996”, see Mayor’s Order 98-54, April 15, 1998 ( 45 DCR 2702); Mayor’s Order 98-124, August 7, 1998 ( 45 DCR 6386).</p>
               </section>
@@ -182,16 +214,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.4.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-468, July 19, 2004,  51 DCR 7587).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(b) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2004 (D.C. Law 15-180, September 8, 2004, law notification  51 DCR 9222).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(b) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(b) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
               </section>
             </section>
             <hr/>
@@ -262,16 +294,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.7.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-468, July 19, 2004,  51 DCR 7587).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(c) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(c) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2004 (D.C. Law 15-180, September 8, 2004, law notification  51 DCR 9222).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(c) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(c) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 21(b) of <a class="internal-link" href="/dc/council/laws/17-381.html">D.C. Law 17-381</a> provided that section 8 shall be deemed repealed upon issuance of rules by the Mayor under this act regarding abatement permit requirements.</p>
               </section>
@@ -363,16 +395,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.12.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-468, July 19, 2004,  51 DCR 7587).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(d) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(d) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2004 (D.C. Law 15-180, September 8, 2004, law notification  51 DCR 9222).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(d) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(d) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/15-347.html">D.C. Law 15-347</a> provided: “Sec. 5. Applicability. Section 2(l) and (m) shall apply upon publication in the District of Columbia Register by the Mayor of a list of civil infraction fines and a recommended schedule of fines or penalties for the Superior Court of the District of Columbia to consider.”</p>
               </section>
@@ -391,19 +423,19 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.13.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-468, July 19, 2004,  51 DCR 7587).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2004 (D.C. Act 15-411, April 21, 2004,  51 DCR 4677).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-125, July 29, 2003,  50 DCR 6641).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2003 (D.C. Act 15-89, May 19, 2003,  50 DCR 4334).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-478, October 3, 2002,  49 DCR 9574).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Emergency Amendment Act of 2002 (D.C. Act 14-397, June 25, 2002,  49 DCR 6511).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(e) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(e) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2004 (D.C. Law 15-180, September 8, 2004, law notification  51 DCR 9222).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(e) of Lead Based Paint Abatement and Control Temporary Amendment Act of 2003 (D.C. Law 15-28, September 23, 2003, law notification  50 DCR 8351).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(e) of Lead-Based Paint Abatement and Control Temporary Amendment Act of 2002 (D.C. Law 14-204, October 17, 2002, law notification  49 DCR 10460).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 5 of <a class="internal-link" href="/dc/council/laws/15-347.html">D.C. Law 15-347</a> provided: “Sec. 5. Applicability. Section 2(l) and (m) shall apply upon publication in the District of Columbia Register by the Mayor of a list of civil infraction fines and a recommended schedule of fines or penalties for the Superior Court of the District of Columbia to consider.”</p>
                 <p>For Law 17-381, see notes following § <a class="internal-link" href="/dc/council/code/sections/8-115.01.html">8-115.01</a>.</p>
+                <p>Section 5 of <a class="internal-link" href="/dc/council/laws/15-347.html">D.C. Law 15-347</a> provided: “Sec. 5. Applicability. Section 2(l) and (m) shall apply upon publication in the District of Columbia Register by the Mayor of a list of civil infraction fines and a recommended schedule of fines or penalties for the Superior Court of the District of Columbia to consider.”</p>
               </section>
             </section>
             <hr/>
@@ -420,8 +452,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-997.14.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 3 of the Multiple Dwelling Residence Water Lead Level Test Emergency Act of 2004 (D.C. Act 15-483, July 19, 2004,  51 DCR 7833).</p>
                 <p>For temporary (90 day) addition, see § 3 of Multiple Dwelling Residence Water Lead Level Test Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-560, October 26, 2004,  51 DCR 10382).</p>
+                <p>For temporary (90 day) addition, see § 3 of the Multiple Dwelling Residence Water Lead Level Test Emergency Act of 2004 (D.C. Act 15-483, July 19, 2004,  51 DCR 7833).</p>
               </section>
             </section>
             <hr/>

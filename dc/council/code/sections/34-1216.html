@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/34-1217.html">§ 34–1217. Termination of franchise; forced purchase by the District. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/34-1216.html">Report Error</a>
@@ -103,14 +103,14 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) repeal of section, see § 3 of Cable Television Reform Emergency Amendment Act of 2002 (D.C. Act 14-409, July 15, 2002,  49 DCR 7280).</p>
                 <h4>Mayor's Orders</h4>
-                <p>Extension of the Franchise Term of District Cablevision Limited Partnership, see Mayor’s Order 2000-144, September 22, 2000 ( 47 DCR 8256).</p>
-                <p>Extension of the Franchise Term of District Cablevision Limited Partnership, see Mayor’s Order 2000-156, October 12, 2000 ( 47 DCR 8682) and Mayor’s Order 2000-169, November 2, 2000 ( 47 DCR 9536).</p>
-                <p>Extension of the Term of the Interim Open Video Systems Agreement with Starpower Communications, LLC, see Mayor’s Order 2000-175, November 21, 2000 ( 47 DCR 9545).</p>
-                <p>Extension of the Franchise Term of District Cablevision Limited Partnership, see Mayor’s Order 2001-09, January 16, 2001 ( 48 DCR 946).</p>
-                <p>Extension of the Franchise Term of District Cablevision Limited Partnership, see Mayor’s Order 2001-10, January 17, 2001( 48 DCR 947).</p>
-                <p>Extension of the Term of the Interim Open Video Systems Agreement with Starpower Communications, LLC, see Mayor’s Order 2001-11, January 17, 2001 ( 48 DCR 948).</p>
-                <p>Extension of the Term of the Interim Open Video Systems Agreement with Starpower Communications, LLC, see Mayor’s Order 2001-25, February 14, 2001 ( 48 DCR 2178).</p>
                 <p>Extension of the Franchise Term of District Cablevision Limited Partnership, see Mayor’s Order 2001-26, February 14, 2001 (48 DCR</p>
+                <p>Extension of the Term of the Interim Open Video Systems Agreement with Starpower Communications, LLC, see Mayor’s Order 2001-25, February 14, 2001 ( 48 DCR 2178).</p>
+                <p>Extension of the Term of the Interim Open Video Systems Agreement with Starpower Communications, LLC, see Mayor’s Order 2001-11, January 17, 2001 ( 48 DCR 948).</p>
+                <p>Extension of the Franchise Term of District Cablevision Limited Partnership, see Mayor’s Order 2001-10, January 17, 2001( 48 DCR 947).</p>
+                <p>Extension of the Franchise Term of District Cablevision Limited Partnership, see Mayor’s Order 2001-09, January 16, 2001 ( 48 DCR 946).</p>
+                <p>Extension of the Term of the Interim Open Video Systems Agreement with Starpower Communications, LLC, see Mayor’s Order 2000-175, November 21, 2000 ( 47 DCR 9545).</p>
+                <p>Extension of the Franchise Term of District Cablevision Limited Partnership, see Mayor’s Order 2000-156, October 12, 2000 ( 47 DCR 8682) and Mayor’s Order 2000-169, November 2, 2000 ( 47 DCR 9536).</p>
+                <p>Extension of the Franchise Term of District Cablevision Limited Partnership, see Mayor’s Order 2000-144, September 22, 2000 ( 47 DCR 8256).</p>
               </section>
             </section>
           </section>

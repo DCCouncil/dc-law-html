@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/24-133.html">§ 24–133. Court Services and Offender Supervision Agency.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/24-132.html">Report Error</a>
@@ -149,13 +149,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/22-4001.html">22-4001</a>, § <a class="internal-link" href="/dc/council/code/sections/24-134.html">24-134</a>, § <a class="internal-link" href="/dc/council/code/sections/24-141.html">24-141</a>, and § <a class="internal-link" href="/dc/council/code/sections/24-142.html">24-142</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>Section 145(a) of Public Law 106-522 redesignated subsecs. (f) through (i) as subsecs. (g) through (j), respectively, and added subsec. (f), relating to the treatment of certain persons as federal employees.</p>
                 <p>Section 145(b) of Public Law 106-522 provided: “The amendment made by subsection (a) shall take effect as if included in the enactment of title XI of the Balanced Budget Act of 1997.</p>
+                <p>Section 145(a) of Public Law 106-522 redesignated subsecs. (f) through (i) as subsecs. (g) through (j), respectively, and added subsec. (f), relating to the treatment of certain persons as federal employees.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 166(b) of Public Law 106-113 provided:</p>
-                <p>AUTHORITY DURING TRANSITION TO FULL OPERATION OF AGENCY.—</p>
-                <p>“(1) AUTHORITY OF PRETRIAL SERVICES, PAROLE, ADULT PROBATION AND OFFENDER SUPERVISION TRUSTEE.— Notwithstanding section 11232(b)(1) of the National Capital Revitalization and Self-Government Improvement Act of 1997 ( D.C. Code, sec. 24-1232(b)(1)), the Pretrial Services, Parole, Adult Probation and Offender Supervision Trustee appointed under section 11232(a) of such Act (hereafter referred to as the ‘Trustee’) shall, in accordance with section 11232 of such Act, exercise the powers and functions of the Court Services and Offender Supervision Agency for the District of Columbia (hereafter referred to as the ‘Agency’) relating to sex offender registration (as granted to the Agency under any District of Columbia law) only upon the Trustee’s certification that the Trustee is able to assume such powers and functions.</p>
                 <p>“(2) AUTHORITY OF METROPOLITAN POLICE DEPARTMENT.— During the period that begins on the date of the enactment of the Sex Offender Registration Emergency Act of 1999 and ends on the date the Trustee makes the certification described in paragraph (1), the Metropolitan Police Department of the District of Columbia shall have the authority to carry out any powers and functions relating to sex offender registration that are granted to the Agency or to the Trustee under any District of Columbia law.”</p>
+                <p>“(1) AUTHORITY OF PRETRIAL SERVICES, PAROLE, ADULT PROBATION AND OFFENDER SUPERVISION TRUSTEE.— Notwithstanding section 11232(b)(1) of the National Capital Revitalization and Self-Government Improvement Act of 1997 ( D.C. Code, sec. 24-1232(b)(1)), the Pretrial Services, Parole, Adult Probation and Offender Supervision Trustee appointed under section 11232(a) of such Act (hereafter referred to as the ‘Trustee’) shall, in accordance with section 11232 of such Act, exercise the powers and functions of the Court Services and Offender Supervision Agency for the District of Columbia (hereafter referred to as the ‘Agency’) relating to sex offender registration (as granted to the Agency under any District of Columbia law) only upon the Trustee’s certification that the Trustee is able to assume such powers and functions.</p>
+                <p>AUTHORITY DURING TRANSITION TO FULL OPERATION OF AGENCY.—</p>
+                <p>Section 166(b) of Public Law 106-113 provided:</p>
               </section>
             </section>
           </section>

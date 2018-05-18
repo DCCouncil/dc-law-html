@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/8-103.07.html">§ 8–103.07. Location of discharge; recognition of reduction of pollutants; restrictions on quantity of materials discharged; discharge of used motor oil to sewer prohibited.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-103.06.html">Report Error</a>
@@ -140,11 +140,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-103.02.html">8-103.02</a>, § <a class="internal-link" href="/dc/council/code/sections/8-103.09.html">8-103.09</a>, and § <a class="internal-link" href="/dc/council/code/sections/8-103.13b.html">8-103.13b</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in subsec. (a), made a nonsubstantive change in par. (2), rewrote par. (3), and added par. (4); and rewrote subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsecs. (b)(2) and (d), validated previously made technical corrections.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in subsec. (a), made a nonsubstantive change in par. (2), rewrote par. (3), and added par. (4); and rewrote subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(b) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) amendment of section, see § 612(b) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(b) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <h4>References in Text</h4>
                 <p>The Federal Water Pollution Control Act, referred to in subsections (b)(1) and (j), is codified at  33 U.S.C. § 1251 et seq.</p>
               </section>

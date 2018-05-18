@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/16/chapters/39/">Chapter 39. Small Claims and Conciliation Procedure in Superior Court.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/16/chapters/37/">Report Error</a>
@@ -87,29 +87,75 @@
         <section class="col8 body">
           <h1>Chapter 37. Replevin.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/16-3701.html">§ 16–3701. Demand prior to action; costs.</a>
-            <a href="/dc/council/code/sections/16-3702.html">§ 16–3702. Form of complaint.</a>
-            <a href="/dc/council/code/sections/16-3703.html">§ 16–3703. Affidavit; contents.</a>
-            <a href="/dc/council/code/sections/16-3704.html">§ 16–3704. Undertaking to abide judgment of the court.</a>
-            <a href="/dc/council/code/sections/16-3705.html">§ 16–3705. Failure of officer to obtain possession; procedure.</a>
-            <a href="/dc/council/code/sections/16-3706.html">§ 16–3706. Publication against defendant.</a>
-            <a href="/dc/council/code/sections/16-3707.html">§ 16–3707. Default.</a>
-            <a href="/dc/council/code/sections/16-3708.html">§ 16–3708. Motion for return of property; procedure; objection to sufficiency of security.</a>
-            <a href="/dc/council/code/sections/16-3709.html">§ 16–3709. Notice to officer of intention to move for return; duty of officer; time of motion.</a>
-            <a href="/dc/council/code/sections/16-3710.html">§ 16–3710. Determination and measure of plaintiff’s damages.</a>
-            <a href="/dc/council/code/sections/16-3711.html">§ 16–3711. Judgment for defendant and determination of damages.</a>
-            <a href="/dc/council/code/sections/16-3712.html">§ 16–3712. Verdict where goods are eloigned.</a>
-            <a href="/dc/council/code/sections/16-3713.html">§ 16–3713. Judgment where goods are eloigned.</a>
-            <a href="/dc/council/code/sections/16-3731.html">§ 16–3731. Jurisdiction; form of complaint</a>
-            <a href="/dc/council/code/sections/16-3732.html">§ 16–3732. Affidavit; contents</a>
-            <a href="/dc/council/code/sections/16-3733.html">§ 16–3733. Undertaking to abide judgment of the court</a>
-            <a href="/dc/council/code/sections/16-3734.html">§ 16–3734. Failure of officer to obtain possession</a>
-            <a href="/dc/council/code/sections/16-3735.html">§ 16–3735. Publication against defendant</a>
-            <a href="/dc/council/code/sections/16-3736.html">§ 16–3736. Default</a>
-            <a href="/dc/council/code/sections/16-3737.html">§ 16–3737. Retention of property by marshal; sufficiency of undertaking, quashing writ, and return of property</a>
-            <a href="/dc/council/code/sections/16-3738.html">§ 16–3738. Motion for return of property; procedure; objection to sufficiency of security</a>
-            <a href="/dc/council/code/sections/16-3739.html">§ 16–3739. Determination and measure of plaintiff’s damages</a>
-            <a href="/dc/council/code/sections/16-3740.html">§ 16–3740. Judgment for defendant and determination of damages</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3701.html">§ 16–3701. Demand prior to action; costs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3702.html">§ 16–3702. Form of complaint.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3703.html">§ 16–3703. Affidavit; contents.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3704.html">§ 16–3704. Undertaking to abide judgment of the court.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3705.html">§ 16–3705. Failure of officer to obtain possession; procedure.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3706.html">§ 16–3706. Publication against defendant.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3707.html">§ 16–3707. Default.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3708.html">§ 16–3708. Motion for return of property; procedure; objection to sufficiency of security.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3709.html">§ 16–3709. Notice to officer of intention to move for return; duty of officer; time of motion.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3710.html">§ 16–3710. Determination and measure of plaintiff’s damages.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3711.html">§ 16–3711. Judgment for defendant and determination of damages.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3712.html">§ 16–3712. Verdict where goods are eloigned.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3713.html">§ 16–3713. Judgment where goods are eloigned.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3731.html">§ 16–3731. Jurisdiction; form of complaint</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3732.html">§ 16–3732. Affidavit; contents</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3733.html">§ 16–3733. Undertaking to abide judgment of the court</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3734.html">§ 16–3734. Failure of officer to obtain possession</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3735.html">§ 16–3735. Publication against defendant</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3736.html">§ 16–3736. Default</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3737.html">§ 16–3737. Retention of property by marshal; sufficiency of undertaking, quashing writ, and return of property</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3738.html">§ 16–3738. Motion for return of property; procedure; objection to sufficiency of security</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3739.html">§ 16–3739. Determination and measure of plaintiff’s damages</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-3740.html">§ 16–3740. Judgment for defendant and determination of damages</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -124,11 +170,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 604, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3701.</p>
                 <p>1973 Ed., § 16-3701.</p>
+                <p>1981 Ed., § 16-3701.</p>
                 <h4>Cross References</h4>
-                <p>Attachment of property in replevin action, see § <a class="internal-link" href="/dc/council/code/sections/16-517.html">16-517</a>.</p>
                 <p>Superior court jurisdiction, see § <a class="internal-link" href="/dc/council/code/sections/11-921.html">11-921</a>.</p>
+                <p>Attachment of property in replevin action, see § <a class="internal-link" href="/dc/council/code/sections/16-517.html">16-517</a>.</p>
               </section>
             </section>
             <hr/>
@@ -144,8 +190,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 604, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3702.</p>
                 <p>1973 Ed., § 16-3702.</p>
+                <p>1981 Ed., § 16-3702.</p>
               </section>
             </section>
             <hr/>
@@ -163,8 +209,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 604, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3703.</p>
                 <p>1973 Ed., § 16-3703.</p>
+                <p>1981 Ed., § 16-3703.</p>
               </section>
             </section>
             <hr/>
@@ -179,8 +225,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 604, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3704.</p>
                 <p>1973 Ed., § 16-3704.</p>
+                <p>1981 Ed., § 16-3704.</p>
                 <h4>Cross References</h4>
                 <p>Bonds and undertakings, see § <a class="internal-link" href="/dc/council/code/sections/28-2501.html">28-2501</a> et seq.</p>
               </section>
@@ -197,8 +243,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 604, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3705.</p>
                 <p>1973 Ed., § 16-3705.</p>
+                <p>1981 Ed., § 16-3705.</p>
                 <h4>Cross References</h4>
                 <p>Attachment of property in replevin action, see § <a class="internal-link" href="/dc/council/code/sections/16-517.html">16-517</a>.</p>
               </section>
@@ -215,8 +261,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 605, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3706.</p>
                 <p>1973 Ed., § 16-3706.</p>
+                <p>1981 Ed., § 16-3706.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/16-3707.html">16-3707</a>.</p>
               </section>
@@ -233,8 +279,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 605, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3707.</p>
                 <p>1973 Ed., § 16-3707.</p>
+                <p>1981 Ed., § 16-3707.</p>
               </section>
             </section>
             <hr/>
@@ -250,8 +296,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 605, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3708.</p>
                 <p>1973 Ed., § 16-3708.</p>
+                <p>1981 Ed., § 16-3708.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/16-3709.html">16-3709</a>.</p>
               </section>
@@ -268,8 +314,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 605, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3709.</p>
                 <p>1973 Ed., § 16-3709.</p>
+                <p>1981 Ed., § 16-3709.</p>
               </section>
             </section>
             <hr/>
@@ -284,8 +330,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 605, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3710.</p>
                 <p>1973 Ed., § 16-3710.</p>
+                <p>1981 Ed., § 16-3710.</p>
               </section>
             </section>
             <hr/>
@@ -300,8 +346,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 606, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3711.</p>
                 <p>1973 Ed., § 16-3711.</p>
+                <p>1981 Ed., § 16-3711.</p>
               </section>
             </section>
             <hr/>
@@ -316,8 +362,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 606, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3712.</p>
                 <p>1973 Ed., § 16-3712.</p>
+                <p>1981 Ed., § 16-3712.</p>
               </section>
             </section>
             <hr/>
@@ -332,8 +378,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 606, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-3713.</p>
                 <p>1973 Ed., § 16-3713.</p>
+                <p>1981 Ed., § 16-3713.</p>
               </section>
             </section>
             <hr/>

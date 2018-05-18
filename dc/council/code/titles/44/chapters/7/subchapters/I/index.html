@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/44/chapters/7/subchapters/II/">Subchapter II. Fees for Clinical Services and Asbestos Abatement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/chapters/7/subchapters/I/">Report Error</a>
@@ -88,23 +88,57 @@
         <section class="col8 body">
           <h1>Subchapter I. General.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/44-701.html">§ 44–701. Limitation on erection of hospital for contagious diseases.</a>
-            <a href="/dc/council/code/sections/44-702.html">§ 44–702. Children’s Tuberculosis Sanatorium — Construction and equipping authorized.</a>
-            <a href="/dc/council/code/sections/44-703.html">§ 44–703. Providence Hospital authorized to conduct hospital, clinic and school.</a>
-            <a href="/dc/council/code/sections/44-704.html">§ 44–704. Standards of indigency; emergency and semi-indigent patients.</a>
-            <a href="/dc/council/code/sections/44-705.html">§ 44–705. Payments to needy patients.</a>
-            <a href="/dc/council/code/sections/44-706.html">§ 44–706. Institutional care under contract.</a>
-            <a href="/dc/council/code/sections/44-707.html">§ 44–707. Stipends for patients and certain resident employees.</a>
-            <a href="/dc/council/code/sections/44-708.html">§ 44–708. Benefits in lieu of salary for certain workers in District facilities.</a>
-            <a href="/dc/council/code/sections/44-709.html">§ 44–709. Mayor to visit, investigate and report on certain charitable institutions.</a>
-            <a href="/dc/council/code/sections/44-710.html">§ 44–710. Mayor authorized to visit, investigate and report on certain organizations.</a>
-            <a href="/dc/council/code/sections/44-711.html">§ 44–711. Appropriations for charitable and reformatory institutions to be lien on property.</a>
-            <a href="/dc/council/code/sections/44-712.html">§ 44–712. Terms of Congressmen as trustees or directors of certain corporations or institutions.</a>
-            <a href="/dc/council/code/sections/44-713.html">§ 44–713. Compensation of physicians to the poor.</a>
-            <a href="/dc/council/code/sections/44-714.html">§ 44–714. Conflicts of interest by directors or trustees of certain charitable institutions.</a>
-            <a href="/dc/council/code/sections/44-715.html">§ 44–715. Congressional policy as to appropriations to churches or religious entities.</a>
-            <a href="/dc/council/code/sections/44-716.html">§ 44–716. Home for Aged and Infirm — Sale of surplus products.</a>
-            <a href="/dc/council/code/sections/44-717.html">§ 44–717. Home for Aged and Infirm — Admission of pay patients.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-701.html">§ 44–701. Limitation on erection of hospital for contagious diseases.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-702.html">§ 44–702. Children’s Tuberculosis Sanatorium — Construction and equipping authorized.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-703.html">§ 44–703. Providence Hospital authorized to conduct hospital, clinic and school.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-704.html">§ 44–704. Standards of indigency; emergency and semi-indigent patients.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-705.html">§ 44–705. Payments to needy patients.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-706.html">§ 44–706. Institutional care under contract.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-707.html">§ 44–707. Stipends for patients and certain resident employees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-708.html">§ 44–708. Benefits in lieu of salary for certain workers in District facilities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-709.html">§ 44–709. Mayor to visit, investigate and report on certain charitable institutions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-710.html">§ 44–710. Mayor authorized to visit, investigate and report on certain organizations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-711.html">§ 44–711. Appropriations for charitable and reformatory institutions to be lien on property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-712.html">§ 44–712. Terms of Congressmen as trustees or directors of certain corporations or institutions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-713.html">§ 44–713. Compensation of physicians to the poor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-714.html">§ 44–714. Conflicts of interest by directors or trustees of certain charitable institutions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-715.html">§ 44–715. Congressional policy as to appropriations to churches or religious entities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-716.html">§ 44–716. Home for Aged and Infirm — Sale of surplus products.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-717.html">§ 44–717. Home for Aged and Infirm — Admission of pay patients.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -119,110 +153,110 @@
       (<a class="internal-link" href="/us/congress/laws/public/53-3-ch176.html">Mar. 2, 1895, 28 Stat. 758, ch. 176</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-112.</p>
                 <p>1973 Ed., § 32-311.</p>
+                <p>1981 Ed., § 32-112.</p>
                 <h4>Cross References</h4>
                 <p>Public health, rules and regulations, prevention and control of communicable diseases, see § <a class="internal-link" href="/dc/council/code/sections/7-131.html">7-131</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) additions, see §§ 2 to 9 of Establishment of Hospital Receivership Emergency Act of 2007 (D.C. Act 17-81, July 27, 2007,  54 DCR 7993).</p>
-                <p>For temporary (90 day) additions, see §§ 2 to 8 of Establishment of Hospital Receivership Congressional Review Emergency Act of 2007 (D.C. Act 17-139, October 17, 2007,  54 DCR 10731).</p>
                 <p>For temporary (90 day) addition, see § 5 of Healthy DC Equal Access Fund and Hospital Stabilization Emergency Amendment Act of 2009 (D.C. Act 18-310, February 18, 2010,  57 DCR 1635).</p>
+                <p>For temporary (90 day) additions, see §§ 2 to 8 of Establishment of Hospital Receivership Congressional Review Emergency Act of 2007 (D.C. Act 17-139, October 17, 2007,  54 DCR 10731).</p>
+                <p>For temporary (90 day) additions, see §§ 2 to 9 of Establishment of Hospital Receivership Emergency Act of 2007 (D.C. Act 17-81, July 27, 2007,  54 DCR 7993).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Sections 2 to 8 of Law 17-51 added sections to read as follows:</p>
-                <p>“Sec. 2. Definitions.</p>
-                <p>“For the purposes of this act, the term:</p>
-                <p>“(1) ‘Emergency’ means a situation, physical condition, or one or more practices, methods, or operations that presents imminent danger of death or serious physical or mental harm to a patient, including imminent or actual abandonment of an occupied hospital.</p>
-                <p>“(2) ‘Habitual violation’ means a violation of the standards of health, safety, or patient care established under District or federal law that, due to its repetition, presents a reasonable likelihood of serious physical or mental harm to patients.</p>
-                <p>“(3) ‘Hospital’ means a facility that provides 24-hour inpatient care, including diagnostic, therapeutic, and other health-related care for a variety of physical or mental conditions and may provide outpatient services, such as emergency care.</p>
-                <p>“(4) ‘Licensee’ means a person or other legal entity, other than a receiver appointed pursuant to section 3, that is licensed or required to be licensed to operate a hospital.</p>
-                <p>“(5) ‘Owner’ means the holder of the title to the real estate on which the hospital is maintained.</p>
-                <p>“(6) ‘Patient’ means a person living in or receiving care from a hospital.</p>
-                <p>“(7) ‘Substantial violation’ means a violation of the standards of health, safety, or patient care established under District or federal law that presents a reasonable likelihood of serious physical or mental harm to patients.</p>
-                <p>“Sec. 3. Appointment of a receiver; grounds; process.</p>
-                <p>“(a) The Mayor may bring an action in the Superior Court of the District of Columbia requesting the appointment of a receiver to operate a hospital.</p>
-                <p>“(b) The following circumstances are grounds for the appointment of a receiver:</p>
-                <p>“(1) A hospital intends to close, but has not arranged for the orderly transfer of patients at least 30 days prior to its closure date;</p>
-                <p>“(2) An emergency, as defined in section 2(1), exists at the hospital; or</p>
-                <p>“(3) A habitual or substantial violation, as defined in section 2(2) and (7), respectively, exists at the hospital.</p>
-                <p>“(c)(1) The court shall hold a hearing no later than 10 days after an action requesting the appointment of a receiver is filed, unless all parties agree to a later date.</p>
-                <p>“(2) Notice of the hearing shall be served on both the owner and the licensee not less than 5 days before the hearing. If either the owner or the licensee cannot be served, the court shall specify the alternative notice to be provided.</p>
-                <p>“(3) The Mayor shall post notice of the hearing, using a court-approved form, in a conspicuous place in the hospital, for not less than 3 days before the hearing.</p>
-                <p>“(4) After the hearing, the court may appoint a receiver if it finds that any one of the grounds for an appointment set forth in subsection (b) of this section has been satisfied.</p>
-                <p>“(d)(1) The court may:</p>
-                <p>“(A) Appoint any person considered appropriate as receiver, except a District employee; and</p>
-                <p>“(B) Remove a receiver for good cause. ”(2) The court shall set a reasonable compensation for the receiver, which shall be paid from the revenue of the hospital.</p>
-                <p>“(3) A receiver shall not be considered an agent of the District of Columbia.</p>
-                <p>“Sec. 4. Powers and duties of a receiver.</p>
-                <p>“(a) A receiver appointed pursuant to this act shall have such powers as the court may direct to:</p>
-                <p>“(1) Operate the hospital;</p>
-                <p>“(2) Remedy the conditions that constituted the grounds for the receivership;</p>
-                <p>“(3) Protect the health, safety, and welfare of the patients; and</p>
-                <p>“(4) Preserve the assets and property of the patients, owner, and licensee.</p>
-                <p>“(b) With approval of the court, a receiver shall have the authority to:</p>
-                <p>“(1) Remedy violations of District or federal laws governing the operation of the hospital;</p>
-                <p>“(2) Hire, direct, manage, and discharge any employee, including the administrator of the hospital;</p>
-                <p>“(3) Receive and expend in a reasonable and prudent manner the revenues of the hospital received by the hospital during the 30-day period preceding the date of his or her appointment and any revenue due thereafter;</p>
-                <p>“(4) Continue the operation of the hospital;</p>
-                <p>“(5) Continue the care of the patients;</p>
-                <p>“(6) Correct and eliminate any deficiency of the hospital that endangers the safety or health of the patients; and</p>
-                <p>“(7) Exercise such additional powers and perform such additional duties, including regular accountings, as the court considers appropriate.</p>
-                <p>“(c)(1) The receiver shall:</p>
-                <p>“(A) Apply the revenues of the hospital to current operating expenses and, subject to subparagraphs (B) and (C) of this paragraph, to debts incurred by the licensee prior to the appointment of the receiver;</p>
-                <p>“(B) Ask the court for direction in the treatment of debts incurred prior to his or her appointment where such debts appear extraordinary, of questionable validity, or unrelated to the normal and expected maintenance and operation of the hospital, or where payment of a debt will interfere with the purposes of the receivership; and</p>
-                <p>“(C) Give priority to expenditures needed for current, direct patient care.</p>
-                <p>“(2)(A) If a receiver does not have sufficient funds to cover expenditures needed to prevent or remove jeopardy to the patients, the receiver may petition the court for permission to borrow non-District funds for this purpose. Notice of the receiver’s petition to the court for permission to borrow must be given to the owner, the licensee, and the Mayor.</p>
-                <p>“(B) The court, after a hearing, may authorize the receiver to borrow money upon specified terms of repayment and pledge security, if necessary, if the court determines:</p>
-                <p>“(i) That the hospital should not be closed and that the loan is reasonably necessary to prevent or remove jeopardy; or</p>
-                <p>“(ii) That the hospital should be closed and that the loan is necessary to prevent or remove jeopardy to patients for the limited period of time they are awaiting transfer to another hospital or other facility.</p>
-                <p>“(d) A receiver may not close a hospital without leave of the court. In ruling on the issue of closure, the court shall consider:</p>
-                <p>“(1) The rights and best interests of the patients;</p>
-                <p>“(2) The availability of suitable alternative placements;</p>
-                <p>“(3) The rights, interests, and obligations of the owner and licensee;</p>
-                <p>“(4) The licensure status of the hospital; and</p>
-                <p>“(5) Any other factors the court considers relevant.</p>
-                <p>“(e) The owner and the licensee shall be divested of possession and control of the hospital during the period of receivership, under the conditions the court specifies.</p>
-                <p>“Sec. 5. Court order to have effect of a license. An order appointing a receiver pursuant to section 3 shall have the effect of a license of operation for the duration of the receivership. The receiver shall be responsible to the court for the conduct of the hospital during the receivership, and a violation of regulations governing the conduct of the hospital, if not promptly corrected, shall be reported to the court.</p>
-                <p>“Sec. 6. Court review and termination of a receivership.</p>
-                <p>“(a) The court shall review the continued necessity of a receivership at least semiannually.</p>
-                <p>“(b)(1) The court shall terminate a receivership when it certifies that the conditions that prompted the receivership have been corrected or, in the case of a discontinuance of operation, when the patients are safely relocated.</p>
-                <p>“(2) The court shall not terminate a receivership in favor of the former licensee or of a new licensee, unless the person, or entity, assumes all obligations incurred by the receiver and provides collateral or other assurances of payment considered sufficient by the court.</p>
-                <p>“Sec. 7. Liability of receiver.</p>
-                <p>“No person may bring suit against a receiver appointed pursuant to section 3 without first securing leave of the court. Except in cases of gross negligence or intentional wrongdoing, a receiver shall be liable only for actions taken in his or her official capacity, and any adverse judgment shall be satisfied out of receivership assets.</p>
-                <p>“Sec. 8. Liability of District of Columbia.</p>
-                <p>“The District of Columbia shall not be liable for repayment of funds borrowed by a receiver during the course of the receivership or responsible for any financial obligations of the hospital.”</p>
-                <p>Section 10(b) of D.C. Law 17-51 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Sections 5 and 6 of D.C. Law 18-154 added sections to read as follows:</p>
-                <p>“Sec. 5. Hospital receivership.</p>
-                <p>“(a) For the purposes of this section, the term:</p>
-                <p>“(3) ‘Hospital’ means a facility that provides 24-hour inpatient care, including diagnostic, therapeutic, and other health-related care for a variety of physical or mental conditions, and may provide outpatient services, such as emergency care.</p>
-                <p>“(4) ‘Licensee’ means a person or other legal entity, other than a receiver appointed pursuant to this section, that is licensed or required to be licensed to operate a hospital.</p>
-                <p>“(b) The Mayor may bring an action in the Superior Court of the District of Columbia requesting the appointment of a receiver to operate a hospital on the following grounds:</p>
-                <p>“(2) An emergency exists at the hospital;</p>
-                <p>“(3) A habitual or substantial violation exists at the hospital; or</p>
-                <p>“(4) Insolvency or lack of financial resources of an owner or the licensee has placed the continued operation of the facility in jeopardy.</p>
-                <p>“(B) Remove a receiver for good cause.</p>
-                <p>“(2) The court shall set a reasonable compensation for the receiver, which shall be paid from the revenue of the hospital.</p>
-                <p>“(e) A receiver appointed pursuant to this act shall have such powers as the court may direct to:</p>
-                <p>“(3) Protect the health, safety, and welfare of the patients;</p>
-                <p>“(4) Preserve the assets and property of the patients, owner, and licensee;</p>
-                <p>“(5) Remedy violations of District or federal law governing the operation of the hospital;</p>
-                <p>“(6) Hire, direct, manage, and discharge any employee, including the administrator of the hospital;</p>
-                <p>“(7) Receive and expend, in a reasonable and prudent manner, the revenues of the hospital received by the hospital during the 30-day period preceding the date of his or her appointment and any revenue due thereafter;</p>
-                <p>“(8) Continue the operation of the hospital;</p>
-                <p>“(9) Continue the care of the patients;</p>
-                <p>“(10) Correct and eliminate any deficiency of the hospital that endangers the safety or health of the patients; and</p>
-                <p>“(11) Exercise such additional powers and perform such additional duties, including regular accountings, as the court considers appropriate.</p>
-                <p>“(f)(1) The receiver shall:</p>
-                <p>“(g) A receiver may not close a hospital without leave of the court. In ruling on the issue of closure, the court shall consider:</p>
-                <p>“(h) The owner and the licensee shall be divested of possession and control of the hospital during the period of receivership, under the conditions the court specifies.</p>
-                <p>“(i) An order appointing a receiver pursuant to this section shall have the effect of a license of operation for the duration of the receivership. The receiver shall be responsible to the court for the conduct of the hospital during the receivership, and a violation of regulations governing the conduct of the hospital, if not promptly corrected, shall be reported to the court.</p>
-                <p>“(j)(1) The court shall review the continued necessity of a receivership at least semiannually.</p>
-                <p>“(2) The court shall terminate a receivership when it certifies that the conditions that prompted the receivership have been corrected or, in the case of a discontinuance of operation, when the patients have been safely relocated.</p>
-                <p>“(3) The court shall not terminate a receivership in favor of the former licensee or of a new licensee, unless the person, or entity, assumes all obligations incurred by the receiver and provides collateral or other assurances of payment considered sufficient by the court.</p>
-                <p>“(k) No person may bring suit against a receiver appointed pursuant to this section without first securing leave of the court. Except in cases of gross negligence or intentional wrongdoing, a receiver shall be liable only for actions taken in his or her official capacity and any adverse judgment shall be satisfied out of receivership assets.</p>
-                <p>“(l) The District of Columbia shall not be liable for repayment of funds borrowed by a receiver during the course of the receivership or responsible for any financial obligations of the hospital.</p>
-                <p>“Sec. 6. First source employment agreement. ”The United Medical Center shall enter into a first source employment agreement with the Department of Employment Services with respect to the funds authorized in this act.”</p>
                 <p>Section 8(b) of D.C. Law 18-154 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“Sec. 6. First source employment agreement. ”The United Medical Center shall enter into a first source employment agreement with the Department of Employment Services with respect to the funds authorized in this act.”</p>
+                <p>“(l) The District of Columbia shall not be liable for repayment of funds borrowed by a receiver during the course of the receivership or responsible for any financial obligations of the hospital.</p>
+                <p>“(k) No person may bring suit against a receiver appointed pursuant to this section without first securing leave of the court. Except in cases of gross negligence or intentional wrongdoing, a receiver shall be liable only for actions taken in his or her official capacity and any adverse judgment shall be satisfied out of receivership assets.</p>
+                <p>“(3) The court shall not terminate a receivership in favor of the former licensee or of a new licensee, unless the person, or entity, assumes all obligations incurred by the receiver and provides collateral or other assurances of payment considered sufficient by the court.</p>
+                <p>“(2) The court shall terminate a receivership when it certifies that the conditions that prompted the receivership have been corrected or, in the case of a discontinuance of operation, when the patients have been safely relocated.</p>
+                <p>“(j)(1) The court shall review the continued necessity of a receivership at least semiannually.</p>
+                <p>“(i) An order appointing a receiver pursuant to this section shall have the effect of a license of operation for the duration of the receivership. The receiver shall be responsible to the court for the conduct of the hospital during the receivership, and a violation of regulations governing the conduct of the hospital, if not promptly corrected, shall be reported to the court.</p>
+                <p>“(h) The owner and the licensee shall be divested of possession and control of the hospital during the period of receivership, under the conditions the court specifies.</p>
+                <p>“(g) A receiver may not close a hospital without leave of the court. In ruling on the issue of closure, the court shall consider:</p>
+                <p>“(f)(1) The receiver shall:</p>
+                <p>“(11) Exercise such additional powers and perform such additional duties, including regular accountings, as the court considers appropriate.</p>
+                <p>“(10) Correct and eliminate any deficiency of the hospital that endangers the safety or health of the patients; and</p>
+                <p>“(9) Continue the care of the patients;</p>
+                <p>“(8) Continue the operation of the hospital;</p>
+                <p>“(7) Receive and expend, in a reasonable and prudent manner, the revenues of the hospital received by the hospital during the 30-day period preceding the date of his or her appointment and any revenue due thereafter;</p>
+                <p>“(6) Hire, direct, manage, and discharge any employee, including the administrator of the hospital;</p>
+                <p>“(5) Remedy violations of District or federal law governing the operation of the hospital;</p>
+                <p>“(4) Preserve the assets and property of the patients, owner, and licensee;</p>
+                <p>“(3) Protect the health, safety, and welfare of the patients;</p>
+                <p>“(e) A receiver appointed pursuant to this act shall have such powers as the court may direct to:</p>
+                <p>“(2) The court shall set a reasonable compensation for the receiver, which shall be paid from the revenue of the hospital.</p>
+                <p>“(B) Remove a receiver for good cause.</p>
+                <p>“(4) Insolvency or lack of financial resources of an owner or the licensee has placed the continued operation of the facility in jeopardy.</p>
+                <p>“(3) A habitual or substantial violation exists at the hospital; or</p>
+                <p>“(2) An emergency exists at the hospital;</p>
+                <p>“(b) The Mayor may bring an action in the Superior Court of the District of Columbia requesting the appointment of a receiver to operate a hospital on the following grounds:</p>
+                <p>“(4) ‘Licensee’ means a person or other legal entity, other than a receiver appointed pursuant to this section, that is licensed or required to be licensed to operate a hospital.</p>
+                <p>“(3) ‘Hospital’ means a facility that provides 24-hour inpatient care, including diagnostic, therapeutic, and other health-related care for a variety of physical or mental conditions, and may provide outpatient services, such as emergency care.</p>
+                <p>“(a) For the purposes of this section, the term:</p>
+                <p>“Sec. 5. Hospital receivership.</p>
+                <p>Sections 5 and 6 of D.C. Law 18-154 added sections to read as follows:</p>
+                <p>Section 10(b) of D.C. Law 17-51 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“The District of Columbia shall not be liable for repayment of funds borrowed by a receiver during the course of the receivership or responsible for any financial obligations of the hospital.”</p>
+                <p>“Sec. 8. Liability of District of Columbia.</p>
+                <p>“No person may bring suit against a receiver appointed pursuant to section 3 without first securing leave of the court. Except in cases of gross negligence or intentional wrongdoing, a receiver shall be liable only for actions taken in his or her official capacity, and any adverse judgment shall be satisfied out of receivership assets.</p>
+                <p>“Sec. 7. Liability of receiver.</p>
+                <p>“(2) The court shall not terminate a receivership in favor of the former licensee or of a new licensee, unless the person, or entity, assumes all obligations incurred by the receiver and provides collateral or other assurances of payment considered sufficient by the court.</p>
+                <p>“(b)(1) The court shall terminate a receivership when it certifies that the conditions that prompted the receivership have been corrected or, in the case of a discontinuance of operation, when the patients are safely relocated.</p>
+                <p>“(a) The court shall review the continued necessity of a receivership at least semiannually.</p>
+                <p>“Sec. 6. Court review and termination of a receivership.</p>
+                <p>“Sec. 5. Court order to have effect of a license. An order appointing a receiver pursuant to section 3 shall have the effect of a license of operation for the duration of the receivership. The receiver shall be responsible to the court for the conduct of the hospital during the receivership, and a violation of regulations governing the conduct of the hospital, if not promptly corrected, shall be reported to the court.</p>
+                <p>“(e) The owner and the licensee shall be divested of possession and control of the hospital during the period of receivership, under the conditions the court specifies.</p>
+                <p>“(5) Any other factors the court considers relevant.</p>
+                <p>“(4) The licensure status of the hospital; and</p>
+                <p>“(3) The rights, interests, and obligations of the owner and licensee;</p>
+                <p>“(2) The availability of suitable alternative placements;</p>
+                <p>“(1) The rights and best interests of the patients;</p>
+                <p>“(d) A receiver may not close a hospital without leave of the court. In ruling on the issue of closure, the court shall consider:</p>
+                <p>“(ii) That the hospital should be closed and that the loan is necessary to prevent or remove jeopardy to patients for the limited period of time they are awaiting transfer to another hospital or other facility.</p>
+                <p>“(i) That the hospital should not be closed and that the loan is reasonably necessary to prevent or remove jeopardy; or</p>
+                <p>“(B) The court, after a hearing, may authorize the receiver to borrow money upon specified terms of repayment and pledge security, if necessary, if the court determines:</p>
+                <p>“(2)(A) If a receiver does not have sufficient funds to cover expenditures needed to prevent or remove jeopardy to the patients, the receiver may petition the court for permission to borrow non-District funds for this purpose. Notice of the receiver’s petition to the court for permission to borrow must be given to the owner, the licensee, and the Mayor.</p>
+                <p>“(C) Give priority to expenditures needed for current, direct patient care.</p>
+                <p>“(B) Ask the court for direction in the treatment of debts incurred prior to his or her appointment where such debts appear extraordinary, of questionable validity, or unrelated to the normal and expected maintenance and operation of the hospital, or where payment of a debt will interfere with the purposes of the receivership; and</p>
+                <p>“(A) Apply the revenues of the hospital to current operating expenses and, subject to subparagraphs (B) and (C) of this paragraph, to debts incurred by the licensee prior to the appointment of the receiver;</p>
+                <p>“(c)(1) The receiver shall:</p>
+                <p>“(7) Exercise such additional powers and perform such additional duties, including regular accountings, as the court considers appropriate.</p>
+                <p>“(6) Correct and eliminate any deficiency of the hospital that endangers the safety or health of the patients; and</p>
+                <p>“(5) Continue the care of the patients;</p>
+                <p>“(4) Continue the operation of the hospital;</p>
+                <p>“(3) Receive and expend in a reasonable and prudent manner the revenues of the hospital received by the hospital during the 30-day period preceding the date of his or her appointment and any revenue due thereafter;</p>
+                <p>“(2) Hire, direct, manage, and discharge any employee, including the administrator of the hospital;</p>
+                <p>“(1) Remedy violations of District or federal laws governing the operation of the hospital;</p>
+                <p>“(b) With approval of the court, a receiver shall have the authority to:</p>
+                <p>“(4) Preserve the assets and property of the patients, owner, and licensee.</p>
+                <p>“(3) Protect the health, safety, and welfare of the patients; and</p>
+                <p>“(2) Remedy the conditions that constituted the grounds for the receivership;</p>
+                <p>“(1) Operate the hospital;</p>
+                <p>“(a) A receiver appointed pursuant to this act shall have such powers as the court may direct to:</p>
+                <p>“Sec. 4. Powers and duties of a receiver.</p>
+                <p>“(3) A receiver shall not be considered an agent of the District of Columbia.</p>
+                <p>“(B) Remove a receiver for good cause. ”(2) The court shall set a reasonable compensation for the receiver, which shall be paid from the revenue of the hospital.</p>
+                <p>“(A) Appoint any person considered appropriate as receiver, except a District employee; and</p>
+                <p>“(d)(1) The court may:</p>
+                <p>“(4) After the hearing, the court may appoint a receiver if it finds that any one of the grounds for an appointment set forth in subsection (b) of this section has been satisfied.</p>
+                <p>“(3) The Mayor shall post notice of the hearing, using a court-approved form, in a conspicuous place in the hospital, for not less than 3 days before the hearing.</p>
+                <p>“(2) Notice of the hearing shall be served on both the owner and the licensee not less than 5 days before the hearing. If either the owner or the licensee cannot be served, the court shall specify the alternative notice to be provided.</p>
+                <p>“(c)(1) The court shall hold a hearing no later than 10 days after an action requesting the appointment of a receiver is filed, unless all parties agree to a later date.</p>
+                <p>“(3) A habitual or substantial violation, as defined in section 2(2) and (7), respectively, exists at the hospital.</p>
+                <p>“(2) An emergency, as defined in section 2(1), exists at the hospital; or</p>
+                <p>“(1) A hospital intends to close, but has not arranged for the orderly transfer of patients at least 30 days prior to its closure date;</p>
+                <p>“(b) The following circumstances are grounds for the appointment of a receiver:</p>
+                <p>“(a) The Mayor may bring an action in the Superior Court of the District of Columbia requesting the appointment of a receiver to operate a hospital.</p>
+                <p>“Sec. 3. Appointment of a receiver; grounds; process.</p>
+                <p>“(7) ‘Substantial violation’ means a violation of the standards of health, safety, or patient care established under District or federal law that presents a reasonable likelihood of serious physical or mental harm to patients.</p>
+                <p>“(6) ‘Patient’ means a person living in or receiving care from a hospital.</p>
+                <p>“(5) ‘Owner’ means the holder of the title to the real estate on which the hospital is maintained.</p>
+                <p>“(4) ‘Licensee’ means a person or other legal entity, other than a receiver appointed pursuant to section 3, that is licensed or required to be licensed to operate a hospital.</p>
+                <p>“(3) ‘Hospital’ means a facility that provides 24-hour inpatient care, including diagnostic, therapeutic, and other health-related care for a variety of physical or mental conditions and may provide outpatient services, such as emergency care.</p>
+                <p>“(2) ‘Habitual violation’ means a violation of the standards of health, safety, or patient care established under District or federal law that, due to its repetition, presents a reasonable likelihood of serious physical or mental harm to patients.</p>
+                <p>“(1) ‘Emergency’ means a situation, physical condition, or one or more practices, methods, or operations that presents imminent danger of death or serious physical or mental harm to a patient, including imminent or actual abandonment of an occupied hospital.</p>
+                <p>“For the purposes of this act, the term:</p>
+                <p>“Sec. 2. Definitions.</p>
+                <p>Sections 2 to 8 of Law 17-51 added sections to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -237,8 +271,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/70-2-ch422.html#§1">Mar. 1, 1929, 45 Stat. 1425, ch. 422, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-113.</p>
                 <p>1973 Ed., § 32-312.</p>
+                <p>1981 Ed., § 32-113.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -255,8 +289,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/79-1-ch439.html#§2">Oct. 29, 1945, 59 Stat. 551, ch. 439, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-116.</p>
                 <p>1973 Ed., § 32-316a.</p>
+                <p>1981 Ed., § 32-116.</p>
               </section>
             </section>
             <hr/>
@@ -271,8 +305,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/77-2-ch452.html#§1">June 27, 1942, 56 Stat. 441, ch. 452, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-123.</p>
                 <p>1973 Ed., § 32-326.</p>
+                <p>1981 Ed., § 32-123.</p>
                 <h4>Editor's Notes</h4>
                 <p>Gallinger Municipal Hospital abolished: Gallinger Municipal Hospital was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. Reorganization Order No. 57 of the Board of Commissioners, dated June 30, 1953, combined with Reorganization Order No. 52, District of Columbia Pound, dated June 30, 1953, and redesignated Organization Order No. 141, dated February 11, 1964, established under the direction and control of a Commissioner, a Department of Public Health headed by a Director, for the purpose of planning, implementing, and directing public health and hospital care programs, and for performing certain other allied medical and paramedical functions. Prior to its redesignation the Order abolished the previously existing Gallinger Municipal Hospital and Health Department and transferred all of their positions and functions to the new Department. It further provided that within the Department, the District of Columbia General Hospital performs all functions previously performed by Gallinger Municipal Hospital. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967. Functions as stated in Organization Order No. 141 were transferred to the Director of the Department of Human Resources by Commissioner’s Order No. 69-96, dated March 7, 1969, as amended by Commissioner’s Order No. 70-83, dated March 6, 1970. Functions as stated in Reorganization Plan No. 2 of 1979, dated February 21, 1980, were transferred to the Department of Human Services.</p>
                 <h4>Change in Government</h4>
@@ -291,8 +325,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-140.html#§4">Oct. 26, 1973, 87 Stat. 504, Pub. L. 93-140, § 4</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-124.</p>
                 <p>1973 Ed., § 32-331.</p>
+                <p>1981 Ed., § 32-124.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to the District of Columbia Council and to a Commissioner of the District of Columbia. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -309,11 +343,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-140.html#§5">Oct. 26, 1973, 87 Stat. 505, Pub. L. 93-140, § 5</a>; <a class="internal-link" href="/dc/council/laws/6-11.html">July 25, 1985, D.C. Law 6-11, § 2, 32 DCR 3230</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-125.</p>
                 <p>1973 Ed., § 32-332.</p>
+                <p>1981 Ed., § 32-125.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to Law 6-11, see Mayor’s Order 86-37, March 3, 1986.</p>
                 <p>Delegation of authority pursuant to An Act to authorize certain programs and activities of the government of the District of Columbia, and for other purposes, see Mayor’s Order 99-73, May 4, 1999 ( 46 DCR 4391).</p>
+                <p>Delegation of authority pursuant to Law 6-11, see Mayor’s Order 86-37, March 3, 1986.</p>
               </section>
             </section>
             <hr/>
@@ -328,8 +362,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-140.html#§6">Oct. 26, 1973, 87 Stat. 505, Pub. L. 93-140, § 6</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-126.</p>
                 <p>1973 Ed., § 32-333.</p>
+                <p>1981 Ed., § 32-126.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to the District of Columbia Council and to a Commissioner of the District of Columbia. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -346,53 +380,53 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-140.html#§7">Oct. 26, 1973, 87 Stat. 505, Pub. L. 93-140, § 7</a>; <a class="internal-link" href="/dc/council/laws/2-139.html">Mar. 3, 1979, D.C. Law 2-139, § 3205(dd), 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-127.</p>
                 <p>1973 Ed., § 32-334.</p>
+                <p>1981 Ed., § 32-127.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <h4>Cross References</h4>
                 <p>Merit system, effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of §§ 32-131 to 32-135, see §§ 2 to 6 of the Emergency Financial Assistance for Hospitals Emergency Act of 1999 (D.C. Act 13-95, June 15, 1999,  46 DCR 5636).</p>
-                <p>For temporary (90-day) authorization of hospital loans and grants, see § 2 of the Emergency Financial Assistance for Hospitals Emergency Act of 1999 (D.C. Act 13-95, June 15, 1999,  46 DCR 5636).</p>
-                <p>For temporary (90-day) addition of §§ 32-131 to 32-135, see §§ 2 to 6 of the Emergency Financial Assistance for Hospitals Congressional Review Emergency Act of 1999 (D.C. Act 13-140, September 28, 1999,  46 DCR 7968).</p>
                 <p>For temporary (90-day) authorization of hospital loans and grants, see § 2 of the Emergency Financial Assistance for Hospitals Congressional Review Emergency Act of 1999 (D.C. Act 13-140, September 28, 1999,  46 DCR 7968).</p>
+                <p>For temporary (90-day) addition of §§ 32-131 to 32-135, see §§ 2 to 6 of the Emergency Financial Assistance for Hospitals Congressional Review Emergency Act of 1999 (D.C. Act 13-140, September 28, 1999,  46 DCR 7968).</p>
+                <p>For temporary (90-day) authorization of hospital loans and grants, see § 2 of the Emergency Financial Assistance for Hospitals Emergency Act of 1999 (D.C. Act 13-95, June 15, 1999,  46 DCR 5636).</p>
+                <p>For temporary (90-day) addition of §§ 32-131 to 32-135, see §§ 2 to 6 of the Emergency Financial Assistance for Hospitals Emergency Act of 1999 (D.C. Act 13-95, June 15, 1999,  46 DCR 5636).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) addition of sections, see §§ 2 to 6 of Emergency Financial Assistance for Hospitals Temporary Act of 1999 (D.C. Law 13-37, October 7, 1999, law notification  46 DCR 8701).</p>
-                <p>“Sec. 2. Definitions. For the purposes of this act, the term:</p>
-                <p>“(1) ‘Catchment area’ means the area served by a hospital that receives funds pursuant to this act.</p>
-                <p>“(2) ‘Community hospital’ or ‘hospital’ means an entity which, through its staff and supporting resources or through contracts or cooperative arrangements with other public or private entities, provides medical services for all residents of its catchment area.</p>
-                <p>“(3) ‘Medically underserved population’ means the population of an area designated by the Mayor as an area with a shortage of personal health services or a population group designated by the Mayor as having a shortage of such services. Medically underserved areas will be designated by the Mayor and a list of those designated will be published in the District of Columbia Register from time to time, taking into consideration the following factors, among others:</p>
-                <p>“(A) Available health resources in relation to size of the area and its population, including appropriate ratios of primary care physicians in general or family practice, internal medicine, pediatrics, or obstetrics and gynecology to the population;</p>
-                <p>“(B) Health indices for the population of the area, such as infant mortality rate;</p>
-                <p>“(C) Economic factors affecting the population’s access to health services, such as percentage of the population with incomes below the poverty level; and</p>
-                <p>“(D) Demographic factors affecting the population’s need and demand for health services, such as percentage of the population age 65 and over.</p>
-                <p>“(5) ‘Nonprofit,’ as applied to any private agency, institution, or organization, means one which is a corporation or association, or is owned and operated by one or more corporations or associations, that is exempt from income tax under  section 501(c)(3) of the Internal Revenue Code, approved August 16, 1954 (68A Stat. 163,  26 U.S.C. § 501(c)(3), and no part of the net earnings of which inures, or may lawfully inure, to the benefit of any private shareholder or individual.</p>
-                <p>“Sec. 3. Mayoral authority.</p>
-                <p>“(a) The Mayor is hereby authorized to establish a Emergency Hospital Loan and Grant Fund and to make or contract to make publicly-financed low-interest loans to hospitals in medically underserved areas of the District for the operation of such hospital.</p>
-                <p>“(b) The Mayor is hereby authorized to guarantee loans to nonprofit hospitals that provide health services to medically underserved populations.</p>
-                <p>“(c) The Mayor is hereby authorized to provide grants to nonprofit hospitals that provide health services to medically underserved populations.</p>
-                <p>“(d) Such sums as may be necessary are authorized to be appropriated to carry out this section.</p>
-                <p>“(e) The Mayor shall submit the proposed grant, loan or loan guarantee to the Council. No proposed grant, loan or loan guarantee, authorized by this section, shall be made without the approval of the Council. The Council shall, within a 14-day period, approve or disapprove by resolution the proposed grant, loan or loan guarantee.</p>
-                <p>“ Sec. 4. Basic qualifications.</p>
-                <p>“To qualify for assistance under this act, the Mayor shall ascertain that:</p>
-                <p>“(1) The hospital is nonprofit;</p>
-                <p>“(2) All services offered by the hospital are furnished in accordance with applicable Federal and District laws;</p>
-                <p>“(3) The hospital provides acute care inpatient medical services to a medically underserved population in the District of Columbia;</p>
-                <p>“(4) The hospital is primarily engaged in providing acute care inpatient medical services;</p>
-                <p>“(5) The hospital has a debt service coverage ratio of less than 1:1;</p>
-                <p>“(6) The hospital and its staff are in compliance with applicable federal and District of Columbia laws and regulations;</p>
-                <p>“(7) The hospital is licensed pursuant to applicable laws; and</p>
-                <p>“(8) The staff of the hospital are licensed, certified, or registered in accordance with applicable laws.</p>
-                <p>“Sec. 5. Loan, grant, and loan guarantee provisions.</p>
-                <p>“(a) The principal amount of any loan or grant made or guaranteed by the Mayor under this act shall be disbursed to the hospital in accordance with an agreement entered into between the parties to the loan and approved by the Mayor.</p>
-                <p>“(b) The principal amount of each loan or loan guarantee, together with interest thereon, shall be repayable over a period of 20 years, beginning on the date of endorsement of the loan or loan guarantee by the Mayor. The Mayor may approve a shorter repayment period if he determines that a repayment period of less than 20 years is more appropriate to an entity’s total financial plan.</p>
-                <p>“(c) As conditions to the loan the Mayor may require:</p>
-                <p>“(1) A reorganization plan, or business plan detailing steps for financial stability.</p>
-                <p>“(2) Full disclosure to appropriate District officials of financial statements, including statements of related affiliates and subsidiaries.</p>
-                <p>“(d) The principal amount of each loan, grant, or loan guarantee, together with interest thereon shall be repayable in accordance with a repayment schedule that is agreed upon by the parties to the loan or loan guarantee and approved by the Mayor before or at the time of endorsement of the loan or grant. Unless otherwise specifically authorized by the Mayor, each loan or grant made or guaranteed by the Mayor shall be repayable in substantially level combined installments of principal and interest to be paid at intervals not less frequently than annually, sufficient in amount to amortize the loan through the final year of the life of the loan. Principal repayment during the first 60 months of operation may be deferred with payment reauthorized over the remaining 15 years. Interest rate charged shall be comparable to the rate of interest on a 20 year treasury note, adjusted to provide for appropriate administrative charges.</p>
-                <p>“ Sec. 6. Assistance in medically underserved areas for public use. All loans made by the Mayor and all money expended by the Mayor in connection with the exercise of any power granted pursuant to this act are exercised for a public use.”</p>
                 <p>Section 8 (b) of D.C. Law 13-37 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“ Sec. 6. Assistance in medically underserved areas for public use. All loans made by the Mayor and all money expended by the Mayor in connection with the exercise of any power granted pursuant to this act are exercised for a public use.”</p>
+                <p>“(d) The principal amount of each loan, grant, or loan guarantee, together with interest thereon shall be repayable in accordance with a repayment schedule that is agreed upon by the parties to the loan or loan guarantee and approved by the Mayor before or at the time of endorsement of the loan or grant. Unless otherwise specifically authorized by the Mayor, each loan or grant made or guaranteed by the Mayor shall be repayable in substantially level combined installments of principal and interest to be paid at intervals not less frequently than annually, sufficient in amount to amortize the loan through the final year of the life of the loan. Principal repayment during the first 60 months of operation may be deferred with payment reauthorized over the remaining 15 years. Interest rate charged shall be comparable to the rate of interest on a 20 year treasury note, adjusted to provide for appropriate administrative charges.</p>
+                <p>“(2) Full disclosure to appropriate District officials of financial statements, including statements of related affiliates and subsidiaries.</p>
+                <p>“(1) A reorganization plan, or business plan detailing steps for financial stability.</p>
+                <p>“(c) As conditions to the loan the Mayor may require:</p>
+                <p>“(b) The principal amount of each loan or loan guarantee, together with interest thereon, shall be repayable over a period of 20 years, beginning on the date of endorsement of the loan or loan guarantee by the Mayor. The Mayor may approve a shorter repayment period if he determines that a repayment period of less than 20 years is more appropriate to an entity’s total financial plan.</p>
+                <p>“(a) The principal amount of any loan or grant made or guaranteed by the Mayor under this act shall be disbursed to the hospital in accordance with an agreement entered into between the parties to the loan and approved by the Mayor.</p>
+                <p>“Sec. 5. Loan, grant, and loan guarantee provisions.</p>
+                <p>“(8) The staff of the hospital are licensed, certified, or registered in accordance with applicable laws.</p>
+                <p>“(7) The hospital is licensed pursuant to applicable laws; and</p>
+                <p>“(6) The hospital and its staff are in compliance with applicable federal and District of Columbia laws and regulations;</p>
+                <p>“(5) The hospital has a debt service coverage ratio of less than 1:1;</p>
+                <p>“(4) The hospital is primarily engaged in providing acute care inpatient medical services;</p>
+                <p>“(3) The hospital provides acute care inpatient medical services to a medically underserved population in the District of Columbia;</p>
+                <p>“(2) All services offered by the hospital are furnished in accordance with applicable Federal and District laws;</p>
+                <p>“(1) The hospital is nonprofit;</p>
+                <p>“To qualify for assistance under this act, the Mayor shall ascertain that:</p>
+                <p>“ Sec. 4. Basic qualifications.</p>
+                <p>“(e) The Mayor shall submit the proposed grant, loan or loan guarantee to the Council. No proposed grant, loan or loan guarantee, authorized by this section, shall be made without the approval of the Council. The Council shall, within a 14-day period, approve or disapprove by resolution the proposed grant, loan or loan guarantee.</p>
+                <p>“(d) Such sums as may be necessary are authorized to be appropriated to carry out this section.</p>
+                <p>“(c) The Mayor is hereby authorized to provide grants to nonprofit hospitals that provide health services to medically underserved populations.</p>
+                <p>“(b) The Mayor is hereby authorized to guarantee loans to nonprofit hospitals that provide health services to medically underserved populations.</p>
+                <p>“(a) The Mayor is hereby authorized to establish a Emergency Hospital Loan and Grant Fund and to make or contract to make publicly-financed low-interest loans to hospitals in medically underserved areas of the District for the operation of such hospital.</p>
+                <p>“Sec. 3. Mayoral authority.</p>
+                <p>“(5) ‘Nonprofit,’ as applied to any private agency, institution, or organization, means one which is a corporation or association, or is owned and operated by one or more corporations or associations, that is exempt from income tax under  section 501(c)(3) of the Internal Revenue Code, approved August 16, 1954 (68A Stat. 163,  26 U.S.C. § 501(c)(3), and no part of the net earnings of which inures, or may lawfully inure, to the benefit of any private shareholder or individual.</p>
+                <p>“(D) Demographic factors affecting the population’s need and demand for health services, such as percentage of the population age 65 and over.</p>
+                <p>“(C) Economic factors affecting the population’s access to health services, such as percentage of the population with incomes below the poverty level; and</p>
+                <p>“(B) Health indices for the population of the area, such as infant mortality rate;</p>
+                <p>“(A) Available health resources in relation to size of the area and its population, including appropriate ratios of primary care physicians in general or family practice, internal medicine, pediatrics, or obstetrics and gynecology to the population;</p>
+                <p>“(3) ‘Medically underserved population’ means the population of an area designated by the Mayor as an area with a shortage of personal health services or a population group designated by the Mayor as having a shortage of such services. Medically underserved areas will be designated by the Mayor and a list of those designated will be published in the District of Columbia Register from time to time, taking into consideration the following factors, among others:</p>
+                <p>“(2) ‘Community hospital’ or ‘hospital’ means an entity which, through its staff and supporting resources or through contracts or cooperative arrangements with other public or private entities, provides medical services for all residents of its catchment area.</p>
+                <p>“(1) ‘Catchment area’ means the area served by a hospital that receives funds pursuant to this act.</p>
+                <p>“Sec. 2. Definitions. For the purposes of this act, the term:</p>
+                <p>For temporary (225 day) addition of sections, see §§ 2 to 6 of Emergency Financial Assistance for Hospitals Temporary Act of 1999 (D.C. Law 13-37, October 7, 1999, law notification  46 DCR 8701).</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to the District of Columbia Council and to a Commissioner of the District of Columbia. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -409,8 +443,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/48-1-ch227.html#§1">July 5, 1884, 23 Stat. 127, ch. 227, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-1201.</p>
                 <p>1973 Ed., § 32-1001.</p>
+                <p>1981 Ed., § 32-1201.</p>
                 <h4>Cross References</h4>
                 <p>Public welfare supervision, board of public welfare, institutions supported by congressional appropriations, see § <a class="internal-link" href="/dc/council/code/sections/4-111.html">4-111</a>.</p>
                 <h4>Change in Government</h4>
@@ -429,8 +463,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/46-2-ch121.html#§1">June 4, 1880, 21 Stat. 157, ch. 121, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-1202.</p>
                 <p>1973 Ed., § 32-1002.</p>
+                <p>1981 Ed., § 32-1202.</p>
                 <h4>Cross References</h4>
                 <p>Public welfare supervision, board of public welfare, institutions supported by congressional appropriations, see § <a class="internal-link" href="/dc/council/code/sections/4-111.html">4-111</a>.</p>
                 <h4>Change in Government</h4>
@@ -449,8 +483,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/52-2-ch199.html#§1">Mar. 3, 1893, 27 Stat. 552, ch. 199, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-1203.</p>
                 <p>1973 Ed., § 32-1003.</p>
+                <p>1981 Ed., § 32-1203.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/44-753.html">44-753</a>.</p>
                 <h4>Cross References</h4>
@@ -469,8 +503,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/52-2-ch199.html#§1">Mar. 3, 1893, 27 Stat. 553, ch. 199, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-1204.</p>
                 <p>1973 Ed., § 32-1004.</p>
+                <p>1981 Ed., § 32-1204.</p>
               </section>
             </section>
             <hr/>
@@ -485,8 +519,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/48-2-ch145.html#§1">Feb. 25, 1885, 23 Stat. 314, ch. 145, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-1205.</p>
                 <p>1973 Ed., § 32-1005.</p>
+                <p>1981 Ed., § 32-1205.</p>
               </section>
             </section>
             <hr/>
@@ -501,8 +535,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/54-1-ch419.html#§1">June 11, 1896, 29 Stat. 410, ch. 419, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-1206.</p>
                 <p>1973 Ed., § 32-1007.</p>
+                <p>1981 Ed., § 32-1206.</p>
                 <h4>Cross References</h4>
                 <p>Public welfare supervision, board of public welfare, institutions supported by congressional appropriations, see § <a class="internal-link" href="/dc/council/code/sections/4-111.html">4-111</a>.</p>
               </section>
@@ -519,8 +553,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/54-1-ch419.html#§1">June 11, 1896, 29 Stat. 411, ch. 419, § 1</a>; Mar. 3, 1897, 29 Stat. 683, ch. 387, § 1.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-1207.</p>
                 <p>1973 Ed., § 32-1008.</p>
+                <p>1981 Ed., § 32-1207.</p>
               </section>
             </section>
             <hr/>
@@ -535,8 +569,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/66-2-ch234.html#§1">June 5, 1920, 41 Stat. 865, ch. 234, § 1</a>; Feb. 22, 1921, 41 Stat. 1144, ch. 70, § 7; June 28, 1944, 58 Stat. 533, ch. 300, § 18.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-1208.</p>
                 <p>1973 Ed., § 32-1009.</p>
+                <p>1981 Ed., § 32-1208.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 402(256) of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to the District of Columbia Council, subject to the right of the Commissioner as provided in § 406 of the Plan. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -553,11 +587,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/81-2-ch235.html">June 14, 1950, 64 Stat. 212, ch. 235</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-1209.</p>
                 <p>1973 Ed., § 32-1010.</p>
+                <p>1981 Ed., § 32-1209.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of provisions concerning hospital receivership, see § 3 of the Long-Term Care Stabilization Emergency Amendment Act of 2014 (D.C. Act 20-444, Oct. 8, 2014,  61 DCR 10755, 20 STAT 4165).</p>
                 <p>For temporary (90 days) amendment of this section, see §  5062 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) addition of provisions concerning hospital receivership, see § 3 of the Long-Term Care Stabilization Emergency Amendment Act of 2014 (D.C. Act 20-444, Oct. 8, 2014,  61 DCR 10755, 20 STAT 4165).</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 402(256) of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to the District of Columbia Council, subject to the right of the Commissioner as provided in § 406 of the Plan. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>

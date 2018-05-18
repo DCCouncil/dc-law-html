@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/31/chapters/56/subchapters/V/">Subchapter V. Fraudulent and Other Prohibited Practices.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/31/chapters/56/subchapters/IV/">Report Error</a>
@@ -88,12 +88,24 @@
         <section class="col8 body">
           <h1>Subchapter IV. Exemption from Registration.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/31-5604.01.html">§ 31–5604.01. Exempt securities.</a>
-            <a href="/dc/council/code/sections/31-5604.02.html">§ 31–5604.02. Exempt transactions.</a>
-            <a href="/dc/council/code/sections/31-5604.03.html">§ 31–5604.03. Additional exemptions.</a>
-            <a href="/dc/council/code/sections/31-5604.04.html">§ 31–5604.04. Revocation of exemptions.</a>
-            <a href="/dc/council/code/sections/31-5604.05.html">§ 31–5604.05. Filing of sales and advertising literature.</a>
-            <a href="/dc/council/code/sections/31-5604.06.html">§ 31–5604.06. Coordination of exemptions.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-5604.01.html">§ 31–5604.01. Exempt securities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-5604.02.html">§ 31–5604.02. Exempt transactions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-5604.03.html">§ 31–5604.03. Additional exemptions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-5604.04.html">§ 31–5604.04. Revocation of exemptions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-5604.05.html">§ 31–5604.05. Filing of sales and advertising literature.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-5604.06.html">§ 31–5604.06. Coordination of exemptions.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -137,16 +149,16 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-5601.01.html">31-5601.01</a>, § <a class="internal-link" href="/dc/council/code/sections/31-5603.01.html">31-5603.01</a>, § <a class="internal-link" href="/dc/council/code/sections/31-5603.08.html">31-5603.08</a>, § <a class="internal-link" href="/dc/council/code/sections/31-5604.04.html">31-5604.04</a>, § <a class="internal-link" href="/dc/council/code/sections/31-5604.05.html">31-5604.05</a>, § <a class="internal-link" href="/dc/council/code/sections/31-5604.06.html">31-5604.06</a>, and § <a class="internal-link" href="/dc/council/code/sections/31-5605.02.html">31-5605.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a> repealed par. (13).</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-150.html">D.C. Law 14-150</a>, in par. (10)(A), substituted “general partners, or” for “general partners”; made nonsubstantive changes in pars. (11) and (12); and repealed par. (13) which was previously repealed by <a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a>.</p>
                 <p>Temporary Repeal of Section For temporary (225 day) repeal of section, see § 2 of Securities Temporary Amendment Act of 2001 (D.C. Law 14-62, February 6, 2002, law notification  49 DCR 2272).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-150.html">D.C. Law 14-150</a>, in par. (10)(A), substituted “general partners, or” for “general partners”; made nonsubstantive changes in pars. (11) and (12); and repealed par. (13) which was previously repealed by <a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a>.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a> repealed par. (13).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Securities Emergency Amendment Act of 2001 (D.C. Act 14-81, July 9, 2001,  48 DCR 6351).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Securities Legislative Review Emergency Amendment Act of 2001 (D.C. Act 14-180, November 19, 2001,  48 DCR 11066).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Securities Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-217, December 21, 2001,  49 DCR 390).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Securities Legislative Review Emergency Amendment Act of 2001 (D.C. Act 14-180, November 19, 2001,  48 DCR 11066).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Securities Emergency Amendment Act of 2001 (D.C. Act 14-81, July 9, 2001,  48 DCR 6351).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 806 of <a class="internal-link" href="/dc/council/laws/13-203.html">D.C. Law 13-203</a> provided: “Titles III and IV shall apply as of June 1, 2001.”</p>
                 <p>Section 29(b) of D.C. 14-42 provided: “Subsection (a) of this section repealing par. (13) shall apply as of May 31,</p>
+                <p>Section 806 of <a class="internal-link" href="/dc/council/laws/13-203.html">D.C. Law 13-203</a> provided: “Titles III and IV shall apply as of June 1, 2001.”</p>
               </section>
             </section>
             <hr/>

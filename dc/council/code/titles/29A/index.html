@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -60,19 +72,7 @@
           <p>
             <a href="/dc/council/code/titles/30/">Title 30. Hotels and Lodging Houses.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29A/">Report Error</a>
@@ -86,30 +86,54 @@
         <section class="col8 body">
           <h1>Title 29A. Corporations. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/29A/chapters/1/">Chapter 1. Business Corporations (1954). [Repealed].</a>
-            <p>§§ 29A-101.01 - 29A-101.170</p>
-            <a href="/dc/council/code/titles/29A/chapters/2/">Chapter 2. Business Corporations (1901). [Repealed].</a>
-            <p>§§ 29A-201.01 - 29A-241.08</p>
-            <a href="/dc/council/code/titles/29A/chapters/3/">Chapter 3. Nonprofit Corporations. [Repealed].</a>
-            <p>§§ 29A-301.01 - 29A-321.01</p>
-            <a href="/dc/council/code/titles/29A/chapters/4/">Chapter 4. Professional Corporations. [Repealed].</a>
-            <p>§§ 29A-401 - 29A-421</p>
-            <a href="/dc/council/code/titles/29A/chapters/5/">Chapter 5. Foreign Trade Zones. [Transferred].</a>
-            <p>§§ 29A-501 - 29A-504</p>
-            <a href="/dc/council/code/titles/29A/chapters/6/">Chapter 6. Institutions of Learning. [Repealed].</a>
-            <p>§§ 29A-601 - 29A-631</p>
-            <a href="/dc/council/code/titles/29A/chapters/7/">Chapter 7. Religious Societies. [Repealed].</a>
-            <p>§§ 29A-701 - 29A-734</p>
-            <a href="/dc/council/code/titles/29A/chapters/8/">Chapter 8. Charitable, Educational, and Religious Associations. [Repealed].</a>
-            <p>§§ 29A-801 - 29A-806</p>
-            <a href="/dc/council/code/titles/29A/chapters/9/">Chapter 9. Cooperative Associations. [Repealed].</a>
-            <p>§§ 29A-901 - 29A-947</p>
-            <a href="/dc/council/code/titles/29A/chapters/9A/">Chapter 9A. Uniform Unincorporated Nonprofit Associations Act. [Repealed].</a>
-            <p>§§ 29A-971.01 - 29A-971.15</p>
-            <a href="/dc/council/code/titles/29A/chapters/10/">Chapter 10. Limited Liability Companies. [Repealed].</a>
-            <p>§§ 29A-1001 - 29A-1075</p>
-            <a href="/dc/council/code/titles/29A/chapters/11/">Chapter 11. Miscellaneous Provisions. [Repealed].</a>
-            <p>§§ 29A-1101 - 29A-1128</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/1/">Chapter 1. Business Corporations (1954). [Repealed].</a>
+            </p>
+            <p>§§ 29A-101.01 – 29A-101.170</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/2/">Chapter 2. Business Corporations (1901). [Repealed].</a>
+            </p>
+            <p>§§ 29A-201.01 – 29A-241.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/3/">Chapter 3. Nonprofit Corporations. [Repealed].</a>
+            </p>
+            <p>§§ 29A-301.01 – 29A-321.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/4/">Chapter 4. Professional Corporations. [Repealed].</a>
+            </p>
+            <p>§§ 29A-401 – 29A-421</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/5/">Chapter 5. Foreign Trade Zones. [Transferred].</a>
+            </p>
+            <p>§§ 29A-501 – 29A-504</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/6/">Chapter 6. Institutions of Learning. [Repealed].</a>
+            </p>
+            <p>§§ 29A-601 – 29A-631</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/7/">Chapter 7. Religious Societies. [Repealed].</a>
+            </p>
+            <p>§§ 29A-701 – 29A-734</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/8/">Chapter 8. Charitable, Educational, and Religious Associations. [Repealed].</a>
+            </p>
+            <p>§§ 29A-801 – 29A-806</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/9/">Chapter 9. Cooperative Associations. [Repealed].</a>
+            </p>
+            <p>§§ 29A-901 – 29A-947</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/9A/">Chapter 9A. Uniform Unincorporated Nonprofit Associations Act. [Repealed].</a>
+            </p>
+            <p>§§ 29A-971.01 – 29A-971.15</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/10/">Chapter 10. Limited Liability Companies. [Repealed].</a>
+            </p>
+            <p>§§ 29A-1001 – 29A-1075</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29A/chapters/11/">Chapter 11. Miscellaneous Provisions. [Repealed].</a>
+            </p>
+            <p>§§ 29A-1101 – 29A-1128</p>
           </section>
           <section class="content"/>
         </section>

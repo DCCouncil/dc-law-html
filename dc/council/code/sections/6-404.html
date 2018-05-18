@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/6-405.html">§ 6–405. Exceptions for existing buildings; control of parking.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/6-404.html">Report Error</a>
@@ -98,16 +98,16 @@
       (<a class="internal-link" href="/us/congress/laws/public/51-2-ch540.html">Mar. 3, 1891, 26 Stat. 868, ch. 540</a>; July 1, 1898, 30 Stat. 570, ch. 543, § 3; June 21, 1906, 34 Stat. 385, ch. 3506; Feb. 26, 1925, 43 Stat. 983, ch. 339, § 3; Exec. Order No. 6166, § 2, June 10, 1933; Mar. 2, 1934, 48 Stat. 389, ch. 38, § 1.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-204.</p>
                 <p>1973 Ed., § 5-204.</p>
+                <p>1981 Ed., § 5-204.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-405.html">6-405</a>, § <a class="internal-link" href="/dc/council/code/sections/10-129.html">10-129</a>, § <a class="internal-link" href="/dc/council/code/sections/10-137.html">10-137</a>, § <a class="internal-link" href="/dc/council/code/sections/10-138.html">10-138</a>, and § <a class="internal-link" href="/dc/council/code/sections/10-1102.01.html">10-1102.01</a>.</p>
                 <h4>Cross References</h4>
-                <p>Care of public grounds, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/10-137.html">10-137</a>.</p>
-                <p>Jurisdiction over public roads and bridges, see § <a class="internal-link" href="/dc/council/code/sections/9-101.02.html">9-101.02</a>.</p>
-                <p>Public grounds, rules and regulations, extension to sidewalks and carriageways, see § <a class="internal-link" href="/dc/council/code/sections/10-138.html">10-138</a>.</p>
-                <p>Rental and utilization of public space, public space on or above ground, see § <a class="internal-link" href="/dc/council/code/sections/10-1102.01.html">10-1102.01</a>.</p>
                 <p>Transfer of federal lands to district, letters as authority for change in official maps and record, see § <a class="internal-link" href="/dc/council/code/sections/10-129.html">10-129</a>.</p>
+                <p>Rental and utilization of public space, public space on or above ground, see § <a class="internal-link" href="/dc/council/code/sections/10-1102.01.html">10-1102.01</a>.</p>
+                <p>Public grounds, rules and regulations, extension to sidewalks and carriageways, see § <a class="internal-link" href="/dc/council/code/sections/10-138.html">10-138</a>.</p>
+                <p>Jurisdiction over public roads and bridges, see § <a class="internal-link" href="/dc/council/code/sections/9-101.02.html">9-101.02</a>.</p>
+                <p>Care of public grounds, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/10-137.html">10-137</a>.</p>
                 <h4>Transfer of Functions</h4>
                 <p>All functions of all officers of the Department of the Interior and all functions of all agencies and employees of the Department, including the Director of the National Park Service, were transferred to the Secretary of the Interior, with power vested in him to authorize their performance or the performance of any of his functions by any of such officers, agencies, and employees, by Reorganization Plan No. 3 of 1950, 64 Stat. 1262, §§ 1, 2, 15 F.R. 3174.</p>
                 <h4>Change in Government</h4>

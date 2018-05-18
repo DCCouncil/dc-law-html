@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/42-2702.02.html">§ 42–2702.02. Board of Directors.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-2702.01.html">Report Error</a>
@@ -99,13 +99,13 @@
       (<a class="internal-link" href="/dc/council/laws/2-135.html#§201">Mar. 3, 1979, D.C. Law 2-135, § 201, 25 DCR 5008</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-2111.</p>
                 <p>1973 Ed., § 45-1903.</p>
+                <p>1981 Ed., § 45-2111.</p>
                 <h4>Cross References</h4>
                 <p>District of Columbia Housing Finance Agency, membership disclosure of interests, see § <a class="internal-link" href="/dc/council/code/sections/1-1106.02.html">1-1106.02</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Appropriations approved: Public Law 101-518, 104 Stat. 2227, the District of Columbia Appropriations Act, 1991, provided that up to $275,000 within the 15% set-aside for special programs within the Tenant Assistance Program shall be targeted for the single-room occupancy initiative.</p>
                 <p>Repayment by D.C. Housing Finance Agency: Section 147 of Pub. Law 104-194 provided that, notwithstanding any other law, the District of Columbia Housing Finance Agency, shall not be required to repay moneys advanced by the District government (including accrued interest thereon) pursuant to Congressional appropriations for fiscal years 1980 through 1992.</p>
+                <p>Appropriations approved: Public Law 101-518, 104 Stat. 2227, the District of Columbia Appropriations Act, 1991, provided that up to $275,000 within the 15% set-aside for special programs within the Tenant Assistance Program shall be targeted for the single-room occupancy initiative.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/29A/chapters/7/subchapters/II/">Subchapter II. Conveyances. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29A/chapters/7/subchapters/I/">Report Error</a>
@@ -88,18 +88,42 @@
         <section class="col8 body">
           <h1>Subchapter I. General. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/29A-701.html">§ 29A-701. Acquisition of land restricted. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-702.html">§ 29A-702. Trustees. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-703.html">§ 29A-703. Trustees or directors — Certificate of election or appointment; filing and recordation. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-704.html">§ 29A-704. Trustees or directors — Tenure of office; vacancies; rules and regulations; removal. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-705.html">§ 29A-705. Trustees or directors — Successors; filing and recording certificate of election or appointment. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-706.html">§ 29A-706. Trustees or directors — Effect of failure to elect. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-707.html">§ 29A-707. Trustees or directors — Corporate powers. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-708.html">§ 29A-708. Trustees or directors — Title to land vested. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-709.html">§ 29A-709. Trustees or directors — Powers to convey property. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-710.html">§ 29A-710. Trustees or directors — Power to mortgage; term of holdings or lease. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-711.html">§ 29A-711. Dissolution; reversion of property to donors. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-712.html">§ 29A-712. Religious schools. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-701.html">§ 29A-701. Acquisition of land restricted. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-702.html">§ 29A-702. Trustees. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-703.html">§ 29A-703. Trustees or directors — Certificate of election or appointment; filing and recordation. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-704.html">§ 29A-704. Trustees or directors — Tenure of office; vacancies; rules and regulations; removal. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-705.html">§ 29A-705. Trustees or directors — Successors; filing and recording certificate of election or appointment. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-706.html">§ 29A-706. Trustees or directors — Effect of failure to elect. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-707.html">§ 29A-707. Trustees or directors — Corporate powers. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-708.html">§ 29A-708. Trustees or directors — Title to land vested. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-709.html">§ 29A-709. Trustees or directors — Powers to convey property. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-710.html">§ 29A-710. Trustees or directors — Power to mortgage; term of holdings or lease. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-711.html">§ 29A-711. Dissolution; reversion of property to donors. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-712.html">§ 29A-712. Religious schools. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -114,9 +138,9 @@
       (Mar. 3, 1901, 31 Stat. 1282, ch. 854, § 587; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-701.</p>
-                <p>1981 Ed., § 29-901.</p>
                 <p>1973 Ed., § 29-501.</p>
+                <p>1981 Ed., § 29-901.</p>
+                <p>2001 Ed., § 29-701.</p>
               </section>
             </section>
             <hr/>
@@ -131,9 +155,9 @@
       (Mar. 3, 1901, 31 Stat. 1282, ch. 854, § 588; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-702.</p>
-                <p>1981 Ed., § 29-902.</p>
                 <p>1973 Ed., § 29-502.</p>
+                <p>1981 Ed., § 29-902.</p>
+                <p>2001 Ed., § 29-702.</p>
               </section>
             </section>
             <hr/>
@@ -148,9 +172,9 @@
       (Mar. 3, 1901, 31 Stat. 1282, ch. 854, § 589; June 26, 1922, 42 Stat. 665, ch. 241; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-703.</p>
-                <p>1981 Ed., § 29-903.</p>
                 <p>1973 Ed., § 29-503.</p>
+                <p>1981 Ed., § 29-903.</p>
+                <p>2001 Ed., § 29-703.</p>
               </section>
             </section>
             <hr/>
@@ -165,9 +189,9 @@
       (Mar. 3, 1901, 31 Stat. 1282, ch. 854, § 590; June 26, 1922, 42 Stat. 665, ch. 241; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-704.</p>
-                <p>1981 Ed., § 29-904.</p>
                 <p>1973 Ed., § 29-504.</p>
+                <p>1981 Ed., § 29-904.</p>
+                <p>2001 Ed., § 29-704.</p>
               </section>
             </section>
             <hr/>
@@ -182,9 +206,9 @@
       (Mar. 3, 1901, 31 Stat. 1282, ch. 854, § 591; June 26, 1922, 42 Stat. 665, ch. 241; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-705.</p>
-                <p>1981 Ed., § 29-905.</p>
                 <p>1973 Ed., § 29-505.</p>
+                <p>1981 Ed., § 29-905.</p>
+                <p>2001 Ed., § 29-705.</p>
               </section>
             </section>
             <hr/>
@@ -199,9 +223,9 @@
       (Mar. 3, 1901, 31 Stat. 1282, ch. 854, § 592; June 26, 1922, 42 Stat. 665, ch. 241; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-706.</p>
-                <p>1981 Ed., § 29-906.</p>
                 <p>1973 Ed., § 29-506.</p>
+                <p>1981 Ed., § 29-906.</p>
+                <p>2001 Ed., § 29-706.</p>
               </section>
             </section>
             <hr/>
@@ -216,9 +240,9 @@
       (Mar. 3, 1901, 31 Stat. 1283, ch. 854, § 593; June 26, 1922, 42 Stat. 665, ch. 241; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-707.</p>
-                <p>1981 Ed., § 29-907.</p>
                 <p>1973 Ed., § 29-507.</p>
+                <p>1981 Ed., § 29-907.</p>
+                <p>2001 Ed., § 29-707.</p>
               </section>
             </section>
             <hr/>
@@ -233,9 +257,9 @@
       (Mar. 3, 1901, 31 Stat. 1283, ch. 854, § 594; June 26, 1922, 42 Stat. 665, ch. 241; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-708.</p>
-                <p>1981 Ed., § 29-908.</p>
                 <p>1973 Ed., § 29-508.</p>
+                <p>1981 Ed., § 29-908.</p>
+                <p>2001 Ed., § 29-708.</p>
               </section>
             </section>
             <hr/>
@@ -250,9 +274,9 @@
       (Mar. 3, 1901, 31 Stat. 1283, ch. 854, § 595; June 26, 1922, 42 Stat. 665, ch. 241; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-709.</p>
-                <p>1981 Ed., § 29-909.</p>
                 <p>1973 Ed., § 29-509.</p>
+                <p>1981 Ed., § 29-909.</p>
+                <p>2001 Ed., § 29-709.</p>
               </section>
             </section>
             <hr/>
@@ -267,9 +291,9 @@
       (Mar. 3, 1901, 31 Stat. 1283, ch. 854, § 596; June 26, 1922, 42 Stat. 665, ch. 241; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-710.</p>
-                <p>1981 Ed., § 29-910.</p>
                 <p>1973 Ed., § 29-510.</p>
+                <p>1981 Ed., § 29-910.</p>
+                <p>2001 Ed., § 29-710.</p>
               </section>
             </section>
             <hr/>
@@ -284,9 +308,9 @@
       (Mar. 3, 1901, 31 Stat. 1283, ch. 854, § 597; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-711.</p>
-                <p>1981 Ed., § 29-911.</p>
                 <p>1973 Ed., § 29-511.</p>
+                <p>1981 Ed., § 29-911.</p>
+                <p>2001 Ed., § 29-711.</p>
               </section>
             </section>
             <hr/>
@@ -301,9 +325,9 @@
       (Mar. 3, 1901, 31 Stat. 1283, ch. 854, § 598; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(k)(6), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-712.</p>
-                <p>1981 Ed., § 29-912.</p>
                 <p>1973 Ed., § 29-512.</p>
+                <p>1981 Ed., § 29-912.</p>
+                <p>2001 Ed., § 29-712.</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/6/subchapters/XVII/">Subchapter XVII. Labor-Management Relations.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/6/subchapters/XVI-A/">Report Error</a>
@@ -88,10 +88,18 @@
         <section class="col8 body">
           <h1>Subchapter XVI-A. General Discipline and Grievances.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-616.51.html">§ 1–616.51. Policy.</a>
-            <a href="/dc/council/code/sections/1-616.52.html">§ 1–616.52. Disciplinary grievances and appeals.</a>
-            <a href="/dc/council/code/sections/1-616.53.html">§ 1–616.53. Grievances.</a>
-            <a href="/dc/council/code/sections/1-616.54.html">§ 1–616.54. Administrative leave; enforced leave.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-616.51.html">§ 1–616.51. Policy.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-616.52.html">§ 1–616.52. Disciplinary grievances and appeals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-616.53.html">§ 1–616.53. Grievances.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-616.54.html">§ 1–616.54. Administrative leave; enforced leave.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -117,16 +125,16 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition of section, see § 2 of Reinstated Government Employee Review Emergency Act of 2011 (D.C. Act 19-27, March 1, 2011,  58 DCR 2585).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 19-6 added a section to read as follows:</p>
-                <p>“Sec. 2. Report on reinstatement of separated employees.</p>
-                <p>“(a) Within 120 days of the effective date of the Reinstated Government Employee Review Emergency Act of 2011, passed on emergency basis on February 15, 2011 (Enrolled version of Bill 19-112), the Mayor shall review the status of all separated District employees, since January 3, 2007, who have in their favor a current employee appeal decision for reinstatement to service by a statutorily recognized entity, including the Public Employee Relations Board, the Office of Employee Appeals, the Office of Administrative Hearings, and the courts of the District of Columbia.</p>
-                <p>“(b) After the review in subsection (a) of this section is completed, the Mayor shall have 45 days to issue a report to the Council on the status of each decision for reinstatement to service described in subsection (a) of this section, and the District’s plan for each employee who is to be reinstated.”</p>
                 <p>Section 4(b) of D.C. Law 19-6 provided that the act shall expire after 225 days of its having taken effect</p>
+                <p>“(b) After the review in subsection (a) of this section is completed, the Mayor shall have 45 days to issue a report to the Council on the status of each decision for reinstatement to service described in subsection (a) of this section, and the District’s plan for each employee who is to be reinstated.”</p>
+                <p>“(a) Within 120 days of the effective date of the Reinstated Government Employee Review Emergency Act of 2011, passed on emergency basis on February 15, 2011 (Enrolled version of Bill 19-112), the Mayor shall review the status of all separated District employees, since January 3, 2007, who have in their favor a current employee appeal decision for reinstatement to service by a statutorily recognized entity, including the Public Employee Relations Board, the Office of Employee Appeals, the Office of Administrative Hearings, and the courts of the District of Columbia.</p>
+                <p>“Sec. 2. Report on reinstatement of separated employees.</p>
+                <p>Section 2 of D.C. Law 19-6 added a section to read as follows:</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of § 101(s) of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a>: Section 401(a) of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a>, as amended by § 60 of <a class="internal-link" href="/dc/council/laws/12-264.html">D.C. Law 12-264</a>, provided that § 101(d), (k), (p), (s), and (x) of the act shall apply upon the enactment of legislation by the United States Congress that states the following: “Notwithstanding any other law, section 101(d), (k), (p), (s), and (x) of the Omnibus Personnel Reform Act of 1998, adopted by the Council of the District of Columbia is enacted into law.” Section 134 of Title I of Division C of Pub. L. 105-277, 112 Stat. 2681-596, provided that “Notwithstanding any other law, sections 101(d), (k), (p), (s), and (x) of the Omnibus Personnel Reform Amendment Act of 1998, <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a>, effective June 11, 1998, are enacted into law.”</p>
                 <h4>Construction of Law</h4>
-                <p>Construction of Law 12-124</p>
                 <p>Section 301 of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a> provided that nothing in the act shall be construed as superseding the provisions of the National Capital Revitalization and Self-Government Improvement Act of 1997, approved August 5, 1997 (Public Law 105-33; 111 Stat. 712), except that § <a class="internal-link" href="/dc/council/code/sections/47-395.04.html">47-395.04</a>(b)(3) is expressly superseded. Further, nothing in the act shall be construed as superseding the provisions of § <a class="internal-link" href="/dc/council/code/sections/47-391.01.html">47-391.01</a> et seq. or of § 164 of the District of Columbia Appropriations Act, 1998, approved November 19, 1997 (Public Law 105-100; 111 Stat. 2160).</p>
+                <p>Construction of Law 12-124</p>
               </section>
             </section>
             <hr/>
@@ -205,9 +213,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-162.html">D.C. Law 15-162</a> rewrote subsec. (f) which had read as follows: “(f) If a determination is made to place the employee on annual leave or leave without pay, the decision letter shall inform him or her of the placement on enforced leave, the date the leave is to commence, and his or her right to grieve the action within 10 days of receipt of the written decision letter.”</p>
                 <h4>Cross References</h4>
-                <p>Merit system, effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
-                <p>Merit system, organization for personnel management, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/1-604.04.html">1-604.04</a>.</p>
                 <p>Washington Convention Center Authority, application of this subchapter, see § <a class="internal-link" href="/dc/council/code/sections/10-1202.16.html">10-1202.16</a>.</p>
+                <p>Merit system, organization for personnel management, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/1-604.04.html">1-604.04</a>.</p>
+                <p>Merit system, effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of § 101(s) of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a>: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/1-616.51.html">1-616.51</a>.</p>
                 <h4>Delegation of Authority</h4>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/34-1505.html">§ 34–1505. Licensing requirements.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/34-1504.html">Report Error</a>
@@ -147,11 +147,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/34-1501.html">34-1501</a> and § <a class="internal-link" href="/dc/council/code/sections/34-1511.html">34-1511</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-342.html">D.C. Law 15-342</a> rewrote subsec. (c)(2) which had read:</p>
-                <p>“(2)(A)(i) Under criteria established by Commission regulation or order, the Commission shall determine for each electricity supplier licensed under § <a class="internal-link" href="/dc/council/code/sections/34-1505.html">34-1505</a> whether it is feasible for that electricity supplier to disclose every 6 months the fuel mix of the electricity sold by that supplier in the District of Columbia, including categories of electricity from coal, natural gas, nuclear energy, oil, hydroelectric, solar, biomass, wind, and other sources.</p>
-                <p>“(ii) The Commission shall make a determination of feasibility under sub-subparagraph (i) of this subparagraph within 6 months after the date on which an electricity supplier receives a license under § <a class="internal-link" href="/dc/council/code/sections/34-1505.html">34-1505</a>.</p>
-                <p>“(B) If the Commission determines under subparagraph (A)(i) of this paragraph that it is feasible for an electricity supplier to disclose the fuel mix of the electricity sold by that supplier in the District of Columbia, the Commission, by regulation or order, shall require the electricity supplier to disclose every 6 months the fuel mix of the electricity sold by the supplier in the District of Columbia, including categories of electricity from coal, natural gas, nuclear energy, oil, hydroelectric, solar, biomass, wind, and other sources.</p>
                 <p>“(C) If the Commission determines under subparagraph (A)(i) of this paragraph that it is not feasible for an electricity supplier to disclose the fuel mix of the electricity sold by the supplier in the District of Columbia, the Commission, by regulation or order, shall require the electricity supplier to disclose to its customers every 6 months a regional fuel mix average.”</p>
+                <p>“(B) If the Commission determines under subparagraph (A)(i) of this paragraph that it is feasible for an electricity supplier to disclose the fuel mix of the electricity sold by that supplier in the District of Columbia, the Commission, by regulation or order, shall require the electricity supplier to disclose every 6 months the fuel mix of the electricity sold by the supplier in the District of Columbia, including categories of electricity from coal, natural gas, nuclear energy, oil, hydroelectric, solar, biomass, wind, and other sources.</p>
+                <p>“(ii) The Commission shall make a determination of feasibility under sub-subparagraph (i) of this subparagraph within 6 months after the date on which an electricity supplier receives a license under § <a class="internal-link" href="/dc/council/code/sections/34-1505.html">34-1505</a>.</p>
+                <p>“(2)(A)(i) Under criteria established by Commission regulation or order, the Commission shall determine for each electricity supplier licensed under § <a class="internal-link" href="/dc/council/code/sections/34-1505.html">34-1505</a> whether it is feasible for that electricity supplier to disclose every 6 months the fuel mix of the electricity sold by that supplier in the District of Columbia, including categories of electricity from coal, natural gas, nuclear energy, oil, hydroelectric, solar, biomass, wind, and other sources.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-342.html">D.C. Law 15-342</a> rewrote subsec. (c)(2) which had read:</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 304(a) of Omnibus Utility Emergency Amendment Act of 2005 (D.C. Act 16-12, January 28, 2005,  52 DCR 2945).</p>
               </section>

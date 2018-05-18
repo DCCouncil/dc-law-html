@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -65,19 +77,7 @@
           <p>
             <a href="/dc/council/code/sections/1-204.04.html">§ 1–204.04. Powers of the Council.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-204.03.html">Report Error</a>
@@ -104,16 +104,16 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-198.html#§403">Dec. 24, 1973, 87 Stat. 787, Pub. L. 93-198, title IV, § 403</a>; <a class="internal-link" href="/us/congress/laws/public/107-96.html">Dec. 21, 2001, 107 Stat. 957, Pub. L. 107-96, § 136</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-226.</p>
                 <p>1973 Ed., § 1-143.</p>
+                <p>1981 Ed., § 1-226.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-123.html">1-123</a>, § <a class="internal-link" href="/dc/council/code/sections/1-204.02.html">1-204.02</a>, § <a class="internal-link" href="/dc/council/code/sections/1-301.85.html">1-301.85</a>, § <a class="internal-link" href="/dc/council/code/sections/1-602.02.html">1-602.02</a>, § <a class="internal-link" href="/dc/council/code/sections/1-611.09.html">1-611.09</a>, and § <a class="internal-link" href="/dc/council/code/sections/1-611.54.html">1-611.54</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p>Pub. L. 107-96, in subsec. (c), deleted “shall receive, in addition to the compensation to which he is entitled as a member of the Council, $10,000 per annum, payable in equal installments, for each year he serves as Chairman, but the Chairman” preceding “shall not engage”; and added subsec. (d).</p>
                 <h4>Cross References</h4>
-                <p>Campaign finance, see § <a class="internal-link" href="/dc/council/code/sections/1-1101.01.html">1-1101.01</a> et seq.</p>
-                <p>Compensation of Mayor and councilmembers, see § <a class="internal-link" href="/dc/council/code/sections/1-611.09.html">1-611.09</a>.</p>
                 <p>Merit system, coverage and limitations, see § <a class="internal-link" href="/dc/council/code/sections/1-602.02.html">1-602.02</a>.</p>
+                <p>Compensation of Mayor and councilmembers, see § <a class="internal-link" href="/dc/council/code/sections/1-611.09.html">1-611.09</a>.</p>
+                <p>Campaign finance, see § <a class="internal-link" href="/dc/council/code/sections/1-1101.01.html">1-1101.01</a> et seq.</p>
                 <h4>Editor's Notes</h4>
                 <p>Request for Congressional action: Pursuant to § 5 of D.C. Law 10-168 and § 5 of <a class="internal-link" href="/dc/council/laws/10-225.html">D.C. Law 10-225</a> the Council requested that the United States Congress enact legislation to repeal subsection (c) of this section.</p>
               </section>

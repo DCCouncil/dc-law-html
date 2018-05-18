@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/1-204.24c.html">§ 1–204.24c. Removal of the Chief Financial Officer.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-204.24b.html">Report Error</a>
@@ -123,16 +123,16 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-204.24a.html">1-204.24a</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>Public Law 106-522 in subsec. (a) added at the end of par. (1)(B) “Upon confirmation by the Council, the name of the Chief Financial Officer shall be submitted to the Committees on Appropriations of the Senate and House of Representatives, the Committee on Governmental Affairs of the Senate, and the Committee on Government Reform of the House of Representatives for a 30-day period of review and comment before the appointment takes effect.”; and in par. (2)(B), struck the period at the end and inserted the following: “upon dismissal by the Mayor and approval of that dismissal by a 2/3 vote of the Council. Upon approval of the dismissal by the Council, notice of the dismissal shall be submitted to the Committees on Appropriations of the Senate and House of Representatives, the Committee on Governmental Affairs of the Senate, and the Committee on Government Reform of the House of Representatives for a 30-day period of review and comment before the dismissal takes effect.”</p>
-                <p>Pub. L. 107-96, in subsec. (c), substituted “equal to” for “determined by the Mayor, except that such rate may not exceed”, and substituted “level I” for “level IV”.</p>
-                <p>Pub. L. 109-356 rewrote the section which had read as follows:</p>
-                <p>“(a) In general. — (1) Control year.—During a control year, the Chief Financial Officer shall be appointed by the Mayor as follows: (A) Prior to the appointment of the Chief Financial Officer, the Authority may submit recommendations for the appointment to the Mayor. (B) In consultation with the Authority and the Council, the Mayor shall nominate an individual for appointment and notify the Council of the nomination. (C) After the expiration of the 7-day period which begins on the date the Mayor notifies the Council of the nomination under subparagraph (B) of this paragraph, the Mayor shall notify the Authority of the nomination. (D) The nomination shall be effect approval by a majority vote of the Authority.</p>
-                <p>“(2) Other years.—During a year other than a control year, the Chief Financial Officer shall be appointed by the Mayor with the advice and consent of the Council. Prior to appointment, the Authority may submit recommendations for the appointment. Upon confirmation by the Council, the name of the Chief Financial Officer shall be submitted to the Committees on Appropriations of the Senate and House of Representatives, the Committee on Governmental Affairs of the Senate, and the Committee on Government Reform of the House of Representatives for a 30-day period of review and comment before the appointment takes effect.</p>
-                <p>“(b) Removal. — (1) Control year.—During a control year, the Chief Financial Officer may be removed for cause by the Authority or by the Mayor with the approval of the Authority.</p>
-                <p>“(2) Other years.—During a year other than a control year, the Chief Financial Officer shall serve at the pleasure of the Mayor, except that the Chief Financial Officer may only be removed for cause upon dismissal by the Mayor and approval of that dismissal by a 2/3 vote of the Council. Upon approval of the dismissal by the Council, notice of the dismissal shall be submitted to the Committees on Appropriations of the Senate and House of Representatives, the Committee on Governmental Affairs of the Senate, and the Committee on Government Reform of the House of Representatives for a 30-day period of review and comment before the dismissal takes effect.</p>
-                <p>“(c) Salary.—The Chief Financial Officer shall be paid at an annual rate equal to the rate of basic pay payable for level I of the Executive Schedule.”</p>
-                <p>Pub. L. 113-8 added “Subject to subsection (c)” to the beginning of (b)(4); and added (c).</p>
                 <p>Pub. L. 113-71 rewrote (b)(5).</p>
+                <p>Pub. L. 113-8 added “Subject to subsection (c)” to the beginning of (b)(4); and added (c).</p>
+                <p>“(c) Salary.—The Chief Financial Officer shall be paid at an annual rate equal to the rate of basic pay payable for level I of the Executive Schedule.”</p>
+                <p>“(2) Other years.—During a year other than a control year, the Chief Financial Officer shall serve at the pleasure of the Mayor, except that the Chief Financial Officer may only be removed for cause upon dismissal by the Mayor and approval of that dismissal by a 2/3 vote of the Council. Upon approval of the dismissal by the Council, notice of the dismissal shall be submitted to the Committees on Appropriations of the Senate and House of Representatives, the Committee on Governmental Affairs of the Senate, and the Committee on Government Reform of the House of Representatives for a 30-day period of review and comment before the dismissal takes effect.</p>
+                <p>“(b) Removal. — (1) Control year.—During a control year, the Chief Financial Officer may be removed for cause by the Authority or by the Mayor with the approval of the Authority.</p>
+                <p>“(2) Other years.—During a year other than a control year, the Chief Financial Officer shall be appointed by the Mayor with the advice and consent of the Council. Prior to appointment, the Authority may submit recommendations for the appointment. Upon confirmation by the Council, the name of the Chief Financial Officer shall be submitted to the Committees on Appropriations of the Senate and House of Representatives, the Committee on Governmental Affairs of the Senate, and the Committee on Government Reform of the House of Representatives for a 30-day period of review and comment before the appointment takes effect.</p>
+                <p>“(a) In general. — (1) Control year.—During a control year, the Chief Financial Officer shall be appointed by the Mayor as follows: (A) Prior to the appointment of the Chief Financial Officer, the Authority may submit recommendations for the appointment to the Mayor. (B) In consultation with the Authority and the Council, the Mayor shall nominate an individual for appointment and notify the Council of the nomination. (C) After the expiration of the 7-day period which begins on the date the Mayor notifies the Council of the nomination under subparagraph (B) of this paragraph, the Mayor shall notify the Authority of the nomination. (D) The nomination shall be effect approval by a majority vote of the Authority.</p>
+                <p>Pub. L. 109-356 rewrote the section which had read as follows:</p>
+                <p>Pub. L. 107-96, in subsec. (c), substituted “equal to” for “determined by the Mayor, except that such rate may not exceed”, and substituted “level I” for “level IV”.</p>
+                <p>Public Law 106-522 in subsec. (a) added at the end of par. (1)(B) “Upon confirmation by the Council, the name of the Chief Financial Officer shall be submitted to the Committees on Appropriations of the Senate and House of Representatives, the Committee on Governmental Affairs of the Senate, and the Committee on Government Reform of the House of Representatives for a 30-day period of review and comment before the appointment takes effect.”; and in par. (2)(B), struck the period at the end and inserted the following: “upon dismissal by the Mayor and approval of that dismissal by a 2/3 vote of the Council. Upon approval of the dismissal by the Council, notice of the dismissal shall be submitted to the Committees on Appropriations of the Senate and House of Representatives, the Committee on Governmental Affairs of the Senate, and the Committee on Government Reform of the House of Representatives for a 30-day period of review and comment before the dismissal takes effect.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see §§ 2 and 5 of the Chief Financial Officer Compensation Emergency Act of 2013 (D.C. Act 20-140, July 31, 2013,  60 DCR 11792, 20 DCSTAT 1984).</p>
                 <h4>Temporary Legislation</h4>
@@ -142,8 +142,8 @@
                 <h4>Effective Dates</h4>
                 <p>Pub. L. 107-96, § 111(e), provided: “The amendment made by subsection (d) shall apply with respect to pay periods in fiscal year 2002 and each succeeding fiscal year.”</p>
                 <h4>Editor's Notes</h4>
-                <p>Pub. L. 113-8, § 2(c) provided that the amendments made by the Act shall apply with respect to vacancies occurring on or after May 1, 2013.</p>
                 <p>Pub. L. 113-71, § 1(b) provided that the amendments made by the Act shall apply with respect to vacancies occurring on or after Dec. 26, 2013.</p>
+                <p>Pub. L. 113-8, § 2(c) provided that the amendments made by the Act shall apply with respect to vacancies occurring on or after May 1, 2013.</p>
               </section>
             </section>
           </section>

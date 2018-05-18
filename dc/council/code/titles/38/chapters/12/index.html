@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/38/chapters/12A/">Chapter 12A. Community College of the District of Columbia Plan for Independence.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/38/chapters/12/">Report Error</a>
@@ -88,28 +88,50 @@
           <h1>Chapter 12. Public Postsecondary Education Reorganization.</h1>
           <section class="line-group toc child-link">
             <h2 class="line subheading">Unit A. General.</h2>
-            <a href="/dc/council/code/titles/38/chapters/12/subchapters/I/">Subchapter I. General Provisions.</a>
-            <p>§§ 38-1201.01 - 38-1201.03</p>
-            <a href="/dc/council/code/titles/38/chapters/12/subchapters/II/">Subchapter II. University of the District of Columbia.</a>
-            <p>§§ 38-1202.01 - 38-1202.12</p>
-            <a href="/dc/council/code/titles/38/chapters/12/subchapters/III/">Subchapter III. Authorizations.</a>
-            <p>§§ 38-1203.01 - 38-1203.01</p>
-            <a href="/dc/council/code/titles/38/chapters/12/subchapters/IV/">Subchapter IV. Miscellaneous.</a>
-            <p>§§ 38-1204.01 - 38-1204.07</p>
-            <a href="/dc/council/code/titles/38/chapters/12/subchapters/V/">Subchapter V. Establishment of Public School of Law.</a>
-            <p>§§ 38-1205.01 - 38-1205.13</p>
-            <a href="/dc/council/code/titles/38/chapters/12/subchapters/VI/">Subchapter VI. Establishment of District of Columbia School of Law Within the University of the District of Columbia.</a>
-            <p>§§ 38-1206.01 - 38-1206.02</p>
-            <a href="/dc/council/code/titles/38/chapters/12/subchapters/VII/">Subchapter VII. Provision of Tuition Grants.</a>
-            <p>§§ 38-1207.01 - 38-1207.07</p>
-            <a href="/dc/council/code/titles/38/chapters/12/subchapters/VIII/">Subchapter VIII. Office of Vocational Education and Skills Training.</a>
-            <p>§§ 38-1208.01 - 38-1208.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/38/chapters/12/subchapters/I/">Subchapter I. General Provisions.</a>
+            </p>
+            <p>§§ 38-1201.01 – 38-1201.03</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/38/chapters/12/subchapters/II/">Subchapter II. University of the District of Columbia.</a>
+            </p>
+            <p>§§ 38-1202.01 – 38-1202.12</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/38/chapters/12/subchapters/III/">Subchapter III. Authorizations.</a>
+            </p>
+            <p>§§ 38-1203.01 – 38-1203.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/38/chapters/12/subchapters/IV/">Subchapter IV. Miscellaneous.</a>
+            </p>
+            <p>§§ 38-1204.01 – 38-1204.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/38/chapters/12/subchapters/V/">Subchapter V. Establishment of Public School of Law.</a>
+            </p>
+            <p>§§ 38-1205.01 – 38-1205.13</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/38/chapters/12/subchapters/VI/">Subchapter VI. Establishment of District of Columbia School of Law Within the University of the District of Columbia.</a>
+            </p>
+            <p>§§ 38-1206.01 – 38-1206.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/38/chapters/12/subchapters/VII/">Subchapter VII. Provision of Tuition Grants.</a>
+            </p>
+            <p>§§ 38-1207.01 – 38-1207.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/38/chapters/12/subchapters/VIII/">Subchapter VIII. Office of Vocational Education and Skills Training.</a>
+            </p>
+            <p>§§ 38-1208.01 – 38-1208.06</p>
             <h2 class="line subheading">Unit B. Audits.</h2>
-            <a href="/dc/council/code/sections/38-1231.01.html">§ 38–1231.01. Biennial audits of UDC Endowment Fund. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1231.01.html">§ 38–1231.01. Biennial audits of UDC Endowment Fund. [Repealed]</a>
+            </p>
             <h2 class="line subheading">Unit C. UDC Capital Budget Authority and Funding Transfer.</h2>
-            <a href="/dc/council/code/sections/38-1241.01.html">§ 38–1241.01. Transfer of capital budget authority and funding to the University of the District of Columbia.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1241.01.html">§ 38–1241.01. Transfer of capital budget authority and funding to the University of the District of Columbia.</a>
+            </p>
             <h2 class="line subheading">Unit D. UDC Debt Collection Fund.</h2>
-            <a href="/dc/council/code/sections/38-1251.01.html">§ 38–1251.01. University of the District of Columbia Debt Collection Fund.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-1251.01.html">§ 38–1251.01. University of the District of Columbia Debt Collection Fund.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -138,14 +160,14 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§102">Oct. 26, 1974, 88 Stat. 1423, Pub. L. 93-471, title I, § 102</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1501.</p>
                 <p>1973 Ed., § 31-1701.</p>
+                <p>1981 Ed., § 31-1501.</p>
                 <h4>Editor's Notes</h4>
-                <p>Intent of Council: Section 2 of the Act of September 9, 1975, <a class="internal-link" href="/dc/council/laws/1-12.html">D.C. Law 1-12</a>, and § 2 of the Act of November 1, 1975, <a class="internal-link" href="/dc/council/laws/1-36.html">D.C. Law 1-36</a>, both provided that it was the intent of the Council of the District of Columbia to approve the Congressional intent expressed in this section, and to provide a range of programs and studies designed to reach the widest possible number of citizens and residents of the District of Columbia.</p>
-                <p>Nonresident students: Public Law 102-111, 105 Stat. 563, the District of Columbia Appropriations Act, 1992, provided that the public education appropriation shall not be available to subsidize the education of nonresidents of the District of Columbia at the University of the District of Columbia, unless the Board of Trustees of the University of the District of Columbia adopts, for the fiscal year ending September 30, 1992, a tuition rate schedule that will establish the tuition rate for nonresident students at a level no lower than the nonresident tuition rate charged at comparable public institutions of higher education in the metropolitan area.</p>
-                <p>Award of funds: Section 139 of Pub. L. 101-168, the District of Columbia Appropriations Act, 1990, provided that of the funds appropriated in Pub. L. 100-202 for carrying out part B of title VII of the Higher Education Act that remain available for obligation, $6,700,000 shall be awarded without regard to § 701(B), § 721(B), and § 721(C) of said Act to the consortium of institutions of higher education in the Washington, D.C. metropolitan area for the purpose of constructing and equipping an academic research library to link the library and information resources of the universities participating in the consortium.</p>
-                <p>Establishment of District of Columbia Advisory Committee on Education: See Mayor’s Order 89-256, November 7, 1989.</p>
                 <p>Appropriations authorized: Public Law 104-194, 110 Stat. 2359, the District of Columbia Appropriations Act, 1997, provided $69,801,000 and 917 full-time equivalent positions (including $38,479,000 and 572 full-time equivalent positions from local funds, $11,747,000 and 156 full-time equivalent positions from Federal funds, and $19,575,000 and 189 full-time equivalent positions from other funds) for the University of the District of Columbia; provided, that not to exceed $2,500 for the President of the University of the District of Columbia shall be available for expenditures for official purposes.</p>
+                <p>Establishment of District of Columbia Advisory Committee on Education: See Mayor’s Order 89-256, November 7, 1989.</p>
+                <p>Award of funds: Section 139 of Pub. L. 101-168, the District of Columbia Appropriations Act, 1990, provided that of the funds appropriated in Pub. L. 100-202 for carrying out part B of title VII of the Higher Education Act that remain available for obligation, $6,700,000 shall be awarded without regard to § 701(B), § 721(B), and § 721(C) of said Act to the consortium of institutions of higher education in the Washington, D.C. metropolitan area for the purpose of constructing and equipping an academic research library to link the library and information resources of the universities participating in the consortium.</p>
+                <p>Nonresident students: Public Law 102-111, 105 Stat. 563, the District of Columbia Appropriations Act, 1992, provided that the public education appropriation shall not be available to subsidize the education of nonresidents of the District of Columbia at the University of the District of Columbia, unless the Board of Trustees of the University of the District of Columbia adopts, for the fiscal year ending September 30, 1992, a tuition rate schedule that will establish the tuition rate for nonresident students at a level no lower than the nonresident tuition rate charged at comparable public institutions of higher education in the metropolitan area.</p>
+                <p>Intent of Council: Section 2 of the Act of September 9, 1975, <a class="internal-link" href="/dc/council/laws/1-12.html">D.C. Law 1-12</a>, and § 2 of the Act of November 1, 1975, <a class="internal-link" href="/dc/council/laws/1-36.html">D.C. Law 1-36</a>, both provided that it was the intent of the Council of the District of Columbia to approve the Congressional intent expressed in this section, and to provide a range of programs and studies designed to reach the widest possible number of citizens and residents of the District of Columbia.</p>
               </section>
             </section>
             <hr/>
@@ -173,15 +195,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§103">Oct. 26, 1974, 88 Stat. 1424, Pub. L. 93-471, title I, § 103</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 3, 22 DCR 2909</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 301(a), 43 DCR 2978</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1502.</p>
                 <p>1973 Ed., § 31-1702.</p>
+                <p>1981 Ed., § 31-1502.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 301(a) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and § 201(a) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <p>Section 501 of D.C. Act 11-335 provided for the application of the act.</p>
+                <p>For temporary amendment of section, see § 301(a) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and § 201(a) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <h4>References in Text</h4>
-                <p>“Section 3 of the Federal Deposit Insurance Act,” referred to in paragraph (10), is codified at  12 U.S.C. § 1813.</p>
-                <p>“Section 401 of the National Housing Act,” referred to in paragraph (10), was codified at  12 U.S.C. § 1724, and was repealed by the Act of August 9, 1989, 103 Stat. 363, Pub. L. 101-73.</p>
                 <p>Section 38-1205.03, referred to twice in (12), was repealed by <a class="internal-link" href="/dc/council/laws/11-152.html">D.C. Law 11-152</a>,  43 DCR 2978.</p>
+                <p>“Section 401 of the National Housing Act,” referred to in paragraph (10), was codified at  12 U.S.C. § 1724, and was repealed by the Act of August 9, 1989, 103 Stat. 363, Pub. L. 101-73.</p>
+                <p>“Section 3 of the Federal Deposit Insurance Act,” referred to in paragraph (10), is codified at  12 U.S.C. § 1813.</p>
               </section>
             </section>
             <hr/>
@@ -226,54 +248,54 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§201">Oct. 26, 1974, 88 Stat. 1424, Pub. L. 93-471, title II, § 201</a>; <a class="internal-link" href="/dc/council/laws/1-12.html">Sept. 9, 1975, D.C. Law 1-12, § 3(a), (b), 22 DCR 1806</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36,§ 4, 23 DCR 2911</a>; <a class="internal-link" href="/dc/council/laws/1-99.html">Apr. 6, 1977, D.C. Law 1-99, § 2(b), 23 DCR 8729</a>; <a class="internal-link" href="/dc/council/laws/8-69.html">Feb. 27, 1990, D.C. Law 8-69, § 2, 36 DCR 7737</a>; <a class="internal-link" href="/dc/council/laws/10-38.html">Oct. 15, 1993, D.C. Law 10-38, § 2, 40 DCR 5819</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 301(b), 43 DCR 2978</a>; <a class="internal-link" href="/dc/council/laws/11-259.html">Apr. 12, 1997, D.C. Law 11-259, § 314(a), 44 DCR 1423</a>; <a class="internal-link" href="/dc/council/laws/13-116.html">May 23, 2000, D.C. Law 13-116, § 2, 47 DCR 1998</a>; <a class="internal-link" href="/dc/council/laws/16-191.html">Mar. 2, 2007, D.C. Law 16-191, § 3, 53 DCR 6794</a>; <a class="internal-link" href="/dc/council/laws/18-286.html">Mar. 8, 2011, D.C. Law 18-286, § 2(a), 57 DCR 11012</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1511.</p>
                 <p>1973 Ed., § 31-1711.</p>
+                <p>1981 Ed., § 31-1511.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2853.04.html">47-2853.04</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-4431.html">47-4431</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-116.html">D.C. Law 13-116</a> added subsec. (c-1).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a> repealed subsec. (i) which had read as follows: “(i) When the term of one or more Trustees appointed by the Mayor with the advice and consent of the Council is due to expire on May 15th in any year, the Mayor shall transmit to the Council, not later than February 17th of that year, the nomination of a person to succeed each Trustee whose term is due to expire that year. The Council shall act on each timely nomination not later than April 15th of that year, and if no action is taken by the Council by April 15th of that year, the nomination shall be deemed approved.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-286.html">D.C. Law 18-286</a> rewrote subsec. (a), which had read as follows: “(a) There is hereby established a body corporate by name of the Board of Trustees of the University of the District of Columbia and by that name and style shall have perpetual succession. It shall be charged with the responsibility of governing the University of the District of Columbia and shall possess all the powers necessary or convenient to accomplish the objects and perform the duties prescribed by this section. Pursuant to this section and §§ <a class="internal-link" href="/dc/council/code/sections/38-1202.06.html">38-1202.06</a> and <a class="internal-link" href="/dc/council/code/sections/38-1204.03.html">38-1204.03</a>, it shall have the power to adopt, alter, and use a corporate seal which shall be judicially noticed; and to make contracts; to sue and be sued, to complain and defend in its own name in any court of competent jurisdiction; to make, deliver, and receive deeds, leases and other instruments and to take title to real and other property in its own name; and to adopt, prescribe, amend, repeal, and enforce such bylaws, rules, and regulations as it may deem necessary for the governance and administration of the University; provided, however, that contracting for the purchase or disposal of goods and services shall be carried out by the Office of Contracting and Procurement on behalf of the Board of Trustees.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a> repealed subsec. (i) which had read as follows: “(i) When the term of one or more Trustees appointed by the Mayor with the advice and consent of the Council is due to expire on May 15th in any year, the Mayor shall transmit to the Council, not later than February 17th of that year, the nomination of a person to succeed each Trustee whose term is due to expire that year. The Council shall act on each timely nomination not later than April 15th of that year, and if no action is taken by the Council by April 15th of that year, the nomination shall be deemed approved.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-116.html">D.C. Law 13-116</a> added subsec. (c-1).</p>
                 <h4>Cross References</h4>
-                <p>Board of trustees candidates, disclosure of interests, see § <a class="internal-link" href="/dc/council/code/sections/1-1106.02.html">1-1106.02</a>.</p>
-                <p>Mayoral nomination of Board of Trustees of the University of the District of Columbia, review and approval of Council, see § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.</p>
                 <p>University of the District of Columbia, credits and refunds for overpayments, see § <a class="internal-link" href="/dc/council/code/sections/47-1812.11.html">47-1812.11</a>.</p>
+                <p>Mayoral nomination of Board of Trustees of the University of the District of Columbia, review and approval of Council, see § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.</p>
+                <p>Board of trustees candidates, disclosure of interests, see § <a class="internal-link" href="/dc/council/code/sections/1-1106.02.html">1-1106.02</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 301(b) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and § 201(b) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
-                <p>For temporary (90-day) amendment of section, see § 2 of the University of the District of Columbia Board of Trustees Residency Requirement Emergency Amendment Act of 1999 (D.C. Act 13-128, August 4, 1999,  46 DCR 6644).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(a) of the Board of Trustees of the University of the District of Columbia Emergency Amendment Act of 1999 (D.C. Act 13-210, December 17, 1999,  47 DCR 9).</p>
-                <p>For temporary (90-day) amendment of section, see § 2 of the University of the District of Columbia Board of Trustees Residency Requirement Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-226, January 11, 2000,  47 DCR 481).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(a) of the Board of Trustees of the University of the District of Columbia Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-280, March 7, 2000,  47 DCR 2022).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(a) of the Board of Trustees of the University of the District of Columbia Emergency Amendment Act of 2000 (D.C. Act 13-372, June 26, 2000,  47 DCR 5844).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of University of the District of Columbia Board of Trustees Emergency Amendment Act of 2008 (D.C. Act 17-569, November 6, 2008,  55 DCR 12112).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of University of the District of Columbia Board of Trustees Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-3, January 30, 2009,  56 DCR 1625).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of University of the District of Columbia Procurement Authority Emergency Amendment Act of 2009 (D.C. Act 18-200, October 10, 2009,  56 DCR 8137).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of University of the District of Columbia Procurement Authority Emergency Amendment Act of 2010 (D.C. Act 18-467, July 7, 2010,  57 DCR 6914).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Emergency Amendment Act of 2010 (D.C. Act 18-542, October 9, 2010,  57 DCR 9627).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-661, December 30, 2010,  58 DCR 70).</p>
-                <p>For temporary (90 day) addition of sections, see §§ 4032, 4042 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <p>For temporary (90 day) addition of sections, see §§ 4032, 4042 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) addition of sections, see §§ 4032, 4042 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-661, December 30, 2010,  58 DCR 70).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Emergency Amendment Act of 2010 (D.C. Act 18-542, October 9, 2010,  57 DCR 9627).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of University of the District of Columbia Procurement Authority Emergency Amendment Act of 2010 (D.C. Act 18-467, July 7, 2010,  57 DCR 6914).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of University of the District of Columbia Procurement Authority Emergency Amendment Act of 2009 (D.C. Act 18-200, October 10, 2009,  56 DCR 8137).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of University of the District of Columbia Board of Trustees Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-3, January 30, 2009,  56 DCR 1625).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of University of the District of Columbia Board of Trustees Emergency Amendment Act of 2008 (D.C. Act 17-569, November 6, 2008,  55 DCR 12112).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(a) of the Board of Trustees of the University of the District of Columbia Emergency Amendment Act of 2000 (D.C. Act 13-372, June 26, 2000,  47 DCR 5844).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(a) of the Board of Trustees of the University of the District of Columbia Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-280, March 7, 2000,  47 DCR 2022).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the University of the District of Columbia Board of Trustees Residency Requirement Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-226, January 11, 2000,  47 DCR 481).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(a) of the Board of Trustees of the University of the District of Columbia Emergency Amendment Act of 1999 (D.C. Act 13-210, December 17, 1999,  47 DCR 9).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the University of the District of Columbia Board of Trustees Residency Requirement Emergency Amendment Act of 1999 (D.C. Act 13-128, August 4, 1999,  46 DCR 6644).</p>
+                <p>For temporary amendment of section, see § 301(b) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and § 201(b) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Laws 13-95, in subsec. (c)(1), added the second sentence, and added a new section to provide for filling vacancies on the Board.</p>
-                <p>Section 6(b) of D.C. Laws 13-95 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2 of D.C. Laws 13-58 added subsection (c-1) to read as follows:</p>
-                <p>“Four of the 11 Trustees appointed by the Mayor with the advice and consent of the Council may be nonresidents of the District of Columbia. At least 7 of the 11 Trustees shall reside in the District of Columbia at the time of their confirmation by the Council. The Mayor shall submit the names of District residents and nonresidents in a proportion to comply with the provisions of this subsection, when submitting nominees to the Council.”</p>
-                <p>Section 4(b) of D.C. Laws 13-58 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2 of D.C. Law 17-302, in subsec. (f), inserted the following sentence at the end: “Notwithstanding section 2(c) of the Confirmation Act of 1978, effective March 3, 1979 (<a class="internal-link" href="/dc/council/laws/2-142.html">D.C. Law 2-142</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>(c)), a member shall continue to serve until a successor is appointed and confirmed.”</p>
-                <p>Section 4(b) of D.C. Law 17-302 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(a) of D.C. Law 18-92, in subsec. (a), substituted “the University.” for “the University; provided, however, that contracting for the purchase or disposal of goods and services shall be carried out by the Office of Contracting and Procurement on behalf of the Board of Trustees.”.</p>
-                <p>Section 5(b) of D.C. Law 18-92 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(a) of D.C. Law 18-282 amended subsec. (a) to read as follows:</p>
-                <p>“(a) There is established a body corporate by name of the Board of Trustees of the University of the District of Columbia, which by that name and style shall have perpetual succession. It shall be charged with the responsibility of governing the University of the District of Columbia (‘University’) and shall possess all the powers necessary or convenient to accomplish the objects and perform the duties authorized by this section, and sections 206 and 403, including the power to:</p>
-                <p>“(1) Adopt, alter, and use a corporate seal, which shall be judicially noticed;</p>
-                <p>“(2) Make contracts;</p>
-                <p>“(3) Sue and be sued;</p>
-                <p>“(4) Complain and defend in its name in any court of competent jurisdiction;</p>
-                <p>“(5) Make, deliver, and receive deeds, leases, and other instruments;</p>
-                <p>“(6) Take title to real and other property in its name;</p>
-                <p>“(7) Adopt, prescribe, amend, repeal, and enforce bylaws, rules, and regulations it considers necessary for the governance and administration of the University; and</p>
-                <p>“(8) Procure and contract for goods and services.”.</p>
                 <p>Section 5(b) of D.C. Law 18-282 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(8) Procure and contract for goods and services.”.</p>
+                <p>“(7) Adopt, prescribe, amend, repeal, and enforce bylaws, rules, and regulations it considers necessary for the governance and administration of the University; and</p>
+                <p>“(6) Take title to real and other property in its name;</p>
+                <p>“(5) Make, deliver, and receive deeds, leases, and other instruments;</p>
+                <p>“(4) Complain and defend in its name in any court of competent jurisdiction;</p>
+                <p>“(3) Sue and be sued;</p>
+                <p>“(2) Make contracts;</p>
+                <p>“(1) Adopt, alter, and use a corporate seal, which shall be judicially noticed;</p>
+                <p>“(a) There is established a body corporate by name of the Board of Trustees of the University of the District of Columbia, which by that name and style shall have perpetual succession. It shall be charged with the responsibility of governing the University of the District of Columbia (‘University’) and shall possess all the powers necessary or convenient to accomplish the objects and perform the duties authorized by this section, and sections 206 and 403, including the power to:</p>
+                <p>Section 2(a) of D.C. Law 18-282 amended subsec. (a) to read as follows:</p>
+                <p>Section 5(b) of D.C. Law 18-92 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(a) of D.C. Law 18-92, in subsec. (a), substituted “the University.” for “the University; provided, however, that contracting for the purchase or disposal of goods and services shall be carried out by the Office of Contracting and Procurement on behalf of the Board of Trustees.”.</p>
+                <p>Section 4(b) of D.C. Law 17-302 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 17-302, in subsec. (f), inserted the following sentence at the end: “Notwithstanding section 2(c) of the Confirmation Act of 1978, effective March 3, 1979 (<a class="internal-link" href="/dc/council/laws/2-142.html">D.C. Law 2-142</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>(c)), a member shall continue to serve until a successor is appointed and confirmed.”</p>
+                <p>Section 4(b) of D.C. Laws 13-58 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“Four of the 11 Trustees appointed by the Mayor with the advice and consent of the Council may be nonresidents of the District of Columbia. At least 7 of the 11 Trustees shall reside in the District of Columbia at the time of their confirmation by the Council. The Mayor shall submit the names of District residents and nonresidents in a proportion to comply with the provisions of this subsection, when submitting nominees to the Council.”</p>
+                <p>Section 2 of D.C. Laws 13-58 added subsection (c-1) to read as follows:</p>
+                <p>Section 6(b) of D.C. Laws 13-95 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Laws 13-95, in subsec. (c)(1), added the second sentence, and added a new section to provide for filling vacancies on the Board.</p>
                 <h4>References in Text</h4>
                 <p>Section 38-1202.02, referred to in subsections (e) and (f), was repealed by <a class="internal-link" href="/dc/council/laws/12-68.html">D.C. Law 12-68</a>, § 401(i), effective April 29, 1998.</p>
                 <h4>Editor's Notes</h4>
@@ -294,8 +316,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§202">Oct. 26, 1974, 88 Stat. 1425, Pub. L. 93-471, title II, § 202</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 4, 22 DCR 2916</a>; <a class="internal-link" href="/dc/council/laws/5-161.html">Mar. 14, 1985, D.C. Law 5-161, § 2, 32 DCR 158</a>; <a class="internal-link" href="/dc/council/laws/8-69.html">Feb. 27, 1990, D.C. Law 8-69, § 3, 36 DCR 7737</a>; <a class="internal-link" href="/dc/council/laws/12-86.html">April 29, 1998, D.C. Law 12-86, § 401(i), 45 DCR 1172</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1512.</p>
                 <p>1973 Ed., § 31-1712.</p>
+                <p>1981 Ed., § 31-1512.</p>
               </section>
             </section>
             <hr/>
@@ -312,8 +334,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§203">Oct. 26, 1974, 88 Stat. 1425, Pub. L. 93-471, title II, § 203</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 4, 22 DCR 2921</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1513.</p>
                 <p>1973 Ed., § 31-1713.</p>
+                <p>1981 Ed., § 31-1513.</p>
               </section>
             </section>
             <hr/>
@@ -328,8 +350,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§204">Oct. 26, 1974, 88 Stat. 1426, Pub. L. 93-471, title II, § 204</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 4, 22 DCR 2292</a>; <a class="internal-link" href="/dc/council/laws/2-139.html">Mar. 3, 1979, D.C. Law 2-139, § 3204(f), 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/3-81.html">Aug. 7, 1980, D.C. Law 3-81, § 2(gg), 27 DCR 2632</a>; <a class="internal-link" href="/dc/council/laws/8-259.html">Apr. 20, 1991, D.C. Law 8-259, § 2, 38 DCR 1449</a>; <a class="internal-link" href="/dc/council/laws/9-13.html">July 13, 1991, D.C. Law 9-13, § 2, 38 DCR 3378</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1514.</p>
                 <p>1973 Ed., § 31-1714.</p>
+                <p>1981 Ed., § 31-1514.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
               </section>
@@ -346,8 +368,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§205">Oct. 26, 1974, 88 Stat. 1426, Pub. L. 93-471, title II, § 205</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 4, 22 DCR 2922</a>; <a class="internal-link" href="/dc/council/laws/1-99.html">Apr. 6, 1977, D.C. Law 1-99, § 2(a), 23 DCR 8729</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1515.</p>
                 <p>1973 Ed., § 31-1715.</p>
+                <p>1981 Ed., § 31-1515.</p>
               </section>
             </section>
             <hr/>
@@ -401,40 +423,40 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§206">Oct. 26, 1974, 88 Stat. 1427, Pub. L. 93-471, title II, § 206</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 4, 22 DCR 2923</a>; <a class="internal-link" href="/dc/council/laws/2-139.html">Mar. 3, 1979, D.C. Law 2-139, § 3204(f), 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/3-82.html">Aug. 22, 1980, D.C. Law 3-82, § 3(a), 27 DCR 2647</a>; <a class="internal-link" href="/dc/council/laws/5-47.html">Feb. 9, 1984, D.C. Law 5-47, § 2, 30 DCR 5641</a>; <a class="internal-link" href="/dc/council/laws/6-177.html">Feb. 24, 1987, D.C. Law 6-177, § 2(c), (d), 33 DCR 7241</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 301(c), 43 DCR 2978</a>; <a class="internal-link" href="/dc/council/laws/11-259.html">Apr. 12, 1997, D.C. Law 11-259, § 314(b), 44 DCR 1423</a>; <a class="internal-link" href="/dc/council/laws/12-231.html">Apr. 20, 1999, D.C. Law 12-231, § 2(a), 46 DCR 487</a>; <a class="internal-link" href="/dc/council/laws/18-285.html">Mar. 8, 2011, D.C. Law 18-285, § 3, 57 DCR 11005</a>; <a class="internal-link" href="/dc/council/laws/18-286.html">Mar. 8, 2011, D.C. Law 18-286, § 2(b), 57 DCR 11012</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, §§ 96, 226, 59 DCR 6190</a>; <a class="internal-link" href="/dc/council/laws/21-275.html#§2">Apr. 15, 2017, D.C. Law 21-275, § 2, 64 DCR 953</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1516.</p>
                 <p>1973 Ed., § 31-1716.</p>
+                <p>1981 Ed., § 31-1516.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>, § <a class="internal-link" href="/dc/council/code/sections/38-1202.01.html">38-1202.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2853.04.html">47-2853.04</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-285.html">D.C. Law 18-285</a> added par. (19).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-286.html">D.C. Law 18-286</a>, in par. (15), deleted “and” from the end; rewrote par. (16); repealed par. (17); in par. (18), substituted “; and” for a period at the end; and added par. (20).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction; and substituted “the requirements of Chapter 3A of Title 2, except as specified in § <a class="internal-link" href="/dc/council/code/sections/2-351.05.html">2-351.05</a>” for “the requirements of § <a class="internal-link" href="/dc/council/code/sections/2-301.01.html">2-301.01</a> et seq., except as specified in § <a class="internal-link" href="/dc/council/code/sections/2-303.20.html">2-303.20</a>” in (20)(A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-286.html">D.C. Law 18-286</a>, in par. (15), deleted “and” from the end; rewrote par. (16); repealed par. (17); in par. (18), substituted “; and” for a period at the end; and added par. (20).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-285.html">D.C. Law 18-285</a> added par. (19).</p>
                 <h4>Cross References</h4>
                 <p>Regulated non-health related occupations and professions, license taxes, see § <a class="internal-link" href="/dc/council/code/sections/47-2853.04.html">47-2853.04</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 301(c) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and § 201(c) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of University of the District of Columbia Procurement Authority Emergency Amendment Act of 2009 (D.C. Act 18-200, October 10, 2009,  56 DCR 8137).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of Pre-K Acceleration and Clarification Emergency Amendment Act of 2009 (D.C. Act 18-304, January 28, 2010,  57 DCR 1475).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of University of the District of Columbia Procurement Authority Emergency Amendment Act of 2010 (D.C. Act 18-467, July 7, 2010,  57 DCR 6914).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Emergency Amendment Act of 2010 (D.C. Act 18-542, October 9, 2010,  57 DCR 9627).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-602, December 1, 2010,  57 DCR 11039).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-661, December 30, 2010,  58 DCR 70).</p>
                 <p>For temporary (90 day) amendment of section, see § 3 of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 19-4, February 11, 2011,  58 DCR 1399).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-661, December 30, 2010,  58 DCR 70).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of Pre-k Acceleration and Clarification Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-602, December 1, 2010,  57 DCR 11039).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Emergency Amendment Act of 2010 (D.C. Act 18-542, October 9, 2010,  57 DCR 9627).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of University of the District of Columbia Procurement Authority Emergency Amendment Act of 2010 (D.C. Act 18-467, July 7, 2010,  57 DCR 6914).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of Pre-K Acceleration and Clarification Emergency Amendment Act of 2009 (D.C. Act 18-304, January 28, 2010,  57 DCR 1475).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of University of the District of Columbia Procurement Authority Emergency Amendment Act of 2009 (D.C. Act 18-200, October 10, 2009,  56 DCR 8137).</p>
+                <p>For temporary amendment of section, see § 301(c) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and § 201(c) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(b) of D.C. Law 18-92 deleted “and” from the end of par. (15), rewrote par. (16) to read as follows:</p>
-                <p>“(16) Generally determine, control, supervise, manage, and govern all affairs of the University of the District of Columbia and, pursuant to paragraph (19) of this section, adopt policies and regulations considered necessary for efficient governance;’ ; repealed par. (17); in par. (18), substituted “; and” for a period; and added par. (19) to read as follows:</p>
-                <p>“(19)(A) Procure all goods and services necessary to operate the University independent of the Office of Contracting and Procurement and the requirements of the District of Columbia Procurement Practices Act of 1985, effective February 21, 1986 (<a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-301.01.html">2-301.01</a> et seq.) (‘Act’), except as specified in section 320 of the Act; provided, that the Council has approved proposed rules governing the procurement of goods and services.</p>
-                <p>“(B) The proposed rules shall be submitted to the Council for a 45-day period of review, excluding Saturdays, Sundays, legal holidays, and days of Council recess. If the Council does not approve or disapprove the proposed rules, in whole or in part, by resolution, within the 45-day review period, the proposed rules shall be deemed disapproved.”</p>
-                <p>Section 5(b) of D.C. Law 18-92 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 3 of D.C. Law 18-142 added par. (19) to read as follows:</p>
-                <p>“(19)(A) Coordinate the state system, in accordance with federal requirements, for pre-k teacher preparation, professional development, and training;</p>
-                <p>“(B) Establish a collaborative of District of Columbia colleges and universities to craft a higher education incentive grant program and a scholarship program and develop a pre-k workforce development plan, as required by section 401 of the Pre-k Enhancement and Expansion Amendment Act of 2008, effective July 18, 2008 (<a class="internal-link" href="/dc/council/laws/17-202.html">D.C. Law 17-202</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/38-274.01.html">38-274.01</a>)(Pre-k act”); and</p>
-                <p>“(C) Establish the higher education incentive grant program and the scholarship program for the purpose of increasing the number of highly-qualified pre-k teachers and assistant teachers who are eligible to teach in a high-quality pre-k classroom as of September 1, 2014, as set forth in section 401 of the Pre-k act.”.</p>
-                <p>Section 5(a) of D.C. Law 18-142 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(b) of D.C. Law 18-282, in par. (15), deleted “and” at the end; amended par. (16) to read as follows:</p>
-                <p>“(16) Generally determine, control, supervise, manage, and govern all affairs of the University;”; repealed par. (17); in par. (18), substituted “; and” for a period at the end; and added par. (19) to read as follows:</p>
-                <p>“(B) Submit any proposed rules governing the procurement of goods and services promulgated subsequent to the effective date of the University of the District of Columbia Board of Trustees Quorum and Contracting Reform Emergency Amendment Act of 2010, passed on emergency basis on September 21, 2010 (Enrolled version of Bill 18-995), to the Council for its review and approval.”.</p>
                 <p>Section 5(a) of D.C. Law 18-282 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(B) Submit any proposed rules governing the procurement of goods and services promulgated subsequent to the effective date of the University of the District of Columbia Board of Trustees Quorum and Contracting Reform Emergency Amendment Act of 2010, passed on emergency basis on September 21, 2010 (Enrolled version of Bill 18-995), to the Council for its review and approval.”.</p>
+                <p>“(16) Generally determine, control, supervise, manage, and govern all affairs of the University;”; repealed par. (17); in par. (18), substituted “; and” for a period at the end; and added par. (19) to read as follows:</p>
+                <p>Section 2(b) of D.C. Law 18-282, in par. (15), deleted “and” at the end; amended par. (16) to read as follows:</p>
+                <p>Section 5(a) of D.C. Law 18-142 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(C) Establish the higher education incentive grant program and the scholarship program for the purpose of increasing the number of highly-qualified pre-k teachers and assistant teachers who are eligible to teach in a high-quality pre-k classroom as of September 1, 2014, as set forth in section 401 of the Pre-k act.”.</p>
+                <p>“(B) Establish a collaborative of District of Columbia colleges and universities to craft a higher education incentive grant program and a scholarship program and develop a pre-k workforce development plan, as required by section 401 of the Pre-k Enhancement and Expansion Amendment Act of 2008, effective July 18, 2008 (<a class="internal-link" href="/dc/council/laws/17-202.html">D.C. Law 17-202</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/38-274.01.html">38-274.01</a>)(Pre-k act”); and</p>
+                <p>“(19)(A) Coordinate the state system, in accordance with federal requirements, for pre-k teacher preparation, professional development, and training;</p>
+                <p>Section 3 of D.C. Law 18-142 added par. (19) to read as follows:</p>
+                <p>Section 5(b) of D.C. Law 18-92 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(B) The proposed rules shall be submitted to the Council for a 45-day period of review, excluding Saturdays, Sundays, legal holidays, and days of Council recess. If the Council does not approve or disapprove the proposed rules, in whole or in part, by resolution, within the 45-day review period, the proposed rules shall be deemed disapproved.”</p>
+                <p>“(19)(A) Procure all goods and services necessary to operate the University independent of the Office of Contracting and Procurement and the requirements of the District of Columbia Procurement Practices Act of 1985, effective February 21, 1986 (<a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-301.01.html">2-301.01</a> et seq.) (‘Act’), except as specified in section 320 of the Act; provided, that the Council has approved proposed rules governing the procurement of goods and services.</p>
+                <p>“(16) Generally determine, control, supervise, manage, and govern all affairs of the University of the District of Columbia and, pursuant to paragraph (19) of this section, adopt policies and regulations considered necessary for efficient governance;’ ; repealed par. (17); in par. (18), substituted “; and” for a period; and added par. (19) to read as follows:</p>
+                <p>Section 2(b) of D.C. Law 18-92 deleted “and” from the end of par. (15), rewrote par. (16) to read as follows:</p>
                 <h4>Resolutions</h4>
                 <p>Resolution 18-351, the “University of the District of Columbia Procurement Rules Emergency Approval Resolution of 2009”, was approved effective December 15, 2009.</p>
               </section>
@@ -466,8 +488,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§207">Oct. 26, 1974, 88 Stat. 1428, Pub. L. 93-471, title II, § 207</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">as added Nov. 1, 1975, D.C. Law 1-36, § 4, 22 DCR 2929</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(bb), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1517.</p>
                 <p>1973 Ed., § 31-1718.</p>
+                <p>1981 Ed., § 31-1517.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-378.html">D.C. Law 18-378</a>, in subsec. (a)(1), substituted “this unit” for “§ 29-615”.</p>
                 <h4>Cross References</h4>
@@ -492,8 +514,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§209">Oct. 26, 1974, 88 Stat. 1428, Pub. L. 93-471, title II, § 208</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">renumbered § 209, Nov. 1, 1975, D.C. Law 1-36, § 4, 22 DCR 2911</a>; <a class="internal-link" href="/us/congress/laws/public/110-234.html">May 22, 2008, 122 Stat. 923, Pub. L. 110-234, § 7417(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1518.</p>
                 <p>1973 Ed., § 31-1719.</p>
+                <p>1981 Ed., § 31-1518.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-1202.10.html">38-1202.10</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -518,8 +540,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§210">Oct. 26, 1974, 88 Stat. 1429, Pub. L. 93-471, title II, § 209</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">renumbered § 210, Nov. 1, 1975, D.C. Law 1-36, § 4, 22 DCR 2911</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1519.</p>
                 <p>1973 Ed., § 31-1720.</p>
+                <p>1981 Ed., § 31-1519.</p>
               </section>
             </section>
             <hr/>
@@ -542,8 +564,8 @@
                 <h4>Cross References</h4>
                 <p>Regulated non-health related occupations and professions, license taxes, see § <a class="internal-link" href="/dc/council/code/sections/47-2853.04.html">47-2853.04</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 301(d) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, Apr. 26, 1996,  43 DCR 2412), and § 201(d) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <p>Section 501 of D.C. Act 11-335 provided for the application of the act.</p>
+                <p>For temporary addition of section, see § 301(d) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, Apr. 26, 1996,  43 DCR 2412), and § 201(d) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <h4>References in Text</h4>
                 <p>Section 38-1205.03, referred to in (a), was repealed by <a class="internal-link" href="/dc/council/laws/11-152.html">D.C. Law 11-152</a>,  43 DCR 2978.</p>
                 <h4>Editor's Notes</h4>
@@ -566,8 +588,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary addition of section, see § 2 of the Adult Education Designation Emergency Amendment Act of 1998 (D.C. Act 12-449, September 18, 1998,  45 DCR 6667), and § 2 of the Adult Education Designation Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-598, January 20, 1999,  45 DCR 1144).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/12-183.html">D.C. Law 12-183</a> added this section.</p>
                 <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/12-183.html">D.C. Law 12-183</a> provided that this act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/12-183.html">D.C. Law 12-183</a> added this section.</p>
               </section>
             </section>
             <hr/>
@@ -584,8 +606,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§301">Oct. 26, 1974, 88 Stat. 1429, Pub. L. 93-471, title III, § 301</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 4, 22 DCR 2930</a>; <a class="internal-link" href="/dc/council/laws/2-111.html">Sept. 23, 1978, D.C. Law 2-111, § 3, 25 DCR 1462</a>; <a class="internal-link" href="/dc/council/laws/3-82.html">Aug. 22, 1980, D.C. Law 3-82, § 3(b), 27 DCR 2647</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1521.</p>
                 <p>1973 Ed., § 31-1721.</p>
+                <p>1981 Ed., § 31-1521.</p>
               </section>
             </section>
             <hr/>
@@ -607,35 +629,35 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§401">Oct. 26, 1974, 88 Stat. 1429, Pub. L. 93-471, title IV, § 401</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 5, 22 DCR 2931</a>; <a class="internal-link" href="/dc/council/laws/2-132.html">Mar. 3, 1979, D.C. Law 2-132, § 2, 25 DCR 3489</a>; <a class="internal-link" href="/dc/council/laws/18-286.html">Mar. 8, 2011, D.C. Law 18-286, § 2(c), 57 DCR 11012</a>; <a class="internal-link" href="/dc/council/laws/19-251.html">Mar. 19, 2013, D.C. Law 19-251, § 2, 60 DCR 980</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1531.</p>
                 <p>1973 Ed., § 31-1731.</p>
+                <p>1981 Ed., § 31-1531.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-286.html">D.C. Law 18-286</a> rewrote the section, which formerly read:</p>
-                <p>“Meetings may be called by the Chairperson or a majority of the members of the Trustees. No official action may be taken by the Trustees except at a meeting of the Trustees at which a quorum is present. A total of 8 of the voting members of the Board of Trustees shall constitute a quorum for the transaction of business, except a lesser number may hold hearings. Each meeting of the Trustees shall be open to the public and held in the District of Columbia with appropriate notice of each such meeting given to the general public, except a majority of the Trustees may elect to go into executive session to take action on personnel matters. The Trustees shall meet at stated times established by the Board of Trustees, but not less frequently than 4 times a year.”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-251.html">D.C. Law 19-251</a> substituted “4 meetings” for “6 meetings” in (a)(1).</p>
+                <p>“Meetings may be called by the Chairperson or a majority of the members of the Trustees. No official action may be taken by the Trustees except at a meeting of the Trustees at which a quorum is present. A total of 8 of the voting members of the Board of Trustees shall constitute a quorum for the transaction of business, except a lesser number may hold hearings. Each meeting of the Trustees shall be open to the public and held in the District of Columbia with appropriate notice of each such meeting given to the general public, except a majority of the Trustees may elect to go into executive session to take action on personnel matters. The Trustees shall meet at stated times established by the Board of Trustees, but not less frequently than 4 times a year.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-286.html">D.C. Law 18-286</a> rewrote the section, which formerly read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 2(b) of the Board of Trustees of the University of the District of Columbia Emergency Amendment Act of 1999 (D.C. Act 13-210, December 17, 1999,  47 DCR 9).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(b) of the Board of Trustees of the University of the District of Columbia Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-280, March 7, 2000,  47 DCR 2022).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(b) of the Board of Trustees of the University of the District of Columbia Board Emergency Amendment Act of 2000 (D.C. Act 13-372, June 26, 2000,  47 DCR 5844).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of University of the District of Columbia Board of Trustees Quorum Emergency Amendment Act of 2009 (D.C. Act 18-199, October 10, 2009,  56 DCR 8135).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of University of the District of Columbia Board of Trustees Quorum Emergency Amendment Act of 2010 (D.C. Act 18-459, July 7, 2010,  57 DCR 6056).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Emergency Amendment Act of 2010 (D.C. Act 18-542, October 9, 2010,  57 DCR 9627).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(c) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Congressional Review Emergency Amendment Act of 2010 (D.C. Act 18-661, December 30, 2010,  58 DCR 70).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of University of the District of Columbia Board of Trustees Quorum and Contracting Reform Emergency Amendment Act of 2010 (D.C. Act 18-542, October 9, 2010,  57 DCR 9627).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of University of the District of Columbia Board of Trustees Quorum Emergency Amendment Act of 2010 (D.C. Act 18-459, July 7, 2010,  57 DCR 6056).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of University of the District of Columbia Board of Trustees Quorum Emergency Amendment Act of 2009 (D.C. Act 18-199, October 10, 2009,  56 DCR 8135).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(b) of the Board of Trustees of the University of the District of Columbia Board Emergency Amendment Act of 2000 (D.C. Act 13-372, June 26, 2000,  47 DCR 5844).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(b) of the Board of Trustees of the University of the District of Columbia Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-280, March 7, 2000,  47 DCR 2022).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(b) of the Board of Trustees of the University of the District of Columbia Emergency Amendment Act of 1999 (D.C. Act 13-210, December 17, 1999,  47 DCR 9).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(b) of D.C. Laws 13-095, in the third sentence, substituted “A majority” for “A total of 8”.</p>
-                <p>Section 6(b) of D.C. Laws 13-095 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2 of D.C. Law 18-91 substituted “A majority of the voting members of the Board of Trustees shall constitute a quorum for the transaction of business” for “A total of 8 of the voting members of the Board of Trustees shall constitute a quorum for the transaction of business”.</p>
-                <p>Section 4(b) of D.C. Law 18-91 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(c) of D.C. Law 18-282 amended the section to read as follows:</p>
-                <p>“Sec. 401. Meetings of Trustees.</p>
-                <p>“(a)(1) The chairperson or a majority of the members of the Trustees may convene a meeting. The Trustees shall hold meetings periodically, as scheduled by the Trustees; provided, that at least 6 meetings shall be held each year. All meetings shall be held in the District of Columbia. Except as provided in paragraph (2) of this subsection, meetings shall be noticed to the public and open to the public.</p>
-                <p>“(2) The Trustees may convene in executive session by a vote of a majority of the voting members serving to take action on matters that:</p>
-                <p>“(A) Relate to personnel or to practices of the Trustees;</p>
-                <p>“(B) Would result in the disclosure of matters specifically exempted from disclosure by statute; or</p>
-                <p>“(C) Would result in the disclosure of information of a personal nature where disclosure would constitute a clearly unwarranted invasion of personal privacy.</p>
-                <p>“(3) The Board shall keep the minutes of each meeting of the Board and shall make the minutes of each public meeting available to the public for inspection and distribution.</p>
-                <p>“(b) No official action may be taken at a meeting or an executive session unless a quorum is present; except, that a lesser number may hold a hearing. A majority of the voting members serving on the Board of Trustees shall constitute a quorum.”.</p>
                 <p>Section 5(a) of D.C. Law 18-282 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(b) No official action may be taken at a meeting or an executive session unless a quorum is present; except, that a lesser number may hold a hearing. A majority of the voting members serving on the Board of Trustees shall constitute a quorum.”.</p>
+                <p>“(3) The Board shall keep the minutes of each meeting of the Board and shall make the minutes of each public meeting available to the public for inspection and distribution.</p>
+                <p>“(C) Would result in the disclosure of information of a personal nature where disclosure would constitute a clearly unwarranted invasion of personal privacy.</p>
+                <p>“(B) Would result in the disclosure of matters specifically exempted from disclosure by statute; or</p>
+                <p>“(A) Relate to personnel or to practices of the Trustees;</p>
+                <p>“(2) The Trustees may convene in executive session by a vote of a majority of the voting members serving to take action on matters that:</p>
+                <p>“(a)(1) The chairperson or a majority of the members of the Trustees may convene a meeting. The Trustees shall hold meetings periodically, as scheduled by the Trustees; provided, that at least 6 meetings shall be held each year. All meetings shall be held in the District of Columbia. Except as provided in paragraph (2) of this subsection, meetings shall be noticed to the public and open to the public.</p>
+                <p>“Sec. 401. Meetings of Trustees.</p>
+                <p>Section 2(c) of D.C. Law 18-282 amended the section to read as follows:</p>
+                <p>Section 4(b) of D.C. Law 18-91 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 18-91 substituted “A majority of the voting members of the Board of Trustees shall constitute a quorum for the transaction of business” for “A total of 8 of the voting members of the Board of Trustees shall constitute a quorum for the transaction of business”.</p>
+                <p>Section 6(b) of D.C. Laws 13-095 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(b) of D.C. Laws 13-095, in the third sentence, substituted “A majority” for “A total of 8”.</p>
               </section>
             </section>
             <hr/>
@@ -650,8 +672,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§402">Oct. 26, 1974, 88 Stat. 1429, Pub. L. 93-471, title IV, § 402</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 5, 22 DCR 2931</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1532.</p>
                 <p>1973 Ed., § 31-1732.</p>
+                <p>1981 Ed., § 31-1532.</p>
               </section>
             </section>
             <hr/>
@@ -669,8 +691,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§403">Oct. 26, 1974, 88 Stat. 1429, Pub. L. 93-471, title IV, § 403</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 5, 22 DCR 2932</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 301(e), 43 DCR 2978</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1533.</p>
                 <p>1973 Ed., § 31-1733.</p>
+                <p>1981 Ed., § 31-1533.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-1202.01.html">38-1202.01</a>.</p>
                 <h4>Emergency Legislation</h4>
@@ -689,8 +711,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§404">Oct. 26, 1974, 88 Stat. 1430, Pub. L. 93-471, title IV, § 404</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 5, 22 DCR 2933</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1534.</p>
                 <p>1973 Ed., § 31-1734.</p>
+                <p>1981 Ed., § 31-1534.</p>
                 <h4>Change in Government</h4>
                 <p>“Department of Education,” referred to in the last sentence of this section, was substituted for “Department of Health, Education and Welfare,” pursuant to § 301 of the Act of October 17, 1979, 93 Stat. 677, Pub. L. 96-88.</p>
               </section>
@@ -709,15 +731,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§405">Oct. 26, 1974, 88 Stat. 1430, Pub. L. 93-471, title IV, § 405</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 5, 22 DCR 2934</a>; <a class="internal-link" href="/dc/council/laws/2-139.html">Mar. 3, 1979, D.C. Law 2-139, § 3204(b), 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/3-82.html">Aug. 22, 1980, D.C. Law 3-82, §§ 3(c), 27 DCR 2647</a>; <a class="internal-link" href="/dc/council/laws/8-131.html">May 23, 1990, D.C. Law 8-131, § 2, 37 DCR 2211</a>; <a class="internal-link" href="/dc/council/laws/8-143.html">June 22, 1990, D.C. Law 8-143, § 2, 37 DCR 2972</a>; <a class="internal-link" href="/dc/council/laws/11-259.html">Apr. 12, 1997, D.C. Law 11-259, § 314(c), 44 DCR 1423</a>; <a class="internal-link" href="/dc/council/laws/13-172.html">Oct. 19, 2000, D.C. Law 13-172, § 706, 47 DCR 6308</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1535.</p>
                 <p>1973 Ed., § 31-1735.</p>
+                <p>1981 Ed., § 31-1535.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> deleted former subsec. (b) providing: “Except as provided in § 1-336 § <a class="internal-link" href="/dc/council/code/sections/1-301.91.html">1-301.91</a>, 2001 Ed., the Office of Contracting and Procurement shall contract on behalf of the Board of Education for procurement of goods or services necessary for the performance of Board of Education functions.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 706 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <p>For temporary (90 day) amendment of section, see § 706 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) amendment of section, see § 706 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
               </section>
             </section>
             <hr/>
@@ -732,8 +754,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§406">Oct. 26, 1974, 88 Stat. 1430, Pub. L. 93-471, title IV, § 406</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 5, 22 DCR 2934</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1536.</p>
                 <p>1973 Ed., § 31-1736.</p>
+                <p>1981 Ed., § 31-1536.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary addition of section, see § 301(f) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and.</p>
                 <h4>References in Text</h4>
@@ -757,8 +779,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> designate the existing text as subsec. (a); and added subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 301(f) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and § 201(f) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <p>Section 501 of D.C. Act 11-335 provided for the application of the act.</p>
+                <p>For temporary addition of section, see § 301(f) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and § 201(f) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 4061 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided that subtitle G of title IV of the act may be cited as “University of the District of Columbia Nonresident Tuition Amendment Act of 2011”.</p>
               </section>
@@ -946,10 +968,10 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 31-1550.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary repeal of section, see § 301(n) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412).</p>
-                <p>Section 303 of D.C. Act 11-264 provided for the application of § 301(n) of the act.</p>
-                <p>For temporary amendment of section, see § 201(n) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <p>Section 501 of D.C. Act 11-335 provided for application of the act.</p>
+                <p>For temporary amendment of section, see § 201(n) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
+                <p>Section 303 of D.C. Act 11-264 provided for the application of § 301(n) of the act.</p>
+                <p>For temporary repeal of section, see § 301(n) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412).</p>
                 <h4>References in Text</h4>
                 <p>Section 38-1205.06, referred to in subsection (a), was repealed August 1, 1996, by <a class="internal-link" href="/dc/council/laws/11-152.html">D.C. Law 11-152</a>.</p>
               </section>
@@ -1056,8 +1078,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 14 of the Self-Sufficiency Promotion Emergency Amendment Act of 1998 (D.C. Act 12-372, June 9, 1998,  45 DCR 4270), § 14 of the Self-Sufficiency Promotion Emergency Amendment Act of 1998 (D.C. Act 12-425, July 31, 1998,  45 DCR 5682), § 14 of the Self-Sufficiency Promotion Emergency Amendment Act of 1998 (D.C. Act 12-552, December 24, 1998,  45 DCR 521), and § 15 of the Self-Sufficiency Promotion Congressional Review Emergency Amendment Act of 1999 (D.C. 13-19, February 17, 1999,  46 DCR 4292).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 14 of <a class="internal-link" href="/dc/council/laws/12-230.html">D.C. Law 12-230</a> substituted “Temporary Assistance for Needy Families or Program on Work, Employment, and Responsibility pursuant to Chapter 2 of Title 3” [Chapter 2 of Title 4, 2001 Ed.] for “the Aid to Families with Dependent Children category of public assistance as defined in § 3-201.1(1) [§ <a class="internal-link" href="/dc/council/code/sections/4-201.01.html">4-201.01</a>, 2001 Ed.] ” in (3).</p>
                 <p>Section 18(b) of <a class="internal-link" href="/dc/council/laws/12-230.html">D.C. Law 12-230</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 14 of <a class="internal-link" href="/dc/council/laws/12-230.html">D.C. Law 12-230</a> substituted “Temporary Assistance for Needy Families or Program on Work, Employment, and Responsibility pursuant to Chapter 2 of Title 3” [Chapter 2 of Title 4, 2001 Ed.] for “the Aid to Families with Dependent Children category of public assistance as defined in § 3-201.1(1) [§ <a class="internal-link" href="/dc/council/code/sections/4-201.01.html">4-201.01</a>, 2001 Ed.] ” in (3).</p>
                 <h4>Mayor's Orders</h4>
                 <p>Establishment of the D.C. Tuition Assistance Grant Program Office and Delegation of Authority under Public Law 106-98, the “District of Columbia College Access Act of 1999”, see Mayor’s Order 2000-138, September 7, 2000 ( 47 DCR 8247).</p>
               </section>
@@ -1181,12 +1203,12 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§801">Oct. 26, 1974, Pub. L. 93-471, Title VIII, § 801</a>; <a class="internal-link" href="/dc/council/laws/14-190.html">as added Oct. 1, 2002, D.C. Law 14-190, § 2202, 49 DCR 6968</a>; <a class="internal-link" href="/dc/council/laws/15-105.html">Mar. 13, 2004, D.C. Law 15-105, § 70, 51 DCR 881</a>; <a class="internal-link" href="/dc/council/laws/15-354.html">Apr. 13, 2005, D.C. Law 15-354, § 85(d), 52 DCR 2638</a>; <a class="internal-link" href="/dc/council/laws/20-271.html">May 2, 2015, D.C. Law 20-271, § 263(a), 62 DCR 1884</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in par. (1), validated a previously made technical correction.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> validated a previously made technical correction.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-271.html">D.C. Law 20-271</a> repealed (1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in par. (1), validated a previously made technical correction.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see §  263(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
                 <p>For temporary (90 days) amendment of this section, see § 263(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-7, Feb. 26, 2015,  62 DCR 2646, 21 STAT 807).</p>
+                <p>For temporary (90 days) amendment of this section, see §  263(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
               </section>
             </section>
             <hr/>
@@ -1217,8 +1239,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-1208.01.html">38-1208.01</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of this section, see § 263(b) of the  New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
                 <p>For temporary (90 days) repeal of this section, see § 263(b) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-7, Feb. 26, 2015,  62 DCR 2646, 21 STAT 807).</p>
+                <p>For temporary (90 days) repeal of this section, see § 263(b) of the  New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
               </section>
             </section>
             <hr/>
@@ -1235,8 +1257,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-1208.03.html">38-1208.03</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of this section, see § 263(c) of the  New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
                 <p>For temporary (90 days) repeal of this section, see § 263(c) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-7, Feb. 26, 2015,  62 DCR 2646, 21 STAT 807).</p>
+                <p>For temporary (90 days) repeal of this section, see § 263(c) of the  New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
               </section>
             </section>
             <hr/>
@@ -1278,9 +1300,9 @@
       (<a class="internal-link" href="/dc/council/laws/13-172.html#§2407">Oct. 19, 2000, D.C. Law 13-172, § 2407, 47 DCR 6308</a>; <a class="internal-link" href="/dc/council/laws/21-143.html#§11">Aug. 17, 2016, D.C. Law 21-143, § 11, 63 DCR 7589</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) authorization of biennial audits of endowment fund, see § 2407 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
-                <p>For temporary (90 day) amendment of section, see § 2407 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <p>For temporary (90 days) repeal of this section, see <a class="internal-link" href="/dc/council/acts/21-403.html#§10">§ 10 of Repeal of Outdated and Unnecessary Audit Mandates Emergency Amendment Act of 2016 (D.C. Act 21-403, May 21, 2016, 63 DCR 7925)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2407 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) authorization of biennial audits of endowment fund, see § 2407 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
               </section>
             </section>
             <hr/>
@@ -1295,8 +1317,8 @@
       (<a class="internal-link" href="/dc/council/laws/18-111.html#§4141">Mar. 3, 2010, D.C. Law 18-111, § 4141, 57 DCR 181</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 4141 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) addition, see § 4141 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 4141 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 4140 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle O of title IV of the act may be cited as the “Transfer of Capital Budget Authority and Funding to the University of the District of Columbia Act of 2009”.</p>
               </section>
@@ -1321,8 +1343,8 @@
                 <h4>Cross References</h4>
                 <p>Collection on behalf of the University of the District of Columbia, § <a class="internal-link" href="/dc/council/code/sections/1-350.02a.html">1-350.02a</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 7033 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) addition of this section, see § 7033 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) addition of this section, see § 7033 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 7031 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle C of Title VII of the act may be cited as the “Delinquent Debt Recovery Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/50-2301.06.html">§ 50–2301.06. Time computation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/50-2301.05.html">Report Error</a>
@@ -106,35 +106,35 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§105">Sept. 12, 1978, D.C. Law 2-104, § 105, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/6-15.html">Aug. 1, 1985, D.C. Law 6-15, § 9, 32 DCR 3570</a>; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 302(c), 48 DCR 2057</a>; <a class="internal-link" href="/dc/council/laws/19-168.html">Sept. 20, 2012, D.C. Law 19-168, § 1054(b)[c], 59 DCR 8025</a>; <a class="internal-link" href="/dc/council/laws/19-307.html">May 1, 2013, D.C. Law 19-307, § 106, 60 DCR 2753</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, § 3(b), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-605.</p>
                 <p>1973 Ed., § 40-1105.</p>
+                <p>1981 Ed., § 40-605.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a>, § <a class="internal-link" href="/dc/council/code/sections/50-1401.01.html">50-1401.01</a>, § <a class="internal-link" href="/dc/council/code/sections/50-1501.02.html">50-1501.02</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2201.03.html">50-2201.03</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2207.02.html">50-2207.02</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2302.05.html">50-2302.05</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2302.06.html">50-2302.06</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2303.04a.html">50-2303.04a</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-2303.06.html">50-2303.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (a), par. (2)(A), substituted “§ <a class="internal-link" href="/dc/council/code/sections/50-2302.05.html">50-2302.05</a>(d)(1) and § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>(d)(1)” for “§ <a class="internal-link" href="/dc/council/code/sections/50-2302.03.html">50-2302.03</a>(d) and § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>(d)”; and added subsec. (c).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> deleted the last sentence of (b), which read: “The Director may pay a reasonable percentage of monies collected to private agencies for the collection of fines, penalties and fees.”</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a> rewrote (a)(1).</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> added “and fees” to the end of the section heading; made a minor stylistic change at the end of (c); and added (d).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a> rewrote (a)(1).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> deleted the last sentence of (b), which read: “The Director may pay a reasonable percentage of monies collected to private agencies for the collection of fines, penalties and fees.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (a), par. (2)(A), substituted “§ <a class="internal-link" href="/dc/council/code/sections/50-2302.05.html">50-2302.05</a>(d)(1) and § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>(d)(1)” for “§ <a class="internal-link" href="/dc/council/code/sections/50-2302.03.html">50-2302.03</a>(d) and § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>(d)”; and added subsec. (c).</p>
                 <h4>Cross References</h4>
-                <p>Compulsory/no-fault motor vehicle insurance, crimes and offenses, penalties and hearing procedures, see § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a>.</p>
                 <p>Motor vehicle operators’ permits, operation of vehicle by person with expired permit, penalties, see § <a class="internal-link" href="/dc/council/code/sections/50-1401.01.html">50-1401.01</a>.</p>
+                <p>Compulsory/no-fault motor vehicle insurance, crimes and offenses, penalties and hearing procedures, see § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1054(b) of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
-                <p>For temporary (90 day) amendment of section, see § 1054(b) of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
-                <p>For temporary addition of provisions concerning automated traffic enforcement, see § 101 to 105 of the Safety-Based Traffic Enforcement Emergency Amendment Act of 2012 (D.C. Act 19-635, January 19, 2013,  60 DCR 1731).</p>
-                <p>For temporary amendment of section, see § 106 of the Safety-Based Traffic Enforcement Emergency Amendment Act of 2012 (D.C. Act 19-635, January 19, 2013,  60 DCR 1731).</p>
-                <p>For temporary (90 days) addition of provisions concerning automated traffic enforcement, see § 101 to 105 of the Safety-Based Traffic Enforcement Congressional Review Emergency Act of 2013 (D.C. Act 20-50, April 22, 2013,  60 DCR 6339, 20 DCSTAT 1356).</p>
-                <p>For temporary (90 days) amendment of this section, see § 106 of the Safety-Based Traffic Enforcement Congressional Review Emergency Act of 2013 (D.C. Act 20-50, April 22, 2013,  60 DCR 6339, 20 DCSTAT 1356).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 days) amendment of this section, see § 106 of the Safety-Based Traffic Enforcement Congressional Review Emergency Act of 2013 (D.C. Act 20-50, April 22, 2013,  60 DCR 6339, 20 DCSTAT 1356).</p>
+                <p>For temporary (90 days) addition of provisions concerning automated traffic enforcement, see § 101 to 105 of the Safety-Based Traffic Enforcement Congressional Review Emergency Act of 2013 (D.C. Act 20-50, April 22, 2013,  60 DCR 6339, 20 DCSTAT 1356).</p>
+                <p>For temporary amendment of section, see § 106 of the Safety-Based Traffic Enforcement Emergency Amendment Act of 2012 (D.C. Act 19-635, January 19, 2013,  60 DCR 1731).</p>
+                <p>For temporary addition of provisions concerning automated traffic enforcement, see § 101 to 105 of the Safety-Based Traffic Enforcement Emergency Amendment Act of 2012 (D.C. Act 19-635, January 19, 2013,  60 DCR 1731).</p>
+                <p>For temporary (90 day) amendment of section, see § 1054(b) of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) amendment of section, see § 1054(b) of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <h4>Editor's Notes</h4>
-                <p>Snow Emergency Fine Increase Resolution of 1998: Pursuant to Resolution PR 12-998, deemed approved on November 28, 1998, the Council approved a proposed rule, transmitted to the Council by the Mayor, which amended Title 18 of the District of Columbia Municipal Regulations, sections 2600.1 and 2601.1, to increase fines for violations of snow emergency rules.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a>: Section 401(a) of <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a> provided that the 2013 amendment to this section shall apply as of May 1, 2013.</p>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a>: Section 401(a) of <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a> provided that the 2013 amendment to this section shall apply as of May 1, 2013.</p>
+                <p>Snow Emergency Fine Increase Resolution of 1998: Pursuant to Resolution PR 12-998, deemed approved on November 28, 1998, the Council approved a proposed rule, transmitted to the Council by the Mayor, which amended Title 18 of the District of Columbia Municipal Regulations, sections 2600.1 and 2601.1, to increase fines for violations of snow emergency rules.</p>
                 <h4>Resolutions</h4>
-                <p>Resolution 16-352, the “International Registration Plan Enforcement Rulemaking Disapproval Resolution of 2005”, was approved effective November 1, 2005.</p>
                 <p>Resolution 16-548, the “Commercial Driver’s License and International Registration Plan Enforcement Approval Resolution of 2006”, was approved effective March 7, 2006.</p>
+                <p>Resolution 16-352, the “International Registration Plan Enforcement Rulemaking Disapproval Resolution of 2005”, was approved effective November 1, 2005.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1555.08.html">§ 2–1555.08. Coordination of funding and reporting.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1555.07.html">Report Error</a>
@@ -107,9 +107,9 @@
       (<a class="internal-link" href="/dc/council/laws/21-261.html#§8">Apr. 7, 2017, D.C. Law 21-261, § 8, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§8">§ 8 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§8">§ 8 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>

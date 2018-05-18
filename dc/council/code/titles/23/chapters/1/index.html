@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/23/chapters/3/">Chapter 3. Indictments and Informations.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/23/chapters/1/">Report Error</a>
@@ -87,22 +87,54 @@
         <section class="col8 body">
           <h1>Chapter 1. General Provisions.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/23-101.html">§ 23–101. Conduct of prosecutions.</a>
-            <a href="/dc/council/code/sections/23-102.html">§ 23–102. Abandonment of prosecution; enlargement of time for taking action.</a>
-            <a href="/dc/council/code/sections/23-103.html">§ 23–103. Statements prior to sentence.</a>
-            <a href="/dc/council/code/sections/23-103a.html">§ 23–103a. Rights of victims of crime. [Repealed]</a>
-            <a href="/dc/council/code/sections/23-104.html">§ 23–104. Appeals by United States and District of Columbia.</a>
-            <a href="/dc/council/code/sections/23-105.html">§ 23–105. Challenges to jurors.</a>
-            <a href="/dc/council/code/sections/23-106.html">§ 23–106. Witnesses for defense; fees.</a>
-            <a href="/dc/council/code/sections/23-107.html">§ 23–107. Discharge or acquittal of joint defendant during trial in order to be witness.</a>
-            <a href="/dc/council/code/sections/23-108.html">§ 23–108. Depositions.</a>
-            <a href="/dc/council/code/sections/23-109.html">§ 23–109. Powers of investigators assigned to United States Attorney.</a>
-            <a href="/dc/council/code/sections/23-110.html">§ 23–110. Remedies on motion attacking sentence.</a>
-            <a href="/dc/council/code/sections/23-111.html">§ 23–111. Proceedings to establish previous convictions.</a>
-            <a href="/dc/council/code/sections/23-112.html">§ 23–112. Consecutive and concurrent sentences.</a>
-            <a href="/dc/council/code/sections/23-112a.html">§ 23–112a. Notice at sentencing of child support modification.</a>
-            <a href="/dc/council/code/sections/23-113.html">§ 23–113. Limitations on actions for criminal violations.</a>
-            <a href="/dc/council/code/sections/23-114.html">§ 23–114. Corroboration of a child witness’ testimony not required.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-101.html">§ 23–101. Conduct of prosecutions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-102.html">§ 23–102. Abandonment of prosecution; enlargement of time for taking action.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-103.html">§ 23–103. Statements prior to sentence.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-103a.html">§ 23–103a. Rights of victims of crime. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-104.html">§ 23–104. Appeals by United States and District of Columbia.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-105.html">§ 23–105. Challenges to jurors.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-106.html">§ 23–106. Witnesses for defense; fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-107.html">§ 23–107. Discharge or acquittal of joint defendant during trial in order to be witness.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-108.html">§ 23–108. Depositions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-109.html">§ 23–109. Powers of investigators assigned to United States Attorney.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-110.html">§ 23–110. Remedies on motion attacking sentence.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-111.html">§ 23–111. Proceedings to establish previous convictions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-112.html">§ 23–112. Consecutive and concurrent sentences.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-112a.html">§ 23–112a. Notice at sentencing of child support modification.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-113.html">§ 23–113. Limitations on actions for criminal violations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-114.html">§ 23–114. Corroboration of a child witness’ testimony not required.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -122,21 +154,21 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 604, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-101.</p>
                 <p>1973 Ed., § 23-101.</p>
+                <p>1981 Ed., § 23-101.</p>
                 <h4>Cross References</h4>
-                <p>Adult protective services, penalties and enforcement, see § <a class="internal-link" href="/dc/council/code/sections/7-1912.html">7-1912</a>.</p>
-                <p>Alcoholic beverages provisions, penalties for violations, see § <a class="internal-link" href="/dc/council/code/sections/25-831.html">25-831</a>.</p>
-                <p>Cable television provisions, prosecutions for violations, see § <a class="internal-link" href="/dc/council/code/sections/34-1250.html">34-1250</a>.</p>
-                <p>Corporation Counsel, duties, see § <a class="internal-link" href="/dc/council/code/sections/1-301.111.html">1-301.111</a>.</p>
-                <p>Funeral services, prosecutions for violations, see § <a class="internal-link" href="/dc/council/code/sections/3-418.html">3-418</a>.</p>
-                <p>Hazardous waste management provisions, penalties for violations, see § <a class="internal-link" href="/dc/council/code/sections/8-1311.html">8-1311</a>.</p>
-                <p>Indigents, representation, see §§ <a class="internal-link" href="/dc/council/code/sections/2-1602.html">2-1602</a> and <a class="internal-link" href="/dc/council/code/sections/11-2601.html">11-2601</a>.</p>
-                <p>Insurance companies, prosecutions for violations of provisions governing, see § <a class="internal-link" href="/dc/council/code/sections/47-2605.html">47-2605</a>.</p>
-                <p>Medicaid Provider Fraud Prevention Act, prosecution of violations, see § <a class="internal-link" href="/dc/council/code/sections/4-804.html">4-804</a>.</p>
-                <p>Public passenger vehicles, penalties for unlawful conduct on, see § <a class="internal-link" href="/dc/council/code/sections/35-253.html">35-253</a>.</p>
-                <p>Wastewater control law, penalties and prosecutions under, see § <a class="internal-link" href="/dc/council/code/sections/8-105.14.html">8-105.14</a>.</p>
                 <p>Water pollution control provisions, penalties and prosecutions for violation, see § 8-10</p>
+                <p>Wastewater control law, penalties and prosecutions under, see § <a class="internal-link" href="/dc/council/code/sections/8-105.14.html">8-105.14</a>.</p>
+                <p>Public passenger vehicles, penalties for unlawful conduct on, see § <a class="internal-link" href="/dc/council/code/sections/35-253.html">35-253</a>.</p>
+                <p>Medicaid Provider Fraud Prevention Act, prosecution of violations, see § <a class="internal-link" href="/dc/council/code/sections/4-804.html">4-804</a>.</p>
+                <p>Insurance companies, prosecutions for violations of provisions governing, see § <a class="internal-link" href="/dc/council/code/sections/47-2605.html">47-2605</a>.</p>
+                <p>Indigents, representation, see §§ <a class="internal-link" href="/dc/council/code/sections/2-1602.html">2-1602</a> and <a class="internal-link" href="/dc/council/code/sections/11-2601.html">11-2601</a>.</p>
+                <p>Hazardous waste management provisions, penalties for violations, see § <a class="internal-link" href="/dc/council/code/sections/8-1311.html">8-1311</a>.</p>
+                <p>Funeral services, prosecutions for violations, see § <a class="internal-link" href="/dc/council/code/sections/3-418.html">3-418</a>.</p>
+                <p>Corporation Counsel, duties, see § <a class="internal-link" href="/dc/council/code/sections/1-301.111.html">1-301.111</a>.</p>
+                <p>Cable television provisions, prosecutions for violations, see § <a class="internal-link" href="/dc/council/code/sections/34-1250.html">34-1250</a>.</p>
+                <p>Alcoholic beverages provisions, penalties for violations, see § <a class="internal-link" href="/dc/council/code/sections/25-831.html">25-831</a>.</p>
+                <p>Adult protective services, penalties and enforcement, see § <a class="internal-link" href="/dc/council/code/sections/7-1912.html">7-1912</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 34 of <a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> provided that Title 23 is designated Title 23 of the District of Columbia Official Code.</p>
               </section>
@@ -153,8 +185,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 605, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-102.</p>
                 <p>1973 Ed., § 23-102.</p>
+                <p>1981 Ed., § 23-102.</p>
               </section>
             </section>
             <hr/>
@@ -170,8 +202,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 605, Pub. L. 91-358, title II, § 210(a)</a>; <a class="internal-link" href="/dc/council/laws/7-229.html">May 10, 1989, D.C. Law 7-229, § 2(a), 35 DCR 6155</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-103.</p>
                 <p>1973 Ed., § 23-103.</p>
+                <p>1981 Ed., § 23-103.</p>
                 <h4>Cross References</h4>
                 <p>Aliens, sentencing, see § <a class="internal-link" href="/dc/council/code/sections/16-713.html">16-713</a>.</p>
               </section>
@@ -213,17 +245,17 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 606, Pub. L. 91-358, title II, § 210(a)</a>; <a class="internal-link" href="/dc/council/laws/16-306.html">Apr. 24, 2007, D.C. Law 16-306, § 224(a), 53 DCR 8610</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-104.</p>
                 <p>1973 Ed., § 23-104.</p>
+                <p>1981 Ed., § 23-104.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/11-721.html">11-721</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-306.html">D.C. Law 16-306</a> added subsecs. (d-1) and (d-2); in subsec. (e), substituted “subsection (b), (d), (d-1), or (d-2)” for “subsection (b) or (d)”; and rewrote subsec. (f), which had read as follows: “(f) Pending the prosecution and determination of an appeal taken pursuant to this section, the defendant shall be detained or released in accordance with chapter 13 of this title.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 224(a) of Omnibus Public Safety Emergency Amendment Act of 2006 (D.C. Act 16-445, July 19, 2006,  53 DCR 6443).</p>
-                <p>For temporary (90 day) amendment of section, see § 224(a) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-490, October 18, 2006,  53 DCR 8686).</p>
-                <p>For temporary (90 day) amendment of section, see § 224(a) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-10, January 16, 2007,  54 DCR 1479).</p>
                 <p>For temporary (90 day) amendment of section, see § 224(a) of Omnibus Public Safety Second Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-25, April 19, 2007,  54 DCR 4036).</p>
+                <p>For temporary (90 day) amendment of section, see § 224(a) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-10, January 16, 2007,  54 DCR 1479).</p>
+                <p>For temporary (90 day) amendment of section, see § 224(a) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-490, October 18, 2006,  53 DCR 8686).</p>
+                <p>For temporary (90 day) amendment of section, see § 224(a) of Omnibus Public Safety Emergency Amendment Act of 2006 (D.C. Act 16-445, July 19, 2006,  53 DCR 6443).</p>
               </section>
             </section>
             <hr/>
@@ -241,11 +273,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 607, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-105.</p>
                 <p>1973 Ed., § 23-105.</p>
+                <p>1981 Ed., § 23-105.</p>
                 <h4>Cross References</h4>
-                <p>Challenges in civil cases, see § <a class="internal-link" href="/dc/council/code/sections/11-1902.html">11-1902</a>.</p>
                 <p>Qualifications of jurors, see § <a class="internal-link" href="/dc/council/code/sections/11-1901.html">11-1901</a>.</p>
+                <p>Challenges in civil cases, see § <a class="internal-link" href="/dc/council/code/sections/11-1902.html">11-1902</a>.</p>
               </section>
             </section>
             <hr/>
@@ -260,8 +292,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 607, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-106.</p>
                 <p>1973 Ed., § 23-106.</p>
+                <p>1981 Ed., § 23-106.</p>
                 <h4>Cross References</h4>
                 <p>Competency and credibility of witnesses who have been convicted of crime, see § <a class="internal-link" href="/dc/council/code/sections/14-305.html">14-305</a>.</p>
               </section>
@@ -281,8 +313,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 607, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-107.</p>
                 <p>1973 Ed., § 23-107.</p>
+                <p>1981 Ed., § 23-107.</p>
               </section>
             </section>
             <hr/>
@@ -302,8 +334,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 608, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-108.</p>
                 <p>1973 Ed., § 23-108.</p>
+                <p>1981 Ed., § 23-108.</p>
                 <h4>Cross References</h4>
                 <p>Depositions in civil cases, see § <a class="internal-link" href="/dc/council/code/sections/14-104.html">14-104</a>.</p>
               </section>
@@ -320,8 +352,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 608, Pub. L. 91-358, title II, § 210(a)</a>; <a class="internal-link" href="/dc/council/laws/11-275.html">June 3, 1997, D.C. Law 11-275, § 14(a), 44 DCR 1408</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-109.</p>
                 <p>1973 Ed., § 23-109.</p>
+                <p>1981 Ed., § 23-109.</p>
               </section>
             </section>
             <hr/>
@@ -343,18 +375,18 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 608, Pub. L. 91-358, title II, § 210(a)</a>; <a class="internal-link" href="/dc/council/laws/18-88.html">Dec. 10, 2009, D.C. Law 18-88, § 220, 56 DCR 7413</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-110.</p>
                 <p>1973 Ed., § 23-110.</p>
+                <p>1981 Ed., § 23-110.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/11-2601.html">11-2601</a>, § <a class="internal-link" href="/dc/council/code/sections/22-4132.html">22-4132</a>, and § <a class="internal-link" href="/dc/council/code/sections/22-4133.html">22-4133</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a>, in subsec. (b), designated the existing language as par. (1), and added par. (2).</p>
                 <h4>Cross References</h4>
-                <p>Plan for furnishing representation of indigents in criminal cases, see § <a class="internal-link" href="/dc/council/code/sections/11-2601.html">11-2601</a>.</p>
                 <p>Representation of indigents, see §§ <a class="internal-link" href="/dc/council/code/sections/2-1602.html">2-1602</a> and <a class="internal-link" href="/dc/council/code/sections/11-2601.html">11-2601</a>.</p>
+                <p>Plan for furnishing representation of indigents in criminal cases, see § <a class="internal-link" href="/dc/council/code/sections/11-2601.html">11-2601</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 220 of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
                 <p>For temporary (90 day) amendment of section, see § 220 of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
+                <p>For temporary (90 day) amendment of section, see § 220 of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
               </section>
             </section>
             <hr/>
@@ -375,8 +407,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 609, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-111.</p>
                 <p>1973 Ed., § 23-111.</p>
+                <p>1981 Ed., § 23-111.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/11-721.html">11-721</a>.</p>
                 <h4>Cross References</h4>
@@ -395,8 +427,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 610, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-112.</p>
                 <p>1973 Ed., § 23-112.</p>
+                <p>1981 Ed., § 23-112.</p>
                 <h4>Cross References</h4>
                 <p>Theft and other crimes, prohibition of consecutive sentences, see § <a class="internal-link" href="/dc/council/code/sections/22-3203.html">22-3203</a>.</p>
               </section>
@@ -491,15 +523,15 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-113.31.html">5-113.31</a> and § <a class="internal-link" href="/dc/council/code/sections/22-3227.07.html">22-3227.07</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-194.html">D.C. Law 14-194</a> rewrote subsec. (a)(1) which had read as follows: “(1) A prosecution for murder in the first or second degree may be commenced at any time.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-356.html">D.C. Law 15-356</a> rewrote subsecs. (a) and (d).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-306.html">D.C. Law 16-306</a>, in subsecs. (a)(2) and (3), inserted “and any offense that is properly joinable with any of the following crimes” following “A prosecution for the following crimes”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-239.html">D.C. Law 18-239</a>, in subsec. (a)(3), deleted “and” from the end of subpar. (H), substituted “; and” for a period the end of subpar. (I), and added subpars. (J) to (M); and, in subsec. (d)(2), deleted “and” from the end of subpar. (D), substituted “; and” for a period the end of subpar. (E), and added subpars. (F) to (J) and par. (d)(5).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-306.html">D.C. Law 16-306</a>, in subsecs. (a)(2) and (3), inserted “and any offense that is properly joinable with any of the following crimes” following “A prosecution for the following crimes”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-356.html">D.C. Law 15-356</a> rewrote subsecs. (a) and (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-194.html">D.C. Law 14-194</a> rewrote subsec. (a)(1) which had read as follows: “(1) A prosecution for murder in the first or second degree may be commenced at any time.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 224(b) of Omnibus Public Safety Emergency Amendment Act of 2006 (D.C. Act 16-445, July 19, 2006,  53 DCR 6443).</p>
-                <p>For temporary (90 day) amendment of section, see § 224(b) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-490, October 18, 2006,  53 DCR 8686).</p>
-                <p>For temporary (90 day) amendment of section, see § 224(b) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-10, January 16, 2007,  54 DCR 1479).</p>
                 <p>For temporary (90 day) amendment of section, see § 224(b) of Omnibus Public Safety Second Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-25, April 19, 2007,  54 DCR 4036).</p>
+                <p>For temporary (90 day) amendment of section, see § 224(b) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-10, January 16, 2007,  54 DCR 1479).</p>
+                <p>For temporary (90 day) amendment of section, see § 224(b) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-490, October 18, 2006,  53 DCR 8686).</p>
+                <p>For temporary (90 day) amendment of section, see § 224(b) of Omnibus Public Safety Emergency Amendment Act of 2006 (D.C. Act 16-445, July 19, 2006,  53 DCR 6443).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 4 of <a class="internal-link" href="/dc/council/laws/15-356.html">D.C. Law 15-356</a> provided as follows: “Sec. 4. Applicability. This act shall apply to an offense committed before its effective date only if the statute of limitations for the offense has not expired prior to the effective date.”</p>
               </section>
@@ -518,10 +550,10 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 23-114.</p>
                 <h4>Cross References</h4>
-                <p>Abducting or enticing children from home for purposes of prostitution and harboring such children, see § <a class="internal-link" href="/dc/council/code/sections/22-2704.html">22-2704</a>.</p>
-                <p>Cruelty to children, definition and penalty, see § <a class="internal-link" href="/dc/council/code/sections/22-1101.html">22-1101</a>.</p>
-                <p>Sexual abuse, see § <a class="internal-link" href="/dc/council/code/sections/22-3001.html">22-3001</a> et seq.</p>
                 <p>Sexual performances using minors, see § <a class="internal-link" href="/dc/council/code/sections/22-3101.html">22-3101</a> et seq.</p>
+                <p>Sexual abuse, see § <a class="internal-link" href="/dc/council/code/sections/22-3001.html">22-3001</a> et seq.</p>
+                <p>Cruelty to children, definition and penalty, see § <a class="internal-link" href="/dc/council/code/sections/22-1101.html">22-1101</a>.</p>
+                <p>Abducting or enticing children from home for purposes of prostitution and harboring such children, see § <a class="internal-link" href="/dc/council/code/sections/22-2704.html">22-2704</a>.</p>
               </section>
             </section>
             <hr/>

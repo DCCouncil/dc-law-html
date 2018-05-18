@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/33/chapters/3/">Chapter 3. Dissolution and Payment of Debts. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/33/chapters/2/">Report Error</a>
@@ -87,28 +87,50 @@
         <section class="col8 body">
           <h1>Chapter 2. Uniform Limited Partnership Act (1987). [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/I/">Subchapter I. General Provisions. [Repealed].</a>
-            <p>§§ 33-201.01 - 33-201.09</p>
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/II/">Subchapter II. Formation, Certificate of Limited Partnership. [Repealed].</a>
-            <p>§§ 33-202.01 - 33-202.08</p>
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/III/">Subchapter III. Limited Partners. [Repealed].</a>
-            <p>§§ 33-203.01 - 33-203.05</p>
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/IV/">Subchapter IV. General Partners. [Repealed].</a>
-            <p>§§ 33-204.01 - 33-204.05</p>
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/V/">Subchapter V. Finance. [Repealed].</a>
-            <p>§§ 33-205.01 - 33-205.04</p>
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/VI/">Subchapter VI. Distributions and Withdrawal. [Repealed].</a>
-            <p>§§ 33-206.01 - 33-206.08</p>
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/VII/">Subchapter VII. Assignment of Partnership Interests. [Repealed].</a>
-            <p>§§ 33-207.01 - 33-207.05</p>
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/VIII/">Subchapter VIII. Dissolution. [Repealed].</a>
-            <p>§§ 33-208.01 - 33-208.04</p>
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/IX/">Subchapter IX. Foreign Limited Partnerships. [Repealed].</a>
-            <p>§§ 33-209.01 - 33-209.10</p>
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/X/">Subchapter X. Derivative Actions. [Repealed].</a>
-            <p>§§ 33-210.01 - 33-210.04</p>
-            <a href="/dc/council/code/titles/33/chapters/2/subchapters/XI/">Subchapter XI. Miscellaneous. [Repealed].</a>
-            <p>§§ 33-211.01 - 33-211.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/I/">Subchapter I. General Provisions. [Repealed].</a>
+            </p>
+            <p>§§ 33-201.01 – 33-201.09</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/II/">Subchapter II. Formation, Certificate of Limited Partnership. [Repealed].</a>
+            </p>
+            <p>§§ 33-202.01 – 33-202.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/III/">Subchapter III. Limited Partners. [Repealed].</a>
+            </p>
+            <p>§§ 33-203.01 – 33-203.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/IV/">Subchapter IV. General Partners. [Repealed].</a>
+            </p>
+            <p>§§ 33-204.01 – 33-204.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/V/">Subchapter V. Finance. [Repealed].</a>
+            </p>
+            <p>§§ 33-205.01 – 33-205.04</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/VI/">Subchapter VI. Distributions and Withdrawal. [Repealed].</a>
+            </p>
+            <p>§§ 33-206.01 – 33-206.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/VII/">Subchapter VII. Assignment of Partnership Interests. [Repealed].</a>
+            </p>
+            <p>§§ 33-207.01 – 33-207.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/VIII/">Subchapter VIII. Dissolution. [Repealed].</a>
+            </p>
+            <p>§§ 33-208.01 – 33-208.04</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/IX/">Subchapter IX. Foreign Limited Partnerships. [Repealed].</a>
+            </p>
+            <p>§§ 33-209.01 – 33-209.10</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/X/">Subchapter X. Derivative Actions. [Repealed].</a>
+            </p>
+            <p>§§ 33-210.01 – 33-210.04</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/33/chapters/2/subchapters/XI/">Subchapter XI. Miscellaneous. [Repealed].</a>
+            </p>
+            <p>§§ 33-211.01 – 33-211.07</p>
           </section>
           <section class="content">
             <hr/>
@@ -126,8 +148,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 41-401.</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability date of <a class="internal-link" href="/dc/council/laws/18-378.html">D.C. Law 18-378</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/18-378.html">D.C. Law 18-378</a>, as amended by section 7082 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, provided: “Sec. 5. Applicability. This act shall apply as of January 1, 2012.”.</p>
                 <p>Section 89(a) of <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> corrected the law reference in <a class="internal-link" href="/dc/council/laws/18-378.html">D.C. Law 18-378</a>, § 3(y).</p>
+                <p>Applicability date of <a class="internal-link" href="/dc/council/laws/18-378.html">D.C. Law 18-378</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/18-378.html">D.C. Law 18-378</a>, as amended by section 7082 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, provided: “Sec. 5. Applicability. This act shall apply as of January 1, 2012.”.</p>
               </section>
             </section>
             <hr/>
@@ -1086,15 +1108,15 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 41-499.22.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2047 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 2047 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 day) amendment of section, see § 209 of Fiscal Year 2010 Balanced Budget Support Emergency Act of 2010 (D.C. Act 18-450, June 28, 2010,  57 DCR 5635).</p>
-                <p>For temporary (90 day) amendment of section, see § 209 of Fiscal Year 2010 Balanced Budget Support Congressional Review Emergency Act of 2010 (D.C. Act 18-531, August 6, 2010,  57 DCR 8109).</p>
                 <p>For temporary (90 day) amendment of section, see § 2029 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) amendment of section, see § 209 of Fiscal Year 2010 Balanced Budget Support Congressional Review Emergency Act of 2010 (D.C. Act 18-531, August 6, 2010,  57 DCR 8109).</p>
+                <p>For temporary (90 day) amendment of section, see § 209 of Fiscal Year 2010 Balanced Budget Support Emergency Act of 2010 (D.C. Act 18-450, June 28, 2010,  57 DCR 5635).</p>
+                <p>For temporary (90 day) amendment of section, see § 2047 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 2047 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 209 of D.C. Law 18-222 rewrote subsec. (b) to read as follows:</p>
-                <p>“(b) The Mayor, pursuant to Title 1 of the District of Columbia Administrative Procedure Act, approved October 21, 1968 (82 Stat. 1204; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-501.html">2-501</a> et seq.), may establish fees and additional charges as necessary for the implementation of this act.”.</p>
                 <p>Section 2002(b) of D.C. Law 18-222 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(b) The Mayor, pursuant to Title 1 of the District of Columbia Administrative Procedure Act, approved October 21, 1968 (82 Stat. 1204; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-501.html">2-501</a> et seq.), may establish fees and additional charges as necessary for the implementation of this act.”.</p>
+                <p>Section 209 of D.C. Law 18-222 rewrote subsec. (b) to read as follows:</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/29/chapters/6/">Chapter 6. General Partnerships.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29/chapters/5/">Report Error</a>
@@ -87,22 +87,54 @@
         <section class="col8 body">
           <h1>Chapter 5. Professional Corporations.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/29-501.html">§ 29–501. Short title.</a>
-            <a href="/dc/council/code/sections/29-502.html">§ 29–502. Definitions.</a>
-            <a href="/dc/council/code/sections/29-503.html">§ 29–503. Applicability.</a>
-            <a href="/dc/council/code/sections/29-504.html">§ 29–504. Construction; applicability of Chapter 3 of this title to corporations organized under [this]</a>
-            <a href="/dc/council/code/sections/29-505.html">§ 29–505. Purpose for organization; powers authorized.</a>
-            <a href="/dc/council/code/sections/29-506.html">§ 29–506. Incorporation.</a>
-            <a href="/dc/council/code/sections/29-507.html">§ 29–507. Number of directors.</a>
-            <a href="/dc/council/code/sections/29-508.html">§ 29–508. Qualifications of shareholders, director, and officer.</a>
-            <a href="/dc/council/code/sections/29-509.html">§ 29–509. Proxy prohibited.</a>
-            <a href="/dc/council/code/sections/29-510.html">§ 29–510. Professional relationship; liabilities.</a>
-            <a href="/dc/council/code/sections/29-511.html">§ 29–511. Transfer of shares.</a>
-            <a href="/dc/council/code/sections/29-512.html">§ 29–512. Merger or consolidation restricted.</a>
-            <a href="/dc/council/code/sections/29-513.html">§ 29–513. Disqualified professional.</a>
-            <a href="/dc/council/code/sections/29-514.html">§ 29–514. Disposition of stock of disqualified, deceased, or legally incompetent shareholder.</a>
-            <a href="/dc/council/code/sections/29-515.html">§ 29–515. Redemption price.</a>
-            <a href="/dc/council/code/sections/29-516.html">§ 29–516. Perpetual duration; dissolution.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-501.html">§ 29–501. Short title.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-502.html">§ 29–502. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-503.html">§ 29–503. Applicability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-504.html">§ 29–504. Construction; applicability of Chapter 3 of this title to corporations organized under [this]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-505.html">§ 29–505. Purpose for organization; powers authorized.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-506.html">§ 29–506. Incorporation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-507.html">§ 29–507. Number of directors.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-508.html">§ 29–508. Qualifications of shareholders, director, and officer.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-509.html">§ 29–509. Proxy prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-510.html">§ 29–510. Professional relationship; liabilities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-511.html">§ 29–511. Transfer of shares.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-512.html">§ 29–512. Merger or consolidation restricted.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-513.html">§ 29–513. Disqualified professional.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-514.html">§ 29–514. Disposition of stock of disqualified, deceased, or legally incompetent shareholder.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-515.html">§ 29–515. Redemption price.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-516.html">§ 29–516. Perpetual duration; dissolution.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -117,9 +149,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Cross References</h4>
-                <p>Accountants, registration of firms of CPAs, compliance with this chapter, see § <a class="internal-link" href="/dc/council/code/sections/47-2853.44.html">47-2853.44</a>.</p>
-                <p>Income and franchise taxes, “corporation” defined, see § <a class="internal-link" href="/dc/council/code/sections/47-1801.04.html">47-1801.04</a>.</p>
                 <p>Income and franchise taxes, “unincorporated business” defined, see § <a class="internal-link" href="/dc/council/code/sections/47-1801.01.html">47-1801.01</a>.</p>
+                <p>Income and franchise taxes, “corporation” defined, see § <a class="internal-link" href="/dc/council/code/sections/47-1801.04.html">47-1801.04</a>.</p>
+                <p>Accountants, registration of firms of CPAs, compliance with this chapter, see § <a class="internal-link" href="/dc/council/code/sections/47-2853.44.html">47-2853.44</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Former § <a class="internal-link" href="/dc/council/code/sections/29-501.html">29-501</a> has been recodified as § <a class="internal-link" href="/dc/council/code/sections/36-501.html">36-501</a>.</p>
               </section>
@@ -141,8 +173,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “health professionals as defined in section 101(8) of the District of Columbia Health Occupations Revision Act of 1985, effective March 25, 1986 (<a class="internal-link" href="/dc/council/laws/6-99.html">D.C. Law 6-99</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/3-1201.01.html">3-1201.01</a>(8))” for “practitioners of the healing arts, dentists, optometrists, podiatrists” in (3).</p>
                 <h4>Editor's Notes</h4>
-                <p>Former § <a class="internal-link" href="/dc/council/code/sections/29-502.html">29-502</a> has been recodified as § <a class="internal-link" href="/dc/council/code/sections/36-502.html">36-502</a>.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Former § <a class="internal-link" href="/dc/council/code/sections/29-502.html">29-502</a> has been recodified as § <a class="internal-link" href="/dc/council/code/sections/36-502.html">36-502</a>.</p>
               </section>
             </section>
             <hr/>
@@ -157,9 +189,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-403.</p>
-                <p>1981 Ed., § 29-603.</p>
                 <p>1973 Ed., § 29-1103.</p>
+                <p>1981 Ed., § 29-603.</p>
+                <p>2001 Ed., § 29-403.</p>
                 <h4>Editor's Notes</h4>
                 <p>Former § <a class="internal-link" href="/dc/council/code/sections/29-503.html">29-503</a> has been recodified as § <a class="internal-link" href="/dc/council/code/sections/36-503.html">36-503</a>.</p>
               </section>
@@ -177,9 +209,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-404.</p>
-                <p>1981 Ed., § 29-604.</p>
                 <p>1973 Ed., § 29-1104.</p>
+                <p>1981 Ed., § 29-604.</p>
+                <p>2001 Ed., § 29-404.</p>
                 <h4>Editor's Notes</h4>
                 <p>Former § <a class="internal-link" href="/dc/council/code/sections/29-504.html">29-504</a> has been recodified as § <a class="internal-link" href="/dc/council/code/sections/36-504.html">36-504</a>.</p>
               </section>
@@ -201,9 +233,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-405.</p>
-                <p>1981 Ed., § 29-605.</p>
                 <p>1973 Ed., § 29-1105.</p>
+                <p>1981 Ed., § 29-605.</p>
+                <p>2001 Ed., § 29-405.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/29-1302.01.html">29-1302.01</a>.</p>
               </section>
@@ -223,9 +255,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-406.</p>
-                <p>1981 Ed., § 29-606.</p>
                 <p>1973 Ed., § 29-1106.</p>
+                <p>1981 Ed., § 29-606.</p>
+                <p>2001 Ed., § 29-406.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/29-503.html">29-503</a>.</p>
               </section>
@@ -242,9 +274,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-407.</p>
-                <p>1981 Ed., § 29-607.</p>
                 <p>1973 Ed., § 29-1107.</p>
+                <p>1981 Ed., § 29-607.</p>
+                <p>2001 Ed., § 29-407.</p>
               </section>
             </section>
             <hr/>
@@ -261,9 +293,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-408.</p>
-                <p>1981 Ed., § 29-608.</p>
                 <p>1973 Ed., § 29-1108.</p>
+                <p>1981 Ed., § 29-608.</p>
+                <p>2001 Ed., § 29-408.</p>
               </section>
             </section>
             <hr/>
@@ -278,9 +310,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-410.</p>
-                <p>1981 Ed., § 29-610.</p>
                 <p>1973 Ed., § 29-1110.</p>
+                <p>1981 Ed., § 29-610.</p>
+                <p>2001 Ed., § 29-410.</p>
               </section>
             </section>
             <hr/>
@@ -296,10 +328,10 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-411.</p>
-                <p>1981 Ed., § 29-611.</p>
-                <p>1973 Ed., § 29-1111.</p>
                 <p>2001 Ed., § 29-410.</p>
+                <p>1973 Ed., § 29-1111.</p>
+                <p>1981 Ed., § 29-611.</p>
+                <p>2001 Ed., § 29-411.</p>
               </section>
             </section>
             <hr/>
@@ -320,9 +352,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-412.</p>
-                <p>1981 Ed., § 29-612.</p>
                 <p>1973 Ed., § 29-1112.</p>
+                <p>1981 Ed., § 29-612.</p>
+                <p>2001 Ed., § 29-412.</p>
               </section>
             </section>
             <hr/>
@@ -338,9 +370,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-413.</p>
-                <p>1981 Ed., § 29-613.</p>
                 <p>1973 Ed., § 29-1113.</p>
+                <p>1981 Ed., § 29-613.</p>
+                <p>2001 Ed., § 29-413.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/29-202.01.html">29-202.01</a>.</p>
               </section>
@@ -357,9 +389,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-415.</p>
-                <p>1981 Ed., § 29-615.</p>
                 <p>1973 Ed., § 29-1115.</p>
+                <p>1981 Ed., § 29-615.</p>
+                <p>2001 Ed., § 29-415.</p>
               </section>
             </section>
             <hr/>
@@ -376,9 +408,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-416.</p>
-                <p>1981 Ed., § 29-616.</p>
                 <p>1973 Ed., § 29-1116.</p>
+                <p>1981 Ed., § 29-616.</p>
+                <p>2001 Ed., § 29-416.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/29-513.html">29-513</a>.</p>
               </section>
@@ -395,9 +427,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-417.</p>
-                <p>1981 Ed., § 29-617.</p>
                 <p>1973 Ed., § 29-1117.</p>
+                <p>1981 Ed., § 29-617.</p>
+                <p>2001 Ed., § 29-417.</p>
               </section>
             </section>
             <hr/>
@@ -414,9 +446,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 2, 58 DCR 1720</a>; <a class="internal-link" href="/dc/council/laws/19-210.html">Mar. 5, 2013, D.C. Law 19-210, § 2(e)(2), 59 DCR 13171</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-418.</p>
-                <p>1981 Ed., § 29-618.</p>
                 <p>1973 Ed., § 29-1118.</p>
+                <p>1981 Ed., § 29-618.</p>
+                <p>2001 Ed., § 29-418.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>

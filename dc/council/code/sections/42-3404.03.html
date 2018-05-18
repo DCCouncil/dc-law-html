@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/42-3404.04.html">§ 42–3404.04. Third party rights.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-3404.03.html">Report Error</a>
@@ -109,13 +109,13 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/17-234.html">D.C. Law 17-234</a> rewrote the lead-in language, which had read as follows: “The owner shall provide each tenant and the Mayor a written copy of the offer of sale by first class mail and post a copy of the offer of sale in a conspicuous place in common areas of the housing accommodation if it consists of more than 1 unit. An offer includes, at a minimum:”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 3(j) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1994 (D.C. Act 10-285, July 8, 1994,  41 DCR 4904).</p>
                 <p>For temporary amendment of section, see § 3(j) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1995 (D.C. Act 11-47, May 4, 1995,  42 DCR 2410) and § 3(j) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Congressional Recess Emergency Act of 1995 (D.C. Act 11-96, July 19, 1995,  42 DCR 3837).</p>
+                <p>For temporary amendment of section, see § 3(j) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1994 (D.C. Act 10-285, July 8, 1994,  41 DCR 4904).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 3(j) of Rental Housing Conversion and Sale Act of 1980 Temporary Extension Amendment Act of 1994 (D.C. Law 10-176, September 22, 1994, law notification  41 DCR 6076).</p>
                 <h4>Editor's Notes</h4>
-                <p>Reenactment of Law 3-86: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3401.01.html">42-3401.01</a>.</p>
                 <p>Amendment of section by Law 10-144: Section 2(j) of <a class="internal-link" href="/dc/council/laws/10-144.html">D.C. Law 10-144</a> purported to amend (4) of this section to read as follows: “The owner shall provide each tenant and the Mayor a written copy of the offer of sale by first class mail and post a copy of the offer of sale in a conspicuous place in common areas of the housing accommodation if it consists of more than 1 unit. An offer includes, at a minimum: ”(4) A statement that the owner shall make available to the tenant a floor plan of the building and an itemized list of monthly operating expenses, utility consumption rates, and capital expenditures for each of the 2 preceding calendar years within 7 days after receiving a request. The statement shall also indicate that the owner shall, at the same time, make available the most recent rent roll, list of tenants, and list of vacant apartments. If the new owner does not have a floor plan, the owner may meet the requirement to provide a floor plan by stating in writing to the tenant that the owner does not have a floor plan.”</p>
+                <p>Reenactment of Law 3-86: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3401.01.html">42-3401.01</a>.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/2-301.05.html">§ 2–301.05. Office of Contracting and Procurement; authority. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-301.04.html">Report Error</a>
@@ -102,62 +102,62 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-1181.4.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see §§ 3(a) and (e) of the Procurement Reform Emergency Amendment Act of 1997 (D.C. Act 12-62, April 15, 1997,  44 DCR 2413), and §§ 3(a) and (e) of the Procurement Reform Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-133, August 12, 1997,  44 DCR 4832).</p>
-                <p>For temporary amendment of section, see § 2(a) of the Procurement Reform Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-374, April 24, 1998,  45 DCR 4338).</p>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Advisory Neighborhood Commission Procurement Exclusion Emergency Amendment Act of 1999 (D.C. Act 13-150, December 1, 1999,  46 DCR 10393).</p>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Advisory Neighborhood Commission Procurement Exclusion Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-316, April 17, 2000,  47 DCR 2875).</p>
-                <p>For temporary (90-day) amendment of section, see § 702 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
-                <p>For temporary (90 day) amendment of section, see § 702 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Advisory Neighborhood Commission Procurement Exclusion Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-12, March 2, 2001,  48 DCR 2498).</p>
-                <p>For temporary (90 day) amendment of section, see § 9 of Metropolitan Police Department School Safety and Security Emergency Act of 2004 (D.C. Act 15-496, August 2, 2004,  51 DCR 8797).</p>
-                <p>For temporary (90 day) amendment of section, see § 8 of School Safety and Security Contracting Procedures Emergency Act of 2004 (D.C. Act 15-596, November 30, 2004,  51 DCR 11219).</p>
-                <p>For temporary (90 day) amendment of section, see §§ 2(b), 3 of School Security Authority Extension Emergency Amendment Act of 2004 (D.C. Act 15-728, January 13, 2005,  52 DCR 1954).</p>
-                <p>For temporary (90 day) amendment of section, see § 8 of School Safety and Security Contracting Procedures Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-3, January 19, 2005,  52 DCR 2675).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of MPD CCTV Procurement Exemption Emergency Amendment Act of 2007 (D.C. Act 17-15, February 20, 2007,  54 DCR 1772).</p>
+                <p>For temporary (90 day) amendment of section, see § 8 of School Safety and Security Contracting Procedures Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-3, January 19, 2005,  52 DCR 2675).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 2(b), 3 of School Security Authority Extension Emergency Amendment Act of 2004 (D.C. Act 15-728, January 13, 2005,  52 DCR 1954).</p>
+                <p>For temporary (90 day) amendment of section, see § 8 of School Safety and Security Contracting Procedures Emergency Act of 2004 (D.C. Act 15-596, November 30, 2004,  51 DCR 11219).</p>
+                <p>For temporary (90 day) amendment of section, see § 9 of Metropolitan Police Department School Safety and Security Emergency Act of 2004 (D.C. Act 15-496, August 2, 2004,  51 DCR 8797).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Advisory Neighborhood Commission Procurement Exclusion Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-12, March 2, 2001,  48 DCR 2498).</p>
+                <p>For temporary (90 day) amendment of section, see § 702 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) amendment of section, see § 702 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Advisory Neighborhood Commission Procurement Exclusion Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-316, April 17, 2000,  47 DCR 2875).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Advisory Neighborhood Commission Procurement Exclusion Emergency Amendment Act of 1999 (D.C. Act 13-150, December 1, 1999,  46 DCR 10393).</p>
+                <p>For temporary amendment of section, see § 2(a) of the Procurement Reform Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-374, April 24, 1998,  45 DCR 4338).</p>
+                <p>For temporary amendment of section, see §§ 3(a) and (e) of the Procurement Reform Emergency Amendment Act of 1997 (D.C. Act 12-62, April 15, 1997,  44 DCR 2413), and §§ 3(a) and (e) of the Procurement Reform Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-133, August 12, 1997,  44 DCR 4832).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 3(a) of the Procurement Reform Temporary Amendment Act of 1997 (D.C. Law 12-17, Sep. 12, 1997, law notification  44 DCR 5459)</p>
                 <p>For temporary (225 day) amendment of the School Safety and Security Contracting Procedures Temporary Amendment Act of 2004 (D.C. Law 15-318, April 8, 2005, law notification  52 DCR 4707).</p>
+                <p>For temporary (225 day) amendment of section, see § 3(a) of the Procurement Reform Temporary Amendment Act of 1997 (D.C. Law 12-17, Sep. 12, 1997, law notification  44 DCR 5459)</p>
                 <h4>Effective Dates</h4>
                 <p>Section 203(c) of Pub. L. 109-356, as amended by Pub. L. 110-5, § 21073(h), provided: “This section and the amendments made by this section shall take effect October 16, 2007 .”</p>
                 <h4>Editor's Notes</h4>
-                <p>Sections 2, 3 and 5 of <a class="internal-link" href="/dc/council/laws/18-368.html">D.C. Law 18-368</a> provided:</p>
-                <p>“Sec. 2. Definitions.</p>
-                <p>“For the purposes of this act, the term:</p>
-                <p>“(1) ‘Deed Transfer and Recordation Taxes’ means the revenue resulting from the imposition of the taxes under section 303 of the District of Columbia Deed Recordation Tax Act of 1962, approved March 2, 1962 (76 Stat. 11; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/42-1103.html">42-1103</a>), and  section 47-903 of the District of Columbia Official Code.</p>
-                <p>“(2) ‘Developer’ means Eastbanc-W.D.C. Partners, LLC., its successors, affiliates, and assigns, either collectively or individually.</p>
-                <p>“(3) ‘District Property’ means the West End Library Property, Special Operations/MPD Building Property, and the West End Fire Station Property, as defined in paragraph (9) of this section.</p>
-                <p>“(4) ‘Fund’ means the West End Library and Fire Station Maintenance Fund established by section 4.</p>
-                <p>“(5) ‘Fund Managers’ means the Chief Librarian of the District of Columbia Public Library and the Mayor.</p>
-                <p>“(6) ‘LDDA’ means the Land Development and Disposition Agreement between the District and the Developer pursuant to the West End Parcels Disposition Approval Resolution of 2010, effective July 13, 2010 (Res.18-553;  57 DCR 7623).</p>
-                <p>“(7) ‘Maintenance Agreement’ means a West End Library and Fire Station Maintenance Agreement by and among the Fund Managers, and Developer, or its successors, or assigns, and established pursuant to section 5.</p>
-                <p>“(8) ‘Project’ means the acquisition, development, construction, installation, and equipping of the multi-use project to be located on the Property, to include:</p>
-                <p>“(A) A new library, estimated to contain approximately 20,000 gross square feet;</p>
-                <p>“(B) A new fire station, estimated to contain approximately 16,000 gross square feet;</p>
-                <p>“(C) A residential building on Square 37 estimated to contain approximately 224,390 gross square feet with approximately 153 units;</p>
-                <p>“(D) A residential rental building, including affordable housing units in Square 50, subject to public financial assistance;</p>
-                <p>“(E) Retail space estimated to contain approximately 9,600 gross square feet; and</p>
-                <p>“(F) Below-grade parking.</p>
-                <p>“(9) ’Property” means the following parcels of land located in Squares 37 and 50 in the District:</p>
-                <p>“(A) Square 37, Lot 836 (’West End Library Property’);</p>
-                <p>“(B) Square 37, Lot 837 (’Special Operations/MPD Building Property’);</p>
-                <p>“(C) Square 37, Lot 855 (’Developer Property’);</p>
-                <p>“(D) Square 50, Lot 822 (’West End Fire Station Property’); and</p>
-                <p>“(E) Related air rights parcels.</p>
-                <p>“(10) ‘West End Fire Station’ means a new fire station in Square 50 in the West End to be constructed by the Developer pursuant to the LDDA.</p>
-                <p>“(11) ‘West End Library’ means a new neighborhood branch library to be constructed in Square 37 in the West End by the Developer pursuant to the LDDA.</p>
-                <p>“Sec. 3. Authorization.</p>
-                <p>“(a) Notwithstanding any statutory and regulatory process established regarding contracting and procurement, the District of Columbia Board of Library Trustees is authorized to procure the services of Developer for the design, development, and construction of that portion of the Project to include the West End Library, subject to a cost cap as established pursuant to agreement between the District and Developer.</p>
-                <p>“(b) Notwithstanding any statutory regulatory process established regarding contracting and procurement, the Mayor is authorized to procure the services of Developer for the design, development, and construction of that portion of the Project to include the West End Fire Station, subject to a cost cap as established pursuant to agreement between the District and Developer.</p>
-                <p>“(c)(1) The District of Columbia Procurement Practices Act of 1985, effective February 21, 1986 (<a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-301.01.html">2-301.01</a> et seq.), and the Procurement Practices Reform Act of 2010, passed on 2nd reading on December 7, 2010 (Enrolled version of Bill 18-610), shall not apply to the procurement authorized under subsections (a) and (b) of this subsection.</p>
-                <p>“(2) The regulations set forth in Chapter 43 of Title 19 and Title 27 of the District of Columbia Municipal Regulations shall not apply to the procurement authorized under subsections (a) and (b) of this subsection.”</p>
-                <p>“Sec. 5. West End Library and Fire Station Maintenance Agreement.</p>
-                <p>“(a) Notwithstanding any other provision of law, the Mayor and the Board of Library Trustees are authorized to enter into a maintenance agreement with a contractor to provide supplemental maintenance services to the West End Library and West End Fire Station in order to:</p>
-                <p>“(1) Maintain the cleanliness and operability of the exterior facade of the West End Fire Station and West End Library to at least the same standards as the larger buildings of which they are a part;</p>
-                <p>“(2) Maintain the cleanliness and operability of the interior of the West End Fire Station and West End Library, including lighting, window coverings, floors and floor coverings, bathrooms and other public spaces, FF&amp;E, and the HVAC systems to at least the same standards as the larger buildings of which they are a part; (3) Pay for supplemental external building and grounds maintenance;</p>
-                <p>“(4) Pay for property, casualty, and liability insurance (premiums and deductibles) attributable to the new library and fire station components of the Project (including common elements); and</p>
-                <p>“(5) Provide a capital replacement reserve for the new library and the new fire station as determined to be needed by the Chief Librarian of the District of Columbia Public Library and the Mayor.</p>
-                <p>“(b)(1) The District of Columbia Procurement Practices Act of 1985, effective February 21, 1986 (<a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-301.01.html">2-301.01</a> et seq.), and the Procurement Practices Reform Act of 2010, passed on 2nd reading on December 7, 2010 (Enrolled version of Bill 18-610), shall not apply to the Maintenance Agreement.</p>
                 <p>“(2) The regulations set forth in Chapter 43 of Title 19 and Title 27 of the District of Columbia Municipal Regulations shall not apply to the Maintenance Agreement.”</p>
+                <p>“(b)(1) The District of Columbia Procurement Practices Act of 1985, effective February 21, 1986 (<a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-301.01.html">2-301.01</a> et seq.), and the Procurement Practices Reform Act of 2010, passed on 2nd reading on December 7, 2010 (Enrolled version of Bill 18-610), shall not apply to the Maintenance Agreement.</p>
+                <p>“(5) Provide a capital replacement reserve for the new library and the new fire station as determined to be needed by the Chief Librarian of the District of Columbia Public Library and the Mayor.</p>
+                <p>“(4) Pay for property, casualty, and liability insurance (premiums and deductibles) attributable to the new library and fire station components of the Project (including common elements); and</p>
+                <p>“(2) Maintain the cleanliness and operability of the interior of the West End Fire Station and West End Library, including lighting, window coverings, floors and floor coverings, bathrooms and other public spaces, FF&amp;E, and the HVAC systems to at least the same standards as the larger buildings of which they are a part; (3) Pay for supplemental external building and grounds maintenance;</p>
+                <p>“(1) Maintain the cleanliness and operability of the exterior facade of the West End Fire Station and West End Library to at least the same standards as the larger buildings of which they are a part;</p>
+                <p>“(a) Notwithstanding any other provision of law, the Mayor and the Board of Library Trustees are authorized to enter into a maintenance agreement with a contractor to provide supplemental maintenance services to the West End Library and West End Fire Station in order to:</p>
+                <p>“Sec. 5. West End Library and Fire Station Maintenance Agreement.</p>
+                <p>“(2) The regulations set forth in Chapter 43 of Title 19 and Title 27 of the District of Columbia Municipal Regulations shall not apply to the procurement authorized under subsections (a) and (b) of this subsection.”</p>
+                <p>“(c)(1) The District of Columbia Procurement Practices Act of 1985, effective February 21, 1986 (<a class="internal-link" href="/dc/council/laws/6-85.html">D.C. Law 6-85</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-301.01.html">2-301.01</a> et seq.), and the Procurement Practices Reform Act of 2010, passed on 2nd reading on December 7, 2010 (Enrolled version of Bill 18-610), shall not apply to the procurement authorized under subsections (a) and (b) of this subsection.</p>
+                <p>“(b) Notwithstanding any statutory regulatory process established regarding contracting and procurement, the Mayor is authorized to procure the services of Developer for the design, development, and construction of that portion of the Project to include the West End Fire Station, subject to a cost cap as established pursuant to agreement between the District and Developer.</p>
+                <p>“(a) Notwithstanding any statutory and regulatory process established regarding contracting and procurement, the District of Columbia Board of Library Trustees is authorized to procure the services of Developer for the design, development, and construction of that portion of the Project to include the West End Library, subject to a cost cap as established pursuant to agreement between the District and Developer.</p>
+                <p>“Sec. 3. Authorization.</p>
+                <p>“(11) ‘West End Library’ means a new neighborhood branch library to be constructed in Square 37 in the West End by the Developer pursuant to the LDDA.</p>
+                <p>“(10) ‘West End Fire Station’ means a new fire station in Square 50 in the West End to be constructed by the Developer pursuant to the LDDA.</p>
+                <p>“(E) Related air rights parcels.</p>
+                <p>“(D) Square 50, Lot 822 (’West End Fire Station Property’); and</p>
+                <p>“(C) Square 37, Lot 855 (’Developer Property’);</p>
+                <p>“(B) Square 37, Lot 837 (’Special Operations/MPD Building Property’);</p>
+                <p>“(A) Square 37, Lot 836 (’West End Library Property’);</p>
+                <p>“(9) ’Property” means the following parcels of land located in Squares 37 and 50 in the District:</p>
+                <p>“(F) Below-grade parking.</p>
+                <p>“(E) Retail space estimated to contain approximately 9,600 gross square feet; and</p>
+                <p>“(D) A residential rental building, including affordable housing units in Square 50, subject to public financial assistance;</p>
+                <p>“(C) A residential building on Square 37 estimated to contain approximately 224,390 gross square feet with approximately 153 units;</p>
+                <p>“(B) A new fire station, estimated to contain approximately 16,000 gross square feet;</p>
+                <p>“(A) A new library, estimated to contain approximately 20,000 gross square feet;</p>
+                <p>“(8) ‘Project’ means the acquisition, development, construction, installation, and equipping of the multi-use project to be located on the Property, to include:</p>
+                <p>“(7) ‘Maintenance Agreement’ means a West End Library and Fire Station Maintenance Agreement by and among the Fund Managers, and Developer, or its successors, or assigns, and established pursuant to section 5.</p>
+                <p>“(6) ‘LDDA’ means the Land Development and Disposition Agreement between the District and the Developer pursuant to the West End Parcels Disposition Approval Resolution of 2010, effective July 13, 2010 (Res.18-553;  57 DCR 7623).</p>
+                <p>“(5) ‘Fund Managers’ means the Chief Librarian of the District of Columbia Public Library and the Mayor.</p>
+                <p>“(4) ‘Fund’ means the West End Library and Fire Station Maintenance Fund established by section 4.</p>
+                <p>“(3) ‘District Property’ means the West End Library Property, Special Operations/MPD Building Property, and the West End Fire Station Property, as defined in paragraph (9) of this section.</p>
+                <p>“(2) ‘Developer’ means Eastbanc-W.D.C. Partners, LLC., its successors, affiliates, and assigns, either collectively or individually.</p>
+                <p>“(1) ‘Deed Transfer and Recordation Taxes’ means the revenue resulting from the imposition of the taxes under section 303 of the District of Columbia Deed Recordation Tax Act of 1962, approved March 2, 1962 (76 Stat. 11; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/42-1103.html">42-1103</a>), and  section 47-903 of the District of Columbia Official Code.</p>
+                <p>“For the purposes of this act, the term:</p>
+                <p>“Sec. 2. Definitions.</p>
+                <p>Sections 2, 3 and 5 of <a class="internal-link" href="/dc/council/laws/18-368.html">D.C. Law 18-368</a> provided:</p>
               </section>
             </section>
           </section>

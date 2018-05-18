@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/47-2853.13.html">§ 47–2853.13. Procedures for renewal of license, certification, and registration.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-2853.12.html">Report Error</a>
@@ -141,11 +141,11 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-2853.12.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-357.html">D.C. Law 15-357</a> rewrote subsec. (a)(1) which had read as follows: “(1) Has not been convicted of an offense which bears directly on the fitness of the person to be licensed;”</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-176.html">D.C. Law 16-176</a>, in subsec. (a)(2), inserted “, or at least 17 years of age if applying for license as a barber under § <a class="internal-link" href="/dc/council/code/sections/47-2853.72.html">47-2853.72</a> or as a cosmetologist, a cosmetologist-manager, a cosmetologist-owner, or any subcategory of specialty cosmetologist under § <a class="internal-link" href="/dc/council/code/sections/47-2853.82.html">47-2853.82</a>”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-82.html">D.C. Law 19-82</a>, in subsec. (c), designated the existing text as par. (1), substituted “section and except as provided in paragraph (2) of this subsection,” for “section” in par. (1), and added par. (2); and added subsec. (d-1).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-193.html">D.C. Law 19-193</a> added (a)(1)(B-i).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-274.html">D.C. Law 19-274</a> added (c)(3) and (c)(4).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-193.html">D.C. Law 19-193</a> added (a)(1)(B-i).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-82.html">D.C. Law 19-82</a>, in subsec. (c), designated the existing text as par. (1), substituted “section and except as provided in paragraph (2) of this subsection,” for “section” in par. (1), and added par. (2); and added subsec. (d-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-176.html">D.C. Law 16-176</a>, in subsec. (a)(2), inserted “, or at least 17 years of age if applying for license as a barber under § <a class="internal-link" href="/dc/council/code/sections/47-2853.72.html">47-2853.72</a> or as a cosmetologist, a cosmetologist-manager, a cosmetologist-owner, or any subcategory of specialty cosmetologist under § <a class="internal-link" href="/dc/council/code/sections/47-2853.82.html">47-2853.82</a>”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-357.html">D.C. Law 15-357</a> rewrote subsec. (a)(1) which had read as follows: “(1) Has not been convicted of an offense which bears directly on the fitness of the person to be licensed;”</p>
               </section>
             </section>
           </section>

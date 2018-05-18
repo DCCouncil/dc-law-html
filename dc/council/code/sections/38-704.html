@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/38-705.html">§ 38–705. Sale or exchange authorized.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-704.html">Report Error</a>
@@ -98,15 +98,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/71-2-ch32.html#§4">Jan. 31, 1930, 46 Stat. 62, ch. 32, § 4</a>; <a class="internal-link" href="/dc/council/laws/11-259.html">Apr. 12, 1997, D.C. Law 11-259, § 312, 44 DCR 1423</a>; <a class="internal-link" href="/dc/council/laws/13-172.html">Oct. 19, 2000, D.C. Law 13-172, § 704, 47 DCR 6308</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-704.</p>
                 <p>1973 Ed., § 31-404.</p>
+                <p>1981 Ed., § 31-704.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> deleted “, through the Office of Contracting and Procurement” preceding “purchase for use”.</p>
                 <h4>Cross References</h4>
                 <p>Additional powers and duties of Superintendent, see § <a class="internal-link" href="/dc/council/code/sections/38-105.html">38-105</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 704 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <p>For temporary (90-day) amendment of section, see § 704 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) amendment of section, see § 704 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
               </section>
             </section>
           </section>

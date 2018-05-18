@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/48/chapters/9/subchapters/III/">Subchapter III. Regulation of Manufacture, Distribution, and Dispensing.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/48/chapters/9/subchapters/II/">Report Error</a>
@@ -88,20 +88,48 @@
         <section class="col8 body">
           <h1>Subchapter II. Standards and Schedules.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/48-902.01.html">§ 48–902.01. Administration.</a>
-            <a href="/dc/council/code/sections/48-902.02.html">§ 48–902.02. Nomenclature.</a>
-            <a href="/dc/council/code/sections/48-902.03.html">§ 48–902.03. Schedule I tests.</a>
-            <a href="/dc/council/code/sections/48-902.04.html">§ 48–902.04. Schedule I enumerated.</a>
-            <a href="/dc/council/code/sections/48-902.05.html">§ 48–902.05. Schedule II tests.</a>
-            <a href="/dc/council/code/sections/48-902.06.html">§ 48–902.06. Schedule II enumerated.</a>
-            <a href="/dc/council/code/sections/48-902.07.html">§ 48–902.07. Schedule III tests.</a>
-            <a href="/dc/council/code/sections/48-902.08.html">§ 48–902.08. Schedule III enumerated.</a>
-            <a href="/dc/council/code/sections/48-902.09.html">§ 48–902.09. Schedule IV tests.</a>
-            <a href="/dc/council/code/sections/48-902.10.html">§ 48–902.10. Schedule IV enumerated.</a>
-            <a href="/dc/council/code/sections/48-902.11.html">§ 48–902.11. Schedule V tests.</a>
-            <a href="/dc/council/code/sections/48-902.12.html">§ 48–902.12. Schedule V enumerated.</a>
-            <a href="/dc/council/code/sections/48-902.13.html">§ 48–902.13. Revising and republishing of schedules.</a>
-            <a href="/dc/council/code/sections/48-902.14.html">§ 48–902.14. Treatment of controlled substance analogues.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.01.html">§ 48–902.01. Administration.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.02.html">§ 48–902.02. Nomenclature.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.03.html">§ 48–902.03. Schedule I tests.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.04.html">§ 48–902.04. Schedule I enumerated.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.05.html">§ 48–902.05. Schedule II tests.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.06.html">§ 48–902.06. Schedule II enumerated.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.07.html">§ 48–902.07. Schedule III tests.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.08.html">§ 48–902.08. Schedule III enumerated.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.09.html">§ 48–902.09. Schedule IV tests.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.10.html">§ 48–902.10. Schedule IV enumerated.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.11.html">§ 48–902.11. Schedule V tests.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.12.html">§ 48–902.12. Schedule V enumerated.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.13.html">§ 48–902.13. Revising and republishing of schedules.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-902.14.html">§ 48–902.14. Treatment of controlled substance analogues.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -134,14 +162,14 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a>, in (d), substituted “the Mayor may similarly designate, reschedule, or delete the controlled substance” for “the Mayor may similarly propose to control or delete the substance” and added “or may otherwise designate, reschedule or delete as a controlled substance”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 301(a) of the Omnibus Public Safety and Justice Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013, 60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of (d), see § 301(a) of the Omnibus Criminal Code Amendments Congressional Review Emergency Amendment Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary (90 days) amendment of this section, see § 301(a) of the Omnibus Public Safety and Justice Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013, 60 DCR 1017).</p>
                 <h4>References in Text</h4>
                 <p>Section 25-103, referred to in subsection (e) of this section, is part of Title 25, D.C. Official Code, which title was amended and enacted by <a class="internal-link" href="/dc/council/laws/13-298.html">D.C. Law 13-298</a>, effective May 3, 2001. For disposition of the subject matter of former Title 25, see the Disposition Table preceding § <a class="internal-link" href="/dc/council/code/sections/25-101.html">25-101</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Pursuant to subsection (b), sufentanil was added to the list of enumerated controlled substances in Schedule II, appearing in subparagraph (A) of paragraph (1) of § <a class="internal-link" href="/dc/council/code/sections/48-902.06.html">48-902.06</a>, by an order published upon adoption of the rule in  32 DCR 1097.</p>
-                <p>Pursuant to subsection (b), buprenorphine was rescheduled from Schedule II to Schedule V of enumerated controlled substances appearing in § <a class="internal-link" href="/dc/council/code/sections/48-902.12.html">48-902.12</a>(3), by an order published upon adoption of the rule in  33 DCR 6908.</p>
                 <p>Pursuant to subsection (b), loperamide was deleted from Schedule V appearing in § <a class="internal-link" href="/dc/council/code/sections/48-902.12.html">48-902.12</a>(3) by an order published upon adoption of the rule in  34 DCR 4370.</p>
+                <p>Pursuant to subsection (b), buprenorphine was rescheduled from Schedule II to Schedule V of enumerated controlled substances appearing in § <a class="internal-link" href="/dc/council/code/sections/48-902.12.html">48-902.12</a>(3), by an order published upon adoption of the rule in  33 DCR 6908.</p>
+                <p>Pursuant to subsection (b), sufentanil was added to the list of enumerated controlled substances in Schedule II, appearing in subparagraph (A) of paragraph (1) of § <a class="internal-link" href="/dc/council/code/sections/48-902.06.html">48-902.06</a>, by an order published upon adoption of the rule in  32 DCR 1097.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of Authority to implement <a class="internal-link" href="/dc/council/laws/4-29.html">D.C. Law 4-29</a>, the “District of Columbia Uniformed Controlled Substances Act of 1981”, see Mayor’s Order 98-49, April 15, 1998 ( 45 DCR 2694).</p>
               </section>
@@ -326,19 +354,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-3002.html">7-3002</a>, § <a class="internal-link" href="/dc/council/code/sections/44-1201.html">44-1201</a>, § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>, § <a class="internal-link" href="/dc/council/code/sections/48-902.01.html">48-902.01</a>, § <a class="internal-link" href="/dc/council/code/sections/48-902.02.html">48-902.02</a>, § <a class="internal-link" href="/dc/council/code/sections/48-1004.html">48-1004</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-2206.13.html">50-2206.13</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-99.html">D.C. Law 13-99</a> corrected the way in which two chemicals were stated in subsec. (3) and added provisions contained in (X) and (Y) in subsec. (3).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a>, in par. (5), deleted “and” from the end of subpar. (A), substituted “; and” for a period at the end of subpar. (B), and added subpar. (C).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> added (3)(Z) through (3)(KK); added (4)(C); inserted “their analogues or derivatives and” in the introductory language of (5); added (5)(D) through (5)(H); and made related changes.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a>, in par. (5), deleted “and” from the end of subpar. (A), substituted “; and” for a period at the end of subpar. (B), and added subpar. (C).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-99.html">D.C. Law 13-99</a> corrected the way in which two chemicals were stated in subsec. (3) and added provisions contained in (X) and (Y) in subsec. (3).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Uniform Controlled Substances Emergency Amendment Act of 1999 (D.C. Act 13-96, June 15, 1999,  46 DCR 5640).</p>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Uniform Controlled Substances Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-144, October 18, 1999,  46 DCR 9904).</p>
-                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
-                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
-                <p>For temporary amendment of section, see § 301(b) of the Omnibus Public Safety and Justice Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 301(b) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of section, see § 301(b) of the Omnibus Public Safety and Justice Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
+                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
+                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Uniform Controlled Substances Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-144, October 18, 1999,  46 DCR 9904).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Uniform Controlled Substances Emergency Amendment Act of 1999 (D.C. Act 13-96, June 15, 1999,  46 DCR 5640).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Uniform Controlled Substances Temporary Amendment Act of 1999 (D.C. Law 13-34, October 7, 1999, law notification  47 DCR 3423).</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-131.html#§2(b)">§ 2(b) of Revised Synthetics Abatement and Full Enforcement Drug Control Temporary Amendment Act of 2016 (D.C. Law 21-131, July 1, 2016, 63 DCR 7110)</a>.</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Uniform Controlled Substances Temporary Amendment Act of 1999 (D.C. Law 13-34, October 7, 1999, law notification  47 DCR 3423).</p>
               </section>
             </section>
             <hr/>
@@ -452,8 +480,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> substituted “Dronabinol” for “Dronabianol” in (4)(G).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of (4)(G), see § 301(c) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 301(c) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of (4)(G), see § 301(c) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <h4>Editor's Notes</h4>
                 <p>Mayor to implement public information program: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>.</p>
               </section>
@@ -584,11 +612,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-3002.html">7-3002</a>, § <a class="internal-link" href="/dc/council/code/sections/44-1201.html">44-1201</a>, § <a class="internal-link" href="/dc/council/code/sections/48-853.01.html">48-853.01</a>, § <a class="internal-link" href="/dc/council/code/sections/48-902.01.html">48-902.01</a>, § <a class="internal-link" href="/dc/council/code/sections/48-902.02.html">48-902.02</a>, and § <a class="internal-link" href="/dc/council/code/sections/48-1004.html">48-1004</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-300.html">D.C. Law 13-300</a>, in subsec. (a), deleted “and” at the end of par. (4)(H), substituted “; and” for the period at the end of par. (5)(BB), and added par. (6).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> added (a)(7); and made related changes.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-300.html">D.C. Law 13-300</a>, in subsec. (a), deleted “and” at the end of par. (4)(H), substituted “; and” for the period at the end of par. (5)(BB), and added par. (6).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of (a), see § 301(d) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 301(d) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of (a), see § 301(d) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-131.html#§2(c)">§ 2(c) of Revised Synthetics Abatement and Full Enforcement Drug Control Temporary Amendment Act of 2016 (D.C. Law 21-131, July 1, 2016, 63 DCR 7110)</a>.</p>
               </section>
@@ -695,8 +723,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> added (a)(1)(WW) and made related changes; and substituted “Cathine” for “Cathine” (made no change) in (a)(3)(D).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of (a), see § 301(e) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 301(e) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of (a), see § 301(e) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/6-1304.01.html">§ 6–1304.01. Notice of lapse of termination of liability insurance; report of motor vehicles, vessels, and aircraft owned by members of mission; fee for unsatisfied judgments or damages.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/6-1304.html">Report Error</a>
@@ -114,8 +114,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>Pub. L. 109-177, in subsec. (e), substituted “§ 3056 or § 3056A” for “ § 202 of Title 3, United States Code or § 3056”.</p>
                 <h4>Effective Dates</h4>
-                <p>For effective date of amendment made by title II of Pub. L. 97-241, Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-1301.html">6-1301</a>.</p>
                 <p>Section 126(e) of Pub. L. 99-93 provided that the amendments made by the section shall take effect on October 1, 1985.</p>
+                <p>For effective date of amendment made by title II of Pub. L. 97-241, Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-1301.html">6-1301</a>.</p>
               </section>
             </section>
           </section>

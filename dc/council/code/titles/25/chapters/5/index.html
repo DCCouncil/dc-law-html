@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/25/chapters/6/">Chapter 6. Protests, Referendum, and Complaints.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/25/chapters/5/">Report Error</a>
@@ -87,17 +87,39 @@
         <section class="col8 body">
           <h1>Chapter 5. Annual Fees.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/25-501.html">§ 25–501. Annual fees.</a>
-            <a href="/dc/council/code/sections/25-502.html">§ 25–502. Mayor may propose alteration in license fees.</a>
-            <a href="/dc/council/code/sections/25-503.html">§ 25–503. Minimum annual fees for manufacturer’s, wholesaler’s, and off-premises retailer’s licenses.</a>
-            <a href="/dc/council/code/sections/25-504.html">§ 25–504. Minimum annual fees for on-premises retail licenses, class C and D.</a>
-            <a href="/dc/council/code/sections/25-505.html">§ 25–505. Fees for Arena C/X by Mayor.</a>
-            <a href="/dc/council/code/sections/25-506.html">§ 25–506. Minimum fees for temporary licenses.</a>
-            <a href="/dc/council/code/sections/25-507.html">§ 25–507. Minimum annual fee for solicitor’s licenses.</a>
-            <a href="/dc/council/code/sections/25-508.html">§ 25–508. Minimum fee for permits and manager’s license.</a>
-            <a href="/dc/council/code/sections/25-509.html">§ 25–509. Minimum fee for transfer of a license to new owner.</a>
-            <a href="/dc/council/code/sections/25-510.html">§ 25–510. Minimum fee for amendment to license.</a>
-            <a href="/dc/council/code/sections/25-511.html">§ 25–511. Minimum fee for pool buying group retail importation permit.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-501.html">§ 25–501. Annual fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-502.html">§ 25–502. Mayor may propose alteration in license fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-503.html">§ 25–503. Minimum annual fees for manufacturer’s, wholesaler’s, and off-premises retailer’s licenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-504.html">§ 25–504. Minimum annual fees for on-premises retail licenses, class C and D.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-505.html">§ 25–505. Fees for Arena C/X by Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-506.html">§ 25–506. Minimum fees for temporary licenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-507.html">§ 25–507. Minimum annual fee for solicitor’s licenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-508.html">§ 25–508. Minimum fee for permits and manager’s license.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-509.html">§ 25–509. Minimum fee for transfer of a license to new owner.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-510.html">§ 25–510. Minimum fee for amendment to license.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/25-511.html">§ 25–511. Minimum fee for pool buying group retail importation permit.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -119,8 +141,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-310.html">D.C. Law 19-310</a> added (f).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of (f), see § 2(t) of the Omnibus Alcoholic Beverage Regulation Emergency Amendment Act of 2012 (D.C. Act 19-597, January 14, 2013,  60 DCR 1001).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(t) of the Omnibus Alcoholic Beverage Regulation Congressional Review Emergency Act of 2013 (D.C. Act 20-52, April 22, 2013,  60 DCR 6372, 20 DCSTAT 1388).</p>
+                <p>For temporary addition of (f), see § 2(t) of the Omnibus Alcoholic Beverage Regulation Emergency Amendment Act of 2012 (D.C. Act 19-597, January 14, 2013,  60 DCR 1001).</p>
               </section>
             </section>
             <hr/>
@@ -135,8 +157,8 @@
       (Jan. 24, 1934, 48 Stat. 324, ch. 4, § 11; Apr. 30, 1934, 48 Stat. 654, ch. 181, § 1; June 18, 1934, 48 Stat. 997, ch. 588; July 2, 1935, 49 Stat. 444, ch. 359; Aug. 27, 1935, 49 Stat. 898, 899, ch. 756, §§ 3-7; June 15, 1938, 52 Stat. 691, ch. 396, §§ 1, 2; May 27, 1949, 63 Stat. 133, ch. 146, title V, § 501; June 29, 1953, 67 Stat. 103, ch. 159, § 404(d); <a class="internal-link" href="/us/congress/laws/public/87-470.html">May 31, 1962, 76 Stat. 89, Pub. L. 87-470, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-535.html">Dec. 8, 1970, 84 Stat. 1393, Pub. L. 91-535, § 2</a>; <a class="internal-link" href="/dc/council/laws/1-102.html">Apr. 6, 1977, D.C. Law 1-102, § 2(a), (b), 23 DCR 8732</a>; <a class="internal-link" href="/dc/council/laws/2-73.html">Apr. 18, 1978, D.C. Law 2-73, § 3, 24 DCR 7066</a>; <a class="internal-link" href="/dc/council/laws/3-157.html">Mar. 5, 1981, D.C. Law 3-157, § 2(b), 27 DCR 5117</a>; <a class="internal-link" href="/dc/council/laws/4-157.html">Sept. 29, 1982, D.C. Law 4-157, §§ 6, 15, 29 DCR 3617</a>; <a class="internal-link" href="/dc/council/laws/4-204.html">Mar. 10, 1983, D.C. Law 4-204, § 2, 30 DCR 185</a>; <a class="internal-link" href="/dc/council/laws/5-16.html">Aug. 2, 1983, D.C. Law, 5-16, § 3, 30 DCR 3193</a>; <a class="internal-link" href="/dc/council/laws/5-51.html">Mar. 8, 1984, D.C. Law 5-51, § 2(a), 30 DCR 5927</a>; <a class="internal-link" href="/dc/council/laws/6-217.html">Mar. 7, 1987, D.C. Law 6-217, § 5, 34 DCR 907</a>; <a class="internal-link" href="/dc/council/laws/9-40.html">Aug. 17, 1991, D.C. Law 9-40, § 2(b), 38 DCR 4974</a>; <a class="internal-link" href="/dc/council/laws/10-122.html">May 24, 1994, D.C. Law 10-122, § 2(e), 41 DCR 1658</a>; <a class="internal-link" href="/dc/council/laws/12-202.html">Mar. 26, 1999, D.C. Law 12-202, § 2(b), 45 DCR 8412</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2003(q)(1), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/13-298.html">May 3, 2001, D.C. Law 13-298, § 101, 48 DCR 2959</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 25-502.</p>
                 <p>1973 Ed., § 25-111.</p>
+                <p>1981 Ed., § 25-502.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/25-506.html">25-506</a>.</p>
                 <h4>Delegation of Authority</h4>
@@ -216,8 +238,8 @@
       (Jan. 24, 1934, 48 Stat. 324, ch. 4, § 11; Apr. 30, 1934, 48 Stat. 654, ch. 181, § 1; June 18, 1934, 48 Stat. 997, ch. 588; July 2, 1935, 49 Stat. 444, ch. 359; Aug. 27, 1935, 49 Stat. 898, 899, ch. 756, §§ 3-7; June 15, 1938, 52 Stat. 691, ch. 396, §§ 1, 2; May 27, 1949, 63 Stat. 133, ch. 146, title V, § 501; June 29, 1953, 67 Stat. 103, ch. 159, § 404(d); <a class="internal-link" href="/us/congress/laws/public/87-470.html">May 31, 1962, 76 Stat. 89, Pub. L. 87-470, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-535.html">Dec. 8, 1970, 84 Stat. 1393, Pub. L. 91-535, § 2</a>; <a class="internal-link" href="/dc/council/laws/1-102.html">Apr. 6, 1977, D.C. Law 1-102, § 2(a), (b), 23 DCR 8732</a>; <a class="internal-link" href="/dc/council/laws/2-73.html">Apr. 18, 1978, D.C. Law 2-73, § 3, 24 DCR 7066</a>; <a class="internal-link" href="/dc/council/laws/3-157.html">Mar. 5, 1981, D.C. Law 3-157, § 2(b), 27 DCR 5117</a>; <a class="internal-link" href="/dc/council/laws/4-157.html">Sept. 29, 1982, D.C. Law 4-157, §§ 6, 15, 29 DCR 3617</a>; <a class="internal-link" href="/dc/council/laws/4-204.html">Mar. 10, 1983, D.C. Law 4-204, § 2, 30 DCR 185</a>; <a class="internal-link" href="/dc/council/laws/5-16.html">Aug. 2, 1983, D.C. Law 5-16, § 3, 30 DCR 3193</a>; <a class="internal-link" href="/dc/council/laws/5-51.html">Mar. 8, 1984, D.C. Law 5-51, § 2(a), 30 DCR 5927</a>; <a class="internal-link" href="/dc/council/laws/6-217.html">Mar. 7, 1987, D.C. Law 6-217, § 5, 34 DCR 907</a>; <a class="internal-link" href="/dc/council/laws/9-40.html">Aug. 17, 1991, D.C. Law 9-40, § 2(b), 38 DCR 4974</a>; <a class="internal-link" href="/dc/council/laws/10-122.html">May 24, 1994, D.C. Law 10-122, § 2(e), 41 DCR 1658</a>; <a class="internal-link" href="/dc/council/laws/12-202.html">Mar. 26, 1999, D.C. Law 12-202, § 2(b), 45 DCR 8412</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2003(q)(1), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/13-298.html">May 3, 2001, D.C. Law 13-298, § 101, 48 DCR 2959</a>; <a class="internal-link" href="/dc/council/laws/21-260.html#§2(e)(1)">Apr. 7, 2017, D.C. Law 21-260, § 2(e)(1), 64 DCR 2079</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 25-503.</p>
                 <p>1973 Ed., § 25-111.</p>
+                <p>1981 Ed., § 25-503.</p>
               </section>
             </section>
             <hr/>
@@ -419,8 +441,8 @@
       (Jan. 24, 1934, 48 Stat. 324, ch. 4, § 11; Apr. 30, 1934, 48 Stat. 654, ch. 181, § 1; June 18, 1934, 48 Stat. 997, ch. 588; July 2, 1935, 49 Stat. 444, ch. 359; Aug. 27, 1935, 49 Stat. 898, 899, ch. 756, §§ 3-7; June 15, 1938, 52 Stat. 691, ch. 396, §§ 1, 2; May 27, 1949, 63 Stat. 133, ch. 146, title V, § 501; June 29, 1953, 67 Stat. 103, ch. 159, § 404(d); <a class="internal-link" href="/us/congress/laws/public/87-470.html">May 31, 1962, 76 Stat. 89, Pub. L. 87-470, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-535.html">Dec. 8, 1970, 84 Stat. 1393, Pub. L. 91-535, § 2</a>; <a class="internal-link" href="/dc/council/laws/1-102.html">Apr. 6, 1977, D.C. Law 1-102, § 2(a), (b), 23 DCR 8732</a>; <a class="internal-link" href="/dc/council/laws/2-73.html">Apr. 18, 1978, D.C. Law 2-73, § 3, 24 DCR 7066</a>; <a class="internal-link" href="/dc/council/laws/3-157.html">Mar. 5, 1981, D.C. Law 3-157, § 2(b), 27 DCR 5117</a>; <a class="internal-link" href="/dc/council/laws/4-157.html">Sept. 29, 1982, D.C. Law 4-157, §§ 6, 15, 29 DCR 3617</a>; <a class="internal-link" href="/dc/council/laws/4-204.html">Mar. 10, 1983, D.C. Law 4-204, § 2, 30 DCR 185</a>; <a class="internal-link" href="/dc/council/laws/5-16.html">Aug. 2, 1983, D.C. Law 5-16, § 3, 30 DCR 3193</a>; <a class="internal-link" href="/dc/council/laws/5-51.html">Mar. 8, 1984, D.C. Law 5-51, § 2(a), 30 DCR 5927</a>; <a class="internal-link" href="/dc/council/laws/6-217.html">Mar. 7, 1987, D.C. Law 6-217, § 5, 34 DCR 907</a>; <a class="internal-link" href="/dc/council/laws/9-40.html">Aug. 17, 1991, D.C. Law 9-40, § 2(b), 38 DCR 4974</a>; <a class="internal-link" href="/dc/council/laws/10-122.html">May 24, 1994, D.C. Law 10-122, § 2(e), 41 DCR 1658</a>; <a class="internal-link" href="/dc/council/laws/12-202.html">Mar. 26, 1999, D.C. Law 12-202, § 2(b), 45 DCR 8412</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2003(q)(1), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/13-298.html">May 3, 2001, D.C. Law 13-298, § 101, 48 DCR 2959</a>; <a class="internal-link" href="/dc/council/laws/15-187.html">Sept. 30, 2004, D.C. Law 15-187, § 101(v), 51 DCR 6525</a>; <a class="internal-link" href="/dc/council/laws/21-260.html#§2(e)(2)">Apr. 7, 2017, D.C. Law 21-260, § 2(e)(2), 64 DCR 2079</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 25-504.</p>
                 <p>1973 Ed., § 25-111.</p>
+                <p>1981 Ed., § 25-504.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> added a new row after the row designated “Nightclub”; deleted the five rows designated as “Caterer” which pertained to capacity in terms of annual revenue and also set forth the license fees; and added eight new rows designated as “Caterer”.</p>
               </section>
@@ -437,16 +459,16 @@
       (<a class="internal-link" href="/dc/council/laws/13-298.html">May 3, 2001, D.C. Law 13-298, § 101, 48 DCR 2959</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 2082(n)(3), 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/20-233.html">Mar. 11, 2015, D.C. Law 20-233, § 202(c), 62 DCR 438</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in the section heading, deleted “and Washington Convention Center” following “C/X”; and deleted “and for the Washington Convention Center” following “DC Arena”.</p>
                 <p>The 2015 amendment would have added “and the Soccer Stadium.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in the section heading, deleted “and Washington Convention Center” following “C/X”; and deleted “and for the Washington Convention Center” following “DC Arena”.</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-233.html">D.C. Law 20-233</a>: Section 301 of <a class="internal-link" href="/dc/council/laws/20-233.html">D.C. Law 20-233</a> provided (1) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (2) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (3) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7010">Section 7010 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/20-233.html#§301">§ 301 of D.C. Law 20-233</a>. Therefore the amendment to this section by <a class="internal-link" href="/dc/council/laws/20-233.html">D.C. Law 20-233</a> has been given effect.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-233.html">D.C. Law 20-233</a>: Section 301 of <a class="internal-link" href="/dc/council/laws/20-233.html">D.C. Law 20-233</a> provided (1) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (2) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (3) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2082(n)(3) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 2082(n)(3) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 days) amendment of this section, see § 202(c) of the  Soccer Stadium Development Emergency Amendment Act of 2014 (D.C. Act 20-557, Dec. 30, 2014, 62 DCR 448, 20 STAT 4467).</p>
                 <p>For temporary (90 days) repeal of § 301 of D.C. Law 20-233, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7010">§ 7010 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 202(c) of the  Soccer Stadium Development Emergency Amendment Act of 2014 (D.C. Act 20-557, Dec. 30, 2014, 62 DCR 448, 20 STAT 4467).</p>
+                <p>For temporary (90 day) amendment of section, see § 2082(n)(3) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 2082(n)(3) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>
@@ -475,8 +497,8 @@
       (Jan. 24, 1934, 48 Stat. 324, ch. 4, § 11; Apr. 30, 1934, 48 Stat. 654, ch. 181, § 1; June 18, 1934, 48 Stat. 997, ch. 588; July 2, 1935, 49 Stat. 444, ch. 359; Aug. 27, 1935, 49 Stat. 898, 899, ch. 756, §§ 3-7; June 15, 1938, 52 Stat. 691, ch. 396, §§ 1, 2; May 27, 1949, 63 Stat. 133, ch. 146, title V, § 501; June 29, 1953, 67 Stat. 103, ch. 159, § 404(d); <a class="internal-link" href="/us/congress/laws/public/87-470.html">May 31, 1962, 76 Stat. 89, Pub. L. 87-470, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-535.html">Dec. 8, 1970, 84 Stat. 1393, Pub. L. 91-535, § 2</a>; <a class="internal-link" href="/dc/council/laws/1-102.html">Apr. 6, 1977, D.C. Law 1-102, § 2(a), (b), 23 DCR 8732</a>; <a class="internal-link" href="/dc/council/laws/2-73.html">Apr. 18, 1978, D.C. Law 2-73, § 3, 24 DCR 7066</a>; <a class="internal-link" href="/dc/council/laws/3-157.html">Mar. 5, 1981, D.C. Law 3-157, § 2(b), 27 DCR 5117</a>; <a class="internal-link" href="/dc/council/laws/4-157.html">Sept. 29, 1982, D.C. Law 4-157, §§ 6, 15, 29 DCR 3617</a>; <a class="internal-link" href="/dc/council/laws/4-204.html">Mar. 10, 1983, D.C. Law 4-204, § 2, 30 DCR 185</a>; <a class="internal-link" href="/dc/council/laws/5-16.html">Aug. 2, 1983, D.C. Law 5-16, § 3, 30 DCR 3193</a>; <a class="internal-link" href="/dc/council/laws/5-51.html">Mar. 8, 1984, D.C. Law 5-51, § 2(a), 30 DCR 5927</a>; <a class="internal-link" href="/dc/council/laws/6-217.html">Mar. 7, 1987, D.C. Law 6-217, § 5, 34 DCR 907</a>; <a class="internal-link" href="/dc/council/laws/9-40.html">Aug. 17, 1991, D.C. Law 9-40, § 2(b), 38 DCR 4974</a>; <a class="internal-link" href="/dc/council/laws/10-122.html">May 24, 1994, D.C. Law 10-122, § 2(e), 41 DCR 1658</a>; <a class="internal-link" href="/dc/council/laws/12-202.html">Mar. 26, 1999, D.C. Law 12-202, § 2(b), 45 DCR 8412</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2003(q)(1), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/13-298.html">May 3, 2001, D.C. Law 13-298, § 101, 48 DCR 2959</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 25-506.</p>
                 <p>1973 Ed., § 25-111.</p>
+                <p>1981 Ed., § 25-506.</p>
               </section>
             </section>
             <hr/>
@@ -530,9 +552,9 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added the last line in the table, the $1000 annual fee for an on-site sales and consumption permit.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 2002(d) of the  Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2002(d) of the  Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2002(d) of the  Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2002(d) of the  Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2002(d) of the  Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>
@@ -547,8 +569,8 @@
       (Jan. 24, 1934, 48 Stat. 330, ch. 4, § 16; May 27, 1949, 63 Stat. 135, ch. 146, title V, § 503; <a class="internal-link" href="/dc/council/laws/3-157.html">Mar. 5, 1981, D.C. Law 3-157, § 2(d), 27 DCR 5117</a>; <a class="internal-link" href="/dc/council/laws/13-298.html">May 3, 2001, D.C. Law 13-298, § 101, 48 DCR 2959</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 25-509.</p>
                 <p>1973 Ed., § 25-117.</p>
+                <p>1981 Ed., § 25-509.</p>
               </section>
             </section>
             <hr/>
@@ -563,8 +585,8 @@
       (Jan. 24, 1934, 48 Stat. 324, ch. 4, § 11; Apr. 30, 1934, 48 Stat. 654, ch. 181, § 1; June 18, 1934, 48 Stat. 997, ch. 588; July 2, 1935, 49 Stat. 444, ch. 359; Aug. 27, 1935, 49 Stat. 898, 899, ch. 756, §§ 3-7; June 15, 1938, 52 Stat. 691, ch. 396, §§ 1, 2; May 27, 1949, 63 Stat. 133, ch. 146, title V, § 501; June 29, 1953, 67 Stat. 103, ch. 159, § 404(d); <a class="internal-link" href="/us/congress/laws/public/87-470.html">May 31, 1962, 76 Stat. 89, Pub. L. 87-470, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-535.html">Dec. 8, 1970, 84 Stat. 1393, Pub. L. 91-535, § 2</a>; <a class="internal-link" href="/dc/council/laws/1-102.html">Apr. 6, 1977, D.C. Law 1-102, § 2(a), (b), 23 DCR 8732</a>; <a class="internal-link" href="/dc/council/laws/2-73.html">Apr. 18, 1978, D.C. Law 2-73, § 3, 24 DCR 7066</a>; <a class="internal-link" href="/dc/council/laws/3-157.html">Mar. 5, 1981, D.C. Law 3-157, § 2(b), 27 DCR 5117</a>; <a class="internal-link" href="/dc/council/laws/4-157.html">Sept. 29, 1982, D.C. Law 4-157, §§ 6, 15, 29 DCR 3617</a>; <a class="internal-link" href="/dc/council/laws/4-204.html">Mar. 10, 1983, D.C. Law 4-204, § 2, 30 DCR 185</a>; <a class="internal-link" href="/dc/council/laws/5-16.html">Aug. 2, 1983, D.C. Law, 5-16, § 3, 30 DCR 3193</a>; <a class="internal-link" href="/dc/council/laws/5-51.html">Mar. 8, 1984, D.C. Law 5-51, § 2(a), 30 DCR 5927</a>; <a class="internal-link" href="/dc/council/laws/6-217.html">Mar. 7, 1987, D.C. Law 6-217, § 5, 34 DCR 907</a>; <a class="internal-link" href="/dc/council/laws/9-40.html">Aug. 17, 1991, D.C. Law 9-40, § 2(b), 38 DCR 4974</a>; <a class="internal-link" href="/dc/council/laws/10-122.html">May 24, 1994, D.C. Law 10-122, § 2(e), 41 DCR 1658</a>; <a class="internal-link" href="/dc/council/laws/12-202.html">Mar. 26, 1999, D.C. Law 12-202, § 2(b), 45 DCR 8412</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2003(q)(1), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/13-298.html">May 3, 2001, D.C. Law 13-298, § 101, 48 DCR 2959</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 25-510.</p>
                 <p>1973 Ed., § 25-111.</p>
+                <p>1981 Ed., § 25-510.</p>
               </section>
             </section>
             <hr/>
@@ -581,11 +603,11 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a> validated a previously made technical correction.</p>
                 <h4>Editor's Notes</h4>
-                <p>Sections 402 and 403 of <a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> provided:</p>
-                <p>“Sec. 402. Rules and regulations.</p>
-                <p>“The Mayor shall promulgate proposed rules and regulations to administer this title within 180 days of its effective date. The proposed rules and regulations, as well as any subsequent rules and regulations amending this title, shall be submitted to the Council for a 45-day period of review, excluding Saturdays, Sundays, legal holidays, and days of Council recess, If the Council does not approve or disapprove the rules and regulations, in whole or in part, by resolution with the 45-day review period, the proposed rules and regulations shall be deemed approved.</p>
-                <p>“Sec. 403. Applicability.</p>
                 <p>“Section 401 shall apply upon the effective date of the regulations promulgated under section 402.”</p>
+                <p>“Sec. 403. Applicability.</p>
+                <p>“The Mayor shall promulgate proposed rules and regulations to administer this title within 180 days of its effective date. The proposed rules and regulations, as well as any subsequent rules and regulations amending this title, shall be submitted to the Council for a 45-day period of review, excluding Saturdays, Sundays, legal holidays, and days of Council recess, If the Council does not approve or disapprove the rules and regulations, in whole or in part, by resolution with the 45-day review period, the proposed rules and regulations shall be deemed approved.</p>
+                <p>“Sec. 402. Rules and regulations.</p>
+                <p>Sections 402 and 403 of <a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> provided:</p>
               </section>
             </section>
             <hr/>

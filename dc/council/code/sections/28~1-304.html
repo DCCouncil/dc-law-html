@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:1-305.html">§ 28:1-305. Remedies to be liberally administered.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:1-304.html">Report Error</a>
@@ -101,10 +101,10 @@
                 <h4>Prior Codifications</h4>
                 <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/28:1-203.html">28:1-203</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Source:</strong> Former  Section 1-203.</p>
-                <p><strong>Changes from former law:</strong> Except for changing the form of reference to the Uniform Commercial Code, this section is identical to former  Section 1-203.</p>
-                <p>1. This section sets forth a basic principle running throughout the Uniform Commercial Code. The principle is that in commercial transactions good faith is required in the performance and enforcement of all agreements or duties. While this duty is explicitly stated in some provisions of the Uniform Commercial Code, the applicability of the duty is broader than merely these situations and applies generally, as stated in this section, to the performance or enforcement of every contract or duty within this Act. It is further implemented by  Section 1-303 on course of dealing, course of performance, and usage of trade. This section does not support an independent cause of action for failure to perform or enforce in good faith. Rather, this section means that a failure to perform or enforce, in good faith, a specific duty or obligation under the contract, constitutes a breach of that contract or makes unavailable, under the particular circumstances, a remedial right or power. This distinction makes it clear that the doctrine of good faith merely directs a court towards interpreting contracts within the commercial context in which they are created, performed, and enforced, and does not create a separate duty of fairness and reasonableness which can be independently breached.</p>
                 <p>2. “Performance and enforcement” of contracts and duties within the Uniform Commercial Code include the exercise of rights created by the Uniform Commercial Code.</p>
+                <p>1. This section sets forth a basic principle running throughout the Uniform Commercial Code. The principle is that in commercial transactions good faith is required in the performance and enforcement of all agreements or duties. While this duty is explicitly stated in some provisions of the Uniform Commercial Code, the applicability of the duty is broader than merely these situations and applies generally, as stated in this section, to the performance or enforcement of every contract or duty within this Act. It is further implemented by  Section 1-303 on course of dealing, course of performance, and usage of trade. This section does not support an independent cause of action for failure to perform or enforce in good faith. Rather, this section means that a failure to perform or enforce, in good faith, a specific duty or obligation under the contract, constitutes a breach of that contract or makes unavailable, under the particular circumstances, a remedial right or power. This distinction makes it clear that the doctrine of good faith merely directs a court towards interpreting contracts within the commercial context in which they are created, performed, and enforced, and does not create a separate duty of fairness and reasonableness which can be independently breached.</p>
+                <p><strong>Changes from former law:</strong> Except for changing the form of reference to the Uniform Commercial Code, this section is identical to former  Section 1-203.</p>
+                <p><strong>Source:</strong> Former  Section 1-203.</p>
               </section>
             </section>
           </section>

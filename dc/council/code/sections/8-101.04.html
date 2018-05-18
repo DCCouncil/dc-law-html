@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/8-101.05.html">§ 8–101.05. Comprehensive air pollution control program.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-101.04.html">Report Error</a>
@@ -102,12 +102,12 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-904.</p>
                 <h4>Cross References</h4>
-                <p>Acid rain, research and plan, see  42 U.S.C. § 8901 et seq.</p>
-                <p>Air pollution prevention and control, Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
-                <p>Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
-                <p>Pollution Prevention Act of 1990, see  42 U.S.C. § 13101 et seq.</p>
-                <p>Stratospheric Ozone Protection, see  42 U.S.C. § 7671 et seq.</p>
                 <p>Sulfur dioxide, acid deposition control, air pollution prevention and control, see  42 U.S.C. § 7651 et seq.</p>
+                <p>Stratospheric Ozone Protection, see  42 U.S.C. § 7671 et seq.</p>
+                <p>Pollution Prevention Act of 1990, see  42 U.S.C. § 13101 et seq.</p>
+                <p>Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
+                <p>Air pollution prevention and control, Clean Air Act, see  42 U.S.C. § 7401 et seq.</p>
+                <p>Acid rain, research and plan, see  42 U.S.C. § 8901 et seq.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 2 of the Air Pollution Control Emergency Amendment Act of 1996 (D.C. Act 11-450, December 5, 1996,  43 DCR 6682), and § 2 of the Air Pollution Control Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-16, March 3, 1997,  44 DCR 1754).</p>
                 <h4>Temporary Legislation</h4>
@@ -115,8 +115,8 @@
                 <h4>Editor's Notes</h4>
                 <p>Air quality control regulations: <a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>, § 3, the “District of Columbia Air Pollution Control Act of 1984”, enacted the air quality control regulations of the District of Columbia as Title 20 of the District of Columbia Municipal Regulations (20 DCMR Chapters 1-9).</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority under <a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>, the District of Columbia Air Pollution Control Act of 1984, see Mayor’s Order 93-12, February 16, 1993.</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>, the “D.C. Air Pollution Control Act of 1984”, see Mayor’s Order 98-44, April</p>
+                <p>Delegation of authority under <a class="internal-link" href="/dc/council/code/titles/8/chapters/1/subchapters/I/parts/A/">D.C. Law 5-165</a>, the District of Columbia Air Pollution Control Act of 1984, see Mayor’s Order 93-12, February 16, 1993.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/10-836.html">§ 10–836. Disposition of properties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/10-835.html">Report Error</a>
@@ -104,8 +104,8 @@
       (<a class="internal-link" href="/dc/council/laws/14-267.html#§6">Apr. 2, 2003, D.C. Law 14-267, § 6, 50 DCR 420</a>; <a class="internal-link" href="/dc/council/laws/15-105.html">Mar. 13, 2004, D.C. Law 15-105, § 8(1), 51 DCR 881</a>; <a class="internal-link" href="/dc/council/laws/16-119.html">June 8, 2006, D.C. Law 16-119, § 3(e), 53 DCR 2609</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a> deleted subsection designation “(a)”; in par. (4), substituted “proposal that” for “proposal who”, and also validated a previously made technical correction.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-119.html">D.C. Law 16-119</a>, in the lead-in language, substituted “An RFP to dispose of property” for “An RFP to dispose of properties”; in par. (5), substituted “Feasibility shall be based on the consideration of whether the property will be likely to be developed and sold or rented in the time-line proposed, with the quality of construction proposed, and at the sales or rental prices proposed.” for “Feasibility shall be based on the consideration of whether the properties will be likely to be developed and sold in the time-line proposed, with the quality of construction proposed, and at the sales prices proposed.”; and rewrote par. (3), which had read as follows: “(3) Affordability. The minimum affordability level shall be determined pursuant to § <a class="internal-link" href="/dc/council/code/sections/10-833.html">10-833</a>(a)(4). More points shall be awarded for proposing to develop additional properties (that is properties not counted toward the minimum affordability level) as workforce housing. (20 points).”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a> deleted subsection designation “(a)”; in par. (4), substituted “proposal that” for “proposal who”, and also validated a previously made technical correction.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition, see § 6 of Abandoned and Vacant Properties Community Development Disposition, and Disapproval of Disposition of Certain Scattered Vacant and Abandoned Properties Temporary of 2002 (D.C. Law 14-203, October 17, 2002, law notification  49 DCR 10021).</p>
               </section>

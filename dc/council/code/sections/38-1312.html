@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/38-1313.html">§ 38–1313. Transfer of the Higher Education Licensure Commission from the Department of Consumer and Regulatory Affairs to the State Education Office.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-1312.html">Report Error</a>
@@ -106,8 +106,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2016 amendment by <a class="internal-link" href="/dc/council/laws/21-74.html">D.C. Law 21-74</a> added (a-1); and substituted “Office of the Attorney General for” for “Corporation Counsel of” in (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 2(h) of the Higher Education Licensure Commission Emergency Amendment Act of 2015 (D.C. Act 21-158, Oct. 16, 2015,  62 DCR 13715).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(h) of the Higher Education Licensure Commission Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-284, Jan. 27, 2016,  63 DCR 1188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(h) of the Higher Education Licensure Commission Emergency Amendment Act of 2015 (D.C. Act 21-158, Oct. 16, 2015,  62 DCR 13715).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 2(h) of the Higher Education Licensure Commission Temporary Amendment Act of 2015 (D.C. Law 21-51, Jan. 9, 2016,  62 DCR 13983).</p>
               </section>

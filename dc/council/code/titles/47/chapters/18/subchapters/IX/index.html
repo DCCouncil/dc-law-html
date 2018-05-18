@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/47/chapters/18/subchapters/X/">Subchapter X. Purpose of Chapter and Allocation and Apportionment.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/47/chapters/18/subchapters/IX/">Report Error</a>
@@ -88,16 +88,36 @@
         <section class="col8 body">
           <h1>Subchapter IX. Tax on Estates and Trusts.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/47-1809.01.html">§ 47–1809.01. Tax on estates and trusts — Residency definitions.</a>
-            <a href="/dc/council/code/sections/47-1809.02.html">§ 47–1809.02. Tax on estates and trusts — Effect of residence or situs of fiduciary.</a>
-            <a href="/dc/council/code/sections/47-1809.03.html">§ 47–1809.03. Tax on estates and trusts — Imposition.</a>
-            <a href="/dc/council/code/sections/47-1809.04.html">§ 47–1809.04. Tax on estates and trusts — Computation.</a>
-            <a href="/dc/council/code/sections/47-1809.05.html">§ 47–1809.05. Tax on estates and trusts — Net income.</a>
-            <a href="/dc/council/code/sections/47-1809.06.html">§ 47–1809.06. Tax on estates and trusts — Beneficiary taxable year.</a>
-            <a href="/dc/council/code/sections/47-1809.07.html">§ 47–1809.07. Tax on estates and trusts — Revocable trusts.</a>
-            <a href="/dc/council/code/sections/47-1809.08.html">§ 47–1809.08. Tax on estates and trusts — Income for benefit of grantor.</a>
-            <a href="/dc/council/code/sections/47-1809.09.html">§ 47–1809.09. Tax on estates and trusts — “In discretion of grantor” defined.</a>
-            <a href="/dc/council/code/sections/47-1809.10.html">§ 47–1809.10. Tax on estates and trusts — Employees’ trusts.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1809.01.html">§ 47–1809.01. Tax on estates and trusts — Residency definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1809.02.html">§ 47–1809.02. Tax on estates and trusts — Effect of residence or situs of fiduciary.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1809.03.html">§ 47–1809.03. Tax on estates and trusts — Imposition.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1809.04.html">§ 47–1809.04. Tax on estates and trusts — Computation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1809.05.html">§ 47–1809.05. Tax on estates and trusts — Net income.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1809.06.html">§ 47–1809.06. Tax on estates and trusts — Beneficiary taxable year.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1809.07.html">§ 47–1809.07. Tax on estates and trusts — Revocable trusts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1809.08.html">§ 47–1809.08. Tax on estates and trusts — Income for benefit of grantor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1809.09.html">§ 47–1809.09. Tax on estates and trusts — “In discretion of grantor” defined.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1809.10.html">§ 47–1809.10. Tax on estates and trusts — Employees’ trusts.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -112,8 +132,8 @@
       (July 16, 1947, 61 Stat. 346, ch. 258, art. I, title IX, § 1; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1809.1.</p>
                 <p>1973 Ed., § 47-1577.</p>
+                <p>1981 Ed., § 47-1809.1.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-1809.02.html">47-1809.02</a>.</p>
               </section>
@@ -130,8 +150,8 @@
       (July 16, 1947, 61 Stat. 347, ch. 258, art. I, title IX, § 2; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1809.2.</p>
                 <p>1973 Ed., § 47-1577a.</p>
+                <p>1981 Ed., § 47-1809.2.</p>
               </section>
             </section>
             <hr/>
@@ -150,8 +170,8 @@
       (July 16, 1947, 61 Stat. 347, ch. 258, art. I, title IX, § 3; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1809.3.</p>
                 <p>1973 Ed., § 47-1577b.</p>
+                <p>1981 Ed., § 47-1809.3.</p>
                 <h4>Cross References</h4>
                 <p>Tax rate changes, authority of the Council of the District of Columbia, see § <a class="internal-link" href="/dc/council/code/sections/47-504.html">47-504</a>.</p>
               </section>
@@ -168,8 +188,8 @@
       (July 16, 1947, 61 Stat. 347, ch. 258, art. I, title IX, § 4; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1809.4.</p>
                 <p>1973 Ed., § 47-1577c.</p>
+                <p>1981 Ed., § 47-1809.4.</p>
               </section>
             </section>
             <hr/>
@@ -189,8 +209,8 @@
       (July 16, 1947, 61 Stat. 347, ch. 258, art. I, title IX, § 5; May 27, 1949, 63 Stat. 132, ch. 146, title IV, § 415; <a class="internal-link" href="/dc/council/laws/4-118.html">June 11, 1982, D.C. Law 4-118, § 114, 29 DCR 1770</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1809.5.</p>
                 <p>1973 Ed., § 47-1577d.</p>
+                <p>1981 Ed., § 47-1809.5.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-1809.06.html">47-1809.06</a>.</p>
               </section>
@@ -207,8 +227,8 @@
       (July 16, 1947, 61 Stat. 348, ch. 258, art. I, title IX, § 6; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1809.6.</p>
                 <p>1973 Ed., § 47-1577e.</p>
+                <p>1981 Ed., § 47-1809.6.</p>
               </section>
             </section>
             <hr/>
@@ -225,8 +245,8 @@
       (July 16, 1947, 61 Stat. 348, ch. 258, art. I, title IX, § 7; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1809.7.</p>
                 <p>1973 Ed., § 47-1577f.</p>
+                <p>1981 Ed., § 47-1809.7.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-1809.04.html">47-1809.04</a>.</p>
               </section>
@@ -246,8 +266,8 @@
       (July 16, 1947, 61 Stat. 348, ch. 258, art. I, title IX, § 8; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1809.8.</p>
                 <p>1973 Ed., § 47-1577g.</p>
+                <p>1981 Ed., § 47-1809.8.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-1809.04.html">47-1809.04</a>.</p>
               </section>
@@ -264,8 +284,8 @@
       (July 16, 1947, 61 Stat. 348, ch. 258, art. I, title IX, § 9; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1809.9.</p>
                 <p>1973 Ed., § 47-1577h.</p>
+                <p>1981 Ed., § 47-1809.9.</p>
               </section>
             </section>
             <hr/>
@@ -282,11 +302,11 @@
       (July 16, 1947, 61 Stat. 348, ch. 258, art. I, title IX, § 10; <a class="internal-link" href="/dc/council/laws/7-9.html">June 24, 1987, D.C. Law 7-9, § 2(j), 34 DCR 3283</a>; <a class="internal-link" href="/dc/council/laws/7-29.html">Oct. 1, 1987, D.C. Law 7-29, § 2(i), 34 DCR 5097</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/13-305.html">June 9, 2001, D.C. Law 13-305, § 202(d), 48 DCR 334</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1809.10.</p>
                 <p>1973 Ed., § 47-1577i.</p>
+                <p>1981 Ed., § 47-1809.10.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> rewrote subsec. (a) which had read:</p>
                 <p>“(a) Exempt status.—A trust forming part of a stock bonus, pension, or profit-sharing plan of an employer for the exclusive benefit of his employees or their beneficiaries shall not be taxable under this chapter and no other provision of this chapter shall apply with respect to such trust or to its beneficiary, except as hereinafter in this section expressly provided, if such trust meets the requirements for exemption from federal income tax under  §§ 401,  402, and  501(a) of the Internal Revenue Code of 1986 (§§ 401, 402, and 501(a) of Title 26, United States Code).”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> rewrote subsec. (a) which had read:</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 203(a) of <a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> provided: “(a) Section 202(a) through (e) shall apply for all tax years beginning after December 31, 2000.”</p>
               </section>

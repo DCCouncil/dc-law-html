@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/31-1131.03.html">§ 31–1131.03. License required.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-1131.02.html">Report Error</a>
@@ -127,10 +127,10 @@
       (<a class="internal-link" href="/dc/council/laws/14-264.html#§2">Mar. 27, 2003, D.C. Law 14-264, § 2, 50 DCR 260</a>; <a class="internal-link" href="/dc/council/laws/15-166.html">June 11, 2004, D.C. Law 15-166, § 4(g)(1), 51 DCR 2817</a>; <a class="internal-link" href="/dc/council/laws/15-354.html">Apr. 13, 2005, D.C. Law 15-354, § 43, 52 DCR 2638</a>; <a class="internal-link" href="/dc/council/laws/16-191.html">Mar. 2, 2007, D.C. Law 16-191, § 44(b), 53 DCR 6794</a>; <a class="internal-link" href="/dc/council/laws/17-155.html">May 13, 2008, D.C. Law 17-155, § 2(a), 55 DCR 3683</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-166.html">D.C. Law 15-166</a>, in par. (2), substituted “Commissioner of the Department of Insurance, Securities, and Banking” for “Commissioner of Insurance and Securities”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in par. (2), validated a previously made technical correction.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in par. (2), validated a previously made technical correction.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-155.html">D.C. Law 17-155</a> added pars. (2A), (4A), (14A), (15A); rewrote pars. (4), (5), (6), (11), (18), (19), and (20); and repealed pars. (9) and (10).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in par. (2), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in par. (2), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-166.html">D.C. Law 15-166</a>, in par. (2), substituted “Commissioner of the Department of Insurance, Securities, and Banking” for “Commissioner of Insurance and Securities”.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 4(g)(1) of Consolidation of Financial Services Emergency Amendment Act of 2004 (D.C. Act 15-381, February 27, 2004,  51 DCR 2653).</p>
               </section>

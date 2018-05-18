@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/10/chapters/5/">Chapter 5. Regulatory Provisions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/10/chapters/4/">Report Error</a>
@@ -87,19 +87,45 @@
         <section class="col8 body">
           <h1>Chapter 4. Recreation Volunteer Background Check and Screening. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/10-401.html">§ 10–401. Definitions. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-402.html">§ 10–402. Criminal background investigation requirement. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-403.html">§ 10–403. Request for criminal background investigation. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-404.html">§ 10–404. Authorization to obtain records, notification of criminal background check and traffic record check. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-405.html">§ 10–405. Criminal background checks. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-406.html">§ 10–406. Traffic record checks. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-407.html">§ 10–407. Offer of certified volunteer position pending receipt of criminal history and traffic check reports. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-408.html">§ 10–408. Disqualification of volunteer or termination of performance of volunteer services. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-409.html">§ 10–409. Payment of processing fees. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-410.html">§ 10–410. Penalty for providing false information. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-411.html">§ 10–411. Confidentiality of information to be maintained. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-412.html">§ 10–412. Penalties for violations of this chapter. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-413.html">§ 10–413. Rules. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-401.html">§ 10–401. Definitions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-402.html">§ 10–402. Criminal background investigation requirement. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-403.html">§ 10–403. Request for criminal background investigation. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-404.html">§ 10–404. Authorization to obtain records, notification of criminal background check and traffic record check. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-405.html">§ 10–405. Criminal background checks. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-406.html">§ 10–406. Traffic record checks. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-407.html">§ 10–407. Offer of certified volunteer position pending receipt of criminal history and traffic check reports. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-408.html">§ 10–408. Disqualification of volunteer or termination of performance of volunteer services. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-409.html">§ 10–409. Payment of processing fees. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-410.html">§ 10–410. Penalty for providing false information. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-411.html">§ 10–411. Confidentiality of information to be maintained. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-412.html">§ 10–412. Penalties for violations of this chapter. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-413.html">§ 10–413. Rules. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

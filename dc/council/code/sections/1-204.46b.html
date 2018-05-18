@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -65,19 +77,7 @@
           <p>
             <a href="/dc/council/code/sections/1-204.47.html">§ 1–204.47. Consistency of budget, accounting, and personnel systems.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-204.46b.html">Report Error</a>
@@ -114,20 +114,20 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-204.46.html">1-204.46</a> and § <a class="internal-link" href="/dc/council/code/sections/44-951.06.html">44-951.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>Pub. L. 111-8, in subsec. (f), substituted “fiscal year 2006 and each succeeding fiscal year” for “fiscal years 2006 through 2008.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/19-321.html">D.C. Law 19-321</a> substituted “§ <a class="internal-link" href="/dc/council/code/sections/1-204.46.html">1-204.46</a>(c)” for “the fourth sentence of § <a class="internal-link" href="/dc/council/code/sections/1-204.46.html">1-204.46</a>” in (a); and deleted “approved by Act of Congress” following “budget” in (a).</p>
+                <p>Pub. L. 111-8, in subsec. (f), substituted “fiscal year 2006 and each succeeding fiscal year” for “fiscal years 2006 through 2008.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of (a), see § 2(f) of the Local Budget Autonomy Emergency Amendment Act of 2012 (D.C. Act 19-566, January 7, 2013,  59 DCR 15061, applicable as of January 1, 2014, and effective as provided in § <a class="internal-link" href="/dc/council/code/sections/1-203.03.html">1-203.03</a>.</p>
                 <h4>Effective Dates</h4>
-                <p>Section 5 of <a class="internal-link" href="/dc/council/laws/19-321.html">D.C. Law 19-321</a> provided that the act shall take effect as provided in § <a class="internal-link" href="/dc/council/code/sections/1-203.03.html">1-203.03</a>.</p>
                 <p>Section 808(b) of Pub. L. 111-8 provided that the amendment made by subsection (a) shall take effect as if included in the enactment of the 2005 District of Columbia Omnibus Authorization Act Pub. L. 109-356.</p>
+                <p>Section 5 of <a class="internal-link" href="/dc/council/laws/19-321.html">D.C. Law 19-321</a> provided that the act shall take effect as provided in § <a class="internal-link" href="/dc/council/code/sections/1-203.03.html">1-203.03</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-321.html">D.C. Law 19-321</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/19-321.html">D.C. Law 19-321</a> provided that section 2 of the act shall apply as of January 1, 2014.</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-321.html">D.C. Law 19-321</a> was declared invalid by the United States District Court for the District of Columbia in a memorandum opinion dated May 19, 2014, Civil Action No. 2014-0655. The court held that although the Council of the District of Columbia, the Mayor, and United States District Court for the District of Columbia are powerless to grant to the residents of the District of Columbia full budget autonomy, the United States Congress and the President of the United States are empowered to do so; and concluded that the Budget Autonomy Act was unlawful. See  Council of the Dist. of Columbia v. Gray, 42 F. Supp. 3d 134, 2014 U.S. Dist. LEXIS 68055 (2014).</p>
                 <p>On May 27, 2015, the United States Court of Appeals for the District of Columbia Circuit issued Order No. 14-7067, vacating the lower court’s judgment, dismissing the appeal, and remanding the case to the District Court with instructions to remand the case to the Superior Court of the District of Columbia. See  Council of the Dist. of Columbia v. Bowser, 2015 U.S. App. LEXIS 8881 (2015). The amendments contained in <a class="internal-link" href="/dc/council/laws/19-321.html">D.C. Law 19-321</a> are codified in this section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-321.html">D.C. Law 19-321</a> was declared invalid by the United States District Court for the District of Columbia in a memorandum opinion dated May 19, 2014, Civil Action No. 2014-0655. The court held that although the Council of the District of Columbia, the Mayor, and United States District Court for the District of Columbia are powerless to grant to the residents of the District of Columbia full budget autonomy, the United States Congress and the President of the United States are empowered to do so; and concluded that the Budget Autonomy Act was unlawful. See  Council of the Dist. of Columbia v. Gray, 42 F. Supp. 3d 134, 2014 U.S. Dist. LEXIS 68055 (2014).</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-321.html">D.C. Law 19-321</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/19-321.html">D.C. Law 19-321</a> provided that section 2 of the act shall apply as of January 1, 2014.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of Additional Functions to the Office of Partnerships and Grant Services; Grantmaking Made Subject to Policies and Procedures Contained in City-Wide Grants Manual and Sourcebook; Establishment of Grantmaking Procedure Waiver Committee, see Mayor’s Order 2009-228, January 8, 2010 ( 57 DCR 530).</p>
                 <p>Delegation of Authority to the Child and Family Services Agency under section 601(d) of the Prevention of Child Abuse and Neglect Act of 1977, see Mayor’s Order 2010-185, December 27, 2010 ( 58 DCR 153).</p>
+                <p>Delegation of Additional Functions to the Office of Partnerships and Grant Services; Grantmaking Made Subject to Policies and Procedures Contained in City-Wide Grants Manual and Sourcebook; Establishment of Grantmaking Procedure Waiver Committee, see Mayor’s Order 2009-228, January 8, 2010 ( 57 DCR 530).</p>
               </section>
             </section>
           </section>

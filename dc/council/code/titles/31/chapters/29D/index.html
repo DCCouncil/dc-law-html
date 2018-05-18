@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/31/chapters/30/">Chapter 30. Diabetes Health Insurance Coverage.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/31/chapters/29D/">Report Error</a>
@@ -87,9 +87,15 @@
         <section class="col8 body">
           <h1>Chapter 29D. Dependent Health Insurance.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/31-2996.01.html">§ 31–2996.01. Definitions.</a>
-            <a href="/dc/council/code/sections/31-2996.02.html">§ 31–2996.02. Dependent child coverage.</a>
-            <a href="/dc/council/code/sections/31-2996.03.html">§ 31–2996.03. Limitations on other coverage.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2996.01.html">§ 31–2996.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2996.02.html">§ 31–2996.02. Dependent child coverage.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2996.03.html">§ 31–2996.03. Limitations on other coverage.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -114,19 +120,19 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see § 2 of Health Insurance for Dependents Emergency Act of 2010 (D.C. Act 18-384, April 29,</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 18-203 added a section to read as follows:</p>
-                <p>“Sec. 2. Definitions.</p>
-                <p>“For the purposes of this act, the term:</p>
-                <p>“(1) ’Dependent child’ means an insured’s child by blood or by law who:</p>
-                <p>“(A) Is under 26 years of age;</p>
-                <p>“(B) Is unmarried;</p>
-                <p>“(C) Has no dependent of his own;</p>
-                <p>“(D) Is a resident of the District of Columbia or is enrolled as a full-time student at an accredited public or private institution of higher education; and</p>
-                <p>“(E) Is not provided coverage, or eligible to receive coverage, as a named subscriber, insured, enrollee, or covered person under any other group health plan or individual health plan, or entitled to benefits under Title XVIII of the Social Security Act, approved July 30, 1965 (Pub. L. 89-871;  42 U.S.C.§ 1395 et seq.), at the time dependent coverage pursuant to this act begins.</p>
-                <p>“(2) ‘Group health plan’ means an employee welfare plan (as defined in section 3 (1) of the Employee Retirement Income Security Act of 1974, approved September 2, 1974 (88 Stat. 829;  29 U.S.C. § 1002(1)), to the extent that the plan provides medical care and includes items and services paid for as medical care to employees or their dependents (as defined under the terms of the plan) directly or through insurance, reimbursement, or otherwise.</p>
-                <p>“(3) ‘Health insurance coverage’ means benefits consisting of medical care (provided directly, through insurance or reimbursement, or otherwise and includes items and services paid for as medical care) under any hospital or medical service policy or certificate, hospital, or medical service plan contract, or health maintenance organization contract offered by a health insurer.</p>
-                <p>“(4) ‘Health insurer’ means any person that provides one or more health benefit plans or insurance in the District, including an insurer, a hospital and medical services corporation, a fraternal benefit society, a health maintenance organization, a multiple employer welfare arrangement, or any other person providing a plan of health insurance subject to the authority of the Commissioner of Insurance, Securities, and Banking.”</p>
                 <p>Section 6(b) of D.C. Law 18-203 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(4) ‘Health insurer’ means any person that provides one or more health benefit plans or insurance in the District, including an insurer, a hospital and medical services corporation, a fraternal benefit society, a health maintenance organization, a multiple employer welfare arrangement, or any other person providing a plan of health insurance subject to the authority of the Commissioner of Insurance, Securities, and Banking.”</p>
+                <p>“(3) ‘Health insurance coverage’ means benefits consisting of medical care (provided directly, through insurance or reimbursement, or otherwise and includes items and services paid for as medical care) under any hospital or medical service policy or certificate, hospital, or medical service plan contract, or health maintenance organization contract offered by a health insurer.</p>
+                <p>“(2) ‘Group health plan’ means an employee welfare plan (as defined in section 3 (1) of the Employee Retirement Income Security Act of 1974, approved September 2, 1974 (88 Stat. 829;  29 U.S.C. § 1002(1)), to the extent that the plan provides medical care and includes items and services paid for as medical care to employees or their dependents (as defined under the terms of the plan) directly or through insurance, reimbursement, or otherwise.</p>
+                <p>“(E) Is not provided coverage, or eligible to receive coverage, as a named subscriber, insured, enrollee, or covered person under any other group health plan or individual health plan, or entitled to benefits under Title XVIII of the Social Security Act, approved July 30, 1965 (Pub. L. 89-871;  42 U.S.C.§ 1395 et seq.), at the time dependent coverage pursuant to this act begins.</p>
+                <p>“(D) Is a resident of the District of Columbia or is enrolled as a full-time student at an accredited public or private institution of higher education; and</p>
+                <p>“(C) Has no dependent of his own;</p>
+                <p>“(B) Is unmarried;</p>
+                <p>“(A) Is under 26 years of age;</p>
+                <p>“(1) ’Dependent child’ means an insured’s child by blood or by law who:</p>
+                <p>“For the purposes of this act, the term:</p>
+                <p>“Sec. 2. Definitions.</p>
+                <p>Section 2 of D.C. Law 18-203 added a section to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -149,16 +155,16 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see § 3 of Health Insurance for Dependents Emergency Act of 2010 (D.C. Act 18-384, April 29,</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 3 of D.C. Law 18-203 added a section to read as follows:</p>
-                <p>“Sec. 3. Dependent child coverage.</p>
-                <p>“(a) A group health plan or an individual health plan, and a health insurer offering health insurance coverage that provides coverage for dependent children, that delivers, issues for delivery, amends, or renews a health insurance policy in the District of Columbia shall make health insurance coverage available and, if requested by the policyholder, extend health insurance coverage to any dependent child of a policyholder until the dependent child is no longer a dependent child.</p>
-                <p>“(b) The health insurance coverage shall provide:</p>
-                <p>“(1) The same health insurance coverage benefits to a dependent child that are available to any other covered dependent; and</p>
-                <p>“(2) Health insurance coverage benefits to a dependent child at the same rate or premium applicable to any other covered dependent.</p>
-                <p>“(c) Nothing in this act shall be construed to require:</p>
-                <p>“(1) Coverage for services provided to a dependent before the effective date of this act; or</p>
-                <p>“(2) That an employer or other group policyholder pay all or part of the cost of coverage for a dependent as provided pursuant to this section.”</p>
                 <p>Section 6(b) of D.C. Law 18-203 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) That an employer or other group policyholder pay all or part of the cost of coverage for a dependent as provided pursuant to this section.”</p>
+                <p>“(1) Coverage for services provided to a dependent before the effective date of this act; or</p>
+                <p>“(c) Nothing in this act shall be construed to require:</p>
+                <p>“(2) Health insurance coverage benefits to a dependent child at the same rate or premium applicable to any other covered dependent.</p>
+                <p>“(1) The same health insurance coverage benefits to a dependent child that are available to any other covered dependent; and</p>
+                <p>“(b) The health insurance coverage shall provide:</p>
+                <p>“(a) A group health plan or an individual health plan, and a health insurer offering health insurance coverage that provides coverage for dependent children, that delivers, issues for delivery, amends, or renews a health insurance policy in the District of Columbia shall make health insurance coverage available and, if requested by the policyholder, extend health insurance coverage to any dependent child of a policyholder until the dependent child is no longer a dependent child.</p>
+                <p>“Sec. 3. Dependent child coverage.</p>
+                <p>Section 3 of D.C. Law 18-203 added a section to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -175,8 +181,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see § 4 of Health Insurance for Dependents Emergency Act of 2010 (D.C. Act 18-384, April 29, 2010,  57 DCR 3835).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 4 of D.C. Law 18-203 added a section to read as follows: “Sec. 4. Limitations on other coverage. ”This act shall not limit or alter any right to dependent coverage or to the continuation of coverage that is otherwise provided for in the District of Columbia.”</p>
                 <p>Section 6(b) of D.C. Law 18-203 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 4 of D.C. Law 18-203 added a section to read as follows: “Sec. 4. Limitations on other coverage. ”This act shall not limit or alter any right to dependent coverage or to the continuation of coverage that is otherwise provided for in the District of Columbia.”</p>
               </section>
             </section>
             <hr/>

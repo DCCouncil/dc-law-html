@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/5/chapters/1/subchapters/XI/">Subchapter XI. Private Detectives.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/5/chapters/1/subchapters/X/">Report Error</a>
@@ -88,25 +88,63 @@
         <section class="col8 body">
           <h1>Subchapter X. Property.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/5-119.01.html">§ 5–119.01. Property Clerk office created; definitions.</a>
-            <a href="/dc/council/code/sections/5-119.02.html">§ 5–119.02. Lost, stolen or abandoned property — Custody.</a>
-            <a href="/dc/council/code/sections/5-119.03.html">§ 5–119.03. Registration record.</a>
-            <a href="/dc/council/code/sections/5-119.04.html">§ 5–119.04. Powers of notaries public.</a>
-            <a href="/dc/council/code/sections/5-119.05.html">§ 5–119.05. Administration of oaths; certification of depositions.</a>
-            <a href="/dc/council/code/sections/5-119.06.html">§ 5–119.06. Property clerk — Return of property — General requirements; multiple claimants; immunity; property needed as evidence; notice to owner; disposition upon failure to claim.</a>
-            <a href="/dc/council/code/sections/5-119.07.html">§ 5–119.07. Acquittal of accused.</a>
-            <a href="/dc/council/code/sections/5-119.08.html">§ 5–119.08. Ownership claim by other than person arrested.</a>
-            <a href="/dc/council/code/sections/5-119.09.html">§ 5–119.09. Property transmitted; deceased and incompetent persons; storage; fees; sale.</a>
-            <a href="/dc/council/code/sections/5-119.10.html">§ 5–119.10. Sale at public auction; motor vehicle with lien of record; disposition of proceeds from sale.</a>
-            <a href="/dc/council/code/sections/5-119.11.html">§ 5–119.11. Immunity from damages to property; exception; “gross negligence” defined.</a>
-            <a href="/dc/council/code/sections/5-119.12.html">§ 5–119.12. Sale of unclaimed animals.</a>
-            <a href="/dc/council/code/sections/5-119.13.html">§ 5–119.13. Sale of perishable property.</a>
-            <a href="/dc/council/code/sections/5-119.14.html">§ 5–119.14. Property delivered to owner preceding trial — Generally.</a>
-            <a href="/dc/council/code/sections/5-119.15.html">§ 5–119.15. Property delivered to owner preceding trial — Perishable property.</a>
-            <a href="/dc/council/code/sections/5-119.16.html">§ 5–119.16. Property delivered to owner preceding trial — Large quantities of goods held for sale.</a>
-            <a href="/dc/council/code/sections/5-119.17.html">§ 5–119.17. Use of property as evidence.</a>
-            <a href="/dc/council/code/sections/5-119.18.html">§ 5–119.18. Property treated as abandoned.</a>
-            <a href="/dc/council/code/sections/5-119.19.html">§ 5–119.19. Abandoned intangible personal property.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.01.html">§ 5–119.01. Property Clerk office created; definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.02.html">§ 5–119.02. Lost, stolen or abandoned property — Custody.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.03.html">§ 5–119.03. Registration record.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.04.html">§ 5–119.04. Powers of notaries public.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.05.html">§ 5–119.05. Administration of oaths; certification of depositions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.06.html">§ 5–119.06. Property clerk — Return of property — General requirements; multiple claimants; immunity; property needed as evidence; notice to owner; disposition upon failure to claim.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.07.html">§ 5–119.07. Acquittal of accused.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.08.html">§ 5–119.08. Ownership claim by other than person arrested.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.09.html">§ 5–119.09. Property transmitted; deceased and incompetent persons; storage; fees; sale.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.10.html">§ 5–119.10. Sale at public auction; motor vehicle with lien of record; disposition of proceeds from sale.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.11.html">§ 5–119.11. Immunity from damages to property; exception; “gross negligence” defined.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.12.html">§ 5–119.12. Sale of unclaimed animals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.13.html">§ 5–119.13. Sale of perishable property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.14.html">§ 5–119.14. Property delivered to owner preceding trial — Generally.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.15.html">§ 5–119.15. Property delivered to owner preceding trial — Perishable property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.16.html">§ 5–119.16. Property delivered to owner preceding trial — Large quantities of goods held for sale.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.17.html">§ 5–119.17. Use of property as evidence.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.18.html">§ 5–119.18. Property treated as abandoned.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-119.19.html">§ 5–119.19. Abandoned intangible personal property.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -124,8 +162,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§408">R.S., D.C., § 408</a>; Dec. 5, 1919, 41 Stat. 363, ch. 1, § 1; <a class="internal-link" href="/dc/council/laws/3-160.html">Mar. 5, 1981, D.C. Law 3-160, § 201, 27 DCR 5150</a>; <a class="internal-link" href="/dc/council/laws/8-24.html">Sept. 9, 1989, D.C. Law 8-24, § 6(a), 36 DCR 4575</a>; <a class="internal-link" href="/dc/council/laws/8-118.html">May 4, 1990, D.C. Law 8-118, § 2, 37 DCR 1736</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-152.</p>
                 <p>1973 Ed., § 4-151.</p>
+                <p>1981 Ed., § 4-152.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.19.html">5-119.19</a>.</p>
                 <h4>Cross References</h4>
@@ -146,8 +184,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§409">R.S., D.C., § 409</a>; <a class="internal-link" href="/dc/council/laws/8-24.html">Sept. 9, 1989, D.C. Law 8-24, § 6(b), 36 DCR 4575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-153.</p>
                 <p>1973 Ed., § 4-152.</p>
+                <p>1981 Ed., § 4-153.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.01.html">5-119.01</a>.</p>
                 <h4>Cross References</h4>
@@ -170,8 +208,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§410">R.S., D.C., § 410</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-154.</p>
                 <p>1973 Ed., § 4-153.</p>
+                <p>1981 Ed., § 4-154.</p>
               </section>
             </section>
             <hr/>
@@ -186,8 +224,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§411">R.S., D.C., § 411</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-155.</p>
                 <p>1973 Ed., § 4-154.</p>
+                <p>1981 Ed., § 4-155.</p>
               </section>
             </section>
             <hr/>
@@ -202,8 +240,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§412">R.S., D.C., § 412</a>; June 11, 1878, 20 Stat. 107, ch. 180, § 6; May 9, 1941, 55 Stat. 185, ch. 99, § 1.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-156.</p>
                 <p>1973 Ed., § 4-155.</p>
+                <p>1981 Ed., § 4-156.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.06.html">5-119.06</a>.</p>
                 <h4>Change in Government</h4>
@@ -227,22 +265,22 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§413">R.S., D.C., § 413</a>; May 9, 1941, 55 Stat. 185, ch. 99, § 1; June 29, 1953, 67 Stat. 101, ch. 159, § 306(a); <a class="internal-link" href="/us/congress/laws/public/87-691.html">Sept. 25, 1962, 76 Stat. 589, Pub. L. 87-691,§ 1</a>; <a class="internal-link" href="/dc/council/laws/5-194.html">Mar. 16, 1985, D.C. Law 5-194, § 2, 32 DCR 1020</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-157.</p>
                 <p>1973 Ed., § 4-156.</p>
+                <p>1981 Ed., § 4-157.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.16.html">5-119.16</a>.</p>
                 <h4>Cross References</h4>
-                <p>Actions, limitations, see § <a class="internal-link" href="/dc/council/code/sections/12-301.html">12-301</a>.</p>
-                <p>Alcoholic beverages and vehicles, contraband, seizure and forfeiture, see § <a class="internal-link" href="/dc/council/code/sections/25-911.html">25-911</a>.</p>
-                <p>Cigarettes, forfeiture and seizure, see § <a class="internal-link" href="/dc/council/code/sections/47-2409.html">47-2409</a>.</p>
-                <p>Civil damages, authorization for recovery, see § <a class="internal-link" href="/dc/council/code/sections/23-554.html">23-554</a>.</p>
-                <p>Controlled substances, forfeiture, see §§ <a class="internal-link" href="/dc/council/code/sections/48-903.04.html">48-903.04</a>, <a class="internal-link" href="/dc/council/code/sections/48-905.02.html">48-905.02</a>, and <a class="internal-link" href="/dc/council/code/sections/48-1104.html">48-1104</a>.</p>
-                <p>Gambling premises and property, see § <a class="internal-link" href="/dc/council/code/sections/22-1705.html">22-1705</a>.</p>
-                <p>Hunting and fishing equipment, seizure and sale, see § <a class="internal-link" href="/dc/council/code/sections/22-4330.html">22-4330</a>.</p>
-                <p>Milk containers, seizure, see § <a class="internal-link" href="/dc/council/code/sections/36-125.html">36-125</a>.</p>
-                <p>Motor vehicle fuels, contraband, seizure and forfeiture, see § <a class="internal-link" href="/dc/council/code/sections/47-2320.html">47-2320</a>.</p>
-                <p>Plants or plant products, diseased or infested, inspections and seizure, see § <a class="internal-link" href="/dc/council/code/sections/8-304.html">8-304</a>.</p>
                 <p>Weapons, taking of dangerous articles, see § <a class="internal-link" href="/dc/council/code/sections/22-4517.html">22-4517</a>.</p>
+                <p>Plants or plant products, diseased or infested, inspections and seizure, see § <a class="internal-link" href="/dc/council/code/sections/8-304.html">8-304</a>.</p>
+                <p>Motor vehicle fuels, contraband, seizure and forfeiture, see § <a class="internal-link" href="/dc/council/code/sections/47-2320.html">47-2320</a>.</p>
+                <p>Milk containers, seizure, see § <a class="internal-link" href="/dc/council/code/sections/36-125.html">36-125</a>.</p>
+                <p>Hunting and fishing equipment, seizure and sale, see § <a class="internal-link" href="/dc/council/code/sections/22-4330.html">22-4330</a>.</p>
+                <p>Gambling premises and property, see § <a class="internal-link" href="/dc/council/code/sections/22-1705.html">22-1705</a>.</p>
+                <p>Controlled substances, forfeiture, see §§ <a class="internal-link" href="/dc/council/code/sections/48-903.04.html">48-903.04</a>, <a class="internal-link" href="/dc/council/code/sections/48-905.02.html">48-905.02</a>, and <a class="internal-link" href="/dc/council/code/sections/48-1104.html">48-1104</a>.</p>
+                <p>Civil damages, authorization for recovery, see § <a class="internal-link" href="/dc/council/code/sections/23-554.html">23-554</a>.</p>
+                <p>Cigarettes, forfeiture and seizure, see § <a class="internal-link" href="/dc/council/code/sections/47-2409.html">47-2409</a>.</p>
+                <p>Alcoholic beverages and vehicles, contraband, seizure and forfeiture, see § <a class="internal-link" href="/dc/council/code/sections/25-911.html">25-911</a>.</p>
+                <p>Actions, limitations, see § <a class="internal-link" href="/dc/council/code/sections/12-301.html">12-301</a>.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 402(102) of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to the District of Columbia Council, subject to the right of the Commissioner as provided in § 406 of the Plan. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -259,8 +297,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§414">R.S., D.C., § 414</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-158.</p>
                 <p>1973 Ed., § 4-157.</p>
+                <p>1981 Ed., § 4-158.</p>
               </section>
             </section>
             <hr/>
@@ -275,8 +313,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§415">R.S., D.C., § 415</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-159.</p>
                 <p>1973 Ed., § 4-158.</p>
+                <p>1981 Ed., § 4-159.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.06.html">5-119.06</a>.</p>
               </section>
@@ -299,8 +337,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§416">R.S., D.C., § 416</a>; May 29, 1896, 29 Stat. 191, ch. 270; Mar. 3, 1901, 31 Stat. 1208, ch. 854, § 116; Sept. 1, 1916, 39 Stat. 718, ch. 433, § 12; Mar. 3, 1936, 49 Stat. 1158, ch. 121, § 1; <a class="internal-link" href="/us/congress/laws/public/87-691.html">Sept. 25, 1962, 76 Stat. 589, Pub. L. 87-691, § 2</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 576, Pub. L. 91-358, title I, § 158(a)(1)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-160.</p>
                 <p>1973 Ed., § 4-159.</p>
+                <p>1981 Ed., § 4-160.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.10.html">5-119.10</a>.</p>
                 <h4>Change in Government</h4>
@@ -330,23 +368,23 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§417">R.S., D.C., § 417</a>; Sept. 1, 1916, 39 Stat. 718, ch. 433, § 12; Mar. 3, 1936, 49 Stat. 1158, ch. 121, § 2; <a class="internal-link" href="/us/congress/laws/public/87-691.html">Sept. 25, 1962, 76 Stat. 591, Pub. L. 87-691,§ 4</a>; <a class="internal-link" href="/dc/council/laws/3-160.html">Mar. 5, 1981, D.C. Law 3-160, § 202, 27 DCR 5150</a>; <a class="internal-link" href="/dc/council/laws/7-164.html">Sept. 29, 1988, D.C. Law 7-164, § 2, 35 DCR 5739</a>; <a class="internal-link" href="/dc/council/laws/8-24.html">Sept. 9, 1989, D.C. Law 8-24, § 6(c)-(e), 36 DCR 4575</a>; <a class="internal-link" href="/dc/council/laws/15-35.html">Oct. 28, 2003, D.C. Law 15-35, § 13(a), 50 DCR 6579</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 16, 53 DCR 6198</a>; <a class="internal-link" href="/dc/council/laws/19-168.html">Sept. 20, 2012, D.C. Law 19-168, § 3002, 59 DCR 8025</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-161.</p>
                 <p>1973 Ed., § 4-160.</p>
+                <p>1981 Ed., § 4-161.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.06.html">5-119.06</a> and § <a class="internal-link" href="/dc/council/code/sections/5-119.09.html">5-119.09</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-35.html">D.C. Law 15-35</a> repealed subsec. (e).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (a), substituted “persons with mental illness” for “insane persons”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> rewrote (a)(1)(A), which formerly read: “A description of the property; and”; added “a description of the property, and” in (a)(2); added (a)(3); and made a related change.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (a), substituted “persons with mental illness” for “insane persons”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-35.html">D.C. Law 15-35</a> repealed subsec. (e).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 13(a) of the Removal and Disposition of Abandoned, Dangerous and Other Unlawfully Parked Vehicles Reform Emergency Act of 2002 (D.C. Act 15-104, June 20, 2003,  50 DCR 5534).</p>
                 <p>For temporary (90 day) amendment of section, see § 13(a) of Removal and Disposition of Abandoned and Other Unlawfully Parked Vehicles Reform Congressional Review Emergency Act of 2003 (D.C. Act 15-171, October 6, 2003,  50 DCR 9163).</p>
+                <p>For temporary (90 day) amendment of section, see § 13(a) of the Removal and Disposition of Abandoned, Dangerous and Other Unlawfully Parked Vehicles Reform Emergency Act of 2002 (D.C. Act 15-104, June 20, 2003,  50 DCR 5534).</p>
                 <h4>Editor's Notes</h4>
-                <p>Application of Law 15-35: Section 15 of <a class="internal-link" href="/dc/council/laws/15-35.html">D.C. Law 15-35</a> provided: “This act shall apply to all vehicles impounded after its effective date. This act shall also apply to all vehicles impounded prior to its effective date provided that notice is sent to the owners and lien holders in accordance with the provisions of subsections 7(b) or (c), as is applicable.”</p>
                 <p>Effect of repeal provisions: Section 14 of <a class="internal-link" href="/dc/council/laws/15-35.html">D.C. Law 15-35</a> provided: “Any repeal of a law or regulation by this act shall not invalidate any enforcement action, adjudication, or any other action made or taken pursuant to such law or regulation.”</p>
+                <p>Application of Law 15-35: Section 15 of <a class="internal-link" href="/dc/council/laws/15-35.html">D.C. Law 15-35</a> provided: “This act shall apply to all vehicles impounded after its effective date. This act shall also apply to all vehicles impounded prior to its effective date provided that notice is sent to the owners and lien holders in accordance with the provisions of subsections 7(b) or (c), as is applicable.”</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-24.html">D.C. Law 8-24</a>, the “D.C. Abandoned and Junk Vehicle Removal Amend. Act of 1989”, see Mayor’s Order 90-11, January 23, 1990.</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/7-164.html">D.C. Law 7-164</a>, the “D.C. Forfeited Property Amendment Act of 1988”, see Mayor’s Order 90-71, May 10, 1990.</p>
+                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-24.html">D.C. Law 8-24</a>, the “D.C. Abandoned and Junk Vehicle Removal Amend. Act of 1989”, see Mayor’s Order 90-11, January 23, 1990.</p>
               </section>
             </section>
             <hr/>
@@ -361,8 +399,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/87-691.html#§5">Sept. 25, 1962, 76 Stat. 591, Pub. L. 87-691, § 5</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-162.</p>
                 <p>1973 Ed., § 4-160a.</p>
+                <p>1981 Ed., § 4-162.</p>
               </section>
             </section>
             <hr/>
@@ -377,8 +415,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§418">R.S., D.C., § 418</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-163.</p>
                 <p>1973 Ed., § 4-161.</p>
+                <p>1981 Ed., § 4-163.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.01.html">5-119.01</a>.</p>
               </section>
@@ -395,8 +433,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§419">R.S., D.C., § 419</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-164.</p>
                 <p>1973 Ed., § 4-162.</p>
+                <p>1981 Ed., § 4-164.</p>
               </section>
             </section>
             <hr/>
@@ -411,8 +449,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§420">R.S., D.C., § 420</a>; June 11, 1878, 20 Stat. 107, ch. 180, § 6.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-165.</p>
                 <p>1973 Ed., § 4-163.</p>
+                <p>1981 Ed., § 4-165.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.06.html">5-119.06</a>.</p>
                 <h4>Change in Government</h4>
@@ -431,8 +469,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§421">R.S., D.C., § 421</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-166.</p>
                 <p>1973 Ed., § 4-164.</p>
+                <p>1981 Ed., § 4-166.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.06.html">5-119.06</a>.</p>
               </section>
@@ -449,8 +487,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§422">R.S., D.C., § 422</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-167.</p>
                 <p>1973 Ed., § 4-165.</p>
+                <p>1981 Ed., § 4-167.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-119.06.html">5-119.06</a>.</p>
               </section>
@@ -467,8 +505,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§423">R.S., D.C., § 423</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-168.</p>
                 <p>1973 Ed., § 4-166.</p>
+                <p>1981 Ed., § 4-168.</p>
                 <h4>References in Text</h4>
                 <p>The Police Court of the District of Columbia and the Municipal Court for the District of Columbia were consolidated by the Act of April 1, 1942, 56 Stat. 190, ch. 270, § 1. The Act of July 8, 1963, § 1, substituted “District of Columbia Court of General Sessions” for “Municipal Court for the District of Columbia.” The Act of July 29, 1970, Pub. L. 91-358, § 155(a), substituted “Superior Court of the District of Columbia” for “District of Columbia Court of General Sessions.”.</p>
               </section>
@@ -485,8 +523,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§424">R.S., D.C., § 424</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-169.</p>
                 <p>1973 Ed., § 4-167.</p>
+                <p>1981 Ed., § 4-169.</p>
                 <h4>Cross References</h4>
                 <p>Disposition of unclaimed property, public or government held property, see § <a class="internal-link" href="/dc/council/code/sections/41-112.html">41-112</a>.</p>
               </section>

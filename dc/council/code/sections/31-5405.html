@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/31-5406.html">§ 31–5406. Assessments.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-5405.html">Report Error</a>
@@ -191,8 +191,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-5406.html">31-5406</a>, § <a class="internal-link" href="/dc/council/code/sections/31-5407.html">31-5407</a>, and § <a class="internal-link" href="/dc/council/code/sections/31-5411.html">31-5411</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-130.html">D.C. Law 20-130</a> added “or” at the end of (c)(1)(A); substituted “incurred” for “insured” in (d)(1); added the last sentence in (m)(2); added (m-1); in (p), added “or with jurisdiction over any person or property against which the Association may have rights through subrogation or otherwise” and substituted “appear or intervene” for “appear,” “any person or property” for “ard [sic] party”, and “subrogation or otherwise” for “subrogation”; added “against any person for losses arising under, resulting from, or otherwise” in (q)(1); rewrote (q)(3); added (q)(4) and (q)(5); made minor stylistic changes in (r)(5) and (r)(6); and added (r)(7), (t), (u), (v), and (w).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-235.html">D.C. Law 20-235</a> rewrote (q)(3).</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-130.html">D.C. Law 20-130</a> added “or” at the end of (c)(1)(A); substituted “incurred” for “insured” in (d)(1); added the last sentence in (m)(2); added (m-1); in (p), added “or with jurisdiction over any person or property against which the Association may have rights through subrogation or otherwise” and substituted “appear or intervene” for “appear,” “any person or property” for “ard [sic] party”, and “subrogation or otherwise” for “subrogation”; added “against any person for losses arising under, resulting from, or otherwise” in (q)(1); rewrote (q)(3); added (q)(4) and (q)(5); made minor stylistic changes in (r)(5) and (r)(6); and added (r)(7), (t), (u), (v), and (w).</p>
                 <h4>Editor's Notes</h4>
                 <p>“Subsection (e) of this section”, referred to in (d)(3), was substituted for the language “paragraph (4) of this subsection” which appeared in § 6 of <a class="internal-link" href="/dc/council/laws/9-129.html">D.C. Law 9-129</a>.</p>
               </section>

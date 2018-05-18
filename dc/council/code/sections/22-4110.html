@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/22-4111.html">§ 22–4111. Registration for change of address to another state. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/22-4110.html">Report Error</a>
@@ -100,22 +100,22 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 24-1110.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of § 24-1110 1981 Ed., see § 2 of the Sex Offender Registration Second Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-55, April 21, 1999,  46 DCR 4287).</p>
-                <p>For temporary (90-day) amendment of § 24-1110 1981 Ed., see § 2 of the Sex Offender Registration Third Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-101, July 9, 1999,  46 DCR 6015).</p>
-                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Emergency Act of 1999 (D.C. Act 13-133, August 4, 1999,  46 DCR 6771).</p>
-                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Legislative Review Emergency Act of 1999 (D.C. Act 13-176, November 2, 1999,  46 DCR 9244).</p>
-                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Congressional Review Emergency Act of 1999 (D.C. Act 13-229, January 11, 2000,  47 DCR 487).</p>
                 <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Congressional Review Emergency Act of 2000 (D.C. Act 13-308, April 7, 2000,  47 DCR 2714).</p>
+                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Congressional Review Emergency Act of 1999 (D.C. Act 13-229, January 11, 2000,  47 DCR 487).</p>
+                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Legislative Review Emergency Act of 1999 (D.C. Act 13-176, November 2, 1999,  46 DCR 9244).</p>
+                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Emergency Act of 1999 (D.C. Act 13-133, August 4, 1999,  46 DCR 6771).</p>
+                <p>For temporary (90-day) amendment of § 24-1110 1981 Ed., see § 2 of the Sex Offender Registration Third Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-101, July 9, 1999,  46 DCR 6015).</p>
+                <p>For temporary (90-day) amendment of § 24-1110 1981 Ed., see § 2 of the Sex Offender Registration Second Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-55, April 21, 1999,  46 DCR 4287).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Temporary amendment of section: Section 2 of D.C. Law 12-28 amended this section to read as follows:</p>
-                <p>“(a) A registrant shall immediately report a change of address to the police district having jurisdiction where the registrant has been residing.</p>
-                <p>“(b) A person who meets the registration requirements of this act and who moves into the District of Columbia from another jurisdiction shall register with the Department within 10 days of establishing a residence in the District of Columbia, or of re-establishing a residence in the District of Columbia if the person is a former District of Columbia resident.</p>
-                <p>“(c) If the registrant relocates to another state, the Department shall notify the law enforcement agency with which the registrant must register in the new state.</p>
-                <p>“(d) The Department shall ensure that the registry is updated promptly, and shall purge outdated addressees and shall include new addresses for all registrants.”</p>
-                <p>Section 4(b) of D.C. Law 12-28 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/12-287.html">D.C. Law 12-287</a> amended this section to read as follows:</p>
-                <p>“(d) The Department shall ensure that the registry is updated promptly, and shall purge outdated addresses and shall include new addresses for all registrants.”</p>
                 <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/12-287.html">D.C. Law 12-287</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(d) The Department shall ensure that the registry is updated promptly, and shall purge outdated addresses and shall include new addresses for all registrants.”</p>
+                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/12-287.html">D.C. Law 12-287</a> amended this section to read as follows:</p>
+                <p>Section 4(b) of D.C. Law 12-28 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(d) The Department shall ensure that the registry is updated promptly, and shall purge outdated addressees and shall include new addresses for all registrants.”</p>
+                <p>“(c) If the registrant relocates to another state, the Department shall notify the law enforcement agency with which the registrant must register in the new state.</p>
+                <p>“(b) A person who meets the registration requirements of this act and who moves into the District of Columbia from another jurisdiction shall register with the Department within 10 days of establishing a residence in the District of Columbia, or of re-establishing a residence in the District of Columbia if the person is a former District of Columbia resident.</p>
+                <p>“(a) A registrant shall immediately report a change of address to the police district having jurisdiction where the registrant has been residing.</p>
+                <p>Temporary amendment of section: Section 2 of D.C. Law 12-28 amended this section to read as follows:</p>
               </section>
             </section>
           </section>

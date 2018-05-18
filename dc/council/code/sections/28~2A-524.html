@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-525.html">§ 28:2A-525. Lessor’s right to possession of goods.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-524.html">Report Error</a>
@@ -107,19 +107,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § 28:2A-402 and § 28:2A-523.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Section 2-704.</p>
-                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology.</p>
-                <p><strong>Purposes:</strong> The remedies provided by this section are available to the lessor (i) if there has been a default by the lessee which falls within Section 2A-523(1) or 2A-523(3)(a), or (ii) if there has been any other default for which the lease contract gives the lessor the remedies provided by this section. Under “(ii)”, the lease contract may give the lessor the remedies of identification and disposition provided by this section in various ways. For example, a lease provision might specifically refer to the remedies of identification and disposition, or it might refer to this section by number (i.e., 2A-524), or it might do so by a more general reference such as “all rights and remedies provided by Article 2A for default by the lessee.”</p>
-                <p><strong>Definitional Cross References:</strong> “Aggrieved party”.  Section 1-201(2).</p>
-                <p>“Conforming”. Section 2A-103(1)(d).</p>
-                <p>“Goods”. Section 2A-103(1)(h).</p>
-                <p>“Learn”.  Section 1-201(25).</p>
-                <p>“Lease”. Section 2A-103(1)(j).</p>
-                <p>“Lease contract”. Section 2A-103(1)(l).</p>
-                <p>“Lessor”. Section 2A-103(1)(p).</p>
-                <p>“Rights”.  Section 1-201(36).</p>
-                <p>“Supplier”. Section 2A-103(1)(x).</p>
                 <p>“Value”.  Section 1-201(44).</p>
+                <p>“Supplier”. Section 2A-103(1)(x).</p>
+                <p>“Rights”.  Section 1-201(36).</p>
+                <p>“Lessor”. Section 2A-103(1)(p).</p>
+                <p>“Lease contract”. Section 2A-103(1)(l).</p>
+                <p>“Lease”. Section 2A-103(1)(j).</p>
+                <p>“Learn”.  Section 1-201(25).</p>
+                <p>“Goods”. Section 2A-103(1)(h).</p>
+                <p>“Conforming”. Section 2A-103(1)(d).</p>
+                <p><strong>Definitional Cross References:</strong> “Aggrieved party”.  Section 1-201(2).</p>
+                <p><strong>Purposes:</strong> The remedies provided by this section are available to the lessor (i) if there has been a default by the lessee which falls within Section 2A-523(1) or 2A-523(3)(a), or (ii) if there has been any other default for which the lease contract gives the lessor the remedies provided by this section. Under “(ii)”, the lease contract may give the lessor the remedies of identification and disposition provided by this section in various ways. For example, a lease provision might specifically refer to the remedies of identification and disposition, or it might refer to this section by number (i.e., 2A-524), or it might do so by a more general reference such as “all rights and remedies provided by Article 2A for default by the lessee.”</p>
+                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology.</p>
+                <p><strong>Uniform Statutory Source:</strong>Section 2-704.</p>
               </section>
             </section>
           </section>

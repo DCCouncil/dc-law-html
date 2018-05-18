@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:8-403.html">§ 28:8-403. Demand that issuer not register transfer.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:8-402.html">Report Error</a>
@@ -110,21 +110,21 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 742, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/9-196.html">Mar. 16, 1993, D.C. Law 9-196, § 4, 39 DCR 9165</a>; <a class="internal-link" href="/dc/council/laws/11-240.html">Apr. 9, 1997, D.C. Law 11-240, § 2, 44 DCR 1087</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:8-402.</p>
                 <p>1973 Ed., § 28:8-402.</p>
+                <p>1981 Ed., § 28:8-402.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:8-401.html">28:8-401</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. An issuer is absolutely liable for wrongful registration of transfer if the indorsement or instruction is ineffective. See  Section 8-404. Accordingly, an issuer is entitled to require such assurance as is reasonable under the circumstances that all necessary indorsements are effective, and thus to minimize its risk. This section establishes the requirements the issuer may make in terms of documentation which, except in the rarest of instances, should be easily furnished. Subsection (b) provides that an issuer may require additional assurances if that requirement is reasonable under the circumstances, but if the issuer demands more than reasonable assurance that the instruction or the necessary indorsements are genuine and authorized, the presenter may refuse the demand and sue for improper refusal to register.  Section 8-401(b).</p>
-                <p>2. Under subsection (a)(1), the issuer may require in all cases a guaranty of signature. See  Section 8-306. When an instruction is presented the issuer always may require reasonable assurance as to the identity of the originator. Subsection (c) allows the issuer to require that the person making these guaranties be one reasonably believed to be responsible, and the issuer may adopt standards of responsibility which are not manifestly unreasonable. Regulations under the federal securities laws, however, place limits on the requirements transfer agents may impose concerning the responsibility of eligible signature guarantors. See  17 CFR 240.17Ad-15.</p>
-                <p>3. This section, by paragraphs (2) through (5) of subsection (a), permits the issuer to seek confirmation that the indorsement or instruction is genuine and authorized. The permitted methods act as a double check on matters which are within the warranties of the signature guarantor. See  Section 8-306. Thus, an agent may be required to submit a power of attorney, a corporation to submit a certified resolution evidencing the authority of its signing officer to sign, an executor or administrator to submit the usual “short-form certificate,” etc. But failure of a fiduciary to obtain court approval of the transfer or to comply with other requirements does not make the fiduciary’s signature ineffective.  Section 8-107(c). Hence court orders and other controlling instruments are omitted from subsection (a).</p>
-                <p>Subsection (a)(3) authorizes the issuer to require “appropriate evidence” of appointment or incumbency, and subsection (c) indicates what evidence will be “appropriate”. In the case of a fiduciary appointed or qualified by a court that evidence will be a court certificate dated within sixty days before the date of presentation, subsection (c)(2)(i). Where the fiduciary is not appointed or qualified by a court, as in the case of a successor trustee, subsection (c)(2)(ii) applies. In that case, the issuer may require a copy of a trust instrument or other document showing the appointment, or it may require the certificate of a responsible person. In the absence of such a document or certificate, it may require other appropriate evidence. If the security is registered in the name of the fiduciary as such, the person’s signature is effective even though the person is no longer serving in that capacity, see  Section 8-107(d), hence no evidence of incumbency is needed.</p>
-                <p>4. Circumstances may indicate that a necessary signature was unauthorized or was not that of an appropriate person. Such circumstances would be ignored at risk of absolute liability. To minimize that risk the issuer may properly exercise the option given by subsection (b) to require assurance beyond that specified in subsection (a). On the other hand, the facts at hand may reflect only on the rightfulness of the transfer. Such facts do not create a duty of inquiry, because the issuer is not liable to an adverse claimant unless the claimant obtains legal process. See  Section 8-404.</p>
-                <p><strong>Definitional Cross References</strong> “Appropriate person”.  Section 8-107.</p>
-                <p>“Genuine”.  Section 1-201(18).</p>
-                <p>“Indorsement”.  Section 8-102(a)(11).</p>
-                <p>“Instruction”.  Section 8-102(a)(12).</p>
                 <p>“Issuer”.  Section 8-201.</p>
+                <p>“Instruction”.  Section 8-102(a)(12).</p>
+                <p>“Indorsement”.  Section 8-102(a)(11).</p>
+                <p>“Genuine”.  Section 1-201(18).</p>
+                <p><strong>Definitional Cross References</strong> “Appropriate person”.  Section 8-107.</p>
+                <p>4. Circumstances may indicate that a necessary signature was unauthorized or was not that of an appropriate person. Such circumstances would be ignored at risk of absolute liability. To minimize that risk the issuer may properly exercise the option given by subsection (b) to require assurance beyond that specified in subsection (a). On the other hand, the facts at hand may reflect only on the rightfulness of the transfer. Such facts do not create a duty of inquiry, because the issuer is not liable to an adverse claimant unless the claimant obtains legal process. See  Section 8-404.</p>
+                <p>Subsection (a)(3) authorizes the issuer to require “appropriate evidence” of appointment or incumbency, and subsection (c) indicates what evidence will be “appropriate”. In the case of a fiduciary appointed or qualified by a court that evidence will be a court certificate dated within sixty days before the date of presentation, subsection (c)(2)(i). Where the fiduciary is not appointed or qualified by a court, as in the case of a successor trustee, subsection (c)(2)(ii) applies. In that case, the issuer may require a copy of a trust instrument or other document showing the appointment, or it may require the certificate of a responsible person. In the absence of such a document or certificate, it may require other appropriate evidence. If the security is registered in the name of the fiduciary as such, the person’s signature is effective even though the person is no longer serving in that capacity, see  Section 8-107(d), hence no evidence of incumbency is needed.</p>
+                <p>3. This section, by paragraphs (2) through (5) of subsection (a), permits the issuer to seek confirmation that the indorsement or instruction is genuine and authorized. The permitted methods act as a double check on matters which are within the warranties of the signature guarantor. See  Section 8-306. Thus, an agent may be required to submit a power of attorney, a corporation to submit a certified resolution evidencing the authority of its signing officer to sign, an executor or administrator to submit the usual “short-form certificate,” etc. But failure of a fiduciary to obtain court approval of the transfer or to comply with other requirements does not make the fiduciary’s signature ineffective.  Section 8-107(c). Hence court orders and other controlling instruments are omitted from subsection (a).</p>
+                <p>2. Under subsection (a)(1), the issuer may require in all cases a guaranty of signature. See  Section 8-306. When an instruction is presented the issuer always may require reasonable assurance as to the identity of the originator. Subsection (c) allows the issuer to require that the person making these guaranties be one reasonably believed to be responsible, and the issuer may adopt standards of responsibility which are not manifestly unreasonable. Regulations under the federal securities laws, however, place limits on the requirements transfer agents may impose concerning the responsibility of eligible signature guarantors. See  17 CFR 240.17Ad-15.</p>
+                <p>1. An issuer is absolutely liable for wrongful registration of transfer if the indorsement or instruction is ineffective. See  Section 8-404. Accordingly, an issuer is entitled to require such assurance as is reasonable under the circumstances that all necessary indorsements are effective, and thus to minimize its risk. This section establishes the requirements the issuer may make in terms of documentation which, except in the rarest of instances, should be easily furnished. Subsection (b) provides that an issuer may require additional assurances if that requirement is reasonable under the circumstances, but if the issuer demands more than reasonable assurance that the instruction or the necessary indorsements are genuine and authorized, the presenter may refuse the demand and sue for improper refusal to register.  Section 8-401(b).</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/4-402.01.html">§ 4–402.01. Funding for day care provided by D.C. Public Schools.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/4-402.html">Report Error</a>
@@ -103,22 +103,22 @@
       (<a class="internal-link" href="/dc/council/laws/3-16.html#§3">Sept. 19, 1979, D.C. Law 3-16, § 3, 26 DCR 20</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 3-302.</p>
                 <p>1973 Ed., § 3-302.</p>
+                <p>1981 Ed., § 3-302.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2602 of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
-                <p>For temporary (90 day) addition, see § 2602 of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
-                <p>For temporary (90 day) addition, see § 2 of Day Care Facility Emergency Act of 2009 (D.C. Act 18-97, May 27, 2009, 56 DCR).</p>
                 <p>For temporary (90 day) addition, see § 2 of Day Care Facility Congressional Review Emergency Act of 2009 (D.C. Act 18-152, July  30, 2009,  56 DCR 6340).</p>
+                <p>For temporary (90 day) addition, see § 2 of Day Care Facility Emergency Act of 2009 (D.C. Act 18-97, May 27, 2009, 56 DCR).</p>
+                <p>For temporary (90 day) addition, see § 2602 of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) addition, see § 2602 of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 18-46 added a section to read as follows:</p>
-                <p>“Sec. 2. (a) The Mayor shall withdraw any request for offers, and not issue any future request for offers, for the use of any District-owned or District-operated property for any child development program or child care program until the Mayor submits to the Council for a 30-day period of review, prior to any action, the following:</p>
-                <p>“(1) A comprehensive analysis of any proposed child day care services;</p>
-                <p>“(2) A detailed report on efforts being made to find employment with potential awardees, or any other entity, for separated Department of Parks and Recreation day care employees;</p>
-                <p>“(3) An examination of whether the District’s laws on privatization (section 105b of the District of Columbia Procurement Practices Act of 1985, effective March 19, 1994 (<a class="internal-link" href="/dc/council/laws/10-79.html">D.C. Law 10-79</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-301.05b.html">2-301.05b</a>)) have been followed; and</p>
-                <p>“(4) A detailed report on the future of special needs/developmental programs and care in the Department of Parks and Recreation and the District.</p>
-                <p>“(b) All day care services and child development programs that are proposed to be removed from the Department of Parks and Recreation during the fiscal year 2010, shall remain open until September 30, 2009.”</p>
                 <p>Section 4(b) of D.C. Law 18-46 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(b) All day care services and child development programs that are proposed to be removed from the Department of Parks and Recreation during the fiscal year 2010, shall remain open until September 30, 2009.”</p>
+                <p>“(4) A detailed report on the future of special needs/developmental programs and care in the Department of Parks and Recreation and the District.</p>
+                <p>“(3) An examination of whether the District’s laws on privatization (section 105b of the District of Columbia Procurement Practices Act of 1985, effective March 19, 1994 (<a class="internal-link" href="/dc/council/laws/10-79.html">D.C. Law 10-79</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-301.05b.html">2-301.05b</a>)) have been followed; and</p>
+                <p>“(2) A detailed report on efforts being made to find employment with potential awardees, or any other entity, for separated Department of Parks and Recreation day care employees;</p>
+                <p>“(1) A comprehensive analysis of any proposed child day care services;</p>
+                <p>“Sec. 2. (a) The Mayor shall withdraw any request for offers, and not issue any future request for offers, for the use of any District-owned or District-operated property for any child development program or child care program until the Mayor submits to the Council for a 30-day period of review, prior to any action, the following:</p>
+                <p>Section 2 of D.C. Law 18-46 added a section to read as follows:</p>
               </section>
             </section>
           </section>

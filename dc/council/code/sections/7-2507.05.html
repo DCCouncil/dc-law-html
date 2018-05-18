@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/7-2507.06.html">§ 7–2507.06. Penalties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-2507.05.html">Report Error</a>
@@ -100,8 +100,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§705">Sept. 24, 1976, D.C. Law 1-85, title VII, § 705, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/17-372.html">Mar. 31, 2009, D.C. Law 17-372, § 3(p), 56 DCR 1365</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2375.</p>
                 <p>1973 Ed., § 6-1875.</p>
+                <p>1981 Ed., § 6-2375.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-133.16.html">5-133.16</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2502.10.html">7-2502.10</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2504.06.html">7-2504.06</a>, and § <a class="internal-link" href="/dc/council/code/sections/7-2505.01.html">7-2505.01</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -109,8 +109,8 @@
                 <h4>Cross References</h4>
                 <p>Ammunition feeding devices transfers, prohibition, see § <a class="internal-link" href="/dc/council/code/sections/5-133.16.html">5-133.16</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary prohibition on the transfer by the Metropolitan Police Department of any ammunition feeding device, see § 2 of the Prohibition on the Transfer of Firearms Emergency Act of 1995 (D.C. Act 11-58, May 18, 1995,  42 DCR 2574).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(p) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
+                <p>For temporary prohibition on the transfer by the Metropolitan Police Department of any ammunition feeding device, see § 2 of the Prohibition on the Transfer of Firearms Emergency Act of 1995 (D.C. Act 11-58, May 18, 1995,  42 DCR 2574).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) provisions prohibiting the transfer by the Metropolitan Police Department of ammunition feeding devices, see § 2 of Prohibition on the Transfer of Firearms Temporary Act of 1995 (D.C. Law 11-35, September 8, 1995, law notification  42 DCR 5304).</p>
                 <h4>Editor's Notes</h4>

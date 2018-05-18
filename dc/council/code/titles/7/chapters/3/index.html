@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/7/chapters/4/">Chapter 4. Limitation on Liability for Medical Care or Assistance in Emergency Situations.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/7/chapters/3/">Report Error</a>
@@ -87,10 +87,18 @@
         <section class="col8 body">
           <h1>Chapter 3. Reports of Cancer and Malignant Neoplastic Diseases.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/7-301.html">§ 7–301. Mayor to issue rules.</a>
-            <a href="/dc/council/code/sections/7-302.html">§ 7–302. Confidentiality.</a>
-            <a href="/dc/council/code/sections/7-303.html">§ 7–303. Medical examination or treatment not required.</a>
-            <a href="/dc/council/code/sections/7-304.html">§ 7–304. Penalties; prosecutions.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-301.html">§ 7–301. Mayor to issue rules.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-302.html">§ 7–302. Confidentiality.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-303.html">§ 7–303. Medical examination or treatment not required.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-304.html">§ 7–304. Penalties; prosecutions.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -105,19 +113,19 @@
       (<a class="internal-link" href="/us/congress/laws/public/82-1-ch241.html#§1">July 27, 1951, 65 Stat. 124, ch. 241, § 1</a>; <a class="internal-link" href="/dc/council/laws/6-83.html">Feb. 21, 1986, D.C. Law 6-83, § 2(a), 32 DCR 7276</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1201.</p>
                 <p>1973 Ed., § 6-1301.</p>
+                <p>1981 Ed., § 6-1201.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 506(a) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
-                <p>For temporary amendment of section, see § 506(b) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
-                <p>For temporary amendment of section, see § 506(d) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
-                <p>For temporary amendment of section, see § 506(e) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
-                <p>For temporary amendment of section, see § 506(f) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
-                <p>For temporary amendment of section, see § 402(a) of the Omnibus Budget Support Emergency Act of 1995 (D.C. Act 11-44, April 28, 1995,  42 DCR 2217) and § 506(g) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
                 <p>For temporary amendment of section, see § 506(h) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
+                <p>For temporary amendment of section, see § 402(a) of the Omnibus Budget Support Emergency Act of 1995 (D.C. Act 11-44, April 28, 1995,  42 DCR 2217) and § 506(g) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
+                <p>For temporary amendment of section, see § 506(f) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
+                <p>For temporary amendment of section, see § 506(e) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
+                <p>For temporary amendment of section, see § 506(d) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
+                <p>For temporary amendment of section, see § 506(b) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
+                <p>For temporary amendment of section, see § 506(a) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to Law 6-83, see Mayor’s Order 86-165, September 19, 1986.</p>
                 <p>Delegation of authority pursuant to the “Preventive Health Services Amendment Act of 1985”, see Mayor’s Order 98-141, August 20, 1998.</p>
+                <p>Delegation of authority pursuant to Law 6-83, see Mayor’s Order 86-165, September 19, 1986.</p>
               </section>
             </section>
             <hr/>
@@ -135,8 +143,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/82-1-ch241.html#§2">July 27, 1951, 65 Stat. 124, ch. 241, § 2</a>; <a class="internal-link" href="/dc/council/laws/6-83.html">Feb. 21, 1986, D.C. Law 6-83, § 2(b), 32 DCR 7276</a>; <a class="internal-link" href="/dc/council/laws/8-157.html">Sept. 11, 1990, D.C. Law 8-157, § 2, 37 DCR 4165</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1202.</p>
                 <p>1973 Ed., § 6-1302.</p>
+                <p>1981 Ed., § 6-1202.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-304.html">7-304</a>.</p>
               </section>
@@ -153,8 +161,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/82-1-ch241.html#§3">July 27, 1951, 65 Stat. 124, ch. 241, § 3</a>; <a class="internal-link" href="/dc/council/laws/6-83.html">Feb. 21, 1986, D.C. Law 6-83, § 2(c), 32 DCR 7276</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1203.</p>
                 <p>1973 Ed., § 6-1303.</p>
+                <p>1981 Ed., § 6-1203.</p>
               </section>
             </section>
             <hr/>
@@ -171,8 +179,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/82-1-ch241.html#§4">July 27, 1951, 65 Stat. 124, ch. 241, § 4</a>; <a class="internal-link" href="/us/congress/laws/public/88-60.html">July 8, 1963, 77 Stat. 77, Pub. L. 88-60, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(a)</a>; <a class="internal-link" href="/dc/council/laws/6-83.html">Feb. 21, 1986, D.C. Law 6-83, § 2(d), 32 DCR 7276</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1204.</p>
                 <p>1973 Ed., § 6-1304.</p>
+                <p>1981 Ed., § 6-1204.</p>
               </section>
             </section>
             <hr/>

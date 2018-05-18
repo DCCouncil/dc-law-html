@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/11-1570.html">§ 11–1570. The District of Columbia Judicial Retirement and Survivors Annuity Fund.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/11-1569.html">Report Error</a>
@@ -115,8 +115,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 506, Pub. L. 91-358, title I, § 111</a>; <a class="internal-link" href="/us/congress/laws/public/96-122.html">Nov. 17, 1979, 93 Stat. 866, Pub. L. 96-122, § 254(a)(2)</a>; <a class="internal-link" href="/us/congress/laws/public/103-266.html">June 13, 1994, Pub. L. 103-266, §§ 1(b)(77)-(79), 108 Stat. 713</a>; <a class="internal-link" href="/us/congress/laws/public/105-274.html">Oct. 21, 1998, 112 Stat. 2422, Pub. L. 105-274, § 2(e)(1)</a>; <a class="internal-link" href="/us/congress/laws/public/105-177.html">Oct. 21, 1998, 112 Stat. 2681-537, Pub. L. 105-177, § 804(e)(1)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 11-1569.</p>
                 <p>1973 Ed., § 11-1569.</p>
+                <p>1981 Ed., § 11-1569.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/11-1563.html">11-1563</a>.</p>
                 <h4>References in Text</h4>

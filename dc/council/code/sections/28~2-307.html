@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2-308.html">§ 28:2-308. Absence of specified place for delivery.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2-307.html">Report Error</a>
@@ -99,24 +99,24 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 646, Pub. L. 88-243, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:2-307.</p>
                 <p>1973 Ed., § 28:2-307.</p>
+                <p>1981 Ed., § 28:2-307.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Prior Uniform Statutory Provision:</strong> Section 45(1), Uniform Sales Act.</p>
-                <p><strong>Changes:</strong> Rewritten and expanded.</p>
-                <p><strong>Purposes of Changes:</strong> 1. This section applies where the parties have not specifically agreed whether delivery and payment are to be by lots and generally continues the essential intent of original Act, Section 45(1) by assuming that the parties intended delivery to be in a single lot.</p>
-                <p>2. Where the actual agreement or the circumstances do not indicate otherwise, delivery in lots is not permitted under this section and the buyer is properly entitled to reject for a deficiency in the tender, subject to any privilege in the seller to cure the tender.</p>
-                <p>3. The “but” clause of this section goes to the case in which it is not commercially feasible to deliver or to receive the goods in a single lot as for example, where a contract calls for the shipment of ten carloads of coal and only three cars are available at a given time. Similarly, in a contract involving brick necessary to build a building the buyer’s storage space may be limited so that it would be impossible to receive the entire amount of brick at once, or it may be necessary to assemble the goods as in the case of cattle on the range, or to mine them.</p>
-                <p>In such cases, a partial delivery is not subject to rejection for the defect in quantity alone, if the circumstances do not indicate a repudiation or default by the seller as to the expected balance or do not give the buyer ground for suspending his performance because of insecurity under the provisions of  Section 2-609. However, in such cases the undelivered balance of goods under the contract must be forthcoming within a reasonable time and in a reasonable manner according to the policy of  Section 2-503 on manner of tender of delivery. This is reinforced by the express provisions of  Section 2-608 that if a lot has been accepted on the reasonable assumption that its nonconformity will be cured, the acceptance may be revoked if the cure does not seasonably occur. The section rejects the rule of  Kelly Construction Co. v. Hackensack Brick Co., 91 N.J.L. 585, 103 A. 471, 2 A.L.R. 685 (1918)Lynn M. Ranger, Inc. v. Gildersleeve, 106 Conn. 372, 138 A. 142 (1927) in which a contract was made for six carloads of coal then rolling from the mines and consigned to the seller but the seller agreed to divert the carloads to the buyer as soon as the car numbers became known to him. He arranged a diversion of two cars and then notified the buyer who then repudiated the contract. The seller was held to be entitled to his full remedy for the two cars diverted because simultaneous delivery of all of the cars was not contemplated by either party.</p>
-                <p>4. Where the circumstances indicate that a party has a right to delivery in lots, the price may be demanded for each lot if it is apportionable.</p>
-                <p><strong>Cross References:</strong> Point 1:  Section 1-201.</p>
-                <p>Point 2:  Sections 2-508 and  2-601.</p>
-                <p>Point 3:  Sections 2-503,  2-608 and  2-609.</p>
-                <p><strong>Definitional Cross References:</strong> “Contract for sale”.  Section 2-106.</p>
-                <p>“Goods”.  Section 2-105.</p>
-                <p>“Lot”.  Section 2-105.</p>
-                <p>“Party”.  Section 1-201.</p>
                 <p>“Rights”.  Section 1-201.</p>
+                <p>“Party”.  Section 1-201.</p>
+                <p>“Lot”.  Section 2-105.</p>
+                <p>“Goods”.  Section 2-105.</p>
+                <p><strong>Definitional Cross References:</strong> “Contract for sale”.  Section 2-106.</p>
+                <p>Point 3:  Sections 2-503,  2-608 and  2-609.</p>
+                <p>Point 2:  Sections 2-508 and  2-601.</p>
+                <p><strong>Cross References:</strong> Point 1:  Section 1-201.</p>
+                <p>4. Where the circumstances indicate that a party has a right to delivery in lots, the price may be demanded for each lot if it is apportionable.</p>
+                <p>In such cases, a partial delivery is not subject to rejection for the defect in quantity alone, if the circumstances do not indicate a repudiation or default by the seller as to the expected balance or do not give the buyer ground for suspending his performance because of insecurity under the provisions of  Section 2-609. However, in such cases the undelivered balance of goods under the contract must be forthcoming within a reasonable time and in a reasonable manner according to the policy of  Section 2-503 on manner of tender of delivery. This is reinforced by the express provisions of  Section 2-608 that if a lot has been accepted on the reasonable assumption that its nonconformity will be cured, the acceptance may be revoked if the cure does not seasonably occur. The section rejects the rule of  Kelly Construction Co. v. Hackensack Brick Co., 91 N.J.L. 585, 103 A. 471, 2 A.L.R. 685 (1918)Lynn M. Ranger, Inc. v. Gildersleeve, 106 Conn. 372, 138 A. 142 (1927) in which a contract was made for six carloads of coal then rolling from the mines and consigned to the seller but the seller agreed to divert the carloads to the buyer as soon as the car numbers became known to him. He arranged a diversion of two cars and then notified the buyer who then repudiated the contract. The seller was held to be entitled to his full remedy for the two cars diverted because simultaneous delivery of all of the cars was not contemplated by either party.</p>
+                <p>3. The “but” clause of this section goes to the case in which it is not commercially feasible to deliver or to receive the goods in a single lot as for example, where a contract calls for the shipment of ten carloads of coal and only three cars are available at a given time. Similarly, in a contract involving brick necessary to build a building the buyer’s storage space may be limited so that it would be impossible to receive the entire amount of brick at once, or it may be necessary to assemble the goods as in the case of cattle on the range, or to mine them.</p>
+                <p>2. Where the actual agreement or the circumstances do not indicate otherwise, delivery in lots is not permitted under this section and the buyer is properly entitled to reject for a deficiency in the tender, subject to any privilege in the seller to cure the tender.</p>
+                <p><strong>Purposes of Changes:</strong> 1. This section applies where the parties have not specifically agreed whether delivery and payment are to be by lots and generally continues the essential intent of original Act, Section 45(1) by assuming that the parties intended delivery to be in a single lot.</p>
+                <p><strong>Changes:</strong> Rewritten and expanded.</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> Section 45(1), Uniform Sales Act.</p>
               </section>
             </section>
           </section>

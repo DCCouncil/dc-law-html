@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/6/chapters/10/">Chapter 10. Community Development.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/6/chapters/9/">Report Error</a>
@@ -87,25 +87,63 @@
         <section class="col8 body">
           <h1>Chapter 9. Insanitary Buildings.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/6-901.html">§ 6–901. Inspection of buildings authorized.</a>
-            <a href="/dc/council/code/sections/6-902.html">§ 6–902. Board for the Condemnation of Insanitary Buildings; Condemnation Review Board.</a>
-            <a href="/dc/council/code/sections/6-903.html">§ 6–903. Condemnation procedure; occupancy of condemned buildings.</a>
-            <a href="/dc/council/code/sections/6-904.html">§ 6–904. Occupancy of condemned building.</a>
-            <a href="/dc/council/code/sections/6-905.html">§ 6–905. Owner to repair or demolish condemned building.</a>
-            <a href="/dc/council/code/sections/6-906.html">§ 6–906. Cancellation of condemnation order; extensions of time.</a>
-            <a href="/dc/council/code/sections/6-907.html">§ 6–907. Failure of owner to comply with order; repair or demolition of building; cost assessed against property.</a>
-            <a href="/dc/council/code/sections/6-908.html">§ 6–908. Litigation involving title to property.</a>
-            <a href="/dc/council/code/sections/6-909.html">§ 6–909. Appointment of guardian for person non compos mentis or for infant.</a>
-            <a href="/dc/council/code/sections/6-910.html">§ 6–910. Service of notice.</a>
-            <a href="/dc/council/code/sections/6-911.html">§ 6–911. Interference with inspection or work.</a>
-            <a href="/dc/council/code/sections/6-912.html">§ 6–912. Destruction, removal, or concealment of copy of order of condemnation affixed to building.</a>
-            <a href="/dc/council/code/sections/6-913.html">§ 6–913. Review of order of condemnation.</a>
-            <a href="/dc/council/code/sections/6-914.html">§ 6–914. Appeal from order of condemnation.</a>
-            <a href="/dc/council/code/sections/6-915.html">§ 6–915. Neglect by tenants or occupants.</a>
-            <a href="/dc/council/code/sections/6-916.html">§ 6–916. Violation of § 6-903, § 6-904, § 6-905, § 6-907, § 6-911, § 6-912, or § 6-915.</a>
-            <a href="/dc/council/code/sections/6-917.html">§ 6–917. Appropriations authorized.</a>
-            <a href="/dc/council/code/sections/6-918.html">§ 6–918. “Mayor” and “owner” defined; agent of owner.</a>
-            <a href="/dc/council/code/sections/6-919.html">§ 6–919. Suits and proceedings under prior law; time limits.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-901.html">§ 6–901. Inspection of buildings authorized.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-902.html">§ 6–902. Board for the Condemnation of Insanitary Buildings; Condemnation Review Board.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-903.html">§ 6–903. Condemnation procedure; occupancy of condemned buildings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-904.html">§ 6–904. Occupancy of condemned building.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-905.html">§ 6–905. Owner to repair or demolish condemned building.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-906.html">§ 6–906. Cancellation of condemnation order; extensions of time.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-907.html">§ 6–907. Failure of owner to comply with order; repair or demolition of building; cost assessed against property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-908.html">§ 6–908. Litigation involving title to property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-909.html">§ 6–909. Appointment of guardian for person non compos mentis or for infant.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-910.html">§ 6–910. Service of notice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-911.html">§ 6–911. Interference with inspection or work.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-912.html">§ 6–912. Destruction, removal, or concealment of copy of order of condemnation affixed to building.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-913.html">§ 6–913. Review of order of condemnation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-914.html">§ 6–914. Appeal from order of condemnation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-915.html">§ 6–915. Neglect by tenants or occupants.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-916.html">§ 6–916. Violation of § 6-903, § 6-904, § 6-905, § 6-907, § 6-911, § 6-912, or § 6-915.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-917.html">§ 6–917. Appropriations authorized.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-918.html">§ 6–918. “Mayor” and “owner” defined; agent of owner.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-919.html">§ 6–919. Suits and proceedings under prior law; time limits.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -123,14 +161,14 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§1">May 1, 1906, 34 Stat. 157, ch. 2073, § 1</a>; Aug. 28, 1954, 68 Stat. 884, ch. 1032; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 103(a), 48 DCR 1888</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-701.</p>
                 <p>1973 Ed., § 5-616.</p>
+                <p>1981 Ed., § 5-701.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> designated subsec. (a), rewrote the first sentence of subsec. (a) which had read: “The Mayor of the District of Columbia is authorized to examine into the sanitary condition of all buildings in said District, to condemn those buildings which are in such insanitary condition as to endanger the health or lives of the occupants thereof or persons living in the vicinity, and to cause all buildings to be put into sanitary condition or to be demolished and removed as may be required by the provisions of this chapter”; in the third sentence of subsec. (a), substituted “into the habitability and sanitary condition of a building” for “into the sanitary condition of any building”; inserted the last sentence of subsec. (a); and added subsec. (b).</p>
                 <h4>Cross References</h4>
-                <p>Building regulations, authority of Council and Mayor to promulgate and enforce, see § <a class="internal-link" href="/dc/council/code/sections/1-303.03.html">1-303.03</a> and § <a class="internal-link" href="/dc/council/code/sections/1-303.04.html">1-303.04</a>.</p>
-                <p>Demolition of historic buildings, see § <a class="internal-link" href="/dc/council/code/sections/6-1111.html">6-1111</a>.</p>
                 <p>Zoning Commission, authority to regulate, see § <a class="internal-link" href="/dc/council/code/sections/6-641.01.html">6-641.01</a>.</p>
+                <p>Demolition of historic buildings, see § <a class="internal-link" href="/dc/council/code/sections/6-1111.html">6-1111</a>.</p>
+                <p>Building regulations, authority of Council and Mayor to promulgate and enforce, see § <a class="internal-link" href="/dc/council/code/sections/1-303.03.html">1-303.03</a> and § <a class="internal-link" href="/dc/council/code/sections/1-303.04.html">1-303.04</a>.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -160,26 +198,26 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§2">May 1, 1906, 34 Stat. 157, ch. 2073, § 2</a>; Aug. 28, 1954, 68 Stat. 884, ch. 1032; <a class="internal-link" href="/us/congress/laws/public/89-326.html">Nov. 7, 1965, 79 Stat. 1216, Pub. L. 89-326, § 1</a>; <a class="internal-link" href="/dc/council/laws/2-139.html">Mar. 3, 1979, D.C. Law 2-139, § 3205(qq), 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/3-81.html">Aug. 7, 1980, D.C. Law 3-81, § 2(gg), 27 DCR 2632</a>; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 103(b), 48 DCR 1888</a>; <a class="internal-link" href="/dc/council/laws/15-205.html">Dec. 7, 2004, D.C. Law 15-205, § 2072(a), 51 DCR 8441</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 42, 59 DCR 6190</a>; <a class="internal-link" href="/dc/council/laws/21-118.html#§4(a)">May 18, 2016, D.C. Law 21-118, § 4(a), 63 DCR 4645</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-702.</p>
                 <p>1973 Ed., § 5-617.</p>
+                <p>1981 Ed., § 5-702.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a>, in subsec. (a), in the lead-in text, substituted “a board” for “two separate boards, each”; in par. (1) of subsec. (a), substituted “examine the habitability and sanitary condition of buildings in the District of Columbia” for “examine into the sanitary condition of buildings in the District of Columbia”; repealed par. (2) of subsec. (a) which had read:</p>
-                <p>“(2) A Condemnation Review Board, no member of which shall act as a member of the Board for the Condemnation of Insanitary Buildings, to review, upon written request, any order of condemnation issued by the Board for the Condemnation of Insanitary Buildings, and to affirm, modify, or vacate such order of condemnation if the Condemnation Review Board shall find that the sanitary condition of the building under examination requires the affirmation, modification, or vacation of such order of condemnation. The Condemnation Review Board shall consist of at least 3 members and an alternate member for each of said members, at least two-thirds of such members and at least two-thirds of such alternate members to be residents of the District of Columbia and to be selected from among the persons designated under subsection (c) of this section, and not more than one-third of such members and one-third of such alternate members may be employed by the government of the District of Columbia.”; in subsec. (b), substituted “the Board” for “each of the boards” and “either of the said Boards”; repealed subsec. (c) which had read: “(c) The Mayor shall designate a number of real property owning residents of the District of Columbia, not employed by the government of the District of Columbia or the government of the United States, each of whom from time to time shall be designated by the Mayor to act as a member or an alternate member of the Condemnation Review Board established under the authority of subsection (a) of this section.”; and, in subsec. (d), substituted “the Board” for “either of the Boards” or “either of the said Boards”. <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> added subsecs. (a-1) and (c-1).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “Department of General Services” for “Office of Property Management” in (a-1)(3).</p>
+                <p>“(2) A Condemnation Review Board, no member of which shall act as a member of the Board for the Condemnation of Insanitary Buildings, to review, upon written request, any order of condemnation issued by the Board for the Condemnation of Insanitary Buildings, and to affirm, modify, or vacate such order of condemnation if the Condemnation Review Board shall find that the sanitary condition of the building under examination requires the affirmation, modification, or vacation of such order of condemnation. The Condemnation Review Board shall consist of at least 3 members and an alternate member for each of said members, at least two-thirds of such members and at least two-thirds of such alternate members to be residents of the District of Columbia and to be selected from among the persons designated under subsection (c) of this section, and not more than one-third of such members and one-third of such alternate members may be employed by the government of the District of Columbia.”; in subsec. (b), substituted “the Board” for “each of the boards” and “either of the said Boards”; repealed subsec. (c) which had read: “(c) The Mayor shall designate a number of real property owning residents of the District of Columbia, not employed by the government of the District of Columbia or the government of the United States, each of whom from time to time shall be designated by the Mayor to act as a member or an alternate member of the Condemnation Review Board established under the authority of subsection (a) of this section.”; and, in subsec. (d), substituted “the Board” for “either of the Boards” or “either of the said Boards”. <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> added subsecs. (a-1) and (c-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a>, in subsec. (a), in the lead-in text, substituted “a board” for “two separate boards, each”; in par. (1) of subsec. (a), substituted “examine the habitability and sanitary condition of buildings in the District of Columbia” for “examine into the sanitary condition of buildings in the District of Columbia”; repealed par. (2) of subsec. (a) which had read:</p>
                 <h4>Cross References</h4>
-                <p>Building regulations, authority of Council and Mayor to promulgate and enforce, see §§ <a class="internal-link" href="/dc/council/code/sections/1-303.03.html">1-303.03</a> and <a class="internal-link" href="/dc/council/code/sections/1-303.04.html">1-303.04</a>.</p>
-                <p>Inspections, Assistant Inspector of Buildings, powers and duties, see § <a class="internal-link" href="/dc/council/code/sections/2-138.html">2-138</a>.</p>
                 <p>Merit system, effective dates, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
+                <p>Inspections, Assistant Inspector of Buildings, powers and duties, see § <a class="internal-link" href="/dc/council/code/sections/2-138.html">2-138</a>.</p>
+                <p>Building regulations, authority of Council and Mayor to promulgate and enforce, see §§ <a class="internal-link" href="/dc/council/code/sections/1-303.03.html">1-303.03</a> and <a class="internal-link" href="/dc/council/code/sections/1-303.04.html">1-303.04</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2072(a) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see § 2072(a) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 2072(a) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle F of title II of Law 15-205: Section 2071 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle F of title II of the act may be cited as the Board of Condemnation and Insanitary Buildings Amendment Act of 2004.</p>
                 <h4>Editor's Notes</h4>
-                <p>Order establishing Board for the Condemnation of Insanitary Buildings: See Organization Order No. 102, 54-2034, dated September 27, 1954, as amended March 18, 1958, June 10, 1958, May 26, 1960, July 5, 1960, March 23, 1970, May 25, 1970, July 27, 1971, September 20, 1983, and by Reorganization Plan No. 3 of 1975.</p>
                 <p>Order establishing Condemnation Review Board: See Organization Order No. 103, dated September 27, 1954, as amended April 23, 1957, and July 14, 1960.</p>
+                <p>Order establishing Board for the Condemnation of Insanitary Buildings: See Organization Order No. 102, 54-2034, dated September 27, 1954, as amended March 18, 1958, June 10, 1958, May 26, 1960, July 5, 1960, March 23, 1970, May 25, 1970, July 27, 1971, September 20, 1983, and by Reorganization Plan No. 3 of 1975.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -205,19 +243,19 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§3">May 1, 1906, 34 Stat. 157, ch. 2073, § 3</a>; Aug. 28, 1954, 68 Stat. 885, ch. 1032; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 103(c), 48 DCR 1888</a>; <a class="internal-link" href="/dc/council/laws/14-213.html">Oct. 19, 2002, D.C. Law 14-213, § 13, 49 DCR 8140</a>; <a class="internal-link" href="/dc/council/laws/15-205.html">Dec. 7, 2004, D.C. Law 15-205, § 2072(b), 51 DCR 8441</a>; <a class="internal-link" href="/dc/council/laws/21-118.html#§4(b)">May 18, 2016, D.C. Law 21-118, § 4(b), 63 DCR 4645</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-703.</p>
                 <p>1973 Ed., § 5-618.</p>
+                <p>1981 Ed., § 5-703.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-916.html">6-916</a>, § <a class="internal-link" href="/dc/council/code/sections/6-919.html">6-919</a>, and § <a class="internal-link" href="/dc/council/code/sections/8-411.html">8-411</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> substituted “5 days” for “ten days”, substituted “60 days” for “not less than six months”, substituted “habitable or sanitary condition” for “sanitary condition”, and substituted “uninhabitable or insanitary condition” for “insanitary condition”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a> validated a previously made technical correction.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> substituted “30 days” for “60 days”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a> validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> substituted “5 days” for “ten days”, substituted “60 days” for “not less than six months”, substituted “habitable or sanitary condition” for “sanitary condition”, and substituted “uninhabitable or insanitary condition” for “insanitary condition”.</p>
                 <h4>Cross References</h4>
                 <p>Penalties for violation, see § <a class="internal-link" href="/dc/council/code/sections/6-916.html">6-916</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2072(b) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see § 2072(b) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 2072(b) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
               </section>
             </section>
             <hr/>
@@ -232,8 +270,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§4">May 1, 1906, 34 Stat. 158, ch. 2073, § 4</a>; Aug. 28, 1954, 68 Stat. 886, ch. 1032.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-704.</p>
                 <p>1973 Ed., § 5-619.</p>
+                <p>1981 Ed., § 5-704.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-906.html">6-906</a> and § <a class="internal-link" href="/dc/council/code/sections/6-916.html">6-916</a>.</p>
               </section>
@@ -253,8 +291,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§5">May 1, 1906, 34 Stat. 158, ch. 2073, § 5</a>; Aug. 28, 1954, 68 Stat. 886, ch. 1032; <a class="internal-link" href="/dc/council/laws/6-216.html">Mar. 21, 1987, D.C. Law 6-216, § 13(f), 34 DCR 1072</a>; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 103(d), 48 DCR 1888</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-705.</p>
                 <p>1973 Ed., § 5-620.</p>
+                <p>1981 Ed., § 5-705.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-916.html">6-916</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -275,8 +313,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§6">May 1, 1906, 34 Stat. 158, ch. 2073, § 6</a>; Aug. 28, 1954, 68 Stat. 886, ch. 1032.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-706.</p>
                 <p>1973 Ed., § 5-621.</p>
+                <p>1981 Ed., § 5-706.</p>
               </section>
             </section>
             <hr/>
@@ -292,8 +330,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§7">May 1, 1906, 34 Stat. 158, ch. 2073, § 7</a>; Aug. 28, 1954, 68 Stat. 886, ch. 1032; <a class="internal-link" href="/us/congress/laws/public/89-326.html">Nov. 7, 1965, 79 Stat. 1216, Pub. L. 89-326, § 2</a>; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 103(e), 48 DCR 1888</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-707.</p>
                 <p>1973 Ed., § 5-622.</p>
+                <p>1981 Ed., § 5-707.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-902.html">6-902</a> and § <a class="internal-link" href="/dc/council/code/sections/6-916.html">6-916</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -316,8 +354,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§8">May 1, 1906, 34 Stat. 158, ch. 2073, § 8</a>; Aug. 28, 1954, 68 Stat. 887, ch. 1032.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-708.</p>
                 <p>1973 Ed., § 5-623.</p>
+                <p>1981 Ed., § 5-708.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -334,8 +372,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§9">May 1, 1906, 34 Stat. 159, ch. 2073, § 9</a>; Aug. 28, 1954, 68 Stat. 887, ch. 1032; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 577, Pub. L. 91-358, title I, § 158(e)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-709.</p>
                 <p>1973 Ed., § 5-624.</p>
+                <p>1981 Ed., § 5-709.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -370,13 +408,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§10">May 1, 1906, 34 Stat. 159, ch. 2073, § 10</a>; Aug. 28, 1954, 68 Stat. 887, ch. 1032; <a class="internal-link" href="/us/congress/laws/public/89-326.html">Nov. 7, 1965, 79 Stat. 1216, Pub. L. 89-326, § 3</a>; <a class="internal-link" href="/dc/council/laws/15-205.html">Dec. 7, 2004, D.C. Law 15-205, § 2072(c), 51 DCR 8441</a>; <a class="internal-link" href="/dc/council/laws/21-118.html#§4(c)">May 18, 2016, D.C. Law 21-118, § 4(c), 63 DCR 4645</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-710.</p>
                 <p>1973 Ed., § 5-625.</p>
+                <p>1981 Ed., § 5-710.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> added subsec. (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2072(c) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see § 2072(c) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 2072(c) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
               </section>
             </section>
             <hr/>
@@ -391,8 +429,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§11">May 1, 1906, 34 Stat. 159, ch. 2073, § 11</a>; Aug. 28, 1954, 68 Stat. 888, ch. 1032.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-711.</p>
                 <p>1973 Ed., § 5-626.</p>
+                <p>1981 Ed., § 5-711.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-916.html">6-916</a>.</p>
                 <h4>Change in Government</h4>
@@ -411,8 +449,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§12">May 1, 1906, 34 Stat. 159, ch. 2073, § 12</a>; Aug. 28, 1954, 68 Stat. 888, ch. 1032.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-712.</p>
                 <p>1973 Ed., § 5-627.</p>
+                <p>1981 Ed., § 5-712.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-916.html">6-916</a>.</p>
               </section>
@@ -429,13 +467,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§13">May 1, 1906, 34 Stat. 160, ch. 2073, § 13</a>; Aug. 28, 1954, 68 Stat. 888, ch. 1032; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 103(f), 48 DCR 1888</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-713.</p>
                 <p>1973 Ed., § 5-628.</p>
+                <p>1981 Ed., § 5-713.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-907.html">6-907</a> and § <a class="internal-link" href="/dc/council/code/sections/6-914.html">6-914</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> rewrote the section which prior thereto read:</p>
                 <p>“Any owner of property affected by an order of condemnation issued under the authority contained in this chapter shall be entitled to a review of such order by the Condemnation Review Board established by the Mayor in accordance with the provisions of § <a class="internal-link" href="/dc/council/code/sections/6-902.html">6-902</a>, upon making application to said Condemnation Review Board, in writing, within 15 days from the date on which such owner has been served notice of such order of condemnation, and upon payment of a fee of $25. The said Condemnation Review Board shall be authorized by the Mayor to affirm, modify, or vacate any order of condemnation issued under the authority contained in this chapter.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> rewrote the section which prior thereto read:</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -452,13 +490,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§14">May 1, 1906, 34 Stat. 160, ch. 2073, § 14</a>; Aug. 28, 1954, 68 Stat. 888, ch. 1032; <a class="internal-link" href="/us/congress/laws/public/88-60.html">July 8, 1963, 77 Stat. 77, Pub. L. 88-60, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(a)</a>; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42, § 468, 32 DCR 4450</a>; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 103(g), 48 DCR 1888</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-714.</p>
                 <p>1973 Ed., § 5-629.</p>
+                <p>1981 Ed., § 5-714.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-907.html">6-907</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> rewrote the section which prior thereto read:</p>
                 <p>“The owner of any building or part of building condemned under the provisions of this chapter may, within 15 days from the date on which the owner receives notice that an order of condemnation has been reviewed by the Condemnation Review Board (‘Board’) pursuant to § <a class="internal-link" href="/dc/council/code/sections/6-902.html">6-902</a> and has been affirmed and modified by the Board, appeal to the District of Columbia Court of Appeals for judicial review pursuant to § <a class="internal-link" href="/dc/council/code/sections/2-510.html">2-510</a>.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> rewrote the section which prior thereto read:</p>
               </section>
             </section>
             <hr/>
@@ -473,8 +511,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§15">May 1, 1906, ch. 2073, § 15</a>; Aug. 28, 1954, 68 Stat. 889, ch. 1032; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 103(h), 48 DCR 1888</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-715.</p>
                 <p>1973 Ed., § 5-630.</p>
+                <p>1981 Ed., § 5-715.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-916.html">6-916</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -494,15 +532,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§16">May 1, 1906, 34 Stat. 161, ch. 2073, § 16</a>; Aug. 28, 1954, 68 Stat. 889, ch. 1032; <a class="internal-link" href="/us/congress/laws/public/88-60.html">July 8, 1963, 77 Stat. 77, Pub. L. 88-60, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(a)</a>; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42, § 440, 32 DCR 4450</a>; <a class="internal-link" href="/dc/council/laws/15-205.html">Dec. 7, 2004, D.C. Law 15-205, § 2072(d), 51 DCR 8441</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-716.</p>
                 <p>1973 Ed., § 5-631.</p>
+                <p>1981 Ed., § 5-716.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-907.html">6-907</a>, § <a class="internal-link" href="/dc/council/code/sections/6-915.html">6-915</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3131.01.html">42-3131.01</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> designated the existing text as subsection (a); and added subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2072(d) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see § 2072(d) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 2072(d) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
               </section>
             </section>
             <hr/>
@@ -517,8 +555,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§17">May 1, 1906, 34 Stat. 161, ch. 2073, § 17</a>; Aug. 28, 1954, 68 Stat. 889, ch. 1032.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-717.</p>
                 <p>1973 Ed., § 5-632.</p>
+                <p>1981 Ed., § 5-717.</p>
               </section>
             </section>
             <hr/>
@@ -537,8 +575,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§18">May 1, 1906, ch. 2073, § 18</a>; Aug. 28, 1954, 68 Stat. 889, ch. 1032; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 103(i), 48 DCR 1888</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-718.</p>
                 <p>1973 Ed., § 5-633.</p>
+                <p>1981 Ed., § 5-718.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a>, in par. (1) of subsec. (a), substituted “uninhabitable or insanitary condition” for “insanitary condition”.</p>
                 <h4>Change in Government</h4>
@@ -559,11 +597,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch2073.html#§19">May 1, 1906, ch. 2073, § 19</a>; Aug. 28, 1954, 68 Stat. 889, ch. 1032; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 103(j), 48 DCR 1888</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-719.</p>
                 <p>1973 Ed., § 5-634.</p>
+                <p>1981 Ed., § 5-719.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> repealed subsec. (c) which had read:</p>
                 <p>“(c) Wherever any provision of this chapter refers to any order of the Board for the Condemnation of Insanitary Buildings, such provision shall mean the order of such Board, or, if such order be reviewed by the Condemnation Review Board, as such order has been affirmed or modified by the latter Board; and wherever this chapter establishes any time limit within which there shall be compliance with an order of the Board for the Condemnation of Insanitary Buildings, such time limit shall begin running from the date on which the owner of the property affected by said order is served with notice thereof, or, if such order be reviewed by the Condemnation Review Board, from the date on which the owner of such property receives notice that such order has been affirmed or modified by the latter Board.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> repealed subsec. (c) which had read:</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>

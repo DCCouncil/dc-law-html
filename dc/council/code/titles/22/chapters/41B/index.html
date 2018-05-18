@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/22/chapters/42/">Chapter 42. National Institute of Justice Appropriations.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/22/chapters/41B/">Report Error</a>
@@ -87,7 +87,9 @@
         <section class="col8 body">
           <h1>Chapter 41B. DNA Sample Collection.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/22-4151.html">§ 22–4151. Qualifying offenses.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-4151.html">§ 22–4151. Qualifying offenses.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -111,9 +113,9 @@
       (<a class="internal-link" href="/dc/council/laws/14-52.html#§2">Nov. 3, 2001, D.C. Law 14-52, § 2, 48 DCR 5934</a>; <a class="internal-link" href="/dc/council/laws/14-42.html">Oct. 26, 2001, D.C. Law 14-42, § 22, 48 DCR 7612</a>; <a class="internal-link" href="/dc/council/laws/14-194.html">Oct. 17, 2002, D.C. Law 14-194, § 158, 49 DCR 5306</a>; <a class="internal-link" href="/dc/council/laws/18-88.html">Dec. 10, 2009, D.C. Law 18-88, § 218, 56 DCR 7413</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a>, in par. (37), substituted “(misdemeanor sexual abuse) where the offense is committed against a minor;” for “(misdemeanor sexual abuse);”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-194.html">D.C. Law 14-194</a> made a nonsubstantive change in par. (45); added pars, ((45A), (45B), and (45C); and in par. (46), substituted “par. (45C)” for “par. (45)”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a> rewrote the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-194.html">D.C. Law 14-194</a> made a nonsubstantive change in par. (45); added pars, ((45A), (45B), and (45C); and in par. (46), substituted “par. (45C)” for “par. (45)”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a>, in par. (37), substituted “(misdemeanor sexual abuse) where the offense is committed against a minor;” for “(misdemeanor sexual abuse);”.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition of section, see § 2 of DNA Sample Collection Emergency Act of 2001 (D.C. Act 14-77, June 18,</p>
               </section>

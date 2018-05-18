@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/31-3171.05.html">§ 31–3171.05. Executive board establishment and membership.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-3171.04.html">Report Error</a>
@@ -163,12 +163,12 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-94.html">D.C. Law 20-94</a> substituted “and shall not be subject to Chapter 3A of Title 2” for “consistent with Chapter 3A of Title 2” in (a)(5).</p>
                 <h4>Expiration of Law</h4>
-                <p>Expiration of Law 20-94</p>
                 <p>The second section designated as Section 3 of <a class="internal-link" href="/dc/council/laws/20-94.html">D.C. Law 20-94</a> provided that §§ 2(a)(2), 2(a)(3), 2(a)(4) and 3(a) of the act shall expire at the end of fiscal year 2018.</p>
+                <p>Expiration of Law 20-94</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Health Benefit Exchange Authority Establishment Emergency Amendment Act of 2013 (D.C. Act 20-49, April 15, 2013,  60 DCR 6337, 20 DCSTAT 1355).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Health Benefit Exchange Authority Establishment Congressional Review Emergency Act of 2013 (D.C. Act 20-125, July 26, 2013,  60 DCR 11136, 20 DCSTAT 1821).</p>
                 <p>For temporary (90 days) amendment of this section, see § 3(a) of the Procurement Practices Reform Exemption Emergency Amendment Act of 2014 (D.C. Act 20-282, February 20, 2014,  61 DCR 1576).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Health Benefit Exchange Authority Establishment Congressional Review Emergency Act of 2013 (D.C. Act 20-125, July 26, 2013,  60 DCR 11136, 20 DCSTAT 1821).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Health Benefit Exchange Authority Establishment Emergency Amendment Act of 2013 (D.C. Act 20-49, April 15, 2013,  60 DCR 6337, 20 DCSTAT 1355).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 2 of the Health Benefit Exchange Authority Establishment Temporary Amendment Act of 2013 (D.C. Law 20-11, July 13, 2013,  60 DCR 7236, 20 DCSTAT 1757).</p>
               </section>

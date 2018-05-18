@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:1-203.html">§ 28:1-203. Lease distinguished from security interest.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:1-202.html">Report Error</a>
@@ -109,17 +109,17 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 636, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/88-509.html">Aug. 30, 1964, 78 Stat. 679, Pub. L. 88-509, § 4</a>; <a class="internal-link" href="/dc/council/laws/19-299.html">Apr. 27, 2013, D.C. Law 19-299, § 2, 60 DCR 2634</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/28:1-201.html">28:1-201</a>(25)-(27).</p>
-                <p>1981 Ed., § 28:1-202.</p>
                 <p>1973 Ed., § 28:1-202.</p>
+                <p>1981 Ed., § 28:1-202.</p>
+                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/28:1-201.html">28:1-201</a>(25)-(27).</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § 28:4A-106.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Source:</strong> Derived from former  Section 1-201(25)-(27).</p>
-                <p><strong>Changes from former law:</strong> These provisions are substantive rather than purely definitional. Accordingly, they have been relocated from  Section 1-201 to this section. The reference to the “forgotten notice” doctrine has been deleted.</p>
-                <p>1. Under subsection (a), a person has notice of a fact when, inter alia, the person has received a notification of the fact in question.</p>
-                <p>2. As provided in subsection (d), the word “notifies” is used when the essential fact is the proper dispatch of the notice, not its receipt. Compare “Send.” When the essential fact is the other party’s receipt of the notice, that is stated. Subsection (e) states when a notification is received.</p>
                 <p>3. Subsection (f) makes clear that notice, knowledge, or a notification, although “received,” for instance, by a clerk in Department A of an organization, is effective for a transaction conducted in Department B only from the time when it was or should have been communicated to the individual conducting that transaction.</p>
+                <p>2. As provided in subsection (d), the word “notifies” is used when the essential fact is the proper dispatch of the notice, not its receipt. Compare “Send.” When the essential fact is the other party’s receipt of the notice, that is stated. Subsection (e) states when a notification is received.</p>
+                <p>1. Under subsection (a), a person has notice of a fact when, inter alia, the person has received a notification of the fact in question.</p>
+                <p><strong>Changes from former law:</strong> These provisions are substantive rather than purely definitional. Accordingly, they have been relocated from  Section 1-201 to this section. The reference to the “forgotten notice” doctrine has been deleted.</p>
+                <p><strong>Source:</strong> Derived from former  Section 1-201(25)-(27).</p>
               </section>
             </section>
           </section>

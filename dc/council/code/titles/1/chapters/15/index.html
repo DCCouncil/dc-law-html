@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/2/">Title 2. Government Administration.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/15/">Report Error</a>
@@ -87,42 +87,78 @@
         <section class="col8 body">
           <h1>Chapter 15. Reorganization of the District Since the Establishment of Home Rule.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/I/">Subchapter I. 1975</a>
-            <p>§§ 1-1501.01 - 1-1501.02</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/II/">Subchapter II. 1978</a>
-            <p>§§ 1-1502.01 - 1-1502.01</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/III/">Subchapter III. 1979</a>
-            <p>§§ 1-1503.01 - 1-1503.01</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/IV/">Subchapter IV. 1980</a>
-            <p>§§ 1-1504.01 - 1-1504.02</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/V/">Subchapter V. 1982</a>
-            <p>§§ 1-1505.01 - 1-1505.02</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/VI/">Subchapter VI. 1983</a>
-            <p>§§ 1-1506.01 - 1-1506.05</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/VII/">Subchapter VII. 1986</a>
-            <p>§§ 1-1507.01 - 1-1507.02</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/VIII/">Subchapter VIII. 1987</a>
-            <p>§§ 1-1508.01 - 1-1508.02</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/IX/">Subchapter IX. 1988</a>
-            <p>§§ 1-1509.01 - 1-1509.02</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/X/">Subchapter X. 1989</a>
-            <p>§§ 1-1510.01 - 1-1510.01</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/XI/">Subchapter XI. 1992</a>
-            <p>§§ 1-1511.01 - 1-1511.03</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/XII/">Subchapter XII. 1993</a>
-            <p>§§ 1-1512.01 - 1-1512.03</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/XIII/">Subchapter XIII. 1995</a>
-            <p>§§ 1-1513.01 - 1-1513.02</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/XIV/">Subchapter XIV. 1996</a>
-            <p>§§ 1-1514.01 - 1-1514.02</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/XV/">Subchapter XV. 1998</a>
-            <p>§§ 1-1515.01 - 1-1515.02</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/XVI/">Subchapter XVI. 2000</a>
-            <p>§§ 1-1516.01 - 1-1516.01</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/XVII/">Subchapter XVII. 2002</a>
-            <p>§§ 1-1517.01 - 1-1517.01</p>
-            <a href="/dc/council/code/titles/1/chapters/15/subchapters/XVIII/">Subchapter XVIII. 2003</a>
-            <p>§§ 1-1518.01 - 1-1518.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/I/">Subchapter I. 1975</a>
+            </p>
+            <p>§§ 1-1501.01 – 1-1501.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/II/">Subchapter II. 1978</a>
+            </p>
+            <p>§§ 1-1502.01 – 1-1502.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/III/">Subchapter III. 1979</a>
+            </p>
+            <p>§§ 1-1503.01 – 1-1503.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/IV/">Subchapter IV. 1980</a>
+            </p>
+            <p>§§ 1-1504.01 – 1-1504.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/V/">Subchapter V. 1982</a>
+            </p>
+            <p>§§ 1-1505.01 – 1-1505.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/VI/">Subchapter VI. 1983</a>
+            </p>
+            <p>§§ 1-1506.01 – 1-1506.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/VII/">Subchapter VII. 1986</a>
+            </p>
+            <p>§§ 1-1507.01 – 1-1507.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/VIII/">Subchapter VIII. 1987</a>
+            </p>
+            <p>§§ 1-1508.01 – 1-1508.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/IX/">Subchapter IX. 1988</a>
+            </p>
+            <p>§§ 1-1509.01 – 1-1509.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/X/">Subchapter X. 1989</a>
+            </p>
+            <p>§§ 1-1510.01 – 1-1510.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/XI/">Subchapter XI. 1992</a>
+            </p>
+            <p>§§ 1-1511.01 – 1-1511.03</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/XII/">Subchapter XII. 1993</a>
+            </p>
+            <p>§§ 1-1512.01 – 1-1512.03</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/XIII/">Subchapter XIII. 1995</a>
+            </p>
+            <p>§§ 1-1513.01 – 1-1513.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/XIV/">Subchapter XIV. 1996</a>
+            </p>
+            <p>§§ 1-1514.01 – 1-1514.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/XV/">Subchapter XV. 1998</a>
+            </p>
+            <p>§§ 1-1515.01 – 1-1515.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/XVI/">Subchapter XVI. 2000</a>
+            </p>
+            <p>§§ 1-1516.01 – 1-1516.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/XVII/">Subchapter XVII. 2002</a>
+            </p>
+            <p>§§ 1-1517.01 – 1-1517.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/15/subchapters/XVIII/">Subchapter XVIII. 2003</a>
+            </p>
+            <p>§§ 1-1518.01 – 1-1518.01</p>
           </section>
           <section class="content">
             <hr/>
@@ -1440,7 +1476,6 @@
                 <h4>Prior Codifications</h4>
                 <p>2001 Ed., Title 1, Chapter 15, Subchapter XII, Part C.</p>
                 <h4>Mayor's Statement</h4>
-                <p>POSITION TITLE CHANGE</p>
                 <p>For more than five years, the Office of Economic Development, headed by a Deputy Mayor, has operated under the direction and control of the City Administrator. The position title has created ambiguities regarding the management level of the position and the reporting hierarchy therein. Changing the position title from Deputy Mayor for Economic Development to Assistant City Administrator for Economic Development will more accurately reflect the organizational structure and provide clarity to the Office.</p>
                 <p>The authority and responsibilities of the Assistant City Administrator will remain the same as under the Deputy Mayor for Economic Development. The functions of the Office of Economic Development (OED) remains the same as in prior years. Although most economic development cluster agency activities will not change, some will undergo restructuring to optimize investment and development opportunities and to improve regulatory oversight responsibilities.</p>
                 <p>This restructuring of cluster agencies, coupled with the change in name of the position to the Assistant City Administrator for Economic Development will provide a more structured and centralized agency operation and will define clearly, the role of the Assistant City Administrator.</p>
@@ -1449,6 +1484,7 @@
                 <p>Based on the review, the need to economize on efforts and dollars, the need to centralize economic development activities in the District government, the legislative action taken by the Council, and in keeping with my pledge to streamline government, I have authorized the reorganization of the two offices, as cited herein.</p>
                 <p>In accordance with D.C. Law 4-42, the "Governmental Reorganization Procedures Act of 1981," this reorganization will be accomplished by the transfer of certain staff and functions of OBED and OIB to the administrative control of the Assistant City Administrator for Economic Development in OED. I have determined that both offices have so similar operational responsibilities that the District would be best served by a unified administration. Not only will this change clarify administrative roles and responsibilities, but it will also provide a sharper focus to the District's economic development efforts with the private business sector.</p>
                 <p>In summary, economic development and related activities currently being performed separately by the OBED and OIB, both of which promote the District in a local, national, and international arenas, should be merged. The centralization of these activities will diminish fragmented, disjointed, and duplicated service delivery and thus, allow the District to promote its marketing campaign and business services more efficiently and cost-effectively.</p>
+                <p>POSITION TITLE CHANGE</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1264.html">§ 47–1264. Interest and penalties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1263.html">Report Error</a>
@@ -106,16 +106,16 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-1266.html">47-1266</a> and § <a class="internal-link" href="/dc/council/code/sections/47-1268.html">47-1268</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, rewrote subsec. (b) and added subsec. (e). Prior to amendment, subsec. (b) read as follows: “(b) Except for fiscal Year 2005, the Mayor shall provide notice to each nursing facility of the amount of the assessment for the ensuing fiscal year no later than September 1.” Law 16-191 validated a previously made change in the designation of subsec. (e).</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in the lead-in language, inserted “up to” preceding “6%”; and rewrote par. (2), which had read as follows: “(2) For fiscal year 2006 and each succeeding fiscal year, the Mayor shall determine the uniform amount per licensed bed that will equal 6% per annum of net resident revenue by rules issued pursuant to § <a class="internal-link" href="/dc/council/code/sections/47-1267.html">47-1267</a>.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, rewrote subsec. (b) and added subsec. (e). Prior to amendment, subsec. (b) read as follows: “(b) Except for fiscal Year 2005, the Mayor shall provide notice to each nursing facility of the amount of the assessment for the ensuing fiscal year no later than September 1.” Law 16-191 validated a previously made change in the designation of subsec. (e).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 5202(c) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
-                <p>For temporary (90 day) addition, see § 5202(c) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
-                <p>For temporary (90 day) amendment of section, see § 1242(a) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
                 <p>For temporary (90 day) amendment, see § 5027 of Fiscal Year 2009 Budget Support Emergency Act of 2008 (D.C. Act 17-468, July 28, 2008,  55 DCR 8746).</p>
+                <p>For temporary (90 day) amendment of section, see § 1242(a) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
+                <p>For temporary (90 day) addition, see § 5202(c) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) addition, see § 5202(c) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <h4>Short Title</h4>
-                <p>Short title of subtitle CC of title I of Law 16-33: Section 1241 of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a> provided that subtitle CC of title I of the act may be cited as the Nursing Home Provider Tax Technical Amendments Act of 2005.</p>
                 <p>Short title: Section 5026 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle K of title V of the act may be cited as the “Nursing Facility Quality of Care Act of 2008”.</p>
+                <p>Short title of subtitle CC of title I of Law 16-33: Section 1241 of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a> provided that subtitle CC of title I of the act may be cited as the Nursing Home Provider Tax Technical Amendments Act of 2005.</p>
               </section>
             </section>
           </section>

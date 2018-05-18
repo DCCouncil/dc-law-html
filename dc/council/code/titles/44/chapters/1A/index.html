@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/44/chapters/2/">Chapter 2. Clinical Laboratories.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/chapters/1A/">Report Error</a>
@@ -87,24 +87,60 @@
         <section class="col8 body">
           <h1>Chapter 1A. Continuing Care Retirement Communities.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/44-151.01.html">§ 44–151.01. Definitions.</a>
-            <a href="/dc/council/code/sections/44-151.02.html">§ 44–151.02. License.</a>
-            <a href="/dc/council/code/sections/44-151.03.html">§ 44–151.03. Revocation of license.</a>
-            <a href="/dc/council/code/sections/44-151.04.html">§ 44–151.04. Sale or transfer of ownership.</a>
-            <a href="/dc/council/code/sections/44-151.05.html">§ 44–151.05. Disclosure statement.</a>
-            <a href="/dc/council/code/sections/44-151.06.html">§ 44–151.06. Contract for continuing care; specifications.</a>
-            <a href="/dc/council/code/sections/44-151.07.html">§ 44–151.07. Annual disclosure statement revision.</a>
-            <a href="/dc/council/code/sections/44-151.08.html">§ 44–151.08. Operating reserves.</a>
-            <a href="/dc/council/code/sections/44-151.09.html">§ 44–151.09. Escrow, collection of deposits.</a>
-            <a href="/dc/council/code/sections/44-151.10.html">§ 44–151.10. Right to organization.</a>
-            <a href="/dc/council/code/sections/44-151.11.html">§ 44–151.11. Rehabilitation or liquidation.</a>
-            <a href="/dc/council/code/sections/44-151.12.html">§ 44–151.12. Investigations and subpoenas.</a>
-            <a href="/dc/council/code/sections/44-151.13.html">§ 44–151.13. Examinations; financial statements.</a>
-            <a href="/dc/council/code/sections/44-151.14.html">§ 44–151.14. Civil liability.</a>
-            <a href="/dc/council/code/sections/44-151.15.html">§ 44–151.15. Criminal penalties.</a>
-            <a href="/dc/council/code/sections/44-151.16.html">§ 44–151.16. Other licensing or regulation.</a>
-            <a href="/dc/council/code/sections/44-151.17.html">§ 44–151.17. Rulemaking authority; reasonable time to comply with rules.</a>
-            <a href="/dc/council/code/sections/44-151.18.html">§ 44–151.18. Continuing Care Retirement Community Regulatory and Supervision Trust Account.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.01.html">§ 44–151.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.02.html">§ 44–151.02. License.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.03.html">§ 44–151.03. Revocation of license.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.04.html">§ 44–151.04. Sale or transfer of ownership.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.05.html">§ 44–151.05. Disclosure statement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.06.html">§ 44–151.06. Contract for continuing care; specifications.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.07.html">§ 44–151.07. Annual disclosure statement revision.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.08.html">§ 44–151.08. Operating reserves.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.09.html">§ 44–151.09. Escrow, collection of deposits.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.10.html">§ 44–151.10. Right to organization.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.11.html">§ 44–151.11. Rehabilitation or liquidation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.12.html">§ 44–151.12. Investigations and subpoenas.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.13.html">§ 44–151.13. Examinations; financial statements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.14.html">§ 44–151.14. Civil liability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.15.html">§ 44–151.15. Criminal penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.16.html">§ 44–151.16. Other licensing or regulation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.17.html">§ 44–151.17. Rulemaking authority; reasonable time to comply with rules.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-151.18.html">§ 44–151.18. Continuing Care Retirement Community Regulatory and Supervision Trust Account.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

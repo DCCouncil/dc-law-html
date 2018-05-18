@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/7/chapters/7/">Chapter 7. Long-Term Care Ombudsman Program.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/7/chapters/6B/">Report Error</a>
@@ -87,23 +87,57 @@
         <section class="col8 body">
           <h1>Chapter 6B. Physician Assisted Death.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/7-661.01.html">§ 7–661.01. Definitions.</a>
-            <a href="/dc/council/code/sections/7-661.02.html">§ 7–661.02. Requests for a covered medication.</a>
-            <a href="/dc/council/code/sections/7-661.03.html">§ 7–661.03. Responsibilities of the attending physician.</a>
-            <a href="/dc/council/code/sections/7-661.04.html">§ 7–661.04. Counseling referral.</a>
-            <a href="/dc/council/code/sections/7-661.05.html">§ 7–661.05. Dispensing a covered medication and reporting requirements.</a>
-            <a href="/dc/council/code/sections/7-661.06.html">§ 7–661.06. Medical record documentation requirements.</a>
-            <a href="/dc/council/code/sections/7-661.07.html">§ 7–661.07. Reporting requirements.</a>
-            <a href="/dc/council/code/sections/7-661.08.html">§ 7–661.08. Effect on construction of wills and contracts.</a>
-            <a href="/dc/council/code/sections/7-661.09.html">§ 7–661.09. Insurance and annuity policies.</a>
-            <a href="/dc/council/code/sections/7-661.10.html">§ 7–661.10. Health care provider participation; notification; permissible sanctions.</a>
-            <a href="/dc/council/code/sections/7-661.11.html">§ 7–661.11. Immunities, liabilities, and exceptions.</a>
-            <a href="/dc/council/code/sections/7-661.12.html">§ 7–661.12. Claims by District government for costs incurred.</a>
-            <a href="/dc/council/code/sections/7-661.13.html">§ 7–661.13. Penalties.</a>
-            <a href="/dc/council/code/sections/7-661.14.html">§ 7–661.14. Rules.</a>
-            <a href="/dc/council/code/sections/7-661.15.html">§ 7–661.15. Construction.</a>
-            <a href="/dc/council/code/sections/7-661.16.html">§ 7–661.16. Freedom of Information Act exemption.</a>
-            <a href="/dc/council/code/sections/7-661.17.html">§ 7–661.17. Applicability. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.01.html">§ 7–661.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.02.html">§ 7–661.02. Requests for a covered medication.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.03.html">§ 7–661.03. Responsibilities of the attending physician.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.04.html">§ 7–661.04. Counseling referral.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.05.html">§ 7–661.05. Dispensing a covered medication and reporting requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.06.html">§ 7–661.06. Medical record documentation requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.07.html">§ 7–661.07. Reporting requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.08.html">§ 7–661.08. Effect on construction of wills and contracts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.09.html">§ 7–661.09. Insurance and annuity policies.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.10.html">§ 7–661.10. Health care provider participation; notification; permissible sanctions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.11.html">§ 7–661.11. Immunities, liabilities, and exceptions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.12.html">§ 7–661.12. Claims by District government for costs incurred.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.13.html">§ 7–661.13. Penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.14.html">§ 7–661.14. Rules.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.15.html">§ 7–661.15. Construction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.16.html">§ 7–661.16. Freedom of Information Act exemption.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-661.17.html">§ 7–661.17. Applicability. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -141,10 +175,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§2">Feb. 18, 2017, D.C. Law 21-182, § 2, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§2">§ 2 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§2">§ 2 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -200,10 +234,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§3">Feb. 18, 2017, D.C. Law 21-182, § 3, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§3">§ 3 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§3">§ 3 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -246,10 +280,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§4">Feb. 18, 2017, D.C. Law 21-182, § 4, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§4">§ 4 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§4">§ 4 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -267,10 +301,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§5">Feb. 18, 2017, D.C. Law 21-182, § 5, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§5">§ 5 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§5">§ 5 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -306,10 +340,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§6">Feb. 18, 2017, D.C. Law 21-182, § 6, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§6">§ 6 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§6">§ 6 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -338,10 +372,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§7">Feb. 18, 2017, D.C. Law 21-182, § 7, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§7">§ 7 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§7">§ 7 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -370,10 +404,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§8">Feb. 18, 2017, D.C. Law 21-182, § 8, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§8">§ 8 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§8">§ 8 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -391,10 +425,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§9">Feb. 18, 2017, D.C. Law 21-182, § 9, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§9">§ 9 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§9">§ 9 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -413,10 +447,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§10">Feb. 18, 2017, D.C. Law 21-182, § 10, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§10">§ 10 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§10">§ 10 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -447,10 +481,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§11">Feb. 18, 2017, D.C. Law 21-182, § 11, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§11">§ 11 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§11">§ 11 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -472,10 +506,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§12">Feb. 18, 2017, D.C. Law 21-182, § 12, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§12">§ 12 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§12">§ 12 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -492,10 +526,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§13">Feb. 18, 2017, D.C. Law 21-182, § 13, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§13">§ 13 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§13">§ 13 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -513,10 +547,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§14">Feb. 18, 2017, D.C. Law 21-182, § 14, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§14">§ 14 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§14">§ 14 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -541,10 +575,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§15">Feb. 18, 2017, D.C. Law 21-182, § 15, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§15">§ 15 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§15">§ 15 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -563,10 +597,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§16">Feb. 18, 2017, D.C. Law 21-182, § 16, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§16">§ 16 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§16">§ 16 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -584,10 +618,10 @@
       (<a class="internal-link" href="/dc/council/laws/21-182.html#§17">Feb. 18, 2017, D.C. Law 21-182, § 17, 63 DCR 15697</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§17">§ 17 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
-                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7018">Section 7018 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a> has been given effect.
             </p>
+                <p> A certification dated June 6, 2017, that the fiscal effect of the Death with Dignity Act of 2016, D.C. Law 21-182, has been included in an approved budget and financial plan was published in the D.C. Register on June 16, 2017 (64 DCR 5670). Therefore the creation of this section by that amendment has been implemented.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-182.html">D.C. Law 21-182</a>: <a class="internal-link" href="/dc/council/laws/21-182.html#§18">§ 18 of D.C. Law 21-182</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-182.html#§17">§ 17 of D.C. Law 21-182</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 18 of D.C. Law 21-182, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7018">§ 7018 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>

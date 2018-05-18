@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/48/chapters/8A/subchapters/I/parts/B/">Part B. AccessRx for the Elderly.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/48/chapters/8A/subchapters/I/parts/A/">Report Error</a>
@@ -89,23 +89,57 @@
         <section class="col8 body">
           <h1>Part A. General.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/48-831.01.html">§ 48–831.01. Findings and declaration of intent.</a>
-            <a href="/dc/council/code/sections/48-831.02.html">§ 48–831.02. Definitions.</a>
-            <a href="/dc/council/code/sections/48-831.03.html">§ 48–831.03. Establishment of AccessRx.</a>
-            <a href="/dc/council/code/sections/48-831.04.html">§ 48–831.04. Cost containment and savings with respect to existing publicly funded pharmaceutical programs.</a>
-            <a href="/dc/council/code/sections/48-831.05.html">§ 48–831.05. Rebate agreement.</a>
-            <a href="/dc/council/code/sections/48-831.06.html">§ 48–831.06. Rebate amount.</a>
-            <a href="/dc/council/code/sections/48-831.07.html">§ 48–831.07. Operation of program.</a>
-            <a href="/dc/council/code/sections/48-831.08.html">§ 48–831.08. Discrepancies in rebate amounts.</a>
-            <a href="/dc/council/code/sections/48-831.09.html">§ 48–831.09. Action with regard to nonparticipating manufacturers and labelers.</a>
-            <a href="/dc/council/code/sections/48-831.10.html">§ 48–831.10. AccessRx Fund.</a>
-            <a href="/dc/council/code/sections/48-831.11.html">§ 48–831.11. Eligibility procedures.</a>
-            <a href="/dc/council/code/sections/48-831.12.html">§ 48–831.12. Method of prescribing or ordering drugs.</a>
-            <a href="/dc/council/code/sections/48-831.13.html">§ 48–831.13. Third-party administration.</a>
-            <a href="/dc/council/code/sections/48-831.14.html">§ 48–831.14. Waivers.</a>
-            <a href="/dc/council/code/sections/48-831.15.html">§ 48–831.15. Annual summary report.</a>
-            <a href="/dc/council/code/sections/48-831.16.html">§ 48–831.16. Agreements with governments of other jurisdictions and other entities.</a>
-            <a href="/dc/council/code/sections/48-831.17.html">§ 48–831.17. Rulemaking.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.01.html">§ 48–831.01. Findings and declaration of intent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.02.html">§ 48–831.02. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.03.html">§ 48–831.03. Establishment of AccessRx.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.04.html">§ 48–831.04. Cost containment and savings with respect to existing publicly funded pharmaceutical programs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.05.html">§ 48–831.05. Rebate agreement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.06.html">§ 48–831.06. Rebate amount.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.07.html">§ 48–831.07. Operation of program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.08.html">§ 48–831.08. Discrepancies in rebate amounts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.09.html">§ 48–831.09. Action with regard to nonparticipating manufacturers and labelers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.10.html">§ 48–831.10. AccessRx Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.11.html">§ 48–831.11. Eligibility procedures.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.12.html">§ 48–831.12. Method of prescribing or ordering drugs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.13.html">§ 48–831.13. Third-party administration.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.14.html">§ 48–831.14. Waivers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.15.html">§ 48–831.15. Annual summary report.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.16.html">§ 48–831.16. Agreements with governments of other jurisdictions and other entities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-831.17.html">§ 48–831.17. Rulemaking.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -170,10 +204,10 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a>, in par. (4)(A)(iii), substituted “for its employees or members who are employed or reside in the District of Columbia” for “for its employees or members”; and, in par. (16), substituted “to covered individuals for dispensation within the District of Columbia” for “to covered individuals”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of AccessRX Act Clarification Emergency Amendment Act of 2006 (D.C. Act 16-370, May 5, 2006,  53 DCR 4059).</p>
-                <p>For temporary (90 day) amendment of section, see § 5062(a) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) amendment of section, see § 5062(a) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
                 <p>For temporary (90 day) amendment of section, see § 5062(a) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) amendment of section, see § 5062(a) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) amendment of section, see § 5062(a) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of AccessRX Act Clarification Emergency Amendment Act of 2006 (D.C. Act 16-370, May 5, 2006,  53 DCR 4059).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of AccessRx Act Clarification Temporary Amendment of Act of 2006 (D.C. Law 16-154, September 19, 2006, law notification  53 DCR 7926).</p>
                 <h4>Short Title</h4>

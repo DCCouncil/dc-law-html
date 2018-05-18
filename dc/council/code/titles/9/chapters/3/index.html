@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/9/chapters/4/">Chapter 4. Street Repair and Construction.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/9/chapters/3/">Report Error</a>
@@ -87,32 +87,84 @@
         <section class="col8 body">
           <h1>Chapter 3. Bridges, Viaducts, and Subways.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/9-301.html">§ 9–301. Control of bridges; exception.</a>
-            <a href="/dc/council/code/sections/9-302.html">§ 9–302. Construction and repair of bridges over railway and canal rights-of-way.</a>
-            <a href="/dc/council/code/sections/9-303.html">§ 9–303. Bridges across Rock Creek.</a>
-            <a href="/dc/council/code/sections/9-304.html">§ 9–304. Pennsylvania Avenue Bridge.</a>
-            <a href="/dc/council/code/sections/9-305.html">§ 9–305. Anacostia Bridge.</a>
-            <a href="/dc/council/code/sections/9-306.html">§ 9–306. John Philip Sousa Bridge.</a>
-            <a href="/dc/council/code/sections/9-307.html">§ 9–307. Highway Bridge.</a>
-            <a href="/dc/council/code/sections/9-308.html">§ 9–308. Rochambeau Bridge.</a>
-            <a href="/dc/council/code/sections/9-309.html">§ 9–309. Construction of power boats; exception; “power boats” defined.</a>
-            <a href="/dc/council/code/sections/9-310.html">§ 9–310. Monroe Street Bridge.</a>
-            <a href="/dc/council/code/sections/9-311.html">§ 9–311. Francis Scott Key Bridge.</a>
-            <a href="/dc/council/code/sections/9-312.html">§ 9–312. South Dakota Avenue Bridge.</a>
-            <a href="/dc/council/code/sections/9-313.html">§ 9–313. Connecticut Avenue Bridge over Klingle Valley.</a>
-            <a href="/dc/council/code/sections/9-314.html">§ 9–314. Benning Bridge.</a>
-            <a href="/dc/council/code/sections/9-315.html">§ 9–315. Fern and Varnum Streets and Eastern Avenue Viaducts.</a>
-            <a href="/dc/council/code/sections/9-316.html">§ 9–316. Certain grade crossings to be closed after completion of Fern Street Viaduct.</a>
-            <a href="/dc/council/code/sections/9-317.html">§ 9–317. Van Buren Street Subway.</a>
-            <a href="/dc/council/code/sections/9-318.html">§ 9–318. Grade crossing at Lamond closed.</a>
-            <a href="/dc/council/code/sections/9-319.html">§ 9–319. Cedar Street Subway.</a>
-            <a href="/dc/council/code/sections/9-320.html">§ 9–320. Michigan Avenue Viaduct — Construction; cost; highway grade closed.</a>
-            <a href="/dc/council/code/sections/9-321.html">§ 9–321. Michigan Avenue Viaduct — Use by street railway companies.</a>
-            <a href="/dc/council/code/sections/9-322.html">§ 9–322. Highway grade crossing at Michigan Avenue closed.</a>
-            <a href="/dc/council/code/sections/9-323.html">§ 9–323. Subway under Baltimore and Ohio tracks in vicinity of Chestnut Street, Fern Place, and Piney Branch Road.</a>
-            <a href="/dc/council/code/sections/9-324.html">§ 9–324. Calvert Street Bridge.</a>
-            <a href="/dc/council/code/sections/9-325.html">§ 9–325. Francis Case Memorial Bridge.</a>
-            <a href="/dc/council/code/sections/9-326.html">§ 9–326. Washington Channel Bridge.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-301.html">§ 9–301. Control of bridges; exception.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-302.html">§ 9–302. Construction and repair of bridges over railway and canal rights-of-way.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-303.html">§ 9–303. Bridges across Rock Creek.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-304.html">§ 9–304. Pennsylvania Avenue Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-305.html">§ 9–305. Anacostia Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-306.html">§ 9–306. John Philip Sousa Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-307.html">§ 9–307. Highway Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-308.html">§ 9–308. Rochambeau Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-309.html">§ 9–309. Construction of power boats; exception; “power boats” defined.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-310.html">§ 9–310. Monroe Street Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-311.html">§ 9–311. Francis Scott Key Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-312.html">§ 9–312. South Dakota Avenue Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-313.html">§ 9–313. Connecticut Avenue Bridge over Klingle Valley.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-314.html">§ 9–314. Benning Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-315.html">§ 9–315. Fern and Varnum Streets and Eastern Avenue Viaducts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-316.html">§ 9–316. Certain grade crossings to be closed after completion of Fern Street Viaduct.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-317.html">§ 9–317. Van Buren Street Subway.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-318.html">§ 9–318. Grade crossing at Lamond closed.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-319.html">§ 9–319. Cedar Street Subway.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-320.html">§ 9–320. Michigan Avenue Viaduct — Construction; cost; highway grade closed.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-321.html">§ 9–321. Michigan Avenue Viaduct — Use by street railway companies.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-322.html">§ 9–322. Highway grade crossing at Michigan Avenue closed.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-323.html">§ 9–323. Subway under Baltimore and Ohio tracks in vicinity of Chestnut Street, Fern Place, and Piney Branch Road.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-324.html">§ 9–324. Calvert Street Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-325.html">§ 9–325. Francis Case Memorial Bridge.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-326.html">§ 9–326. Washington Channel Bridge.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -127,13 +179,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/52-2-ch199.html">Mar. 3, 1893, 27 Stat. 544, ch. 199</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-501.</p>
                 <p>1973 Ed., § 7-501.</p>
+                <p>1981 Ed., § 7-501.</p>
                 <h4>Cross References</h4>
-                <p>Highway plans, jurisdiction of mayor over roads and bridges, see § <a class="internal-link" href="/dc/council/code/sections/9-101.02.html">9-101.02</a>.</p>
-                <p>Regulations necessary for the protection of lives, limbs, health, comfort, and quiet, see § <a class="internal-link" href="/dc/council/code/sections/1-303.03.html">1-303.03</a>.</p>
-                <p>Street lighting, costs charged to railroads, see § <a class="internal-link" href="/dc/council/code/sections/9-509.html">9-509</a>.</p>
                 <p>Street lighting, generally, see § <a class="internal-link" href="/dc/council/code/sections/9-501.html">9-501</a> et seq.</p>
+                <p>Street lighting, costs charged to railroads, see § <a class="internal-link" href="/dc/council/code/sections/9-509.html">9-509</a>.</p>
+                <p>Regulations necessary for the protection of lives, limbs, health, comfort, and quiet, see § <a class="internal-link" href="/dc/council/code/sections/1-303.03.html">1-303.03</a>.</p>
+                <p>Highway plans, jurisdiction of mayor over roads and bridges, see § <a class="internal-link" href="/dc/council/code/sections/9-101.02.html">9-101.02</a>.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 402(169) of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to the District of Columbia Council, subject to the right of the Commissioner as provided in § 406 of the Plan. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -150,11 +202,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/68-1-ch302.html">June 7, 1924, 43 Stat. 550, ch. 302</a>; June 28, 1944, 58 Stat. 533, ch. 300, § 18.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-502.</p>
                 <p>1973 Ed., § 7-502.</p>
+                <p>1981 Ed., § 7-502.</p>
                 <h4>Cross References</h4>
-                <p>Railroad companies, construction and maintenance of track and track-related facilities, see §§ <a class="internal-link" href="/dc/council/code/sections/9-1201.10.html">9-1201.10</a> to 9-1201.12, 9-1201.15, and 9-1203.06 et seq.</p>
                 <p>Railroad crossings, see § <a class="internal-link" href="/dc/council/code/sections/9-1201.14.html">9-1201.14</a>.</p>
+                <p>Railroad companies, construction and maintenance of track and track-related facilities, see §§ <a class="internal-link" href="/dc/council/code/sections/9-1201.10.html">9-1201.10</a> to 9-1201.12, 9-1201.15, and 9-1203.06 et seq.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -171,8 +223,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/53-2-ch232.html">Aug. 7, 1894, 28 Stat. 252, ch. 232</a>; Jan. 14, 1933, 47 Stat. 759, ch. 10, § 3.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-503.</p>
                 <p>1973 Ed., § 7-503.</p>
+                <p>1981 Ed., § 7-503.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/9-304.html">9-304</a>.</p>
               </section>
@@ -189,8 +241,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/57-1-ch1360.html">July 1, 1902, 32 Stat. 636, ch. 1360</a>; Jan. 14, 1933, 47 Stat. 759, ch. 10, § 3.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-504.</p>
                 <p>1973 Ed., § 7-504.</p>
+                <p>1981 Ed., § 7-504.</p>
               </section>
             </section>
             <hr/>
@@ -205,8 +257,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/58-2-ch1628.html">Apr. 27, 1904, 33 Stat. 372, ch. 1628</a>; Mar. 3, 1905, 33 Stat. 893, ch. 1406; Feb. 22, 1921, 41 Stat. 1144, ch. 70, § 7; June 28, 1944, 58 Stat. 533, ch. 300, § 18; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 571, Pub. L. 91-358, title I, § 155(c)(23)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-505.</p>
                 <p>1973 Ed., § 7-505.</p>
+                <p>1981 Ed., § 7-505.</p>
                 <h4>Cross References</h4>
                 <p>Public utilities, multiple company use of utility infrastructures, see § <a class="internal-link" href="/dc/council/code/sections/34-1102.html">34-1102</a>.</p>
               </section>
@@ -223,8 +275,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/76-1-ch8.html">Mar. 7, 1939, 53 Stat. 512, ch. 8</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-506.</p>
                 <p>1973 Ed., § 7-506.</p>
+                <p>1981 Ed., § 7-506.</p>
               </section>
             </section>
             <hr/>
@@ -239,8 +291,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch353.html#§12">Feb. 12, 1901, 31 Stat. 773, ch. 353, § 12</a>; July 1, 1902, 32 Stat. 598, ch. 1352; Feb. 22, 1921, 41 Stat. 1117, ch. 70, § 1; Jan. 14, 1933, 47 Stat. 759, ch. 10, § 3; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-507.</p>
                 <p>1973 Ed., § 7-507.</p>
+                <p>1981 Ed., § 7-507.</p>
                 <h4>Cross References</h4>
                 <p>Public utilities, multiple company use of utility infrastructures, see § <a class="internal-link" href="/dc/council/code/sections/34-1102.html">34-1102</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -261,8 +313,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch353.html#§11">Feb. 12, 1901, 31 Stat. 772, ch. 353, § 11</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-508.</p>
                 <p>1973 Ed., § 7-508.</p>
+                <p>1981 Ed., § 7-508.</p>
                 <h4>Cross References</h4>
                 <p>Public utilities, multiple company use of utility infrastructures, see § <a class="internal-link" href="/dc/council/code/sections/34-1102.html">34-1102</a>.</p>
               </section>
@@ -280,8 +332,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/60-2-ch315.html">Mar. 4, 1909, 35 Stat. 1066, ch. 315</a>; Mar. 4, 1915, 38 Stat. 1053, ch. 142, § 6.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-509.</p>
                 <p>1973 Ed., § 7-509.</p>
+                <p>1981 Ed., § 7-509.</p>
               </section>
             </section>
             <hr/>
@@ -296,8 +348,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-2-ch2510.html">Mar. 2, 1907, 34 Stat. 1130, ch. 2510</a>; July 3, 1930, 46 Stat. 963, ch. 848.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-510.</p>
                 <p>1973 Ed., § 7-510.</p>
+                <p>1981 Ed., § 7-510.</p>
                 <h4>Editor's Notes</h4>
                 <p>Office of Collector of Taxes abolished: The Office of the Collector of Taxes was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. All functions of the Office of the Collector of Taxes including the functions of all officers, employees and subordinate agencies were transferred to the Director, Department of General Administration by Reorganization Order No. 3, dated August 28, 1952. Reorganization Order No. 20, dated November 10, 1952, transferred the functions of the Collector of Taxes to the Finance Office. The same Order provided for the Office of the Collector of Taxes headed by a Collector in the Finance Office, and abolished the previously existing Office of the Collector of Taxes. Reorganization Order No. 20 was superseded and replaced by Organization Order No. 121, dated December 12, 1957, which provided that the Finance Office (consisting of the Office of the Finance Officer, Property Tax Division, Revenue Division, Treasury Division, Accounting Division, and Data Processing Division) would continue under the direction and control of the Director of General Administration, and that the Treasury Division would perform the function of collecting revenues of the District of Columbia and depositing the same with the Treasurer of the United States. Organization Order No. 121 was revoked by Organization Order No. 3, dated December 13, 1967, Part IVC of which prescribed the functions of the Finance Office within a newly established Department of General Administration. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967. Functions of the Finance Office as stated in Part IVC of Organization Order No. 3 were transferred to the Director of the Department of Finance and Revenue by Commissioner’s Order No. 69-96, dated March 7, 1969. The collection functions of the Director of the Department of Finance and Revenue were transferred to the District of Columbia Treasurer by § <a class="internal-link" href="/dc/council/code/sections/47-316.html">47-316</a> on March 5, 1981.</p>
               </section>
@@ -314,8 +366,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/64-1-ch127.html#§5">May 18, 1916, 39 Stat. 163, ch. 127, § 5</a>; Feb. 28, 1923, 42 Stat. 1338, ch. 148, § 1; June 7, 1926, 44 Stat. 697, ch. 480, § 1.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-511.</p>
                 <p>1973 Ed., § 7-511.</p>
+                <p>1981 Ed., § 7-511.</p>
                 <h4>Cross References</h4>
                 <p>Public utilities, multiple company use of utility infrastructures, see § <a class="internal-link" href="/dc/council/code/sections/34-1102.html">34-1102</a>.</p>
                 <h4>References in Text</h4>
@@ -336,8 +388,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/64-2-ch160.html">Mar. 3, 1917, 39 Stat. 1018, ch. 160</a>; Feb. 22, 1921, 41 Stat. 1144, ch. 70, § 7; June 28, 1944, 58 Stat. 533, ch. 300, § 18.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-512.</p>
                 <p>1973 Ed., § 7-512.</p>
+                <p>1981 Ed., § 7-512.</p>
               </section>
             </section>
             <hr/>
@@ -352,8 +404,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/71-2-ch848.html">July 3, 1930, 46 Stat. 962, ch. 848</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-513.</p>
                 <p>1973 Ed., § 7-513.</p>
+                <p>1981 Ed., § 7-513.</p>
               </section>
             </section>
             <hr/>
@@ -368,8 +420,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/72-1-ch308.html">June 29, 1932, 47 Stat. 355, ch. 308</a>; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 571, Pub. L. 91-358, title I, § 155(c)(24)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-514.</p>
                 <p>1973 Ed., § 7-514.</p>
+                <p>1981 Ed., § 7-514.</p>
                 <h4>Cross References</h4>
                 <p>Public utilities, multiple company use of utility infrastructures, see § <a class="internal-link" href="/dc/council/code/sections/34-1102.html">34-1102</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -390,8 +442,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/69-2-ch306.html#§1">Mar. 3, 1927, 44 Stat. 1352, ch. 306, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-515.</p>
                 <p>1973 Ed., § 7-515.</p>
+                <p>1981 Ed., § 7-515.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/9-1205.04.html">9-1205.04</a>.</p>
                 <h4>Cross References</h4>
@@ -412,8 +464,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/69-2-ch306.html#§4">Mar. 3, 1927, 44 Stat. 1354, ch. 306, § 4</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-516.</p>
                 <p>1973 Ed., § 7-516.</p>
+                <p>1981 Ed., § 7-516.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/9-1205.04.html">9-1205.04</a>.</p>
                 <h4>Cross References</h4>
@@ -432,8 +484,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/68-2-ch395.html#§1">Mar. 2, 1925, 43 Stat. 1096, ch. 395, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-517.</p>
                 <p>1973 Ed., § 7-517.</p>
+                <p>1981 Ed., § 7-517.</p>
                 <h4>Editor's Notes</h4>
                 <p>Office of Collector of Taxes abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/9-310.html">9-310</a>.</p>
               </section>
@@ -450,8 +502,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/68-2-ch395.html#§3">Mar. 2, 1925, 43 Stat. 1097, ch. 395, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-518.</p>
                 <p>1973 Ed., § 7-518.</p>
+                <p>1981 Ed., § 7-518.</p>
               </section>
             </section>
             <hr/>
@@ -466,8 +518,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/61-2-ch248.html">May 18, 1910, 36 Stat. 388, ch. 248</a>; Feb. 22, 1921, 41 Stat. 1144, ch. 70, § 7; June 28, 1944, 58 Stat. 533, ch. 300, § 18.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-519.</p>
                 <p>1973 Ed., § 7-519.</p>
+                <p>1981 Ed., § 7-519.</p>
               </section>
             </section>
             <hr/>
@@ -482,8 +534,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/69-2-ch305.html#§1">Mar. 3, 1927, 44 Stat. 1351, ch. 305, § 1</a>; Feb. 12, 1931, 46 Stat. 1087, ch. 119; June 14, 1935, 49 Stat. 349, ch. 241, § 1; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 571, Pub. L. 91-358, title I, § 155(c)(25)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-520.</p>
                 <p>1973 Ed., § 7-520.</p>
+                <p>1981 Ed., § 7-520.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/9-321.html">9-321</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -504,8 +556,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/69-2-ch305.html#§2">Mar. 3, 1927, 44 Stat. 1352, ch. 305, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-521.</p>
                 <p>1973 Ed., § 7-521.</p>
+                <p>1981 Ed., § 7-521.</p>
                 <h4>Editor's Notes</h4>
                 <p>Office of Collector of Taxes abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/9-310.html">9-310</a>.</p>
               </section>
@@ -522,8 +574,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/69-2-ch305.html#§4">Mar. 3, 1927, 44 Stat. 1352, ch. 305, § 4</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-522.</p>
                 <p>1973 Ed., § 7-522.</p>
+                <p>1981 Ed., § 7-522.</p>
               </section>
             </section>
             <hr/>
@@ -538,8 +590,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/71-2-ch848.html">July 3, 1930, 46 Stat. 963, ch. 848</a>; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 571, Pub. L. 91-358, title I, § 155(c)(26)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-523.</p>
                 <p>1973 Ed., § 7-523.</p>
+                <p>1981 Ed., § 7-523.</p>
                 <h4>Editor's Notes</h4>
                 <p>Office of Collector of Taxes abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/9-310.html">9-310</a>.</p>
                 <h4>Change in Government</h4>
@@ -558,8 +610,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/73-1-ch93.html">June 16, 1933, 48 Stat. 229, ch. 93</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-524.</p>
                 <p>1973 Ed., § 7-524.</p>
+                <p>1981 Ed., § 7-524.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -576,8 +628,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-203.html#§1">Sept. 25, 1965, 79 Stat. 838, Pub. L. 89-203, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-525.</p>
                 <p>1973 Ed., § 7-525.</p>
+                <p>1981 Ed., § 7-525.</p>
                 <h4>References in Text</h4>
                 <p>Interstate Route 395 was substituted for Interstate Route 95 in the first sentence of this section to update terminology.</p>
               </section>
@@ -602,8 +654,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-789.html#§111">Nov. 7, 1966, 80 Stat. 1417, Pub. L. 89-789, title I, § 111</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-526.</p>
                 <p>1973 Ed., § 7-526.</p>
+                <p>1981 Ed., § 7-526.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>

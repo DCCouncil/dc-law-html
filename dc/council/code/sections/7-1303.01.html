@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/7-1303.02.html">§ 7–1303.02. Voluntary admission. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-1303.01.html">Report Error</a>
@@ -100,18 +100,18 @@
       (<a class="internal-link" href="/dc/council/laws/2-137.html#§301">Mar. 3, 1979, D.C. Law 2-137, § 301, 25 DCR 5094</a>; <a class="internal-link" href="/dc/council/laws/14-199.html">Oct. 17, 2002, D.C. Law 14-199, § 2(b), 49 DCR 7647</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 26(c), 53 DCR 6198</a>; <a class="internal-link" href="/dc/council/laws/19-169.html">Sept. 26, 2012, D.C. Law 19-169, § 17(e), 59 DCR 5567</a>; <a class="internal-link" href="/dc/council/laws/22-93.html#§201(c)(2)">May 5, 2018, D.C. Law 22-93, § 201(c)(2), 65 DCR 2823</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1921.</p>
                 <p>1973 Ed., § 6-1654.</p>
+                <p>1981 Ed., § 6-1921.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-199.html">D.C. Law 14-199</a> redesignated the section as subsec. (a); in subsec. (a), substituted “Except as provided in subsection (b) of this section, no individual” for “No individual”; and added subsec. (b).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (a), substituted “has or is believed to have mental retardation” for “is or is believed to be mentally retarded”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “an intellectual disability” for “mental retardation” in (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (a), substituted “has or is believed to have mental retardation” for “is or is believed to be mentally retarded”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-199.html">D.C. Law 14-199</a> redesignated the section as subsec. (a); in subsec. (a), substituted “Except as provided in subsection (b) of this section, no individual” for “No individual”; and added subsec. (b).</p>
                 <h4>Applicability</h4>
                 <p>Section 401 of D.C. Law 22-93 provided that the amendments made to this section by Law 22-93 shall apply 90 days after May 5, 2018.
       </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Civil Commitment of Citizens with Mental Retardation Emergency Amendment Act of 2002 (D.C. Act 14-383, June 12, 2002,  49 DCR 5701).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(b) of Civil Commitment of Citizens with Mental Retardation Legislative Review Emergency Amendment Act of 2002 (D.C. Act 14-454, July 23, 2002,  49 DCR 8096).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Civil Commitment of Citizens with Mental Retardation Emergency Amendment Act of 2002 (D.C. Act 14-383, June 12, 2002,  49 DCR 5701).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
               </section>

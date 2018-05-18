@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/10C/">Chapter 10C. Solid Waste Facility Permits.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/8/chapters/10B/">Report Error</a>
@@ -87,18 +87,42 @@
         <section class="col8 body">
           <h1>Chapter 10B. Extended Manufacturer Responsibility for Electronic Waste.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/8-1041.01.html">§ 8–1041.01. Definitions.</a>
-            <a href="/dc/council/code/sections/8-1041.02.html">§ 8–1041.02. District covered electronics waste diversion goal.</a>
-            <a href="/dc/council/code/sections/8-1041.03.html">§ 8–1041.03. Registration.</a>
-            <a href="/dc/council/code/sections/8-1041.04.html">§ 8–1041.04. Registration and shortfall fees.</a>
-            <a href="/dc/council/code/sections/8-1041.05.html">§ 8–1041.05. Manufacturer responsibilities.</a>
-            <a href="/dc/council/code/sections/8-1041.06.html">§ 8–1041.06. Agency responsibilities.</a>
-            <a href="/dc/council/code/sections/8-1041.07.html">§ 8–1041.07. Disposal ban.</a>
-            <a href="/dc/council/code/sections/8-1041.08.html">§ 8–1041.08. Confidential information and trade secrets.</a>
-            <a href="/dc/council/code/sections/8-1041.09.html">§ 8–1041.09. Supervision; immunity from liability.</a>
-            <a href="/dc/council/code/sections/8-1041.10.html">§ 8–1041.10. Reporting requirements.</a>
-            <a href="/dc/council/code/sections/8-1041.11.html">§ 8–1041.11. Limitation in the event of a federal program.</a>
-            <a href="/dc/council/code/sections/8-1041.12.html">§ 8–1041.12. Rules; enforcement.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.01.html">§ 8–1041.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.02.html">§ 8–1041.02. District covered electronics waste diversion goal.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.03.html">§ 8–1041.03. Registration.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.04.html">§ 8–1041.04. Registration and shortfall fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.05.html">§ 8–1041.05. Manufacturer responsibilities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.06.html">§ 8–1041.06. Agency responsibilities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.07.html">§ 8–1041.07. Disposal ban.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.08.html">§ 8–1041.08. Confidential information and trade secrets.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.09.html">§ 8–1041.09. Supervision; immunity from liability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.10.html">§ 8–1041.10. Reporting requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.11.html">§ 8–1041.11. Limitation in the event of a federal program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1041.12.html">§ 8–1041.12. Rules; enforcement.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

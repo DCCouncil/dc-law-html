@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/34-910.html">§ 34–910. Notice as to hearings; compulsory attendance of witnesses.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/34-909.html">Report Error</a>
@@ -99,13 +99,13 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-909.html">Mar. 4, 1913, 37 Stat. 983, ch. 150, § 8, par. 39</a>; <a class="internal-link" href="/dc/council/laws/5-153.html">Mar. 14, 1985, D.C. Law 5-153, § 3(d), 31 DCR 6440</a>; <a class="internal-link" href="/dc/council/laws/6-9.html">July 17, 1985, D.C. Law 6-9, § 2(a), 32 DCR 2961</a>; <a class="internal-link" href="/dc/council/laws/15-89.html">Mar. 10, 2004, D.C. Law 15-89, § 2, 51 DCR 1</a>; <a class="internal-link" href="/dc/council/laws/15-342.html">Apr. 12, 2005, D.C. Law 15-342, § 303(d), 52 DCR 2346</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-609.</p>
                 <p>1973 Ed., § 43-409.</p>
+                <p>1981 Ed., § 43-609.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/34-1313.03.html">34-1313.03</a>, § <a class="internal-link" href="/dc/council/code/sections/34-1313.09.html">34-1313.09</a>, and § <a class="internal-link" href="/dc/council/code/sections/34-1313.15.html">34-1313.15</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-89.html">D.C. Law 15-89</a>, in subsec. (a), substituted “Notice of every rate application or change in condition of service proposed and filed with the Public Service Commission shall be given by the utility to each residential or commercial rate payer affected by the proposed rate application or change. The notice shall be: (1) by written notice in the affected rate payer’s billing envelope, (2) by electronic notice to those rate payers who have registered for electronic billing with a utility, and (3) available for viewing at a utility’s website and updated by a utility on at least a monthly basis consistent with the billing cycle.” for “Notice shall be given to the public by the utility in each rate payer’s billing envelope of every rate application or change in condition of service proposed and filed with the Public Service Commission.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-342.html">D.C. Law 15-342</a>, in subsec. (a), substituted “The notice shall be available for viewing at a utility’s website, and either by electronic notice to those ratepayers who have registered for electronic billing with the utility or by written notice in the affected ratepayer’s billing envelope.” for “The notice shall be: (1) by written notice in the affected rate payer’s billing envelope, (2) by electronic notice to those rate payers who have registered for electronic billing with a utility, and (3) available for viewing at a utility’s website and updated by a utility on at least a monthly basis consistent with the billing cycle.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-89.html">D.C. Law 15-89</a>, in subsec. (a), substituted “Notice of every rate application or change in condition of service proposed and filed with the Public Service Commission shall be given by the utility to each residential or commercial rate payer affected by the proposed rate application or change. The notice shall be: (1) by written notice in the affected rate payer’s billing envelope, (2) by electronic notice to those rate payers who have registered for electronic billing with a utility, and (3) available for viewing at a utility’s website and updated by a utility on at least a monthly basis consistent with the billing cycle.” for “Notice shall be given to the public by the utility in each rate payer’s billing envelope of every rate application or change in condition of service proposed and filed with the Public Service Commission.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 303(d) of Omnibus Utility Emergency Amendment Act of 2005 (D.C. Act 16-12, January 28, 2005,  52 DCR 2945).</p>
               </section>

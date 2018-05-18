@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/9/">Chapter 9. Illegal Dumping Enforcement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-812.html">Report Error</a>
@@ -100,8 +100,8 @@
       (<a class="internal-link" href="/dc/council/laws/6-100.html#§11b">Mar. 25, 1986, D.C. Law 6-100, § 13</a>; <a class="internal-link" href="/dc/council/laws/17-314.html">as added Mar. 20, 2009, D.C. Law 17-314, § 2(b), 56 DCR 200</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">redesignated as § 11b, Sept. 26, 2012, D.C. Law 19-171, § 59(b), 59 DCR 6190</a>; <a class="internal-link" href="/dc/council/laws/20-154.html">Feb. 26, 2015, D.C. Law 20-154, § 201(c), 61 DCR 9971</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> redesignated <a class="internal-link" href="/dc/council/laws/6-100.html">D.C. Law 6-100</a>, § 13 as <a class="internal-link" href="/dc/council/laws/6-100.html">D.C. Law 6-100</a>, § 11b .</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-154.html">D.C. Law 20-154</a> substituted “by Ward” for “by Metropolitan Police Department district” in (b).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> redesignated <a class="internal-link" href="/dc/council/laws/6-100.html">D.C. Law 6-100</a>, § 13 as <a class="internal-link" href="/dc/council/laws/6-100.html">D.C. Law 6-100</a>, § 11b .</p>
                 <h4>Cross References</h4>
                 <p>Licensure, clean hands requirement, prohibition against issuance of licenses, see § <a class="internal-link" href="/dc/council/code/sections/47-2862.html">47-2862</a>.</p>
               </section>

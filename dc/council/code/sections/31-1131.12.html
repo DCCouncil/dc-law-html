@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/31-1131.13.html">§ 31–1131.13. Commissions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-1131.12.html">Report Error</a>
@@ -134,15 +134,15 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-1131.06.html">31-1131.06</a>, § <a class="internal-link" href="/dc/council/code/sections/31-1131.07.html">31-1131.07</a>, § <a class="internal-link" href="/dc/council/code/sections/31-1131.07a.html">31-1131.07a</a>, § <a class="internal-link" href="/dc/council/code/sections/31-1131.08.html">31-1131.08</a>, and § <a class="internal-link" href="/dc/council/code/sections/31-1131.15.html">31-1131.15</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-55.html">D.C. Law 16-55</a>, in the section heading, inserted “, suspension,”; rewrote the lead-in language of subsec. (a); designated the existing text of subsec. (b)(1) as subsec. (b)(1)(A); added subsec. (b)(1)(B); and added subsec. (c). Prior to amendment, the lead-in language of subsec. (a) read as follows: “(a) The Commissioner may place an insurance producer on probation; suspend, revoke, or refuse to issue or renew an insurance producer’s license; may levy a civil penalty in accordance with subsection (f) of this section; or take any combination of these actions if an insurance producer:”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-155.html">D.C. Law 17-155</a> rewrote the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-55.html">D.C. Law 16-55</a>, in the section heading, inserted “, suspension,”; rewrote the lead-in language of subsec. (a); designated the existing text of subsec. (b)(1) as subsec. (b)(1)(A); added subsec. (b)(1)(B); and added subsec. (c). Prior to amendment, the lead-in language of subsec. (a) read as follows: “(a) The Commissioner may place an insurance producer on probation; suspend, revoke, or refuse to issue or renew an insurance producer’s license; may levy a civil penalty in accordance with subsection (f) of this section; or take any combination of these actions if an insurance producer:”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Producer Summary Suspension Emergency Amendment Act of 2004 (D.C. Act 15-548, October 26, 2004,  51 DCR 10332).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Producer Summary Suspension Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-18, February 17, 2005,  52 DCR 2962).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Producer Summary Suspension Emergency Amendment Act of 2005 (D.C. Act 16-192, October 28, 2005,  52 DCR 10029).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Producer Summary Suspension Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-18, February 17, 2005,  52 DCR 2962).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Producer Summary Suspension Emergency Amendment Act of 2004 (D.C. Act 15-548, October 26, 2004,  51 DCR 10332).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Producer Summary Suspension Temporary Amendment Act of 2004 (D.C. Law 15-259, March 17, 2009, law notification  52 DCR 4371).</p>
                 <p>For temporary (225 day) amendment of section, see § 2 of Producer Summary Suspension Temporary Amendment Act of 2005 (D.C. Law 16-47, February 9, 2006, law notification  53 DCR 1455).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Producer Summary Suspension Temporary Amendment Act of 2004 (D.C. Law 15-259, March 17, 2009, law notification  52 DCR 4371).</p>
               </section>
             </section>
           </section>

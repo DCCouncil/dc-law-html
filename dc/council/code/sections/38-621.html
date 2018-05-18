@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/38/chapters/6/subchapters/III/">Subchapter III. Administration of Medication by Public School Employees. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-621.html">Report Error</a>
@@ -124,33 +124,33 @@
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/22-61.html">D.C. Law 22-61</a>: <a class="internal-link" href="/dc/council/laws/22-61.html#§3">§ 3 of D.C. Law 22-61</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/22-61.html#§2">§ 2 of D.C. Law 22-61</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 401 of the Fiscal Year 1998 Revised Budget Support Emergency Act of 1997 (D.C. Act 12-152, October 17, 1997,  44 DCR 6196), and § 401 of the Fiscal Year 1998 Revised Budget Support Congressional Review Emergency Act of 1997 (D.C. Act 12-239, January 13, 1998,  45 DCR 508).</p>
-                <p>For temporary amendment of section, see § 2 of the Public School Nurse Assignment Emergency Amendment Act of 1998 (D.C. Act 12-448, September 18, 1998,  45 DCR 6665), and § 2 of the Public School Nurse Assignment Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-555, December 30, 1998,  45 DCR 570).</p>
-                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Emergency Amendment Act of 2002 (D.C. Act 14-310, March 26, 2002,  49 DCR 3420).</p>
-                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Emergency Amendment Act of 2003 (D.C. Act 15-3, January 22, 2003,  50 DCR 1426).</p>
-                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-71, April 16, 2003,  50 DCR 3593).</p>
-                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Second Emergency Amendment Act of 2003 (D.C. Act 15-279, December 18, 2003,  51 DCR 60).</p>
-                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-407, March 18, 2004,  51 DCR 3659).</p>
-                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Emergency Amendment Act of 2004 (D.C. Act 15-630, November 30, 2004,  52 DCR 1143).</p>
-                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-30, February 17, 2005,  52 DCR 2993).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-15.html#§2">§ 2 of Public School Nurse Assignment Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-15, Feb. 27, 2017, 64 DCR 2359)</a>.</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-147.html#§2">§ 2 of Public School Nurse Assignment Emergency Amendment Act of 2017 (D.C. Act 22-147, Oct. 10, 2017, 64 DCR 10445)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-179.html#§2">§ 2 of Public School Nurse Assignment Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-179, Nov. 22, 2017, 64 DCR 12290)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-147.html#§2">§ 2 of Public School Nurse Assignment Emergency Amendment Act of 2017 (D.C. Act 22-147, Oct. 10, 2017, 64 DCR 10445)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-15.html#§2">§ 2 of Public School Nurse Assignment Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-15, Feb. 27, 2017, 64 DCR 2359)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-30, February 17, 2005,  52 DCR 2993).</p>
+                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Emergency Amendment Act of 2004 (D.C. Act 15-630, November 30, 2004,  52 DCR 1143).</p>
+                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-407, March 18, 2004,  51 DCR 3659).</p>
+                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Second Emergency Amendment Act of 2003 (D.C. Act 15-279, December 18, 2003,  51 DCR 60).</p>
+                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-71, April 16, 2003,  50 DCR 3593).</p>
+                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Emergency Amendment Act of 2003 (D.C. Act 15-3, January 22, 2003,  50 DCR 1426).</p>
+                <p>For temporary (90 day) amendment of section, see § 602 of Child and Youth, Safety and Health Omnibus Emergency Amendment Act of 2002 (D.C. Act 14-310, March 26, 2002,  49 DCR 3420).</p>
+                <p>For temporary amendment of section, see § 2 of the Public School Nurse Assignment Emergency Amendment Act of 1998 (D.C. Act 12-448, September 18, 1998,  45 DCR 6665), and § 2 of the Public School Nurse Assignment Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-555, December 30, 1998,  45 DCR 570).</p>
+                <p>For temporary amendment of section, see § 401 of the Fiscal Year 1998 Revised Budget Support Emergency Act of 1997 (D.C. Act 12-152, October 17, 1997,  44 DCR 6196), and § 401 of the Fiscal Year 1998 Revised Budget Support Congressional Review Emergency Act of 1997 (D.C. Act 12-239, January 13, 1998,  45 DCR 508).</p>
                 <h4>Temporary Legislation</h4>
-                <p><a class="internal-link" href="/dc/council/laws/12-59.html">D.C. Law 12-59</a> substituted “Director, Department of Health” for “Commissioner of Public Health” in the introductory language of (d) and in (d)(5), (e)(1)(B), (e)(1)(C), and (e)(1)(E).</p>
-                <p>Section 2001(b) of <a class="internal-link" href="/dc/council/laws/12-59.html">D.C. Law 12-59</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/12-182.html">D.C. Law 12-182</a> in (e)(1)(A), inserted “varsity,” and added “and for non-varsity football, a licensed medical doctor or certified athletic trainer.”</p>
-                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/12-182.html">D.C. Law 12-182</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 602 of <a class="internal-link" href="/dc/council/laws/14-164.html">D.C. Law 14-164</a>, in subsec. (a), inserted “and public charter” following “public”.</p>
-                <p>Section 1101(b) of <a class="internal-link" href="/dc/council/laws/14-164.html">D.C. Law 14-164</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 602 of <a class="internal-link" href="/dc/council/laws/15-2.html">D.C. Law 15-2</a> amended subsec. (a) by inserting “and public charter” after “public”.</p>
-                <p>Section 1101 (b) of <a class="internal-link" href="/dc/council/laws/15-2.html">D.C. Law 15-2</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 602 of <a class="internal-link" href="/dc/council/laws/15-117.html">D.C. Law 15-117</a>, in subsec. (a), inserted “and public charter” after “public”.</p>
-                <p>Section 1101(b) of <a class="internal-link" href="/dc/council/laws/15-117.html">D.C. Law 15-117</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 602 of <a class="internal-link" href="/dc/council/laws/15-319.html">D.C. Law 15-319</a>, in subsec. (a), substituted “public and public charter” for “public.”</p>
-                <p>Section 901(b) of <a class="internal-link" href="/dc/council/laws/15-319.html">D.C. Law 15-319</a> provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-207.html#§2">§ 2 of Public School Nurse Assignment Temporary Amendment Act of 2016 (D.C. Law 21-207, Feb. 18, 2017, 63 DCR 15054)</a>.</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/22-32.html#§2">§ 2 of Public School Nurse Assignment Temporary Amendment Act of 2017 (D.C. Law 22-32, Dec. 7, 2017, 64 DCR 10738)</a>.</p>
+                <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-207.html#§2">§ 2 of Public School Nurse Assignment Temporary Amendment Act of 2016 (D.C. Law 21-207, Feb. 18, 2017, 63 DCR 15054)</a>.</p>
+                <p>Section 901(b) of <a class="internal-link" href="/dc/council/laws/15-319.html">D.C. Law 15-319</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 602 of <a class="internal-link" href="/dc/council/laws/15-319.html">D.C. Law 15-319</a>, in subsec. (a), substituted “public and public charter” for “public.”</p>
+                <p>Section 1101(b) of <a class="internal-link" href="/dc/council/laws/15-117.html">D.C. Law 15-117</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 602 of <a class="internal-link" href="/dc/council/laws/15-117.html">D.C. Law 15-117</a>, in subsec. (a), inserted “and public charter” after “public”.</p>
+                <p>Section 1101 (b) of <a class="internal-link" href="/dc/council/laws/15-2.html">D.C. Law 15-2</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 602 of <a class="internal-link" href="/dc/council/laws/15-2.html">D.C. Law 15-2</a> amended subsec. (a) by inserting “and public charter” after “public”.</p>
+                <p>Section 1101(b) of <a class="internal-link" href="/dc/council/laws/14-164.html">D.C. Law 14-164</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 602 of <a class="internal-link" href="/dc/council/laws/14-164.html">D.C. Law 14-164</a>, in subsec. (a), inserted “and public charter” following “public”.</p>
+                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/12-182.html">D.C. Law 12-182</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/12-182.html">D.C. Law 12-182</a> in (e)(1)(A), inserted “varsity,” and added “and for non-varsity football, a licensed medical doctor or certified athletic trainer.”</p>
+                <p>Section 2001(b) of <a class="internal-link" href="/dc/council/laws/12-59.html">D.C. Law 12-59</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p><a class="internal-link" href="/dc/council/laws/12-59.html">D.C. Law 12-59</a> substituted “Director, Department of Health” for “Commissioner of Public Health” in the introductory language of (d) and in (d)(5), (e)(1)(B), (e)(1)(C), and (e)(1)(E).</p>
                 <h4>References in Text</h4>
                 <p>“This act” referred to in (g) is <a class="internal-link" href="/dc/council/laws/8-149.html">D.C. Law 8-149</a>.</p>
               </section>

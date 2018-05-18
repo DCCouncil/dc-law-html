@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/22-2104.01.html">§ 22–2104.01. Sentencing procedure for murder in the first degree.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/22-2104.html">Report Error</a>
@@ -102,26 +102,26 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§801">Mar. 3, 1901, 31 Stat. 1321, ch. 854, § 801</a>; Jan. 30, 1925, 43 Stat. 798, ch. 115, § 1; <a class="internal-link" href="/us/congress/laws/public/87-423.html">Mar. 22, 1962, 76 Stat. 46, Pub. L. 87-423, § 1</a>; <a class="internal-link" href="/dc/council/laws/3-113.html">Feb. 26, 1981, D.C. Law 3-113, § 2, 27 DCR 5624</a>; <a class="internal-link" href="/dc/council/laws/9-153.html">Sept. 26, 1992, D.C. Law 9-153, § 2(b), (c), 39 DCR 3868</a>; <a class="internal-link" href="/dc/council/laws/10-256.html">May 23, 1995, D.C. Law 10-256, § 2(a), 42 DCR 20</a>; <a class="internal-link" href="/dc/council/laws/13-302.html">June 8, 2001, D.C. Law 13-302, § 4(d), 47 DCR 7249</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 303(a), 60 DCR 2064</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-2404.</p>
                 <p>1973 Ed., § 22-2404.</p>
+                <p>1981 Ed., § 22-2404.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/22-2104.01.html">22-2104.01</a>, § <a class="internal-link" href="/dc/council/code/sections/22-4502.html">22-4502</a>, § <a class="internal-link" href="/dc/council/code/sections/24-112.html">24-112</a>, and § <a class="internal-link" href="/dc/council/code/sections/24-221.06.html">24-221.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-302.html">D.C. Law 13-302</a> rewrote the section which had read:</p>
-                <p>“(a) The punishment for murder in the first degree shall be life imprisonment, except that the court may impose a punishment of life imprisonment without parole in accordance with § 22-2104.1. The prosecution shall notify the defendant in writing at least 30 days prior to trial that it intends to seek a sentence of life imprisonment without parole as provided in § 22-2104.1; provided that, no person who was less than 18 years of age at the time the murder was committed shall be sentenced to life imprisonment without parole.</p>
-                <p>“(b) Notwithstanding any other provision of law, a person convicted of murder in the first degree and upon whom a sentence of life imprisonment is imposed shall be eligible for parole only after the expiration of 30 years from the date of the commencement of the sentence.</p>
-                <p>“(c) Whoever is guilty of murder in the second degree shall be sentenced to a maximum period of incarceration of not less than 20 years and not more than life. Notwithstanding any other provision of law, where the maximum sentence imposed is life imprisonment, a minimum sentence shall be imposed which shall not exceed 20 years imprisonment.”</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> added (e).</p>
+                <p>“(c) Whoever is guilty of murder in the second degree shall be sentenced to a maximum period of incarceration of not less than 20 years and not more than life. Notwithstanding any other provision of law, where the maximum sentence imposed is life imprisonment, a minimum sentence shall be imposed which shall not exceed 20 years imprisonment.”</p>
+                <p>“(b) Notwithstanding any other provision of law, a person convicted of murder in the first degree and upon whom a sentence of life imprisonment is imposed shall be eligible for parole only after the expiration of 30 years from the date of the commencement of the sentence.</p>
+                <p>“(a) The punishment for murder in the first degree shall be life imprisonment, except that the court may impose a punishment of life imprisonment without parole in accordance with § 22-2104.1. The prosecution shall notify the defendant in writing at least 30 days prior to trial that it intends to seek a sentence of life imprisonment without parole as provided in § 22-2104.1; provided that, no person who was less than 18 years of age at the time the murder was committed shall be sentenced to life imprisonment without parole.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-302.html">D.C. Law 13-302</a> rewrote the section which had read:</p>
                 <h4>Cross References</h4>
-                <p>Committing crime when armed, additional penalty, see §§ <a class="internal-link" href="/dc/council/code/sections/22-4501.html">22-4501</a> and <a class="internal-link" href="/dc/council/code/sections/22-4502.html">22-4502</a>.</p>
-                <p>Good time credits, exceptions, see § 24-434.</p>
                 <p>Minimum sentence upon imposition of life imprisonment, see § <a class="internal-link" href="/dc/council/code/sections/24-403.html">24-403</a>.</p>
+                <p>Good time credits, exceptions, see § 24-434.</p>
+                <p>Committing crime when armed, additional penalty, see §§ <a class="internal-link" href="/dc/council/code/sections/22-4501.html">22-4501</a> and <a class="internal-link" href="/dc/council/code/sections/22-4502.html">22-4502</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 4(d) of the Sentencing Reform Emergency Amendment Act of 2000 (D.C. Act 13-410, August 11, 2000,  47 DCR 7271).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(d) of the Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 13-462, November 7, 2000,  47 DCR 9443).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(d) of Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-2, February 2, 2001,  48 DCR 2239).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(d) of Sentencing Reform Second Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-51, May 2, 2001,  48 DCR 4370).</p>
                 <p>For temporary (90 days) amendment of this section, see § 303(a) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(d) of Sentencing Reform Second Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-51, May 2, 2001,  48 DCR 4370).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(d) of Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-2, February 2, 2001,  48 DCR 2239).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(d) of the Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 13-462, November 7, 2000,  47 DCR 9443).</p>
+                <p>For temporary (90-day) amendment of section, see § 4(d) of the Sentencing Reform Emergency Amendment Act of 2000 (D.C. Act 13-410, August 11, 2000,  47 DCR 7271).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
               </section>

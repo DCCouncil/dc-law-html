@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/6-1410.html">§ 6–1410. Building Rehabilitation Code. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/6-1409.html">Report Error</a>
@@ -105,36 +105,36 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-1401.html">6-1401</a> and § <a class="internal-link" href="/dc/council/code/sections/6-1405.01.html">6-1405.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> designated subsec. (a); and added subsec. (b).</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-278.html">D.C. Law 15-278</a> added subsec. (a-1).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-289.html">D.C. Law 19-289</a> repealed (a-1), which read “Notwithstanding the provisions of subsection (a) of this subsection, the Mayor may amend the provisions of  subsection 3107.18 of Title 12A of the District of Columbia Municipal Regulations ( 12A DCMR § 3107.18), including the specifications, drawings, limitations, and requirements of the Illustrations, as defined in subsection 3107.18.11 of Title 12A of the District of Columbia Municipal Regulations ( 12A DCMR § 3107.18.11), by rulemaking pursuant to § <a class="internal-link" href="/dc/council/code/sections/2-505.html">2-505</a>, without submission of the proposed rules to the Council for its prior review and approval.”; and repealed (b), which read: “Within 180 days after the adoption of the International Building Code, published by the International Building Code Council, Inc. (‘IBC’), and any subsequent amendments thereto, the Mayor shall propose an amendment to the Construction Code in accordance with subsection (a) of this section to adopt the IBC.”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-278.html">D.C. Law 15-278</a> added subsec. (a-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> designated subsec. (a); and added subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 302(c) of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of Gallery Place Project Graphics Emergency Amendment Act of 2004 (D.C. Act 15-508, August 2, 2004,  51 DCR 8945).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of Gallery Place Project Graphics Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-626, November 30, 2004,  52 DCR 1131).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of Gallery Place Project Graphics Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-38, February 17, 2005,  52 DCR 3031).</p>
-                <p>For temporary (90 day) amendment of section, see § 3(c) of the Sign Regulation Emergency Amendment Act of 2012 (D.C. Act 19-387, July 11, 2012,  59 DCR 8491).</p>
                 <p>For temporary repeal of (a-1) and (b), see § 3(c) of the Sign Regulation Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-499, October 26, 2012,  59 DCR 12749), applicable after the Mayor’s issuance of a comprehensive final rulemaking governing signs on public space and private property, and with the condition that any order, rule, or regulation in effect under a law replaced by this act shall remain in effect until repealed, amended, or superseded.</p>
+                <p>For temporary (90 day) amendment of section, see § 3(c) of the Sign Regulation Emergency Amendment Act of 2012 (D.C. Act 19-387, July 11, 2012,  59 DCR 8491).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of Gallery Place Project Graphics Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-38, February 17, 2005,  52 DCR 3031).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of Gallery Place Project Graphics Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-626, November 30, 2004,  52 DCR 1131).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of Gallery Place Project Graphics Emergency Amendment Act of 2004 (D.C. Act 15-508, August 2, 2004,  51 DCR 8945).</p>
+                <p>For temporary (90 day) amendment of section, see § 302(c) of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 3 of Gallery Place Project Graphics Temporary Amendment Act of 2004 (D.C. Law 15-221, March 16, 2005, law notification  52 DCR 3547).</p>
-                <p>Section 3(c) of D.C. Law 19-181 repealed (a-1) and (b).</p>
-                <p>Section 8 of D.C. Law 19-181 provided that any order, rule, or regulation in effect under a law replaced by this act shall remain in effect until repealed, amended, or superseded.</p>
-                <p>Section 9 of D.C. Law 19-181 provided that sections 3, 4, 5, 6, and 7 of the act shall apply upon the Mayor’s issuance of a comprehensive final rulemaking governing signs on public space and private property pursuant to section 2 of the act.</p>
                 <p>Section 11(b) of D.C. Law 19-181 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 9 of D.C. Law 19-181 provided that sections 3, 4, 5, 6, and 7 of the act shall apply upon the Mayor’s issuance of a comprehensive final rulemaking governing signs on public space and private property pursuant to section 2 of the act.</p>
+                <p>Section 8 of D.C. Law 19-181 provided that any order, rule, or regulation in effect under a law replaced by this act shall remain in effect until repealed, amended, or superseded.</p>
+                <p>Section 3(c) of D.C. Law 19-181 repealed (a-1) and (b).</p>
+                <p>For temporary (225 day) amendment of section, see § 3 of Gallery Place Project Graphics Temporary Amendment Act of 2004 (D.C. Law 15-221, March 16, 2005, law notification  52 DCR 3547).</p>
                 <h4>Editor's Notes</h4>
-                <p>Building and Land Regulation Administration User Fee Approval and Disapproval Resolution of 1994: Pursuant to Resolution 10-370, effective June 7, 1994, the Council approved, in part, and disapproved, in part, rules to adopt a new Building and Land Regulation Administration User Fee Schedule.</p>
-                <p>Building and Land Regulation Administration User Fee Amendment Rulemaking Approval Resolution of 1994: Pursuant to Proposed Resolution 11-16, deemed approved February 18, 1995, Council approved Rules to adopt an amendment to the Building and Land Regulation Administration User Fee Schedule.</p>
-                <p>Section 3(c) of <a class="internal-link" href="/dc/council/laws/19-289.html">D.C. Law 19-289</a> repealed subsections (a-1)and (b).</p>
-                <p>Section 9 of <a class="internal-link" href="/dc/council/laws/19-289.html">D.C. Law 19-289</a> provided: “Any order, rule, or regulation in effect under a law replaced by this act shall remain in effect until repealed, amended, or superseded.”</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-289.html">D.C. Law 19-289</a>, § 3: Section 10 of <a class="internal-link" href="/dc/council/laws/19-289.html">D.C. Law 19-289</a> provided that sections 3, 4, 5, 6, 7, and 8 of the act shall not apply until the Mayor’s issuance of a comprehensive final rulemaking governing signs on public space and private property pursuant to section 2 of the act. Section 2 of <a class="internal-link" href="/dc/council/laws/19-289.html">D.C. Law 19-289</a> rewrote §§ <a class="internal-link" href="/dc/council/code/sections/1-303.21.html">1-303.21</a> and <a class="internal-link" href="/dc/council/code/sections/1-303.23.html">1-303.23</a>, and repealed § <a class="internal-link" href="/dc/council/code/sections/1-303.22.html">1-303.22</a>.</p>
+                <p>Section 9 of <a class="internal-link" href="/dc/council/laws/19-289.html">D.C. Law 19-289</a> provided: “Any order, rule, or regulation in effect under a law replaced by this act shall remain in effect until repealed, amended, or superseded.”</p>
+                <p>Section 3(c) of <a class="internal-link" href="/dc/council/laws/19-289.html">D.C. Law 19-289</a> repealed subsections (a-1)and (b).</p>
+                <p>Building and Land Regulation Administration User Fee Amendment Rulemaking Approval Resolution of 1994: Pursuant to Proposed Resolution 11-16, deemed approved February 18, 1995, Council approved Rules to adopt an amendment to the Building and Land Regulation Administration User Fee Schedule.</p>
+                <p>Building and Land Regulation Administration User Fee Approval and Disapproval Resolution of 1994: Pursuant to Resolution 10-370, effective June 7, 1994, the Council approved, in part, and disapproved, in part, rules to adopt a new Building and Land Regulation Administration User Fee Schedule.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to Law 6-216, see Mayor’s Order 87-259, November 13, 1987.</p>
                 <p>Delegation of Authority to the Director of the Department of Consumer and Regulatory Affairs—Construction Codes, see Mayor’s Order 2009-224, December 18, 2009 ( 56 DCR 9665).</p>
+                <p>Delegation of authority pursuant to Law 6-216, see Mayor’s Order 87-259, November 13, 1987.</p>
                 <h4>Resolutions</h4>
-                <p>Resolution 13-291, the “Construction Codes Amendments Approval Resolution of 1999”, was approved effective October 5, 1999.</p>
-                <p>Resolution 14-121, the “Construction Codes Amendments Approval Resolution of 2001”, was approved effective June 5, 2001.</p>
-                <p>Resolution 15-338, the “Construction Codes Amendments Approval Resolution of 2003”, was approved effective December 2, 2003.</p>
                 <p>Resolution 17-877, the “Construction Codes Amendment Approval and Disapproval Resolution of 2008”, was approved effective December 2, 2008.</p>
+                <p>Resolution 15-338, the “Construction Codes Amendments Approval Resolution of 2003”, was approved effective December 2, 2003.</p>
+                <p>Resolution 14-121, the “Construction Codes Amendments Approval Resolution of 2001”, was approved effective June 5, 2001.</p>
+                <p>Resolution 13-291, the “Construction Codes Amendments Approval Resolution of 1999”, was approved effective October 5, 1999.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1396.html">§ 2–1396. Applicability. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1395.html">Report Error</a>
@@ -106,17 +106,17 @@
       (<a class="internal-link" href="/dc/council/laws/16-111.html#§6">June 8, 2006, D.C. Law 16-111, § 6, 53 DCR 2532</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 3 of Office and Commission on African Affairs Clarification Emergency Amendment Act of 2006 (D.C. Act 16-501, October 23, 2006,  53 DCR 9051).</p>
                 <p>For temporary (90 day) addition, see § 3 of Office and Commission on African Affairs Clarification Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-5, January 16, 2007,  54 DCR 1448).</p>
+                <p>For temporary (90 day) addition, see § 3 of Office and Commission on African Affairs Clarification Emergency Amendment Act of 2006 (D.C. Act 16-501, October 23, 2006,  53 DCR 9051).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) addition, see § 6a of Office and Commission on African Affairs Clarification Temporary Amendment Act of 2006 (D.C. Law 16-215, March 6, 2007, law notification  54 DCR 2762).</p>
-                <p>Section 3 of D.C. Law 16-215 added a section to read as follows:</p>
-                <p>“Sec. 6a. Transition provisions.</p>
-                <p>“(a) The Mayor’s Advisory Commission on African Community Affairs, established pursuant to Mayor’s Order 2003-114, dated August 11, 2003, shall be abolished as of the earlier of the following dates:</p>
-                <p>“(1) The date that a majority of the 15 public members of the Commission on African Affairs are sworn in; or</p>
-                <p>“(2) December 31, 2006.</p>
-                <p>“(b) All records of the Mayor’s Advisory Commission on African Community Affairs, established pursuant to Mayor’s Order 2003-114, dated August 11, 2003, shall be transferred to the Commission on African Affairs, as of the date established in subsection (a) of this section.”</p>
                 <p>Section 5(b) of D.C. Law 16-215 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(b) All records of the Mayor’s Advisory Commission on African Community Affairs, established pursuant to Mayor’s Order 2003-114, dated August 11, 2003, shall be transferred to the Commission on African Affairs, as of the date established in subsection (a) of this section.”</p>
+                <p>“(2) December 31, 2006.</p>
+                <p>“(1) The date that a majority of the 15 public members of the Commission on African Affairs are sworn in; or</p>
+                <p>“(a) The Mayor’s Advisory Commission on African Community Affairs, established pursuant to Mayor’s Order 2003-114, dated August 11, 2003, shall be abolished as of the earlier of the following dates:</p>
+                <p>“Sec. 6a. Transition provisions.</p>
+                <p>Section 3 of D.C. Law 16-215 added a section to read as follows:</p>
+                <p>For temporary (225 day) addition, see § 6a of Office and Commission on African Affairs Clarification Temporary Amendment Act of 2006 (D.C. Law 16-215, March 6, 2007, law notification  54 DCR 2762).</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/1-608.82.html">§ 1–608.82. Certificate of Good Standing filing requirement for Council attorneys.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-608.81.html">Report Error</a>
@@ -109,21 +109,21 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§881">Mar. 3, 1979, D.C. Law 2-139, § 881</a>; <a class="internal-link" href="/dc/council/laws/14-182.html">as added July 25, 2002, D.C. Law 14-182, § 2(c), 49 DCR 5129</a>; <a class="internal-link" href="/dc/council/laws/15-105.html">Mar. 13, 2004, D.C. Law 15-105, § 32, 51 DCR 881</a>; <a class="internal-link" href="/dc/council/laws/20-241.html">Mar. 13, 2015, D.C. Law 20-241, § 2, 62 DCR 1335</a>; <a class="internal-link" href="/dc/council/laws/21-232.html#§2(i)">Apr. 1, 2017, D.C. Law 21-232, § 2(i), 64 DCR 876</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsecs. (d) and (e), validated previously made technical corrections.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-241.html">D.C. Law 20-241</a>, in (a), substituted “each attorney, hearing officer, or administrative law judge” for “each attorney employed at the level of DS-13 or above,” inserted “employed” preceding “by the Mayor,” and substituted “by December 15 of each year” for “on an annual basis.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsecs. (d) and (e), validated previously made technical corrections.</p>
                 <h4>Cross References</h4>
-                <p>Elections, disclosure of interests, see § <a class="internal-link" href="/dc/council/code/sections/1-1106.02.html">1-1106.02</a>.</p>
-                <p>Lobbying, “official in the executive branch” defined, see 1-1105.01.</p>
-                <p>Merit system, educational employees, coverage, see § <a class="internal-link" href="/dc/council/code/sections/1-602.03.html">1-602.03</a>.</p>
                 <p>Merit system, organization for personnel management, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/1-604.04.html">1-604.04</a>.</p>
+                <p>Merit system, educational employees, coverage, see § <a class="internal-link" href="/dc/council/code/sections/1-602.03.html">1-602.03</a>.</p>
+                <p>Lobbying, “official in the executive branch” defined, see 1-1105.01.</p>
+                <p>Elections, disclosure of interests, see § <a class="internal-link" href="/dc/council/code/sections/1-1106.02.html">1-1106.02</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see §  2 of the District Government Certificate of Good Standing Filing Requirement Emergency Amendment Act of 2014 (D.C. Act 20-480, Nov. 10, 2014, 61 DCR 12131, 20 STAT 4404).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Certificate of Good Standing Filing Requirement Emergency Amendment Act of 2016 (D.C. Act 21-289, Jan. 27, 2016,  63 DCR 1202).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-29.html#§2(i)">§ 2(i) of Council Independent Authority Clarification Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-29, Mar. 27, 2017, 64 DCR 3077)</a>.</p>
                 <p>For temporary (90 days) addition of § 1-608.81a, see <a class="internal-link" href="/dc/council/acts/22-29.html#§2(j)">§ 2(j) of Council Independent Authority Clarification Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-29, Mar. 27, 2017, 64 DCR 3077)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-29.html#§2(i)">§ 2(i) of Council Independent Authority Clarification Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-29, Mar. 27, 2017, 64 DCR 3077)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Certificate of Good Standing Filing Requirement Emergency Amendment Act of 2016 (D.C. Act 21-289, Jan. 27, 2016,  63 DCR 1202).</p>
+                <p>For temporary (90 days) amendment of this section, see §  2 of the District Government Certificate of Good Standing Filing Requirement Emergency Amendment Act of 2014 (D.C. Act 20-480, Nov. 10, 2014, 61 DCR 12131, 20 STAT 4404).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) amendment of this section, see §  2 of the District Government Certificate of Good Standing Filing Requirement Temporary Amendment Act of 2014 (D.C. Law 20-175, March 7, 2015, 61 DCR 12713).</p>
                 <p>For temporary (225 days) amendment of section, see § 2 of the Certificate of Good Standing Filing Requirement Temporary Amendment Act of 2016  D.C. Law 21-99, April 6, 2016, 63 DCR 2215, 20 DCSTAT 3138).</p>
+                <p>For temporary (225 days) amendment of this section, see §  2 of the District Government Certificate of Good Standing Filing Requirement Temporary Amendment Act of 2014 (D.C. Law 20-175, March 7, 2015, 61 DCR 12713).</p>
               </section>
             </section>
           </section>

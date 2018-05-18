@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/2/chapters/3B/">Chapter 3B. Other Procurement Matters.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/2/chapters/3A/">Report Error</a>
@@ -87,30 +87,54 @@
         <section class="col8 body">
           <h1>Chapter 3A. Government Procurement.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/I/">Subchapter I. General Provisions.</a>
-            <p>§§ 2-351.01 - 2-351.05</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/II/">Subchapter II. Procurement Organization.</a>
-            <p>§§ 2-352.01 - 2-352.07</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/III/">Subchapter III. Contractor Standards.</a>
-            <p>§§ 2-353.01 - 2-353.02</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/IV/">Subchapter IV. Source Selection and Contract Formation.</a>
-            <p>§§ 2-354.01 - 2-354.20</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/V/">Subchapter V. Types of Contracts.</a>
-            <p>§§ 2-355.01 - 2-355.04</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/VI/">Subchapter VI. Procurement of Construction Projects and Related Services.</a>
-            <p>§§ 2-356.01 - 2-356.06</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/VII/">Subchapter VII. Bonds and Other Forms of Security.</a>
-            <p>§§ 2-357.01 - 2-357.06</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/VIII/">Subchapter VIII. Supply Management.</a>
-            <p>§§ 2-358.01 - 2-358.05</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/IX/">Subchapter IX. Prohibited Actions; Remedies.</a>
-            <p>§§ 2-359.01 - 2-359.10</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/X/">Subchapter X. Contract Appeals Board.</a>
-            <p>§§ 2-360.01 - 2-360.08</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/XI/">Subchapter XI. Miscellaneous Provisions.</a>
-            <p>§§ 2-361.01 - 2-361.06</p>
-            <a href="/dc/council/code/titles/2/chapters/3A/subchapters/XII/">Subchapter XII. Repealed Provisions; Transfers and Continuation.</a>
-            <p>§§ 2-362.01 - 2-362.03</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/I/">Subchapter I. General Provisions.</a>
+            </p>
+            <p>§§ 2-351.01 – 2-351.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/II/">Subchapter II. Procurement Organization.</a>
+            </p>
+            <p>§§ 2-352.01 – 2-352.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/III/">Subchapter III. Contractor Standards.</a>
+            </p>
+            <p>§§ 2-353.01 – 2-353.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/IV/">Subchapter IV. Source Selection and Contract Formation.</a>
+            </p>
+            <p>§§ 2-354.01 – 2-354.20</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/V/">Subchapter V. Types of Contracts.</a>
+            </p>
+            <p>§§ 2-355.01 – 2-355.04</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/VI/">Subchapter VI. Procurement of Construction Projects and Related Services.</a>
+            </p>
+            <p>§§ 2-356.01 – 2-356.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/VII/">Subchapter VII. Bonds and Other Forms of Security.</a>
+            </p>
+            <p>§§ 2-357.01 – 2-357.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/VIII/">Subchapter VIII. Supply Management.</a>
+            </p>
+            <p>§§ 2-358.01 – 2-358.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/IX/">Subchapter IX. Prohibited Actions; Remedies.</a>
+            </p>
+            <p>§§ 2-359.01 – 2-359.10</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/X/">Subchapter X. Contract Appeals Board.</a>
+            </p>
+            <p>§§ 2-360.01 – 2-360.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/XI/">Subchapter XI. Miscellaneous Provisions.</a>
+            </p>
+            <p>§§ 2-361.01 – 2-361.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/3A/subchapters/XII/">Subchapter XII. Repealed Provisions; Transfers and Continuation.</a>
+            </p>
+            <p>§§ 2-362.01 – 2-362.03</p>
           </section>
           <section class="content">
             <hr/>
@@ -143,9 +167,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-301.01.html">1-301.01</a>, § <a class="internal-link" href="/dc/council/code/sections/2-1217.34f.html">2-1217.34f</a>, § <a class="internal-link" href="/dc/council/code/sections/2-1594.html">2-1594</a>, § <a class="internal-link" href="/dc/council/code/sections/4-1303.03.html">4-1303.03</a>, § <a class="internal-link" href="/dc/council/code/sections/7-1131.04.html">7-1131.04</a>, § <a class="internal-link" href="/dc/council/code/sections/8-1778.25.html">8-1778.25</a>, § <a class="internal-link" href="/dc/council/code/sections/8-1778.45.html">8-1778.45</a>, § <a class="internal-link" href="/dc/council/code/sections/9-107.56.html">9-107.56</a>, § <a class="internal-link" href="/dc/council/code/sections/10-1802.html">10-1802</a>, § <a class="internal-link" href="/dc/council/code/sections/22-4235.html">22-4235</a>, § 24-101a, § <a class="internal-link" href="/dc/council/code/sections/34-1312.05.html">34-1312.05</a>, § <a class="internal-link" href="/dc/council/code/sections/34-2202.14.html">34-2202.14</a>, § <a class="internal-link" href="/dc/council/code/sections/34-2202.17.html">34-2202.17</a>, § <a class="internal-link" href="/dc/council/code/sections/42-815.02.html">42-815.02</a>, § <a class="internal-link" href="/dc/council/code/sections/47-1303.04.html">47-1303.04</a>, § <a class="internal-link" href="/dc/council/code/sections/47-1336.html">47-1336</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-211.02.html">50-211.02</a>.</p>
                 <h4>Cross References</h4>
-                <p>Eastern market real property asset management and outdoor vending, contract with nonprofit association or corporation to operate farmers’ market, see § <a class="internal-link" href="/dc/council/code/sections/37-105.html">37-105</a>.</p>
-                <p>Mental Health Services Client Enterprise Program, exception from the provisions of this chapter, see § <a class="internal-link" href="/dc/council/code/sections/44-921.html">44-921</a>.</p>
                 <p>Non-health related occupations and professions licensure, staffing and administration of licensure boards, contracts for support services, see § <a class="internal-link" href="/dc/council/code/sections/47-2853.10.html">47-2853.10</a>.</p>
+                <p>Mental Health Services Client Enterprise Program, exception from the provisions of this chapter, see § <a class="internal-link" href="/dc/council/code/sections/44-921.html">44-921</a>.</p>
+                <p>Eastern market real property asset management and outdoor vending, contract with nonprofit association or corporation to operate farmers’ market, see § <a class="internal-link" href="/dc/council/code/sections/37-105.html">37-105</a>.</p>
               </section>
             </section>
             <hr/>
@@ -301,9 +325,9 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added (2A) and (37A); and rewrote (13).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see §  6044(a) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see §  6034(a) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see §  6034(a) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see §  6034(a) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see §  6044(a) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>
@@ -347,31 +371,31 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-352.01.html">2-352.01</a>, § <a class="internal-link" href="/dc/council/code/sections/2-360.03.html">2-360.03</a>, § <a class="internal-link" href="/dc/council/code/sections/38-1202.06.html">38-1202.06</a>, § <a class="internal-link" href="/dc/council/code/sections/39-105.html">39-105</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-921.02.html">50-921.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> repealed subsec. (c)(8), which had read as follows: “(8) The Office of Public Education Facilities Modernization;”</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-50.html">D.C. Law 19-50</a>, in subsec. (c), deleted “and” from the end of par. (11 ), substituted “; and” for a period the end of par. (12 ), and added pars. ( 13) to (15).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction in (c)(13).</p>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-94.html">D.C. Law 20-94</a>, § 2(a)(1), substituted “This chapter, except for § <a class="internal-link" href="/dc/council/code/sections/2-352.02.html">2-352.02</a>” for “This chapter” in the introductory language of (c).</p>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-94.html">D.C. Law 20-94</a>, § 2(a)(2)-(4), added (c)(16) through (c)(18) and made related changes.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/code/titles/2/chapters/2A/">D.C. Law 20-228</a> added (c); and made related changes.</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-94.html">D.C. Law 20-94</a>, § 2(a)(2)-(4), added (c)(16) through (c)(18) and made related changes.</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-94.html">D.C. Law 20-94</a>, § 2(a)(1), substituted “This chapter, except for § <a class="internal-link" href="/dc/council/code/sections/2-352.02.html">2-352.02</a>” for “This chapter” in the introductory language of (c).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction in (c)(13).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-50.html">D.C. Law 19-50</a>, in subsec. (c), deleted “and” from the end of par. (11 ), substituted “; and” for a period the end of par. (12 ), and added pars. ( 13) to (15).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> repealed subsec. (c)(8), which had read as follows: “(8) The Office of Public Education Facilities Modernization;”</p>
                 <h4>Expiration of Law</h4>
-                <p>Expiration of Law 20-94</p>
                 <p>The second Section 3 of <a class="internal-link" href="/dc/council/laws/20-94.html">D.C. Law 20-94</a> provided that §§ 2(a)(2), (3), and (4) and 3(a) of the act shall expire at the end of fiscal year 2018 [September 30, 2019].</p>
+                <p>Expiration of Law 20-94</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1012(c) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Building 18 Procurement Authority Emergency Amendment Act of 2011 (D.C. Act 19-127, August 1, 2011,  58 DCR 6770).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of District of Columbia Retirement Board Procurement Exemption Emergency Amendment Act of 2011 (D.C. Act 19-144, August 9, 2011,  58 DCR 6821).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Permanent Supportive Housing Application Streamlining Emergency Act of 2013 (D.C. Act 20-43, March 26, 2013,  60 DCR 5379, 20 DCSTAT 544).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3 of the Health Benefit Exchange Authority Establishment Emergency Amendment Act of 2013 (D.C. Act 20-49, April 15, 2013,  60 DCR 6337, 20 DCSTAT 1355).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3 of the Health Benefit Exchange Authority Establishment Congressional Review Emergency Act of 2013 (D.C. Act 20-125, July 26, 2013,  60 DCR 11136, 20 DCSTAT 1821).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(a) of the Procurement Practices Reform Exemption Emergency Amendment Act of 2014 (D.C. Act 20-282, February 20, 2014,  61 DCR 1576).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-204.html#§2">§ 2 of Department of Health Care Finance Independent Procurement Authority Emergency Amendment Act of 2017 (D.C. Act 22-204, Dec. 13, 2017, 64 DCR 12559)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(a) of the Procurement Practices Reform Exemption Emergency Amendment Act of 2014 (D.C. Act 20-282, February 20, 2014,  61 DCR 1576).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3 of the Health Benefit Exchange Authority Establishment Congressional Review Emergency Act of 2013 (D.C. Act 20-125, July 26, 2013,  60 DCR 11136, 20 DCSTAT 1821).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3 of the Health Benefit Exchange Authority Establishment Emergency Amendment Act of 2013 (D.C. Act 20-49, April 15, 2013,  60 DCR 6337, 20 DCSTAT 1355).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Permanent Supportive Housing Application Streamlining Emergency Act of 2013 (D.C. Act 20-43, March 26, 2013,  60 DCR 5379, 20 DCSTAT 544).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of District of Columbia Retirement Board Procurement Exemption Emergency Amendment Act of 2011 (D.C. Act 19-144, August 9, 2011,  58 DCR 6821).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Building 18 Procurement Authority Emergency Amendment Act of 2011 (D.C. Act 19-127, August 1, 2011,  58 DCR 6770).</p>
+                <p>For temporary (90 day) amendment of section, see § 1012(c) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) amendment of this section, see § 2 of the Permanent Supportive Housing Application Streamlining Temporary Amendment Act of 2013 (D.C. Law 20-6, June 22, 2013,  60 DCR 6388, 20 DCSTAT 1274).</p>
-                <p>For temporary (225 days) amendment of this section, see § 3 of the Health Benefit Exchange Authority Establishment Temporary Amendment Act of 2013 (D.C. Law 20-11, July 13, 2013,  60 DCR 7236, 20 DCSTAT 1757).</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/22-63.html#§2">§ 2 of Department of Health Care Finance Independent Procurement Authority Temporary Amendment Act of 2017 (D.C. Law 22-63, Feb. 17, 2018, 65 DCR 11)</a>.</p>
+                <p>For temporary (225 days) amendment of this section, see § 3 of the Health Benefit Exchange Authority Establishment Temporary Amendment Act of 2013 (D.C. Law 20-11, July 13, 2013,  60 DCR 7236, 20 DCSTAT 1757).</p>
+                <p>For temporary (225 days) amendment of this section, see § 2 of the Permanent Supportive Housing Application Streamlining Temporary Amendment Act of 2013 (D.C. Law 20-6, June 22, 2013,  60 DCR 6388, 20 DCSTAT 1274).</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/code/titles/2/chapters/2A/">D.C. Law 20-228</a>: Section 301 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/2A/">D.C. Law 20-228</a>, codified as §  2-274.01, provided for the issuance of rules to implement the provisions of <a class="internal-link" href="/dc/council/code/titles/2/chapters/2A/">D.C. Law 20-228</a>.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/code/titles/2/chapters/2A/">D.C. Law 20-228</a>: Section 302 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/2A/">D.C. Law 20-228</a>, codified as §  2-275.01, provided for the applicability and construction of <a class="internal-link" href="/dc/council/code/titles/2/chapters/2A/">D.C. Law 20-228</a>.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/code/titles/2/chapters/2A/">D.C. Law 20-228</a>: Section 301 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/2A/">D.C. Law 20-228</a>, codified as §  2-274.01, provided for the issuance of rules to implement the provisions of <a class="internal-link" href="/dc/council/code/titles/2/chapters/2A/">D.C. Law 20-228</a>.</p>
               </section>
             </section>
             <hr/>
@@ -416,22 +440,22 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-351.04.html">2-351.04</a>, § <a class="internal-link" href="/dc/council/code/sections/2-351.05.html">2-351.05</a>, § <a class="internal-link" href="/dc/council/code/sections/2-354.11.html">2-354.11</a>, § <a class="internal-link" href="/dc/council/code/sections/2-1594.html">2-1594</a>, § <a class="internal-link" href="/dc/council/code/sections/4-1303.03.html">4-1303.03</a>, § <a class="internal-link" href="/dc/council/code/sections/7-1131.04.html">7-1131.04</a>, § <a class="internal-link" href="/dc/council/code/sections/7-3005.01.html">7-3005.01</a>, § <a class="internal-link" href="/dc/council/code/sections/22-4235.html">22-4235</a>, and § <a class="internal-link" href="/dc/council/code/sections/31-3171.04.html">31-3171.04</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (b), deleted “and” from the end of par. (9), substituted “; and” for a period the end of par. (10), and added par. (11).</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> added (b)(1A).</p>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-94.html">D.C. Law 20-94</a> repealed (a)(2) and (b)(7); and substituted “Behavioral” for “Mental” in (a)(3)(B).</p>
-                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> substituted “roads, bridges, other transportation systems, and facilities and structures appurtenant to roads, bridges, and other transportation systems” for “roads and bridges” in (d).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> added (b)(1B).</p>
+                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> substituted “roads, bridges, other transportation systems, and facilities and structures appurtenant to roads, bridges, and other transportation systems” for “roads and bridges” in (d).</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-94.html">D.C. Law 20-94</a> repealed (a)(2) and (b)(7); and substituted “Behavioral” for “Mental” in (a)(3)(B).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> added (b)(1A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (b), deleted “and” from the end of par. (9), substituted “; and” for a period the end of par. (10), and added par. (11).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1012(d) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of District of Columbia Retirement Board Procurement Exemption Emergency Amendment Act of 2011 (D.C. Act 19-144, August 9, 2011,  58 DCR 6821).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3(a) of the Tax Revision Commission Report Extension and Procurement Streamlining Emergency Act of 2013 (D.C. Act 20-19, March 1, 2013,  60 DCR 3974, 20 DCSTAT 476).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3(a) of the Tax Revision Commission Report Extension and Procurement Streamlining Congressional Review Emergency Act of 2013 (D.C. Act 20-67, May 15, 2013,  60 DCR 7232, 20 DCSTAT 1417).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7143(a) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7143(a) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
-                <p>For temporary (90 days) amendment of this section, see § 6044(b) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 6034(b) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
-                <p>For temporary (90 days) amendment of this section, see § 6034(b) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
                 <p>For temporary (90 days) amendment of this section, see § 1034 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 days) amendment of this section, see § 6034(b) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 6034(b) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 6044(b) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7143(a) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7143(a) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3(a) of the Tax Revision Commission Report Extension and Procurement Streamlining Congressional Review Emergency Act of 2013 (D.C. Act 20-67, May 15, 2013,  60 DCR 7232, 20 DCSTAT 1417).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3(a) of the Tax Revision Commission Report Extension and Procurement Streamlining Emergency Act of 2013 (D.C. Act 20-19, March 1, 2013,  60 DCR 3974, 20 DCSTAT 476).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of District of Columbia Retirement Board Procurement Exemption Emergency Amendment Act of 2011 (D.C. Act 19-144, August 9, 2011,  58 DCR 6821).</p>
+                <p>For temporary (90 day) amendment of section, see § 1012(d) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 3(a) of the Tax Revision Commission Report Extension and Procurement Streamlining Temporary Amendment Act of 2013 (D.C. Law 20-5, May 18, 2013,  60 DCR 4667, 20 DCSTAT 1272).</p>
                 <h4>Short Title</h4>
@@ -630,9 +654,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-624.22.html">1-624.22</a>, § <a class="internal-link" href="/dc/council/code/sections/2-381.42.html">2-381.42</a>, and § <a class="internal-link" href="/dc/council/code/sections/44-1203.01.html">44-1203.01</a>.</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-158.html">D.C. Law 21-158</a>: <a class="internal-link" href="/dc/council/laws/21-158.html#§5">§ 5 of D.C. Law 21-158</a> provided that the modification of section 205(c)(3) of this section by <a class="internal-link" href="/dc/council/laws/21-158.html#§3(e)">§ 3(e) of D.C. Law 21-158</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7017">Section 7017 of Law 22-33</a> amended <a class="internal-link" href="/dc/council/laws/21-158.html#§5">section 5 of D.C. Law 21-158</a>, retaining the applicability restriction affecting this section, therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-158.html"> D.C. Law 21-158</a> have not been implemented. 
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-158.html">D.C. Law 21-158</a>: <a class="internal-link" href="/dc/council/laws/21-158.html#§5">§ 5 of D.C. Law 21-158</a> provided that the modification of section 205(c)(3) of this section by <a class="internal-link" href="/dc/council/laws/21-158.html#§3(e)">§ 3(e) of D.C. Law 21-158</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of § 5 of D.C. Law 21-158, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7017">§ 7017 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -697,13 +721,13 @@
                 <h4>Cross References</h4>
                 <p>As to applicability of §§ <a class="internal-link" href="/dc/council/code/sections/2-352.06.html">2-352.06</a>, <a class="internal-link" href="/dc/council/code/sections/2-358.03.html">2-358.03</a>, and <a class="internal-link" href="/dc/council/code/sections/2-361.01.html">2-361.01</a>, see § <a class="internal-link" href="/dc/council/code/sections/2-362.03.html">2-362.03</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 7001 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle A of Title VII of the act may be cited as the “Subject to Appropriations Repealers Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 1203 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a> provided that this section shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.</p>
                 <p>Section 7015 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> repealed <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203.</p>
+                <p>Section 1203 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a> provided that this section shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -726,9 +750,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-371.html">Apr. 8, 2011, D.C. Law 18-371, § 207</a>; <a class="internal-link" href="/dc/council/laws/21-158.html#§3(g)">as added Oct. 8, 2016, D.C. Law 21-158, § 3(g), 63 DCR 10752</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-158.html">D.C. Law 21-158</a>: <a class="internal-link" href="/dc/council/laws/21-158.html#§5">§ 5 of D.C. Law 21-158</a> provided that the modification of section 207 of this section by <a class="internal-link" href="/dc/council/laws/21-158.html#§3(g)">§ 3(g) of D.C. Law 21-158</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7017">Section 7017 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-158.html#§5">§ 5 of D.C. Law 21-158</a>. Therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-158.html">D.C. Law 21-158</a> have been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-158.html">D.C. Law 21-158</a>: <a class="internal-link" href="/dc/council/laws/21-158.html#§5">§ 5 of D.C. Law 21-158</a> provided that the modification of section 207 of this section by <a class="internal-link" href="/dc/council/laws/21-158.html#§3(g)">§ 3(g) of D.C. Law 21-158</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of § 5 of D.C. Law 21-158, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7017">§ 7017 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -899,9 +923,9 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added (d-1).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 6044(c) of the  Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 6034(c) of the  Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 6034(c) of the  Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 6034(c) of the  Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 6044(c) of the  Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>
@@ -1002,10 +1026,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> added (a-1); and added “or the $40,000 limitation of subsection (a-1) of this section” in (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 3(b) of the Tax Revision Commission Report Extension and Procurement Streamlining Emergency Act of 2013 (D.C. Act 20-19, March 1, 2013,  60 DCR 3974, 20 DCSTAT 476).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3(b) of the Tax Revision Commission Report Extension and Procurement Streamlining Congressional Review Emergency Act of 2013 (D.C. Act 20-67, May 15, 2013,  60 DCR 7232, 20 DCSTAT 1417).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7143(b) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7143(b) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7143(b) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3(b) of the Tax Revision Commission Report Extension and Procurement Streamlining Congressional Review Emergency Act of 2013 (D.C. Act 20-67, May 15, 2013,  60 DCR 7232, 20 DCSTAT 1417).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3(b) of the Tax Revision Commission Report Extension and Procurement Streamlining Emergency Act of 2013 (D.C. Act 20-19, March 1, 2013,  60 DCR 3974, 20 DCSTAT 476).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 3(b) of the Tax Revision Commission Report Extension and Procurement Streamlining Temporary Amendment Act of 2013 (D.C. Law 20-5, May 18, 2013,  60 DCR 4667, 20 DCSTAT 1272).</p>
                 <h4>Short Title</h4>
@@ -1430,9 +1454,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-371.html">Apr. 8, 2011, D.C. Law 18-371, § 606</a>; <a class="internal-link" href="/dc/council/laws/21-158.html#§3(m)">as added Oct. 8, 2016, D.C. Law 21-158, § 3(m), 63 DCR 10752</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-158.html">D.C. Law 21-158</a>: <a class="internal-link" href="/dc/council/laws/21-158.html#§5">§ 5 of D.C. Law 21-158</a> provided that the addition of section 606 of this section by <a class="internal-link" href="/dc/council/laws/21-158.html#§3(m)">§ 3(m) of D.C. Law 21-158</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7017">Section 7017 of Law 22-33</a> amended <a class="internal-link" href="/dc/council/laws/21-158.html#§2">section 5 of D.C. Law 21-158,</a> retaining the applicability restriction affecting this section, therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-158.html"> D.C. Law 21-158</a> has not been implemented. 
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-158.html">D.C. Law 21-158</a>: <a class="internal-link" href="/dc/council/laws/21-158.html#§5">§ 5 of D.C. Law 21-158</a> provided that the addition of section 606 of this section by <a class="internal-link" href="/dc/council/laws/21-158.html#§3(m)">§ 3(m) of D.C. Law 21-158</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of § 5 of D.C. Law 21-158, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7017">§ 7017 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -1634,14 +1658,14 @@
                 <h4>Cross References</h4>
                 <p>As to applicability of §§ <a class="internal-link" href="/dc/council/code/sections/2-352.06.html">2-352.06</a>, <a class="internal-link" href="/dc/council/code/sections/2-358.03.html">2-358.03</a>, and <a class="internal-link" href="/dc/council/code/sections/2-361.01.html">2-361.01</a>, see § <a class="internal-link" href="/dc/council/code/sections/2-362.03.html">2-362.03</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
                 <p>For temporary (90 days) amendment of this section, see § 1001 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 7001 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle A of Title VII of the act may be cited as the “Subject to Appropriations Repealers Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 1203 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a> provided that this section shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.</p>
                 <p>Section 7015 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> repealed <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203.</p>
+                <p>Section 1203 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a> provided that this section shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -1674,8 +1698,8 @@
       (<a class="internal-link" href="/dc/council/laws/18-371.html#§805">Apr. 8, 2011, D.C. Law 18-371, § 805</a>; <a class="internal-link" href="/dc/council/laws/21-36.html">as added Oct. 22, 2015, D.C. Law 21-36, § 1012(c), 62 DCR 10905</a>; <a class="internal-link" href="/dc/council/laws/22-33.html#§1122">Dec. 13, 2017, D.C. Law 22-33, § 1122, 64 DCR 7652</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 1012(c) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§1122">§ 1122 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) addition of this section, see § 1012(c) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
               </section>
             </section>
             <hr/>
@@ -1850,9 +1874,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-353.02.html">2-353.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-298.html">D.C. Law 19-298</a> deleted “or” from the end of (c)(5) and (c)(6)(B); added “or” to the end of (c)(7); added (c)(8); and added (j) and (k).</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-300.html">D.C. Law 19-300</a> deleted “or” from the end of (c)(6); and added (c)(6A).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> rewrote (d).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-300.html">D.C. Law 19-300</a> deleted “or” from the end of (c)(6); and added (c)(6A).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-298.html">D.C. Law 19-298</a> deleted “or” from the end of (c)(5) and (c)(6)(B); added “or” to the end of (c)(7); added (c)(8); and added (j) and (k).</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 1062 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
               </section>
@@ -2109,13 +2133,13 @@
                 <h4>Cross References</h4>
                 <p>As to applicability of §§ <a class="internal-link" href="/dc/council/code/sections/2-352.06.html">2-352.06</a>, <a class="internal-link" href="/dc/council/code/sections/2-358.03.html">2-358.03</a>, and <a class="internal-link" href="/dc/council/code/sections/2-361.01.html">2-361.01</a>, see § <a class="internal-link" href="/dc/council/code/sections/2-362.03.html">2-362.03</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 7001 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle A of Title VII of the act may be cited as the “Subject to Appropriations Repealers Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 1203 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a> provided that this section shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.</p>
                 <p>Section 7015 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> repealed <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203.</p>
+                <p>Section 1203 of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a> provided that this section shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -2152,8 +2176,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-352.06.html">2-352.06</a> and § <a class="internal-link" href="/dc/council/code/sections/2-354.11.html">2-354.11</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (d).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> rewrote the section heading, which formerly read: “District of Columbia Supply Schedule, Purchase Card, and Training Fund.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) requirement that the Chief Financial Officer shall assign an individual agency-level code for transactions made pursuant to the Purchase Card Program, see <a class="internal-link" href="/dc/council/acts/22-104.html#§2232">§ 2232 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -2258,8 +2282,8 @@
       (<a class="internal-link" href="/dc/council/laws/18-371.html#§1203">Apr. 8, 2011, D.C. Law 18-371, § 1203, 58 DCR 1185</a>; <a class="internal-link" href="/dc/council/laws/20-61.html">Dec. 24, 2013, D.C. Law 20-61, § 7015, 60 DCR 12472</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) repeal of <a class="internal-link" href="/dc/council/code/titles/2/chapters/3A/">D.C. Law 18-371</a>, § 1203, see § 7015 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 7001 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle A of Title VII of the act may be cited as the “Subject to Appropriations Repealers Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/31-2502.19.html">§ 31–2502.19. Exclusive agency contracts of domestic companies.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-2502.18.html">Report Error</a>
@@ -99,8 +99,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/76-3-ch792.html#§18">Oct. 9, 1940, 54 Stat. 1072, ch. 792, ch. II, § 18</a>; July 19, 1954, 68 Stat. 494, ch. 546, § 1; <a class="internal-link" href="/us/congress/laws/public/87-739.html">Oct. 3, 1962, 76 Stat. 715, Pub. L. 87-739, § 2</a>; <a class="internal-link" href="/dc/council/laws/4-50.html">Oct. 30, 1981, D.C. Law 4-50, § 3, 28 DCR 4258</a>; <a class="internal-link" href="/dc/council/laws/4-174.html">Mar. 9, 1983, D.C. Law 4-174, § 3, 29 DCR 5753</a>; <a class="internal-link" href="/dc/council/laws/8-141.html">June 13, 1990, D.C. Law 8-141, § 3, 37 DCR 2654</a>; <a class="internal-link" href="/dc/council/laws/14-297.html">Apr. 11, 2003, D.C. Law 14-297, § 401(a), 50 DCR 330</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1521.</p>
                 <p>1973 Ed., § 35-1321.</p>
+                <p>1981 Ed., § 35-1521.</p>
                 <h4>Editor's Notes</h4>
                 <p>Home Owners’ Loan Corporation abolished: The Home Owners’ Loan Corporation, referred to in paragraph (9) of subsection (a), was dissolved by order of the Secretary of the Home Loan Bank Board, effective February 3, 1954, pursuant to the Act of June 30, 1953, 67 Stat. 121.</p>
               </section>

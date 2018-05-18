@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/47-849.html">§ 47–849. Residential property tax relief — Definitions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-848.html">Report Error</a>
@@ -102,16 +102,16 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-407.html">Sept. 3, 1974, 88 Stat. 1059, Pub. L. 93-407, title IV, § 438</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/13-11.html">June 11, 1999, D.C. Law 13-11, § 3(b), 46 DCR 5487</a>; <a class="internal-link" href="/dc/council/laws/14-310.html">June 12, 2003, D.C. Law 14-310, § 14(b), 50 DCR 1092</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-848.</p>
                 <p>1973 Ed., § 47-658.</p>
+                <p>1981 Ed., § 47-848.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-704.html">26-704</a> and § <a class="internal-link" href="/dc/council/code/sections/26-1204.html">26-1204</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-11.html">D.C. Law 13-11</a> provided alternatively to living on the property for 5 years that one “maintain active ownership and legal possession of the property for at least 10 years and provide needed community services in the District for at least 10 years (for nonprofit organizations or developers).”</p>
                 <p><a class="internal-link" href="/dc/council/laws/14-310.html">D.C. Law 14-310</a>, in the introductory paragraph, substituted “§§ <a class="internal-link" href="/dc/council/code/sections/47-847.html">47-847</a> and <a class="internal-link" href="/dc/council/code/sections/47-1303.html">47-1303</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/47-847.html">47-847</a>”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-11.html">D.C. Law 13-11</a> provided alternatively to living on the property for 5 years that one “maintain active ownership and legal possession of the property for at least 10 years and provide needed community services in the District for at least 10 years (for nonprofit organizations or developers).”</p>
                 <h4>Cross References</h4>
-                <p>Financial institutions, application to conduct business, loan policies and homestead development programs, see § <a class="internal-link" href="/dc/council/code/sections/26-704.html">26-704</a>.</p>
                 <p>Savings and loan association acquisitions, applications, loan policies and homestead development programs, see § <a class="internal-link" href="/dc/council/code/sections/26-1204.html">26-1204</a>.</p>
+                <p>Financial institutions, application to conduct business, loan policies and homestead development programs, see § <a class="internal-link" href="/dc/council/code/sections/26-704.html">26-704</a>.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see §§ 3(d)(1) and 6(b) of the Redevelopment Land Agency Disposition Review Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-524, January 11, 2001,  48 DCR 624).</p>
               </section>

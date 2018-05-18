@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-518.html">§ 28:2A-518. Cover; substitute goods.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-517.html">Report Error</a>
@@ -110,24 +110,24 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § 28:2A-508.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Section 2-608.</p>
-                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology. Note that in the case of a finance lease the lessee retains a limited right to revoke acceptance. Sections 2A-517(1)(b) and 2A-516 official comment. New subsections (2) and (3) added.</p>
-                <p><strong>Purposes:</strong> 1. The section states the situations under which the lessee may return the goods to the lessor and cancel the lease. Subsection (2) recognizes that the lessor may have continuing obligations under the lease and that a default as to those obligations may be sufficiently material to justify revocation of acceptance of the leased items and cancellation of the lease by the lessee. For example, a failure by the lessor to fulfill its obligation to maintain leased equipment or to supply other goods which are necessary for the operation of the leased equipment may justify revocation of acceptance and cancellation of the lease.</p>
-                <p>2. Subsection (3) specifically provides that the lease agreement may provide that the lessee can revoke acceptance for defaults by the lessor which in the absence of such an agreement might not be considered sufficiently serious to justify revocation. That is, the parties are free to contract on the question of what defaults are so material that the lessee can cancel the lease.</p>
-                <p><strong>Cross References:</strong> Section 2A-516 official comment.</p>
-                <p><strong>Definitional Cross References:</strong> “Commercial unit”. Section 2A-103(1)(c).</p>
-                <p>“Conforming”. Section 2A-103(1)(d).</p>
-                <p>“Discover”.  Section 1-201(25).</p>
-                <p>“Finance lease”. Section 2A-103(1)(g).</p>
-                <p>“Goods”. Section 2A-103(1)(h).</p>
-                <p>“Lessee”. Section 2A-103(1)(n).</p>
-                <p>“Lessor”. Section 2A-103(1)(p).</p>
-                <p>“Lot”. Section 2A-103(1)(s).</p>
-                <p>“Notifies”.  Section 1-201(26).</p>
-                <p>“Reasonable time”.  Section 1-204(1) and (2).</p>
-                <p>“Rights”.  Section 1-201(36).</p>
-                <p>“Seasonably”.  Section 1-204(3).</p>
                 <p>“Value”.  Section 1-201(44).</p>
+                <p>“Seasonably”.  Section 1-204(3).</p>
+                <p>“Rights”.  Section 1-201(36).</p>
+                <p>“Reasonable time”.  Section 1-204(1) and (2).</p>
+                <p>“Notifies”.  Section 1-201(26).</p>
+                <p>“Lot”. Section 2A-103(1)(s).</p>
+                <p>“Lessor”. Section 2A-103(1)(p).</p>
+                <p>“Lessee”. Section 2A-103(1)(n).</p>
+                <p>“Goods”. Section 2A-103(1)(h).</p>
+                <p>“Finance lease”. Section 2A-103(1)(g).</p>
+                <p>“Discover”.  Section 1-201(25).</p>
+                <p>“Conforming”. Section 2A-103(1)(d).</p>
+                <p><strong>Definitional Cross References:</strong> “Commercial unit”. Section 2A-103(1)(c).</p>
+                <p><strong>Cross References:</strong> Section 2A-516 official comment.</p>
+                <p>2. Subsection (3) specifically provides that the lease agreement may provide that the lessee can revoke acceptance for defaults by the lessor which in the absence of such an agreement might not be considered sufficiently serious to justify revocation. That is, the parties are free to contract on the question of what defaults are so material that the lessee can cancel the lease.</p>
+                <p><strong>Purposes:</strong> 1. The section states the situations under which the lessee may return the goods to the lessor and cancel the lease. Subsection (2) recognizes that the lessor may have continuing obligations under the lease and that a default as to those obligations may be sufficiently material to justify revocation of acceptance of the leased items and cancellation of the lease by the lessee. For example, a failure by the lessor to fulfill its obligation to maintain leased equipment or to supply other goods which are necessary for the operation of the leased equipment may justify revocation of acceptance and cancellation of the lease.</p>
+                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology. Note that in the case of a finance lease the lessee retains a limited right to revoke acceptance. Sections 2A-517(1)(b) and 2A-516 official comment. New subsections (2) and (3) added.</p>
+                <p><strong>Uniform Statutory Source:</strong>Section 2-608.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/48/chapters/9/subchapters/VI/">Subchapter VI. Miscellaneous.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/48/chapters/9/subchapters/V/">Report Error</a>
@@ -88,13 +88,27 @@
         <section class="col8 body">
           <h1>Subchapter V. Enforcement and Administrative Provisions.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/48-905.01.html">§ 48–905.01. Cooperative arrangements; confidentiality.</a>
-            <a href="/dc/council/code/sections/48-905.02.html">§ 48–905.02. Forfeitures.</a>
-            <a href="/dc/council/code/sections/48-905.03.html">§ 48–905.03. Burden of proof.</a>
-            <a href="/dc/council/code/sections/48-905.04.html">§ 48–905.04. Educational programs; research purposes.</a>
-            <a href="/dc/council/code/sections/48-905.05.html">§ 48–905.05. Administrative inspections.</a>
-            <a href="/dc/council/code/sections/48-905.06.html">§ 48–905.06. Chemist reports.</a>
-            <a href="/dc/council/code/sections/48-905.07.html">§ 48–905.07. Mayoral subpoenas.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-905.01.html">§ 48–905.01. Cooperative arrangements; confidentiality.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-905.02.html">§ 48–905.02. Forfeitures.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-905.03.html">§ 48–905.03. Burden of proof.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-905.04.html">§ 48–905.04. Educational programs; research purposes.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-905.05.html">§ 48–905.05. Administrative inspections.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-905.06.html">§ 48–905.06. Chemist reports.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/48-905.07.html">§ 48–905.07. Mayoral subpoenas.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -140,13 +154,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-2507.06a.html">7-2507.06a</a>, § <a class="internal-link" href="/dc/council/code/sections/22-902.html">22-902</a>, and § <a class="internal-link" href="/dc/council/code/sections/22-2723.html">22-2723</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-160.html">D.C. Law 13-160</a> rewrote subsec. (b) which formerly provided: “(b) Property subject to forfeiture under this chapter may be seized by law enforcement officials, as designated by the Mayor, or designated civilian employees of the Metropolitan Police Department, upon process issued by the Superior Court of the District of Columbia having jurisdiction over the property, or without process if authorized by other law.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (d)(3)(B), which formerly read:</p>
-                <p>“(B) Any person claiming the property may, at any time within 30 days from the date of receipt of notice of seizure, file with the Mayor a claim stating his or her interest in the property. Upon the filing of a claim, the claimant shall give a bond to the District government in the penal sum of $2,500 or 10% of the fair market value of the claimed property (as appraised by the Chief of the Metropolitan Police Department), whichever is lower, but not less than $250, with sureties to be approved by the Mayor. In case of forfeiture of the claimed property, the costs and expenses of the forfeiture proceedings shall be deducted from the bonds. Any costs that exceed the amount of the bond shall be paid by the claimant. In determining the fair market value of the property seized, the Chief of the Metropolitan Police Department shall consider any verifiable and reasonable evidence of value that the claimant may present. The balance of the proceeds shall be transferred to the Drug Interdiction and Demand Reduction Fund (’Fund’) created by subchapter VII of this chapter. The Fund shall remain available until expended regardless of the expiration of the fiscal year in which the proceeds were collected. The Fund shall be distributed in the following descending order of priority:</p>
-                <p>“ (i) To fund law enforcement activities of the Metropolitan Police Department of the District of Columbia, except that, beginning October 1, 1990, not more than 49% of the total amount deposited to the Fund in the immediately preceding quarter-year period shall be used for this purpose in the next succeeding quarter-year period; and</p>
-                <p>“(ii) To provide grants to fund community-based drug education, prevention, and demand reduction programs;”</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-278.html">D.C. Law 20-278</a> rewrote the section.</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction.</p>
+                <p>“(ii) To provide grants to fund community-based drug education, prevention, and demand reduction programs;”</p>
+                <p>“ (i) To fund law enforcement activities of the Metropolitan Police Department of the District of Columbia, except that, beginning October 1, 1990, not more than 49% of the total amount deposited to the Fund in the immediately preceding quarter-year period shall be used for this purpose in the next succeeding quarter-year period; and</p>
+                <p>“(B) Any person claiming the property may, at any time within 30 days from the date of receipt of notice of seizure, file with the Mayor a claim stating his or her interest in the property. Upon the filing of a claim, the claimant shall give a bond to the District government in the penal sum of $2,500 or 10% of the fair market value of the claimed property (as appraised by the Chief of the Metropolitan Police Department), whichever is lower, but not less than $250, with sureties to be approved by the Mayor. In case of forfeiture of the claimed property, the costs and expenses of the forfeiture proceedings shall be deducted from the bonds. Any costs that exceed the amount of the bond shall be paid by the claimant. In determining the fair market value of the property seized, the Chief of the Metropolitan Police Department shall consider any verifiable and reasonable evidence of value that the claimant may present. The balance of the proceeds shall be transferred to the Drug Interdiction and Demand Reduction Fund (’Fund’) created by subchapter VII of this chapter. The Fund shall remain available until expended regardless of the expiration of the fiscal year in which the proceeds were collected. The Fund shall be distributed in the following descending order of priority:</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (d)(3)(B), which formerly read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-160.html">D.C. Law 13-160</a> rewrote subsec. (b) which formerly provided: “(b) Property subject to forfeiture under this chapter may be seized by law enforcement officials, as designated by the Mayor, or designated civilian employees of the Metropolitan Police Department, upon process issued by the Superior Court of the District of Columbia having jurisdiction over the property, or without process if authorized by other law.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 10(c) of the Metropolitan Police Department Civilianization and Street Solicitation for Prostitution Emergency Amendment Act of 1998 (D.C. Act 12-428, August 6, 1998,  45 DCR 5884), § 10(c) of the Metropolitan Police Department Civilianization Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-506, November 10, 1998,  45 DCR 45 8139), and § 10(c) of the Metropolitan Police Department Civilianization Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-13, February 8, 1999,  46 DCR 2333).</p>
                 <h4>Temporary Legislation</h4>
@@ -154,8 +168,8 @@
                 <h4>References in Text</h4>
                 <p>Section 23-527, referred to in subsec. (a-1), did not exist in the 1981 Edition at the time of the recodification into the 2001 Edition.</p>
                 <h4>Editor's Notes</h4>
-                <p>Mayor to implement public information program: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>.</p>
                 <p><a class="internal-link" href="/dc/council/laws/20-278.html">D.C. Law 20-278</a>, referred to in (d), enacted Chapter 3 of Title 41 (§ <a class="internal-link" href="/dc/council/code/sections/41-301.html">41-301</a> et seq.), made amendments to the criminal offenses in §§ <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a> and <a class="internal-link" href="/dc/council/code/sections/48-905.02.html">48-905.02</a>, and made conforming amendments to §§ <a class="internal-link" href="/dc/council/code/sections/7-2507.06a.html">7-2507.06a</a>, <a class="internal-link" href="/dc/council/code/sections/8-905.html">8-905</a>, <a class="internal-link" href="/dc/council/code/sections/22-902.html">22-902</a>, <a class="internal-link" href="/dc/council/code/sections/22-1705.html">22-1705</a>, <a class="internal-link" href="/dc/council/code/sections/22-2723.html">22-2723</a>, <a class="internal-link" href="/dc/council/code/sections/32-1343.html">32-1343</a>, <a class="internal-link" href="/dc/council/code/sections/48-905.03.html">48-905.03</a>, and <a class="internal-link" href="/dc/council/code/sections/50-1501.04.html">50-1501.04</a>.</p>
+                <p>Mayor to implement public information program: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>.</p>
               </section>
             </section>
             <hr/>

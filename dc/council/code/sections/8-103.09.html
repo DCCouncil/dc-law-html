@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/8-103.09a.html">§ 8–103.09a. District of Columbia Wells Maintenance Fund; establishment; financing. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-103.09.html">Report Error</a>
@@ -111,18 +111,18 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-103.06.html">8-103.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in the section heading, substituted “District of Columbia Wetland and Stream Mitigation Trust Fund” for “District of Columbia Water Pollution Control Fund”; repealed subsec. (c); and added subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in the section heading, validated previously made technical corrections.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in the section heading, substituted “District of Columbia Wetland and Stream Mitigation Trust Fund” for “District of Columbia Water Pollution Control Fund”; repealed subsec. (c); and added subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
-                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§6062">§ 6062 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 612(c) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <h4>Editor's Notes</h4>
-                <p>Sections 9087 and 9088 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided:</p>
-                <p>“Sec. 9087. Adjudication Hearings (Air Quality) Fund.</p>
-                <p>“Notwithstanding any other law, the funds which are deposited in the fund designated for accounting purposes by the Office of the Chief Financial Officer as fund 0664 within the District Department of the Environment pursuant to the Water Pollution Control Act of 1984, effective March 16, 1985 (<a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> et seq.), shall be deposited in the General Fund of the District of Columbia and shall not be accounted for by a separate fund or account within the General Fund of the District of Columbia. Any unexpended funds in the fund on the effective date of this subtitle shall be transferred to the unrestricted fund balance of the General Fund of the District of Columbia.</p>
-                <p>“Sec. 9088. Adjudication Hearings (Water Quality) Fund.</p>
                 <p>“Notwithstanding any other law, the funds which are deposited in the fund designated for accounting purposes by the Office of the Chief Financial Officer as fund 0665 within the District Department of the Environment pursuant to the Water Pollution Control Act of 1984, effective March 16, 1985 (<a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> et seq.), shall be deposited in the General Fund of the District of Columbia and shall not be accounted for by a separate fund or account within the General Fund of the District of Columbia. Any unexpended funds in the fund on the effective date of this subtitle shall be transferred to the unrestricted fund balance of the General Fund of the District of Columbia.”</p>
+                <p>“Sec. 9088. Adjudication Hearings (Water Quality) Fund.</p>
+                <p>“Notwithstanding any other law, the funds which are deposited in the fund designated for accounting purposes by the Office of the Chief Financial Officer as fund 0664 within the District Department of the Environment pursuant to the Water Pollution Control Act of 1984, effective March 16, 1985 (<a class="internal-link" href="/dc/council/laws/5-188.html">D.C. Law 5-188</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-103.01.html">8-103.01</a> et seq.), shall be deposited in the General Fund of the District of Columbia and shall not be accounted for by a separate fund or account within the General Fund of the District of Columbia. Any unexpended funds in the fund on the effective date of this subtitle shall be transferred to the unrestricted fund balance of the General Fund of the District of Columbia.</p>
+                <p>“Sec. 9087. Adjudication Hearings (Air Quality) Fund.</p>
+                <p>Sections 9087 and 9088 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided:</p>
               </section>
             </section>
           </section>

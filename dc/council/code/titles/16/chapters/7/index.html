@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/16/chapters/8/">Chapter 8. Criminal Record Sealing.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/16/chapters/7/">Report Error</a>
@@ -87,20 +87,48 @@
         <section class="col8 body">
           <h1>Chapter 7. Criminal Proceedings in the Superior Court.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/16-701.html">§ 16–701. Rules and regulations.</a>
-            <a href="/dc/council/code/sections/16-702.html">§ 16–702. Prosecution by indictment or information.</a>
-            <a href="/dc/council/code/sections/16-703.html">§ 16–703. Process of Criminal Division; fees.</a>
-            <a href="/dc/council/code/sections/16-704.html">§ 16–704. Bail; collateral security.</a>
-            <a href="/dc/council/code/sections/16-705.html">§ 16–705. Jury trial; trial by court.</a>
-            <a href="/dc/council/code/sections/16-706.html">§ 16–706. Enforcement of judgments; commitment upon non-payment of fine.</a>
-            <a href="/dc/council/code/sections/16-707.html">§ 16–707. Disposition of fines.</a>
-            <a href="/dc/council/code/sections/16-708.html">§ 16–708. Penalties for wrongful conversion of forfeitures and fines.</a>
-            <a href="/dc/council/code/sections/16-709.html">§ 16–709. Executions on forfeited recognizances and judgments.</a>
-            <a href="/dc/council/code/sections/16-710.html">§ 16–710. Suspension of imposition or execution of sentence.</a>
-            <a href="/dc/council/code/sections/16-711.html">§ 16–711. Restitution or reparation.</a>
-            <a href="/dc/council/code/sections/16-711.01.html">§ 16–711.01. Restitution or reparation — Enforcement.</a>
-            <a href="/dc/council/code/sections/16-712.html">§ 16–712. Community service.</a>
-            <a href="/dc/council/code/sections/16-713.html">§ 16–713. Alien sentencing.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-701.html">§ 16–701. Rules and regulations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-702.html">§ 16–702. Prosecution by indictment or information.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-703.html">§ 16–703. Process of Criminal Division; fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-704.html">§ 16–704. Bail; collateral security.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-705.html">§ 16–705. Jury trial; trial by court.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-706.html">§ 16–706. Enforcement of judgments; commitment upon non-payment of fine.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-707.html">§ 16–707. Disposition of fines.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-708.html">§ 16–708. Penalties for wrongful conversion of forfeitures and fines.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-709.html">§ 16–709. Executions on forfeited recognizances and judgments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-710.html">§ 16–710. Suspension of imposition or execution of sentence.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-711.html">§ 16–711. Restitution or reparation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-711.01.html">§ 16–711.01. Restitution or reparation — Enforcement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-712.html">§ 16–712. Community service.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-713.html">§ 16–713. Alien sentencing.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -115,8 +143,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 557, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 555, Pub. L. 91-358, title I, § 145(d)(1)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-701.</p>
                 <p>1973 Ed., § 16-701.</p>
+                <p>1981 Ed., § 16-701.</p>
               </section>
             </section>
             <hr/>
@@ -131,8 +159,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 558, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 555, Pub. L. 91-358, title I, § 145(d)(2)(A)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-702.</p>
                 <p>1973 Ed., § 16-702.</p>
+                <p>1981 Ed., § 16-702.</p>
               </section>
             </section>
             <hr/>
@@ -154,8 +182,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 558, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 556, Pub. L. 91-358, title I, § 145(d)(3)</a>; <a class="internal-link" href="/dc/council/laws/12-81.html">Mar. 24, 1998, D.C. Law 12-81, § 10(e), 45 DCR 745</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-703.</p>
                 <p>1973 Ed., § 16-703.</p>
+                <p>1981 Ed., § 16-703.</p>
               </section>
             </section>
             <hr/>
@@ -171,13 +199,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 558, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 557, Pub. L. 91-358, title I, § 145(d)(6)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-704.</p>
                 <p>1973 Ed., § 16-704.</p>
+                <p>1981 Ed., § 16-704.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-1706.html">7-1706</a> and § <a class="internal-link" href="/dc/council/code/sections/16-708.html">16-708</a>.</p>
                 <h4>Cross References</h4>
-                <p>Pretrial detention and release, see § <a class="internal-link" href="/dc/council/code/sections/23-1301.html">23-1301</a> et seq.</p>
                 <p>Smoking violations, violator to post collateral in accordance with this section, see § <a class="internal-link" href="/dc/council/code/sections/7-1706.html">7-1706</a>.</p>
+                <p>Pretrial detention and release, see § <a class="internal-link" href="/dc/council/code/sections/23-1301.html">23-1301</a> et seq.</p>
               </section>
             </section>
             <hr/>
@@ -198,8 +226,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 558, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 556, Pub. L. 91-358, title I, § 145(d)(4)</a>; <a class="internal-link" href="/dc/council/laws/9-272.html">May 15, 1993, D.C. Law 9-272,§ 202, 40 DCR 796</a>; <a class="internal-link" href="/dc/council/laws/10-232.html">Mar. 21, 1995, D.C. Law 10-232, § 2, 42 DCR 18</a>; <a class="internal-link" href="/dc/council/laws/10-255.html">May 16, 1995, D.C. Law 10-255, § 14(a), 41 DCR 5193</a>; <a class="internal-link" href="/dc/council/laws/14-135.html">May 21, 2002, D.C. Law 14-135, § 2, 49 DCR 3439</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-705.</p>
                 <p>1973 Ed., § 16-705.</p>
+                <p>1981 Ed., § 16-705.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-135.html">D.C. Law 14-135</a>, in subsec. (b)(1), designated subpar. (A) and in that subparagraph, substituted “The defendant is charged with an offense” for “the case involves an offense”, and substituted “court); or” for “court), and”, and added subpar. (B); rewrote subsec. (b)(2); and added subsec. (b-1). Prior to repeal, subsec. (b)(2) had read as follows: “(2) the defendant demands a trial by jury and does not subsequently waive a trial by jury in accordance with subsection (a), the trial shall be by jury.”</p>
               </section>
@@ -216,8 +244,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 559, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 556, Pub. L. 91-358, title I, § 145(d)(5)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-706.</p>
                 <p>1973 Ed., § 16-706.</p>
+                <p>1981 Ed., § 16-706.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/4-516.html">4-516</a>.</p>
                 <h4>Cross References</h4>
@@ -239,8 +267,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 559, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 557, Pub. L. 91-358, title I, § 145(d)(6)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-707.</p>
                 <p>1973 Ed., § 16-707.</p>
+                <p>1981 Ed., § 16-707.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/16-708.html">16-708</a>.</p>
               </section>
@@ -257,8 +285,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 559, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/dc/council/laws/4-164.html">Dec. 1, 1982, D.C. Law 4-164, § 601(a), 29 DCR 3976</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-708.</p>
                 <p>1973 Ed., § 16-708.</p>
+                <p>1981 Ed., § 16-708.</p>
                 <h4>Cross References</h4>
                 <p>Theft, see § <a class="internal-link" href="/dc/council/code/sections/22-3211.html">22-3211</a>.</p>
               </section>
@@ -275,8 +303,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 559, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 557, Pub. L. 91-358, title I, § 145(d)(6)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-709.</p>
                 <p>1973 Ed., § 16-709.</p>
+                <p>1981 Ed., § 16-709.</p>
               </section>
             </section>
             <hr/>
@@ -294,16 +322,16 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 559, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 557, Pub. L. 91-358, title I, § 145(d)(6)</a>; <a class="internal-link" href="/dc/council/laws/4-202.html">Mar. 10, 1983, D.C. Law 4-202,§ 3, 30 DCR 173</a>; <a class="internal-link" href="/dc/council/laws/5-24.html">Aug. 2, 1983, D.C. Law 5-24, § 2, 30 DCR 3341</a>; <a class="internal-link" href="/dc/council/laws/13-302.html">June 8, 2001, D.C. Law 13-302, § 3, 47 DCR 7249</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-710.</p>
                 <p>1973 Ed., § 16-710.</p>
+                <p>1981 Ed., § 16-710.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-468.html">24-468</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-302.html">D.C. Law 13-302</a> added subsec. (b-1).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see §§ 3 and 11 of the Sentencing Reform Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-462, November 7, 2000,  47 DCR 9443).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-2, February 2, 2001,  48 DCR 2239).</p>
                 <p>For temporary (90 day) amendment of section, see § 3 of Sentencing Reform Second Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-51, May 2, 2001,  48 DCR 4370).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-2, February 2, 2001,  48 DCR 2239).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 3 and 11 of the Sentencing Reform Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-462, November 7, 2000,  47 DCR 9443).</p>
               </section>
             </section>
             <hr/>
@@ -339,8 +367,8 @@
       (<a class="internal-link" href="/dc/council/laws/18-377.html">June 3, 2011, D.C. Law 18-377, § 4(2), 58 DCR 1174</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/16-711.01.html">16-711.01</a>, see § 504(2) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
                 <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/16-711.01.html">16-711.01</a>, see § 504(2) of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
+                <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/16-711.01.html">16-711.01</a>, see § 504(2) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
               </section>
             </section>
             <hr/>

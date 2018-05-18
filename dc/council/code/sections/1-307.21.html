@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/1-307.22.html">§ 1–307.22. Establishment. [Expired]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-307.21.html">Report Error</a>
@@ -106,20 +106,20 @@
                 <h4>Cross References</h4>
                 <p>Health care professional volunteer assistance protection, see § <a class="internal-link" href="/dc/council/code/sections/7-402.html">7-402</a>.</p>
                 <h4>Expiration of Law</h4>
-                <p>Expiration of Law 6-155</p>
                 <p>Section 7(b) of <a class="internal-link" href="/dc/council/laws/6-155.html">D.C. Law 6-155</a>, as amended by § 2 of the Free Clinic Assistance Program Act of 1986 Amendment Emergency Act of 1988 (D.C. Act 7-203, June 30, 1988,  35 DCR 5439), § 2 of D.C. Law 7-172, § 2 of D.C. Law 7-223, § 4 of the Residential Property Tax Relief Act of 1977 Application Deadline and Free Clinic Assistance Program Act of 1986 Extension Emergency Amendment Act of 1991 (D.C. Act 9-83, September 13, 1991,  38 DCR 6021), § 4 of <a class="internal-link" href="/dc/council/laws/9-53.html">D.C. Law 9-53</a>, § 3 of <a class="internal-link" href="/dc/council/laws/9-65.html">D.C. Law 9-65</a>, and by § 2 of D.C. Law 11-175 provided that the act shall expire 15 years from the day it became effective. <a class="internal-link" href="/dc/council/laws/6-155.html">D.C. Law 6-155</a> became effective September 23, 1986.</p>
+                <p>Expiration of Law 6-155</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary extension of the Free Clinic Assistance Program Act of 1986 (<a class="internal-link" href="/dc/council/laws/6-155.html">D.C. Law 6-155</a>) through the year 2001, see § 2 of the Free Clinic Assistance Program Extension Second Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-486, January 2, 1997,  44 DCR 632), and § 2 of the Free Clinic Assistance Program Extension Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-38, March 31, 1997,  44 DCR 2042).</p>
-                <p>For temporary (90 day) extension of the Free Clinic Assistance Program of 1986 (<a class="internal-link" href="/dc/council/laws/6-155.html">D.C. Law 6-155</a>) until September 23, 2004, see § 2 of Free Clinic Assistance Program Extension Emergency Amendment Act of 2001 (D.C. Act 14-110, August 3, 2001,  48 DCR 7634), and § 2 of Free Clinic Assistance Program Extension Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-139, October 23, 2001,  48 DCR 9930).</p>
-                <p>For temporary (90 day) extension of program, see § 2(b) of Free Clinic Assistance Program Extension Emergency Amendment Act of 2002 (D.C. Act 14-407, July 10, 2002,  49 DCR 7109).</p>
-                <p>For temporary (90 day) extension of program, see § 2(b) of Free Clinic Assistance Program Extension Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-477, October 3, 2002,  49 DCR 9572).</p>
-                <p>For temporary (90 day) amendment of section, see § 2182(a) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) amendment of section, see § 2182(a) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
                 <p>For temporary (90 day) amendment of section, see § 2182(a) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) amendment of section, see § 2182(a) of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) amendment of section, see § 2182(a) of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
+                <p>For temporary (90 day) extension of program, see § 2(b) of Free Clinic Assistance Program Extension Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-477, October 3, 2002,  49 DCR 9572).</p>
+                <p>For temporary (90 day) extension of program, see § 2(b) of Free Clinic Assistance Program Extension Emergency Amendment Act of 2002 (D.C. Act 14-407, July 10, 2002,  49 DCR 7109).</p>
+                <p>For temporary (90 day) extension of the Free Clinic Assistance Program of 1986 (<a class="internal-link" href="/dc/council/laws/6-155.html">D.C. Law 6-155</a>) until September 23, 2004, see § 2 of Free Clinic Assistance Program Extension Emergency Amendment Act of 2001 (D.C. Act 14-110, August 3, 2001,  48 DCR 7634), and § 2 of Free Clinic Assistance Program Extension Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-139, October 23, 2001,  48 DCR 9930).</p>
+                <p>For temporary extension of the Free Clinic Assistance Program Act of 1986 (<a class="internal-link" href="/dc/council/laws/6-155.html">D.C. Law 6-155</a>) through the year 2001, see § 2 of the Free Clinic Assistance Program Extension Second Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-486, January 2, 1997,  44 DCR 632), and § 2 of the Free Clinic Assistance Program Extension Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-38, March 31, 1997,  44 DCR 2042).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) extension of program, see § 2 of Free Clinic Assistance Program Extension Temporary Amendment Act of 2001 (D.C. Law 14-54, December 6, 2001, law notification  49 DCR 355).</p>
-                <p>Section 17 of D.C. Law 17-63 repealed this section as of the date when the District of Columbia Free Clinic Captive Insurance Company becomes operational.</p>
                 <p>Section 19(b) of D.C. Law 17-63 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 17 of D.C. Law 17-63 repealed this section as of the date when the District of Columbia Free Clinic Captive Insurance Company becomes operational.</p>
+                <p>For temporary (225 day) extension of program, see § 2 of Free Clinic Assistance Program Extension Temporary Amendment Act of 2001 (D.C. Law 14-54, December 6, 2001, law notification  49 DCR 355).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 2181 of <a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> provided that subtitle O of title II of the act may be cited as the “Free Clinic Assistance Program Coverage Amendment Act of 2006”.</p>
                 <h4>Editor's Notes</h4>

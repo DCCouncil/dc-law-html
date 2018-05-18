@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/50/chapters/16A/">Chapter 16A. General Helmet Use.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/50/chapters/16/subchapters/III/">Report Error</a>
@@ -88,16 +88,36 @@
         <section class="col8 body">
           <h1>Subchapter III. Bicycle Parking.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/50-1641.01.html">§ 50–1641.01. Definitions.</a>
-            <a href="/dc/council/code/sections/50-1641.02.html">§ 50–1641.02. Bicycle parking space requirements.</a>
-            <a href="/dc/council/code/sections/50-1641.03.html">§ 50–1641.03. John A. Wilson Building bicycle parking requirements.</a>
-            <a href="/dc/council/code/sections/50-1641.04.html">§ 50–1641.04. Mayor’s report on bicycle parking at District government buildings.</a>
-            <a href="/dc/council/code/sections/50-1641.05.html">§ 50–1641.05. Residential building bicycle parking requirements.</a>
-            <a href="/dc/council/code/sections/50-1641.06.html">§ 50–1641.06. Increased bicycle parking spaces for office, retail, and service uses.</a>
-            <a href="/dc/council/code/sections/50-1641.07.html">§ 50–1641.07. Rules; Council review.</a>
-            <a href="/dc/council/code/sections/50-1641.07a.html">§ 50–1641.07a. Enforcement.</a>
-            <a href="/dc/council/code/sections/50-1641.08.html">§ 50–1641.08. Applicability.</a>
-            <a href="/dc/council/code/sections/50-1641.09.html">§ 50–1641.09. Zoning regulations.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1641.01.html">§ 50–1641.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1641.02.html">§ 50–1641.02. Bicycle parking space requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1641.03.html">§ 50–1641.03. John A. Wilson Building bicycle parking requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1641.04.html">§ 50–1641.04. Mayor’s report on bicycle parking at District government buildings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1641.05.html">§ 50–1641.05. Residential building bicycle parking requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1641.06.html">§ 50–1641.06. Increased bicycle parking spaces for office, retail, and service uses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1641.07.html">§ 50–1641.07. Rules; Council review.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1641.07a.html">§ 50–1641.07a. Enforcement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1641.08.html">§ 50–1641.08. Applicability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1641.09.html">§ 50–1641.09. Zoning regulations.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

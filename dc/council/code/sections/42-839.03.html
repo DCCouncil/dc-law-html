@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/42/chapters/8A/subchapters/X/">Subchapter X. Advertising of Foreclosure Sale. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-839.03.html">Report Error</a>
@@ -99,8 +99,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-263.html#§903">Apr. 3, 2001, D.C. Law 13-263, § 903, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, §  602(a), 49 DCR 2551</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) repeal of chapter, see § 403(a) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/47-464.html">§ 47–464. Tax Revision Commission — Authority.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-463.html">Report Error</a>
@@ -116,13 +116,13 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-463.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote the section, which formerly read:</p>
-                <p>“(a) The Commission shall be a nonpartisan Commission composed of 17 members drawn from experts in the field of taxation such as tax lawyers and public finance economists; several community representatives such as members of labor unions, public interest groups, civic associations, and tenant and housing associations; and representatives of important sectors of the business community such as real estate, banking, retailing, and public utilities.</p>
-                <p>“(b) Eight members of the Commission shall be appointed by the Mayor, and 9 members shall be appointed by the Council. The Council shall appoint the Chairperson of the Commission from among the Council-appointed members of the Commission. All appointments shall be made within 60 days of June 13, 1996. A vacancy shall be filled in the same manner in which its initial appointment was made.</p>
-                <p>“(c) The Commission, by a vote in which a majority of the members are in the affirmative, may select a Director who shall perform the duties required for the day-to-day functioning of the Commission as deemed necessary by the members, including, but not limited to, appointment of staff and selection of consultants.</p>
-                <p>“(d) The Commission may appoint task forces composed of representatives from the District of Columbia, the State of Maryland, and the Commonwealth of Virginia.</p>
-                <p>“(e) Each member of the Commission shall serve without compensation. Each member, however, may be reimbursed for actual expenses pursuant to section 1108 of the District of Columbia Government Comprehensive Merit Personnel Act of 1978, effective March 3, 1979 (§ <a class="internal-link" href="/dc/council/code/sections/1-611.08.html">1-611.08</a>).”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “§ <a class="internal-link" href="/dc/council/code/sections/1-611.08.html">1-611.08</a>” for “section 1108 of the District of Columbia Government Comprehensive Merit Personnel Act of 1978, effective March 3, 2979 (§ <a class="internal-link" href="/dc/council/code/sections/1-611.08.html">1-611.08</a>)” in (e).</p>
+                <p>“(e) Each member of the Commission shall serve without compensation. Each member, however, may be reimbursed for actual expenses pursuant to section 1108 of the District of Columbia Government Comprehensive Merit Personnel Act of 1978, effective March 3, 1979 (§ <a class="internal-link" href="/dc/council/code/sections/1-611.08.html">1-611.08</a>).”</p>
+                <p>“(d) The Commission may appoint task forces composed of representatives from the District of Columbia, the State of Maryland, and the Commonwealth of Virginia.</p>
+                <p>“(c) The Commission, by a vote in which a majority of the members are in the affirmative, may select a Director who shall perform the duties required for the day-to-day functioning of the Commission as deemed necessary by the members, including, but not limited to, appointment of staff and selection of consultants.</p>
+                <p>“(b) Eight members of the Commission shall be appointed by the Mayor, and 9 members shall be appointed by the Council. The Council shall appoint the Chairperson of the Commission from among the Council-appointed members of the Commission. All appointments shall be made within 60 days of June 13, 1996. A vacancy shall be filled in the same manner in which its initial appointment was made.</p>
+                <p>“(a) The Commission shall be a nonpartisan Commission composed of 17 members drawn from experts in the field of taxation such as tax lawyers and public finance economists; several community representatives such as members of labor unions, public interest groups, civic associations, and tenant and housing associations; and representatives of important sectors of the business community such as real estate, banking, retailing, and public utilities.</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote the section, which formerly read:</p>
               </section>
             </section>
           </section>

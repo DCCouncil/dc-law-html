@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/6-1005.html">§ 6–1005. Acquisition and disposition of real property.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/6-1004.html">Report Error</a>
@@ -109,18 +109,18 @@
       (<a class="internal-link" href="/dc/council/laws/1-39.html#§5">Dec. 16, 1975, D.C. Law 1-39, § 5, 22 DCR 3448</a>; <a class="internal-link" href="/dc/council/laws/13-9.html">June 11, 1999, D.C. Law 13-9, § 2(e), 46 DCR 3640</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-904.</p>
                 <p>1973 Ed., § 5-1004.</p>
+                <p>1981 Ed., § 5-904.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-9.html">D.C. Law 13-9</a> added subsecs. (e) and (f).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 2(e) of the Community Development Program Emergency Amendment Act of 1998 (D.C. Act 12-557, January 12, 1999,  45 DCR 635).</p>
                 <p>For temporary (90-day) amendment of section, see § 2(e) of the Community Development Program Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-61, May 10, 1999,  46 DCR 4451).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(e) of the Community Development Program Emergency Amendment Act of 1998 (D.C. Act 12-557, January 12, 1999,  45 DCR 635).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(e) of Community Development Program Temporary Amendment Act of 1998 (D.C. Law 12-246, April 20, 1999, law notification  46 DCR 4159).</p>
                 <h4>References in Text</h4>
-                <p>The Housing and Community Development Act of 1974, referred to in the first sentence in the introductory paragraph and in paragraph (3) of subsection (a) of this section, is the Act of August 22, 1974, 88 Stat. 633, Pub. L. 93-383.</p>
                 <p>The National Environmental Policy Act of 1969, referred to in paragraph (1) of subsection (a) of this section, is the Act of January 1, 1970, 83 Stat. 852, Pub. L. 91-190.</p>
+                <p>The Housing and Community Development Act of 1974, referred to in the first sentence in the introductory paragraph and in paragraph (3) of subsection (a) of this section, is the Act of August 22, 1974, 88 Stat. 633, Pub. L. 93-383.</p>
               </section>
             </section>
           </section>

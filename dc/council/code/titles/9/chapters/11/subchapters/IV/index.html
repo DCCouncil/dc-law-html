@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/9/chapters/11/subchapters/IV-A/">Subchapter IV-A. Washington Metropolitan Area Transit Authority Fund.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/9/chapters/11/subchapters/IV/">Report Error</a>
@@ -88,18 +88,42 @@
         <section class="col8 body">
           <h1>Subchapter IV. Washington Metropolitan Area Transit Authority Compact.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/9-1107.01.html">§ 9–1107.01. Congressional consent given to Compact amendment.</a>
-            <a href="/dc/council/code/sections/9-1107.02.html">§ 9–1107.02. Authority of Council to enact acts adopting Compact amendments.</a>
-            <a href="/dc/council/code/sections/9-1107.03.html">§ 9–1107.03. Consent of Council to Compact amendments.</a>
-            <a href="/dc/council/code/sections/9-1107.04.html">§ 9–1107.04. Congressional consent to amendments — Articles I, III, VII, IX, XI, XIV, and XVI of Title III.</a>
-            <a href="/dc/council/code/sections/9-1107.05.html">§ 9–1107.05. Congressional consent to amendments — Articles XII and XVI of Title III.</a>
-            <a href="/dc/council/code/sections/9-1107.06.html">§ 9–1107.06. Congressional consent to amendments — Articles I and XVI of Title III.</a>
-            <a href="/dc/council/code/sections/9-1107.07.html">§ 9–1107.07. Mayor directed to execute Compact amendments; appropriations.</a>
-            <a href="/dc/council/code/sections/9-1107.08.html">§ 9–1107.08. Mayor to enter agreements to make certain technical amendments; effective date of technical amendments.</a>
-            <a href="/dc/council/code/sections/9-1107.09.html">§ 9–1107.09. Transfer of functions, duties, property, and records of National Capital Transportation Agency to Washington Metropolitan Area Transit Authority.</a>
-            <a href="/dc/council/code/sections/9-1107.10.html">§ 9–1107.10. Jurisdiction of courts; removal of actions.</a>
-            <a href="/dc/council/code/sections/9-1107.11.html">§ 9–1107.11. Amendment of laws and reorganization plans.</a>
-            <a href="/dc/council/code/sections/9-1107.12.html">§ 9–1107.12. Reservation of right to alter, amend or repeal subchapter; submission of reports; scope of Presidential and Congressional inquiry; audits.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.01.html">§ 9–1107.01. Congressional consent given to Compact amendment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.02.html">§ 9–1107.02. Authority of Council to enact acts adopting Compact amendments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.03.html">§ 9–1107.03. Consent of Council to Compact amendments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.04.html">§ 9–1107.04. Congressional consent to amendments — Articles I, III, VII, IX, XI, XIV, and XVI of Title III.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.05.html">§ 9–1107.05. Congressional consent to amendments — Articles XII and XVI of Title III.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.06.html">§ 9–1107.06. Congressional consent to amendments — Articles I and XVI of Title III.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.07.html">§ 9–1107.07. Mayor directed to execute Compact amendments; appropriations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.08.html">§ 9–1107.08. Mayor to enter agreements to make certain technical amendments; effective date of technical amendments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.09.html">§ 9–1107.09. Transfer of functions, duties, property, and records of National Capital Transportation Agency to Washington Metropolitan Area Transit Authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.10.html">§ 9–1107.10. Jurisdiction of courts; removal of actions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.11.html">§ 9–1107.11. Amendment of laws and reorganization plans.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-1107.12.html">§ 9–1107.12. Reservation of right to alter, amend or repeal subchapter; submission of reports; scope of Presidential and Congressional inquiry; audits.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -580,56 +604,56 @@
       (<a class="internal-link" href="/us/congress/laws/public/86-794.html#titles/III/">Sept. 15, 1960, 74 Stat, 1031, Pub. L. 86-794, Title III</a>; <a class="internal-link" href="/us/congress/laws/public/89-774.html">as added Nov. 6, 1966, 80 Stat. 1324, Pub. L. 89-774, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/92-349.html">July 13, 1972, 86 Stat. 466, Pub. L. 92-349, title III, § 301</a>; <a class="internal-link" href="/us/congress/laws/public/92-517.html">Oct. 21, 1972, 86 Stat. 1000, Pub. L. 92-517, title I, § 101</a>; <a class="internal-link" href="/us/congress/laws/public/94-306.html">June 4, 1976, 90 Stat. 672, Pub. L. 94-306, § 1(1)-(4)</a>; <a class="internal-link" href="/dc/council/laws/1-67.html">June 11, 1976, D.C. Law 1-67, §§ 2, 3, 23 DCR 501</a>; <a class="internal-link" href="/dc/council/laws/5-122.html">Sept. 26, 1984, D.C. Law 5-122, § 2, 31 DCR 4049</a>; <a class="internal-link" href="/dc/council/laws/11-138.html">June 6, 1996, D.C. Law 11-138, § 4, 43 DCR 2142</a>; <a class="internal-link" href="/dc/council/laws/18-125.html">Mar. 23, 2010, D.C. Law 18-125, § 2, 57 DCR 1178</a>; <a class="internal-link" href="/dc/council/laws/21-228.html#§2">Apr. 1, 2017, D.C. Law 21-228, § 2, 64 DCR 1583</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2431.</p>
                 <p>1973 Ed., § 1-1431.</p>
+                <p>1981 Ed., § 1-2431.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-1161.01.html">1-1161.01</a>, § <a class="internal-link" href="/dc/council/code/sections/1-1162.24.html">1-1162.24</a>, § <a class="internal-link" href="/dc/council/code/sections/1-1162.25.html">1-1162.25</a>, § <a class="internal-link" href="/dc/council/code/sections/9-1107.03.html">9-1107.03</a>, § <a class="internal-link" href="/dc/council/code/sections/9-1107.04.html">9-1107.04</a>, § <a class="internal-link" href="/dc/council/code/sections/9-1107.05.html">9-1107.05</a>, § <a class="internal-link" href="/dc/council/code/sections/9-1107.06.html">9-1107.06</a>, § <a class="internal-link" href="/dc/council/code/sections/9-1109.01.html">9-1109.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-921.31.html">50-921.31</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-125.html">D.C. Law 18-125</a>, in section 5, in subsec. (a), struck “of 6 Directors” and inserted “of 8 Directors”, struck “Signatory. For Virginia,” and inserted “Signatory, and 2 for the federal government (one of whom shall be a regular passenger and customer of the bus or rail service of the Authority). For Virginia,”, struck “and for Maryland, by the Washington Suburban Transit Commission” and inserted “for Maryland, by the Washington Suburban Transit Commission; and for the federal government, by the Administrator of General Services”, struck “body. A Director” and inserted “body. A Director for a Signatory”, struck “The appointing authorities shall also appoint an alternate for each Director, who may act only” and inserted “ The nonfederal appointing authorities shall also appoint an alternate for each Director. In addition, the Administrator of General Services shall also appoint 2 nonvoting members who shall serve as the alternates for the federal Directors. An alternate Director may act only”, struck “Each alternate shall serve” and inserted “Each alternate, including the federal nonvoting Directors, shall serve”, and, in subsec. (b), struck “of the signatory’ ’ and inserted ”of the Government“; in section 9, in subsec. (a), struck ”comptroller and“ and inserted ” comptroller, an inspector general, and“ and struck ”manager and“ and inserted ”manager, inspector general, and“, redesignated subsections (d) and (e) as subsections (e) and (f), and added subsec. (d); and, in section 18, added subsec. (d).</p>
                 <h4>Cross References</h4>
-                <p>Blind and physically disabled persons, equal access to public conveyances and accommodations, see § <a class="internal-link" href="/dc/council/code/sections/7-1002.html">7-1002</a>.</p>
                 <p>Persons displaced by programs and projects of Washington Metropolitan Area Transit Authority, eligibility for relocation payments and assistance, see § <a class="internal-link" href="/dc/council/code/sections/6-333.01.html">6-333.01</a>.</p>
+                <p>Blind and physically disabled persons, equal access to public conveyances and accommodations, see § <a class="internal-link" href="/dc/council/code/sections/7-1002.html">7-1002</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of WMATA Compact Emergency Amendment Act of 2009 (D.C. Act 18-16, February 23, 2009,  56 DCR 1936).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of WMATA Compact Consistency Emergency Amendment Act of 2009 (D.C. Act 18-95), May 20, 2009,  56 DCR 4314).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-455.html#§2">§ 2 of Washington Metropolitan Area Transit Authority Compact Emergency Amendment Act of 2016 (D.C. Act 21-455, July 15, 2016, 63 DCR 9827)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of WMATA Compact Consistency Emergency Amendment Act of 2009 (D.C. Act 18-95), May 20, 2009,  56 DCR 4314).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of WMATA Compact Emergency Amendment Act of 2009 (D.C. Act 18-16, February 23, 2009,  56 DCR 1936).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(a) of D.C. Law 18-42 amended section 5 of the Washington Metropolitan Area Transit Regulation Compact, in subsec. (a), struck “of 6 Directors” and inserted “of 8 Directors”, struck “Signatory. For Virginia,” and inserted “Signatory, and 2 for the federal government (one of whom shall be a regular passenger and customer of the bus or rail service of the Authority). For Virginia,”, struck “and for Maryland, by the Washington Suburban Transit Commission” and inserted “for Maryland, by the Washington Suburban Transit Commission; and for the federal government, by the Administrator of General Services”, struck “body. A Director” and inserted “body. A Director for a Signatory”, struck “The appointing authorities shall also appoint an alternate for each Director, who may act only” and inserted “The nonfederal appointing authorities shall also appoint an alternate for each Director. In addition, the Administrator of General Services shall also appoint 2 nonvoting members who shall serve as the alternates for the federal Directors. An alternate Director may act only”, struck “Each alternate shall serve” and inserted the phrase “Each alternate, including the federal nonvoting Directors, shall serve”; and, in subsec. (b), struck “of the signatory” and inserted “of the Government”.</p>
-                <p>Section 2(b) of D.C. Law 18-42 amended section 9 of the Washington Metropolitan Area Transit Regulation Compact, in subsec. (a), struck “comptroller and” and inserted “comptroller, an inspector general, and” and struck “manager and” and inserted “manager, inspector general, and”, redesignated subsections (d) and (e) as subsections (e) and (f), and added subsec. (d) to read as follows:</p>
-                <p>“(d) The inspector general shall report to the Board and head the Office of the Inspector General, an independent and objective unit of the Authority that conducts and supervises audits, program evaluations, and investigations relating to Authority activities; promotes economy, efficiency, and effectiveness in Authority activities; detects and prevents fraud and abuse in Authority activities; and keeps the Board fully and currently informed about deficiencies in Authority activities as well as the necessity for and progress of corrective action.”.</p>
-                <p>Section 2(b) of D.C. Law 18-42 amended section 5 of the Washington Metropolitan Area Transit Regulation Compact, in subsec. (a), struck “comptroller and” and inserted “ comptroller, an inspector general, and” and struck “manager and” and inserted “manager, inspector general, and”, redesignated subsections (d) and (e) as subsections (e) and (f), respectively, and added subsec. (d) to read as follows:</p>
-                <p>“(d)(1) All payments made by the local Signatory governments for the Authority for the purpose of matching federal funds appropriated in any given year as authorized by Title VI of the Passenger Rail Investment and Improvement Act of 2008, approved October 16, 2008, (Pub. L. No. 110-432; 122 Stat. 4848), regarding funding of capital and preventive maintenance projects of the Authority shall be made from amounts derived from dedicated funding sources.</p>
-                <p>“(2) For the purposes of this subsection, a ”dedicated funding source“ means any source of funding that is earmarked or required under state or local law to be used to match federal appropriations authorized by Title VI of the Passenger Rail Investment and Improvement Act of 2008, approved October 16, 2008 (Pub. L. No. 110-432; 122 Stat. 4848), for payments to the Authority.”.</p>
-                <p>Section 4(b) of D.C. Law 18-42 provided that the act shall expire after 225 days of its having taken effect.</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-165.html#§2">§ 2 of Washington Metropolitan Area Transit Authority Compact Temporary Amendment Act of 2016 (D.C. Law 21-165, Oct. 13, 2016, 63 DCR 10168)</a>.</p>
+                <p>Section 4(b) of D.C. Law 18-42 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) For the purposes of this subsection, a ”dedicated funding source“ means any source of funding that is earmarked or required under state or local law to be used to match federal appropriations authorized by Title VI of the Passenger Rail Investment and Improvement Act of 2008, approved October 16, 2008 (Pub. L. No. 110-432; 122 Stat. 4848), for payments to the Authority.”.</p>
+                <p>“(d)(1) All payments made by the local Signatory governments for the Authority for the purpose of matching federal funds appropriated in any given year as authorized by Title VI of the Passenger Rail Investment and Improvement Act of 2008, approved October 16, 2008, (Pub. L. No. 110-432; 122 Stat. 4848), regarding funding of capital and preventive maintenance projects of the Authority shall be made from amounts derived from dedicated funding sources.</p>
+                <p>Section 2(b) of D.C. Law 18-42 amended section 5 of the Washington Metropolitan Area Transit Regulation Compact, in subsec. (a), struck “comptroller and” and inserted “ comptroller, an inspector general, and” and struck “manager and” and inserted “manager, inspector general, and”, redesignated subsections (d) and (e) as subsections (e) and (f), respectively, and added subsec. (d) to read as follows:</p>
+                <p>“(d) The inspector general shall report to the Board and head the Office of the Inspector General, an independent and objective unit of the Authority that conducts and supervises audits, program evaluations, and investigations relating to Authority activities; promotes economy, efficiency, and effectiveness in Authority activities; detects and prevents fraud and abuse in Authority activities; and keeps the Board fully and currently informed about deficiencies in Authority activities as well as the necessity for and progress of corrective action.”.</p>
+                <p>Section 2(b) of D.C. Law 18-42 amended section 9 of the Washington Metropolitan Area Transit Regulation Compact, in subsec. (a), struck “comptroller and” and inserted “comptroller, an inspector general, and” and struck “manager and” and inserted “manager, inspector general, and”, redesignated subsections (d) and (e) as subsections (e) and (f), and added subsec. (d) to read as follows:</p>
+                <p>Section 2(a) of D.C. Law 18-42 amended section 5 of the Washington Metropolitan Area Transit Regulation Compact, in subsec. (a), struck “of 6 Directors” and inserted “of 8 Directors”, struck “Signatory. For Virginia,” and inserted “Signatory, and 2 for the federal government (one of whom shall be a regular passenger and customer of the bus or rail service of the Authority). For Virginia,”, struck “and for Maryland, by the Washington Suburban Transit Commission” and inserted “for Maryland, by the Washington Suburban Transit Commission; and for the federal government, by the Administrator of General Services”, struck “body. A Director” and inserted “body. A Director for a Signatory”, struck “The appointing authorities shall also appoint an alternate for each Director, who may act only” and inserted “The nonfederal appointing authorities shall also appoint an alternate for each Director. In addition, the Administrator of General Services shall also appoint 2 nonvoting members who shall serve as the alternates for the federal Directors. An alternate Director may act only”, struck “Each alternate shall serve” and inserted the phrase “Each alternate, including the federal nonvoting Directors, shall serve”; and, in subsec. (b), struck “of the signatory” and inserted “of the Government”.</p>
                 <h4>References in Text</h4>
-                <p>“This act,” referred to in Art. VII, § 20(b) of this compact, is the Act of November 6, 1966, 80 Stat. 1324, Pub. L. 89-774.</p>
-                <p>The “Urban Mass Transportation Act of 1964” referred to in Art. XII, § 58(a) of this compact, is now codified at  49 U.S.C. § 5301 et seq.</p>
-                <p>The Davis-Bacon Act, referred to in Art. XIV, § 64 of this compact, appeared as  40 U.S.C. §§ 276a et seq. prior to enactment of Title 40 as positive law by Act Aug. 21, 2002, P.L. 107-217. For present law, see  40 U.S.C. § 3141.</p>
-                <p>The Reorganization Plan No. 14 of 1950, referred to in Art. 14, § 64, of this compact, formerly appeared at  5 U.S.C. § 133z-15. It is now codified a in a note under  5 U.S.C. § 903. For present law, see  49 U.S.C. §§ 5333 and  5544.</p>
                 <p>“Contract Work Hours Standards Act” referred to in the second sentence of Art. XIV, § 64 of this compact, is codified at  40 U.S.C. § 327 et seq. “Section 7 of the Urban Mass Transportation Act of 1964” referred to in Art. XV, § 67 of this compact, is now partly codified at  49 U.S.C. § 5324(a).</p>
+                <p>The Reorganization Plan No. 14 of 1950, referred to in Art. 14, § 64, of this compact, formerly appeared at  5 U.S.C. § 133z-15. It is now codified a in a note under  5 U.S.C. § 903. For present law, see  49 U.S.C. §§ 5333 and  5544.</p>
+                <p>The Davis-Bacon Act, referred to in Art. XIV, § 64 of this compact, appeared as  40 U.S.C. §§ 276a et seq. prior to enactment of Title 40 as positive law by Act Aug. 21, 2002, P.L. 107-217. For present law, see  40 U.S.C. § 3141.</p>
+                <p>The “Urban Mass Transportation Act of 1964” referred to in Art. XII, § 58(a) of this compact, is now codified at  49 U.S.C. § 5301 et seq.</p>
+                <p>“This act,” referred to in Art. VII, § 20(b) of this compact, is the Act of November 6, 1966, 80 Stat. 1324, Pub. L. 89-774.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/11-138.html">D.C. Law 11-138</a> provided that §§ 2, 3, and 4 shall take effect after those provisions have been adopted by the District of Columbia, the State of Maryland, and the Commonwealth of Virginia in a manner provided by law therefor, and have received the consent of Congress.</p>
                 <h4>Editor's Notes</h4>
-                <p>Although the District of Columbia, the Commonwealth of Virginia, and the State of Maryland passed legislation amending various portions of the Compact in 1983-1984, Congress did not act upon these changes until 1988. Congressional approval was granted pursuant to H.J. Res. 480, Pub. L. 100-285, April 7, 1988. The Legislative History of H.J. Res. 480, H.R. Rep. 521, 100th Cong., 2d. Sess., explains that “H.J. Res. 480 represents the amendments ratified by each of the three jurisdictions which are substantially similar. . . . [P]rovisions which are not substantially similar are not included in H.J. Res. 480, and are therefore not granted the consent of the Congress.” The version of § 76(e) as passed by the Council was not included in the Resolution because there were discrepancies between the provisions adopted by the District and that adopted by Maryland and Virginia. Since Congress did not enact the amended version of § 76(e), the 1976 version as set out above is still in effect. This version, which was enacted pursuant to Pub. L. 94-306, is contained in the Washington Metropolitan Area Transit Authority Compact (1988 ed.) published by WMATA.</p>
-                <p>Execution of Compact: The Compact set forth in this section was signed as follows: By the Governor of Maryland, November 17, 1966; by the Governor of Virginia, November 21, 1966; and by the President of the Board of Commissioners of the District of Columbia, November 22, 1966.</p>
-                <p>Policy of Congress: Section 805 of the Act of December 15, 1971, 85 Stat. 659, Pub. L. 92-196, declared the policy of Congress that, to the extent that costs of the regional transit projects are not covered by the user charges, such costs would be equitably charged among the federal, District of Columbia, and participating local governments.</p>
-                <p>Mayor to enter into agreements and effective date: Section 3 of <a class="internal-link" href="/dc/council/laws/10-244.html">D.C. Law 10-244</a> provided that the Mayor of the District of Columbia shall, for the District of Columbia, enter into agreements with the Commonwealth of Virginia and the State of Maryland to make technical amendments to Title III of the Washington Metropolitan Area Transit Regulation Compact, so long as the amended version of the Compact then substantially conforms to the amendments in section 2 of the act. The technical amendments shall become effective when the Mayor executes the agreements concerning the Compact.</p>
-                <p>Land for D.C. transportation facilities: Section 1 of Pub. L. 98-340 provided that the Architect of the Capitol and the District of Columbia is directed to enter into an agreement for the conveyance of certain real property, the Secretary of the Interior is directed to permit the District of Columbia and the Washington Metropolitan Area Transit Authority to construct, maintain, and operate certain transportation improvements on federal property, and the Architect of the Capitol is directed to provide the Washington Metropolitan Area Transit Authority access to certain real property.</p>
-                <p>Adoption of amendments subject to Congressional consent: Pursuant to § 2 of <a class="internal-link" href="/dc/council/laws/11-138.html">D.C. Law 11-138</a>, the District of Columbia adopted amendments to Article I of Title I and Articles III, VI, XIII, XIV, and XVI of Title III of the Washington Metropolitan Area Transit Regulation Compact as set forth in §§ 2 and 3 of the act, subject to the consent of Congress thereto and the fulfillment of the conditions in §§ 5 and 6 of the act.</p>
-                <p>For the consent of Congress for the State of Maryland, the Commonwealth of Virginia, and the District of Columbia to amend the Washington Metropolitan Area Transit Regulation Compact see Public Law 100-285, approved April 7, 1988, 102 Stat. 82.</p>
-                <p>For the consent of Congress for the State of Maryland, the Commonwealth of Virginia, and the District of Columbia to amend the Washington Metropolitan Area Transit Regulation Compact see Public Law 101-505, approved November 3, 1990, 104 Stat. 1300.</p>
-                <p>For the consent of Congress for the State of Maryland, the Commonwealth of Virginia, and the District of Columbia to amend the Washington Metropolitan Area Transit Regulation Compact see Public Law 104-322, approved October 10, 1996, 110 Stat. 3884.</p>
-                <p>For the consent and approval of Congress for the State of Maryland, the Commonwealth of Virginia, and the District of Columbia to amend the Washington Metropolitan Area Transit Regulation Compact see Public Law 105-151, approved December 16, 1997, 111 Stat. 2686.</p>
-                <p>Congressional ratification of Compact amendments:</p>
-                <p>Pub. L. 94-306 ratified <a class="internal-link" href="/dc/council/laws/1-67.html">D.C. Law 1-67</a>.</p>
-                <p>Pub. L. 100-285 ratified <a class="internal-link" href="/dc/council/laws/5-122.html">D.C. Law 5-122</a> (except section 2(g)).</p>
-                <p>Pub. L. 104-322 ratified sections 4(a)-(e), (g)-(h), (j)-(k) of <a class="internal-link" href="/dc/council/laws/11-138.html">D.C. Law 11-138</a>.</p>
-                <p>Pub. L. 105-151 ratified sections 4(f), (i)(2), i(3) of <a class="internal-link" href="/dc/council/laws/11-138.html">D.C. Law 11-138</a>.</p>
-                <p>Pub. L. 111-62 ratified <a class="internal-link" href="/dc/council/laws/18-125.html">D.C. Law 18-125</a>.</p>
-                <p>District amendments to the Compact not ratified by Congress:</p>
-                <p><a class="internal-link" href="/dc/council/laws/10-244.html">D.C. Law 10-244</a>, § 2,  42 DCR 234.</p>
                 <p><a class="internal-link" href="/dc/council/laws/11-138.html">D.C. Law 11-138</a>, § 4(i)(1),  43 DCR 2142.</p>
+                <p><a class="internal-link" href="/dc/council/laws/10-244.html">D.C. Law 10-244</a>, § 2,  42 DCR 234.</p>
+                <p>District amendments to the Compact not ratified by Congress:</p>
+                <p>Pub. L. 111-62 ratified <a class="internal-link" href="/dc/council/laws/18-125.html">D.C. Law 18-125</a>.</p>
+                <p>Pub. L. 105-151 ratified sections 4(f), (i)(2), i(3) of <a class="internal-link" href="/dc/council/laws/11-138.html">D.C. Law 11-138</a>.</p>
+                <p>Pub. L. 104-322 ratified sections 4(a)-(e), (g)-(h), (j)-(k) of <a class="internal-link" href="/dc/council/laws/11-138.html">D.C. Law 11-138</a>.</p>
+                <p>Pub. L. 100-285 ratified <a class="internal-link" href="/dc/council/laws/5-122.html">D.C. Law 5-122</a> (except section 2(g)).</p>
+                <p>Pub. L. 94-306 ratified <a class="internal-link" href="/dc/council/laws/1-67.html">D.C. Law 1-67</a>.</p>
+                <p>Congressional ratification of Compact amendments:</p>
+                <p>For the consent and approval of Congress for the State of Maryland, the Commonwealth of Virginia, and the District of Columbia to amend the Washington Metropolitan Area Transit Regulation Compact see Public Law 105-151, approved December 16, 1997, 111 Stat. 2686.</p>
+                <p>For the consent of Congress for the State of Maryland, the Commonwealth of Virginia, and the District of Columbia to amend the Washington Metropolitan Area Transit Regulation Compact see Public Law 104-322, approved October 10, 1996, 110 Stat. 3884.</p>
+                <p>For the consent of Congress for the State of Maryland, the Commonwealth of Virginia, and the District of Columbia to amend the Washington Metropolitan Area Transit Regulation Compact see Public Law 101-505, approved November 3, 1990, 104 Stat. 1300.</p>
+                <p>For the consent of Congress for the State of Maryland, the Commonwealth of Virginia, and the District of Columbia to amend the Washington Metropolitan Area Transit Regulation Compact see Public Law 100-285, approved April 7, 1988, 102 Stat. 82.</p>
+                <p>Adoption of amendments subject to Congressional consent: Pursuant to § 2 of <a class="internal-link" href="/dc/council/laws/11-138.html">D.C. Law 11-138</a>, the District of Columbia adopted amendments to Article I of Title I and Articles III, VI, XIII, XIV, and XVI of Title III of the Washington Metropolitan Area Transit Regulation Compact as set forth in §§ 2 and 3 of the act, subject to the consent of Congress thereto and the fulfillment of the conditions in §§ 5 and 6 of the act.</p>
+                <p>Land for D.C. transportation facilities: Section 1 of Pub. L. 98-340 provided that the Architect of the Capitol and the District of Columbia is directed to enter into an agreement for the conveyance of certain real property, the Secretary of the Interior is directed to permit the District of Columbia and the Washington Metropolitan Area Transit Authority to construct, maintain, and operate certain transportation improvements on federal property, and the Architect of the Capitol is directed to provide the Washington Metropolitan Area Transit Authority access to certain real property.</p>
+                <p>Mayor to enter into agreements and effective date: Section 3 of <a class="internal-link" href="/dc/council/laws/10-244.html">D.C. Law 10-244</a> provided that the Mayor of the District of Columbia shall, for the District of Columbia, enter into agreements with the Commonwealth of Virginia and the State of Maryland to make technical amendments to Title III of the Washington Metropolitan Area Transit Regulation Compact, so long as the amended version of the Compact then substantially conforms to the amendments in section 2 of the act. The technical amendments shall become effective when the Mayor executes the agreements concerning the Compact.</p>
+                <p>Policy of Congress: Section 805 of the Act of December 15, 1971, 85 Stat. 659, Pub. L. 92-196, declared the policy of Congress that, to the extent that costs of the regional transit projects are not covered by the user charges, such costs would be equitably charged among the federal, District of Columbia, and participating local governments.</p>
+                <p>Execution of Compact: The Compact set forth in this section was signed as follows: By the Governor of Maryland, November 17, 1966; by the Governor of Virginia, November 21, 1966; and by the President of the Board of Commissioners of the District of Columbia, November 22, 1966.</p>
+                <p>Although the District of Columbia, the Commonwealth of Virginia, and the State of Maryland passed legislation amending various portions of the Compact in 1983-1984, Congress did not act upon these changes until 1988. Congressional approval was granted pursuant to H.J. Res. 480, Pub. L. 100-285, April 7, 1988. The Legislative History of H.J. Res. 480, H.R. Rep. 521, 100th Cong., 2d. Sess., explains that “H.J. Res. 480 represents the amendments ratified by each of the three jurisdictions which are substantially similar. . . . [P]rovisions which are not substantially similar are not included in H.J. Res. 480, and are therefore not granted the consent of the Congress.” The version of § 76(e) as passed by the Council was not included in the Resolution because there were discrepancies between the provisions adopted by the District and that adopted by Maryland and Virginia. Since Congress did not enact the amended version of § 76(e), the 1976 version as set out above is still in effect. This version, which was enacted pursuant to Pub. L. 94-306, is contained in the Washington Metropolitan Area Transit Authority Compact (1988 ed.) published by WMATA.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 402(425) of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to the District of Columbia Council, subject to the right of the Commissioner as provided in § 406 of the Plan. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
                 <h4>Resolutions</h4>
@@ -648,8 +672,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/94-306.html#§4">June 4, 1976, 90 Stat. 675, Pub. L. 94-306, § 4</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2432.</p>
                 <p>1973 Ed., § 1-1431-1.</p>
+                <p>1981 Ed., § 1-2432.</p>
               </section>
             </section>
             <hr/>
@@ -665,8 +689,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-67.html#§3">June 11, 1976, D.C. Law 1-67, § 3, 23 DCR 501</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2433.</p>
                 <p>1973 Ed., § 1-1431-1a.</p>
+                <p>1981 Ed., § 1-2433.</p>
                 <h4>References in Text</h4>
                 <p>The amendments referred to in subsection (a) of this section are to §§ 1 and 76 of the Compact.</p>
               </section>
@@ -684,8 +708,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-349.html#§301">July 13, 1972, 86 Stat. 466, Pub. L. 92-349, title III, § 301</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2434.</p>
                 <p>1973 Ed., § 1-1431a.</p>
+                <p>1981 Ed., § 1-2434.</p>
                 <h4>References in Text</h4>
                 <p>The amendments referred to in subsection (a) of this section are to §§ 1(g), 5(a), 21, 35, 39, 51, 66, and 79 of the Compact.</p>
                 <h4>Change in Government</h4>
@@ -705,8 +729,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-517.html#§101">Oct. 21, 1972, 86 Stat. 1000, Pub. L. 92-517, title I, § 101</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2435.</p>
                 <p>1973 Ed., § 1-1431b.</p>
+                <p>1981 Ed., § 1-2435.</p>
                 <h4>References in Text</h4>
                 <p>The amendments referred to in subsection (a) of this section are to §§ 56(e) and 82(a) of the Compact.</p>
                 <h4>Change in Government</h4>
@@ -726,8 +750,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/94-306.html">June 4, 1976, 90 Stat. 672, Pub. L. 94-306, §§ 1, 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2436.</p>
                 <p>1973 Ed., § 1-1431c.</p>
+                <p>1981 Ed., § 1-2436.</p>
                 <h4>References in Text</h4>
                 <p>The amendments referred to in subsection (a) of this section are to §§ 1 and 76 of the Compact.</p>
               </section>
@@ -744,8 +768,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-774.html#§2">Nov. 6, 1966, 80 Stat. 1352, Pub. L. 89-774, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2437.</p>
                 <p>1973 Ed., § 1-1432.</p>
+                <p>1981 Ed., § 1-2437.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -783,13 +807,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-774.html#§3">Nov. 6, 1966, 80 Stat. 1352, Pub. L. 89-774, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2438.</p>
                 <p>1973 Ed., § 1433.</p>
+                <p>1981 Ed., § 1-2438.</p>
                 <h4>Transfer of Functions</h4>
                 <p>Section 1(a)(3) of Reorganization Plan No. 2 of 1968, transferred the functions of the Department of Housing and Urban Development, set forth in subsection (b) of this section, to the Secretary of Transportation.</p>
                 <h4>References in Text</h4>
-                <p>“The National Capital Transportation Act of 1965,” referred to in subsections (a) and (c) of this section, is the Act of September 8, 1965, 79 Stat. 663, Pub. L. 89-173.</p>
                 <p>former § 1-1408, referred to near the end of subsection (a) of this section, was repealed by the Act of December 9, 1969, 83 Stat. 322, Pub. L. 91-143, § 8(a)(1).</p>
+                <p>“The National Capital Transportation Act of 1965,” referred to in subsections (a) and (c) of this section, is the Act of September 8, 1965, 79 Stat. 663, Pub. L. 89-173.</p>
               </section>
             </section>
             <hr/>
@@ -804,8 +828,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-774.html#§4">Nov. 6, 1966, 80 Stat. 1353, Pub. L. 89-774, § 4</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2439.</p>
                 <p>1973 Ed., § 1-1434.</p>
+                <p>1981 Ed., § 1-2439.</p>
                 <h4>Editor's Notes</h4>
                 <p>Appropriations authorized: Public Law 104-194, 110 Stat. 2362, the District of Columbia Appropriations Act, 1997, provided for construction projects an increase of $46,923,000 (including an increase of $34,000,000 for the highway trust fund, reallocations and rescissions for a net rescission of $120,496,000 from local funds appropriated under this heading in prior fiscal years and an additional $133,419,000 in Federal funds), as authorized by §§ <a class="internal-link" href="/dc/council/code/sections/34-2405.01.html">34-2405.01</a> through <a class="internal-link" href="/dc/council/code/sections/34-2405.08.html">34-2405.08</a>; §§ <a class="internal-link" href="/dc/council/code/sections/34-2413.08.html">34-2413.08</a>, <a class="internal-link" href="/dc/council/code/sections/34-2413.10.html">34-2413.10</a> and <a class="internal-link" href="/dc/council/code/sections/34-2304.html">34-2304</a>; and §§ <a class="internal-link" href="/dc/council/code/sections/10-619.html">10-619</a> and <a class="internal-link" href="/dc/council/code/sections/47-3404.html">47-3404</a>; including acquisition of sites, preparation of plans and specifications, conducting preliminary surveys, erection of structures, including building improvement and alteration and treatment of grounds, to remain available until expended: Provided, That funds for use of each capital project implementing agency shall be managed and controlled in accordance with all procedures and limitations established under the Financial Management System: Provided further, That all funds provided by this appropriation title shall be available only for the specific projects and purposes intended: Provided further, That notwithstanding the foregoing, all authorizations for capital outlay projects, except those projects covered by the first sentence of section 23(a) of the Federal-Aid Highway Act of 1968, approved August 23, 1968 (82 Stat. 827; Public Law 90-495;  D.C. Code, sec. 9-107.01, note), for which funds are provided by this appropriation title, shall expire on September 30, 1998, except authorizations for projects as to which funds have been obligated in whole or in part prior to September 30, 1998: Provided further, That upon expiration of any such project authorization the funds provided herein for the project shall lapse.</p>
               </section>
@@ -822,8 +846,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/9-1107.11.html">Nov. 6, 1966, 80 Stat. 1353, Pub. L. 89-774, § 5(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2440.</p>
                 <p>1973 Ed., § 1-1435.</p>
+                <p>1981 Ed., § 1-2440.</p>
               </section>
             </section>
             <hr/>
@@ -841,8 +865,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-774.html#§6">Nov. 6, 1966, 80 Stat. 1353, Pub. L. 89-774, § 6</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2441.</p>
                 <p>1973 Ed., § 1-1436.</p>
+                <p>1981 Ed., § 1-2441.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>

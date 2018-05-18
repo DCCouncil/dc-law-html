@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/29/chapters/10/subchapters/VI/">Subchapter VI. Member’s Interest in Limited Cooperative Association.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29/chapters/10/subchapters/V/">Report Error</a>
@@ -88,23 +88,57 @@
         <section class="col8 body">
           <h1>Subchapter V. Members.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/29-1005.01.html">§ 29–1005.01. Members.</a>
-            <a href="/dc/council/code/sections/29-1005.02.html">§ 29–1005.02. Becoming member.</a>
-            <a href="/dc/council/code/sections/29-1005.03.html">§ 29–1005.03. No agency power of member as member.</a>
-            <a href="/dc/council/code/sections/29-1005.04.html">§ 29–1005.04. Liability of members and managers.</a>
-            <a href="/dc/council/code/sections/29-1005.05.html">§ 29–1005.05. Right of member and former member to information.</a>
-            <a href="/dc/council/code/sections/29-1005.06.html">§ 29–1005.06. Annual meeting of members.</a>
-            <a href="/dc/council/code/sections/29-1005.07.html">§ 29–1005.07. Special meeting of members.</a>
-            <a href="/dc/council/code/sections/29-1005.08.html">§ 29–1005.08. Notice of members meeting.</a>
-            <a href="/dc/council/code/sections/29-1005.09.html">§ 29–1005.09. Waiver of members meeting notice.</a>
-            <a href="/dc/council/code/sections/29-1005.10.html">§ 29–1005.10. Quorum of members.</a>
-            <a href="/dc/council/code/sections/29-1005.11.html">§ 29–1005.11. Voting by patron members.</a>
-            <a href="/dc/council/code/sections/29-1005.12.html">§ 29–1005.12. Determination of voting power of patron member.</a>
-            <a href="/dc/council/code/sections/29-1005.13.html">§ 29–1005.13. Voting by investor members.</a>
-            <a href="/dc/council/code/sections/29-1005.14.html">§ 29–1005.14. Voting requirements for members.</a>
-            <a href="/dc/council/code/sections/29-1005.15.html">§ 29–1005.15. Manner of voting.</a>
-            <a href="/dc/council/code/sections/29-1005.16.html">§ 29–1005.16. Action without a meeting.</a>
-            <a href="/dc/council/code/sections/29-1005.17.html">§ 29–1005.17. Districts and delegates; classes of members.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.01.html">§ 29–1005.01. Members.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.02.html">§ 29–1005.02. Becoming member.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.03.html">§ 29–1005.03. No agency power of member as member.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.04.html">§ 29–1005.04. Liability of members and managers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.05.html">§ 29–1005.05. Right of member and former member to information.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.06.html">§ 29–1005.06. Annual meeting of members.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.07.html">§ 29–1005.07. Special meeting of members.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.08.html">§ 29–1005.08. Notice of members meeting.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.09.html">§ 29–1005.09. Waiver of members meeting notice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.10.html">§ 29–1005.10. Quorum of members.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.11.html">§ 29–1005.11. Voting by patron members.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.12.html">§ 29–1005.12. Determination of voting power of patron member.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.13.html">§ 29–1005.13. Voting by investor members.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.14.html">§ 29–1005.14. Voting requirements for members.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.15.html">§ 29–1005.15. Manner of voting.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.16.html">§ 29–1005.16. Action without a meeting.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-1005.17.html">§ 29–1005.17. Districts and delegates; classes of members.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -144,8 +178,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 502 of the Uniform Limited Cooperative Association Act.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 502 of the Uniform Limited Cooperative Association Act.</p>
               </section>
             </section>
             <hr/>
@@ -163,8 +197,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 503 of the Uniform Limited Cooperative Association Act.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 503 of the Uniform Limited Cooperative Association Act.</p>
               </section>
             </section>
             <hr/>
@@ -184,8 +218,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 504 of the Uniform Limited Cooperative Association Act.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 504 of the Uniform Limited Cooperative Association Act.</p>
               </section>
             </section>
             <hr/>
@@ -221,8 +255,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section and repealed former subsection (e) which read: “A limited cooperative association shall respond to a demand made pursuant to subsection (d) of this section in the manner provided in subsection (c) of this section.” and repealed former subsection (i) which read; “A person that may obtain information under this section may obtain the information through an attorney or other agent. A restriction imposed on the person under subsection (g) of this section or by the organic rules shall apply to the attorney or other agent.”</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 505 of the Uniform Limited Cooperative Association Act.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 505 of the Uniform Limited Cooperative Association Act.</p>
               </section>
             </section>
             <hr/>

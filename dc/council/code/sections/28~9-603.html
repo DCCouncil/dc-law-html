@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-604.html">§ 28:9-604. Procedure if security agreement covers real property or fixtures.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-603.html">Report Error</a>
@@ -101,8 +101,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-201.html">Oct. 26, 2000, D.C. Law 13-201, § 101, 47 DCR 7576</a>.)
     </p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. Former  Section 9-501(3).</p>
                 <p>2. Limitation on Ability to Set Standards. Subsection (a), like former  Section 9-501(3), permits the parties to set standards for compliance with the rights and duties under this Part if the standards are not “manifestly unreasonable.” Under subsection (b), the parties are not permitted to set standards measuring fulfillment of the secured party’s duty to take collateral without breaching the peace.</p>
+                <p>1. Source. Former  Section 9-501(3).</p>
               </section>
             </section>
           </section>

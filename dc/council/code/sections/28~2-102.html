@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2-103.html">§ 28:2-103. Definitions and index of definitions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2-102.html">Report Error</a>
@@ -99,18 +99,18 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 639, Pub. L. 88-243, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:2-102.</p>
                 <p>1973 Ed., § 28:2-102.</p>
+                <p>1981 Ed., § 28:2-102.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Prior Uniform Statutory Provision:</strong> Section 75, Uniform Sales Act.</p>
-                <p><strong>Changes:</strong> Section 75 has been rephrased.</p>
-                <p><strong>Purposes of Changes and New Matter:</strong> To make it clear that:</p>
-                <p>The Article leaves substantially unaffected the law relating to purchase money security such as conditional sale or chattel mortgage though it regulates the general sales aspects of such transactions. “Security transaction” is used in the same sense as in the Article on Secured Transactions (Article 9).</p>
-                <p><strong>Cross Reference:</strong> Article 9.</p>
-                <p><strong>Definitional Cross References:</strong> “Contract”.  Section 1-201.</p>
-                <p>“Contract for sale”.  Section 2-106.</p>
-                <p>“Present sale”.  Section 2-106.</p>
                 <p>“Sale”.  Section 2-106.</p>
+                <p>“Present sale”.  Section 2-106.</p>
+                <p>“Contract for sale”.  Section 2-106.</p>
+                <p><strong>Definitional Cross References:</strong> “Contract”.  Section 1-201.</p>
+                <p><strong>Cross Reference:</strong> Article 9.</p>
+                <p>The Article leaves substantially unaffected the law relating to purchase money security such as conditional sale or chattel mortgage though it regulates the general sales aspects of such transactions. “Security transaction” is used in the same sense as in the Article on Secured Transactions (Article 9).</p>
+                <p><strong>Purposes of Changes and New Matter:</strong> To make it clear that:</p>
+                <p><strong>Changes:</strong> Section 75 has been rephrased.</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> Section 75, Uniform Sales Act.</p>
               </section>
             </section>
           </section>

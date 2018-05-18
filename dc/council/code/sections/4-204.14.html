@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/4-204.15.html">§ 4–204.15. Rules.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/4-204.14.html">Report Error</a>
@@ -106,11 +106,11 @@
       (<a class="internal-link" href="/dc/council/laws/14-190.html#§1504">Oct. 1, 2002, D.C. Law 14-190, § 1504, 49 DCR 6968</a>; <a class="internal-link" href="/dc/council/laws/15-39.html">Nov. 13, 2003, D.C. Law 15-39, § 1502(d), 50 DCR 5668</a>; <a class="internal-link" href="/dc/council/laws/15-105.html">Mar. 13, 2004, D.C. Law 15-105, § 30(a), 51 DCR 881</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in the introductory paragraph, substituted “Medicaid, Medicare, and Foster Care and Adoption Assistance infrastructure” for “Medicaid infrastructure” and substituted “Medicaid, Medicare, and Foster Care and Adoption Assistance Programs” for “Medicaid programs”; in par. (1), substituted “Medicaid, Medicare, and Foster Care and Adoption Assistance claims, and maximizing Medicaid, Medicare, and Foster Care and Adoption Assistance reimbursements,” for “Medicaid claims, and maximizing Medicaid reimbursements,”; and in pars. (2) and (4), substituted “Medicaid, Medicare, and Foster Care and Adoption Assistance” for Medicaid“.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in par. (6), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a>, in the introductory paragraph, substituted “Medicaid, Medicare, and Foster Care and Adoption Assistance infrastructure” for “Medicaid infrastructure” and substituted “Medicaid, Medicare, and Foster Care and Adoption Assistance Programs” for “Medicaid programs”; in par. (1), substituted “Medicaid, Medicare, and Foster Care and Adoption Assistance claims, and maximizing Medicaid, Medicare, and Foster Care and Adoption Assistance reimbursements,” for “Medicaid claims, and maximizing Medicaid reimbursements,”; and in pars. (2) and (4), substituted “Medicaid, Medicare, and Foster Care and Adoption Assistance” for Medicaid“.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1502(d) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
                 <p>For temporary (90 day) amendment of section, see § 1502(d) of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) amendment of section, see § 1502(d) of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2003,  50 DCR 5613).</p>
               </section>
             </section>
           </section>

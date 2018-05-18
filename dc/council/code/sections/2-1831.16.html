@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1831.17.html">§ 2–1831.17. Advisory Committee.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1831.16.html">Report Error</a>
@@ -110,14 +110,14 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1803.01.html">2-1803.01</a>, § <a class="internal-link" href="/dc/council/code/sections/2-1803.02.html">2-1803.02</a>, § <a class="internal-link" href="/dc/council/code/sections/2-1831.03.html">2-1831.03</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2885.21.html">47-2885.21</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-4312.html">47-4312</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-217.html">D.C. Law 15-217</a> added the last sentence to subsec. (b).</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-83.html">D.C. Law 16-83</a>, in subsec. (b), substituted “The Rental Housing Commission shall have jurisdiction to review orders of the Office in all adjudicated cases brought pursuant to Chapter 35 of Title 42.” for “The Rental Housing Commission shall have jurisdiction to review orders of the Office in all adjudicated cases in which the Rent Administrator, or his or her designee, would have had jurisdiction but for the enactment of this chapter.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-217.html">D.C. Law 15-217</a> added the last sentence to subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Office of Administrative Hearings Establishment Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-553, October 26, 2004,  51 DCR 10359).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Administrative Hearings Rental Housing Emergency Amendment Act of 2005 (D.C. Act 16-181, October 4, 2005,  52 DCR 9085).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Second Office of Administrative Hearings Rental Housing Emergency Amendment Act of 2005 (D.C. Act 16-246, December 22, 2005,  53 DCR 274).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(e) of Office of Administrative Hearings Rental Housing Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-333, March 23, 2006,  53 DCR 2596).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Second Office of Administrative Hearings Rental Housing Emergency Amendment Act of 2005 (D.C. Act 16-246, December 22, 2005,  53 DCR 274).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Administrative Hearings Rental Housing Emergency Amendment Act of 2005 (D.C. Act 16-181, October 4, 2005,  52 DCR 9085).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Office of Administrative Hearings Establishment Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-553, October 26, 2004,  51 DCR 10359).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
               </section>
             </section>
           </section>

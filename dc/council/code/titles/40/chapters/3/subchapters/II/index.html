@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/40/chapters/3/subchapters/III/">Subchapter III. Wharves and Lots.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/40/chapters/3/subchapters/II/">Report Error</a>
@@ -88,28 +88,72 @@
         <section class="col8 body">
           <h1>Subchapter II. Subcontractor’s Lien.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/40-303.01.html">§ 40–303.01. Subcontractor’s lien — generally.</a>
-            <a href="/dc/council/code/sections/40-303.02.html">§ 40–303.02. Conditions and limitations.</a>
-            <a href="/dc/council/code/sections/40-303.03.html">§ 40–303.03. Notice to owner.</a>
-            <a href="/dc/council/code/sections/40-303.04.html">§ 40–303.04. Owner’s duty.</a>
-            <a href="/dc/council/code/sections/40-303.05.html">§ 40–303.05. Subcontractor entitled to know terms of contract.</a>
-            <a href="/dc/council/code/sections/40-303.06.html">§ 40–303.06. Advance payments.</a>
-            <a href="/dc/council/code/sections/40-303.07.html">§ 40–303.07. Priority of lien.</a>
-            <a href="/dc/council/code/sections/40-303.08.html">§ 40–303.08. How lien enforced.</a>
-            <a href="/dc/council/code/sections/40-303.09.html">§ 40–303.09. Decree of sale.</a>
-            <a href="/dc/council/code/sections/40-303.10.html">§ 40–303.10. Subcontractor preferred to contractor.</a>
-            <a href="/dc/council/code/sections/40-303.11.html">§ 40–303.11. Distribution of sale proceeds.</a>
-            <a href="/dc/council/code/sections/40-303.12.html">§ 40–303.12. Several buildings.</a>
-            <a href="/dc/council/code/sections/40-303.13.html">§ 40–303.13. When suit to be commenced.</a>
-            <a href="/dc/council/code/sections/40-303.14.html">§ 40–303.14. Extent of land bound by lien.</a>
-            <a href="/dc/council/code/sections/40-303.15.html">§ 40–303.15. Entry of satisfaction.</a>
-            <a href="/dc/council/code/sections/40-303.16.html">§ 40–303.16. Payment into court and release.</a>
-            <a href="/dc/council/code/sections/40-303.16a.html">§ 40–303.16a. Effect of failure to file notice. [Repealed]</a>
-            <a href="/dc/council/code/sections/40-303.17.html">§ 40–303.17. Undertaking to discharge liens before suit.</a>
-            <a href="/dc/council/code/sections/40-303.18.html">§ 40–303.18. Decree against sureties.</a>
-            <a href="/dc/council/code/sections/40-303.19.html">§ 40–303.19. No action by subcontractor against owner.</a>
-            <a href="/dc/council/code/sections/40-303.20.html">§ 40–303.20. Judgment for deficiency upon sale.</a>
-            <a href="/dc/council/code/sections/40-303.20a.html">§ 40–303.20a. Authority to promulgate regulations.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.01.html">§ 40–303.01. Subcontractor’s lien — generally.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.02.html">§ 40–303.02. Conditions and limitations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.03.html">§ 40–303.03. Notice to owner.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.04.html">§ 40–303.04. Owner’s duty.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.05.html">§ 40–303.05. Subcontractor entitled to know terms of contract.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.06.html">§ 40–303.06. Advance payments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.07.html">§ 40–303.07. Priority of lien.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.08.html">§ 40–303.08. How lien enforced.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.09.html">§ 40–303.09. Decree of sale.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.10.html">§ 40–303.10. Subcontractor preferred to contractor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.11.html">§ 40–303.11. Distribution of sale proceeds.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.12.html">§ 40–303.12. Several buildings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.13.html">§ 40–303.13. When suit to be commenced.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.14.html">§ 40–303.14. Extent of land bound by lien.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.15.html">§ 40–303.15. Entry of satisfaction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.16.html">§ 40–303.16. Payment into court and release.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.16a.html">§ 40–303.16a. Effect of failure to file notice. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.17.html">§ 40–303.17. Undertaking to discharge liens before suit.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.18.html">§ 40–303.18. Decree against sureties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.19.html">§ 40–303.19. No action by subcontractor against owner.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.20.html">§ 40–303.20. Judgment for deficiency upon sale.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/40-303.20a.html">§ 40–303.20a. Authority to promulgate regulations.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -124,14 +168,14 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1239">Mar. 3, 1901, 31 Stat. 1384, ch. 854, § 1239</a>; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/89-493.html">July 5, 1966, 80 Stat. 265, Pub. L. 89-493, § 15(a)</a>; <a class="internal-link" href="/dc/council/laws/14-84.html">Mar. 19, 2002, D.C. Law 14-84, § 2(b), 49 DRC 198</a>; <a class="internal-link" href="/dc/council/laws/16-31.html">Oct. 20, 2005, D.C. Law 16-31, § 2(d), 52 DCR 7195</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-103.</p>
                 <p>1973 Ed., § 38-103.</p>
+                <p>1981 Ed., § 38-103.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2883.03.html">47-2883.03</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-84.html">D.C. Law 14-84</a> rewrote the section, which had read:</p>
-                <p>“Any person directly employed by the original contractor, whether as subcontractor, materialman, or laborer, to furnish work or materials for the completion of the work contracted for as aforesaid, shall be entitled to a similar lien to that of the original contractor upon his filing a similar notice with the Recorder of Deeds of the District of Columbia to that above mentioned, subject, however, to the conditions set forth in this subchapter.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-31.html">D.C. Law 16-31</a> rewrote section, which had read as follows: “Any person directly employed by the original contractor, whether as subcontractor, materialman, or laborer, to furnish work or material for the completion of the work contracted for, shall be entitled to a similar lien to that of the original contractor, upon filing a notice which complies with the requirements set forth in § <a class="internal-link" href="/dc/council/code/sections/40-301.02.html">40-301.02</a>, subject, however, to the conditions set forth in §§ <a class="internal-link" href="/dc/council/code/sections/40-303.02.html">40-303.02</a> to 40-303.20.”</p>
+                <p>“Any person directly employed by the original contractor, whether as subcontractor, materialman, or laborer, to furnish work or materials for the completion of the work contracted for as aforesaid, shall be entitled to a similar lien to that of the original contractor upon his filing a similar notice with the Recorder of Deeds of the District of Columbia to that above mentioned, subject, however, to the conditions set forth in this subchapter.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-84.html">D.C. Law 14-84</a> rewrote the section, which had read:</p>
                 <h4>Cross References</h4>
                 <p>Payment as defense to assertion of lien, see § <a class="internal-link" href="/dc/council/code/sections/47-2883.03.html">47-2883.03</a>.</p>
               </section>
@@ -149,8 +193,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1240">Mar. 3, 1901, 31 Stat. 1384, ch. 854, § 1240</a>; <a class="internal-link" href="/dc/council/laws/16-31.html">Oct. 20, 2005, D.C. Law 16-31, § 2(e), 52 DCR 7195</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-104.</p>
                 <p>1973 Ed., § 38-104.</p>
+                <p>1981 Ed., § 38-104.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-31.html">D.C. Law 16-31</a> rewrote section, which had read as follows: “All such liens in favor of parties so employed by the contractor shall be subject to the terms and conditions of the original contract except such as shall relate to the waiver of liens and shall be limited to the amount to become due to the original contractor and be satisfied, in whole or in part, out of said amount only; and if said original contractor, by reason of any breach of the contract on his part, shall be entitled to recover less than the amount agreed upon in his contract, the liens of said parties so employed by him shall be enforceable only for said reduced amount, and if said original contractor shall be entitled to recover nothing said liens shall not be enforceable at all.”</p>
               </section>
@@ -167,8 +211,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1241">Mar. 3, 1901, 31 Stat. 1385, ch. 854, § 1241</a>; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/89-493.html">July 5, 1966, 80 Stat. 265, Pub. L. 89-493, § 15(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-105.</p>
                 <p>1973 Ed., § 38-105.</p>
+                <p>1981 Ed., § 38-105.</p>
               </section>
             </section>
             <hr/>
@@ -183,8 +227,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1242">Mar. 3, 1901, 31 Stat. 1385, ch. 854, § 1242</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-106.</p>
                 <p>1973 Ed., § 38-106.</p>
+                <p>1981 Ed., § 38-106.</p>
               </section>
             </section>
             <hr/>
@@ -199,8 +243,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1243">Mar. 3, 1901, 31 Stat. 1385, ch. 854, § 1243</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-107.</p>
                 <p>1973 Ed., § 38-107.</p>
+                <p>1981 Ed., § 38-107.</p>
               </section>
             </section>
             <hr/>
@@ -215,8 +259,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1244">Mar. 3, 1901, 31 Stat. 1385, ch. 854, § 1244</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-108.</p>
                 <p>1973 Ed., § 38-108.</p>
+                <p>1981 Ed., § 38-108.</p>
               </section>
             </section>
             <hr/>
@@ -231,8 +275,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1245">Mar. 3, 1901, 31 Stat. 1385, ch. 854, § 1245</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-109.</p>
                 <p>1973 Ed., § 38-109.</p>
+                <p>1981 Ed., § 38-109.</p>
               </section>
             </section>
             <hr/>
@@ -247,8 +291,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1246">Mar. 3, 1901, 31 Stat. 1386, ch. 854, § 1246</a>; <a class="internal-link" href="/us/congress/laws/public/89-493.html">July 5, 1966, 80 Stat. 265, Pub. L. 89-493, § 15(b)</a>; <a class="internal-link" href="/dc/council/laws/16-31.html">Oct. 20, 2005, D.C. Law 16-31, § 2(f), 52 DCR 7195</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-110.</p>
                 <p>1973 Ed., § 38-110.</p>
+                <p>1981 Ed., § 38-110.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/40-303.13.html">40-303.13</a> and § <a class="internal-link" href="/dc/council/code/sections/40-305.01.html">40-305.01</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -269,8 +313,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1247">Mar. 3, 1901, 31 Stat. 1386, ch. 854, § 1247</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-111.</p>
                 <p>1973 Ed., § 38-111.</p>
+                <p>1981 Ed., § 38-111.</p>
               </section>
             </section>
             <hr/>
@@ -285,8 +329,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1248">Mar. 3, 1901, 31 Stat. 1386, ch. 854, § 1248</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-112.</p>
                 <p>1973 Ed., § 38-112.</p>
+                <p>1981 Ed., § 38-112.</p>
               </section>
             </section>
             <hr/>
@@ -301,8 +345,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1249">Mar. 3, 1901, 31 Stat. 1386, ch. 854, § 1249</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-113.</p>
                 <p>1973 Ed., § 38-113.</p>
+                <p>1981 Ed., § 38-113.</p>
               </section>
             </section>
             <hr/>
@@ -317,8 +361,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1250">Mar. 3, 1901, 31 Stat. 1386, ch. 854, § 1250</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-114.</p>
                 <p>1973 Ed., § 38-114.</p>
+                <p>1981 Ed., § 38-114.</p>
               </section>
             </section>
             <hr/>
@@ -336,13 +380,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1251">Mar. 3, 1901, 31 Stat. 1387, ch. 854, § 1251</a>; <a class="internal-link" href="/dc/council/laws/14-84.html">Mar. 19, 2002, D.C. Law 14-84, § 2(c), 49 DCR 198</a>; <a class="internal-link" href="/dc/council/laws/14-213.html">Oct. 19, 2002, D.C. Law 14-213, § 25, 49 DCR 8140</a>; <a class="internal-link" href="/dc/council/laws/16-31.html">Oct. 20, 2005, D.C. Law 16-31, § 2(g), 52 DCR 7195</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-115.</p>
                 <p>1973 Ed., § 38-115.</p>
+                <p>1981 Ed., § 38-115.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-84.html">D.C. Law 14-84</a> rewrote the section, which had read:</p>
-                <p>“Any person, entitled to a lien, as aforesaid, may commence his suit to enforce the same at any time within a year from and after the filing of the notice aforesaid or within 6 months from the completion of the building or repairs aforesaid, on his failure to do which the said lien shall cease to exist, unless his said claim be not due at the expiration of said periods, in which case the action must be commenced within 3 months after the said claim shall have become due.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>, in subsec. (a), substituted “; provided, that if the claim is not due” for “; provided, that the claim shall not be due”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-31.html">D.C. Law 16-31</a> rewrote the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>, in subsec. (a), substituted “; provided, that if the claim is not due” for “; provided, that the claim shall not be due”.</p>
+                <p>“Any person, entitled to a lien, as aforesaid, may commence his suit to enforce the same at any time within a year from and after the filing of the notice aforesaid or within 6 months from the completion of the building or repairs aforesaid, on his failure to do which the said lien shall cease to exist, unless his said claim be not due at the expiration of said periods, in which case the action must be commenced within 3 months after the said claim shall have become due.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-84.html">D.C. Law 14-84</a> rewrote the section, which had read:</p>
               </section>
             </section>
             <hr/>
@@ -357,8 +401,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1252">Mar. 3, 1901, 31 Stat. 1387, ch. 854, § 1252</a>; <a class="internal-link" href="/dc/council/laws/16-31.html">Oct. 20, 2005, D.C. Law 16-31, § 2(h), 52 DCR 7195</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-116.</p>
                 <p>1973 Ed., § 38-116.</p>
+                <p>1981 Ed., § 38-116.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-31.html">D.C. Law 16-31</a> substituted “land” for “ground”.</p>
               </section>
@@ -375,8 +419,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1253">Mar. 3, 1901, 31 Stat. 1387, ch. 854, § 1253</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-117.</p>
                 <p>1973 Ed., § 38-117.</p>
+                <p>1981 Ed., § 38-117.</p>
               </section>
             </section>
             <hr/>
@@ -399,16 +443,16 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1254">Mar. 3, 1901, 31 Stat. 1387, ch. 854, § 1254</a>; <a class="internal-link" href="/dc/council/laws/19-138.html">June 5, 2012, D.C. Law 19-138, § 2(b), 59 DCR 2553</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-118.</p>
                 <p>1973 Ed., § 38-118.</p>
+                <p>1981 Ed., § 38-118.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1902.02.html">42-1902.02</a> and § <a class="internal-link" href="/dc/council/code/sections/42-2025.html">42-2025</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-138.html">D.C. Law 19-138</a> rewrote the section, which formerly read:</p>
                 <p>“In any suit to enforce a lien hereunder, the owner of the building and premises to which such lien may have attached, as aforesaid, may be allowed to pay into court the amount claimed by the lienor, and such additional amount, to cover interest and costs, as the court may direct, or he may file a written undertaking, with 2 or more sureties, to be approved by the court, to the effect that he and they will pay the judgment that may be recovered and costs, which judgment shall be rendered against all the persons so undertaking. On the payment of said money into court, or the approval of such undertaking, the property shall be released from such lien, and any money so paid in shall be subject to the final decree of the court. No such undertaking shall be approved by the court until the complainant shall have had at least 2 days notice of the defendant’s intention to apply to the court therefor, which notice shall give the names and residences of the persons intended to be offered as sureties and the time when the motion for such approval will be made, and such sureties shall make oath, if required, that they are worth, over and above all debts and liabilities, double the amount of said lien. The complainant may appear and object to such approval.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-138.html">D.C. Law 19-138</a> rewrote the section, which formerly read:</p>
                 <h4>Cross References</h4>
-                <p>Condominiums, see § <a class="internal-link" href="/dc/council/code/sections/42-1902.02.html">42-1902.02</a>.</p>
                 <p>Horizontal property regimes, see § <a class="internal-link" href="/dc/council/code/sections/42-2025.html">42-2025</a>.</p>
+                <p>Condominiums, see § <a class="internal-link" href="/dc/council/code/sections/42-1902.02.html">42-1902.02</a>.</p>
               </section>
             </section>
             <hr/>
@@ -436,8 +480,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1255">Mar. 3, 1901, 31 Stat. 1387, ch. 854, § 1255</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-119.</p>
                 <p>1973 Ed., § 38-119.</p>
+                <p>1981 Ed., § 38-119.</p>
               </section>
             </section>
             <hr/>
@@ -452,8 +496,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1256">Mar. 3, 1901, 31 Stat. 1387, ch. 854, § 1256</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-120.</p>
                 <p>1973 Ed., § 38-120.</p>
+                <p>1981 Ed., § 38-120.</p>
               </section>
             </section>
             <hr/>
@@ -468,8 +512,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1257">Mar. 3, 1901, 31 Stat. 1387, ch. 854, § 1257</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-121.</p>
                 <p>1973 Ed., § 38-121.</p>
+                <p>1981 Ed., § 38-121.</p>
               </section>
             </section>
             <hr/>
@@ -484,8 +528,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1258">Mar. 3, 1901, 31 Stat. 1388, ch. 854, § 1258</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 38-122.</p>
                 <p>1973 Ed., § 38-122.</p>
+                <p>1981 Ed., § 38-122.</p>
               </section>
             </section>
             <hr/>

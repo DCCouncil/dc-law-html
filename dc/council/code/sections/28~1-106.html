@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:1-107.html">§ 28:1-107. Section captions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:1-106.html">Report Error</a>
@@ -103,9 +103,9 @@
                 <h4>Prior Codifications</h4>
                 <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/28:1-102.html">28:1-102</a>(5).</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Source:</strong> Former  Section 1-102(5). See also  1 U.S.C. Section 1.</p>
-                <p><strong>Changes from former law:</strong> Other than minor stylistic changes, this section is identical to former  Section 1-102(5).</p>
                 <p>1. This section makes it clear that the use of singular or plural in the text of the Uniform Commercial Code is generally only a matter of drafting style — singular words may be applied in the plural, and plural words may be applied in the singular. Only when it is clear from the statutory context that the use of the singular or plural does not include the other is this rule inapplicable.<em>See, e.g.</em>,  Section 9-322.</p>
+                <p><strong>Changes from former law:</strong> Other than minor stylistic changes, this section is identical to former  Section 1-102(5).</p>
+                <p><strong>Source:</strong> Former  Section 1-102(5). See also  1 U.S.C. Section 1.</p>
               </section>
             </section>
           </section>

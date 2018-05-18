@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-703.html">§ 28:9-703. Security interest perfected before July 1, 2001.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-702.html">Report Error</a>
@@ -103,8 +103,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-201.html">Oct. 26, 2000, D.C. Law 13-201, § 101, 47 DCR 7576</a>.)
     </p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Pre-Effective-Date Transactions. Subsection (a) contains the general rule that this Article applies to transactions, security interests, and other liens within its scope (see  Section 9-109), even if the transaction or lien was entered into or created before the effective date. Thus, secured transactions entered into under former Article 9 must be terminated, completed, consummated, and enforced under this Article. Subsection (b) is an exception to the general rule. It applies to valid, pre-effective-date transactions and liens that were not governed by former Article 9 but would be governed by this Article if they had been entered into or created after this Article takes effect. Under subsection (b), these valid transactions, such as the creation of agricultural liens and security interests in commercial tort claims, retain their validity under this Article and may be terminated, completed, consummated, and enforced under this Article. However, these transactions also may be terminated, completed, consummated, and enforced by the law that otherwise would apply had this Article not taken effect.</p>
                 <p>2. Judicial Proceedings Commenced Before Effective Date. As is usual in transition provisions, subsection (c) provides that this Article does not affect litigation pending on the effective date.</p>
+                <p>1. Pre-Effective-Date Transactions. Subsection (a) contains the general rule that this Article applies to transactions, security interests, and other liens within its scope (see  Section 9-109), even if the transaction or lien was entered into or created before the effective date. Thus, secured transactions entered into under former Article 9 must be terminated, completed, consummated, and enforced under this Article. Subsection (b) is an exception to the general rule. It applies to valid, pre-effective-date transactions and liens that were not governed by former Article 9 but would be governed by this Article if they had been entered into or created after this Article takes effect. Under subsection (b), these valid transactions, such as the creation of agricultural liens and security interests in commercial tort claims, retain their validity under this Article and may be terminated, completed, consummated, and enforced under this Article. However, these transactions also may be terminated, completed, consummated, and enforced by the law that otherwise would apply had this Article not taken effect.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/11A/subchapters/III/parts/C/">Part C. Legal Defense Funds.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/11A/subchapters/III/parts/B/">Report Error</a>
@@ -89,28 +89,72 @@
         <section class="col8 body">
           <h1>Part B. Campaign Finance Committees.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-1163.07.html">§ 1–1163.07. Organization of committees.</a>
-            <a href="/dc/council/code/sections/1-1163.08.html">§ 1–1163.08. Designation of campaign depositories; petty cash fund.</a>
-            <a href="/dc/council/code/sections/1-1163.09.html">§ 1–1163.09. Reporting.</a>
-            <a href="/dc/council/code/sections/1-1163.10.html">§ 1–1163.10. Principal campaign committee.</a>
-            <a href="/dc/council/code/sections/1-1163.10a.html">§ 1–1163.10a. Fund balance requirements of principal campaign committees.</a>
-            <a href="/dc/council/code/sections/1-1163.11.html">§ 1–1163.11. Specific requirements for statements of organization filed by political committees.</a>
-            <a href="/dc/council/code/sections/1-1163.12.html">§ 1–1163.12. Registration statement of candidate; depository information.</a>
-            <a href="/dc/council/code/sections/1-1163.13.html">§ 1–1163.13. Additional identifications and certifications.</a>
-            <a href="/dc/council/code/sections/1-1163.14.html">§ 1–1163.14. Exemption for total expenses under $500.</a>
-            <a href="/dc/council/code/sections/1-1163.15.html">§ 1–1163.15. Identification of campaign literature.</a>
-            <a href="/dc/council/code/sections/1-1163.16.html">§ 1–1163.16. Candidate’s liability for financial obligation incurred by a committee.</a>
-            <a href="/dc/council/code/sections/1-1163.17.html">§ 1–1163.17. Specific requirements for reports of receipts and expenditures by political committees.</a>
-            <a href="/dc/council/code/sections/1-1163.18.html">§ 1–1163.18. Fund balance requirements of exploratory committees.</a>
-            <a href="/dc/council/code/sections/1-1163.19.html">§ 1–1163.19. Aggregate and individual contribution limits of exploratory committees.</a>
-            <a href="/dc/council/code/sections/1-1163.20.html">§ 1–1163.20. Contributions to exploratory committees.</a>
-            <a href="/dc/council/code/sections/1-1163.21.html">§ 1–1163.21. Duration of an exploratory committee.</a>
-            <a href="/dc/council/code/sections/1-1163.22.html">§ 1–1163.22. Contributions to inaugural committees.</a>
-            <a href="/dc/council/code/sections/1-1163.23.html">§ 1–1163.23. Fund balance requirements for inaugural committees.</a>
-            <a href="/dc/council/code/sections/1-1163.24.html">§ 1–1163.24. Duration of an inaugural committee.</a>
-            <a href="/dc/council/code/sections/1-1163.25.html">§ 1–1163.25. Fund balance requirements for transition committees.</a>
-            <a href="/dc/council/code/sections/1-1163.26.html">§ 1–1163.26. Contributions to transition committees.</a>
-            <a href="/dc/council/code/sections/1-1163.27.html">§ 1–1163.27. Duration of a transition committee; restriction on formation.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.07.html">§ 1–1163.07. Organization of committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.08.html">§ 1–1163.08. Designation of campaign depositories; petty cash fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.09.html">§ 1–1163.09. Reporting.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.10.html">§ 1–1163.10. Principal campaign committee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.10a.html">§ 1–1163.10a. Fund balance requirements of principal campaign committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.11.html">§ 1–1163.11. Specific requirements for statements of organization filed by political committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.12.html">§ 1–1163.12. Registration statement of candidate; depository information.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.13.html">§ 1–1163.13. Additional identifications and certifications.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.14.html">§ 1–1163.14. Exemption for total expenses under $500.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.15.html">§ 1–1163.15. Identification of campaign literature.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.16.html">§ 1–1163.16. Candidate’s liability for financial obligation incurred by a committee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.17.html">§ 1–1163.17. Specific requirements for reports of receipts and expenditures by political committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.18.html">§ 1–1163.18. Fund balance requirements of exploratory committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.19.html">§ 1–1163.19. Aggregate and individual contribution limits of exploratory committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.20.html">§ 1–1163.20. Contributions to exploratory committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.21.html">§ 1–1163.21. Duration of an exploratory committee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.22.html">§ 1–1163.22. Contributions to inaugural committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.23.html">§ 1–1163.23. Fund balance requirements for inaugural committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.24.html">§ 1–1163.24. Duration of an inaugural committee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.25.html">§ 1–1163.25. Fund balance requirements for transition committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.26.html">§ 1–1163.26. Contributions to transition committees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1163.27.html">§ 1–1163.27. Duration of a transition committee; restriction on formation.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -142,10 +186,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> substituted “Political committees, political action committees, and independent expenditure committees” for “Political, exploratory, transition, and inaugural committees, which are established pursuant to this part” in the introductory language; added (1)(C-i); substituted “No contribution or expenditure may” for “No contribution and no expenditure shall” in (4); and, in (5)(A), substituted “contribution or expenditure” for “contribution and expenditure” and “accepted or made” for “for or”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
-                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7009">Section 7009 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-79.html#§3">§ 3 of D.C. Law 20-79</a>. Therefore the changes made to this section by D.C. Law 20-79 have been given effect.
         </p>
+                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
               </section>
             </section>
             <hr/>
@@ -211,18 +255,18 @@
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/22-94.html">D.C. Law 22-94</a>: <a class="internal-link" href="/dc/council/laws/22-94.html#§3">§ 3 of D.C. Law 22-94</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/22-94.html#§2(b)(2)">§ 2(b)(2) of D.C. Law 22-94</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-34.html#§2(a)">§ 2(a) of Campaign Finance Reform and Transparency Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-34, Mar. 28, 2017, 64 DCR 3101)</a>.</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-75.html#§3">§ 3 of Primary Date Alteration Emergency Amendment Act of 2017 (D.C. Act 22-75, June 5, 2017, 64 DCR 6080)</a>.</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-106.html#§3">§ 3 of Primary Date Alteration Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-106, July 25, 2017, 64 DCR 7388)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-166.html#§2(a)">§ 2(a) of Campaign Finance Reform and Transparency Emergency Amendment Act of 2017 (D.C. Act 22-166, Oct. 24, 2017, 64 DCR 10800)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-106.html#§3">§ 3 of Primary Date Alteration Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-106, July 25, 2017, 64 DCR 7388)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-75.html#§3">§ 3 of Primary Date Alteration Emergency Amendment Act of 2017 (D.C. Act 22-75, June 5, 2017, 64 DCR 6080)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-34.html#§2(a)">§ 2(a) of Campaign Finance Reform and Transparency Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-34, Mar. 28, 2017, 64 DCR 3101)</a>.</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-235.html#§2(a)(2)">§ 2(a)(2) of Campaign Finance Reform and Transparency Temporary Amendment Act of 2016 (D.C. Law 21-235, Apr. 1, 2017, 64 DCR 885)</a>.</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/22-42.html#§2(a)">§ 2(a) of Campaign Finance Reform and Transparency Temporary Amendment Act of 2017 (D.C. Law 22-42, Jan. 17, 2018, 64 DCR 12308)</a>.</p>
+                <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-235.html#§2(a)(2)">§ 2(a)(2) of Campaign Finance Reform and Transparency Temporary Amendment Act of 2016 (D.C. Law 21-235, Apr. 1, 2017, 64 DCR 885)</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
-                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7009">Section 7009 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-79.html#§3">§ 3 of D.C. Law 20-79</a>. Therefore the changes made to this section by D.C. Law 20-79 have been given effect.
         </p>
+                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
               </section>
             </section>
             <hr/>
@@ -239,9 +283,9 @@
       (<a class="internal-link" href="/dc/council/laws/19-124.html#§310">Apr. 27, 2012, D.C. Law 19-124, § 310, 59 DCR 1862</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(a) of Board of Ethics and Government Accountability Establishment and Comprehensive Ethics Reform Clarification Emergency Amendment Act of 2012 (D.C. Act 19-371, May 16, 2012,  59 DCR 5711).</p>
-                <p>For temporary (90 day) addition of section, see § 1072(c) of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <p>For temporary (90 day) addition of section, see § 1072(c) of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) addition of section, see § 1072(c) of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
+                <p>For temporary (90 day) addition of section, see § 2(a) of Board of Ethics and Government Accountability Establishment and Comprehensive Ethics Reform Clarification Emergency Amendment Act of 2012 (D.C. Act 19-371, May 16, 2012,  59 DCR 5711).</p>
               </section>
             </section>
             <hr/>
@@ -267,8 +311,8 @@
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/22-94.html">D.C. Law 22-94</a>: <a class="internal-link" href="/dc/council/laws/22-94.html#§3">§ 3 of D.C. Law 22-94</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/22-94.html#§2(b)(3)">§ 2(b)(3) of D.C. Law 22-94</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 1072(c) of the Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <p>For temporary addition of section, see § 1072(c) of the Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary addition of section, see § 1072(c) of the Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
               </section>
             </section>
             <hr/>
@@ -292,10 +336,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> added “political action committee, and independent expenditure committee” in the introductory language; and deleted “political” preceding “committee” in (2) and (4).</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
-                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7009">Section 7009 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-79.html#§3">§ 3 of D.C. Law 20-79</a>. Therefore the changes made to this section by D.C. Law 20-79 have been given effect.
         </p>
+                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
               </section>
             </section>
             <hr/>
@@ -336,10 +380,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> rewrote this section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
-                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7009">Section 7009 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-79.html#§3">§ 3 of D.C. Law 20-79</a>. Therefore the changes made to this section by D.C. Law 20-79 have been given effect.
         </p>
+                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
               </section>
             </section>
             <hr/>
@@ -372,10 +416,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> added (c).</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
-                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7009">Section 7009 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-79.html#§3">§ 3 of D.C. Law 20-79</a>. Therefore the changes made to this section by D.C. Law 20-79 have been given effect.
         </p>
+                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
               </section>
             </section>
             <hr/>
@@ -444,16 +488,16 @@
       (<a class="internal-link" href="/dc/council/laws/19-124.html#§319">Apr. 27, 2012, D.C. Law 19-124, § 319, 59 DCR 1862</a>; <a class="internal-link" href="/dc/council/laws/20-60.html">Dec. 13, 2013, D.C. Law 20-60, § 302(c), 60 DCR 15487</a>; <a class="internal-link" href="/dc/council/laws/20-79.html">Feb. 22, 2014, D.C. Law 20-79, § 2(m), 61 DCR 153</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a> added (a)(1A) and (b)(1A).</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> substituted “No person, including a business contributor, may make contributions” for “Exploratory committees shall not receive individual contributions” in (b).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a> added (a)(1A) and (b)(1A).</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 3(c) of the Election Code Conforming Emergency Act of 2013 (D.C. Act 20-143, July 31, 2013,  60 DCR 11799, 20 DCSTAT 1990).</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a>: Section 401(b) of 20-60 provided that § 302 of the act shall apply as of December 13, 2013.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
-                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7009">Section 7009 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-79.html#§3">§ 3 of D.C. Law 20-79</a>. Therefore the changes made to this section by D.C. Law 20-79 have been given effect.
         </p>
+                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a>: Section 401(b) of 20-60 provided that § 302 of the act shall apply as of December 13, 2013.</p>
               </section>
             </section>
             <hr/>
@@ -496,10 +540,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> rewrote this section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
-                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7009">Section 7009 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-79.html#§3">§ 3 of D.C. Law 20-79</a>. Therefore the changes made to this section by D.C. Law 20-79 have been given effect.
         </p>
+                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
               </section>
             </section>
             <hr/>
@@ -542,10 +586,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> deleted “of Columbia” following “District”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
-                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7009">Section 7009 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-79.html#§3">§ 3 of D.C. Law 20-79</a>. Therefore the changes made to this section by D.C. Law 20-79 have been given effect.
         </p>
+                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
               </section>
             </section>
             <hr/>
@@ -563,10 +607,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> rewrote this section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
-                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7009">Section 7009 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-79.html#§3">§ 3 of D.C. Law 20-79</a>. Therefore the changes made to this section by D.C. Law 20-79 have been given effect.
         </p>
+                <p>A certification dated February 4, 2015, that the fiscal effect of the Campaign Finance Reform and Transparency Amendment Act of 2013, <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>, has been included in an approved budget and financial plan was published in the D.C. Register on March 13, 2015 (62 DCR 2988).</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a>: Section 3 of <a class="internal-link" href="/dc/council/laws/20-79.html">D.C. Law 20-79</a> provided that the act shall apply upon the latest of: (1) The inclusion of the fiscal effect of the act in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register; or (2) January 31, 2015.</p>
               </section>
             </section>
             <hr/>

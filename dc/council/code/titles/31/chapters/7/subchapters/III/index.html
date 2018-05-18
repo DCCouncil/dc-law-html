@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/31/chapters/8/">Chapter 8. Insurance Agents and Brokers Licensing. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/31/chapters/7/subchapters/III/">Report Error</a>
@@ -88,16 +88,36 @@
         <section class="col8 body">
           <h1>Subchapter III. Reciprocal Insurance Company Conversion.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/31-751.html">§ 31–751. Definitions.</a>
-            <a href="/dc/council/code/sections/31-752.html">§ 31–752. Formation of a mutual insurance holding company from a reciprocal insurance company.</a>
-            <a href="/dc/council/code/sections/31-753.html">§ 31–753. Merger of policyholder membership interests.</a>
-            <a href="/dc/council/code/sections/31-754.html">§ 31–754. Incorporation of holding company.</a>
-            <a href="/dc/council/code/sections/31-755.html">§ 31–755. Insurers rehabilitation and liquidation.</a>
-            <a href="/dc/council/code/sections/31-756.html">§ 31–756. Applicability; membership interest; powers.</a>
-            <a href="/dc/council/code/sections/31-757.html">§ 31–757. Failure to give notice.</a>
-            <a href="/dc/council/code/sections/31-758.html">§ 31–758. Limitations of actions.</a>
-            <a href="/dc/council/code/sections/31-759.html">§ 31–759. Conversion of mutual insurance holding company.</a>
-            <a href="/dc/council/code/sections/31-760.html">§ 31–760. Rulemaking.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-751.html">§ 31–751. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-752.html">§ 31–752. Formation of a mutual insurance holding company from a reciprocal insurance company.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-753.html">§ 31–753. Merger of policyholder membership interests.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-754.html">§ 31–754. Incorporation of holding company.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-755.html">§ 31–755. Insurers rehabilitation and liquidation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-756.html">§ 31–756. Applicability; membership interest; powers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-757.html">§ 31–757. Failure to give notice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-758.html">§ 31–758. Limitations of actions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-759.html">§ 31–759. Conversion of mutual insurance holding company.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-760.html">§ 31–760. Rulemaking.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

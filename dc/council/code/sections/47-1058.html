@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1059.html">§ 47–1059. American College of Cardiology and American College of Cardiology Foundation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1058.html">Report Error</a>
@@ -100,8 +100,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> validated a previously made technical correction.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(b) of Emmaus Rehabilitation Project Real Property Tax Exemption Emergency Act of 2003 (D.C. Act 15-203, October 24, 2003,  50 DCR 9838).</p>
                 <p>For temporary (90 day) addition, see § 2 of Emmaus Rehabilitation Project Real Property Exemption Congressional Review Emergency Act of 2004 (D.C. Act 15-340, January 29, 2004,  51 DCR 1820).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Emmaus Rehabilitation Project Real Property Tax Exemption Emergency Act of 2003 (D.C. Act 15-203, October 24, 2003,  50 DCR 9838).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For Temporary (225 day) addition of section, see § 2 of Emmaus Rehabilitation Project Real Property Exemption Temporary Act of 2003 (D.C. Law 15-78, March 10, 2004, law notification  51 DCR 3370).</p>
                 <h4>Editor's Notes</h4>

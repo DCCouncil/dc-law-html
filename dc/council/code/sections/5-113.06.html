@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/5-113.07.html">§ 5–113.07. Preservation and destruction of records.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/5-113.06.html">Report Error</a>
@@ -102,11 +102,11 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§389">R.S., D.C., § 389</a>; June 29, 1953, 67 Stat. 99, ch. 159, title III, § 301(b); Aug. 20, 1954, 68 Stat. 755, ch. 778, § 2; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 571, Pub. L. 91-358, title I, § 155(c)(13)</a>; <a class="internal-link" href="/us/congress/laws/public/92-543.html">Oct. 25, 1972, 86 Stat. 1108, Pub. L. 92-543, § 1</a>; <a class="internal-link" href="/dc/council/laws/11-130.html">May 24, 1996, D.C. Law 11-130, § 2, 43 DCR 1570</a>; <a class="internal-link" href="/dc/council/laws/16-144.html">July 25, 2006, D.C. Law 16-144, § 3, 53 DCR 2838</a>; <a class="internal-link" href="/dc/council/laws/19-207.html">Mar. 5, 2013, D.C. Law 19-207, § 2, 59 DCR 12507</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-135.</p>
                 <p>1973 Ed., § 4-135.</p>
+                <p>1981 Ed., § 4-135.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-144.html">D.C. Law 16-144</a>, in subsec. (a), substituted “Except as provided in subsection (c) of this section, the records” for “The records”; and added subsec. (c).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-207.html">D.C. Law 19-207</a> repealed (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-144.html">D.C. Law 16-144</a>, in subsec. (a), substituted “Except as provided in subsection (c) of this section, the records” for “The records”; and added subsec. (c).</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 2 of the Safe Streets Anti-Prostitution Emergency Amendment Act of 1996 (D.C. Act 11-252, April 15, 1996,  43 DCR 2139).</p>
               </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/38-2304.html">§ 38–2304. Report of Convention of American Instructors of the Deaf.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-2303.html">Report Error</a>
@@ -99,11 +99,11 @@
       (<a class="internal-link" href="/us/congress/revised-statutes.html#§441">R.S., § 441</a>; Mar. 4, 1911, 36 Stat. 1422, ch. 285; 1940 Reorg. Plan No. IV,§ 11; 1953 Reorg. Plan No. 1; June 18, 1954, 68 Stat. 265, ch. 324, § 1.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1803.</p>
                 <p>1973 Ed., § 31-1022.</p>
+                <p>1981 Ed., § 31-1803.</p>
                 <h4>References in Text</h4>
-                <p>“Gallaudet University” was substituted for “Gallaudet College” pursuant to § <a class="internal-link" href="/dc/council/code/sections/38-2401.01.html">38-2401.01</a>. “Gallaudet College” had previously been substituted for “Columbia Institution for the Deaf” at the end of this section, pursuant to former § <a class="internal-link" href="/dc/council/code/sections/38-2305.html">38-2305</a>.</p>
                 <p>“Secretary of Education” was substituted for “Secretary of Health, Education and Welfare” near the beginning of this section, pursuant to § 301 of the Act of October 17, 1979, 93 Stat. 677, Pub. L. 96-88.</p>
+                <p>“Gallaudet University” was substituted for “Gallaudet College” pursuant to § <a class="internal-link" href="/dc/council/code/sections/38-2401.01.html">38-2401.01</a>. “Gallaudet College” had previously been substituted for “Columbia Institution for the Deaf” at the end of this section, pursuant to former § <a class="internal-link" href="/dc/council/code/sections/38-2305.html">38-2305</a>.</p>
               </section>
             </section>
           </section>

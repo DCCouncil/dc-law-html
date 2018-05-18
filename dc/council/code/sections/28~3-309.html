@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:3-310.html">§ 28:3-310. Effect of instrument on obligation for which taken.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:3-309.html">Report Error</a>
@@ -111,8 +111,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-299.html">D.C. Law 19-299</a> rewrote (a).</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>Section 3-309 is a modification of former  Section 3-804. The rights stated are those of “a person entitled to enforce the instrument“ at the time of loss rather than those of an ‘’owner“ as in former  Section 3-804. Under subsection (b), judgment to enforce the instrument cannot be given unless the court finds that the defendant will be adequately protected against a claim to the instrument by a holder that may appear at some later time. The court is given discretion in determining how adequate protection is to be assured. Former  Section 3-804 allowed the court to “require security indemnifying the defendant against loss.”</p>
                 <p>Under  Section 3-309 adequate protection is a flexible concept. For example, there is substantial risk that a holder in due course may make a demand for payment if the instrument was payable to bearer when it was lost or stolen. On the other hand if the instrument was payable to the person who lost the instrument and that person did not indorse the instrument, no other person could be a holder of the instrument. In some cases there is risk of loss only if there is doubt about whether the facts alleged by the person who lost the instrument are true. Thus, the type of adequate protection that is reasonable in the circumstances may depend on the degree of certainty about the facts in the case.</p>
+                <p>Section 3-309 is a modification of former  Section 3-804. The rights stated are those of “a person entitled to enforce the instrument“ at the time of loss rather than those of an ‘’owner“ as in former  Section 3-804. Under subsection (b), judgment to enforce the instrument cannot be given unless the court finds that the defendant will be adequately protected against a claim to the instrument by a holder that may appear at some later time. The court is given discretion in determining how adequate protection is to be assured. Former  Section 3-804 allowed the court to “require security indemnifying the defendant against loss.”</p>
               </section>
             </section>
           </section>

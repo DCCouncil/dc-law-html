@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/31-2407.html">§ 31–2407. Priorities for the payment of personal injury protection benefits.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-2406.html">Report Error</a>
@@ -131,13 +131,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-114.01.html">5-114.01</a>, § <a class="internal-link" href="/dc/council/code/sections/31-2402.html">31-2402</a>, § <a class="internal-link" href="/dc/council/code/sections/31-2403.html">31-2403</a>, § <a class="internal-link" href="/dc/council/code/sections/31-2404.html">31-2404</a>, § <a class="internal-link" href="/dc/council/code/sections/31-2405.html">31-2405</a>, and § <a class="internal-link" href="/dc/council/code/sections/31-2411.html">31-2411</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-117.html">D.C. Law 16-117</a> added par. (a)(2A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a> added subsec. (h).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in subsec. (f)(1)(B), substituted “insurer denies coverage” for “insured denies coverage”; and validated previously made technical corrections in subsec. (h).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-290.html">D.C. Law 19-290</a> substituted “motorcycles and motor-driven cycles” for “motorcycles” in (c-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in subsec. (f)(1)(B), substituted “insurer denies coverage” for “insured denies coverage”; and validated previously made technical corrections in subsec. (h).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a> added subsec. (h).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-117.html">D.C. Law 16-117</a> added par. (a)(2A).</p>
                 <h4>Editor's Notes</h4>
-                <p>Report of the Commissioner of Insurance and Securities: Section 5 of <a class="internal-link" href="/dc/council/laws/11-160.html">D.C. Law 11-160</a> provided: “Within two years of September 20, 1996, the Commissioner of Insurance and Securities shall prepare and submit to the Council of the District of Columbia for its review a report on the impact of this act on the private passenger motor vehicle insurance market or any part thereof, the funding for the Office of Insurance, the District of Columbia insurance premium tax, the number of insurers doing business in the District, and the number of insurers domiciled in the District of Columbia. In preparing such report, the Commissioner may request from specific private passenger motor vehicle insurers doing business in the District, or from all such insurers, reasonable and pertinent information. Information which is proprietary to any affected insurer shall be treated as confidential by the Commissioner, but may be used in the aggregate with other information from other affected insurers for statistical or other reporting purposes.”</p>
                 <p>Department of Insurance abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/31-2402.html">31-2402</a>.</p>
+                <p>Report of the Commissioner of Insurance and Securities: Section 5 of <a class="internal-link" href="/dc/council/laws/11-160.html">D.C. Law 11-160</a> provided: “Within two years of September 20, 1996, the Commissioner of Insurance and Securities shall prepare and submit to the Council of the District of Columbia for its review a report on the impact of this act on the private passenger motor vehicle insurance market or any part thereof, the funding for the Office of Insurance, the District of Columbia insurance premium tax, the number of insurers doing business in the District, and the number of insurers domiciled in the District of Columbia. In preparing such report, the Commissioner may request from specific private passenger motor vehicle insurers doing business in the District, or from all such insurers, reasonable and pertinent information. Information which is proprietary to any affected insurer shall be treated as confidential by the Commissioner, but may be used in the aggregate with other information from other affected insurers for statistical or other reporting purposes.”</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:3-206.html">§ 28:3-206. Restrictive indorsement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:3-205.html">Report Error</a>
@@ -102,15 +102,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 678, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/10-249.html">Mar. 23, 1995, D.C. Law 10-249, § 2(d), 42 DCR 467</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:3-205.</p>
                 <p>1973 Ed., § 28:3-204.</p>
+                <p>1981 Ed., § 28:3-205.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:3-103.html">28:3-103</a> and § <a class="internal-link" href="/dc/council/code/sections/28:3-109.html">28:3-109</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Subsection (a) is based on subsection (1) of former  Section 3-204. It states the test of a special indorsement to be whether the indorsement identifies a person to whom the instrument is payable.  Section 3-110 states rules for identifying the payee of an instrument.  Section 3-205(a) incorporates the principles stated in  Section 3-110 in identifying an indorsee. The language of  Section 3-110 refers to language used by the issuer of the instrument. When that section is used with respect to an indorsement,  Section 3-110 must be read as referring to the language used by the indorser.</p>
-                <p>2. Subsection (b) is based on subsection (2) of former  Section 3-204. An indorsement made by the holder is either a special or blank indorsement. If the indorsement is made by a holder and is not a special indorsement, it is a blank indorsement. For example, the holder of an instrument, intending to make a special indorsement, writes the words “Pay to the order of” without completing the indorsement by writing the name of the indorsee. The holder’s signature appears under the quoted words. The indorsement is not a special indorsement because it does not identify a person to whom it makes the instrument payable. Since it is not a special indorsement it is a blank indorsement and the instrument is payable to bearer. The result is analogous to that of a check in which the name of the payee is left blank by the drawer. In that case the check is payable to bearer. See the last paragraphs of Comment 2 to  Section 3-115.</p>
-                <p>A blank indorsement is usually the signature of the indorser on the back of the instrument without other words. Subsection (c) is based on subsection (3) of former  Section 3-204. A “restrictive indorsement” described in  Section 3-206 can be either a blank indorsement or a special indorsement. “Pay to T, in trust for B” is a restrictive indorsement. It is also a special indorsement because it identifies T as the person to whom the instrument is payable. “For deposit only” followed by the signature of the payee of a check is a restrictive indorsement. It is also a blank indorsement because it does not identify the person to whom the instrument is payable.</p>
                 <p>3. The only effect of an “anomalous indorsement,” defined in subsection (d), is to make the signer liable on the instrument as an indorser. Such an indorsement is normally made by an accommodation party.  Section 3-419.</p>
+                <p>A blank indorsement is usually the signature of the indorser on the back of the instrument without other words. Subsection (c) is based on subsection (3) of former  Section 3-204. A “restrictive indorsement” described in  Section 3-206 can be either a blank indorsement or a special indorsement. “Pay to T, in trust for B” is a restrictive indorsement. It is also a special indorsement because it identifies T as the person to whom the instrument is payable. “For deposit only” followed by the signature of the payee of a check is a restrictive indorsement. It is also a blank indorsement because it does not identify the person to whom the instrument is payable.</p>
+                <p>2. Subsection (b) is based on subsection (2) of former  Section 3-204. An indorsement made by the holder is either a special or blank indorsement. If the indorsement is made by a holder and is not a special indorsement, it is a blank indorsement. For example, the holder of an instrument, intending to make a special indorsement, writes the words “Pay to the order of” without completing the indorsement by writing the name of the indorsee. The holder’s signature appears under the quoted words. The indorsement is not a special indorsement because it does not identify a person to whom it makes the instrument payable. Since it is not a special indorsement it is a blank indorsement and the instrument is payable to bearer. The result is analogous to that of a check in which the name of the payee is left blank by the drawer. In that case the check is payable to bearer. See the last paragraphs of Comment 2 to  Section 3-115.</p>
+                <p>1. Subsection (a) is based on subsection (1) of former  Section 3-204. It states the test of a special indorsement to be whether the indorsement identifies a person to whom the instrument is payable.  Section 3-110 states rules for identifying the payee of an instrument.  Section 3-205(a) incorporates the principles stated in  Section 3-110 in identifying an indorsee. The language of  Section 3-110 refers to language used by the issuer of the instrument. When that section is used with respect to an indorsement,  Section 3-110 must be read as referring to the language used by the indorser.</p>
               </section>
             </section>
           </section>

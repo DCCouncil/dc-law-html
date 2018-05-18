@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/22/chapters/32/subchapters/IV/">Subchapter IV. Stolen Property.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/22/chapters/32/subchapters/III-C/">Report Error</a>
@@ -88,14 +88,30 @@
         <section class="col8 body">
           <h1>Subchapter III-C. Identity Theft.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/22-3227.01.html">§ 22–3227.01. Definitions.</a>
-            <a href="/dc/council/code/sections/22-3227.02.html">§ 22–3227.02. Identity theft.</a>
-            <a href="/dc/council/code/sections/22-3227.03.html">§ 22–3227.03. Penalties for identity theft.</a>
-            <a href="/dc/council/code/sections/22-3227.04.html">§ 22–3227.04. Restitution.</a>
-            <a href="/dc/council/code/sections/22-3227.05.html">§ 22–3227.05. Correction of public records.</a>
-            <a href="/dc/council/code/sections/22-3227.06.html">§ 22–3227.06. Jurisdiction.</a>
-            <a href="/dc/council/code/sections/22-3227.07.html">§ 22–3227.07. Limitations.</a>
-            <a href="/dc/council/code/sections/22-3227.08.html">§ 22–3227.08. Police reports.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-3227.01.html">§ 22–3227.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-3227.02.html">§ 22–3227.02. Identity theft.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-3227.03.html">§ 22–3227.03. Penalties for identity theft.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-3227.04.html">§ 22–3227.04. Restitution.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-3227.05.html">§ 22–3227.05. Correction of public records.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-3227.06.html">§ 22–3227.06. Jurisdiction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-3227.07.html">§ 22–3227.07. Limitations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-3227.08.html">§ 22–3227.08. Police reports.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -137,9 +153,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a>, in par. (1), deleted “and” from the end of subpar. (C); substituted “; and” for a period at the end of par. (D), and added subpar. (E); and repealed par. (2), which had read as follows: “(2) ‘Person’ means an individual, whether living or dead.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 102(h) of Crime Bill Emergency Amendment Act of 2009 (D.C. Act 18-129, June 29, 2009,  56 DCR 5495).</p>
-                <p>For temporary (90 day) amendment of section, see § 214(i) of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
                 <p>For temporary (90 day) amendment of section, see § 214(i) of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
+                <p>For temporary (90 day) amendment of section, see § 214(i) of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
+                <p>For temporary (90 day) amendment of section, see § 102(h) of Crime Bill Emergency Amendment Act of 2009 (D.C. Act 18-129, June 29, 2009,  56 DCR 5495).</p>
               </section>
             </section>
             <hr/>
@@ -166,11 +182,11 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a>, deleted “; or” from the end of par. (1); substituted “; or” for a period at the end of par. (2); and added par. (3).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of this section, see § 2(c) of Identity Theft Emergency Amendment Act of 2003 (D.C. Act 15-285, December 18, 2003,  51 DCR 204).</p>
-                <p>For temporary (90 day) addition of this section, see § 2(c) of Identity Thief Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-388, March 18, 2004,  51 DCR 3382).</p>
-                <p>For temporary (90 day) amendment of section, see § 102(i) of Crime Bill Emergency Amendment Act of 2009 (D.C. Act 18-129, June 29, 2009,  56 DCR 5495).</p>
-                <p>For temporary (90 day) amendment of section, see § 214(j) of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
                 <p>For temporary (90 day) amendment of section, see § 214(j) of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
+                <p>For temporary (90 day) amendment of section, see § 214(j) of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
+                <p>For temporary (90 day) amendment of section, see § 102(i) of Crime Bill Emergency Amendment Act of 2009 (D.C. Act 18-129, June 29, 2009,  56 DCR 5495).</p>
+                <p>For temporary (90 day) addition of this section, see § 2(c) of Identity Thief Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-388, March 18, 2004,  51 DCR 3382).</p>
+                <p>For temporary (90 day) addition of this section, see § 2(c) of Identity Theft Emergency Amendment Act of 2003 (D.C. Act 15-285, December 18, 2003,  51 DCR 204).</p>
               </section>
             </section>
             <hr/>
@@ -189,23 +205,23 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/16-801.html">16-801</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-306.html">D.C. Law 16-306</a>, in subsecs. (a) and (b), inserted “or attempted to be obtained,” following “of the property obtained”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a>, in subsec. (a), substituted “$1,000 or more” for “$250 or more”; and, in subsec. (b), substituted “has some value, or if another person is falsely accused of, or arrested for, committing a crime because of the use, without permission, of that person’s personal identifying information” for “whichever is greater, is less than $250”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a>, in subsec. (b), substituted “if” for “if the value of”.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “twice” for “3 times” twice in (a); and substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “$10,000” in (a), and for “not more than $1,000” in (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a>, in subsec. (b), substituted “if” for “if the value of”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a>, in subsec. (a), substituted “$1,000 or more” for “$250 or more”; and, in subsec. (b), substituted “has some value, or if another person is falsely accused of, or arrested for, committing a crime because of the use, without permission, of that person’s personal identifying information” for “whichever is greater, is less than $250”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-306.html">D.C. Law 16-306</a>, in subsecs. (a) and (b), inserted “or attempted to be obtained,” following “of the property obtained”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(c) of Identity Thief Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-388, March 18, 2004,  51 DCR 3382).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Identity Theft Technical Emergency Amendment Act of 2006 (D.C. Act 16-257, January 26, 2006,  53 DCR 772).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Identity Theft Technical Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-359, April 26, 2006,  53 DCR 3615).</p>
-                <p>For temporary (90 day) amendment of section, see § 218 of Omnibus Public Safety Emergency Amendment Act of 2006 (D.C. Act 16-445, July 19, 2006,  53 DCR 6443).</p>
-                <p>For temporary (90 day) amendment of section, see § 218 of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-490, October 18, 2006,  53 DCR 8686).</p>
-                <p>For temporary (90 day) amendment of section, see § 218 of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-10, January 16, 2007,  54 DCR 1479).</p>
-                <p>For temporary (90 day) amendment of section, see § 218 of Omnibus Public Safety Second Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-25, April 19, 2007,  54 DCR 4036).</p>
-                <p>For temporary (90 day) amendment of section, see § 102(j) of Crime Bill Emergency Amendment Act of 2009 (D.C. Act 18-129, June 29, 2009,  56 DCR 5495).</p>
                 <p>For temporary (90 days) amendment of this section, see §§ 111(a)(2) and 205(n) of the Criminal Fine Proportionality Emergency Amendment Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
+                <p>For temporary (90 day) amendment of section, see § 102(j) of Crime Bill Emergency Amendment Act of 2009 (D.C. Act 18-129, June 29, 2009,  56 DCR 5495).</p>
+                <p>For temporary (90 day) amendment of section, see § 218 of Omnibus Public Safety Second Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-25, April 19, 2007,  54 DCR 4036).</p>
+                <p>For temporary (90 day) amendment of section, see § 218 of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-10, January 16, 2007,  54 DCR 1479).</p>
+                <p>For temporary (90 day) amendment of section, see § 218 of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-490, October 18, 2006,  53 DCR 8686).</p>
+                <p>For temporary (90 day) amendment of section, see § 218 of Omnibus Public Safety Emergency Amendment Act of 2006 (D.C. Act 16-445, July 19, 2006,  53 DCR 6443).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Identity Theft Technical Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-359, April 26, 2006,  53 DCR 3615).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Identity Theft Technical Emergency Amendment Act of 2006 (D.C. Act 16-257, January 26, 2006,  53 DCR 772).</p>
+                <p>For temporary (90 day) addition, see § 2(c) of Identity Thief Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-388, March 18, 2004,  51 DCR 3382).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 16-141, in subsec. (a), inserted “or attempted to be obtained” following “if the property obtained”; and, in subsec. (a), inserted “or attempted to be obtained” following “of the property obtained”.</p>
                 <p>Section 4(b) of D.C. Law 16-141 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 16-141, in subsec. (a), inserted “or attempted to be obtained” following “if the property obtained”; and, in subsec. (a), inserted “or attempted to be obtained” following “of the property obtained”.</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
               </section>
@@ -259,10 +275,10 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a>, in par. (1), substituted “resident of, or located in,” for “resident of”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(c) of Identity Thief Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-388, March 18, 2004,  51 DCR 3382).</p>
-                <p>For temporary (90 day) amendment of section, see § 102(k) of Crime Bill Emergency Amendment Act of 2009 (D.C. Act 18-129, June 29, 2009,  56 DCR 5495).</p>
-                <p>For temporary (90 day) amendment of section, see § 214(l) of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
                 <p>For temporary (90 day) amendment of section, see § 214(l) of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
+                <p>For temporary (90 day) amendment of section, see § 214(l) of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
+                <p>For temporary (90 day) amendment of section, see § 102(k) of Crime Bill Emergency Amendment Act of 2009 (D.C. Act 18-129, June 29, 2009,  56 DCR 5495).</p>
+                <p>For temporary (90 day) addition, see § 2(c) of Identity Thief Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-388, March 18, 2004,  51 DCR 3382).</p>
               </section>
             </section>
             <hr/>

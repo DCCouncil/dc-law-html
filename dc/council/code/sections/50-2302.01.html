@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/50-2302.02.html">§ 50–2302.02. Exceptions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/50-2302.01.html">Report Error</a>
@@ -99,17 +99,17 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§201">Sept. 12, 1978, D.C. Law 2-104, § 201, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/9-173.html">Oct. 1, 1992, D.C. Law 9-173, § 2, 39 DCR 5834</a>; <a class="internal-link" href="/dc/council/laws/9-272.html">May 15, 1993, D.C. Law 9-272, § 203(a), 40 DCR 796</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-611.</p>
                 <p>1973 Ed., § 40-1109.</p>
+                <p>1981 Ed., § 40-611.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-629.05.html">1-629.05</a> and § <a class="internal-link" href="/dc/council/code/sections/47-2862.html">47-2862</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>For requirement of the submission of a report and recommendations as to whether the District should implement a remediation and deferred disposition program, see <a class="internal-link" href="/dc/council/laws/21-155.html#§603">§ 603 of D.C. Law 21-155</a>.
+                <p>
+       For an amendment to the requirement of the submission of a report and recommendations as to whether emergency vehicles should be equipped with cameras to better enforce regulations associated with the failure to yield to emergency vehicles, see <a class="internal-link" href="/dc/council/laws/22-77.html#§2(g)">§ 2(g) of D.C. Law 22-77</a>.
       </p>
                 <p>For requirement of the submission of a report and recommendations as to whether emergency vehicles should be equipped with cameras to better enforce regulations associated with the failure to yield to emergency vehicles, see <a class="internal-link" href="/dc/council/laws/21-155.html#§609">§ 609 of D.C. Law 21-155</a>.
       </p>
-                <p>
-       For an amendment to the requirement of the submission of a report and recommendations as to whether emergency vehicles should be equipped with cameras to better enforce regulations associated with the failure to yield to emergency vehicles, see <a class="internal-link" href="/dc/council/laws/22-77.html#§2(g)">§ 2(g) of D.C. Law 22-77</a>.
+                <p>For requirement of the submission of a report and recommendations as to whether the District should implement a remediation and deferred disposition program, see <a class="internal-link" href="/dc/council/laws/21-155.html#§603">§ 603 of D.C. Law 21-155</a>.
       </p>
               </section>
             </section>

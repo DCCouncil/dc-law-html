@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/10/chapters/10A/">Chapter 10A. District Facilities Planning Advisory Committee.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/10/chapters/10/">Report Error</a>
@@ -87,26 +87,66 @@
         <section class="col8 body">
           <h1>Chapter 10. Department of Real Estate Services. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/10-1001.html">§ 10–1001. Establishment of the Department of Real Estate Services. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1001.01.html">§ 10–1001.01. Definitions. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1002.html">§ 10–1002. Purpose. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1003.html">§ 10–1003. Functions. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1004.html">§ 10–1004. Transfers. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1005.html">§ 10–1005. Organization. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1006.html">§ 10–1006. Sole source contracting. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1007.html">§ 10–1007. Notice and contract summary to the Council on certain contracts [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1008.html">§ 10–1008. Criteria for Council review and approval of certain contracts. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1009.html">§ 10–1009. Contract summary for Council review. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1010.html">§ 10–1010. Representative program. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1011.html">§ 10–1011. Inventory of real property assets. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1012.html">§ 10–1012. Periodic audit of leased properties. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1012.01.html">§ 10–1012.01. Master Public Facilities Plan. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1013.html">§ 10–1013. Certain contracting rules. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1014.html">§ 10–1014. Jurisdiction. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1015.html">§ 10–1015. Green building priority. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1016.html">§ 10–1016. Establishment of District of Columbia Employee Parking Program Fund. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1017.html">§ 10–1017. Old Naval Hospital Foundation grant authority. [Repealed]</a>
-            <a href="/dc/council/code/sections/10-1018.html">§ 10–1018. Security assessments and implementation at District facilities. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1001.html">§ 10–1001. Establishment of the Department of Real Estate Services. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1001.01.html">§ 10–1001.01. Definitions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1002.html">§ 10–1002. Purpose. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1003.html">§ 10–1003. Functions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1004.html">§ 10–1004. Transfers. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1005.html">§ 10–1005. Organization. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1006.html">§ 10–1006. Sole source contracting. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1007.html">§ 10–1007. Notice and contract summary to the Council on certain contracts [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1008.html">§ 10–1008. Criteria for Council review and approval of certain contracts. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1009.html">§ 10–1009. Contract summary for Council review. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1010.html">§ 10–1010. Representative program. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1011.html">§ 10–1011. Inventory of real property assets. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1012.html">§ 10–1012. Periodic audit of leased properties. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1012.01.html">§ 10–1012.01. Master Public Facilities Plan. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1013.html">§ 10–1013. Certain contracting rules. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1014.html">§ 10–1014. Jurisdiction. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1015.html">§ 10–1015. Green building priority. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1016.html">§ 10–1016. Establishment of District of Columbia Employee Parking Program Fund. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1017.html">§ 10–1017. Old Naval Hospital Foundation grant authority. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1018.html">§ 10–1018. Security assessments and implementation at District facilities. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -123,24 +163,24 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 9-1101.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 1402 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1402 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
-                <p>For temporary abolition, as of October 1, 1998, of the Department of Administrative Services, established under Reorganization Plan No. 5 of 1983, effective March 1, 1983, see § 1408 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1408 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
-                <p>For temporary (90-day) addition of Chapter 11, and abolishment of the Department of Administrative Services, see §§ 1402 to 1406 and 1408 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1999 (D.C. Act 13-41, March 31, 1999,  46 DCR 3446).</p>
-                <p>For temporary (90 day) amendment of section, see § 2302 of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
                 <p>For temporary (90 day) repeal of section, see § 1012(a) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
+                <p>For temporary (90 day) amendment of section, see § 2302 of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
+                <p>For temporary (90-day) addition of Chapter 11, and abolishment of the Department of Administrative Services, see §§ 1402 to 1406 and 1408 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1999 (D.C. Act 13-41, March 31, 1999,  46 DCR 3446).</p>
+                <p>For temporary abolition, as of October 1, 1998, of the Department of Administrative Services, established under Reorganization Plan No. 5 of 1983, effective March 1, 1983, see § 1408 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1408 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
+                <p>For temporary addition of section, see § 1402 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1402 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
                 <h4>Short Title</h4>
-                <p>Short title of title XXIV of Law 14-190: Section 2401 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided that title XXIV of the act may be cited as the Zoning Additional Space Needs and Stipends Amendment Act of 2002.</p>
-                <p>Short title: Section 1001 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle A of title I of the act may be cited as the “Late Fee Avoidance Act of 2008”.</p>
                 <p>Office of Property Management Establishment Act of 1998: Section 1801 of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a> provided that subtitle A of title XVIII of the act may be cited as the “Office of Property Management Establishment Act of 1998.”</p>
+                <p>Short title: Section 1001 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle A of title I of the act may be cited as the “Late Fee Avoidance Act of 2008”.</p>
+                <p>Short title of title XXIV of Law 14-190: Section 2401 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided that title XXIV of the act may be cited as the Zoning Additional Space Needs and Stipends Amendment Act of 2002.</p>
                 <h4>Editor's Notes</h4>
-                <p>Sections 1002, 1003 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided:</p>
-                <p>“Sec. 1002. Responsibility for late fees.</p>
-                <p>“(a) The Office of Finance and Resource Management and the Office of Property Management shall pay an equal share of any fees incurred by the District of Columbia if both agencies are responsible for the late payment for the consumption of energy commodities, including electricity, natural gas, heating fuel, steam, and water; provided, that if one agency is responsible for the late payment, that agency shall pay the full fee incurred by the District of Columbia.</p>
-                <p>“(b) Funds used to pay late fees shall not be intra-District funds collected from assessments to District agencies for the payment of projected fixed-cost expenses.</p>
-                <p>“Sec. 1003. Applicability. This subtitle shall apply as of October 1, 2008.”</p>
-                <p>Department of Administrative Services abolished: Section 1808 of D.C. Law 12-175 abolished the Department of Administrative Services, established under Reorganization Plan No. 5 of 1983, pursuant to § 404(b) of the District of Columbia Home Rule Act, ( D.C. Code § 1-227(b)). The Department of Administrative Services is abolished as of October 1, 1998.</p>
-                <p>Section 2402 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided: “The Office of Property Management shall provide additional space within the District government office building located at 441  4th Street, N.W. (‘One Judiciary Square’) to the Office of Zoning (‘OZ’) to address OZ’s increased space requirements. The space to be provided shall be set forth in a plan which shall be submitted by the Mayor to the Council not later than September 1, 2002.”</p>
                 <p>Section 68 of <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> amended this section as it existed prior to its repeal.</p>
+                <p>Section 2402 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided: “The Office of Property Management shall provide additional space within the District government office building located at 441  4th Street, N.W. (‘One Judiciary Square’) to the Office of Zoning (‘OZ’) to address OZ’s increased space requirements. The space to be provided shall be set forth in a plan which shall be submitted by the Mayor to the Council not later than September 1, 2002.”</p>
+                <p>Department of Administrative Services abolished: Section 1808 of D.C. Law 12-175 abolished the Department of Administrative Services, established under Reorganization Plan No. 5 of 1983, pursuant to § 404(b) of the District of Columbia Home Rule Act, ( D.C. Code § 1-227(b)). The Department of Administrative Services is abolished as of October 1, 1998.</p>
+                <p>“Sec. 1003. Applicability. This subtitle shall apply as of October 1, 2008.”</p>
+                <p>“(b) Funds used to pay late fees shall not be intra-District funds collected from assessments to District agencies for the payment of projected fixed-cost expenses.</p>
+                <p>“(a) The Office of Finance and Resource Management and the Office of Property Management shall pay an equal share of any fees incurred by the District of Columbia if both agencies are responsible for the late payment for the consumption of energy commodities, including electricity, natural gas, heating fuel, steam, and water; provided, that if one agency is responsible for the late payment, that agency shall pay the full fee incurred by the District of Columbia.</p>
+                <p>“Sec. 1002. Responsibility for late fees.</p>
+                <p>Sections 1002, 1003 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided:</p>
                 <h4>Mayor's Orders</h4>
                 <p>Re-Designation of the District of Columbia Office of Property Management as the District of Columbia Department of Real Estate Services, see Mayor’s Order 2009-131, July 17, 2009 ( 56 DCR 6884).</p>
               </section>
@@ -174,9 +214,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 9-1102.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 1403 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1403 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
-                <p>For temporary (90-day) addition of Chapter 11, see notes following § <a class="internal-link" href="/dc/council/code/sections/10-1001.html">10-1001</a>.</p>
                 <p>For temporary (90 day) repeal of section, see § 1012(a) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
+                <p>For temporary (90-day) addition of Chapter 11, see notes following § <a class="internal-link" href="/dc/council/code/sections/10-1001.html">10-1001</a>.</p>
+                <p>For temporary addition of section, see § 1403 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1403 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
               </section>
             </section>
             <hr/>
@@ -193,11 +233,11 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 9-1103.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 1404 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1404 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
-                <p>For temporary (90-day) addition of Chapter 11, see notes following § <a class="internal-link" href="/dc/council/code/sections/10-1001.html">10-1001</a>.</p>
-                <p>For temporary (90 day) amendment of section, see § 3102(a) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
-                <p>For temporary (90 day) amendment of section, see § 3102(a) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
                 <p>For temporary (90 day) repeal of section, see § 1012(a) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
+                <p>For temporary (90 day) amendment of section, see § 3102(a) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 3102(a) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
+                <p>For temporary (90-day) addition of Chapter 11, see notes following § <a class="internal-link" href="/dc/council/code/sections/10-1001.html">10-1001</a>.</p>
+                <p>For temporary addition of section, see § 1404 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1404 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle A of title III of Law 15-205: Section 3101 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle A of title III of the act may be cited as the Government Facility Security Amendment Act of 2004.</p>
               </section>
@@ -216,9 +256,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 9-1104.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 1405 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1405 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
-                <p>For temporary (90-day) addition of Chapter 11, see notes following § <a class="internal-link" href="/dc/council/code/sections/10-1001.html">10-1001</a>.</p>
                 <p>For temporary (90 day) repeal of section, see § 1012(a) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
+                <p>For temporary (90-day) addition of Chapter 11, see notes following § <a class="internal-link" href="/dc/council/code/sections/10-1001.html">10-1001</a>.</p>
+                <p>For temporary addition of section, see § 1405 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1405 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
               </section>
             </section>
             <hr/>
@@ -235,14 +275,14 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 9-1105.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 1406 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1406 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
-                <p>For temporary (90-day) addition of Chapter 11, see notes following § <a class="internal-link" href="/dc/council/code/sections/10-1001.html">10-1001</a>.</p>
-                <p>For temporary (90 day) amendment of section, see § 3102(b) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
-                <p>For temporary (90 day) amendment of section, see § 3102(b) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
                 <p>For temporary (90 day) repeal of section, see § 1012(a) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
+                <p>For temporary (90 day) amendment of section, see § 3102(b) of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 3102(b) of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
+                <p>For temporary (90-day) addition of Chapter 11, see notes following § <a class="internal-link" href="/dc/council/code/sections/10-1001.html">10-1001</a>.</p>
+                <p>For temporary addition of section, see § 1406 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), and § 1406 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) addition, see § 2 of Office of Property Management Reform Temporary Amendment Act of 2003 (D.C. Law 15-57, December 9, 2003, law notification  51 DCR 1792).</p>
                 <p>For temporary (225 day) addition, see § 2 of Office of Property Management Reform Temporary Amendment Act of 2004 (D.C. Law 15-202, December 7, 2004, law notification  52 DCR 446).</p>
+                <p>For temporary (225 day) addition, see § 2 of Office of Property Management Reform Temporary Amendment Act of 2003 (D.C. Law 15-57, December 9, 2003, law notification  51 DCR 1792).</p>
               </section>
             </section>
             <hr/>
@@ -257,10 +297,10 @@
       (<a class="internal-link" href="/dc/council/laws/12-175.html#§1806a">Mar. 26, 1999, D.C. Law 12-175, § 1806a</a>; <a class="internal-link" href="/dc/council/laws/15-238.html">as added Mar. 16, 2005, D.C. Law 15-238, § 2(b), 51 DCR 10599</a>; <a class="internal-link" href="/dc/council/laws/18-115.html">Mar. 11, 2010, D.C. Law 18-115, § 3(b), 57 DCR 886</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 1032(a), 58 DCR 6226</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2 of Office of Property Management Reform Emergency Amendment Act of 2004 (D.C. Act 15-453, June 23, 2004,  51 DCR 6726).</p>
-                <p>For temporary (90 day) addition of sections, see § 2 of Office of Property Management Reform Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-539, October 12, 2004,  51 DCR 9827).</p>
-                <p>For temporary (90 day) addition of sections, see § 2 of Office of Property Management Reform Second Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-756, January 19, 2005,  52 DCR 2293).</p>
                 <p>For temporary (90 day) repeal of section, see § 1012(a) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
+                <p>For temporary (90 day) addition of sections, see § 2 of Office of Property Management Reform Second Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-756, January 19, 2005,  52 DCR 2293).</p>
+                <p>For temporary (90 day) addition of sections, see § 2 of Office of Property Management Reform Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-539, October 12, 2004,  51 DCR 9827).</p>
+                <p>For temporary (90 day) addition, see § 2 of Office of Property Management Reform Emergency Amendment Act of 2004 (D.C. Act 15-453, June 23, 2004,  51 DCR 6726).</p>
               </section>
             </section>
             <hr/>
@@ -367,8 +407,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) repeal of section, see § 1012(a) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 4 of <a class="internal-link" href="/dc/council/laws/18-201.html">D.C. Law 18-201</a> provided that section 3 shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.</p>
                 <p>The Budget Director of the Council of the District of Columbia has determined, as of February 15, 2012, that the fiscal effect of section 3 of Law 18-201 has not been included in an approved budget and financial plan. Therefore, the provisions of this section, enacted by section 3 of Law 18-201, are not in effect.</p>
+                <p>Section 4 of <a class="internal-link" href="/dc/council/laws/18-201.html">D.C. Law 18-201</a> provided that section 3 shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -432,13 +472,13 @@
       (<a class="internal-link" href="/dc/council/laws/12-175.html#§1806k">Mar. 26, 1999, D.C. Law 12-175, § 1806k</a>; <a class="internal-link" href="/dc/council/laws/17-219.html">as added Aug. 16, 2008, D.C. Law 17-219, § 1005, 55 DCR 7598</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 244(a), 56 DCR 1117</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 1251, 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/18-115.html">Mar. 11, 2010, D.C. Law 18-115, § 3(a), 57 DCR 886</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21,§§ 1032(a), 9018, 58 DCR 6226</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1061 of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
-                <p>For temporary (90 day) amendment of section, see § 1251 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 1251 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
                 <p>For temporary (90 day) repeal of section, see § 1012(a) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
+                <p>For temporary (90 day) amendment of section, see § 1251 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 1251 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 1061 of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
                 <h4>Short Title</h4>
-                <p>Short title: Section 1004 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle B of title I of the act may be cited as the “District of Columbia Employee Parking Program Fund Establishment Amendment Act of 2008”.</p>
                 <p>Short title: Section 1250 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle Z of title I of the act may be cited as the “Employee-Parking Program Fund Amendment Act of 2009”.</p>
+                <p>Short title: Section 1004 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle B of title I of the act may be cited as the “District of Columbia Employee Parking Program Fund Establishment Amendment Act of 2008”.</p>
               </section>
             </section>
             <hr/>
@@ -453,14 +493,14 @@
       (<a class="internal-link" href="/dc/council/laws/12-175.html#§1806l">Mar. 26, 1999, D.C. Law 12-175, § 1806l</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">as added Mar. 3, 2010, D.C. Law 18-111, § 1211, 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 1032(a), 58 DCR 6226</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2 of Old Naval Hospital Grant Emergency Amendment Act of 2008 (D.C. Act 17-462, July 28, 2008,  55 DCR 8734).</p>
-                <p>For temporary (90 day) addition, see § 2 of Old Naval Hospital Grant Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-543, October 20, 2008,  55 DCR 11428).</p>
-                <p>For temporary (90 day) addition, see § 1211 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) addition, see § 1211 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
                 <p>For temporary (90 day) repeal of section, see § 1012(a) of Fiscal Year 2012 Budget Support Emergency Act of 2011 (D.C. Act 19-93, June 29, 2011,  58 DCR 5599).</p>
+                <p>For temporary (90 day) addition, see § 1211 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 1211 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) addition, see § 2 of Old Naval Hospital Grant Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-543, October 20, 2008,  55 DCR 11428).</p>
+                <p>For temporary (90 day) addition, see § 2 of Old Naval Hospital Grant Emergency Amendment Act of 2008 (D.C. Act 17-462, July 28, 2008,  55 DCR 8734).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 17-264 added a section to read as follows: “Sec. 1806k. Old Naval Hospital Foundation grant authority. Subject to appropriations, the Office of Property Management is authorized to make a grant in the amount of up to $5.5 million to the Old Naval Hospital Foundation for the purposes of renovating and making improvements to the Old Naval Hospital, Carriage House, and adjacent grounds, located at 921 Pennsylvania Avenue, S.E., in accordance with plans and specifications approved by the Office of Property Management and pursuant to a grant agreement between the District and the Old Naval Hospital Foundation.”.</p>
                 <p>Section 4(b) of D.C. Law 17-264 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 17-264 added a section to read as follows: “Sec. 1806k. Old Naval Hospital Foundation grant authority. Subject to appropriations, the Office of Property Management is authorized to make a grant in the amount of up to $5.5 million to the Old Naval Hospital Foundation for the purposes of renovating and making improvements to the Old Naval Hospital, Carriage House, and adjacent grounds, located at 921 Pennsylvania Avenue, S.E., in accordance with plans and specifications approved by the Office of Property Management and pursuant to a grant agreement between the District and the Old Naval Hospital Foundation.”.</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 1210 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle V of title I of the act may be cited as the “Old Naval Hospital Grant Amendment Act of 2009”.</p>
                 <h4>Editor's Notes</h4>

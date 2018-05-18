@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2-323.html">§ 28:2-323. Form of bill of lading required in overseas shipment; “overseas”.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2-322.html">Report Error</a>
@@ -102,19 +102,19 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 651, Pub. L. 88-243, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:2-322.</p>
                 <p>1973 Ed., § 28:2-322.</p>
+                <p>1981 Ed., § 28:2-322.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Prior Uniform Statutory Provision:</strong> None.</p>
-                <p><strong>Purposes:</strong> 1. The delivery term, “exship”, as between seller and buyer, is the reverse of the F.A.S. term covered.</p>
-                <p>2. Delivery need not be made from any particular vessel under a clause calling for delivery “exship”, even though a vessel on which shipment is to be made originally is named in the contract, unless the agreement by appropriate language restricts the clause to delivery from a named vessel.</p>
-                <p>3. The appropriate place and manner of unloading at the port of destination depend upon the nature of the goods and the facilities and usages of the port.</p>
-                <p>4. A contract fixing a price “ex ship” with payment “cash against documents” calls only for such documents as are appropriate to the contract. Tender of a delivery order and of a receipt for the freight after the arrival of the carrying vessel is adequate. The seller is not required to tender a bill of lading as a document of title nor is he required to insure the goods for the buyer’s benefit, as the goods are not at the buyer’s risk during the voyage.</p>
-                <p><strong>Cross Reference:</strong> Point 1:  Section 2-319(2).</p>
-                <p><strong>Definitional Cross References:</strong> “Buyer”.  Section 2-103.</p>
-                <p>“Goods”.  Section 2-105.</p>
-                <p>“Seller”.  Section 2-103.</p>
                 <p>“Term”.  Section 1-201.</p>
+                <p>“Seller”.  Section 2-103.</p>
+                <p>“Goods”.  Section 2-105.</p>
+                <p><strong>Definitional Cross References:</strong> “Buyer”.  Section 2-103.</p>
+                <p><strong>Cross Reference:</strong> Point 1:  Section 2-319(2).</p>
+                <p>4. A contract fixing a price “ex ship” with payment “cash against documents” calls only for such documents as are appropriate to the contract. Tender of a delivery order and of a receipt for the freight after the arrival of the carrying vessel is adequate. The seller is not required to tender a bill of lading as a document of title nor is he required to insure the goods for the buyer’s benefit, as the goods are not at the buyer’s risk during the voyage.</p>
+                <p>3. The appropriate place and manner of unloading at the port of destination depend upon the nature of the goods and the facilities and usages of the port.</p>
+                <p>2. Delivery need not be made from any particular vessel under a clause calling for delivery “exship”, even though a vessel on which shipment is to be made originally is named in the contract, unless the agreement by appropriate language restricts the clause to delivery from a named vessel.</p>
+                <p><strong>Purposes:</strong> 1. The delivery term, “exship”, as between seller and buyer, is the reverse of the F.A.S. term covered.</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> None.</p>
               </section>
             </section>
           </section>

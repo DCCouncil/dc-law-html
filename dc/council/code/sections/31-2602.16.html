@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/31-2602.17.html">§ 31–2602.17. Payment of federal income taxes. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-2602.16.html">Report Error</a>
@@ -99,8 +99,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/67-2-ch93.html#§16">Mar. 4, 1922, 42 Stat. 409, ch. 93, title V, § 16</a>; <a class="internal-link" href="/dc/council/laws/14-297.html">Apr. 11, 2003, D.C. Law 14-297, §  401(b), 50 DCR 330</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1416.</p>
                 <p>1973 Ed., § 35-1116.</p>
+                <p>1981 Ed., § 35-1416.</p>
                 <h4>Editor's Notes</h4>
                 <p>United States Shipping Board abolished: By Executive Order No. 6166, § 12, dated June 10, 1933, the United States Shipping Board was abolished and its functions, including those over and in respect to the United States Shipping Board Merchant Fleet Corporation, were transferred to the Department of Commerce. By §§ 201 and 204 of the Act of June 29, 1936, 49 Stat. 1987, ch. 858, the United States Maritime Commission was created and the functions of the former United States Shipping Board, including those vested in the Department of Commerce by Executive Order No. 6166, were transferred thereto. The functions of the United States Maritime Commission were transferred to the Federal Maritime Board by Part I of Reorganization Plan No. 21 of 1950, 64 Stat. 1273. The functions of the Federal Maritime Board were transferred to the Federal Maritime Commission by § 103 of Reorganization Plan No. 7 of 1961, 75 Stat. 840.</p>
               </section>

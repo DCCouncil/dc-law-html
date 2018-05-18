@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1831.06.html">§ 2–1831.06. Commission on Selection and Tenure of Administrative Law Judges of the Office of Administrative Hearings.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1831.05.html">Report Error</a>
@@ -126,13 +126,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3502.02.html">42-3502.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in subsec. (a)(11), inserted “; provided, that Administrative Law Judges shall receive a minimum annual compensation at that point on the ES-10 pay scale that is equivalent to the mid-point of the LX-2 pay scale;”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a>, in subsec. (a)(7), inserted “(including rental housing cases within the jurisdiction of the Office)”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (b)(9), substituted “revenues” for “a portion of revenue”, and substituted “shall be deposited into the unrestricted fund balance of the General Fund of the District of Columbia.” for “, such revenue to be maintained by the Chief Financial Officer in a non-lapsing account to fund the administrative adjudication services provided by the Office, except that such funds shall only be collected and maintained in a manner consistent with safeguarding the integrity and independence of the decisional process in matters pending before the Office;”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a>, in subsec. (a)(7), inserted “(including rental housing cases within the jurisdiction of the Office)”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in subsec. (a)(11), inserted “; provided, that Administrative Law Judges shall receive a minimum annual compensation at that point on the ES-10 pay scale that is equivalent to the mid-point of the LX-2 pay scale;”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 519 of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
-                <p>For temporary (90 day) amendment of section, see § 519 of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§1022(a)">§ 1022(a) of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 519 of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
+                <p>For temporary (90 day) amendment of section, see § 519 of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 3011 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle E of title III of the act may be cited as the “Administrative Law Judge Pay Parity Amendment Act of 2008”.</p>
               </section>

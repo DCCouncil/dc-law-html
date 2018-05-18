@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/3-101.01.html">§ 3–101.01. Criminal Code reform. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-101.html">Report Error</a>
@@ -113,16 +113,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 2-4201.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> rewrote subsec. (a) which had read as follows: “(a) There is established the Advisory Commission on Sentencing (’Commission’).”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-190.html">D.C. Law 15-190</a>, in the section heading and in subsec. (a), substituted “District of Columbia Sentencing Commission” for “Advisory Commission on Sentencing”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-126.html">D.C. Law 16-126</a>, in section heading, substituted “Sentencing and Criminal Code Revision Commission” for “Sentencing Commission”; in subsec. (a), substituted “Sentencing and Criminal Code Revision Commission” for “Sentencing Commission”; and, in subsec. (b), substituted “In addition to the duties required under § <a class="internal-link" href="/dc/council/code/sections/3-101.01.html">3-101.01</a>, the Commission” for “The Commission”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-25.html">D.C. Law 17-25</a> rewrote subsec. (b).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> added (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-25.html">D.C. Law 17-25</a> rewrote subsec. (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-126.html">D.C. Law 16-126</a>, in section heading, substituted “Sentencing and Criminal Code Revision Commission” for “Sentencing Commission”; in subsec. (a), substituted “Sentencing and Criminal Code Revision Commission” for “Sentencing Commission”; and, in subsec. (b), substituted “In addition to the duties required under § <a class="internal-link" href="/dc/council/code/sections/3-101.01.html">3-101.01</a>, the Commission” for “The Commission”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-190.html">D.C. Law 15-190</a>, in the section heading and in subsec. (a), substituted “District of Columbia Sentencing Commission” for “Advisory Commission on Sentencing”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> rewrote subsec. (a) which had read as follows: “(a) There is established the Advisory Commission on Sentencing (’Commission’).”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3402(a) of Fiscal Year 2002 Budget Support Emergency Act of 2001 (D.C. Act 14-124, August 3, 2001,  48 DCR 7861).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Advisory Commission on Sentencing Structured Sentencing System Pilot Program Emergency Amendment Act of 2004 (D.C. Act 15-437, May 21, 2004,  51 DCR 5957).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Advisory Commission on Sentencing Structured Sentencing System Pilot Program Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-510, August 2, 2004,  51 DCR 8967).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(a) of District of Columbia Sentencing and Criminal Code Revision Commission Emergency Amendment Act of 2007 (D.C. Act 17-72, July 20, 2007,  54 DCR 7401).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Advisory Commission on Sentencing Structured Sentencing System Pilot Program Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-510, August 2, 2004,  51 DCR 8967).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Advisory Commission on Sentencing Structured Sentencing System Pilot Program Emergency Amendment Act of 2004 (D.C. Act 15-437, May 21, 2004,  51 DCR 5957).</p>
+                <p>For temporary (90 day) amendment of section, see § 3402(a) of Fiscal Year 2002 Budget Support Emergency Act of 2001 (D.C. Act 14-124, August 3, 2001,  48 DCR 7861).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability: Section 4 of <a class="internal-link" href="/dc/council/laws/16-126.html">D.C. Law 16-126</a> provided: ’This act shall apply as of January 1, 2007.”</p>
               </section>

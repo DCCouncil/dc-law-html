@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-512.html">§ 28:2A-512. Lessee’s duties as to rightfully rejected goods.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-511.html">Report Error</a>
@@ -107,20 +107,20 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § 28:2A-305 and § 28:2A-512.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Sections 2-603 and  2-706(5).</p>
-                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology. This section, by its terms, applies to merchants as well as others. Thus, in construing the section it is important to note that under this Act the term good faith is defined differently for merchants ( Section 2-103(1)(b)) than for others ( Section 1-201(19)). Section 2A-103(3) and (4).</p>
-                <p><strong>Definitional Cross References:</strong> “Action”.  Sections 1-201(1).</p>
-                <p>“Good faith”.  Sections 1-201(19) and  2-103(1)(b).</p>
-                <p>“Goods”. Section 2A-103(1)(h).</p>
-                <p>“Lease”. Section 2A-103(1)(j).</p>
-                <p>“Lessee”. Section 2A-103(1)(n).</p>
-                <p>“Lessor”. Section 2A-103(1)(p).</p>
-                <p>“Merchant lessee”. Section 2A-103(1)(t).</p>
-                <p>“Purchaser”.  Section 1-201(33).</p>
-                <p>“Rights”.  Section 1-201(36).</p>
-                <p>“Security interest”.  Section 1-201(37).</p>
-                <p>“Supplier”. Section 2A-103(1)(x).</p>
                 <p>“Value”.  Section 1-201(44).</p>
+                <p>“Supplier”. Section 2A-103(1)(x).</p>
+                <p>“Security interest”.  Section 1-201(37).</p>
+                <p>“Rights”.  Section 1-201(36).</p>
+                <p>“Purchaser”.  Section 1-201(33).</p>
+                <p>“Merchant lessee”. Section 2A-103(1)(t).</p>
+                <p>“Lessor”. Section 2A-103(1)(p).</p>
+                <p>“Lessee”. Section 2A-103(1)(n).</p>
+                <p>“Lease”. Section 2A-103(1)(j).</p>
+                <p>“Goods”. Section 2A-103(1)(h).</p>
+                <p>“Good faith”.  Sections 1-201(19) and  2-103(1)(b).</p>
+                <p><strong>Definitional Cross References:</strong> “Action”.  Sections 1-201(1).</p>
+                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology. This section, by its terms, applies to merchants as well as others. Thus, in construing the section it is important to note that under this Act the term good faith is defined differently for merchants ( Section 2-103(1)(b)) than for others ( Section 1-201(19)). Section 2A-103(3) and (4).</p>
+                <p><strong>Uniform Statutory Source:</strong>Sections 2-603 and  2-706(5).</p>
               </section>
             </section>
           </section>

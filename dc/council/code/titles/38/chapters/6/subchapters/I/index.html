@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/38/chapters/6/subchapters/II/">Subchapter II. Public School Nurses.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/38/chapters/6/subchapters/I/">Report Error</a>
@@ -88,16 +88,36 @@
         <section class="col8 body">
           <h1>Subchapter I. General Provisions.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/38-601.html">§ 38–601. Definitions.</a>
-            <a href="/dc/council/code/sections/38-602.html">§ 38–602. Examination requirements; certificates of health, testing for lead poisoning and dental health.</a>
-            <a href="/dc/council/code/sections/38-603.html">§ 38–603. Exemption for religious beliefs.</a>
-            <a href="/dc/council/code/sections/38-604.html">§ 38–604. Notice of noncompliance; attendance unaffected.</a>
-            <a href="/dc/council/code/sections/38-605.html">§ 38–605. Fee for examination by public health authorities; indigency.</a>
-            <a href="/dc/council/code/sections/38-606.html">§ 38–606. Duty to obtain treatment.</a>
-            <a href="/dc/council/code/sections/38-607.html">§ 38–607. Student health files.</a>
-            <a href="/dc/council/code/sections/38-608.html">§ 38–608. Joint administration by Mayor and Board of Education; rules.</a>
-            <a href="/dc/council/code/sections/38-609.html">§ 38–609. Protection from liability.</a>
-            <a href="/dc/council/code/sections/38-610.html">§ 38–610. Reporting and studies of lead poisoning tests.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-601.html">§ 38–601. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-602.html">§ 38–602. Examination requirements; certificates of health, testing for lead poisoning and dental health.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-603.html">§ 38–603. Exemption for religious beliefs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-604.html">§ 38–604. Notice of noncompliance; attendance unaffected.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-605.html">§ 38–605. Fee for examination by public health authorities; indigency.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-606.html">§ 38–606. Duty to obtain treatment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-607.html">§ 38–607. Student health files.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-608.html">§ 38–608. Joint administration by Mayor and Board of Education; rules.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-609.html">§ 38–609. Protection from liability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/38-610.html">§ 38–610. Reporting and studies of lead poisoning tests.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

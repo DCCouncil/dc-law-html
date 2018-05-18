@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-311.html">§ 28:9-311. Perfection of security interests in property subject to certain statutes, regulations, and treaties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-310.html">Report Error</a>
@@ -116,14 +116,14 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-299.html">D.C. Law 19-299</a> inserted “electronic documents” in (b)(8).</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. Former  Section 9-302(1), (2).</p>
-                <p>2. General Rule. Subsection (a) establishes a central Article 9 principle: Filing a financing statement is necessary for perfection of security interests and agricultural liens. However, filing is not necessary to perfect a security interest that is perfected by another permissible method, see subsection (b), nor does filing ordinarily perfect a security interest in a deposit account, letter-of-credit right, or money. See  Section 9-312(b). Part 5 of the Article deals with the office in which to file, mechanics of filing, and operations of the filing office.</p>
-                <p>3. Exemptions from Filing. Subsection (b) lists the security interests for which filing is not required as a condition of perfection, because they are perfected automatically upon attachment (subsections (b)(2) and (b)(9)) or upon the occurrence of another event (subsections (b)(1), (b)(5), and (b)(9)), because they are perfected under the law of another jurisdiction (subsection (b)(10)), or because they are perfected by another method, such as by the secured party’s taking possession or control (subsections (b)(3), (b)(4), (b)(5), (b)(6), (b)(7), and (b)(8)).</p>
-                <p>4. Assignments of Perfected Security Interests. Subsection (c) concerns assignment of a perfected security interest or agricultural lien. It provides that no filing is necessary in connection with an assignment by a secured party to an assignee in order to maintain perfection as against creditors of and transferees from the original debtor.</p>
-                <p>Example 1: Buyer buys goods from Seller, who retains a security interest in them. After Seller perfects the security interest by filing, Seller assigns the perfected security interest to X. The security interest, in X’s hands and without further steps on X’s part, continues perfected against Buyer’s transferees and creditors.</p>
-                <p>Example 2: Dealer creates a security interest in specific equipment in favor of Lender. After Lender perfects the security interest in the equipment by filing, Lender assigns the chattel paper (which includes the perfected security interest in Dealer’s equipment) to X. The security interest in the equipment, in X’s hands and without further steps on X’s part, continues perfected against Dealer’s transferees and creditors. However, regardless of whether Lender made the assignment to secure Lender’s obligation to X or whether the assignment was an outright sale of the chattel paper, the assignment creates a security interest in the chattel paper in favor of X. Accordingly, X must take whatever steps may be required for perfection in order to be protected against Lender’s transferees and creditors with respect to the chattel paper.</p>
-                <p>Subsection (c) applies not only to an assignment of a security interest perfected by filing but also to an assignment of a security interest perfected by a method other than by filing, such as by control or by possession. Although subsection (c) addresses explicitly only the absence of an additional filing requirement, the same result normally will follow in the case of an assignment of a security interest perfected by a method other than by filing. For example, as long as possession of collateral is maintained by an assignee or by the assignor or another person on behalf of the assignee, no further perfection steps need be taken on account of the assignment to continue perfection as against creditors and transferees of the original debtor. Of course, additional action may be required for perfection of the assignee’s interest as against creditors and transferees of the assignor.</p>
                 <p>Similarly, subsection (c) applies to the assignment of a security interest perfected by compliance with a statute, regulation, or treaty under  Section 9-311(b), such as a certificate-of-title statute. Unless the statute expressly provides to the contrary, the security interest will remain perfected against creditors of and transferees from the original debtor, even if the assignee takes no action to cause the certificate of title to reflect the assignment or to cause its name to appear on the certificate of title. See PEB Commentary No. 12, which discusses this issue under former  Section 9-302(3). Compliance with the statute is “equivalent to filing“ under  Section 9-311(b).</p>
+                <p>Subsection (c) applies not only to an assignment of a security interest perfected by filing but also to an assignment of a security interest perfected by a method other than by filing, such as by control or by possession. Although subsection (c) addresses explicitly only the absence of an additional filing requirement, the same result normally will follow in the case of an assignment of a security interest perfected by a method other than by filing. For example, as long as possession of collateral is maintained by an assignee or by the assignor or another person on behalf of the assignee, no further perfection steps need be taken on account of the assignment to continue perfection as against creditors and transferees of the original debtor. Of course, additional action may be required for perfection of the assignee’s interest as against creditors and transferees of the assignor.</p>
+                <p>Example 2: Dealer creates a security interest in specific equipment in favor of Lender. After Lender perfects the security interest in the equipment by filing, Lender assigns the chattel paper (which includes the perfected security interest in Dealer’s equipment) to X. The security interest in the equipment, in X’s hands and without further steps on X’s part, continues perfected against Dealer’s transferees and creditors. However, regardless of whether Lender made the assignment to secure Lender’s obligation to X or whether the assignment was an outright sale of the chattel paper, the assignment creates a security interest in the chattel paper in favor of X. Accordingly, X must take whatever steps may be required for perfection in order to be protected against Lender’s transferees and creditors with respect to the chattel paper.</p>
+                <p>Example 1: Buyer buys goods from Seller, who retains a security interest in them. After Seller perfects the security interest by filing, Seller assigns the perfected security interest to X. The security interest, in X’s hands and without further steps on X’s part, continues perfected against Buyer’s transferees and creditors.</p>
+                <p>4. Assignments of Perfected Security Interests. Subsection (c) concerns assignment of a perfected security interest or agricultural lien. It provides that no filing is necessary in connection with an assignment by a secured party to an assignee in order to maintain perfection as against creditors of and transferees from the original debtor.</p>
+                <p>3. Exemptions from Filing. Subsection (b) lists the security interests for which filing is not required as a condition of perfection, because they are perfected automatically upon attachment (subsections (b)(2) and (b)(9)) or upon the occurrence of another event (subsections (b)(1), (b)(5), and (b)(9)), because they are perfected under the law of another jurisdiction (subsection (b)(10)), or because they are perfected by another method, such as by the secured party’s taking possession or control (subsections (b)(3), (b)(4), (b)(5), (b)(6), (b)(7), and (b)(8)).</p>
+                <p>2. General Rule. Subsection (a) establishes a central Article 9 principle: Filing a financing statement is necessary for perfection of security interests and agricultural liens. However, filing is not necessary to perfect a security interest that is perfected by another permissible method, see subsection (b), nor does filing ordinarily perfect a security interest in a deposit account, letter-of-credit right, or money. See  Section 9-312(b). Part 5 of the Article deals with the office in which to file, mechanics of filing, and operations of the filing office.</p>
+                <p>1. Source. Former  Section 9-302(1), (2).</p>
               </section>
             </section>
           </section>

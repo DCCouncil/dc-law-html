@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/44/chapters/2A/">Chapter 2A. Defibrillator Usage.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/chapters/2/">Report Error</a>
@@ -87,19 +87,45 @@
         <section class="col8 body">
           <h1>Chapter 2. Clinical Laboratories.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/44-201.html">§ 44–201. Definitions.</a>
-            <a href="/dc/council/code/sections/44-202.html">§ 44–202. License requirements for clinical laboratories.</a>
-            <a href="/dc/council/code/sections/44-203.html">§ 44–203. Laboratory director.</a>
-            <a href="/dc/council/code/sections/44-204.html">§ 44–204. Qualifications of technical personnel.</a>
-            <a href="/dc/council/code/sections/44-205.html">§ 44–205. License requirements for physician office laboratories. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-206.html">§ 44–206. Mayor’s authority to establish Laboratory Advisory Board.</a>
-            <a href="/dc/council/code/sections/44-207.html">§ 44–207. Inspections.</a>
-            <a href="/dc/council/code/sections/44-208.html">§ 44–208. Quality assurance.</a>
-            <a href="/dc/council/code/sections/44-209.html">§ 44–209. Proficiency testing programs.</a>
-            <a href="/dc/council/code/sections/44-210.html">§ 44–210. Cytology screening.</a>
-            <a href="/dc/council/code/sections/44-211.html">§ 44–211. Confidentiality of test results.</a>
-            <a href="/dc/council/code/sections/44-212.html">§ 44–212. Penalties and enforcement.</a>
-            <a href="/dc/council/code/sections/44-213.html">§ 44–213. Rules.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-201.html">§ 44–201. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-202.html">§ 44–202. License requirements for clinical laboratories.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-203.html">§ 44–203. Laboratory director.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-204.html">§ 44–204. Qualifications of technical personnel.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-205.html">§ 44–205. License requirements for physician office laboratories. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-206.html">§ 44–206. Mayor’s authority to establish Laboratory Advisory Board.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-207.html">§ 44–207. Inspections.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-208.html">§ 44–208. Quality assurance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-209.html">§ 44–209. Proficiency testing programs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-210.html">§ 44–210. Cytology screening.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-211.html">§ 44–211. Confidentiality of test results.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-212.html">§ 44–212. Penalties and enforcement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-213.html">§ 44–213. Rules.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -182,11 +208,11 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 32-1502.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (j), substituted “Public Health: Laboratory endorsement to a basic business license under the basic” for “Class A Public Health: Laboratory endorsement to a master business license under the master”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a> deleted the last sentence in subsec. (a); added subsec. (a-1); repealed subsec. (b)(4); in subsec. (c), substituted “one year” for “6 months”; in subsec. (g), substituted “2 years” for “one year”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (j), substituted “Public Health: Laboratory endorsement to a basic business license under the basic” for “Class A Public Health: Laboratory endorsement to a master business license under the master”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(dd)(1) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <p>For temporary (90 day) amendment of section, see § 5012(b) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(dd)(1) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/7-182.html">D.C. Law 7-182</a>, see Mayor’s Order 89-211, September 15, 1989.</p>
               </section>
@@ -212,8 +238,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 32-1503.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, in subsec. (b), substituted “a person shall meet the applicable qualifications as specified in rules issued pursuant to § <a class="internal-link" href="/dc/council/code/sections/44-213.html">44-213</a> and shall:” for “a person shall meet:”; in subsec. (e), substituted “5” for “2”; and rewrote subsec. (d), which had read as follows: “(d) The laboratory director shall be present for a reasonable period of each working day in each clinical laboratory for which he or she is director. If the laboratory director cannot be present on a short-term basis for a period of time to be determined by the Mayor, the laboratory director shall designate, in writing, a substitute laboratory director who meets the qualifications of subsection (b) of this section.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a> validated a previously made technical correction in (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, in subsec. (b), substituted “a person shall meet the applicable qualifications as specified in rules issued pursuant to § <a class="internal-link" href="/dc/council/code/sections/44-213.html">44-213</a> and shall:” for “a person shall meet:”; in subsec. (e), substituted “5” for “2”; and rewrote subsec. (d), which had read as follows: “(d) The laboratory director shall be present for a reasonable period of each working day in each clinical laboratory for which he or she is director. If the laboratory director cannot be present on a short-term basis for a period of time to be determined by the Mayor, the laboratory director shall designate, in writing, a substitute laboratory director who meets the qualifications of subsection (b) of this section.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 5012(c) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
               </section>
@@ -256,8 +282,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 32-1505.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(dd)(2) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <p>For temporary (90 day) repeal of section, see § 5012(e) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(dd)(2) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/7-182.html">D.C. Law 7-182</a>, see Mayor’s Order 89-211, September 15, 1989.</p>
               </section>
@@ -443,9 +469,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/44-209.html">44-209</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “Attorney General for the District of Columbia” for “Corporation Counsel”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a> deleted “or physician office” following “clinical” throughout the section; in subsec. (c)(1), substituted “any clinical laboratory” for “any laboratory”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsec. (c)(1), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a> deleted “or physician office” following “clinical” throughout the section; in subsec. (c)(1), substituted “any clinical laboratory” for “any laboratory”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “Attorney General for the District of Columbia” for “Corporation Counsel”.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 5012(k) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
                 <h4>References in Text</h4>

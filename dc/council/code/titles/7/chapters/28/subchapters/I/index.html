@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/7/chapters/28/subchapters/II/">Subchapter II. Private Security Camera System Incentive Program.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/7/chapters/28/subchapters/I/">Report Error</a>
@@ -88,21 +88,51 @@
         <section class="col8 body">
           <h1>Subchapter I. General</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/7-2801.html">§ 7–2801. Purpose.</a>
-            <a href="/dc/council/code/sections/7-2802.html">§ 7–2802. Definitions.</a>
-            <a href="/dc/council/code/sections/7-2803.html">§ 7–2803. Prohibition of prerecorded transmittals.</a>
-            <a href="/dc/council/code/sections/7-2804.html">§ 7–2804. Licensing of alarm dealers.</a>
-            <a href="/dc/council/code/sections/7-2805.html">§ 7–2805. Licensing of alarm agents.</a>
-            <a href="/dc/council/code/sections/7-2806.html">§ 7–2806. Duties of alarm dealers.</a>
-            <a href="/dc/council/code/sections/7-2807.html">§ 7–2807. Duties of security alarm users.</a>
-            <a href="/dc/council/code/sections/7-2808.html">§ 7–2808. Standards for security and fire alarm systems.</a>
-            <a href="/dc/council/code/sections/7-2809.html">§ 7–2809. Exceptions.</a>
-            <a href="/dc/council/code/sections/7-2810.html">§ 7–2810. Inspections.</a>
-            <a href="/dc/council/code/sections/7-2811.html">§ 7–2811. Penalties generally.</a>
-            <a href="/dc/council/code/sections/7-2812.html">§ 7–2812. Notice of violation.</a>
-            <a href="/dc/council/code/sections/7-2813.html">§ 7–2813. Trial.</a>
-            <a href="/dc/council/code/sections/7-2814.html">§ 7–2814. Collection of fines and fees.</a>
-            <a href="/dc/council/code/sections/7-2815.html">§ 7–2815. Miscellaneous provisions.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2801.html">§ 7–2801. Purpose.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2802.html">§ 7–2802. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2803.html">§ 7–2803. Prohibition of prerecorded transmittals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2804.html">§ 7–2804. Licensing of alarm dealers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2805.html">§ 7–2805. Licensing of alarm agents.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2806.html">§ 7–2806. Duties of alarm dealers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2807.html">§ 7–2807. Duties of security alarm users.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2808.html">§ 7–2808. Standards for security and fire alarm systems.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2809.html">§ 7–2809. Exceptions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2810.html">§ 7–2810. Inspections.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2811.html">§ 7–2811. Penalties generally.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2812.html">§ 7–2812. Notice of violation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2813.html">§ 7–2813. Trial.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2814.html">§ 7–2814. Collection of fines and fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2815.html">§ 7–2815. Miscellaneous provisions.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -205,8 +235,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-2805.html">7-2805</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> rewrote subsec. (j) which had read:</p>
                 <p>“(j) Any person upon whom a notice of final action has been served may file with the Board of Appeals and Review, established by Organization Order No. 112, dated August 11, 1955, a written demand for a hearing. Any such hearing shall be held in accordance with the provisions of Chapter 5 of Title 2 and the Rules of Procedure of the Board of Appeals and Review adopted May 17, 1974.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> rewrote subsec. (j) which had read:</p>
                 <h4>Cross References</h4>
                 <p>Alarm agents licenses, denial suspension, or revocation, see § <a class="internal-link" href="/dc/council/code/sections/7-2805.html">7-2805</a>.</p>
               </section>

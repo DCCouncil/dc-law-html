@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/44/chapters/3/subchapters/II/">Subchapter II. Access to Specialists as Primary Care Providers.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/chapters/3/subchapters/I/">Report Error</a>
@@ -88,18 +88,42 @@
         <section class="col8 body">
           <h1>Subchapter I. Grievance and Appeals Procedure.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/44-301.01.html">§ 44–301.01. Definitions.</a>
-            <a href="/dc/council/code/sections/44-301.02.html">§ 44–301.02. Medicare not applicable.</a>
-            <a href="/dc/council/code/sections/44-301.03.html">§ 44–301.03. Establishment of grievance system.</a>
-            <a href="/dc/council/code/sections/44-301.04.html">§ 44–301.04. Grievance process.</a>
-            <a href="/dc/council/code/sections/44-301.05.html">§ 44–301.05. Informal internal review. [Repealed]</a>
-            <a href="/dc/council/code/sections/44-301.06.html">§ 44–301.06. Internal appeals process.</a>
-            <a href="/dc/council/code/sections/44-301.06a.html">§ 44–301.06a. Appeals of rescissions to the Department of Insurance, Securities, and Banking.</a>
-            <a href="/dc/council/code/sections/44-301.07.html">§ 44–301.07. External appeals process for matters other than rescissions.</a>
-            <a href="/dc/council/code/sections/44-301.08.html">§ 44–301.08. Certification and general requirements for independent review organizations.</a>
-            <a href="/dc/council/code/sections/44-301.09.html">§ 44–301.09. Assessment of insurers.</a>
-            <a href="/dc/council/code/sections/44-301.10.html">§ 44–301.10. Reporting requirements.</a>
-            <a href="/dc/council/code/sections/44-301.11.html">§ 44–301.11. Availability of District external review procedures for self-insured plans.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.01.html">§ 44–301.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.02.html">§ 44–301.02. Medicare not applicable.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.03.html">§ 44–301.03. Establishment of grievance system.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.04.html">§ 44–301.04. Grievance process.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.05.html">§ 44–301.05. Informal internal review. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.06.html">§ 44–301.06. Internal appeals process.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.06a.html">§ 44–301.06a. Appeals of rescissions to the Department of Insurance, Securities, and Banking.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.07.html">§ 44–301.07. External appeals process for matters other than rescissions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.08.html">§ 44–301.08. Certification and general requirements for independent review organizations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.09.html">§ 44–301.09. Assessment of insurers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.10.html">§ 44–301.10. Reporting requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/44-301.11.html">§ 44–301.11. Availability of District external review procedures for self-insured plans.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -151,21 +175,21 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 32-571.1.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in par. (1), substituted “Department of Health Care Finance” for “District of Columbia Department of Health”.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-229.html">D.C. Law 19-229</a> redesignated former (1) as (1B); added (1) and (1A); rewrote (2), (3), (10), and (11); and added (10A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in par. (1), substituted “Department of Health Care Finance” for “District of Columbia Department of Health”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Health Benefits Plan Grievance Emergency Amendment Act of 2011 (D.C. Act 19-166, October 11, 2011,  58 DCR 8898).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of the Health Benefits Plan Grievance Emergency Amendment Act of 2012 (D.C. Act 19-409, July 24, 2012,  59 DCR 9135).</p>
                 <p>For temporary addition of (10A), see § 2(a) of (D.C. Act 19-502, October 26, 2012,  59 DCR 12757), applicable as of October 22, 2012.</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of the Health Benefits Plan Grievance Emergency Amendment Act of 2012 (D.C. Act 19-409, July 24, 2012,  59 DCR 9135).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Health Benefits Plan Grievance Emergency Amendment Act of 2011 (D.C. Act 19-166, October 11, 2011,  58 DCR 8898).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(a) of D.C. Law 19-63 added par. (10A) to read as follows:</p>
-                <p>“(10A) ‘Month’ means the period that runs from a given day in one month through the date preceding the numerically corresponding day in the next month.”.</p>
-                <p>Section 4(b) of D.C. Law 19-63 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(a) of D.C. Law 19-200 added a new paragraph (10A) to read as follows:</p>
-                <p>“For the purposes of this chapter, the term</p>
-                <p>*****</p>
-                <p>“(10A) ‘Month’ means the period that runs from a given day in one month through the date preceding the numerically corresponding day in the next month.”</p>
                 <p>Section 4(b) of D.C. Law 19-200 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(10A) ‘Month’ means the period that runs from a given day in one month through the date preceding the numerically corresponding day in the next month.”</p>
+                <p>*****</p>
+                <p>“For the purposes of this chapter, the term</p>
+                <p>Section 2(a) of D.C. Law 19-200 added a new paragraph (10A) to read as follows:</p>
+                <p>Section 4(b) of D.C. Law 19-63 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(10A) ‘Month’ means the period that runs from a given day in one month through the date preceding the numerically corresponding day in the next month.”.</p>
+                <p>Section 2(a) of D.C. Law 19-63 added par. (10A) to read as follows:</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 5024 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle J of title V of the act may be cited as the “Health Benefits Plan Members Bill of Rights Amendment Act of 2008”.</p>
               </section>
@@ -406,18 +430,18 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-229.html">D.C. Law 19-229</a> rewrote the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of (b) and (p), see § 2(b) of (D.C. Act 19-502, October 26, 2012,  59 DCR 12757), applicable as of October 22, 2012.</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Health Benefits Plan Grievance Emergency Amendment Act of 2011 (D.C. Act 19-166, October 11, 2011,  58 DCR 8898).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(b) of the Health Benefits Plan Grievance Emergency Amendment Act of 2012 (D.C. Act 19-409, July 24, 2012,  59 DCR 9135).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Health Benefits Plan Grievance Emergency Amendment Act of 2011 (D.C. Act 19-166, October 11, 2011,  58 DCR 8898).</p>
+                <p>For temporary amendment of (b) and (p), see § 2(b) of (D.C. Act 19-502, October 26, 2012,  59 DCR 12757), applicable as of October 22, 2012.</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(b) of D.C. Law 19-63, in subsec. (b), substituted “4 months” for “30 business days”; and rewrote subsec. (p) to read as follows:</p>
-                <p>“(p) The decision of the independent review organization shall be binding on all parties and enforceable by the Director, except to the extent that there are other remedies under District of Columbia or federal law.”.</p>
-                <p>Section 4(b) of D.C. Law 19-63 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(b) of D.C. Law 19-200 amended subsections (b) and (p) to read as follows:</p>
-                <p>“(b) To initiate an external appeal, a member or member representative shall, within 4 months from receipt of the written decision of the formal internal appeal panel, file a written request with the Director. The member or member representative shall submit a signed form allowing the insurer to release medical records of the member that are pertinent to the appeal.</p>
-                <p>*****</p>
-                <p>“(p) The decision of the independent review organization shall be binding on all parties and enforceable by the Director, except to the extent that there are other remedies under District of Columbia or federal law.”</p>
                 <p>Section 4(b) of D.C. Law 19-200 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(p) The decision of the independent review organization shall be binding on all parties and enforceable by the Director, except to the extent that there are other remedies under District of Columbia or federal law.”</p>
+                <p>*****</p>
+                <p>“(b) To initiate an external appeal, a member or member representative shall, within 4 months from receipt of the written decision of the formal internal appeal panel, file a written request with the Director. The member or member representative shall submit a signed form allowing the insurer to release medical records of the member that are pertinent to the appeal.</p>
+                <p>Section 2(b) of D.C. Law 19-200 amended subsections (b) and (p) to read as follows:</p>
+                <p>Section 4(b) of D.C. Law 19-63 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(p) The decision of the independent review organization shall be binding on all parties and enforceable by the Director, except to the extent that there are other remedies under District of Columbia or federal law.”.</p>
+                <p>Section 2(b) of D.C. Law 19-63, in subsec. (b), substituted “4 months” for “30 business days”; and rewrote subsec. (p) to read as follows:</p>
               </section>
             </section>
             <hr/>

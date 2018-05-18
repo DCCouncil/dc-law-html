@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/7-1305.05.html">§ 7–1305.05. Visitors; mail; access to telephones; religious practice; personal possessions; privacy; exercise; diet; medical attention; medication.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-1305.04.html">Report Error</a>
@@ -122,33 +122,33 @@
       (<a class="internal-link" href="/dc/council/laws/2-137.html#§504">Mar. 3, 1979, D.C. Law 2-137, § 504, 25 DCR 5094</a>; <a class="internal-link" href="/dc/council/laws/11-52.html">Sept. 26, 1995, D.C. Law 11-52, § 506(p), 42 DCR 3684</a>; <a class="internal-link" href="/dc/council/laws/16-264.html">Mar. 14, 2007, D.C. Law 16-264, § 301(k), 54 DCR 818</a>; <a class="internal-link" href="/dc/council/laws/17-249.html">Oct. 22, 2008, D.C. Law 17-249, § 5(c), 55 DCR 9206</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 5002(c), 58</a>; <a class="internal-link" href="/dc/council/laws/19-169.html">Sept. 26, 2012, D.C. Law 19-169, § 17(gg), 59 DCR 5567</a>; <a class="internal-link" href="/dc/council/laws/22-93.html#§201(c)(31)">May 5, 2018, D.C. Law 22-93, § 201(c)(31), 65 DCR 2823</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1964.</p>
                 <p>1973 Ed., § 6-1684.</p>
+                <p>1981 Ed., § 6-1964.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-1305.12.html">7-1305.12</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-264.html">D.C. Law 16-264</a>, in subsecs. (b) and (c), substituted “Department on Disability Services” for “Department of Human Services”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-249.html">D.C. Law 17-249</a> rewrote subsec. (a), which had read as follows: “(a) Prior to each customer’s commitment pursuant to § <a class="internal-link" href="/dc/council/code/sections/7-1304.03.html">7-1304.03</a>, the customer shall receive a comprehensive evaluation or screening and an individual habilitation plan. Within 30 days of a customer’s admission pursuant to § <a class="internal-link" href="/dc/council/code/sections/7-1303.02.html">7-1303.02</a>, the customer shall have a comprehensive evaluation or screening and an individual habilitation plan. Annual reevaluations or screenings of the customer shall be provided as determined by the customer’s interdisciplinary team in accordance with Accreditation Council for Services for People with Developmental Disabilities Standards.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> added subsec. (d).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “individual” for “customer” or variants throughout the section; in (c), in the second sentence, substituted “the Council on Quality and Leadership” for “Accreditation Council for Services for the Mentally Retarded and Other Developmentally Disabled Persons” and “staff-individual and professional-individual” for “staff-customer and professional-customer” and substituted “qualified developmental disability professional” for “qualified mental retardation professional” in the last sentence; and substituted “intellectual disability” for “mental retardation” in (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> added subsec. (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-249.html">D.C. Law 17-249</a> rewrote subsec. (a), which had read as follows: “(a) Prior to each customer’s commitment pursuant to § <a class="internal-link" href="/dc/council/code/sections/7-1304.03.html">7-1304.03</a>, the customer shall receive a comprehensive evaluation or screening and an individual habilitation plan. Within 30 days of a customer’s admission pursuant to § <a class="internal-link" href="/dc/council/code/sections/7-1303.02.html">7-1303.02</a>, the customer shall have a comprehensive evaluation or screening and an individual habilitation plan. Annual reevaluations or screenings of the customer shall be provided as determined by the customer’s interdisciplinary team in accordance with Accreditation Council for Services for People with Developmental Disabilities Standards.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-264.html">D.C. Law 16-264</a>, in subsecs. (b) and (c), substituted “Department on Disability Services” for “Department of Human Services”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 505(p) of the Multiyear Budget Spending Reduction and Support Emergency Act of 1994 (D.C. Act 10-389, December 29, 1994,  42 DCR 197).</p>
-                <p>For temporary amendment of section, see § 4(g) of the Human Services Spending Reduction Emergency Amendment Act of 1995 (D.C. Act 11-35, April 11, 1995,  42 DCR 1834) and § 4(g) of the Human Services Spending Reduction Congressional Recess Emergency Amendment Act of 1995 (D.C. Act 11-104, July 21, 1995,  42 DCR 4014).</p>
-                <p>For temporary amendment of section, see § 402(d) of the Omnibus Budget Support Emergency Act of 1995 (D.C. Act 11-44, April 28, 1995,  42 DCR 2217) and § 506(p) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
-                <p>For temporary amendment of section, see § 402(e) of the Omnibus Budget Support Emergency Act of 1995 (D.C. Act 11-44, April 28, 1995,  42 DCR 2217) and § 506(q) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27,  1995,  42 DCR 4160).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Mental Retardation and Developmental Disabilities Emergency Amendment Act of 2005 (D.C. Act 16-190, October 28, 2005,  52 DCR 10021).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Mental Retardation and Development Disabilities Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-262, January 26, 2006,  53 DCR 795).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Developmental Disabilities Emergency Amendment Act of 2006 (D.C. Act 16-480, September 25, 2006,  53 DCR 7940).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Developmental Disabilities Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-566, December 19, 2006,  53 DCR 10272).</p>
-                <p>For temporary (90 day) amendment of section, see § 301(k) of Developmental Disabilities Services Management Reform Emergency Amendment Act of 2006 (D.C. Act 16-672, December 28, 2006,  54 DCR 1155).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Developmental Disabilities Emergency Act of 2007 (D.C. Act 17-161, October 18, 2007,  54 DCR 10932).</p>
-                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Developmental Disabilities Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-245, January 23, 2008,  55 DCR 1230).</p>
                 <p>For temporary (90 day) amendment, see § 5(c) of Health-Care Decisions for Persons with Developmental Disabilities Emergency Act of 2008 (D.C. Act 17-492, August 4, 2008,  55 DCR 9167).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Developmental Disabilities Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-245, January 23, 2008,  55 DCR 1230).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Developmental Disabilities Emergency Act of 2007 (D.C. Act 17-161, October 18, 2007,  54 DCR 10932).</p>
+                <p>For temporary (90 day) amendment of section, see § 301(k) of Developmental Disabilities Services Management Reform Emergency Amendment Act of 2006 (D.C. Act 16-672, December 28, 2006,  54 DCR 1155).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Developmental Disabilities Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-566, December 19, 2006,  53 DCR 10272).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Developmental Disabilities Emergency Amendment Act of 2006 (D.C. Act 16-480, September 25, 2006,  53 DCR 7940).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Mental Retardation and Development Disabilities Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-262, January 26, 2006,  53 DCR 795).</p>
+                <p>For temporary (90 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Mental Retardation and Developmental Disabilities Emergency Amendment Act of 2005 (D.C. Act 16-190, October 28, 2005,  52 DCR 10021).</p>
+                <p>For temporary amendment of section, see § 402(e) of the Omnibus Budget Support Emergency Act of 1995 (D.C. Act 11-44, April 28, 1995,  42 DCR 2217) and § 506(q) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27,  1995,  42 DCR 4160).</p>
+                <p>For temporary amendment of section, see § 402(d) of the Omnibus Budget Support Emergency Act of 1995 (D.C. Act 11-44, April 28, 1995,  42 DCR 2217) and § 506(p) of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
+                <p>For temporary amendment of section, see § 4(g) of the Human Services Spending Reduction Emergency Amendment Act of 1995 (D.C. Act 11-35, April 11, 1995,  42 DCR 1834) and § 4(g) of the Human Services Spending Reduction Congressional Recess Emergency Amendment Act of 1995 (D.C. Act 11-104, July 21, 1995,  42 DCR 4014).</p>
+                <p>For temporary amendment of section, see § 505(p) of the Multiyear Budget Spending Reduction and Support Emergency Act of 1994 (D.C. Act 10-389, December 29, 1994,  42 DCR 197).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 505(p) of Multiyear Budget Spending Reduction and Support Temporary Act of 1995 (<a class="internal-link" href="/dc/council/laws/10-253.html">D.C. Law 10-253</a>, March 23, 1995, law notification  42 DCR 1652).</p>
-                <p>For temporary (225 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Mental Retardation and Developmental Disabilities Temporary Amendment Act of 2005 (D.C. Law 16-46, February 9, 2006, law notification  53 DCR 1454).</p>
-                <p>For temporary (225 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Mental Retardation and Developmental Disabilities Temporary Amendment Act of 2006 (D.C. Law 16-194, March 2, 2007, law notification  54 DCR 2492).</p>
                 <p>For temporary (225 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Mental Retardation and Developmental Disabilities Temporary Amendment Act of 2007 (D.C. Law 17-100, February 2, 2008, law notification  55 DCR 3407).</p>
+                <p>For temporary (225 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Mental Retardation and Developmental Disabilities Temporary Amendment Act of 2006 (D.C. Law 16-194, March 2, 2007, law notification  54 DCR 2492).</p>
+                <p>For temporary (225 day) amendment of section, see § 4(c) of Health-Care Decisions for Persons with Mental Retardation and Developmental Disabilities Temporary Amendment Act of 2005 (D.C. Law 16-46, February 9, 2006, law notification  53 DCR 1454).</p>
+                <p>For temporary (225 day) amendment of section, see § 505(p) of Multiyear Budget Spending Reduction and Support Temporary Act of 1995 (<a class="internal-link" href="/dc/council/laws/10-253.html">D.C. Law 10-253</a>, March 23, 1995, law notification  42 DCR 1652).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
               </section>

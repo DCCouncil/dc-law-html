@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2-705.html">§ 28:2-705. Seller’s stoppage of delivery in transit or otherwise.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2-704.html">Report Error</a>
@@ -102,22 +102,22 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 665, Pub. L. 88-243, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:2-704.</p>
                 <p>1973 Ed., § 28:2-704.</p>
+                <p>1981 Ed., § 28:2-704.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:2-610.html">28:2-610</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Prior Uniform Statutory Provision:</strong> Sections 63(3) and 64(4), Uniform Sales Act.</p>
-                <p><strong>Changes:</strong> Rewritten, the seller’s rights being broadened.</p>
-                <p><strong>Purposes of Changes:</strong> 1. This section gives an aggrieved seller the right at the time of breach to identify to the contract any conforming finished goods, regardless of their resalability, and to use reasonable judgment as to completing unfinished goods. It thus makes the goods available for resale under the resale section, the seller’s primary remedy, and in the special case in which resale is not practicable, allows the action for the price which would then be necessary to give the seller the value of his contract.</p>
-                <p>2. Under this Article the seller is given express power to complete manufacture or procurement of goods for the contract unless the exercise of reasonable commercial judgment as to the facts as they appear at the time he learns of the breach makes it clear that such action will result in a material increase in damages. The burden is on the buyer to show the commercially unreasonable nature of the seller’s action in completing manufacture.</p>
-                <p><strong>Cross References:</strong>Sections 2-703 and  2-706.</p>
-                <p><strong>Definitional Cross References:</strong> “Aggrieved party”.  Section 1-201.</p>
-                <p>“Conforming”.  Section 2-106.</p>
-                <p>“Contract”.  Section 1-201.</p>
-                <p>“Goods”.  Section 2-105.</p>
-                <p>“Rights”.  Section 1-201.</p>
                 <p>“Seller”.  Section 2-103.</p>
+                <p>“Rights”.  Section 1-201.</p>
+                <p>“Goods”.  Section 2-105.</p>
+                <p>“Contract”.  Section 1-201.</p>
+                <p>“Conforming”.  Section 2-106.</p>
+                <p><strong>Definitional Cross References:</strong> “Aggrieved party”.  Section 1-201.</p>
+                <p><strong>Cross References:</strong>Sections 2-703 and  2-706.</p>
+                <p>2. Under this Article the seller is given express power to complete manufacture or procurement of goods for the contract unless the exercise of reasonable commercial judgment as to the facts as they appear at the time he learns of the breach makes it clear that such action will result in a material increase in damages. The burden is on the buyer to show the commercially unreasonable nature of the seller’s action in completing manufacture.</p>
+                <p><strong>Purposes of Changes:</strong> 1. This section gives an aggrieved seller the right at the time of breach to identify to the contract any conforming finished goods, regardless of their resalability, and to use reasonable judgment as to completing unfinished goods. It thus makes the goods available for resale under the resale section, the seller’s primary remedy, and in the special case in which resale is not practicable, allows the action for the price which would then be necessary to give the seller the value of his contract.</p>
+                <p><strong>Changes:</strong> Rewritten, the seller’s rights being broadened.</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> Sections 63(3) and 64(4), Uniform Sales Act.</p>
               </section>
             </section>
           </section>

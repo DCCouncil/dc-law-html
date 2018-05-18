@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/42-3402.04.html">§ 42–3402.04. Conversion fee.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-3402.03.html">Report Error</a>
@@ -120,9 +120,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3402.08.html">42-3402.08</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-179.html">D.C. Law 16-179</a>, designated the existing text of subsec. (d) as subsec. (d)(1); in subsec. (d)(1), substituted “a member of the household’s continued right to remain a tenant as guaranteed by this chapter is exercised” for “he or she is a head of household whose continued right to remain a tenant is required by this chapter”; and added subsec. (d)(2).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-247.html">D.C. Law 17-247</a> rewrote subsec. (d), which had read as follows: “(d) Qualified voter.—(1) A head of household residing in each rental unit of the housing accommodation is qualified to vote unless no member of the household has resided in the accommodation for at least 90 days before the election, or unless a member of the household is or has been an employee of the owner within 120 days prior to the date of application for eligibility, or unless a member of the household’s continued right to remain a tenant as guaranteed by this chapter is exercised. The Mayor shall determine the eligibility of voters prior to the election and shall devise such forms and procedures as may be necessary to verify eligibility under this subsection. (2) An elderly or disabled tenant who delivers a waiver under § <a class="internal-link" href="/dc/council/code/sections/42-3402.08.html">42-3402.08</a>(a)(2)(D) to the Mayor shall be qualified to vote in an election under this section.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-247.html">D.C. Law 17-247</a> rewrote subsec. (d), which had read as follows: “(d) Qualified voter.—(1) A head of household residing in each rental unit of the housing accommodation is qualified to vote unless no member of the household has resided in the accommodation for at least 90 days before the election, or unless a member of the household is or has been an employee of the owner within 120 days prior to the date of application for eligibility, or unless a member of the household’s continued right to remain a tenant as guaranteed by this chapter is exercised. The Mayor shall determine the eligibility of voters prior to the election and shall devise such forms and procedures as may be necessary to verify eligibility under this subsection. (2) An elderly or disabled tenant who delivers a waiver under § <a class="internal-link" href="/dc/council/code/sections/42-3402.08.html">42-3402.08</a>(a)(2)(D) to the Mayor shall be qualified to vote in an election under this section.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-179.html">D.C. Law 16-179</a>, designated the existing text of subsec. (d) as subsec. (d)(1); in subsec. (d)(1), substituted “a member of the household’s continued right to remain a tenant as guaranteed by this chapter is exercised” for “he or she is a head of household whose continued right to remain a tenant is required by this chapter”; and added subsec. (d)(2).</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2 of Tenant-Owner Voting in Conversion Election Clarification Emergency Amendment Act of 2006 (D.C. Act 16-565, December 19, 2006,  53 DCR 10269).</p>
                 <h4>Temporary Legislation</h4>

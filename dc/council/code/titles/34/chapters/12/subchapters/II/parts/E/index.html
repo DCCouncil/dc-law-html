@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/34/chapters/12/subchapters/II/parts/F/">Part F. Required Payments; Insurance and Indemnification.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/34/chapters/12/subchapters/II/parts/E/">Report Error</a>
@@ -89,13 +89,27 @@
         <section class="col8 body">
           <h1>Part E. Transfer or Revocation of Franchise.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/34-1255.01.html">§ 34–1255.01. Approval required for transfer of franchise to a person other than the District.</a>
-            <a href="/dc/council/code/sections/34-1255.02.html">§ 34–1255.02. Procedure for transfer of franchise to a person other than the District.</a>
-            <a href="/dc/council/code/sections/34-1255.03.html">§ 34–1255.03. Mandatory transfer of franchise to the District; general requirement.</a>
-            <a href="/dc/council/code/sections/34-1255.04.html">§ 34–1255.04. Revocation of franchise; mandatory transfer to the District.</a>
-            <a href="/dc/council/code/sections/34-1255.05.html">§ 34–1255.05. Transfer or purchase of franchise after denial of renewal.</a>
-            <a href="/dc/council/code/sections/34-1255.06.html">§ 34–1255.06. Cable operator as trustee.</a>
-            <a href="/dc/council/code/sections/34-1255.07.html">§ 34–1255.07. Arbitration.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-1255.01.html">§ 34–1255.01. Approval required for transfer of franchise to a person other than the District.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-1255.02.html">§ 34–1255.02. Procedure for transfer of franchise to a person other than the District.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-1255.03.html">§ 34–1255.03. Mandatory transfer of franchise to the District; general requirement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-1255.04.html">§ 34–1255.04. Revocation of franchise; mandatory transfer to the District.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-1255.05.html">§ 34–1255.05. Transfer or purchase of franchise after denial of renewal.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-1255.06.html">§ 34–1255.06. Cable operator as trustee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-1255.07.html">§ 34–1255.07. Arbitration.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -156,11 +170,11 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see § 2 of Washington Nationals on T.V. Emergency Amendment Act of 2006 (D.C. Act 16-388, May 23, 2006,  53 DCR 4426).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 16-158 provided as follows: “Sec. 503a. Baseball programming.</p>
-                <p>“(a) The Council finds that it is in the public interest that all of the baseball games of Baseball Expos, LP, trading as the Washington Nationals, be broadcast.</p>
-                <p>“(b) The Council directs that each cable operator broadcast all of the baseball games of Baseball Expos, LP, trading as the Washington Nationals, or any assignee or successor (‘Washington Nationals’).</p>
-                <p>“(c) If a cable operator is not broadcasting all of the baseball games of the Washington Nationals as of the effective date of this section, the cable operator shall enter into good faith negotiations with the District within 5 days to modify its franchise agreement to comply with subsection (b) of this section.”</p>
                 <p>Section 4(b) of D.C. Law 16-158 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(c) If a cable operator is not broadcasting all of the baseball games of the Washington Nationals as of the effective date of this section, the cable operator shall enter into good faith negotiations with the District within 5 days to modify its franchise agreement to comply with subsection (b) of this section.”</p>
+                <p>“(b) The Council directs that each cable operator broadcast all of the baseball games of Baseball Expos, LP, trading as the Washington Nationals, or any assignee or successor (‘Washington Nationals’).</p>
+                <p>“(a) The Council finds that it is in the public interest that all of the baseball games of Baseball Expos, LP, trading as the Washington Nationals, be broadcast.</p>
+                <p>Section 2 of D.C. Law 16-158 provided as follows: “Sec. 503a. Baseball programming.</p>
               </section>
             </section>
             <hr/>

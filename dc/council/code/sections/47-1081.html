@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1082.html">§ 47–1082. The Studio Theatre housing.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1081.html">Report Error</a>
@@ -103,11 +103,11 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see § 2(b) of KIPP DC — Douglass Property Tax Exemption Emergency Act of 2009 (D.C. Act 18-42, April 24, 2009,  56 DCR 3564).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(b) of D.C. Law 18-28 added § <a class="internal-link" href="/dc/council/code/sections/47-1081.html">47-1081</a> to read as follows:</p>
-                <p>“§ <a class="internal-link" href="/dc/council/code/sections/47-1081.html">47-1081</a>. KIPP DC—Douglass Property; Lot 950, Square 5872.</p>
-                <p>“(a) The real property located at 2600-2620 Douglas Road, S.E., and described as Lot 950, Square 5872, shall be exempt from real property and possessory interest taxation so long as the real property continues to be owned or ground leased by KIPP DC or KIPP DC—Douglass QALICB, Inc.</p>
-                <p>“(b) Any transfer, assignment, or other disposition of all or any portion of the real property, including an assignment of a leasehold interest in the real property or a sublease of the real property, between KIPP DC and KIPP DC—Douglass QALICB, Inc., shall be exempt from recordation taxation pursuant to Chapter 11 of Title 42 and transfer taxation pursuant to Chapter 9 of this title.”</p>
                 <p>Section 4(b) of D.C. Law 18-28 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(b) Any transfer, assignment, or other disposition of all or any portion of the real property, including an assignment of a leasehold interest in the real property or a sublease of the real property, between KIPP DC and KIPP DC—Douglass QALICB, Inc., shall be exempt from recordation taxation pursuant to Chapter 11 of Title 42 and transfer taxation pursuant to Chapter 9 of this title.”</p>
+                <p>“(a) The real property located at 2600-2620 Douglas Road, S.E., and described as Lot 950, Square 5872, shall be exempt from real property and possessory interest taxation so long as the real property continues to be owned or ground leased by KIPP DC or KIPP DC—Douglass QALICB, Inc.</p>
+                <p>“§ <a class="internal-link" href="/dc/council/code/sections/47-1081.html">47-1081</a>. KIPP DC—Douglass Property; Lot 950, Square 5872.</p>
+                <p>Section 2(b) of D.C. Law 18-28 added § <a class="internal-link" href="/dc/council/code/sections/47-1081.html">47-1081</a> to read as follows:</p>
               </section>
             </section>
           </section>

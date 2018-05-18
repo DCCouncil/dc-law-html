@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1098.html">§ 47–1098. New Bethany Baptist Church; Lots 31, 32, and 806, Square 339; and Lots 23, 71, 72, 811, and 812, Square 367. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1097.html">Report Error</a>
@@ -98,8 +98,8 @@
       (<a class="internal-link" href="/dc/council/laws/21-30.html">Oct. 21, 2015, D.C. Law 21-30, § 2(b), 62 DCR 10890</a>.)
     </p>
                 <h4>Editor's Notes</h4>
-                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/21-30.html">D.C. Law 21-30</a> provided that all real property taxes, interest, penalties, fees, and other related charges assessed against the real property located at 330 Pennsylvania A venue, S.E., described as Lot 800, Square 789 for the period beginning October 1, 2013 (tax year 2014) through the end of the month following October 21, 2015, shall be forgiven and that any payments made shall be refunded to the person who made the payments.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-30.html">D.C. Law 21-30</a>: Section 4 of <a class="internal-link" href="/dc/council/laws/21-30.html">D.C. Law 21-30</a> provided (a) that the act shall apply upon the date of inclusion of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register; and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
+                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/21-30.html">D.C. Law 21-30</a> provided that all real property taxes, interest, penalties, fees, and other related charges assessed against the real property located at 330 Pennsylvania A venue, S.E., described as Lot 800, Square 789 for the period beginning October 1, 2013 (tax year 2014) through the end of the month following October 21, 2015, shall be forgiven and that any payments made shall be refunded to the person who made the payments.</p>
               </section>
             </section>
           </section>

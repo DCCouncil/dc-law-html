@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/38-651.04.html">§ 38–651.04. Medication administration training program.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-651.03.html">Report Error</a>
@@ -119,33 +119,33 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2016 amendment by <a class="internal-link" href="/dc/council/laws/21-77.html">D.C. Law 21-77</a> would have added “or, if the student is 18 years of age or older, another adult suitable to serve as an emergency contact” in (a)(1)(B).</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-77.html">D.C. Law 21-77</a>: <a class="internal-link" href="/dc/council/laws/21-77.html#§4">§ 4 of D.C. Law 21-77</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-77.html#§2(b)">§ 2(b) of D.C. Law 21-77</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7002">Section 7002 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/21-77.html#§4">section 4 of D.C. Law 21-77</a>. Therefore the changes made to this section by D.C. Law 21-177 have been given effect.
         </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-77.html">D.C. Law 21-77</a>: <a class="internal-link" href="/dc/council/laws/21-77.html#§4">§ 4 of D.C. Law 21-77</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-77.html#§2(b)">§ 2(b) of D.C. Law 21-77</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see § 4 of Student Access to Treatment Emergency Amendment Act of 2007 (D.C. Act 17-82, July 26, 2007, 54 DCR 7999).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 4 of Law 17-52 added a section to read as follows:</p>
-                <p>“Sec. 4. Medication action plan.</p>
-                <p>“(a) No student shall possess or self-administer medication at the school in which the student is currently enrolled, at school-sponsored activities, or while on school-sponsored transportation, unless the school has a valid medication action plan for that student.</p>
-                <p>“(b) A valid medication action plan shall include:</p>
-                <p>“(1) Written medical authorization, signed by the student’s health practitioner, that states:</p>
-                <p>“(A) The name of the student;</p>
-                <p>“(B) Emergency contact information for the responsible person;</p>
-                <p>“(C) Contact information for the health practitioner;</p>
-                <p>“(D) The name, purpose, and prescribed dosage of the medication;</p>
-                <p>“(E) The frequency that the medication is to be administered;</p>
-                <p>“(F) The possible side effects of the medication;</p>
-                <p>“(G) Special instructions or emergency procedures; and</p>
-                <p>“(H) In the case of self-administered medication, confirmation that the student has been instructed in the proper technique for self-administration of the medication and has demonstrated the ability to self-administer the medication effectively;</p>
-                <p>“(2) Written authorization, signed by the responsible person, that states:</p>
-                <p>“(A) A trained school employee may administer medication to the student in accordance with rules established by the Mayor; or</p>
-                <p>“(B) In the case of self-administration, the student may possess and self-administer the medication at the school in which the student is currently enrolled, at school-sponsored activities, and while on school-sponsored transportation; and</p>
-                <p>“(3) Written acknowledgment that the school and its employees shall incur no liability and that the responsible person shall indemnify and hold harmless the school and its employees against any claims that may arise relating to the administration, general supervision, training, administration, or self-administration of the authorized medication.</p>
-                <p>“(c) Within 30 days of any changes in the student’s health that affect the medication action plan, the responsible person shall revise the medication action plan and submit the amended plan to the school.</p>
-                <p>“(d) The medication action plan shall be updated at least annually, in accordance with a schedule determined by the Mayor.</p>
-                <p>“(e) A school may deny a medication action plan, pursuant to terms established by the Mayor.”</p>
                 <p>Section 11(b) of D.C. Law 17-52 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(e) A school may deny a medication action plan, pursuant to terms established by the Mayor.”</p>
+                <p>“(d) The medication action plan shall be updated at least annually, in accordance with a schedule determined by the Mayor.</p>
+                <p>“(c) Within 30 days of any changes in the student’s health that affect the medication action plan, the responsible person shall revise the medication action plan and submit the amended plan to the school.</p>
+                <p>“(3) Written acknowledgment that the school and its employees shall incur no liability and that the responsible person shall indemnify and hold harmless the school and its employees against any claims that may arise relating to the administration, general supervision, training, administration, or self-administration of the authorized medication.</p>
+                <p>“(B) In the case of self-administration, the student may possess and self-administer the medication at the school in which the student is currently enrolled, at school-sponsored activities, and while on school-sponsored transportation; and</p>
+                <p>“(A) A trained school employee may administer medication to the student in accordance with rules established by the Mayor; or</p>
+                <p>“(2) Written authorization, signed by the responsible person, that states:</p>
+                <p>“(H) In the case of self-administered medication, confirmation that the student has been instructed in the proper technique for self-administration of the medication and has demonstrated the ability to self-administer the medication effectively;</p>
+                <p>“(G) Special instructions or emergency procedures; and</p>
+                <p>“(F) The possible side effects of the medication;</p>
+                <p>“(E) The frequency that the medication is to be administered;</p>
+                <p>“(D) The name, purpose, and prescribed dosage of the medication;</p>
+                <p>“(C) Contact information for the health practitioner;</p>
+                <p>“(B) Emergency contact information for the responsible person;</p>
+                <p>“(A) The name of the student;</p>
+                <p>“(1) Written medical authorization, signed by the student’s health practitioner, that states:</p>
+                <p>“(b) A valid medication action plan shall include:</p>
+                <p>“(a) No student shall possess or self-administer medication at the school in which the student is currently enrolled, at school-sponsored activities, or while on school-sponsored transportation, unless the school has a valid medication action plan for that student.</p>
+                <p>“Sec. 4. Medication action plan.</p>
+                <p>Section 4 of Law 17-52 added a section to read as follows:</p>
               </section>
             </section>
           </section>

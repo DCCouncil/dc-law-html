@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:1-306.html">§ 28:1-306. Waiver or renunciation of claim or right after breach.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:1-305.html">Report Error</a>
@@ -100,17 +100,17 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 637, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/19-299.html">Apr. 27, 2013, D.C. Law 19-299, § 2, 60 DCR 2634</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/28:1-106.html">28:1-106</a>.</p>
-                <p>1981 Ed., § 28:1-106.</p>
                 <p>1973 Ed., § 28:1-106.</p>
+                <p>1981 Ed., § 28:1-106.</p>
+                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/28:1-106.html">28:1-106</a>.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § 28:2A-501.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Source:</strong> Former  Section 1-106.</p>
-                <p><strong>Changes from former law:</strong> Other than changes in the form of reference to the Uniform Commercial Code, this section is identical to former  Section 1-106.</p>
-                <p>1. Subsection (a) is intended to effect three propositions. The first is to negate the possibility of unduly narrow or technical interpretation of remedial provisions by providing that the remedies in the Uniform Commercial Code are to be liberally administered to the end stated in this section. The second is to make it clear that compensatory damages are limited to compensation. They do not include consequential or special damages, or penal damages; and the Uniform Commercial Code elsewhere makes it clear that damages must be minimized. Cf.  Sections 1-304,  2-706(1), and  2-712(2). The third purpose of subsection (a) is to reject any doctrine that damages must be calculable with mathematical accuracy. Compensatory damages are often at best approximate: they have to be proved with whatever definiteness and accuracy the facts permit, but no more. Cf.  Section 2-204(3).</p>
-                <p>2. Under subsection (b), any right or obligation described in the Uniform Commercial Code is enforceable by action, even though no remedy may be expressly provided, unless a particular provision specifies a different and limited effect. Whether specific performance or other equitable relief is available is determined not by this section but by specific provisions and by supplementary principles. Cf.  Sections 1-103,  2-716.</p>
                 <p>3. “Consequential” or “special” damages and “penal” damages are not defined in the Uniform Commercial Code; rather, these terms are used in the sense in which they are used outside the Uniform Commercial Code.</p>
+                <p>2. Under subsection (b), any right or obligation described in the Uniform Commercial Code is enforceable by action, even though no remedy may be expressly provided, unless a particular provision specifies a different and limited effect. Whether specific performance or other equitable relief is available is determined not by this section but by specific provisions and by supplementary principles. Cf.  Sections 1-103,  2-716.</p>
+                <p>1. Subsection (a) is intended to effect three propositions. The first is to negate the possibility of unduly narrow or technical interpretation of remedial provisions by providing that the remedies in the Uniform Commercial Code are to be liberally administered to the end stated in this section. The second is to make it clear that compensatory damages are limited to compensation. They do not include consequential or special damages, or penal damages; and the Uniform Commercial Code elsewhere makes it clear that damages must be minimized. Cf.  Sections 1-304,  2-706(1), and  2-712(2). The third purpose of subsection (a) is to reject any doctrine that damages must be calculable with mathematical accuracy. Compensatory damages are often at best approximate: they have to be proved with whatever definiteness and accuracy the facts permit, but no more. Cf.  Section 2-204(3).</p>
+                <p><strong>Changes from former law:</strong> Other than changes in the form of reference to the Uniform Commercial Code, this section is identical to former  Section 1-106.</p>
+                <p><strong>Source:</strong> Former  Section 1-106.</p>
               </section>
             </section>
           </section>

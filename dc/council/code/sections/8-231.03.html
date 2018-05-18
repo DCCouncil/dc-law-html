@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/8-231.04.html">§ 8–231.04. Disclosure and risk reduction requirements.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-231.03.html">Report Error</a>
@@ -121,8 +121,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-231.10.html">8-231.10</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>D.C. Law 18- 348, in subsec. (b), substituted “shall take” for “shall, in his or her discretion” and substituted “1978,” for “March 1, 1978,”; in subsec. (c), substituted “and may order the property owner to perform any action considered necessary by the Mayor to protect the health and safety of the occupants of the property, including relocation in accordance with subsection (d)(1)(D) of this section” for “and order the property owner to perform those measures required to eliminate the lead-based paint hazards and underlying conditions, and any other action considered necessary by the Mayor to protect the health and safety of the occupants of the property”; and, in subsec. (d)(2)(A), substituted “examination and a reasonable amount of time has passed to allow the tenant to return to the dwelling unit” for “examination”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> made a technical correction to <a class="internal-link" href="/dc/council/laws/18-348.html">D.C. Law 18-348</a> which did not affect this section as codified.</p>
+                <p>D.C. Law 18- 348, in subsec. (b), substituted “shall take” for “shall, in his or her discretion” and substituted “1978,” for “March 1, 1978,”; in subsec. (c), substituted “and may order the property owner to perform any action considered necessary by the Mayor to protect the health and safety of the occupants of the property, including relocation in accordance with subsection (d)(1)(D) of this section” for “and order the property owner to perform those measures required to eliminate the lead-based paint hazards and underlying conditions, and any other action considered necessary by the Mayor to protect the health and safety of the occupants of the property”; and, in subsec. (d)(2)(A), substituted “examination and a reasonable amount of time has passed to allow the tenant to return to the dwelling unit” for “examination”.</p>
               </section>
             </section>
           </section>

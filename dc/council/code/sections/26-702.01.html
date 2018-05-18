@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/26-703.html">§ 26–703. Exceptions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/26-702.01.html">Report Error</a>
@@ -133,26 +133,26 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-704.html">26-704</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in the section heading, substituted “duties” for “Establishment of the Office of Banking and Financial Institutions; Superintendent”; and repealed subsec. (a) which had read as follows:</p>
-                <p>“(a)(1) The Office of Banking and Financial Institutions is established and shall be under the direction of the Superintendent of Banking and Financial Institutions.</p>
-                <p>“(2) The Mayor shall appoint the Superintendent, with the advice and consent of the Council, for a term of 4 years, except that the first term of the Superintendent shall terminate on January 1, 1987.</p>
-                <p>“(3) No person shall exercise the duties of the Superintendent in an acting capacity for more than 120 days.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in the section heading, validated a previously made technical correction.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-59.html">D.C. Law 17-59</a>, in subsec. (b), deleted “; and” from the end of par. (20), substituted “; and” for a period at the end of par. (21), and added par. (22).</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-59.html">D.C. Law 17-59</a>, in subsec. (b), deleted “; and” from the end of par. (20), substituted “; and” for a period at the end of par. (21), and added par. (22).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in the section heading, validated a previously made technical correction.</p>
+                <p>“(3) No person shall exercise the duties of the Superintendent in an acting capacity for more than 120 days.”</p>
+                <p>“(2) The Mayor shall appoint the Superintendent, with the advice and consent of the Council, for a term of 4 years, except that the first term of the Superintendent shall terminate on January 1, 1987.</p>
+                <p>“(a)(1) The Office of Banking and Financial Institutions is established and shall be under the direction of the Superintendent of Banking and Financial Institutions.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in the section heading, substituted “duties” for “Establishment of the Office of Banking and Financial Institutions; Superintendent”; and repealed subsec. (a) which had read as follows:</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 3(a) of Bank Charter Modernization Emergency Amendment Act of 2007 (D.C. Act 17-66, July 9, 2007,  54 DCR 6819).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 3(a) of D.C. Law 17-31, in subsec. (b)(20), substituted a semicolon for “; and” at the end of the paragraph; in subsec. (b)(21), substituted “; and” for a period at the end of the paragraph; and added subsec. (b)(22) to read as follows:</p>
-                <p>“(22) Submit an annual report to the Council of all actions that the Commissioner takes pursuant to this section.”</p>
                 <p>Section 5(b) of D.C. Law 17-31 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(22) Submit an annual report to the Council of all actions that the Commissioner takes pursuant to this section.”</p>
+                <p>Section 3(a) of D.C. Law 17-31, in subsec. (b)(20), substituted a semicolon for “; and” at the end of the paragraph; in subsec. (b)(21), substituted “; and” for a period at the end of the paragraph; and added subsec. (b)(22) to read as follows:</p>
                 <h4>Transfer of Functions</h4>
                 <p>Pursuant to Reorganization Plan No. 3 of 1992, effective January 20, 1993, unless another date was designated by the Mayor under sec V of the Plan, the D.C. Office of Banking and Financial Institutions (“OBFI”) is hereby transferred from the Deputy Mayor for Economic Development (“DMED”) control center to a separate OBFI control center/responsibility center. OBFI will continue to be administered by the Superintendent and will remain a part of the economic development cluster reporting to the Mayor.</p>
                 <h4>References in Text</h4>
                 <p>The “Federal Home Loan Bank Board”, referred to in subsections (b)(8) and (d)(2), has been abolished. For provisions relating to the abolition of the Federal Home Loan Bank Board and the transfer of functions, personnel and property of that agency, see §§ 401 to 406 of Pub. L. 101-73, set out as a note under  12 U.S.C. § 1437.</p>
                 <h4>Editor's Notes</h4>
-                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/11-142.html">D.C. Law 11-142</a> as subchapter II of Chapter 8 subchapter II of Chapter 7, 2001 Ed., and designation of the preexisting text as subchapter I, “subchapter” has been substituted for “chapter” in (b)(1), (10), (11), (14), (15), and (18) through (21), (b-1) and (c).</p>
                 <p>Fees credited to the Office of Banking and Financial Institutions Enterprise Fund: Section 1804(2) of D.C. Law 12-60 provided that all fees received pursuant to § 26-802.1(b)(13) 1981 Ed. shall be credited to the Office of Banking and Financial Institutions Enterprise Fund.</p>
+                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/11-142.html">D.C. Law 11-142</a> as subchapter II of Chapter 8 subchapter II of Chapter 7, 2001 Ed., and designation of the preexisting text as subchapter I, “subchapter” has been substituted for “chapter” in (b)(1), (10), (11), (14), (15), and (18) through (21), (b-1) and (c).</p>
               </section>
             </section>
           </section>

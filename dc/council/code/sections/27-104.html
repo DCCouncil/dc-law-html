@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/27-105.html">§ 27–105. Jurisdiction.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/27-104.html">Report Error</a>
@@ -107,12 +107,12 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 3-444.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of chapter, see §§ 2-7 of the Merchant’s Civil Recovery for Criminal Conduct Emergency Act of 1991 (D.C. Act 9-110, November 25, 1991,  38 DCR 7304).</p>
                 <p>For temporary addition of chapter, see §§ 2-7 of the Merchant’s Civil Recovery for Criminal Conduct Congressional Recess Emergency Act of 1992 (D.C. Act 9-155, February 21, 1992,  39 DCR 1354).</p>
+                <p>For temporary addition of chapter, see §§ 2-7 of the Merchant’s Civil Recovery for Criminal Conduct Emergency Act of 1991 (D.C. Act 9-110, November 25, 1991,  38 DCR 7304).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For <a class="internal-link" href="/dc/council/laws/9-97.html">D.C. Law 9-97</a>, see note to § <a class="internal-link" href="/dc/council/code/sections/27-101.html">27-101</a>.</p>
-                <p>Section 4(c) of <a class="internal-link" href="/dc/council/laws/9-132.html">D.C. Law 9-132</a> added (b)(4).</p>
                 <p>Section 5(b) of <a class="internal-link" href="/dc/council/laws/9-132.html">D.C. Law 9-132</a> provided that the act shall expire on the 225th day of its having taken effect.</p>
+                <p>Section 4(c) of <a class="internal-link" href="/dc/council/laws/9-132.html">D.C. Law 9-132</a> added (b)(4).</p>
+                <p>For <a class="internal-link" href="/dc/council/laws/9-97.html">D.C. Law 9-97</a>, see note to § <a class="internal-link" href="/dc/council/code/sections/27-101.html">27-101</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/20-34.html">D.C. Law 20-34</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 1 as subchapter I, “subchapter” has been substituted for “chapter”, where applicable, in this section.</p>
               </section>

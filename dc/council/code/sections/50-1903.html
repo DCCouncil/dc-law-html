@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/50-1904.html">§ 50–1904. Availability of chemical test results.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/50-1903.html">Report Error</a>
@@ -104,17 +104,17 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-519.html#§3">Oct. 21, 1972, 86 Stat. 1017, Pub. L. 92-519, § 3</a>; <a class="internal-link" href="/dc/council/laws/4-145.html">Sept. 14, 1982, D.C. Law 4-145, § 4(c), (f), 29 DCR 3138</a>; <a class="internal-link" href="/dc/council/laws/19-266.html">Apr. 27, 2013, D.C. Law 19-266, § 101(c)(3), 59 DCR 12957</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-503.</p>
                 <p>1973 Ed., § 40-1003.</p>
+                <p>1981 Ed., § 40-503.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-1904.02.html">50-1904.02</a> and § <a class="internal-link" href="/dc/council/code/sections/50-1910.html">50-1910</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-266.html">D.C. Law 19-266</a> rewrote this section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 101(c)(3) of Comprehensive Impaired Driving and Alcohol Testing Program Emergency Amendment Act of 2012 (D.C. Act 19-429, July 30, 2012,  59 DCR 9387).</p>
-                <p>For temporary amendment of section, see § 101(c)(3) of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-508, October 26, 2012, 59 DCR 12774).</p>
-                <p>For temporary (90 days) amendment of this section, see § 101(c)(3) of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Act of 2013 (D.C. Act 20-3, January 29, 2013,  60 DCR 2762, 20 DCSTAT 410).</p>
                 <p>For temporary (90 days) amendment of this section, see § 101(c)(3) of the Comprehensive Impaired Driving and Alcohol Testing Program Second Congressional Review Emergency Act of 2013 (D.C. Act 20-51, April 17, 2013,  60 DCR 6344, 20 DCSTAT 1360).</p>
+                <p>For temporary (90 days) amendment of this section, see § 101(c)(3) of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Act of 2013 (D.C. Act 20-3, January 29, 2013,  60 DCR 2762, 20 DCSTAT 410).</p>
+                <p>For temporary amendment of section, see § 101(c)(3) of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-508, October 26, 2012, 59 DCR 12774).</p>
+                <p>For temporary (90 day) amendment of section, see § 101(c)(3) of Comprehensive Impaired Driving and Alcohol Testing Program Emergency Amendment Act of 2012 (D.C. Act 19-429, July 30, 2012,  59 DCR 9387).</p>
               </section>
             </section>
           </section>

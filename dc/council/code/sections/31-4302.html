@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/31-4303.html">§ 31–4303. Disposition of excess in fees, charges, or taxes.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-4302.html">Report Error</a>
@@ -101,13 +101,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/73-2-ch672.html#§2">June 19, 1934, 48 Stat. 1130, ch. 672, ch. II, § 2</a>; <a class="internal-link" href="/dc/council/laws/3-52.html">Feb. 23, 1980, D.C. Law 3-52, § 2, 27 DCR 26</a>; <a class="internal-link" href="/dc/council/laws/10-128.html">June 14, 1994, D.C. Law 10-128, § 401, 41 DCR 2096</a>; <a class="internal-link" href="/dc/council/laws/11-90.html">Feb. 27, 1996, D.C. Law 11-90, § 10, 42 DCR 7155</a>; <a class="internal-link" href="/dc/council/laws/11-268.html">May 21, 1997, D.C. Law 11-268, § 10(i), 44 DCR 1730</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-402.</p>
                 <p>1973 Ed., § 35-402.</p>
+                <p>1981 Ed., § 35-402.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-3503.html">31-3503</a>.</p>
                 <h4>Cross References</h4>
-                <p>Hospital and medical services corporations, applicability of this section, see § <a class="internal-link" href="/dc/council/code/sections/31-3503.html">31-3503</a>.</p>
                 <p>Taxation and fiscal affairs of insurance companies, see § <a class="internal-link" href="/dc/council/code/sections/47-2601.html">47-2601</a> et</p>
+                <p>Hospital and medical services corporations, applicability of this section, see § <a class="internal-link" href="/dc/council/code/sections/31-3503.html">31-3503</a>.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 11 of the Insurance Omnibus Emergency Amendment Act of 1995 (D.C. Act 11-48, May 15, 1995,  42 DCR 2544) and § 10 of the Insurance Omnibus Congressional Recess Emergency Amendment Act of 1995 (D.C. Act 11-97, July 19, 1995,  42 DCR 3844).</p>
                 <h4>Temporary Legislation</h4>

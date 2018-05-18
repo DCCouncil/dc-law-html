@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1217.12.html">§ 2–1217.12. DC Ballpark TIF Area.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1217.11.html">Report Error</a>
@@ -102,8 +102,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-2293.11.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of §§ 1-2293.1 to 1-2293.11 1981 Ed. see note to § 2-1217.01.</p>
                 <p>For temporary (90 days) repeal of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7202(d)">§ 7202(d) of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary addition of §§ 1-2293.1 to 1-2293.11 1981 Ed. see note to § 2-1217.01.</p>
                 <h4>Editor's Notes</h4>
                 <p>Transfer of powers, duties, and responsibilities from Chief Financial Officer of the District: Section 30(e)(1) of <a class="internal-link" href="/dc/council/laws/12-144.html">D.C. Law 12-144</a> provided that the provisions of this subchapter shall continue in full force and effect provided that the Board of Directors of the National Capital Revitalization Corporation shall exercise all functions of the Chief Financial Officer of the District except the duties under § 1-2293.5 and after the date of notice from the Board to the Chief Financial Officer that the Board is ready to assume such functions.</p>
               </section>

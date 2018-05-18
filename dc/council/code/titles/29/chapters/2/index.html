@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/29/chapters/3/">Chapter 3. Business Corporations.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29/chapters/2/">Report Error</a>
@@ -87,16 +87,26 @@
         <section class="col8 body">
           <h1>Chapter 2. Entity Transactions.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/29/chapters/2/subchapters/I/">Subchapter I. General Provisions.</a>
-            <p>§§ 29-201.01 - 29-201.09</p>
-            <a href="/dc/council/code/titles/29/chapters/2/subchapters/II/">Subchapter II. Merger.</a>
-            <p>§§ 29-202.01 - 29-202.06</p>
-            <a href="/dc/council/code/titles/29/chapters/2/subchapters/III/">Subchapter III. Interest Exchange.</a>
-            <p>§§ 29-203.01 - 29-203.06</p>
-            <a href="/dc/council/code/titles/29/chapters/2/subchapters/IV/">Subchapter IV. Conversion.</a>
-            <p>§§ 29-204.01 - 29-204.06</p>
-            <a href="/dc/council/code/titles/29/chapters/2/subchapters/V/">Subchapter V. Domestication.</a>
-            <p>§§ 29-205.01 - 29-205.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/2/subchapters/I/">Subchapter I. General Provisions.</a>
+            </p>
+            <p>§§ 29-201.01 – 29-201.09</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/2/subchapters/II/">Subchapter II. Merger.</a>
+            </p>
+            <p>§§ 29-202.01 – 29-202.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/2/subchapters/III/">Subchapter III. Interest Exchange.</a>
+            </p>
+            <p>§§ 29-203.01 – 29-203.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/2/subchapters/IV/">Subchapter IV. Conversion.</a>
+            </p>
+            <p>§§ 29-204.01 – 29-204.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/29/chapters/2/subchapters/V/">Subchapter V. Domestication.</a>
+            </p>
+            <p>§§ 29-205.01 – 29-205.06</p>
           </section>
           <section class="content">
             <hr/>
@@ -335,8 +345,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “formation” for “organization” in (a)(1), (a)(2), and (a)(7); substituted “money” for “cash” in (a)(3) and substituted “record” for “document” in (a)(4) and (a)(5).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 2(b)(4)(B) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> purported to amend § <a class="internal-link" href="/dc/council/code/sections/29-202.02.html">29-202.02</a>(c). Because this section does not have a subsection (c), the amendment could not be implemented.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Section 2(b)(4)(B) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> purported to amend § <a class="internal-link" href="/dc/council/code/sections/29-202.02.html">29-202.02</a>(c). Because this section does not have a subsection (c), the amendment could not be implemented.</p>
               </section>
             </section>
             <hr/>

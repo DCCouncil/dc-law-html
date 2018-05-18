@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/34-2405.04.html">§ 34–2405.04. Water main and service sewer assessments payable in three installments.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/34-2405.03.html">Report Error</a>
@@ -99,8 +99,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/58-2-ch1417.html#§3">Apr. 22, 1904, 33 Stat. 245, ch. 1417, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-1514.</p>
                 <p>1973 Ed., § 43-1512.</p>
+                <p>1981 Ed., § 43-1514.</p>
                 <h4>Editor's Notes</h4>
                 <p>Office of Assessor abolished: The Office of the Assessor was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. All functions of the Office of the Assessor including the functions of all officers, employees and subordinate agencies were transferred to the Department of General Administration by Reorganization Order No. 3 of the Board of Commissioners, dated August 28, 1952. Reorganization Order No. 20, dated November 10, 1952, abolished the Office of the Assessor and transferred the functions to the Finance Office in the Department of General Administration. The same order provided that an Office of the Assessor would be created in the Finance Office. Reorganization Order No. 20 was superseded and replaced by Organization Order No. 121, dated December 12, 1957, provided that the Finance Office (consisting of the Office of the Finance Officers, Property Tax Division, Revenue Division, Treasury Division, Accounting Division, and Data Processing Division) shall continue under the direction and control of the Director of General Administration, and prescribed the functions thereof. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967. Organization Order No. 121 was revoked by Organization Order No. 3, dated December 13, 1967, Part IVC of which prescribed the functions of the Finance Office within a newly established Department of General Administration. Functions of the Finance Office as stated in Part IVC of Organization Order No. 3 were transferred to the Director of the Department of Finance and Revenue by Commissioner’s Order No. 69-96, dated March 7, 1969. Functions pertaining to centralized accounting as set forth in Commissioner’s Order No. 69-96 were transferred to the Director of the Office of Budget and Financial Management by Organization Order No. 30, dated April 5, 1972. The Office of Budget and Financial Management was replaced by Organization Order 50, dated December 31, 1974, which Order established the Office of Budget and Management Systems. The Office of Budget and Management Systems was replaced by Mayor’s Order 79-5, dated January 2, 1979, which Order established the Office of Budget and Resource Development.</p>
               </section>

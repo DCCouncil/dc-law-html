@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/42-3405.04.html">§ 42–3405.04. Notice of rejection.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-3405.03b.html">Report Error</a>
@@ -104,14 +104,14 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-15.html">D.C. Law 16-15</a>, in the section heading, inserted “; standard of review”; designated the existing text as subsec. (a); and added subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 3(q) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1994 (D.C. Act 10-285, July 8, 1994,  41 DCR 4904).</p>
                 <p>For temporary addition of section, see § 3(q) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1995 (D.C. Act 11-47, May 4, 1995,  42 DCR 2410) and § 3(q) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Congressional Recess Emergency Act of 1995 (D.C. Act 11-96, July 19, 1995,  42 DCR 3837).</p>
+                <p>For temporary addition of section, see § 3(q) of the Rental Housing Conversion and Sale Act of 1980 Reenactment and Amendment Emergency Act of 1994 (D.C. Act 10-285, July 8, 1994,  41 DCR 4904).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition, see § 3(p) of Rental Housing Conversion and Sale Act of 1980 Temporary Extension Amendment Act of 1994 (D.C. Law 10-176, September 22, 1994, law notification  41 DCR 6076).</p>
                 <h4>Editor's Notes</h4>
-                <p>Reenactment of <a class="internal-link" href="/dc/council/code/titles/42/chapters/34/">D.C. Law 3-86</a>: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3401.01.html">42-3401.01</a>.</p>
-                <p>Addition of § 45-1653.2 by Law 10-144: Section 2(q) of <a class="internal-link" href="/dc/council/laws/10-144.html">D.C. Law 10-144</a> purported to add a § 503b to <a class="internal-link" href="/dc/council/code/titles/42/chapters/34/">D.C. Law 3-86</a> to be codified as § <a class="internal-link" href="/dc/council/code/sections/42-3405.03b.html">42-3405.03b</a> which read:</p>
                 <p>“The rights provided under §§ 45-1653 and 45-1653.1 are in the alternative. The party bringing the action may choose the forum and need not exhaust administrative remedies in order to bring an action under § 45-1653. Unless all parties to the action agree otherwise, once an action has been brought in 1 forum, an action based on the same or a substantially similar cause of action may not be brought in any other forum.”</p>
+                <p>Addition of § 45-1653.2 by Law 10-144: Section 2(q) of <a class="internal-link" href="/dc/council/laws/10-144.html">D.C. Law 10-144</a> purported to add a § 503b to <a class="internal-link" href="/dc/council/code/titles/42/chapters/34/">D.C. Law 3-86</a> to be codified as § <a class="internal-link" href="/dc/council/code/sections/42-3405.03b.html">42-3405.03b</a> which read:</p>
+                <p>Reenactment of <a class="internal-link" href="/dc/council/code/titles/42/chapters/34/">D.C. Law 3-86</a>: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3401.01.html">42-3401.01</a>.</p>
               </section>
             </section>
           </section>

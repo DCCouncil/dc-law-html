@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/25/chapters/3/subchapters/II/">Subchapter II. Qualification of Establishment.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/25-303.html">Report Error</a>
@@ -120,34 +120,34 @@
       (Jan. 24, 1934, 48 Stat. 327, ch. 4, § 12; <a class="internal-link" href="/dc/council/laws/4-157.html">Sept. 29, 1982, D.C. Law 4-157,§ 7, 29 DCR 3617</a>; <a class="internal-link" href="/dc/council/laws/6-217.html">Mar. 7, 1987, D.C. Law 6-217, § 7, 34 DCR 907</a>; <a class="internal-link" href="/dc/council/laws/9-40.html">Aug. 17, 1991, D.C. Law 9-40, § 2(c), 38 DCR 4974</a>; <a class="internal-link" href="/dc/council/laws/13-298.html">May 3, 2001, D.C. Law 13-298,§ 101, 48 DCR 2959</a>; <a class="internal-link" href="/dc/council/laws/14-190.html">Oct. 1, 2002, D.C. Law 14-190, § 1702(e), 49 DCR 6968</a>; <a class="internal-link" href="/dc/council/laws/15-187.html">Sept. 30, 2004, D.C. Law 15-187, § 101(i), 51 DCR 6525</a>; <a class="internal-link" href="/dc/council/laws/17-361.html">Mar. 25, 2009, D.C. Law 17-361, § 2(b), 56 DCR 1204</a>; <a class="internal-link" href="/dc/council/laws/19-23.html">Oct. 20, 2011, D.C. Law 19-23, § 2(b), 58 DCR 6509</a>; <a class="internal-link" href="/dc/council/laws/21-36.html">Oct. 22, 2015, D.C. Law 21-36, § 2162, 62 DCR 10905</a>; <a class="internal-link" href="/dc/council/laws/21-260.html#§2(c)(1)">Apr. 7, 2017, D.C. Law 21-260, § 2(c)(1), 64 DCR 2079</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 25-303.</p>
                 <p>1973 Ed., § 25-113.</p>
+                <p>1981 Ed., § 25-303.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/25-112.html">25-112</a>, § <a class="internal-link" href="/dc/council/code/sections/25-118.html">25-118</a>, and § <a class="internal-link" href="/dc/council/code/sections/25-722.html">25-722</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a>, in subsec. (c), substituted “during the preceding 12 months” for “in the calendar year” and made a nonsubstantive change in par. (4), made a nonsubstantive change in par. (5), and added par. (6).</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> rewrote par. (5) of subsec. (c); and added subsec. (d). Prior to amendment, par. (5) of subsec. (c) had read as follows: “(5) The opinion of the ANC in which the establishment is located has been given great weight as specified in Chapter 4; and”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-361.html">D.C. Law 17-361</a>, in subsec. (c)(4), substituted “after January 1, 2000” for “during the preceding 12 months in which an application is made”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-23.html">D.C. Law 19-23</a>, in subsec. (c)(3), substituted “or, if located within the Southeast Federal Center, in the SEFC/C-R zone;” for a semicolon; and, in subsec. (c)(5), substituted “weight; and” for “weight.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> added (e).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-23.html">D.C. Law 19-23</a>, in subsec. (c)(3), substituted “or, if located within the Southeast Federal Center, in the SEFC/C-R zone;” for a semicolon; and, in subsec. (c)(5), substituted “weight; and” for “weight.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-361.html">D.C. Law 17-361</a>, in subsec. (c)(4), substituted “after January 1, 2000” for “during the preceding 12 months in which an application is made”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> rewrote par. (5) of subsec. (c); and added subsec. (d). Prior to amendment, par. (5) of subsec. (c) had read as follows: “(5) The opinion of the ANC in which the establishment is located has been given great weight as specified in Chapter 4; and”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a>, in subsec. (c), substituted “during the preceding 12 months” for “in the calendar year” and made a nonsubstantive change in par. (4), made a nonsubstantive change in par. (5), and added par. (6).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Alcoholic Beverage Control New Grocery Store Development Emergency Amendment Act of 2000 (D.C. Act 13-306, April 7, 2000,  47 DCR 2706).</p>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Alcoholic Beverage Control New Grocery Store Development Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-369, July 10, 2000,  47 DCR 5834).</p>
-                <p>For temporary (90 day) amendment of section, see § 1702(e) of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Southeast Federal Center/Yards Non-Discriminatory Grocery Store Emergency Act of 2010 (D.C. Act 18-674, December 28, 2010,  58 DCR 130).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2162 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Southeast Federal Center/Yards Non-Discriminatory Grocery Store Emergency Act of 2010 (D.C. Act 18-674, December 28, 2010,  58 DCR 130).</p>
+                <p>For temporary (90 day) amendment of section, see § 1702(e) of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Alcoholic Beverage Control New Grocery Store Development Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-369, July 10, 2000,  47 DCR 5834).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Alcoholic Beverage Control New Grocery Store Development Emergency Amendment Act of 2000 (D.C. Act 13-306, April 7, 2000,  47 DCR 2706).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 13-145 added subsec. (d) to read as follows:</p>
-                <p>“(d)(1) The requirements of this section shall not apply to an applicant for an off-premises retailer’s license, Class B for the sale of alcoholic beverages in an establishment:</p>
-                <p>“(A) Where the primary business and purpose is the sale of a full range of fresh, canned, and frozen food items, and where the sale of alcoholic beverages is incidental to the primary purpose;</p>
-                <p>“(B) Where the sale of alcoholic beverages constitutes no more than 15% of the total volume of gross receipts on an annual basis;</p>
-                <p>“(C) Where the establishment is located in a C-1, C-2, C-3,C-4, or C-5 zone;</p>
-                <p>“(D) Where the establishment is a newly constructed, full-service grocery store with a Certificate of Occupancy issued after January 1, 2000; and</p>
-                <p>“(E) When the decision of the Advisory Neighborhood Commission in which the establishment is located has been given great weight.</p>
-                <p>“(2) The exemption in paragraph (1) of this subsection shall not apply to a grocery store which has its structure replaced or has substantially altered its structure as the result of a renovation.”</p>
-                <p>Section 5(b) of D.C. Law 13-145 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(b) of D.C. Law 18-346, in subsec. (c)(3), substituted “or, if located within the Southeast Federal Center, in the SEFC/C-R zone;” for a semicolon; and, in subsec. (c)(5), substituted “; and” for a period at the end.</p>
                 <p>Section 4(b) of D.C. Law 18-346 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(b) of D.C. Law 18-346, in subsec. (c)(3), substituted “or, if located within the Southeast Federal Center, in the SEFC/C-R zone;” for a semicolon; and, in subsec. (c)(5), substituted “; and” for a period at the end.</p>
+                <p>Section 5(b) of D.C. Law 13-145 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) The exemption in paragraph (1) of this subsection shall not apply to a grocery store which has its structure replaced or has substantially altered its structure as the result of a renovation.”</p>
+                <p>“(E) When the decision of the Advisory Neighborhood Commission in which the establishment is located has been given great weight.</p>
+                <p>“(D) Where the establishment is a newly constructed, full-service grocery store with a Certificate of Occupancy issued after January 1, 2000; and</p>
+                <p>“(C) Where the establishment is located in a C-1, C-2, C-3,C-4, or C-5 zone;</p>
+                <p>“(B) Where the sale of alcoholic beverages constitutes no more than 15% of the total volume of gross receipts on an annual basis;</p>
+                <p>“(A) Where the primary business and purpose is the sale of a full range of fresh, canned, and frozen food items, and where the sale of alcoholic beverages is incidental to the primary purpose;</p>
+                <p>“(d)(1) The requirements of this section shall not apply to an applicant for an off-premises retailer’s license, Class B for the sale of alcoholic beverages in an establishment:</p>
+                <p>Section 2 of D.C. Law 13-145 added subsec. (d) to read as follows:</p>
               </section>
             </section>
           </section>

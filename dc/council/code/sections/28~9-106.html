@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-107.html">§ 28:9-107. Control of letter-of-credit right.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-106.html">Report Error</a>
@@ -106,10 +106,10 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:9-203.html">28:9-203</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-207.html">28:9-207</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-208.html">28:9-208</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-314.html">28:9-314</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-328.html">28:9-328</a>, and § <a class="internal-link" href="/dc/council/code/sections/28:9-601.html">28:9-601</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. Former  Section 9-115(e).</p>
-                <p>2. “Control” Under Article 8. For an explanation of “control” of securities and certain other investment property, see  Section 8-106, Comments 4 and 7.</p>
-                <p>3. “Control” of Commodity Contracts. This section, as did former  Section 9-115(1)(e), contains provisions relating to control of commodity contracts which are analogous to those in  Section 8-106 for other types of investment property.</p>
                 <p>4. Securities Accounts and Commodity Accounts. For drafting convenience, control with respect to a securities account or commodity account is defined in terms of obtaining control over the security entitlements or commodity contracts. Of course, an agreement that provides that (without further consent of the debtor) the securities intermediary or commodity intermediary will honor instructions from the secured party concerning a securities account or commodity account described as such is sufficient. Such an agreement necessarily implies that the intermediary will honor instructions concerning all security entitlements or commodity contracts carried in the account and thus affords the secured party control of all the security entitlements or commodity contracts.</p>
+                <p>3. “Control” of Commodity Contracts. This section, as did former  Section 9-115(1)(e), contains provisions relating to control of commodity contracts which are analogous to those in  Section 8-106 for other types of investment property.</p>
+                <p>2. “Control” Under Article 8. For an explanation of “control” of securities and certain other investment property, see  Section 8-106, Comments 4 and 7.</p>
+                <p>1. Source. Former  Section 9-115(e).</p>
               </section>
             </section>
           </section>

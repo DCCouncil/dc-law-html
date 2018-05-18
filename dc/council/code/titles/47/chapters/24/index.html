@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/47/chapters/25/">Chapter 25. Financial Institution, Guaranty Company, and Public Utility Taxes.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/47/chapters/24/">Report Error</a>
@@ -87,34 +87,90 @@
         <section class="col8 body">
           <h1>Chapter 24. Tobacco Tax.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/47-2401.html">§ 47–2401. Definitions.</a>
-            <a href="/dc/council/code/sections/47-2402.html">§ 47–2402. Imposition; payment of cigarette tax.</a>
-            <a href="/dc/council/code/sections/47-2402.01.html">§ 47–2402.01. Tax on other tobacco products.</a>
-            <a href="/dc/council/code/sections/47-2403.html">§ 47–2403. Exemptions.</a>
-            <a href="/dc/council/code/sections/47-2404.html">§ 47–2404. Licenses.</a>
-            <a href="/dc/council/code/sections/47-2405.html">§ 47–2405. Transportation of cigarettes and other tobacco products.</a>
-            <a href="/dc/council/code/sections/47-2406.html">§ 47–2406. Offenses relating to stamps.</a>
-            <a href="/dc/council/code/sections/47-2407.html">§ 47–2407. Redemption of stamps.</a>
-            <a href="/dc/council/code/sections/47-2408.html">§ 47–2408. Records; reports; returns.</a>
-            <a href="/dc/council/code/sections/47-2409.html">§ 47–2409. Seizure and forfeiture of property.</a>
-            <a href="/dc/council/code/sections/47-2410.html">§ 47–2410. Deficiency in tax.</a>
-            <a href="/dc/council/code/sections/47-2411.html">§ 47–2411. Redemption of cigarette or alcoholic beverage tax stamps.</a>
-            <a href="/dc/council/code/sections/47-2411.01.html">§ 47–2411.01. Penalty; interest. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-2412.html">§ 47–2412. Refunds.</a>
-            <a href="/dc/council/code/sections/47-2413.html">§ 47–2413. Appeals.</a>
-            <a href="/dc/council/code/sections/47-2414.html">§ 47–2414. Penalties. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-2415.html">§ 47–2415. Regulations.</a>
-            <a href="/dc/council/code/sections/47-2416.html">§ 47–2416. Severability.</a>
-            <a href="/dc/council/code/sections/47-2417.html">§ 47–2417. Effective date.</a>
-            <a href="/dc/council/code/sections/47-2418.html">§ 47–2418. Cigarette tax stamps purchased or held prior to effective date; payment of tax; records.</a>
-            <a href="/dc/council/code/sections/47-2419.html">§ 47–2419. Prohibitions on gray market cigarettes.</a>
-            <a href="/dc/council/code/sections/47-2420.html">§ 47–2420. Documentation.</a>
-            <a href="/dc/council/code/sections/47-2421.html">§ 47–2421. Criminal penalties.</a>
-            <a href="/dc/council/code/sections/47-2422.html">§ 47–2422. Civil penalties and administrative sanctions.</a>
-            <a href="/dc/council/code/sections/47-2423.html">§ 47–2423. Seizure and forfeiture of gray market cigarettes.</a>
-            <a href="/dc/council/code/sections/47-2424.html">§ 47–2424. Unfair cigarette sales.</a>
-            <a href="/dc/council/code/sections/47-2425.html">§ 47–2425. General provisions.</a>
-            <a href="/dc/council/code/sections/47-2426.html">§ 47–2426. Application of §§ 47-2419 through 47-2425.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2401.html">§ 47–2401. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2402.html">§ 47–2402. Imposition; payment of cigarette tax.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2402.01.html">§ 47–2402.01. Tax on other tobacco products.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2403.html">§ 47–2403. Exemptions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2404.html">§ 47–2404. Licenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2405.html">§ 47–2405. Transportation of cigarettes and other tobacco products.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2406.html">§ 47–2406. Offenses relating to stamps.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2407.html">§ 47–2407. Redemption of stamps.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2408.html">§ 47–2408. Records; reports; returns.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2409.html">§ 47–2409. Seizure and forfeiture of property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2410.html">§ 47–2410. Deficiency in tax.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2411.html">§ 47–2411. Redemption of cigarette or alcoholic beverage tax stamps.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2411.01.html">§ 47–2411.01. Penalty; interest. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2412.html">§ 47–2412. Refunds.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2413.html">§ 47–2413. Appeals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2414.html">§ 47–2414. Penalties. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2415.html">§ 47–2415. Regulations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2416.html">§ 47–2416. Severability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2417.html">§ 47–2417. Effective date.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2418.html">§ 47–2418. Cigarette tax stamps purchased or held prior to effective date; payment of tax; records.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2419.html">§ 47–2419. Prohibitions on gray market cigarettes.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2420.html">§ 47–2420. Documentation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2421.html">§ 47–2421. Criminal penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2422.html">§ 47–2422. Civil penalties and administrative sanctions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2423.html">§ 47–2423. Seizure and forfeiture of gray market cigarettes.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2424.html">§ 47–2424. Unfair cigarette sales.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2425.html">§ 47–2425. General provisions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2426.html">§ 47–2426. Application of §§ 47-2419 through 47-2425.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -153,36 +209,36 @@
       (May 27, 1949, 63 Stat. 136, ch. 146, title VI, § 602; <a class="internal-link" href="/dc/council/laws/4-71.html">Mar. 10, 1982, D.C. Law 4-71, § 2, 28 DCR 5243</a>; <a class="internal-link" href="/dc/council/laws/8-262.html">May 2, 1991, D.C. Law 8-262, § 4(a), 37 DCR 8434</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/13-225.html">Apr. 3, 2001, D.C. Law 13-225, § 2(b), 48 DCR 35</a>; <a class="internal-link" href="/dc/council/laws/14-213.html">Oct. 19, 2002, D.C. Law 14-213, § 33(x), 49 DCR 8140</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 7241(i)(2), 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/18-189.html">July 23, 2010, D.C. Law 18-189, § 4(a), 57 DCR 3019</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, §§  7012(e)(1) and (e)(2), 61 DCR 9990</a>; <a class="internal-link" href="/dc/council/laws/21-36.html">Oct. 22, 2015, D.C. Law 21-36, § 7072(b), 62 DCR 10905</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2401.</p>
-                <p>1973 Ed., § 47-2801.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-223.html">D.C. Law 20-223</a>: Section 301(a) of <a class="internal-link" href="/dc/council/laws/20-223.html">D.C. Law 20-223</a> provided (1) that § 101 of the act shall apply for the tax year in which its fiscal effect has been included in an approved budget and financial plan; (2) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (3) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of § 101.</p>
+                <p>1973 Ed., § 47-2801.</p>
+                <p>1981 Ed., § 47-2401.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2001.html">47-2001</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-225.html">D.C. Law 13-225</a> rewrote par. (1): and added pars. (3A), (3B), and (5A).</p>
-                <p>Prior to amendment, par. (1) read:</p>
-                <p>“(1) The term ‘cigarette’ means any roll of tobacco, or any substitute therefor, which is wrapped in paper or in any substance other than tobacco.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>, in par. (5A), validated a previously made technical correction.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote par. (1).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-189.html">D.C. Law 18-189</a> redesignated former par. (1) as par. (1A); added pars. (1), (5A), and (8A); rewrote par. (5); and redesignated former par. (5A) as par. (5B). Prior to amendment, par. (5) read as follows: “(5) The term ‘original package’ means the individual package, box, parcel, or other container in which cigarettes are put up by the manufacturer. The term ‘original package’ also includes any wrapper immediately enclosing such package, box, parcel, or other container that is prescribed by the Mayor as part of the original package.”</p>
-                <p>Section 7022(e)(1) of <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> substituted “Tobacco” for “Cigarette” in the chapter heading.</p>
-                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> rewrote (1); added “or other tobacco products” in (2), (8), and (10); deleted “cigars” following “cigarettes” in (5); rewrote (5A); added (7A) and (11); and repealed (8A).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> added “unless the unit or residential property is a for-sale unit constructed pursuant to the Housing Production Trust Fund Act of 1988, effective March 16, 1989 (<a class="internal-link" href="/dc/council/laws/7-202.html">D.C. Law 7-202</a>; D.C. Official Code Section 42-2801 et seq.), that remains affordable for 180 months or a longer period selected by the developer, in accordance with section 2218 of Title 14 of the District of Columbia Municipal Regulations (14 DCMR Section 2218), then this chapter shall apply” in (c).</p>
+                <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> rewrote (1); added “or other tobacco products” in (2), (8), and (10); deleted “cigars” following “cigarettes” in (5); rewrote (5A); added (7A) and (11); and repealed (8A).</p>
+                <p>Section 7022(e)(1) of <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> substituted “Tobacco” for “Cigarette” in the chapter heading.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-189.html">D.C. Law 18-189</a> redesignated former par. (1) as par. (1A); added pars. (1), (5A), and (8A); rewrote par. (5); and redesignated former par. (5A) as par. (5B). Prior to amendment, par. (5) read as follows: “(5) The term ‘original package’ means the individual package, box, parcel, or other container in which cigarettes are put up by the manufacturer. The term ‘original package’ also includes any wrapper immediately enclosing such package, box, parcel, or other container that is prescribed by the Mayor as part of the original package.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote par. (1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>, in par. (5A), validated a previously made technical correction.</p>
+                <p>“(1) The term ‘cigarette’ means any roll of tobacco, or any substitute therefor, which is wrapped in paper or in any substance other than tobacco.”</p>
+                <p>Prior to amendment, par. (1) read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-225.html">D.C. Law 13-225</a> rewrote par. (1): and added pars. (3A), (3B), and (5A).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 7121(a) of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
-                <p>For temporary (90 day) amendment of section, see § 7241(i)(2) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a), (b)(2), of Tobacco Excise Tax Emergency Amendment Act of 2009 (D.C. Act 18-214, October 21, 2009,  56 DCR 8496).</p>
-                <p>For temporary (90 day) amendment of section, see § 7241(i)(2) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 days) amendment of the chapter heading, see § 7022(e)(1) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7022(e)(2) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of the chapter heading, see § 7012(e)(1) of the Fiscal Year Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(e)(2) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
-                <p>For temporary (90 days) amendment of the chapter heading, see § 7012(e)(1) of the Fiscal Year Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(e)(2) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7042(b) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(e)(2) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of the chapter heading, see § 7012(e)(1) of the Fiscal Year Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(e)(2) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of the chapter heading, see § 7012(e)(1) of the Fiscal Year Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(e)(2) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 days) amendment of the chapter heading, see § 7022(e)(1) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) amendment of section, see § 7241(i)(2) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a), (b)(2), of Tobacco Excise Tax Emergency Amendment Act of 2009 (D.C. Act 18-214, October 21, 2009,  56 DCR 8496).</p>
+                <p>For temporary (90 day) amendment of section, see § 7241(i)(2) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 7121(a) of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-223.html">D.C. Law 20-223</a>: Section 301(a) of <a class="internal-link" href="/dc/council/laws/20-223.html">D.C. Law 20-223</a> provided (1) that § 101 of the act shall apply for the tax year in which its fiscal effect has been included in an approved budget and financial plan; (2) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (3) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of § 101.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a>: Section 7073 of <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> provided that § 7072 of the act shall apply for taxable periods beginning on or after October 1, 2015.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-223.html">D.C. Law 20-223</a>: Section 301(a) of <a class="internal-link" href="/dc/council/laws/20-223.html">D.C. Law 20-223</a> provided (1) that § 101 of the act shall apply for the tax year in which its fiscal effect has been included in an approved budget and financial plan; (2) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (3) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of § 101.</p>
               </section>
             </section>
             <hr/>
@@ -218,51 +274,51 @@
       (May 27, 1949, 63 Stat. 137, ch. 146, title VI, § 603; May 18, 1954, 68 Stat. 115, ch. 218, title IX, § 901; <a class="internal-link" href="/us/congress/laws/public/89-610.html">Sept. 30, 1966, 80 Stat. 856, Pub. L. 89-610, title IV, § 401</a>; <a class="internal-link" href="/us/congress/laws/public/91-106.html">Oct. 31, 1969, 83 Stat. 173, Pub. L. 91-106, title III, § 301</a>; <a class="internal-link" href="/us/congress/laws/public/92-518.html">Oct. 21, 1972, 86 Stat. 1015, Pub. L. 92-518, title III, § 302(a)</a>; <a class="internal-link" href="/dc/council/laws/1-23.html">Oct. 21, 1975, D.C. Law 1-23, title IV, § 401(a), 22 DCR 2103</a>; <a class="internal-link" href="/dc/council/laws/1-70.html">June 15, 1976, D.C. Law 1-70, title V, § 501, 23 DCR 546</a>; <a class="internal-link" href="/dc/council/laws/4-71.html">Mar. 10, 1982, D.C. Law 4-71, § 2, 28 DCR 5243</a>; <a class="internal-link" href="/dc/council/laws/6-33.html">Sept. 10, 1985, D.C. Law 6-33, § 2(a), 32 DCR 3774</a>; <a class="internal-link" href="/dc/council/laws/6-198.html">Feb. 28, 1987, D.C. Law 6-198, § 2(a), 34 DCR 515</a>; <a class="internal-link" href="/dc/council/laws/9-31.html">Aug. 17, 1991, D.C. Law 9-31, § 2(a), 38 DCR 4218</a>; <a class="internal-link" href="/dc/council/laws/9-145.html">Sept. 10, 1992, D.C. Law 9-145, § 109(a), 39 DCR 4895</a>; <a class="internal-link" href="/dc/council/laws/10-25.html">Sept. 30, 1993, D.C. Law 10-25, § 113(a), 40 DCR 5489</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/14-307.html">June 5, 2003, D.C. Law 14-307, § 902(c), 49 DCR 11664</a>; <a class="internal-link" href="/dc/council/laws/17-219.html">Aug. 16, 2008, D.C. Law 17-219, §§ 5055(a), 7010, 55 DCR 7598</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 7241(i)(3), 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 8052(b), 58 DCR 6226</a>; <a class="internal-link" href="/dc/council/laws/20-61.html">Dec. 24, 2013, D.C. Law 20-61, § 7332, 60 DCR 12472</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, §§  7012(e)(3), 7043(b), 61 DCR 9990</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2402.</p>
                 <p>1973 Ed., § 47-2802.</p>
+                <p>1981 Ed., § 47-2402.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28-4521.html">28-4521</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2403.html">47-2403</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2405.html">47-2405</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2409.html">47-2409</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a>, in subsec. (a), substituted “$.05” for “3.25 cents”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in subsec. (a), substituted “$.10 for each cigarette” for “$.05 for each cigarette”; and, in subsec. (c), rewrote the second sentence, which had read as follows: “Such stamps shall be affixed to the original packages of cigarettes and shall be cancelled, in the manner prescribed by the Mayor.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (a), substituted “$.125” for “$.10”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (a), which had read as follows: “(a) Except as otherwise provided in § <a class="internal-link" href="/dc/council/code/sections/47-2403.html">47-2403</a>, a tax is levied and imposed on the sale or possession of all cigarettes in the District of Columbia at the rate of $.125 for each cigarette.”</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> added (l).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added “of cigarette tax” in the section heading.</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> added (l).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (a), which had read as follows: “(a) Except as otherwise provided in § <a class="internal-link" href="/dc/council/code/sections/47-2403.html">47-2403</a>, a tax is levied and imposed on the sale or possession of all cigarettes in the District of Columbia at the rate of $.125 for each cigarette.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (a), substituted “$.125” for “$.10”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in subsec. (a), substituted “$.10 for each cigarette” for “$.05 for each cigarette”; and, in subsec. (c), rewrote the second sentence, which had read as follows: “Such stamps shall be affixed to the original packages of cigarettes and shall be cancelled, in the manner prescribed by the Mayor.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a>, in subsec. (a), substituted “$.05” for “3.25 cents”.</p>
                 <h4>Cross References</h4>
                 <p>Tax rates, records and surplus funds, authority of Council to change certain tax rates, see § <a class="internal-link" href="/dc/council/code/sections/47-504.html">47-504</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 902(c) and 903 of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
-                <p>For temporary (90 day) amendment of section, see §§ 902(c) and 903 of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
-                <p>For temporary (90 day) amendment of section, see §§ 902(c) and 903 of Fiscal Year 2003 Budget Support Amendment Second Congressional Review Emergency Act of 2003 (D.C. Act 15-103, June 20, 2003,  50 DCR 5499).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of the Cigarette Stamp Clarification Emergency Amendment Act of 2007 (D.C. Act 17-47, May 15, 2007,  54 DCR 5356).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Cigarette Stamp Clarification Emergency Amendment Act of 2008 (D.C. Act 17-366, May 5, 2008,  55 DCR 5689).</p>
-                <p>For temporary (90 day) amendment of section, see § 7111(h) of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
-                <p>For temporary (90 day) additions, see § 7121(b) of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
-                <p>For temporary (90 day) amendment of section, see § 7241(i)(3) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a), (b)(3) of Tobacco Excise Tax Emergency Amendment Act of 2009 (D.C. Act 18-214, October 21, 2009,  56 DCR 8496).</p>
-                <p>For temporary (90 day) addition, see § 2(b)(4) of Tobacco Excise Tax Emergency Amendment Act of 2009 (D.C. Act 18-214, October 21, 2009,  56 DCR 8496).</p>
-                <p>For temporary (90 day) amendment of section, see § 7241(i)(3) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7332 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7332 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
-                <p>For temporary (90 days) amendment of this section, see §§ 7022(e)(3) and 7053(b) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see §§ 7012(e)(3) and 7043(b) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see §§ 7012(e)(3) and 7043(b) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see §§ 7012(e)(3) and 7043(b) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see §§ 7022(e)(3) and 7053(b) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7332 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7332 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 day) amendment of section, see § 7241(i)(3) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 2(b)(4) of Tobacco Excise Tax Emergency Amendment Act of 2009 (D.C. Act 18-214, October 21, 2009,  56 DCR 8496).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a), (b)(3) of Tobacco Excise Tax Emergency Amendment Act of 2009 (D.C. Act 18-214, October 21, 2009,  56 DCR 8496).</p>
+                <p>For temporary (90 day) amendment of section, see § 7241(i)(3) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) additions, see § 7121(b) of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
+                <p>For temporary (90 day) amendment of section, see § 7111(h) of Fiscal Year 2010 Budget Support Emergency Act of 2009 (D.C. Act 18-187, August 26, 2009,  56 DCR 7374).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Cigarette Stamp Clarification Emergency Amendment Act of 2008 (D.C. Act 17-366, May 5, 2008,  55 DCR 5689).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of the Cigarette Stamp Clarification Emergency Amendment Act of 2007 (D.C. Act 17-47, May 15, 2007,  54 DCR 5356).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 902(c) and 903 of Fiscal Year 2003 Budget Support Amendment Second Congressional Review Emergency Act of 2003 (D.C. Act 15-103, June 20, 2003,  50 DCR 5499).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 902(c) and 903 of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
+                <p>For temporary (90 day) amendment of section, see § 902(c) and 903 of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 17-18 amended the second sentence of subsec. (c) to read as follows: “Such stamps shall be affixed to the original packages of cigarettes included in the directory of Tobacco Product Manufacturers maintained pursuant to § <a class="internal-link" href="/dc/council/code/sections/7-1803.03.html">7-1803.03</a>(b) and shall be cancelled in the manner prescribed by the Mayor.”</p>
-                <p>Section 4(b) of D.C. Law 17-18 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2 of D.C. Law 17-192, in subsec. (c), amended the second sentence to read as follows: “Such stamps shall be affixed to the original packages of cigarettes included in the directory of Tobacco Product Manufacturers maintained pursuant to § <a class="internal-link" href="/dc/council/code/sections/7-1803.03.html">7-1803.03</a>(b) and shall be cancelled in the manner prescribed by the Mayor.”.</p>
                 <p>Section 4(b) of D.C. Law 17-192 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 17-192, in subsec. (c), amended the second sentence to read as follows: “Such stamps shall be affixed to the original packages of cigarettes included in the directory of Tobacco Product Manufacturers maintained pursuant to § <a class="internal-link" href="/dc/council/code/sections/7-1803.03.html">7-1803.03</a>(b) and shall be cancelled in the manner prescribed by the Mayor.”.</p>
+                <p>Section 4(b) of D.C. Law 17-18 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 17-18 amended the second sentence of subsec. (c) to read as follows: “Such stamps shall be affixed to the original packages of cigarettes included in the directory of Tobacco Product Manufacturers maintained pursuant to § <a class="internal-link" href="/dc/council/code/sections/7-1803.03.html">7-1803.03</a>(b) and shall be cancelled in the manner prescribed by the Mayor.”</p>
                 <h4>Short Title</h4>
-                <p>Short title: Section 7009 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle E of title VII of the act may be cited as the “Cigarette Stamp Clarification Act of 2008”.</p>
                 <p>Section 7331 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle GG of Title VII of the act may be cited as the “Smoking Cessation Dedicated Funding Act of 2013”.</p>
+                <p>Short title: Section 7009 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle E of title VII of the act may be cited as the “Cigarette Stamp Clarification Act of 2008”.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 3(b) of <a class="internal-link" href="/dc/council/laws/6-33.html">D.C. Law 6-33</a> provided that the provisions of the act shall not operate before the 1st day of the 1st month which begins more than 30 days after September 10, 1985.</p>
                 <h4>Editor's Notes</h4>
-                <p>Mayor to report fiscal impact of Law 10-25: Section 113(c) of <a class="internal-link" href="/dc/council/laws/10-25.html">D.C. Law 10-25</a> provided that the Mayor shall report to the Council within 6 months of implementation on the fiscal impact of this section.</p>
-                <p>Section 903 of <a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a> provided: “Sec. 903. Applicability. Section 902 shall apply as of January 1, 2003.”</p>
-                <p>Section 5005(a)(2) of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that this subsection shall apply as of October 1, 2008.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>: Section 11001 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that, except as otherwise provided, the act shall apply as of October 1, 2013.</p>
+                <p>Section 5005(a)(2) of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that this subsection shall apply as of October 1, 2008.</p>
+                <p>Section 903 of <a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a> provided: “Sec. 903. Applicability. Section 902 shall apply as of January 1, 2003.”</p>
+                <p>Mayor to report fiscal impact of Law 10-25: Section 113(c) of <a class="internal-link" href="/dc/council/laws/10-25.html">D.C. Law 10-25</a> provided that the Mayor shall report to the Council within 6 months of implementation on the fiscal impact of this section.</p>
               </section>
             </section>
             <hr/>
@@ -291,11 +347,11 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> rewrote the section heading and (a).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 7241(i)(4) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) addition, see § 7241(i)(4) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7022(e)(4) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(e)(4) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7012(e)(4) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(e)(4) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(e)(4) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) addition, see § 7241(i)(4) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 7241(i)(4) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 7241(i)(5) of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided: “(5) This subsection shall apply to tax periods beginning after December 31, 2009.”</p>
               </section>
@@ -319,16 +375,16 @@
       (May 27, 1949, 63 Stat. 138, ch. 146, title VI, § 604; <a class="internal-link" href="/dc/council/laws/4-71.html">Mar. 10, 1982, D.C. Law 4-71, § 2, 28 DCR 5243</a>; <a class="internal-link" href="/dc/council/laws/6-33.html">Sept. 10, 1985, D.C. Law 6-33, § 2(b), 32 DCR 3774</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 7012(e)(5), 61 DCR 9990</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2403.</p>
                 <p>1973 Ed., § 47-2803.</p>
+                <p>1981 Ed., § 47-2403.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2402.html">47-2402</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added “or other tobacco products” throughout this section; and added (a)(6) and made related changes.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 7022(e)(5) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(e)(5) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7012(e)(5) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(e)(5) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(e)(5) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Effective Dates</h4>
                 <p>Section 3(b) of <a class="internal-link" href="/dc/council/laws/6-33.html">D.C. Law 6-33</a> provided that the provisions of the act shall not operate before the 1st day of the 1st month which begins more than 30 days after September 10, 1985.</p>
               </section>
@@ -361,23 +417,23 @@
       (May 27, 1949, 63 Stat. 138, ch. 146, title VI, § 605; <a class="internal-link" href="/dc/council/laws/4-71.html">Mar. 10, 1982, D.C. Law 4-71, § 2, 28 DCR 5243</a>; <a class="internal-link" href="/dc/council/laws/8-262.html">May 2, 1991, D.C. Law 8-262, § 4(b), 37 DCR 8434</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2003(pp)(3), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/15-38.html">Oct. 28, 2003, D.C. Law 15-38, § 3(hh)(1), 50 DCR 6913</a>; <a class="internal-link" href="/dc/council/laws/18-189.html">July 23, 2010, D.C. Law 18-189, § 4(b), 57 DCR 3019</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 7012(e)(6), 61 DCR 9990</a>; <a class="internal-link" href="/dc/council/laws/21-191.html#§4">Feb. 18, 2017, D.C. Law 21-191, § 4, 63 DCR 15003</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2404.</p>
                 <p>1973 Ed., § 47-2804.</p>
+                <p>1981 Ed., § 47-2404.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-1721.02.html">7-1721.02</a>, § <a class="internal-link" href="/dc/council/code/sections/7-1721.04.html">7-1721.04</a>, § <a class="internal-link" href="/dc/council/code/sections/7-1721.05.html">7-1721.05</a>, § <a class="internal-link" href="/dc/council/code/sections/7-1721.06.html">7-1721.06</a>, § <a class="internal-link" href="/dc/council/code/sections/7-1803.02.html">7-1803.02</a>, § <a class="internal-link" href="/dc/council/code/sections/7-1803.06.html">7-1803.06</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2409.html">47-2409</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2418.html">47-2418</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2422.html">47-2422</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (i), substituted “General Sales endorsement to a basic business license under the basic” for “Class B General Sales endorsement to a master business license under the master”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-189.html">D.C. Law 18-189</a> substituted “cigarettes or other tobacco product” for “cigarettes”; and added subsecs. (b)(3)(D) and (E).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added “or other tobacco products” throughout (3)(B).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-189.html">D.C. Law 18-189</a> substituted “cigarettes or other tobacco product” for “cigarettes”; and added subsecs. (b)(3)(D) and (E).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (i), substituted “General Sales endorsement to a basic business license under the basic” for “Class B General Sales endorsement to a master business license under the master”.</p>
                 <h4>Cross References</h4>
                 <p>Furnishing tobacco products to minors, license suspension, see § <a class="internal-link" href="/dc/council/code/sections/22-1320.html">22-1320</a>.</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-191.html">D.C. Law 21-191</a>: <a class="internal-link" href="/dc/council/laws/21-191.html#§5">§ 5 of D.C. Law 21-191</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-191.html#§4">§ 4 of D.C. Law 21-191</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(hh)(1) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7022(e)(6) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(e)(6) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7012(e)(6) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(e)(6) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(e)(6) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(hh)(1) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <h4>References in Text</h4>
                 <p>Section 25-111, referred to in subsection (b)(3)(A) of this section, is part of Title 25, D.C. Code, which title was amended and enacted by <a class="internal-link" href="/dc/council/laws/13-298.html">D.C. Law 13-298</a>, effective May 3, 2001. For disposition of the subject matter of former Title 25, see the Disposition Table preceding § <a class="internal-link" href="/dc/council/code/sections/25-101.html">25-101</a>.</p>
               </section>
@@ -396,20 +452,20 @@
       (May 27, 1949, 63 Stat. 138, ch. 146, title VI, § 606; <a class="internal-link" href="/dc/council/laws/1-82.html">Sept. 14, 1976, D.C. Law 1-82, title I, § 105, 23 DCR 2461</a>; <a class="internal-link" href="/dc/council/laws/4-71.html">Mar. 10, 1982, D.C. Law 4-71, § 2, 28 DCR 5243</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/13-305.html">June 9, 2001, D.C. Law 13-305, § 406(qq), 48 DCR 334</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 7012(e)(7), 61 DCR 9990</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2405.</p>
                 <p>1973 Ed., § 47-2805.</p>
+                <p>1981 Ed., § 47-2405.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-1803.06.html">7-1803.06</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2403.html">47-2403</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2409.html">47-2409</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2422.html">47-2422</a>.</p>
                 <h4>Effect of Amendments</h4>
+                <p>For temporary (90 days) amendment of this section, see § 7022(e)(7) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <p><a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a>, in subsec. (c), substituted “§§ 47-4201.01 and subchapter II of Chapter 42 of this title” for “§ <a class="internal-link" href="/dc/council/code/sections/47-2411.01.html">47-2411.01</a>”.</p>
-                <p>For temporary (90 days) amendment of this section, see § 7022(e)(7) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 7022(e)(7) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(e)(7) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7012(e)(7) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(e)(7) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(e)(7) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Editor's Notes</h4>
-                <p>Office of Collector of Taxes abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/47-401.html">47-401</a>.</p>
                 <p>Section 410(d) of <a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> provided: “Section 406(a), (c), (j), (m), (p), (q), (s), (w), (bb), (dd), (ee), (hh) through (kk), (mm) through (oo), (qq) through (uu), (yy), (zz), (bbb), (ddd), and (fff) shall apply for all tax years or taxable periods beginning after December 31, 2000.”</p>
+                <p>Office of Collector of Taxes abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/47-401.html">47-401</a>.</p>
               </section>
             </section>
             <hr/>
@@ -432,8 +488,8 @@
       (May 27, 1949, 63 Stat. 139, ch. 146, title VI, § 607; <a class="internal-link" href="/dc/council/laws/4-71.html">Mar. 10, 1982, D.C. Law 4-71, § 2, 28 DCR 5243</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 286(l), 60 DCR 2064</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2406.</p>
                 <p>1973 Ed., § 47-2806.</p>
+                <p>1981 Ed., § 47-2406.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2409.html">47-2409</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -462,8 +518,8 @@
       (May 27, 1949, 63 Stat. 139, ch. 146, title VI, § 608; <a class="internal-link" href="/dc/council/laws/4-71.html">Mar. 10, 1982, D.C. Law 4-71, § 2, 28 DCR 5243</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2407.</p>
                 <p>1973 Ed., § 47-2807.</p>
+                <p>1981 Ed., § 47-2407.</p>
               </section>
             </section>
             <hr/>
@@ -491,22 +547,22 @@
       (May 27, 1949, 63 Stat. 139, ch. 146, title VI, § 609; <a class="internal-link" href="/dc/council/laws/4-71.html">Mar. 10, 1982, D.C. Law 4-71, § 2, 28 DCR 5243</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/13-305.html">June 9, 2001, D.C. Law 13-305, § 406(rr), 48 DCR 334</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 286(m), 60 DCR 2064</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 7012(e)(8), 61 DCR 9990</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2408.</p>
                 <p>1973 Ed., § 47-2808.</p>
+                <p>1981 Ed., § 47-2408.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a>, in the second sentence of subsec. (f), substituted “this chapter, but the period of limitations upon assessment and collections shall be determined by § <a class="internal-link" href="/dc/council/code/sections/47-4301.html">47-4301</a>” for “this chapter”.</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “not more than $1,000” in (c) and (d).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added “or other tobacco products” in (b)(3)(B); rewrote (4); and added “or other tobacco product” in (c) and (g).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “not more than $1,000” in (c) and (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a>, in the second sentence of subsec. (f), substituted “this chapter, but the period of limitations upon assessment and collections shall be determined by § <a class="internal-link" href="/dc/council/code/sections/47-4301.html">47-4301</a>” for “this chapter”.</p>
                 <h4>Cross References</h4>
                 <p>Tax rates, records and surplus funds, authority of Council to change certain tax rates, see § <a class="internal-link" href="/dc/council/code/sections/47-504.html">47-504</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 286(m) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7022(e)(8) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(e)(8) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7012(e)(8) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(e)(8) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(e)(8) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 days) amendment of this section, see § 286(m) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 410(d) of <a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> provided: “Section 406(a), (c), (j), (m), (p), (q), (s), (w), (bb), (dd), (ee), (hh) through (kk), (mm) through (oo), (qq) through (uu), (yy), (zz), (bbb), (ddd), and (fff) shall apply for all tax years or taxable periods beginning after December 31, 2000.”</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
+                <p>Section 410(d) of <a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> provided: “Section 406(a), (c), (j), (m), (p), (q), (s), (w), (bb), (dd), (ee), (hh) through (kk), (mm) through (oo), (qq) through (uu), (yy), (zz), (bbb), (ddd), and (fff) shall apply for all tax years or taxable periods beginning after December 31, 2000.”</p>
               </section>
             </section>
             <hr/>
@@ -543,17 +599,17 @@
       (May 27, 1949, 63 Stat. 139, ch. 146, title VI, § 610; Oct. 28, 1949, 63 Stat. 972, ch. 782, title XI, § 1106(a); <a class="internal-link" href="/dc/council/laws/2-139.html">Mar. 3, 1979, D.C. Law 2-139, § 3205(r), 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/4-71.html">Mar. 10, 1982, D.C. Law 4-71, § 2, 28 DCR 5243</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/15-354.html">Apr. 13, 2005, D.C. Law 15-354, § 73(i)(1), 52 DCR 2638</a>; <a class="internal-link" href="/dc/council/laws/18-189.html">July 23, 2010, D.C. Law 18-189, § 4(c), 57 DCR 3019</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 286(n), 60 DCR 2064</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2409.</p>
                 <p>1973 Ed., § 47-2809.</p>
+                <p>1981 Ed., § 47-2409.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>, § <a class="internal-link" href="/dc/council/code/sections/7-1803.06.html">7-1803.06</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2405.html">47-2405</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2423.html">47-2423</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “Attorney General for the District of Columbia” for “Corporation Counsel”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-189.html">D.C. Law 18-189</a> substituted “cigarettes or other tobacco product” for “cigarettes”; and added subsecs. (b)(3)(D) and (E).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “not more than $1,000” in (e).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-189.html">D.C. Law 18-189</a> substituted “cigarettes or other tobacco product” for “cigarettes”; and added subsecs. (b)(3)(D) and (E).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “Attorney General for the District of Columbia” for “Corporation Counsel”.</p>
                 <h4>Cross References</h4>
-                <p>Effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <p>Metropolitan police, Property Clerk, return of property to owner, property disposition, see § <a class="internal-link" href="/dc/council/code/sections/5-119.06.html">5-119.06</a>.</p>
+                <p>Effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 286(n) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
                 <h4>Editor's Notes</h4>
@@ -573,15 +629,15 @@
       (May 27, 1949, 63 Stat. 139, ch. 146, title VI, § 611; <a class="internal-link" href="/us/congress/laws/public/88-60.html">July 8, 1963, 77 Stat. 77, Pub. L. 88-60, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, 581, Pub. L. 91-358, title I, §§ 155(a), 161(d)(1)</a>; <a class="internal-link" href="/dc/council/laws/4-71.html">Mar. 10, 1982, D.C. Law 4-71, § 2, 28 DCR 5243</a>; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42, § 443, 32 DCR 4450</a>; <a class="internal-link" href="/dc/council/laws/8-237.html">Mar. 8, 1991, D.C. Law 8-237, § 2(q), 38 DCR 314</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/15-217.html">Dec. 7, 2004, D.C. Law 15-217, § 4(e), 51 DCR 9126</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2410.</p>
                 <p>1973 Ed., § 47-2810.</p>
+                <p>1981 Ed., § 47-2410.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2413.html">47-2413</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-217.html">D.C. Law 15-217</a> rewrote subsecs. (a) and (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(e) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(e) of Office of Administrative Hearings Establishment Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-553, October 26, 2004,  51 DCR 10359).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(e) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
               </section>
             </section>
             <hr/>
@@ -597,8 +653,8 @@
       (June 3, 1954, 68 Stat. 169, ch. 252, §§ 1, 2; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2411.</p>
                 <p>1973 Ed., § 47-2811.</p>
+                <p>1981 Ed., § 47-2411.</p>
                 <h4>Cross References</h4>
                 <p>Alcoholic beverages, taxes erroneously or illegally collected, refunds, see § <a class="internal-link" href="/dc/council/code/sections/25-909.html">25-909</a>.</p>
               </section>
@@ -638,8 +694,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-217.html">D.C. Law 15-217</a> rewrote the section which had read as follows: “Where any tax, penalty, or interest has been erroneously or illegally collected by the Mayor, the tax, penalty, or interest shall be refunded if an application for such refund, under oath, is filed with the Mayor within 1 year after the date of the payment of such tax. An application for a refund may be filed only by the person upon whom such tax, penalty, or interest was imposed and who has actually paid the tax, penalty, or interest. An application for a refund shall be deemed a request for revision or abatement of an assessment. Upon filing of a valid application for refund, the Mayor shall either (1) grant the application, or (2) grant the applicant a hearing. After such hearing, the Mayor shall make findings, grant or deny the application for a refund in accordance with such findings, and notify the applicant of the findings and decision of the Mayor by regular mail.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(f) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(f) of Office of Administrative Hearings Establishment Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-553, October 26, 2004,  51 DCR 10359).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(f) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
               </section>
             </section>
             <hr/>
@@ -658,8 +714,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-217.html">D.C. Law 15-217</a> substituted “Except as provided in § <a class="internal-link" href="/dc/council/code/sections/47-4312.html">47-4312</a>, any” for “Any”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(g) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(g) of Office of Administrative Hearings Establishment Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-553, October 26, 2004,  51 DCR 10359).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(g) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
               </section>
             </section>
             <hr/>
@@ -814,9 +870,9 @@
       (<a class="internal-link" href="/dc/council/laws/13-225.html">Apr. 3, 2001, D.C. Law 13-225, § 2(c), 48 DCR 35</a>; <a class="internal-link" href="/dc/council/laws/13-313.html">June 19, 2001, D.C. Law 13-313, § 16(c)(2), 48 DCR 1873</a>; <a class="internal-link" href="/dc/council/laws/15-354.html">Apr. 13, 2005, D.C. Law 15-354, § 73(i)(3), 52 DCR 2638</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 286(o), 60 DCR 2064</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a> inserted the section symbol in the section heading.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “fined not more than $5,000 or imprisoned for not more than 3 years, or both” for “subject to the penalties under § <a class="internal-link" href="/dc/council/code/sections/47-2414.html">47-2414</a>(a)”.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “not more than $5,000”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “fined not more than $5,000 or imprisoned for not more than 3 years, or both” for “subject to the penalties under § <a class="internal-link" href="/dc/council/code/sections/47-2414.html">47-2414</a>(a)”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a> inserted the section symbol in the section heading.</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
               </section>
@@ -836,13 +892,13 @@
       (<a class="internal-link" href="/dc/council/laws/13-225.html">Apr. 3, 2001, D.C. Law 13-225, § 2(c), 48 DCR 35</a>; <a class="internal-link" href="/dc/council/laws/13-313.html">June 19, 2001, D.C. Law 13-313, § 16(c)(3), 48 DCR 1873</a>; <a class="internal-link" href="/dc/council/laws/18-189.html">July 23, 2010, D.C. Law 18-189, § 4(d), 57 DCR 3019</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 7012(e)(9), 61 DCR 9990</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a> inserted the section symbol in the section heading.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-189.html">D.C. Law 18-189</a> added subsec. (a-1); and, in subsec. (b), substituted “cigarettes or other tobacco product” for “cigarettes”.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added “or other tobacco product” in (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-189.html">D.C. Law 18-189</a> added subsec. (a-1); and, in subsec. (b), substituted “cigarettes or other tobacco product” for “cigarettes”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a> inserted the section symbol in the section heading.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 7022(e)(9) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(e)(9) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7012(e)(9) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(e)(9) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(e)(9) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>
@@ -890,13 +946,13 @@
       (<a class="internal-link" href="/dc/council/laws/13-225.html">Apr. 3, 2001, D.C. Law 13-225, § 2(c), 48 DCR 35</a>; <a class="internal-link" href="/dc/council/laws/13-313.html">June 19, 2001, D.C. Law 13-313, § 16(c)(6), 48 DCR 1873</a>; <a class="internal-link" href="/dc/council/laws/16-191.html">Mar. 2, 2007, D.C. Law 16-191, § 78, 53 DCR 6794</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 7012(e)(10), 61 DCR 9990</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a> inserted the section symbol in the section heading.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsec. (d), deleted “Spanish,” following “Korean”.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added “or other tobacco products” throughout (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsec. (d), deleted “Spanish,” following “Korean”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a> inserted the section symbol in the section heading.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 7022(e)(10) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7012(e)(10) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7012(e)(10) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7012(e)(10) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7022(e)(10) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>

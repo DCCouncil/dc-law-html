@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/42/chapters/11/">Chapter 11. Recordation Tax on Deeds.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/42/chapters/10/">Report Error</a>
@@ -87,25 +87,63 @@
         <section class="col8 body">
           <h1>Chapter 10. Powers Relating to Realty.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/42-1001.html">§ 42–1001. “Power” defined.</a>
-            <a href="/dc/council/code/sections/42-1002.html">§ 42–1002. General power.</a>
-            <a href="/dc/council/code/sections/42-1003.html">§ 42–1003. Special power.</a>
-            <a href="/dc/council/code/sections/42-1004.html">§ 42–1004. Beneficial power.</a>
-            <a href="/dc/council/code/sections/42-1005.html">§ 42–1005. Giving of absolute power — To owner of limited estate.</a>
-            <a href="/dc/council/code/sections/42-1006.html">§ 42–1006. Giving of absolute power — To owner of unlimited estate.</a>
-            <a href="/dc/council/code/sections/42-1007.html">§ 42–1007. Giving of absolute power — Where no remainder on grantee’s estate.</a>
-            <a href="/dc/council/code/sections/42-1008.html">§ 42–1008. Construction of power to devise inheritance given to tenant with limited estate.</a>
-            <a href="/dc/council/code/sections/42-1009.html">§ 42–1009. Right of grantor to reserve power.</a>
-            <a href="/dc/council/code/sections/42-1010.html">§ 42–1010. Liability of special and beneficial power in equity.</a>
-            <a href="/dc/council/code/sections/42-1011.html">§ 42–1011. General powers in trust.</a>
-            <a href="/dc/council/code/sections/42-1012.html">§ 42–1012. Special powers in trust.</a>
-            <a href="/dc/council/code/sections/42-1013.html">§ 42–1013. Trust powers imperative — Duty upon grantee.</a>
-            <a href="/dc/council/code/sections/42-1014.html">§ 42–1014. Trust powers imperative — Effect of grantee’s right of selection of objects of trust.</a>
-            <a href="/dc/council/code/sections/42-1015.html">§ 42–1015. Beneficiaries to take equally unless otherwise directed; effect of giving trustee discretion.</a>
-            <a href="/dc/council/code/sections/42-1016.html">§ 42–1016. Execution of trust powers for benefit of creditors and assignees.</a>
-            <a href="/dc/council/code/sections/42-1017.html">§ 42–1017. Writing needed to execute power.</a>
-            <a href="/dc/council/code/sections/42-1018.html">§ 42–1018. Power to be executed by devise, will, or grant, as directed.</a>
-            <a href="/dc/council/code/sections/42-1019.html">§ 42–1019. Grantee may execute power without direct reference to such.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1001.html">§ 42–1001. “Power” defined.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1002.html">§ 42–1002. General power.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1003.html">§ 42–1003. Special power.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1004.html">§ 42–1004. Beneficial power.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1005.html">§ 42–1005. Giving of absolute power — To owner of limited estate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1006.html">§ 42–1006. Giving of absolute power — To owner of unlimited estate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1007.html">§ 42–1007. Giving of absolute power — Where no remainder on grantee’s estate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1008.html">§ 42–1008. Construction of power to devise inheritance given to tenant with limited estate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1009.html">§ 42–1009. Right of grantor to reserve power.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1010.html">§ 42–1010. Liability of special and beneficial power in equity.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1011.html">§ 42–1011. General powers in trust.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1012.html">§ 42–1012. Special powers in trust.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1013.html">§ 42–1013. Trust powers imperative — Duty upon grantee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1014.html">§ 42–1014. Trust powers imperative — Effect of grantee’s right of selection of objects of trust.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1015.html">§ 42–1015. Beneficiaries to take equally unless otherwise directed; effect of giving trustee discretion.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1016.html">§ 42–1016. Execution of trust powers for benefit of creditors and assignees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1017.html">§ 42–1017. Writing needed to execute power.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1018.html">§ 42–1018. Power to be executed by devise, will, or grant, as directed.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1019.html">§ 42–1019. Grantee may execute power without direct reference to such.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -120,8 +158,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1037">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1037</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-101.</p>
                 <p>1973 Ed., § 45-1001.</p>
+                <p>1981 Ed., § 45-101.</p>
                 <h4>Editor's Notes</h4>
                 <p>Uniform Disclaimer of Property Interests Act: See § <a class="internal-link" href="/dc/council/code/sections/19-1501.html">19-1501</a> et seq.</p>
               </section>
@@ -138,8 +176,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1038">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1038</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-102.</p>
                 <p>1973 Ed., § 45-1002.</p>
+                <p>1981 Ed., § 45-102.</p>
               </section>
             </section>
             <hr/>
@@ -156,8 +194,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1039">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1039</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-103.</p>
                 <p>1973 Ed., § 45-1003.</p>
+                <p>1981 Ed., § 45-103.</p>
               </section>
             </section>
             <hr/>
@@ -172,8 +210,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1040">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1040</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-104.</p>
                 <p>1973 Ed., § 45-1004.</p>
+                <p>1981 Ed., § 45-104.</p>
               </section>
             </section>
             <hr/>
@@ -188,8 +226,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1041">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1041</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-105.</p>
                 <p>1973 Ed., § 45-1005.</p>
+                <p>1981 Ed., § 45-105.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1008.html">42-1008</a>.</p>
               </section>
@@ -206,8 +244,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1042">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1042</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-106.</p>
                 <p>1973 Ed., § 45-1006.</p>
+                <p>1981 Ed., § 45-106.</p>
               </section>
             </section>
             <hr/>
@@ -222,8 +260,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1043">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1043</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-107.</p>
                 <p>1973 Ed., § 45-1007.</p>
+                <p>1981 Ed., § 45-107.</p>
               </section>
             </section>
             <hr/>
@@ -238,8 +276,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1044">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1044</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-108.</p>
                 <p>1973 Ed., § 45-1008.</p>
+                <p>1981 Ed., § 45-108.</p>
               </section>
             </section>
             <hr/>
@@ -254,8 +292,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1045">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1045</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-109.</p>
                 <p>1973 Ed., § 45-1009.</p>
+                <p>1981 Ed., § 45-109.</p>
               </section>
             </section>
             <hr/>
@@ -270,8 +308,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1046">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1046</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-110.</p>
                 <p>1973 Ed., § 45-1010.</p>
+                <p>1981 Ed., § 45-110.</p>
               </section>
             </section>
             <hr/>
@@ -286,8 +324,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1047">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1047</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-111.</p>
                 <p>1973 Ed., § 45-1011.</p>
+                <p>1981 Ed., § 45-111.</p>
               </section>
             </section>
             <hr/>
@@ -304,8 +342,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1048">Mar. 3, 1901, 31 Stat. 1353, ch. 854, § 1048</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-112.</p>
                 <p>1973 Ed., § 45-1012.</p>
+                <p>1981 Ed., § 45-112.</p>
               </section>
             </section>
             <hr/>
@@ -320,8 +358,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1049">Mar. 3, 1901, 31 Stat. 1354, ch. 854, § 1049</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-113.</p>
                 <p>1973 Ed., § 45-1013.</p>
+                <p>1981 Ed., § 45-113.</p>
               </section>
             </section>
             <hr/>
@@ -336,8 +374,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1050">Mar. 3, 1901, 31 Stat. 1354, ch. 854, § 1050</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-114.</p>
                 <p>1973 Ed., § 45-1014.</p>
+                <p>1981 Ed., § 45-114.</p>
               </section>
             </section>
             <hr/>
@@ -352,8 +390,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1051">Mar. 3, 1901, 31 Stat. 1354, ch. 854, § 1051</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-115.</p>
                 <p>1973 Ed., § 45-1015.</p>
+                <p>1981 Ed., § 45-115.</p>
               </section>
             </section>
             <hr/>
@@ -368,8 +406,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1052">Mar. 3, 1901, 31 Stat. 1354, ch. 854, § 1052</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-116.</p>
                 <p>1973 Ed., § 45-1016.</p>
+                <p>1981 Ed., § 45-116.</p>
               </section>
             </section>
             <hr/>
@@ -384,8 +422,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1053">Mar. 3, 1901, 31 Stat. 1354, ch. 854, § 1053</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-117.</p>
                 <p>1973 Ed., § 45-1017.</p>
+                <p>1981 Ed., § 45-117.</p>
               </section>
             </section>
             <hr/>
@@ -400,8 +438,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1054">Mar. 3, 1901, 31 Stat. 1354, ch. 854, § 1054</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-118.</p>
                 <p>1973 Ed., § 45-1018.</p>
+                <p>1981 Ed., § 45-118.</p>
                 <h4>Cross References</h4>
                 <p>Wills, see §§ <a class="internal-link" href="/dc/council/code/sections/18-108.html">18-108</a>, <a class="internal-link" href="/dc/council/code/sections/18-303.html">18-303</a>.</p>
               </section>
@@ -418,8 +456,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§1055">Mar. 3, 1901, 31 Stat. 1354, ch. 854, § 1055</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-119.</p>
                 <p>1973 Ed., § 45-1019.</p>
+                <p>1981 Ed., § 45-119.</p>
               </section>
             </section>
             <hr/>

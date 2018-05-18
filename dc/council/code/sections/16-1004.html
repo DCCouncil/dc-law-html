@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/16-1005.html">§ 16–1005. Hearing; evidence; protection order.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/16-1004.html">Report Error</a>
@@ -107,14 +107,14 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 547, Pub. L. 91-358, title I, § 131(a)</a>; <a class="internal-link" href="/dc/council/laws/4-144.html">Sept. 14, 1982, D.C. Law 4-144, § 5, 29 DCR 3131</a>; <a class="internal-link" href="/dc/council/laws/16-204.html">Mar. 2, 2007, D.C. Law 16-204, § 4, 53 DCR 9059</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 143, 56 DCR 1117</a>; <a class="internal-link" href="/dc/council/laws/17-368.html">Mar. 25, 2009, D.C. Law 17-368, § 3(b)(2), 56 DCR 1338</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-1004.</p>
                 <p>1973 Ed., § 16-1004.</p>
+                <p>1981 Ed., § 16-1004.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/16-1005.html">16-1005</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-204.html">D.C. Law 16-204</a>, in subsec. (d), designated existing text as paragraph (1); in newly designated paragraph (1), substituted “of not more than 14 days duration, subject to extensions as provided in paragraph (2) of this subsection” for “of not more than 14 days duration”; and inserted new paragraphs (2), (3) and (4).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-368.html">D.C. Law 17-368</a> rewrote the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-204.html">D.C. Law 16-204</a>, in subsec. (d), designated existing text as paragraph (1); in newly designated paragraph (1), substituted “of not more than 14 days duration, subject to extensions as provided in paragraph (2) of this subsection” for “of not more than 14 days duration”; and inserted new paragraphs (2), (3) and (4).</p>
               </section>
             </section>
           </section>

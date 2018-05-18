@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:8-306.html">§ 28:8-306. Effect of guaranteeing signature, indorsement, or instruction.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:8-305.html">Report Error</a>
@@ -100,16 +100,16 @@
       (<a class="internal-link" href="/dc/council/laws/11-240.html">Apr. 9, 1997, D.C. Law 11-240, § 2, 44 DCR 1087</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:8-305.</p>
                 <p>1973 Ed., § 28:8-305.</p>
+                <p>1981 Ed., § 28:8-305.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. The term instruction is defined in  Section 8-102(a)(12) as a notification communicated to the issuer of an uncertificated security directing that transfer be registered.  Section 8-107 specifies who may initiate an effective instruction.</p>
-                <p>Functionally, presentation of an instruction is quite similar to the presentation of an indorsed certificate for reregistration. Note that instruction is defined in terms of “communicate,” see  Section 8-102(a)(6). Thus, the instruction may be in the form of a writing signed by the registered owner or in any other form agreed upon by the issuer and the registered owner. Allowing nonwritten forms of instructions will permit the development and employment of means of transmitting instructions electronically.</p>
-                <p>When a person who originates an instruction leaves a blank and the blank later is completed, subsection (a) gives the issuer the same rights it would have had against the originating person had that person completed the blank. This is true regardless of whether the person completing the instruction had authority to complete it. Compare  Section 8-206 and its Comment, dealing with blanks left upon issue.</p>
-                <p>2. Subsection (b) makes clear that the originator of an instruction, like the indorser of a security certificate, does not warrant that the issuer will honor the underlying obligation, but does make warranties as a transferor under  Section 8-108.</p>
-                <p><strong>Definitional Cross References</strong> “Appropriate person”.  Section 8-107.</p>
-                <p>“Instruction”.  Section 8-102(a)(12).</p>
                 <p>“Issuer”.  Section 8-201.</p>
+                <p>“Instruction”.  Section 8-102(a)(12).</p>
+                <p><strong>Definitional Cross References</strong> “Appropriate person”.  Section 8-107.</p>
+                <p>2. Subsection (b) makes clear that the originator of an instruction, like the indorser of a security certificate, does not warrant that the issuer will honor the underlying obligation, but does make warranties as a transferor under  Section 8-108.</p>
+                <p>When a person who originates an instruction leaves a blank and the blank later is completed, subsection (a) gives the issuer the same rights it would have had against the originating person had that person completed the blank. This is true regardless of whether the person completing the instruction had authority to complete it. Compare  Section 8-206 and its Comment, dealing with blanks left upon issue.</p>
+                <p>Functionally, presentation of an instruction is quite similar to the presentation of an indorsed certificate for reregistration. Note that instruction is defined in terms of “communicate,” see  Section 8-102(a)(6). Thus, the instruction may be in the form of a writing signed by the registered owner or in any other form agreed upon by the issuer and the registered owner. Allowing nonwritten forms of instructions will permit the development and employment of means of transmitting instructions electronically.</p>
+                <p>1. The term instruction is defined in  Section 8-102(a)(12) as a notification communicated to the issuer of an uncertificated security directing that transfer be registered.  Section 8-107 specifies who may initiate an effective instruction.</p>
               </section>
             </section>
           </section>

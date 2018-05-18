@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-503.html">§ 28:2A-503. Modification or impairment of rights and remedies.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-502.html">Report Error</a>
@@ -102,15 +102,15 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 28:2A-502.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong> None.</p>
-                <p><strong>Purposes:</strong> This section makes clear that absent agreement to the contrary or provision in this Article to the contrary, e.g., Section 2A-516(3)(a), the party in default is not entitled to notice of default or enforcement. While a review of Part 5 of Article 9 leads to the same conclusion with respect to giving notice of default to the debtor, it is never stated. Although Article 9 requires notice of disposition and strict foreclosure, the different scheme of lessors’ and lessees’ rights and remedies developed under the common law, and codified by this Article, generally does not require notice of enforcement; furthermore, such notice is not mandated by due process requirements. However, certain sections of this Article do require notice. E.g., Section 2A-517(4).</p>
-                <p><strong>Cross References:</strong> Sections 2A-516(3)(a), 2A-517(4), and Article 9, esp. Part 5.</p>
-                <p><strong>Definitional Cross References:</strong> “Lease agreement”. Section 2A-103(1)(k).</p>
-                <p>“Lease contract”. Section 2A-103(1)(l).</p>
-                <p>“Lessee”. Section 2A-103(1)(n).</p>
-                <p>“Lessor”. Section 2A-103(1)(p).</p>
-                <p>“Notice”.  Section 1-201(25).</p>
                 <p>“Party”.  Section 1-201(29).</p>
+                <p>“Notice”.  Section 1-201(25).</p>
+                <p>“Lessor”. Section 2A-103(1)(p).</p>
+                <p>“Lessee”. Section 2A-103(1)(n).</p>
+                <p>“Lease contract”. Section 2A-103(1)(l).</p>
+                <p><strong>Definitional Cross References:</strong> “Lease agreement”. Section 2A-103(1)(k).</p>
+                <p><strong>Cross References:</strong> Sections 2A-516(3)(a), 2A-517(4), and Article 9, esp. Part 5.</p>
+                <p><strong>Purposes:</strong> This section makes clear that absent agreement to the contrary or provision in this Article to the contrary, e.g., Section 2A-516(3)(a), the party in default is not entitled to notice of default or enforcement. While a review of Part 5 of Article 9 leads to the same conclusion with respect to giving notice of default to the debtor, it is never stated. Although Article 9 requires notice of disposition and strict foreclosure, the different scheme of lessors’ and lessees’ rights and remedies developed under the common law, and codified by this Article, generally does not require notice of enforcement; furthermore, such notice is not mandated by due process requirements. However, certain sections of this Article do require notice. E.g., Section 2A-517(4).</p>
+                <p><strong>Uniform Statutory Source:</strong> None.</p>
               </section>
             </section>
           </section>

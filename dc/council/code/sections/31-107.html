@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/31-108.html">§ 31–108. Abolition of Insurance Administration.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-107.html">Report Error</a>
@@ -108,16 +108,16 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-5041.02.html">31-5041.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-166.html">D.C. Law 15-166</a>, in subsec. (a), substituted “Department” for “Department of Insurance and Securities Regulation”; added subsec. (b-1); and, in subsec. (d), substituted “, the Security Regulatory Trust Fund, and the Banking Regulatory Trust Fund” for “and the Security Regulatory Trust Fund”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> repealed subsecs. (b) and (b-1); added subsec. (b-2); and, in subsec. (d), substituted “and the Securities and Banking Regulatory Trust Fund” for “, the Securities Regulatory Trust Fund, and the Banking Regulatory Trust Fund”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (b-2), substituted “all proceeds from licensure and any funds” for “all funds”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> repealed subsecs. (b) and (b-1); added subsec. (b-2); and, in subsec. (d), substituted “and the Securities and Banking Regulatory Trust Fund” for “, the Securities Regulatory Trust Fund, and the Banking Regulatory Trust Fund”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-166.html">D.C. Law 15-166</a>, in subsec. (a), substituted “Department” for “Department of Insurance and Securities Regulation”; added subsec. (b-1); and, in subsec. (d), substituted “, the Security Regulatory Trust Fund, and the Banking Regulatory Trust Fund” for “and the Security Regulatory Trust Fund”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(g) of Consolidation of Financial Services Emergency Amendment Act of 2004 (D.C. Act 15-381, February 27, 2004,  51 DCR 2653).</p>
                 <p>For temporary (90 day) amendment of section, see § 2112(d) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(g) of Consolidation of Financial Services Emergency Amendment Act of 2004 (D.C. Act 15-381, February 27, 2004,  51 DCR 2653).</p>
                 <h4>References in Text</h4>
-                <p>The “District of Columbia Securities Act”, referred to in (c), is the Act of August 30, 1964, 78 Stat. 620, Pub. L. 88-503, which is codified primarily as § <a class="internal-link" href="/dc/council/code/sections/3-3601.html">3-3601</a> et seq.</p>
-                <p>The “Investment Advisors Act”, referred to in (c), is <a class="internal-link" href="/dc/council/laws/9-216.html">D.C. Law 9-216</a>, which is codified as § <a class="internal-link" href="/dc/council/code/sections/3-3701.html">3-3701</a> et seq.</p>
                 <p>The “Insurance Regulatory Trust Fund Act”, referred to in (c), is <a class="internal-link" href="/dc/council/laws/10-40.html">D.C. Law 10-40</a>, which is codified as § <a class="internal-link" href="/dc/council/code/sections/31-1201.html">31-1201</a> et seq.</p>
+                <p>The “Investment Advisors Act”, referred to in (c), is <a class="internal-link" href="/dc/council/laws/9-216.html">D.C. Law 9-216</a>, which is codified as § <a class="internal-link" href="/dc/council/code/sections/3-3701.html">3-3701</a> et seq.</p>
+                <p>The “District of Columbia Securities Act”, referred to in (c), is the Act of August 30, 1964, 78 Stat. 620, Pub. L. 88-503, which is codified primarily as § <a class="internal-link" href="/dc/council/code/sections/3-3601.html">3-3601</a> et seq.</p>
               </section>
             </section>
           </section>

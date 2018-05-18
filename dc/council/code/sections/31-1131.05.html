@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/31-1131.05a.html">§ 31–1131.05a. Pre-licensing education.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-1131.05.html">Report Error</a>
@@ -106,8 +106,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-1131.05a.html">31-1131.05a</a>, § <a class="internal-link" href="/dc/council/code/sections/31-1131.05b.html">31-1131.05b</a>, § <a class="internal-link" href="/dc/council/code/sections/31-1131.07.html">31-1131.07</a>, and § <a class="internal-link" href="/dc/council/code/sections/31-1131.08.html">31-1131.08</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-155.html">D.C. Law 17-155</a> rewrote the section name line which had read as follows: “ Application for examination”; rewrote subsec. (a); added subsec. (a-1); and, in subsec. (d), substituted “may reapply for an examination. The individual shall remit” for “shall reapply for an examination and remit”. Prior to amendment, subsec. (a) read as follows: “(a) A resident individual applying for an insurance producer license shall pass a written examination unless exempt under § <a class="internal-link" href="/dc/council/code/sections/31-1131.09.html">31-1131.09</a>. The examination shall test the knowledge of the individual concerning the lines of authority for which application is made, the duties and responsibilities of an insurance producer, and the insurance laws and regulations of the District. Examinations required by this section shall be developed and conducted under rules and regulations promulgated by the Commissioner.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> substituted “§ <a class="internal-link" href="/dc/council/code/sections/31-1131.05b.html">31-1131.05b</a> or § <a class="internal-link" href="/dc/council/code/sections/31-1131.09.html">31-1131.09</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/31-1131.09.html">31-1131.09</a>”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-155.html">D.C. Law 17-155</a> rewrote the section name line which had read as follows: “ Application for examination”; rewrote subsec. (a); added subsec. (a-1); and, in subsec. (d), substituted “may reapply for an examination. The individual shall remit” for “shall reapply for an examination and remit”. Prior to amendment, subsec. (a) read as follows: “(a) A resident individual applying for an insurance producer license shall pass a written examination unless exempt under § <a class="internal-link" href="/dc/council/code/sections/31-1131.09.html">31-1131.09</a>. The examination shall test the knowledge of the individual concerning the lines of authority for which application is made, the duties and responsibilities of an insurance producer, and the insurance laws and regulations of the District. Examinations required by this section shall be developed and conducted under rules and regulations promulgated by the Commissioner.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2166(a) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
               </section>

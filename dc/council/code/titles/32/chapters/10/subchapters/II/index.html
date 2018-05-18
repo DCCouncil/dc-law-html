@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/32/chapters/10A/">Chapter 10A. Building Service Employees Minimum Work Week.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/32/chapters/10/subchapters/II/">Report Error</a>
@@ -88,25 +88,63 @@
         <section class="col8 body">
           <h1>Subchapter II. Repealed Provisions.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/32-1031.html">§ 32–1031. Findings and declaration of policy [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1032.html">§ 32–1032. Definitions [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1033.html">§ 32–1033. Minimum wage and overtime compensation; workweek; wage orders [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1034.html">§ 32–1034. Exemptions of certain employees from minimum wage and overtime provisions [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1035.html">§ 32–1035. Powers and duties of Mayor; investigations; statements from employers [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1036.html">§ 32–1036. Reconsideration and revision of wage orders; ad hoc committees; committee reports of findings and recommendations; failure to report [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1037.html">§ 32–1037. Issuance of revised wage orders; notice and hearing; notice and effective date of orders; contents of orders; restrictions [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1038.html">§ 32–1038. Council to make regulations [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1039.html">§ 32–1039. Judicial review of orders; stay pending determination of proceedings [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1040.html">§ 32–1040. Mayor authorized to take testimony and issue subpoenas [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1041.html">§ 32–1041. Records of employers; availability for inspection; statements to employees [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1042.html">§ 32–1042. Posting of law and wage orders; Mayor to furnish copies [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1043.html">§ 32–1043. Unlawful acts [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1044.html">§ 32–1044. Penalties for violation of § 36-213; jurisdiction; prosecutions [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1045.html">§ 32–1045. Liability of employer; liquidated damages; attorney fees and costs; assignment of claim; supervision of payment [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1046.html">§ 32–1046. Statute of limitations [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1047.html">§ 32–1047. Right of collective bargaining [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1048.html">§ 32–1048. Severability [Repealed]</a>
-            <a href="/dc/council/code/sections/32-1049.html">§ 32–1049. Short title [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1031.html">§ 32–1031. Findings and declaration of policy [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1032.html">§ 32–1032. Definitions [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1033.html">§ 32–1033. Minimum wage and overtime compensation; workweek; wage orders [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1034.html">§ 32–1034. Exemptions of certain employees from minimum wage and overtime provisions [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1035.html">§ 32–1035. Powers and duties of Mayor; investigations; statements from employers [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1036.html">§ 32–1036. Reconsideration and revision of wage orders; ad hoc committees; committee reports of findings and recommendations; failure to report [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1037.html">§ 32–1037. Issuance of revised wage orders; notice and hearing; notice and effective date of orders; contents of orders; restrictions [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1038.html">§ 32–1038. Council to make regulations [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1039.html">§ 32–1039. Judicial review of orders; stay pending determination of proceedings [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1040.html">§ 32–1040. Mayor authorized to take testimony and issue subpoenas [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1041.html">§ 32–1041. Records of employers; availability for inspection; statements to employees [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1042.html">§ 32–1042. Posting of law and wage orders; Mayor to furnish copies [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1043.html">§ 32–1043. Unlawful acts [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1044.html">§ 32–1044. Penalties for violation of § 36-213; jurisdiction; prosecutions [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1045.html">§ 32–1045. Liability of employer; liquidated damages; attorney fees and costs; assignment of claim; supervision of payment [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1046.html">§ 32–1046. Statute of limitations [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1047.html">§ 32–1047. Right of collective bargaining [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1048.html">§ 32–1048. Severability [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/32-1049.html">§ 32–1049. Short title [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

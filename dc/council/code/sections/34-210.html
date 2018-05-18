@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/34-211.html">§ 34–211. “Joint rates” defined.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/34-210.html">Report Error</a>
@@ -98,13 +98,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/62-3-ch150.html">Mar. 4, 1913, 37 Stat. 975, ch. 150, § 8, par. 1</a>; <a class="internal-link" href="/dc/council/laws/15-227.html">Mar. 16, 2005, D.C. Law 15-227, § 17(a)(4), 51 DCR 10549</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-212.</p>
                 <p>1973 Ed., § 43-112.</p>
+                <p>1981 Ed., § 43-212.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/34-1311.01.html">34-1311.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-227.html">D.C. Law 15-227</a> rewrote the section which had read:</p>
                 <p>“The term ‘gas plant’ when used in this subtitle includes all buildings, easements, real estate, mains, pipes, conduits, service pipes, services, pipe galleries, meters, boilers, water-gas sets, retorts, fixtures, condensers, scrubbers, purifiers, holders, materials, apparatus, personal property, and franchises, and property of every kind used in the conduct of the business operated, owned, controlled, used or to be used for or in connection with or to facilitate the manufacture, distribution, sale, or furnishing of gas (natural or manufactured) for light, heat, or power.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-227.html">D.C. Law 15-227</a> rewrote the section which had read:</p>
               </section>
             </section>
           </section>

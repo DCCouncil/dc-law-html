@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/46-225.02.html">§ 46–225.02. Criminal contempt remedy for failure to pay child support.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/46-225.01.html">Report Error</a>
@@ -124,31 +124,31 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 30-525.1.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-269.html">D.C. Law 13-269</a> rewrote the section which had read:</p>
-                <p>“(a) Notwithstanding any other law or regulation, no car registration or driver’s license shall be renewed or issued to an obligor who is receiving income and who owes overdue child support in an amount equal to at least 60 days of support. A car registration or driver’s license that has been issued to an obligor who is receiving income and who owes overdue child support in an amount equal to at least 60 days of support payments shall be revoked.</p>
-                <p>“(b) Notwithstanding any other law or regulation, no professional or business license shall be renewed or issued in the District to an obligor who is receiving income and who owes overdue child support in an amount equal to at least 60 days of support payments. A professional or business license that has been issued to an obligor who is receiving income and who owes overdue child support shall be revoked. As used in this subsection, the term ‘professional or business license’ includes any approval, certificate, registration, permit, statutory exemption, or other form of permission to practice a profession or to operate a business, as granted by a commission or a professional licensing body of the government of the District of Columbia.</p>
-                <p>“(c) Prior to an act to deny issuance or renewal, or an act to revoke, the car registration, driver’s license, or professional or business license of an obligor who is receiving income and who owes overdue child support, the Mayor must provide 30-days written notice to the obligor. The notice shall specify:</p>
-                <p>“(1) The amount of arrears owed;</p>
-                <p>“(2) How, when, and where the notice can be contested;</p>
-                <p>“(3) That the licensing authority will deny issuance or renewal, or revoke the registration or license 30 days after the issuance of the notice unless the arrearage is paid in full, or the obligor agrees to a payment schedule that requires the obligor to make monthly child support payments toward overdue support in an amount equal to 25% of the obligor’s current monthly child support obligation as long as the obligor is receiving income; and</p>
-                <p>“(4) That failure to comply with the agreed to payment schedule shall result in the denial of an issuance or renewal, or a revocation, of the obligor’s registration or license.</p>
-                <p>“(d) The Mayor shall provide the obligor with the opportunity to demonstrate why his or her registration or license should not be denied or revoked under this section. The only issues to be determined are as follows: (1) Whether the person named in the cour is a licensee or applicant, has his or her car registered in the District of Columbia, and seeks to have a car registration issued or renewed; (2) Whether the arrearage has been paid in full, or whether a payment schedule has been agreed to and complied with; (3) Whether the obligor is currently receiving income; and (4) Whether the driver’s license or car registration or professional or business license should be revoked, or the issuance or renewal should be denied.</p>
-                <p>“(e) If the Clerk of the Court has notified the Mayor that an obligor is receiving income and owes overdue child support in an amount equal to at least 60 days of support, and the obligor presents no evidence under subsection (d) of this section that the arrearage has been paid in full, or that a payment schedule has been agreed to and complied with, the obligor’s license or registration shall be revoked, or the request for the issuance or renewal of a license or registration shall be denied.</p>
-                <p>“(f) If the obligor under this chapter is a member of the District of Columbia Bar, the Clerk of the Court shall send written notice to the Board of Professional Responsibility so that appropriate action may be taken.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, substituted “suspended” for “revoked”, “suspend” for “revoke”, “suspension” for “revocation”, and “suspending” for “revoking”, wherever each respective word appeared throughout the section.</p>
+                <p>“(f) If the obligor under this chapter is a member of the District of Columbia Bar, the Clerk of the Court shall send written notice to the Board of Professional Responsibility so that appropriate action may be taken.”</p>
+                <p>“(e) If the Clerk of the Court has notified the Mayor that an obligor is receiving income and owes overdue child support in an amount equal to at least 60 days of support, and the obligor presents no evidence under subsection (d) of this section that the arrearage has been paid in full, or that a payment schedule has been agreed to and complied with, the obligor’s license or registration shall be revoked, or the request for the issuance or renewal of a license or registration shall be denied.</p>
+                <p>“(d) The Mayor shall provide the obligor with the opportunity to demonstrate why his or her registration or license should not be denied or revoked under this section. The only issues to be determined are as follows: (1) Whether the person named in the cour is a licensee or applicant, has his or her car registered in the District of Columbia, and seeks to have a car registration issued or renewed; (2) Whether the arrearage has been paid in full, or whether a payment schedule has been agreed to and complied with; (3) Whether the obligor is currently receiving income; and (4) Whether the driver’s license or car registration or professional or business license should be revoked, or the issuance or renewal should be denied.</p>
+                <p>“(4) That failure to comply with the agreed to payment schedule shall result in the denial of an issuance or renewal, or a revocation, of the obligor’s registration or license.</p>
+                <p>“(3) That the licensing authority will deny issuance or renewal, or revoke the registration or license 30 days after the issuance of the notice unless the arrearage is paid in full, or the obligor agrees to a payment schedule that requires the obligor to make monthly child support payments toward overdue support in an amount equal to 25% of the obligor’s current monthly child support obligation as long as the obligor is receiving income; and</p>
+                <p>“(2) How, when, and where the notice can be contested;</p>
+                <p>“(1) The amount of arrears owed;</p>
+                <p>“(c) Prior to an act to deny issuance or renewal, or an act to revoke, the car registration, driver’s license, or professional or business license of an obligor who is receiving income and who owes overdue child support, the Mayor must provide 30-days written notice to the obligor. The notice shall specify:</p>
+                <p>“(b) Notwithstanding any other law or regulation, no professional or business license shall be renewed or issued in the District to an obligor who is receiving income and who owes overdue child support in an amount equal to at least 60 days of support payments. A professional or business license that has been issued to an obligor who is receiving income and who owes overdue child support shall be revoked. As used in this subsection, the term ‘professional or business license’ includes any approval, certificate, registration, permit, statutory exemption, or other form of permission to practice a profession or to operate a business, as granted by a commission or a professional licensing body of the government of the District of Columbia.</p>
+                <p>“(a) Notwithstanding any other law or regulation, no car registration or driver’s license shall be renewed or issued to an obligor who is receiving income and who owes overdue child support in an amount equal to at least 60 days of support. A car registration or driver’s license that has been issued to an obligor who is receiving income and who owes overdue child support in an amount equal to at least 60 days of support payments shall be revoked.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-269.html">D.C. Law 13-269</a> rewrote the section which had read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 7(m) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 1997 (D.C. Act 12-222, December 23, 1997,  44 DCR 114).</p>
-                <p>For temporary amendment of section, see § 7(w) of the Child Support and Welfare Reform Compliance Second Emergency Amendment Act of 1998 (D.C. Act 12-309, March 20, 1998,  45 DCR 1923), § 7(w) of the Child Support and Welfare Reform Compliance Second Emergency Amendment Act of 1998 (D.C. Act 12-439, August 12, 1998,  45 DCR 6110), § 7(w) of the Child Support and Welfare Reform Compliance Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-503, October 27, 1998,  45 DCR 8495), and § 7(w) of the Child Support and Welfare Reform Compliance Second Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-600, January 20, 1999,  46 DCR 1239).</p>
-                <p>For temporary repeal of <a class="internal-link" href="/dc/council/laws/12-103.html">D.C. Law 12-103</a>, see § 13 of the Child Support and Welfare Reform Compliance Second Emergency Amendment Act of 1998 (D.C. Act 12-439, August 12, 1998,  45 DCR 6110).</p>
-                <p>For temporary (90-day) amendment of section, see § 107(x) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 1999 (D.C. Act 13-126, August 4, 1999,  46 DCR 6606).</p>
-                <p>For temporary (90-day) amendment of section, see § 107(x) of the Child Support and Welfare Reform Compliance Legislative Review Emergency Amendment Act of 1999 (D.C. Act 13-177, November 2, 1999,  46 DCR 9678).</p>
-                <p>For temporary (90-day) amendment of section, see § 107(x) of the Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-241, January 11, 2000,  47 DCR 581).</p>
-                <p>For temporary (90 day) amendment of section, see § 107(x) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 2000 (D.C. Act 13-446, November 7, 2000,  47 DCR 9213).</p>
                 <p>For temporary (90 day) amendment of section, see § 108(x) of Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-5, February 13, 2001,  48 DCR 2440).</p>
+                <p>For temporary (90 day) amendment of section, see § 107(x) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 2000 (D.C. Act 13-446, November 7, 2000,  47 DCR 9213).</p>
+                <p>For temporary (90-day) amendment of section, see § 107(x) of the Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-241, January 11, 2000,  47 DCR 581).</p>
+                <p>For temporary (90-day) amendment of section, see § 107(x) of the Child Support and Welfare Reform Compliance Legislative Review Emergency Amendment Act of 1999 (D.C. Act 13-177, November 2, 1999,  46 DCR 9678).</p>
+                <p>For temporary (90-day) amendment of section, see § 107(x) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 1999 (D.C. Act 13-126, August 4, 1999,  46 DCR 6606).</p>
+                <p>For temporary repeal of <a class="internal-link" href="/dc/council/laws/12-103.html">D.C. Law 12-103</a>, see § 13 of the Child Support and Welfare Reform Compliance Second Emergency Amendment Act of 1998 (D.C. Act 12-439, August 12, 1998,  45 DCR 6110).</p>
+                <p>For temporary amendment of section, see § 7(w) of the Child Support and Welfare Reform Compliance Second Emergency Amendment Act of 1998 (D.C. Act 12-309, March 20, 1998,  45 DCR 1923), § 7(w) of the Child Support and Welfare Reform Compliance Second Emergency Amendment Act of 1998 (D.C. Act 12-439, August 12, 1998,  45 DCR 6110), § 7(w) of the Child Support and Welfare Reform Compliance Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-503, October 27, 1998,  45 DCR 8495), and § 7(w) of the Child Support and Welfare Reform Compliance Second Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-600, January 20, 1999,  46 DCR 1239).</p>
+                <p>For temporary amendment of section, see § 7(m) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 1997 (D.C. Act 12-222, December 23, 1997,  44 DCR 114).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 7(w) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1998 (<a class="internal-link" href="/dc/council/laws/12-210.html">D.C. Law 12-210</a>, April 13, 1999, law notification  46 DCR 3832).</p>
-                <p>For temporary (225 day) amendment of section, see § 107(x) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1999 (D.C. Law 13-57, March 7, 2000, law notification  47 DCR 1979).</p>
                 <p>For temporary (225 day) amendment of section, see § 107(x) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-207.html">D.C. Law 13-207</a>, March 31, 2001, law notification  48 DCR 3238).</p>
+                <p>For temporary (225 day) amendment of section, see § 107(x) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1999 (D.C. Law 13-57, March 7, 2000, law notification  47 DCR 1979).</p>
+                <p>For temporary (225 day) amendment of section, see § 7(w) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1998 (<a class="internal-link" href="/dc/council/laws/12-210.html">D.C. Law 12-210</a>, April 13, 1999, law notification  46 DCR 3832).</p>
               </section>
             </section>
           </section>

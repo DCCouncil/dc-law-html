@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/1-626.11.html">§ 1–626.11. Establishment and administration of Section 401(a) Trust.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-626.10.html">Report Error</a>
@@ -136,9 +136,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-527.01.html">1-527.01</a>, § <a class="internal-link" href="/dc/council/code/sections/1-626.04.html">1-626.04</a>, and § <a class="internal-link" href="/dc/council/code/sections/2-1605.html">2-1605</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-260.html">D.C. Law 17-260</a> added subsec. (d).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-82.html">D.C. Law 18-82</a> rewrote subsec. (b); and, in subsec. (c), substituted “that has not vested in accordance with subsection (b) of this section shall be forfeited after separation from employment” for “shall be forfeited upon separation from employment if separation occurs prior to completion of 5 years of creditable service”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> made a correction to the directory language in <a class="internal-link" href="/dc/council/laws/18-82.html">D.C. Law 18-82</a>, § 2(a), which did not affect this section as codified.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-82.html">D.C. Law 18-82</a> rewrote subsec. (b); and, in subsec. (c), substituted “that has not vested in accordance with subsection (b) of this section shall be forfeited after separation from employment” for “shall be forfeited upon separation from employment if separation occurs prior to completion of 5 years of creditable service”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-260.html">D.C. Law 17-260</a> added subsec. (d).</p>
                 <h4>Cross References</h4>
                 <p>Public defender service, retirement benefits, determination of period of creditable service for purposes of vesting, see § <a class="internal-link" href="/dc/council/code/sections/2-1605.html">2-1605</a>.</p>
                 <h4>Editor's Notes</h4>

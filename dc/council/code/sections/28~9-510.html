@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-511.html">§ 28:9-511. Secured party of record.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-510.html">Report Error</a>
@@ -104,14 +104,14 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:9-513.html">28:9-513</a> and § <a class="internal-link" href="/dc/council/code/sections/28:9-515.html">28:9-515</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. New.</p>
-                <p>2. Ineffectiveness of Unauthorized or Overbroad Filings. Subsection (a) provides that a filed financing statement is effective only to the extent it was filed by a person entitled to file it.</p>
-                <p>Example 1: Debtor authorizes the filing of a financing statement covering inventory. Under  Section 9-509, the secured party may file a financing statement covering only inventory; it may not file a financing statement covering other collateral. The secured party files a financing statement covering inventory and equipment. This section provides that the financing statement is effective only to the extent the secured party may file it. Thus, the financing statement is effective to perfect a security interest in inventory but ineffective to perfect a security interest in equipment.</p>
-                <p>3. Multiple Secured Parties of Record.  Section 9-509(e) permits any secured party of record to authorize the filing of most amendments. Subsection (b) of this section prevents a filing authorized by one secured party of record from affecting the rights and powers of another secured party of record without the latter’s consent.</p>
-                <p>Example 2: Debtor creates a security interest in favor of A and B. The filed financing statement names A and B as the secured parties. An amendment deleting some collateral covered by the financing statement is filed pursuant to B’s authorization. Although B’s security interest in the deleted collateral becomes unperfected, A’s security interest remains perfected in all the collateral.</p>
-                <p>Example 3: Debtor creates a security interest in favor of A and B. The financing statement names A and B as the secured parties.</p>
-                <p>A termination statement is filed pursuant to B’s authorization. Although the effectiveness of the financing statement terminates with respect to B’s security interest, A’s rights are unaffected. That is, the financing statement continues to be effective to perfect A’s security interest.</p>
                 <p>4. Continuation Statements. A continuation statement may be filed only within the six months immediately before lapse. See  Section 9-515(d). The filing office is obligated to reject a continuation statement that is filed outside the six-month period. See  Sections 9-520(a),  9-516(b)(7). Subsection (c) provides that if the filing office fails to reject a continuation statement that is not filed in a timely manner, the continuation statement is ineffective nevertheless.</p>
+                <p>A termination statement is filed pursuant to B’s authorization. Although the effectiveness of the financing statement terminates with respect to B’s security interest, A’s rights are unaffected. That is, the financing statement continues to be effective to perfect A’s security interest.</p>
+                <p>Example 3: Debtor creates a security interest in favor of A and B. The financing statement names A and B as the secured parties.</p>
+                <p>Example 2: Debtor creates a security interest in favor of A and B. The filed financing statement names A and B as the secured parties. An amendment deleting some collateral covered by the financing statement is filed pursuant to B’s authorization. Although B’s security interest in the deleted collateral becomes unperfected, A’s security interest remains perfected in all the collateral.</p>
+                <p>3. Multiple Secured Parties of Record.  Section 9-509(e) permits any secured party of record to authorize the filing of most amendments. Subsection (b) of this section prevents a filing authorized by one secured party of record from affecting the rights and powers of another secured party of record without the latter’s consent.</p>
+                <p>Example 1: Debtor authorizes the filing of a financing statement covering inventory. Under  Section 9-509, the secured party may file a financing statement covering only inventory; it may not file a financing statement covering other collateral. The secured party files a financing statement covering inventory and equipment. This section provides that the financing statement is effective only to the extent the secured party may file it. Thus, the financing statement is effective to perfect a security interest in inventory but ineffective to perfect a security interest in equipment.</p>
+                <p>2. Ineffectiveness of Unauthorized or Overbroad Filings. Subsection (a) provides that a filed financing statement is effective only to the extent it was filed by a person entitled to file it.</p>
+                <p>1. Source. New.</p>
               </section>
             </section>
           </section>

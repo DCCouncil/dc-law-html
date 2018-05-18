@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/50/chapters/2/subchapters/II/">Subchapter II. Fleet Management Administration.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/50/chapters/2/subchapters/I/">Report Error</a>
@@ -88,11 +88,21 @@
         <section class="col8 body">
           <h1>Subchapter I. General Provisions.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/50-201.html">§ 50–201. Distinctive markings. [Repealed]</a>
-            <a href="/dc/council/code/sections/50-202.html">§ 50–202. Official use.</a>
-            <a href="/dc/council/code/sections/50-203.html">§ 50–203. EPA Miles Per Gallon requirement; restrictions on use of sport utility vehicles.</a>
-            <a href="/dc/council/code/sections/50-204.html">§ 50–204. Restrictions on the use of official vehicles.</a>
-            <a href="/dc/council/code/sections/50-205.html">§ 50–205. Bicycle safety enhancements for  heavy-duty vehicles.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-201.html">§ 50–201. Distinctive markings. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-202.html">§ 50–202. Official use.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-203.html">§ 50–203. EPA Miles Per Gallon requirement; restrictions on use of sport utility vehicles.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-204.html">§ 50–204. Restrictions on the use of official vehicles.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-205.html">§ 50–205. Bicycle safety enhancements for  heavy-duty vehicles.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -107,13 +117,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/64-2-ch160.html">Mar. 3, 1917, 39 Stat. 1010, ch. 160</a>; <a class="internal-link" href="/dc/council/laws/19-223.html">Mar. 5, 2013, D.C. Law 19-223, § 202, 59 DCR 13537</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-901.</p>
                 <p>1973 Ed., § 40-501.</p>
+                <p>1981 Ed., § 40-901.</p>
                 <h4>Cross References</h4>
                 <p>Motor vehicle exhaust emissions inspections, government vehicles, see § <a class="internal-link" href="/dc/council/code/sections/50-1104.html">50-1104</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 401 of <a class="internal-link" href="/dc/council/laws/19-223.html">D.C. Law 19-223</a> provided that §§ 101, 102, 104, 105(a), 105(b), 106, 107, 201(a), 201(b), 201(c), 202, 203, and 301 of the act shall apply as of Mar. 5, 2013.</p>
                 <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/19-223.html">D.C. Law 19-223</a>, §§ 101 to 107 as subchapter II of this chapter, the preexisting text, §§ <a class="internal-link" href="/dc/council/code/sections/50-201.html">50-201</a> to 50-205, has been designated as subchapter I.</p>
+                <p>Section 401 of <a class="internal-link" href="/dc/council/laws/19-223.html">D.C. Law 19-223</a> provided that §§ 101, 102, 104, 105(a), 105(b), 106, 107, 201(a), 201(b), 201(c), 202, 203, and 301 of the act shall apply as of Mar. 5, 2013.</p>
               </section>
             </section>
             <hr/>
@@ -128,15 +138,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-140.html#§2">Oct. 26, 1973, 87 Stat. 504, Pub. L. 93-140, § 2</a>; <a class="internal-link" href="/dc/council/laws/19-223.html">Mar. 5, 2013, D.C. Law 19-223, § 203, 59 DCR 13537</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-902.</p>
                 <p>1973 Ed., § 40-501a.</p>
+                <p>1981 Ed., § 40-902.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-223.html">D.C. Law 19-223</a> deleted the former last sentence, which read: “Limitations on the official use of passenger motor vehicles, as set out in such sections, shall not apply to the Mayor or, with the approval of the Mayor, to officers and employees of the District government the character of whose duties make such transportation necessary.”</p>
                 <h4>References in Text</h4>
                 <p>“ 31 U.S.C. §§ 1343(a) to (d), 1344, and 1349(b)”, referred to in the first sentence of this section, was substituted for “§ 5 of the Act of July 16, 1914, as amended by § 16 of the Act of August 2, 1946 ( 31 U.S.C. 638a)”, “such sections”, referred to at the end of the second sentence of this section, was substituted for “such Act”, and “such sections”, referred to in the last sentence of this section, was substituted for “§ 5 of such Act” on authority of § 4(b) of the Act of September 13, 1982, Pub. L. 97-258.</p>
                 <h4>Editor's Notes</h4>
-                <p>Restrictions on use of appropriated funds to compensate chauffeurs: See Act of October 1, 1976, 90 Stat. 1494, Pub. L. 94-446, § 111; Act of October 30, 1979, 93 Stat. 713, Pub. L. 96-93, § 210.</p>
                 <p>Section 401 of <a class="internal-link" href="/dc/council/laws/19-223.html">D.C. Law 19-223</a> provided that §§ 101, 102, 104, 105(a), 105(b), 106, 107, 201(a), 201(b), 201(c), 202, 203, and 301 of the act shall apply as of Mar. 5, 2013.</p>
+                <p>Restrictions on use of appropriated funds to compensate chauffeurs: See Act of October 1, 1976, 90 Stat. 1494, Pub. L. 94-446, § 111; Act of October 30, 1979, 93 Stat. 713, Pub. L. 96-93, § 210.</p>
               </section>
             </section>
             <hr/>
@@ -152,14 +162,14 @@
       (<a class="internal-link" href="/dc/council/laws/13-172.html#§3402">Oct. 19, 2000, D.C. Law 13-172, § 3402, 47 DCR 6308</a>; <a class="internal-link" href="/dc/council/laws/14-231.html">Mar. 25, 2003, D.C. Law 14-231, § 2, 49 DCR 9762</a>; <a class="internal-link" href="/dc/council/laws/14-310.html">June 12, 2003, D.C. Law 14-310, § 17, 50 DCR 1092</a>; <a class="internal-link" href="/dc/council/laws/15-105.html">Mar. 13, 2004, D.C. Law 15-105, § 3, 51 DCR 881</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-231.html">D.C. Law 14-231</a> rewrote the section heading which formerly read: “EPA Miles Per Gallon Requirement”; redesignated the text as subsection (a); in the newly designated subsec. (a), inserted “, and shall not be a sports utility vehicle” before the period; and added subsec. (b).</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-310.html">D.C. Law 14-310</a> made no changes in the text, but made the amendments by <a class="internal-link" href="/dc/council/laws/14-231.html">D.C. Law 14-231</a> applicable prospectively to October 1, 2004.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, substituted “emergency, rescue” for “emergency rescue”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-310.html">D.C. Law 14-310</a> made no changes in the text, but made the amendments by <a class="internal-link" href="/dc/council/laws/14-231.html">D.C. Law 14-231</a> applicable prospectively to October 1, 2004.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-231.html">D.C. Law 14-231</a> rewrote the section heading which formerly read: “EPA Miles Per Gallon Requirement”; redesignated the text as subsection (a); in the newly designated subsec. (a), inserted “, and shall not be a sports utility vehicle” before the period; and added subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 3402 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 17 of <a class="internal-link" href="/dc/council/laws/14-310.html">D.C. Law 14-310</a> added section 2a to <a class="internal-link" href="/dc/council/laws/14-231.html">D.C. Law 14-231</a> to read as follows:</p>
                 <p>“Sec. 2a. This act [<a class="internal-link" href="/dc/council/laws/14-231.html">D.C. Law 14-231</a>] shall apply as of October 1, 2004.”</p>
+                <p>Section 17 of <a class="internal-link" href="/dc/council/laws/14-310.html">D.C. Law 14-310</a> added section 2a to <a class="internal-link" href="/dc/council/laws/14-231.html">D.C. Law 14-231</a> to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -198,16 +208,16 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-223.html">D.C. Law 19-223</a> rewrote the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of § 40-931 1981 Ed., see § 3402 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
-                <p>For temporary (90-day) addition of § 40-951 1981 Ed., see § 3602 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <p>For temporary (90 day) amendment of section, see § 3602 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) addition of § 40-951 1981 Ed., see § 3602 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
+                <p>For temporary (90-day) addition of § 40-931 1981 Ed., see § 3402 of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 120 of Pub. L. 107-96 provided:</p>
-                <p>“(a) RESTRICTIONS ON USE OF OFFICIAL VEHICLES.—Except as otherwise provided in this section, none of the funds made available by this Act or by any other Act may be used to provide any officer or employee of the District of Columbia with an official vehicle unless the officer or employee uses the vehicle only in the performance of the officer’s or employee’s official duties. For purposes of this paragraph, the term ‘official duties’ does not include travel between the officer’s or employee’s residence and workplace (except: (1) in the case of an officer or employee of the Metropolitan Police Department who resides in the District of Columbia or is otherwise designated by the Chief of the Department; (2) at the discretion of the Fire Chief, an officer or employee of the District of Columbia Fire and Emergency Medical Services Department who resides in the District of Columbia and is on call 24 hours a day; (3) the Mayor of the District of Columbia; and (4) the Chairman of the Council of the District of Columbia).</p>
-                <p>“(b) INVENTORY OF VEHICLES.—The Chief Financial Officer of the District of Columbia shall submit, by November 15, 2001, an inventory, as of September 30, 2001, of all vehicles owned, leased or operated by the District of Columbia government. The inventory shall include, but not be limited to, the department to which the vehicle is assigned; the year and make of the vehicle; the acquisition date and cost; the general condition of the vehicle; annual operating and maintenance costs; current mileage; and whether the vehicle is allowed to be taken home by a District officer or employee and if so, the officer or employee’s title and resident location.</p>
-                <p>“(c) No officer or employee of the District of Columbia government (including any independent agency of the District but excluding the Office of the Chief Technology Officer, the Chief Financial Officer of the District of Columbia, and the Metropolitan Police Department) may enter into an agreement in excess of $2,500 for the procurement of goods or services on behalf of any entity of the District government until the officer or employee has conducted an analysis of how the procurement of the goods and services involved under the applicable regulations and procedures of the District government would differ from the procurement of the goods and services involved under the Federal supply schedule and other applicable regulations and procedures of the General Services Administration, including an analysis of any differences in the costs to be incurred and the time required to obtain the goods or services.”</p>
-                <p>Section 401 of <a class="internal-link" href="/dc/council/laws/19-223.html">D.C. Law 19-223</a> provided that §§ 103, 105(c), and 201(d) of the act shall apply upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
                 <p>Section 401 of <a class="internal-link" href="/dc/council/laws/19-223.html">D.C. Law 19-223</a> provided that §§ 101, 102, 104, 105(a), 105(b), 106, 107, 201(a), 201(b), 201(c), 202, 203, and 301 of the act shall apply as of Mar. 5, 2013.</p>
+                <p>Section 401 of <a class="internal-link" href="/dc/council/laws/19-223.html">D.C. Law 19-223</a> provided that §§ 103, 105(c), and 201(d) of the act shall apply upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
+                <p>“(c) No officer or employee of the District of Columbia government (including any independent agency of the District but excluding the Office of the Chief Technology Officer, the Chief Financial Officer of the District of Columbia, and the Metropolitan Police Department) may enter into an agreement in excess of $2,500 for the procurement of goods or services on behalf of any entity of the District government until the officer or employee has conducted an analysis of how the procurement of the goods and services involved under the applicable regulations and procedures of the District government would differ from the procurement of the goods and services involved under the Federal supply schedule and other applicable regulations and procedures of the General Services Administration, including an analysis of any differences in the costs to be incurred and the time required to obtain the goods or services.”</p>
+                <p>“(b) INVENTORY OF VEHICLES.—The Chief Financial Officer of the District of Columbia shall submit, by November 15, 2001, an inventory, as of September 30, 2001, of all vehicles owned, leased or operated by the District of Columbia government. The inventory shall include, but not be limited to, the department to which the vehicle is assigned; the year and make of the vehicle; the acquisition date and cost; the general condition of the vehicle; annual operating and maintenance costs; current mileage; and whether the vehicle is allowed to be taken home by a District officer or employee and if so, the officer or employee’s title and resident location.</p>
+                <p>“(a) RESTRICTIONS ON USE OF OFFICIAL VEHICLES.—Except as otherwise provided in this section, none of the funds made available by this Act or by any other Act may be used to provide any officer or employee of the District of Columbia with an official vehicle unless the officer or employee uses the vehicle only in the performance of the officer’s or employee’s official duties. For purposes of this paragraph, the term ‘official duties’ does not include travel between the officer’s or employee’s residence and workplace (except: (1) in the case of an officer or employee of the Metropolitan Police Department who resides in the District of Columbia or is otherwise designated by the Chief of the Department; (2) at the discretion of the Fire Chief, an officer or employee of the District of Columbia Fire and Emergency Medical Services Department who resides in the District of Columbia and is on call 24 hours a day; (3) the Mayor of the District of Columbia; and (4) the Chairman of the Council of the District of Columbia).</p>
+                <p>Section 120 of Pub. L. 107-96 provided:</p>
               </section>
             </section>
             <hr/>
@@ -232,9 +242,9 @@
       (<a class="internal-link" href="/dc/council/laws/17-352.html#§2">Mar. 25, 2009, D.C. Law 17-352, § 2, 56 DCR 1115</a>; <a class="internal-link" href="/dc/council/laws/21-155.html#§605">Oct. 8, 2016, D.C. Law 21-155, § 605, 63 DCR 10143</a>; <a class="internal-link" href="/dc/council/laws/22-33.html#§7002">Dec. 13, 2017, D.C. Law 22-33, § 7002, 64 DCR 7652</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Section 4 of <a class="internal-link" href="/dc/council/laws/17-352.html">D.C. Law 17-352</a> provided that section 2(a)(1)(C) shall apply upon inclusion of its fiscal effect in an approved budget and financial plan.</p>
-                <p>The Budget Director of the Council of the District of Columbia has determined, as of February 15, 2012, that the fiscal effect of section 2(a)(1)(C) of Law 17-352 has not been included in an approved budget and financial plan. Therefore, the provisions of this section, enacted by Law 17-352, are not in effect.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7002">Section 7002 of D.C. Law 22-33</a> repealed § 4 of D.C. Law 17-352. Therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/17-352.html">D.C. Law 17-352</a> have been given effect.</p>
+                <p>The Budget Director of the Council of the District of Columbia has determined, as of February 15, 2012, that the fiscal effect of section 2(a)(1)(C) of Law 17-352 has not been included in an approved budget and financial plan. Therefore, the provisions of this section, enacted by Law 17-352, are not in effect.</p>
+                <p>Section 4 of <a class="internal-link" href="/dc/council/laws/17-352.html">D.C. Law 17-352</a> provided that section 2(a)(1)(C) shall apply upon inclusion of its fiscal effect in an approved budget and financial plan.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 4 of D.C. Law 17-352, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7002">§ 7002 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>

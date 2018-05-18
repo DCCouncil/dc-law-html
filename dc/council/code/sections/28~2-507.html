@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2-508.html">§ 28:2-508. Cure by seller of improper tender or delivery; replacement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2-507.html">Report Error</a>
@@ -100,25 +100,25 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 657, Pub. L. 88-243, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:2-507.</p>
                 <p>1973 Ed., § 28:2-507.</p>
+                <p>1981 Ed., § 28:2-507.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:2-505.html">28:2-505</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Prior Uniform Statutory Provision:</strong> See Sections 11, 41, 42 and 69, Uniform Sales Act.</p>
-                <p><strong>Purposes:</strong> 1. Subsection (1) continues the policies of the prior uniform statutory provisions with respect to tender and delivery by the seller. Under this Article the same rules in these matters are applied to present sales and to contracts for sale. But the provisions of this subsection must be read within the framework of the other sections of this Article which bear upon the question of delivery and payment.</p>
-                <p>2. The “unless otherwise agreed” provision of subsection (1) is directed primarily to cases in which payment in advance has been promised or a letter of credit term has been included. Payment “according to the contract” contemplates immediate payment, payment at the end of an agreed credit term, payment by a time acceptance or the like. Under this Act, “contract” means the total obligation in law which results from the parties’ agreement including the effect of this Article. In this context, therefore, there must be considered the effect in law of such provisions as those on means and manner of payment and on failure of agreed means and manner of payment.</p>
-                <p>3. Subsection (2) deals with the effect of a conditional delivery by the seller and in such a situation makes the buyer’s “right as against the seller” conditional upon payment. These words are used as words of limitation to conform with the policy set forth in the bona fide purchase sections of this Article. Should the seller after making such a conditional delivery fail to follow up his rights, the condition is waived. The provision of this Article for a ten day limit within which the seller may reclaim goods delivered on credit to an insolvent buyer is also applicable here.</p>
-                <p><strong>Cross References:</strong> Point 1:  Sections 2-310,  2-503,  2-511,  2-601 and  2-711 to  2-713.</p>
-                <p>Point 2:  Sections 1-201,  2-511 and  2-614.</p>
-                <p>Point 3:  Sections 2-401,  2-403, and  2-702(1)(b).</p>
-                <p><strong>Definitional Cross References:</strong> “Buyer”.  Section 2-103.</p>
-                <p>“Contract”.  Section 1-201.</p>
-                <p>“Delivery”.  Section 1-201.</p>
-                <p>“Document of title”.  Section 1-201.</p>
-                <p>“Goods”.  Section 2-105.</p>
-                <p>“Rights”.  Section 1-201.</p>
                 <p>“Seller”.  Section 2-103.</p>
+                <p>“Rights”.  Section 1-201.</p>
+                <p>“Goods”.  Section 2-105.</p>
+                <p>“Document of title”.  Section 1-201.</p>
+                <p>“Delivery”.  Section 1-201.</p>
+                <p>“Contract”.  Section 1-201.</p>
+                <p><strong>Definitional Cross References:</strong> “Buyer”.  Section 2-103.</p>
+                <p>Point 3:  Sections 2-401,  2-403, and  2-702(1)(b).</p>
+                <p>Point 2:  Sections 1-201,  2-511 and  2-614.</p>
+                <p><strong>Cross References:</strong> Point 1:  Sections 2-310,  2-503,  2-511,  2-601 and  2-711 to  2-713.</p>
+                <p>3. Subsection (2) deals with the effect of a conditional delivery by the seller and in such a situation makes the buyer’s “right as against the seller” conditional upon payment. These words are used as words of limitation to conform with the policy set forth in the bona fide purchase sections of this Article. Should the seller after making such a conditional delivery fail to follow up his rights, the condition is waived. The provision of this Article for a ten day limit within which the seller may reclaim goods delivered on credit to an insolvent buyer is also applicable here.</p>
+                <p>2. The “unless otherwise agreed” provision of subsection (1) is directed primarily to cases in which payment in advance has been promised or a letter of credit term has been included. Payment “according to the contract” contemplates immediate payment, payment at the end of an agreed credit term, payment by a time acceptance or the like. Under this Act, “contract” means the total obligation in law which results from the parties’ agreement including the effect of this Article. In this context, therefore, there must be considered the effect in law of such provisions as those on means and manner of payment and on failure of agreed means and manner of payment.</p>
+                <p><strong>Purposes:</strong> 1. Subsection (1) continues the policies of the prior uniform statutory provisions with respect to tender and delivery by the seller. Under this Article the same rules in these matters are applied to present sales and to contracts for sale. But the provisions of this subsection must be read within the framework of the other sections of this Article which bear upon the question of delivery and payment.</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> See Sections 11, 41, 42 and 69, Uniform Sales Act.</p>
               </section>
             </section>
           </section>

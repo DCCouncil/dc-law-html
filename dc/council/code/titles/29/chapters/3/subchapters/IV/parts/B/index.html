@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/29/chapters/3/subchapters/IV/parts/C/">Part C. Subsequent Acquisition of Shares by Shareholders and Corporation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29/chapters/3/subchapters/IV/parts/B/">Report Error</a>
@@ -89,15 +89,33 @@
         <section class="col8 body">
           <h1>Part B. Issuance of Shares.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/29-304.20.html">§ 29–304.20. Subscription for shares before incorporation.</a>
-            <a href="/dc/council/code/sections/29-304.21.html">§ 29–304.21. Issuance of shares.</a>
-            <a href="/dc/council/code/sections/29-304.22.html">§ 29–304.22. Liability of shareholders.</a>
-            <a href="/dc/council/code/sections/29-304.23.html">§ 29–304.23. Share dividends.</a>
-            <a href="/dc/council/code/sections/29-304.24.html">§ 29–304.24. Share options.</a>
-            <a href="/dc/council/code/sections/29-304.25.html">§ 29–304.25. Form and content of certificates.</a>
-            <a href="/dc/council/code/sections/29-304.26.html">§ 29–304.26. Shares without certificates.</a>
-            <a href="/dc/council/code/sections/29-304.27.html">§ 29–304.27. Restriction on transfer of shares and other securities.</a>
-            <a href="/dc/council/code/sections/29-304.28.html">§ 29–304.28. Expense of issue.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-304.20.html">§ 29–304.20. Subscription for shares before incorporation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-304.21.html">§ 29–304.21. Issuance of shares.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-304.22.html">§ 29–304.22. Liability of shareholders.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-304.23.html">§ 29–304.23. Share dividends.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-304.24.html">§ 29–304.24. Share options.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-304.25.html">§ 29–304.25. Form and content of certificates.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-304.26.html">§ 29–304.26. Shares without certificates.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-304.27.html">§ 29–304.27. Restriction on transfer of shares and other securities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-304.28.html">§ 29–304.28. Expense of issue.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

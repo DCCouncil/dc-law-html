@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1502.html">§ 2–1502. Purpose.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1501.html">Report Error</a>
@@ -106,16 +106,16 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§2">Mar. 29, 1977, D.C. Law 1-93, § 2, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/9-194.html">Mar. 16, 1993, D.C. Law 9-194, § 2(a), 39 DCR 9010</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2601.</p>
                 <p>1973 Ed., § 6-2001.</p>
+                <p>1981 Ed., § 1-2601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) establishment of a Children and Youth Initiative to provide out-of-school programs, see §§ 2402 to 2404 of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
-                <p>For temporary (90-day) amendment of § 2404 of <a class="internal-link" href="/dc/council/laws/13-38.html">D.C. Law 13-38</a>, see § 2(b) of the Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Emergency Amendment Act of 1999 (D.C. Act 13-152, December 1, 1999,  46 DCR 10395).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-17, March 16, 2001,  48 DCR 2687).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Service Improvement and Fiscal Year 2000 Budget Support Emergency Amendment Act of 2002 (D.C. Act 14-347, April 24, 2002,  49 DCR 4410).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-17, March 16, 2001,  48 DCR 2687).</p>
+                <p>For temporary (90-day) amendment of § 2404 of <a class="internal-link" href="/dc/council/laws/13-38.html">D.C. Law 13-38</a>, see § 2(b) of the Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Emergency Amendment Act of 1999 (D.C. Act 13-152, December 1, 1999,  46 DCR 10395).</p>
+                <p>For temporary (90-day) establishment of a Children and Youth Initiative to provide out-of-school programs, see §§ 2402 to 2404 of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(a) of District of Columbia Youth Services Act of 1976 Temporary Amendment Act of 1992 (D.C. Law 9-151, September 15, 1992, law notification  39 DCR 7281).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of the Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Temporary Amendment Act of 1999 (D.C. Law 13-67, Apr. 5, 2000, law notification  47 DCR 2624).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(a) of District of Columbia Youth Services Act of 1976 Temporary Amendment Act of 1992 (D.C. Law 9-151, September 15, 1992, law notification  39 DCR 7281).</p>
                 <h4>References in Text</h4>
                 <p>Pursuant to Mayor’s Order 2000-20, the agency formerly known as the “Department of Recreation and Parks” shall be known as the “Department of Parks and Recreation.”</p>
                 <h4>Editor's Notes</h4>

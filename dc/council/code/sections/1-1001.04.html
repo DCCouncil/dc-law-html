@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/1-1001.05.html">§ 1–1001.05. Board of Elections — Duties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-1001.04.html">Report Error</a>
@@ -113,19 +113,19 @@
       (<a class="internal-link" href="/us/congress/laws/public/84-1-ch862.html#§4">Aug. 12, 1955, 69 Stat. 699, ch. 862, § 4</a>; <a class="internal-link" href="/us/congress/laws/public/91-405.html">Sept. 22, 1970, 84 Stat. 854, Pub. L. 91-405, title II, § 205(i)</a>; <a class="internal-link" href="/us/congress/laws/public/92-220.html">Dec. 23, 1971, 85 Stat. 794, Pub. L. 92-220, § 1(26)</a>; <a class="internal-link" href="/us/congress/laws/public/93-376.html">Aug. 14, 1974, 88 Stat. 471, Pub. L. 93-376, title VII, § 706(b)</a>; <a class="internal-link" href="/dc/council/laws/1-79.html">Sept. 2, 1976, D.C. Law 1-79, title I, § 102(3), (4), 23 DCR 2050</a>; <a class="internal-link" href="/dc/council/laws/1-126.html">Apr. 23, 1977, D.C. Law 1-126, title I, § 103(a), title IV, § 402, 24 DCR 2372</a>; <a class="internal-link" href="/dc/council/laws/2-50.html">Mar. 10, 1978, D.C. Law 2-50, § 2, 24 DCR 4806</a>; <a class="internal-link" href="/dc/council/laws/2-101.html">Aug. 18, 1978, D.C. Law 2-101, § 2, 25 DCR 257</a>; <a class="internal-link" href="/dc/council/laws/2-139.html">Mar. 3, 1979, D.C. Law 2-139, § 3205(v), 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/3-81.html">Aug. 7, 1980, D.C. Law 3-81, § 2(gg), 27 DCR 2632</a>; <a class="internal-link" href="/dc/council/laws/4-88.html">Mar. 16, 1982, D.C. Law 4-88, § 2(n), (q), (s), 29 DCR 458</a>; <a class="internal-link" href="/dc/council/laws/18-103.html">Feb. 4, 2010, D.C. Law 18-103, § 2(b), 56 DCR 9169</a>; <a class="internal-link" href="/dc/council/laws/19-124.html">Apr. 27, 2012, D.C. Law 19-124, § 501(g)(3), 59 DCR 1862</a>; <a class="internal-link" href="/dc/council/laws/19-168.html">Sept. 20, 2012, D.C. Law 19-168, § 1133, 59 DCR 8025</a>; <a class="internal-link" href="/dc/council/laws/22-13.html#§2(a)">Aug. 19, 2017, D.C. Law 22-13, § 2(a), 64 DCR 6245</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-1304.</p>
                 <p>1973 Ed., § 1-1104.</p>
+                <p>1981 Ed., § 1-1304.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-103.html">D.C. Law 18-103</a> rewrote subsec. (a); and added subsec. (b)(3A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-124.html">D.C. Law 19-124</a>, in the section heading, substituted “Board of Elections” for “Board of Elections and Ethics”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> rewrote (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-124.html">D.C. Law 19-124</a>, in the section heading, substituted “Board of Elections” for “Board of Elections and Ethics”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-103.html">D.C. Law 18-103</a> rewrote subsec. (a); and added subsec. (b)(3A).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see §§ 2(b), 4(a) of Omnibus Election Reform Emergency Amendment Act of 2009 (D.C. Act 18-236, November 30, 2009,  56 DCR 9154).</p>
-                <p>For temporary (90 day) amendment of section, see § 401(g)(3) of Board of Ethics and Government Accountability Establishment and Comprehensive Ethics Reform Emergency Amendment Act of 2012 (D.C. Act 19-298, January 29, 2012,  59 DCR 683).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-75.html#§2(a)">§ 2(a) of Primary Date Alteration Emergency Amendment Act of 2017 (D.C. Act 22-75, June 5, 2017, 64 DCR 6080)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-106.html#§2(a)">§ 2(a) of Primary Date Alteration Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-106, July 25, 2017, 64 DCR 7388)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-75.html#§2(a)">§ 2(a) of Primary Date Alteration Emergency Amendment Act of 2017 (D.C. Act 22-75, June 5, 2017, 64 DCR 6080)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 401(g)(3) of Board of Ethics and Government Accountability Establishment and Comprehensive Ethics Reform Emergency Amendment Act of 2012 (D.C. Act 19-298, January 29, 2012,  59 DCR 683).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 2(b), 4(a) of Omnibus Election Reform Emergency Amendment Act of 2009 (D.C. Act 18-236, November 30, 2009,  56 DCR 9154).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 4(a) of <a class="internal-link" href="/dc/council/laws/18-103.html">D.C. Law 18-103</a> provided: “(a) Section 2(b)(1) shall not apply to any individual who is a member of the Board of Elections and Ethics on the effective date of this act.”</p>
               </section>

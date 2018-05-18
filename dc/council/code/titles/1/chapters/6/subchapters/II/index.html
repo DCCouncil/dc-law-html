@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/6/subchapters/III/">Subchapter III. Definitions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/6/subchapters/II/">Report Error</a>
@@ -88,12 +88,24 @@
         <section class="col8 body">
           <h1>Subchapter II. Coverage; Status of Present Employees; Retention of Existing Personnel Rights and Benefits.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-602.01.html">§ 1–602.01. Coverage; exceptions.</a>
-            <a href="/dc/council/code/sections/1-602.02.html">§ 1–602.02. Limited application of chapter.</a>
-            <a href="/dc/council/code/sections/1-602.03.html">§ 1–602.03. Educational employees of the District of Columbia Board of Education and the Board of Trustees of the University of the District of Columbia.</a>
-            <a href="/dc/council/code/sections/1-602.04.html">§ 1–602.04. Status of employees employed by the District of Columbia government on the date that this chapter becomes effective as provided in § 1-636.02; retention of existing rights.</a>
-            <a href="/dc/council/code/sections/1-602.05.html">§ 1–602.05. Development of new personnel system.</a>
-            <a href="/dc/council/code/sections/1-602.06.html">§ 1–602.06. Supersession provisions; effectiveness of collective bargaining on compensation matters.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-602.01.html">§ 1–602.01. Coverage; exceptions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-602.02.html">§ 1–602.02. Limited application of chapter.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-602.03.html">§ 1–602.03. Educational employees of the District of Columbia Board of Education and the Board of Trustees of the University of the District of Columbia.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-602.04.html">§ 1–602.04. Status of employees employed by the District of Columbia government on the date that this chapter becomes effective as provided in § 1-636.02; retention of existing rights.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-602.05.html">§ 1–602.05. Development of new personnel system.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-602.06.html">§ 1–602.06. Supersession provisions; effectiveness of collective bargaining on compensation matters.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -111,16 +123,16 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§201">Mar. 3, 1979, D.C. Law 2-139, § 201, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/7-27.html">Oct. 1, 1987, D.C. Law 7-27, § 2(a), 34 DCR 5079</a>; <a class="internal-link" href="/dc/council/laws/7-228.html">Mar. 16, 1989, D.C. Law 7-228, § 2(a), 36 DCR 754</a>; Aug. 5, 1997, 111 Stat. 760, Pub. L. 105-33, § 11261(b)(1); <a class="internal-link" href="/dc/council/laws/12-160.html">Oct. 7, 1998, D.C. Law 12-160, § 102(a)(1), 45 DCR 5147</a>; <a class="internal-link" href="/dc/council/laws/13-105.html">May 9, 2000, D.C. Law 13-105, § 27, 47 DCR 1325</a>; <a class="internal-link" href="/dc/council/laws/14-310.html">June 12, 2003, D.C. Law 14-310, § 4(a), 50 DCR 1092</a>; <a class="internal-link" href="/dc/council/laws/21-232.html#§2(b)">Apr. 1, 2017, D.C. Law 21-232, § 2(b), 64 DCR 876</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-602.1.</p>
                 <p>1973 Ed., § 1-332.1.</p>
+                <p>1981 Ed., § 1-602.1.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-105.html">D.C. Law 13-105</a> added subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/14-310.html">D.C. Law 14-310</a>, in subsec. (c), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-105.html">D.C. Law 13-105</a> added subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 102(a)(1) of the Whistleblower Reinforcement Emergency Amendment Act of 1998 (D.C. Act 12-400, July 13, 1998,  45 DCR 5158) and § 102(a)(1) of the Whistleblower Reinforcement Congressional Review Emergency Act of 1998 (D.C. Act 12-464, October 28, 1998,  45 DCR 7821).</p>
-                <p>For temporary (90-day) amendment of section, see § 26 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
-                <p>For temporary (90-day) amendment of section, see § 26 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-29.html#§2(b)">§ 2(b) of Council Independent Authority Clarification Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-29, Mar. 27, 2017, 64 DCR 3077)</a>.</p>
+                <p>For temporary (90-day) amendment of section, see § 26 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) amendment of section, see § 26 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
+                <p>For temporary amendment of section, see § 102(a)(1) of the Whistleblower Reinforcement Emergency Amendment Act of 1998 (D.C. Act 12-400, July 13, 1998,  45 DCR 5158) and § 102(a)(1) of the Whistleblower Reinforcement Congressional Review Emergency Act of 1998 (D.C. Act 12-464, October 28, 1998,  45 DCR 7821).</p>
                 <h4>Editor's Notes</h4>
                 <p>Washington Convention Center:  Section 9-817 of the D.C. Code provided that the District of Columbia Government Comprehensive Merit Personnel Act of 1978 shall not apply to employees of the Washington Convention Center.</p>
               </section>
@@ -143,24 +155,24 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§202">Mar. 3, 1979, D.C. Law 2-139, § 202, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/3-81.html">Aug. 7, 1980, D.C. Law 3-81, § 2(a), 27 DCR 2632</a>; <a class="internal-link" href="/dc/council/laws/6-177.html">Feb. 24, 1987, D.C. Law 6-177, § 3(b), 33 DCR 7241</a>; <a class="internal-link" href="/us/congress/laws/public/101-518.html">Nov. 5, 1990, 104 Stat. 2237, Pub. L. 101-518, § 136(a)</a>; <a class="internal-link" href="/dc/council/laws/8-203.html">Mar. 6, 1991, D.C. Law 8-203, § 4, 37 DCR 8420</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 302(a), 43 DCR 2978</a>; <a class="internal-link" href="/dc/council/laws/12-160.html">Oct. 7, 1998, D.C. Law 12-160, § 102(a)(2), 45 DCR 5147</a>; <a class="internal-link" href="/dc/council/laws/14-310.html">June 12, 2003, D.C. Law 14-310, § 4(b), 50 DCR 1092</a>; <a class="internal-link" href="/dc/council/laws/21-36.html">Oct. 22, 2015, D.C. Law 21-36, § 1033(a), 62 DCR 10905</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-602.2.</p>
                 <p>1973 Ed., § 1-332.2.</p>
+                <p>1981 Ed., § 1-602.2.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-604.04.html">1-604.04</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-310.html">D.C. Law 14-310</a>, in subsec. (c), validated a previously made technical correction.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a>, in (1), substituted “Mayor, each member of the Council of the District of Columbia, and the Attorney General” for “Mayor and each member of the Council of the District of Columbia” twice, and substituted “in accordance with the provisions of §§ <a class="internal-link" href="/dc/council/code/sections/1-204.21.html">1-204.21</a>(d) and <a class="internal-link" href="/dc/council/code/sections/1-204.03.html">1-204.03</a>(a), and § <a class="internal-link" href="/dc/council/code/sections/1-301.85.html">1-301.85</a>” for “in accordance with the provisions of §§ <a class="internal-link" href="/dc/council/code/sections/1-204.21.html">1-204.21</a>(d) and <a class="internal-link" href="/dc/council/code/sections/1-204.03.html">1-204.03</a>(a)” in the first sentence.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-310.html">D.C. Law 14-310</a>, in subsec. (c), validated a previously made technical correction.</p>
                 <h4>Cross References</h4>
-                <p>Merit system, applicability to national capital revitalization corporation, see § <a class="internal-link" href="/dc/council/code/sections/2-1219.05.html">2-1219.05</a>.</p>
                 <p>Merit system, applicability to Washington Convention Center employees, see § <a class="internal-link" href="/dc/council/code/sections/10-1202.16.html">10-1202.16</a>.</p>
+                <p>Merit system, applicability to national capital revitalization corporation, see § <a class="internal-link" href="/dc/council/code/sections/2-1219.05.html">2-1219.05</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 102(a)(2) of the Whistleblower Reinforcement Emergency Amendment Act of 1998 (D.C. Act 12-400, July 13, 1998,  45 DCR 5158) and § 102(a)(2) of the Whistleblower Reinforcement Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-464, October 28, 1998,  45 DCR 7821).</p>
                 <p>For temporary (90 days) amendment of this section, see § 1033(a) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary amendment of section, see § 102(a)(2) of the Whistleblower Reinforcement Emergency Amendment Act of 1998 (D.C. Act 12-400, July 13, 1998,  45 DCR 5158) and § 102(a)(2) of the Whistleblower Reinforcement Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-464, October 28, 1998,  45 DCR 7821).</p>
                 <h4>Effective Dates</h4>
                 <p>Section 136(b) of Public Law 101-518, the District of Columbia Appropriations Act, 1991, provided that the amendments made by § 136(a) shall take effect as if included in the enactment of the Residency Preference Amendment Act of 1988 (<a class="internal-link" href="/dc/council/laws/7-203.html">D.C. Law 7-203</a>, March</p>
                 <h4>Editor's Notes</h4>
-                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
                 <p>Repeal of § 4(b) of Law 6-177: Section 3(b) of <a class="internal-link" href="/dc/council/laws/8-74.html">D.C. Law 8-74</a>, effective March 15, 1990, provided that § 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> is repealed.</p>
+                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
               </section>
             </section>
             <hr/>
@@ -177,16 +189,16 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§203">Mar. 3, 1979, D.C. Law 2-139, § 203, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/6-177.html">Feb. 24, 1987, D.C. Law 6-177, § 3(c), 33 DCR 7241</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 302(b), 43 DCR 2978</a>; <a class="internal-link" href="/dc/council/laws/12-81.html">Mar. 24, 1998, D.C. Law 12-81, § 2(a), 45 DCR 745</a>; <a class="internal-link" href="/dc/council/laws/13-91.html">Apr. 12, 2000. D.C. Law 13-91, § 103(a), 47 DCR 520</a>; <a class="internal-link" href="/dc/council/laws/17-108.html">Feb. 6, 2008, D.C. Law 17-108, § 203(a), 54 DCR 10993</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-602.3.</p>
                 <p>1973 Ed., § 1-332.3.</p>
+                <p>1981 Ed., § 1-602.3.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-602.02.html">1-602.02</a>, § <a class="internal-link" href="/dc/council/code/sections/1-604.04.html">1-604.04</a>, § <a class="internal-link" href="/dc/council/code/sections/1-604.06.html">1-604.06</a>, and § <a class="internal-link" href="/dc/council/code/sections/1-608.01a.html">1-608.01a</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (a), in the first sentence, substituted “XI-A” for “XI”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-108.html">D.C. Law 17-108</a> added subsec. (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a>, in subsec. (a), in the first sentence, substituted “XI-A” for “XI”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
                 <p>Repeal of § 4(b) of Law 6-177: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/1-602.02.html">1-602.02</a>.</p>
+                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
               </section>
             </section>
             <hr/>
@@ -205,8 +217,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§204">Mar. 3, 1979, D.C. Law 2-139, § 204, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/3-81.html">Aug. 7, 1980, D.C. Law 3-81, § 21(b), 27 DCR 2632</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-602.4.</p>
                 <p>1973 Ed., § 1-332.4.</p>
+                <p>1981 Ed., § 1-602.4.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-602.05.html">1-602.05</a>, § <a class="internal-link" href="/dc/council/code/sections/1-602.06.html">1-602.06</a>, § <a class="internal-link" href="/dc/council/code/sections/1-603.01.html">1-603.01</a>, § <a class="internal-link" href="/dc/council/code/sections/1-608.01.html">1-608.01</a>, § <a class="internal-link" href="/dc/council/code/sections/1-617.16.html">1-617.16</a>, and § <a class="internal-link" href="/dc/council/code/sections/1-623.02.html">1-623.02</a>.</p>
                 <h4>References in Text</h4>
@@ -225,8 +237,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§205">Mar. 3, 1979, D.C. Law 2-139, § 205, 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-602.5.</p>
                 <p>1973 Ed., § 1-332.5.</p>
+                <p>1981 Ed., § 1-602.5.</p>
               </section>
             </section>
             <hr/>
@@ -241,14 +253,14 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§206">Mar. 3, 1979, D.C. Law 2-139, § 206, 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-602.6.</p>
                 <p>1973 Ed., § 1-332.6.</p>
+                <p>1981 Ed., § 1-602.6.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-617.17.html">1-617.17</a>.</p>
                 <h4>Cross References</h4>
-                <p>Merit system, effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
-                <p>Organization for personnel management, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/1-604.04.html">1-604.04</a>.</p>
                 <p>Rent stabilization program, rent administrator, qualifications and compensation, see § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
+                <p>Organization for personnel management, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/1-604.04.html">1-604.04</a>.</p>
+                <p>Merit system, effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
               </section>
             </section>
             <hr/>

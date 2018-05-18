@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/22/chapters/11/">Chapter 11. Cruelty to Children.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/22/chapters/10/">Report Error</a>
@@ -87,23 +87,57 @@
         <section class="col8 body">
           <h1>Chapter 10. Cruelty to Animals.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/22-1001.html">§ 22–1001. Definitions and penalties.</a>
-            <a href="/dc/council/code/sections/22-1002.html">§ 22–1002. Other cruelties to animals.</a>
-            <a href="/dc/council/code/sections/22-1002.01.html">§ 22–1002.01. Reporting requirements.</a>
-            <a href="/dc/council/code/sections/22-1003.html">§ 22–1003. Rest, water and feeding for animals transported by railroad company.</a>
-            <a href="/dc/council/code/sections/22-1004.html">§ 22–1004. Arrests without warrant authorized; notice to owner.</a>
-            <a href="/dc/council/code/sections/22-1005.html">§ 22–1005. Issuance of search warrants.</a>
-            <a href="/dc/council/code/sections/22-1006.html">§ 22–1006. Prosecution of offenders; disposition of fines.</a>
-            <a href="/dc/council/code/sections/22-1006.01.html">§ 22–1006.01. Penalty for engaging in animal fighting.</a>
-            <a href="/dc/council/code/sections/22-1007.html">§ 22–1007. Impounded animals to be supplied with food and water.</a>
-            <a href="/dc/council/code/sections/22-1008.html">§ 22–1008. Relief of impounded animals.</a>
-            <a href="/dc/council/code/sections/22-1009.html">§ 22–1009. Keeping or using place for fighting or baiting of fowls or animals; arrest without warrant.</a>
-            <a href="/dc/council/code/sections/22-1010.html">§ 22–1010. Penalty for engaging in cockfighting or animal fighting. [Repealed]</a>
-            <a href="/dc/council/code/sections/22-1011.html">§ 22–1011. Neglect of sick or disabled animals.</a>
-            <a href="/dc/council/code/sections/22-1012.html">§ 22–1012. Abandonment of maimed or diseased animal; destruction of diseased animals; disposition of animal or vehicle on arrest of driver; scientific experiments.</a>
-            <a href="/dc/council/code/sections/22-1013.html">§ 22–1013. Definitions.</a>
-            <a href="/dc/council/code/sections/22-1014.html">§ 22–1014. Docking tails of horses. [Repealed]</a>
-            <a href="/dc/council/code/sections/22-1015.html">§ 22–1015. Penalty for engaging in animal fighting [Renumbered]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1001.html">§ 22–1001. Definitions and penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1002.html">§ 22–1002. Other cruelties to animals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1002.01.html">§ 22–1002.01. Reporting requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1003.html">§ 22–1003. Rest, water and feeding for animals transported by railroad company.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1004.html">§ 22–1004. Arrests without warrant authorized; notice to owner.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1005.html">§ 22–1005. Issuance of search warrants.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1006.html">§ 22–1006. Prosecution of offenders; disposition of fines.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1006.01.html">§ 22–1006.01. Penalty for engaging in animal fighting.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1007.html">§ 22–1007. Impounded animals to be supplied with food and water.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1008.html">§ 22–1008. Relief of impounded animals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1009.html">§ 22–1009. Keeping or using place for fighting or baiting of fowls or animals; arrest without warrant.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1010.html">§ 22–1010. Penalty for engaging in cockfighting or animal fighting. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1011.html">§ 22–1011. Neglect of sick or disabled animals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1012.html">§ 22–1012. Abandonment of maimed or diseased animal; destruction of diseased animals; disposition of animal or vehicle on arrest of driver; scientific experiments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1013.html">§ 22–1013. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1014.html">§ 22–1014. Docking tails of horses. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/22-1015.html">§ 22–1015. Penalty for engaging in animal fighting [Renumbered]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -133,19 +167,19 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§1">Aug. 23, 1871, Leg. Assem., p. 135, ch. 106, § 1</a>; <a class="internal-link" href="/dc/council/laws/10-151.html">Aug. 20, 1994, D.C. Law 10-151, § 102(a), 41 DCR 2608</a>; <a class="internal-link" href="/dc/council/laws/13-303.html">June 8, 2001, D.C. Law 13-303, § 2(a), 47 DCR 7307</a>; <a class="internal-link" href="/dc/council/laws/17-281.html">Dec. 5, 2008, D.C. Law 17-281, § 108(a), 55 DCR 9186</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-801.</p>
                 <p>1973 Ed., § 22-801.</p>
+                <p>1981 Ed., § 22-801.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-2033.html">8-2033</a>, § <a class="internal-link" href="/dc/council/code/sections/22-951.html">22-951</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1002.html">22-1002</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1006.html">22-1006</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1006.01.html">22-1006.01</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1007.html">22-1007</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1009.html">22-1009</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1011.html">22-1011</a>, § <a class="internal-link" href="/dc/council/code/sections/22-1012.html">22-1012</a>, and § <a class="internal-link" href="/dc/council/code/sections/22-1013.html">22-1013</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-303.html">D.C. Law 13-303</a> rewrote the section which had read:</p>
-                <p>“Whoever overdrives, overloads, drives when overloaded, overworks, tortures, torments, deprives of necessary sustenance, cruelly beats, mutilates, or cruelly kills, or causes or procures to be so overdriven, overloaded, driven when overloaded, overworked, tortured, tormented, deprived of necessary sustenance, cruelly beaten, mutilated, or cruelly killed any animal, and whoever, having the charge or custody of any animal, either as owner or otherwise, inflicts unnecessary cruelty upon the same, or unnecessarily fails to provide the same with proper food, drink, shelter, or protection from the weather, shall for every such offense be punished by imprisonment in jail not exceeding 180 days, or by fine not exceeding $250, or by both such fine and imprisonment.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a>, in subsec. (a), designated par. (1) and added pars. (2) and (3).</p>
+                <p>“Whoever overdrives, overloads, drives when overloaded, overworks, tortures, torments, deprives of necessary sustenance, cruelly beats, mutilates, or cruelly kills, or causes or procures to be so overdriven, overloaded, driven when overloaded, overworked, tortured, tormented, deprived of necessary sustenance, cruelly beaten, mutilated, or cruelly killed any animal, and whoever, having the charge or custody of any animal, either as owner or otherwise, inflicts unnecessary cruelty upon the same, or unnecessarily fails to provide the same with proper food, drink, shelter, or protection from the weather, shall for every such offense be punished by imprisonment in jail not exceeding 180 days, or by fine not exceeding $250, or by both such fine and imprisonment.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-303.html">D.C. Law 13-303</a> rewrote the section which had read:</p>
                 <h4>Cross References</h4>
                 <p>Elderly or handicapped tenants, removal of dangerous pets, see § <a class="internal-link" href="/dc/council/code/sections/8-2203.html">8-2203</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 102(a) of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-8.html#§2">§ 2 of Extreme Weather Protection for Animals Emergency Amendment Act of 2017 (D.C. Act 22-8, Feb. 21, 2017, 64 DCR 2345)</a>.</p>
+                <p>For temporary amendment of section, see § 102(a) of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
               </section>
             </section>
             <hr/>
@@ -160,8 +194,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§2">Aug. 23, 1871, Leg. Assem., p. 135, ch. 106, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-802.</p>
                 <p>1973 Ed., § 22-802.</p>
+                <p>1981 Ed., § 22-802.</p>
               </section>
             </section>
             <hr/>
@@ -198,8 +232,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§3">Aug. 23, 1871, Leg. Assem., p. 135, ch. 106, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-803.</p>
                 <p>1973 Ed., § 22-803.</p>
+                <p>1981 Ed., § 22-803.</p>
               </section>
             </section>
             <hr/>
@@ -221,11 +255,11 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§4">Aug. 23, 1871, Leg. Assem., p. 136, ch. 106, § 4</a>; <a class="internal-link" href="/dc/council/laws/13-303.html">June 8, 2001, D.C. Law 13-303, § 2(b), 47 DCR 7307</a>; <a class="internal-link" href="/dc/council/laws/17-281.html">Dec. 5, 2008, D.C. Law 17-281, § 108(c), 55 DCR 9186</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-804.</p>
                 <p>1973 Ed., § 22-804.</p>
+                <p>1981 Ed., § 22-804.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-303.html">D.C. Law 13-303</a> designated subsec. (a); in subsec. (a), substituted “the person making the arrest or the humane officer taking possession of an animal” for “and the person making the arrest”; and added subsec. (b).</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a> added subsec. (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-303.html">D.C. Law 13-303</a> designated subsec. (a); in subsec. (a), substituted “the person making the arrest or the humane officer taking possession of an animal” for “and the person making the arrest”; and added subsec. (b).</p>
                 <h4>Cross References</h4>
                 <p>Arrest without warrant, see § <a class="internal-link" href="/dc/council/code/sections/23-581.html">23-581</a>.</p>
                 <h4>Resolutions</h4>
@@ -244,8 +278,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§5">Aug. 23, 1871, Leg. Assem., p. 136, ch. 106, § 5</a>; Feb. 13, 1885, 23 Stat. 302, ch. 58, § 1; Mar. 3, 1901, 31 Stat. 1195, ch. 854, § 41; <a class="internal-link" href="/dc/council/laws/13-303.html">June 8, 2001, D.C. Law 13-303, § 2(c), 47 DCR 7307</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-805.</p>
                 <p>1973 Ed., § 22-805.</p>
+                <p>1981 Ed., § 22-805.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-303.html">D.C. Law 13-303</a> substituted “humane office” for “member” in two places.</p>
                 <h4>Cross References</h4>
@@ -264,8 +298,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§6">Aug. 23, 1871, Leg. Assem., p. 137, ch. 106, § 6</a>; Feb. 13, 1885, 23 Stat. 302, ch. 58, § 1; Mar. 3, 1901, 31 Stat. 1195, ch. 854, § 41; <a class="internal-link" href="/dc/council/laws/13-303.html">June 8, 2001, D.C. Law 13-303, § 2(d), 47 DCR 7307</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-806.</p>
                 <p>1973 Ed., § 22-806.</p>
+                <p>1981 Ed., § 22-806.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-303.html">D.C. Law 13-303</a> substituted “humane office” for “member” in two places.</p>
               </section>
@@ -291,8 +325,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/22-1015.html">22-1015</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a>, in subsec. (a), substituted “any animal; (5)” for “any animal; or (5)”, and substituted “that act; or (6) any person who is knowingly present as a spectator at any such exhibition, is guilty of a felony, punishable by a fine of not more than $25,000, imprisonment not to exceed 5 years, or both. The court may also impose any penalties listed in § <a class="internal-link" href="/dc/council/code/sections/22-1001.html">22-1001</a>(a).” for “that act, is guilty of a felony, punishable by a fine of not more than $25,000 or by imprisonment not to exceed 5 years, or both”; and repealed subsec. (b), which had read as follows: “(b) Any person who is knowingly present at any place or building where preparations are being made for an exhibition described in subsection (a) of this section, or who is knowingly present as a spectator at any such exhibition, or who knowingly or recklessly aids or abets another in such exhibition, is guilty of a misdemeanor, punishable by a fine of not more than $1,000 or by imprisonment not to exceed 180 days, or both.”</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $25,000” in (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a>, in subsec. (a), substituted “any animal; (5)” for “any animal; or (5)”, and substituted “that act; or (6) any person who is knowingly present as a spectator at any such exhibition, is guilty of a felony, punishable by a fine of not more than $25,000, imprisonment not to exceed 5 years, or both. The court may also impose any penalties listed in § <a class="internal-link" href="/dc/council/code/sections/22-1001.html">22-1001</a>(a).” for “that act, is guilty of a felony, punishable by a fine of not more than $25,000 or by imprisonment not to exceed 5 years, or both”; and repealed subsec. (b), which had read as follows: “(b) Any person who is knowingly present at any place or building where preparations are being made for an exhibition described in subsection (a) of this section, or who is knowingly present as a spectator at any such exhibition, or who knowingly or recklessly aids or abets another in such exhibition, is guilty of a misdemeanor, punishable by a fine of not more than $1,000 or by imprisonment not to exceed 180 days, or both.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 210 of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
                 <h4>Editor's Notes</h4>
@@ -311,8 +345,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§7">Aug. 23, 1871, Leg. Assem., p. 137, ch. 106, § 7</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-807.</p>
                 <p>1973 Ed., § 22-807.</p>
+                <p>1981 Ed., § 22-807.</p>
               </section>
             </section>
             <hr/>
@@ -327,8 +361,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§8">Aug. 23, 1871, Leg. Assem., p. 137, ch. 106, § 8</a>; Feb. 13, 1885, 23 Stat. 302, ch. 58, § 1.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-808.</p>
                 <p>1973 Ed., § 22-808.</p>
+                <p>1981 Ed., § 22-808.</p>
               </section>
             </section>
             <hr/>
@@ -343,8 +377,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§9">Aug. 23, 1871, Leg. Assem., p. 137, ch. 106, § 9</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-809.</p>
                 <p>1973 Ed., § 22-809.</p>
+                <p>1981 Ed., § 22-809.</p>
               </section>
             </section>
             <hr/>
@@ -359,8 +393,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/52-1-ch135.html#§6">June 25, 1892, 27 Stat. 61, ch. 135, § 6</a>; <a class="internal-link" href="/dc/council/laws/7-176.html">Oct. 18, 1988, D.C. Law 7-176, § 7(d), 35 DCR 4787</a>; <a class="internal-link" href="/dc/council/laws/10-151.html">Aug. 20, 1994, D.C. Law 10-151, § 103, 41 DCR 2608</a>; <a class="internal-link" href="/dc/council/laws/13-303.html">June 8, 2001, D.C. Law 13-303, § 3(a), 47 DCR 7307</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-810.</p>
                 <p>1973 Ed., § 22-810.</p>
+                <p>1981 Ed., § 22-810.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 103 of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
               </section>
@@ -377,8 +411,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§10">Aug. 23, 1871, Leg. Assem., p. 138, ch. 106, § 10</a>; June 25, 1892, 27 Stat. 60, ch. 135, § 4.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-811.</p>
                 <p>1973 Ed., § 22-811.</p>
+                <p>1981 Ed., § 22-811.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/22-1012.html">22-1012</a> and § <a class="internal-link" href="/dc/council/code/sections/22-1013.html">22-1013</a>.</p>
               </section>
@@ -396,13 +430,13 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§11">Aug. 23, 1871, Leg. Assem., p. 138, ch. 106, § 11</a>; June 25, 1892, 27 Stat. 60, ch. 135, § 4; <a class="internal-link" href="/dc/council/laws/10-119.html">May 21, 1994, D.C. Law 10-119, § 6, 41 DCR 1639</a>; <a class="internal-link" href="/dc/council/laws/10-151.html">Aug. 20, 1994, D.C. Law 10-151, § 102(b), 41 DCR 2608</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 209(b), 60 DCR 2064</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-812.</p>
                 <p>1973 Ed., § 22-812.</p>
+                <p>1981 Ed., § 22-812.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “and not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “nor more than $250” in (a).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 102(b) of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
                 <p>For temporary (90 days) amendment of this section, see § 209(b) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
+                <p>For temporary amendment of section, see § 102(b) of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
               </section>
@@ -419,8 +453,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/106.html#§12">Aug. 23, 1871, Leg. Assem., p. 138, ch. 106, § 12</a>; June 25, 1892, 27 Stat. 60, ch. 135, § 3.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-813.</p>
                 <p>1973 Ed., § 22-813.</p>
+                <p>1981 Ed., § 22-813.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/22-1006.html">22-1006</a>.</p>
               </section>
@@ -437,8 +471,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/52-1-ch135.html#§5">June 25, 1892, 27 Stat. 61, ch. 135, § 5</a>; Mar. 2, 1911, 36 Stat. 1003, ch. 192; <a class="internal-link" href="/dc/council/laws/7-231.html">May 10, 1989, D.C. Law 7-231, § 29, 36 DCR 492</a>; <a class="internal-link" href="/dc/council/laws/15-154.html">Apr. 29, 2004, D.C. Law 15-154, § 5, 50 DCR 10996</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 22-814.</p>
                 <p>1973 Ed., § 22-814.</p>
+                <p>1981 Ed., § 22-814.</p>
               </section>
             </section>
             <hr/>

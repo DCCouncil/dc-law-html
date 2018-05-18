@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/7-503.04.html">§ 7–503.04. Impact statements.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-503.03.html">Report Error</a>
@@ -112,16 +112,16 @@
       (<a class="internal-link" href="/dc/council/laws/1-24.html#§303">Oct. 29, 1975, D.C. Law 1-24, title III, § 303, 22 DCR 2457</a>; <a class="internal-link" href="/dc/council/laws/1-83.html">Sept. 14, 1976, D.C. Law 1-83, § 2, 23 DCR 2462</a>; <a class="internal-link" href="/dc/council/laws/15-205.html">Dec. 7, 2004, D.C. Law 15-205, § 5602, 51 DCR 8441</a>; <a class="internal-link" href="/dc/council/laws/16-191.html">Mar. 2, 2007, D.C. Law 16-191, § 31, 53 DCR 6794</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2213.</p>
                 <p>1973 Ed., § 6-1713.</p>
+                <p>1981 Ed., § 6-2213.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-504.09.html">7-504.09</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> added par. (3A).</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in par. (3), substituted “community, including,” for “community. This shall include,”; and, in par. (6), substituted “Columbia that” for “Columbia. The”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> added par. (3A).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 5602 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see § 5602 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 5602 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle F of title V of Law 15-205: Section 5601 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle F of title V of the act may be cited as the Office on Aging AccessRx Prescription Drug Assistance Amendment Act of 2004.</p>
                 <h4>References in Text</h4>

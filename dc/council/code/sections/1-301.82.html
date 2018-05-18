@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/1-301.83.html">§ 1–301.83. Minimum qualifications and requirements for Attorney General.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-301.82.html">Report Error</a>
@@ -104,12 +104,12 @@
       (<a class="internal-link" href="/dc/council/laws/18-160.html#§102">May 27, 2010, D.C. Law 18-160, § 102, 57 DCR 3012</a>; <a class="internal-link" href="/dc/council/laws/20-60.html">Dec. 13, 2013, D.C. Law 20-60, § 201, 60 DCR 15487</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 1163, 61 DCR 9990</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a> rewrote (a) which read “Until such time as an Attorney General is elected under § <a class="internal-link" href="/dc/council/code/sections/1-204.35.html">1-204.35</a>, the Attorney General for the District of Columbia shall be appointed by the Mayor with the advice and consent of the Council pursuant to § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> deleted “which time shall not be before January 1, 2018” following “under § <a class="internal-link" href="/dc/council/code/sections/1-204.35.html">1-204.35</a>” in (a).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a> rewrote (a) which read “Until such time as an Attorney General is elected under § <a class="internal-link" href="/dc/council/code/sections/1-204.35.html">1-204.35</a>, the Attorney General for the District of Columbia shall be appointed by the Mayor with the advice and consent of the Council pursuant to § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see §  1163 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see §  1163 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see §  1163 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see §  1163 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see §  1163 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a>: Section 401(b) of <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a> provided that § 201 of the act shall apply as of December 13, 2013.</p>
               </section>

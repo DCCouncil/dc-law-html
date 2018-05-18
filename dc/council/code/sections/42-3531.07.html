@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/42-3531.08.html">§ 42–3531.08. Establishment, purpose, and membership of the Tenant Advisory Council. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-3531.07.html">Report Error</a>
@@ -112,15 +112,15 @@
       (<a class="internal-link" href="/dc/council/laws/16-33.html#§2067">Oct. 20, 2005, D.C. Law 16-33, § 2067, 52 DCR 7503</a>; <a class="internal-link" href="/dc/council/laws/16-236.html">Mar. 8, 2007, D.C. Law 16-236, § 3, 54 DCR 391</a>; <a class="internal-link" href="/dc/council/laws/16-181.html">Oct. 1, 2007, D.C. Law 16-181, § 2(f), 53 DCR 6703</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 2072, 58 DCR 6226</a>; <a class="internal-link" href="/dc/council/laws/20-147.html">Dec. 17, 2014, D.C. Law 20-147, § 2, 61 DCR 8310</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-236.html">D.C. Law 16-236</a> rewrote the section.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-181.html">D.C. Law 16-181</a>, in par. (2), substituted “interests” for “interest”; rewrote par. (5); in par. (6), deleted “and” from the end; and added par. (6A). Prior to amendment, par. (5) read as follows: “(5) Represent tenants and tenant organizations in court or administrative proceedings;”</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote par. (6A), which formerly read:</p>
-                <p>“(6A) Manage and administer the Housing Assistance Fund established by § <a class="internal-link" href="/dc/council/code/sections/42-3403.07.html">42-3403.07</a>; and”</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-147.html">D.C. Law 20-147</a> added (8) and made related changes.</p>
+                <p>“(6A) Manage and administer the Housing Assistance Fund established by § <a class="internal-link" href="/dc/council/code/sections/42-3403.07.html">42-3403.07</a>; and”</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote par. (6A), which formerly read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-181.html">D.C. Law 16-181</a>, in par. (2), substituted “interests” for “interest”; rewrote par. (5); in par. (6), deleted “and” from the end; and added par. (6A). Prior to amendment, par. (5) read as follows: “(5) Represent tenants and tenant organizations in court or administrative proceedings;”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-236.html">D.C. Law 16-236</a> rewrote the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2067 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of Additional Sanctions for Nuisance Abatement and Office of the Tenant Advocate Duties Clarification Emergency Amendment Act of 2006 (D.C. Act 16-408, June 26, 2006,  53 DCR 5428).</p>
                 <p>For temporary (90 day) amendment of section, see § 3 of Additional Sanctions for Nuisance Abatement and Office of the Tenant Advocate Duties Clarification Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-479, September 22, 2006,  53 DCR 7938).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of Additional Sanctions for Nuisance Abatement and Office of the Tenant Advocate Duties Clarification Emergency Amendment Act of 2006 (D.C. Act 16-408, June 26, 2006,  53 DCR 5428).</p>
+                <p>For temporary (90 day) addition, see § 2067 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 3 of Additional Sanctions for Nuisance Abatement and Office of the Tenant Advocate Duties Clarification Temporary Amendment Act of 2006 (D.C. Law 16-183, November 16, 2006, law notification  53 DCR 9650).</p>
                 <h4>Short Title</h4>

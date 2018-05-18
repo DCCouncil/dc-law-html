@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/50-2303.04a.html">§ 50–2303.04a. Fleet reconciliation program.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/50-2303.04.html">Report Error</a>
@@ -102,18 +102,18 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§304">Sept. 12, 1978, D.C. Law 2-104, § 304, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/15-307.html">Apr. 8, 2005, D.C. Law 15-307, § 207(b), 52 DCR 1700</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-624.</p>
                 <p>1973 Ed., § 40-1118.</p>
+                <p>1981 Ed., § 40-624.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-2301.08.html">50-2301.08</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a> rewrote the section which had read:</p>
-                <p>“(a) The operator of a vehicle shall be primarily liable for the civil penalties imposed pursuant to this subchapter. Subject to the provisions of subsections (b) and (c) of this section, the owner of the vehicle, even if not the operator thereof, shall also be liable therefor, unless he can show that such vehicle was used without his permission, express or implied. An owner who pays any civil fine or penalties pursuant to this subchapter shall have the right to recover same from the operator and shall have a cause of action against the operator of the vehicle for such amount paid.</p>
-                <p>“(b) The lessor of a vehicle shall not be liable for fines or penalties imposed for an infraction pursuant to this subchapter if:</p>
-                <p>“(1) Prior to the infraction, the lessor has filed with the Bureau the license plate number and state of registration of the vehicle to which the notice of infraction was issued; and</p>
-                <p>“(2) Within 30 days after receiving notice from the Bureau of the date and time of an infraction, as well as other information contained in the original notice of infraction, the lessor submits to the Bureau the correct name and address of the person to whom the vehicle identified in the notice of infraction was rented or leased at the time of the infraction and the lessor notifies such person by mail of the notice of infraction.</p>
-                <p>“(c) Where the lessor has paid any fine or penalty for which he is liable and the Bureau thereafter collects from the person to whom the vehicle was rented or leased the amount of the scheduled fine and penalties owed by such person, or any portion thereof, the lessor shall be entitled to reimbursement from the Bureau of the amount of the fines and penalties paid by the lessor, less the Bureau’s cost of collection.</p>
                 <p>“(d) Where the lessor is liable for an infraction, he shall not be liable for penalties in excess of the standard civil fine unless the lessor fails to answer within 15 calendar days of his actual receipt of the notice of infraction.”</p>
+                <p>“(c) Where the lessor has paid any fine or penalty for which he is liable and the Bureau thereafter collects from the person to whom the vehicle was rented or leased the amount of the scheduled fine and penalties owed by such person, or any portion thereof, the lessor shall be entitled to reimbursement from the Bureau of the amount of the fines and penalties paid by the lessor, less the Bureau’s cost of collection.</p>
+                <p>“(2) Within 30 days after receiving notice from the Bureau of the date and time of an infraction, as well as other information contained in the original notice of infraction, the lessor submits to the Bureau the correct name and address of the person to whom the vehicle identified in the notice of infraction was rented or leased at the time of the infraction and the lessor notifies such person by mail of the notice of infraction.</p>
+                <p>“(1) Prior to the infraction, the lessor has filed with the Bureau the license plate number and state of registration of the vehicle to which the notice of infraction was issued; and</p>
+                <p>“(b) The lessor of a vehicle shall not be liable for fines or penalties imposed for an infraction pursuant to this subchapter if:</p>
+                <p>“(a) The operator of a vehicle shall be primarily liable for the civil penalties imposed pursuant to this subchapter. Subject to the provisions of subsections (b) and (c) of this section, the owner of the vehicle, even if not the operator thereof, shall also be liable therefor, unless he can show that such vehicle was used without his permission, express or implied. An owner who pays any civil fine or penalties pursuant to this subchapter shall have the right to recover same from the operator and shall have a cause of action against the operator of the vehicle for such amount paid.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a> rewrote the section which had read:</p>
               </section>
             </section>
           </section>

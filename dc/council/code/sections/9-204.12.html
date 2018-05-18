@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/9-204.13.html">§ 9–204.13. Authority of the Committee.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/9-204.12.html">Report Error</a>
@@ -112,11 +112,11 @@
       (<a class="internal-link" href="/dc/council/laws/4-201.html#§412">Mar. 10, 1983, D.C. Law 4-201, § 412</a>; <a class="internal-link" href="/dc/council/laws/13-275.html">as added Apr. 4, 2001, D.C. Law 13-275, § 2(d), 48 DCR 1660</a>; <a class="internal-link" href="/dc/council/laws/14-42.html">Oct. 26, 2001, D.C. Law 14-42, § 25, 48 DCR 7612</a>; <a class="internal-link" href="/dc/council/laws/15-354.html">Apr. 13, 2005, D.C. Law 15-354, § 22, 52 DCR 2638</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a>, in subsec. (b), substituted “12 voting members” for “11 voting members” and “9 of whom” for “8 of whom” in the introductory paragraph, deleted the word “and” at the end of par. (7), added “; and” at the end of par. (8); and added par. (9) relating to the Director of the Department of Housing and Community Development.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (b)(4), substituted “Chief Property Management Officer” for “Director of the Office of Property Management”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a>, in subsec. (b), substituted “12 voting members” for “11 voting members” and “9 of whom” for “8 of whom” in the introductory paragraph, deleted the word “and” at the end of par. (7), added “; and” at the end of par. (8); and added par. (9) relating to the Director of the Department of Housing and Community Development.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of the Commemorative Works on Public Space Emergency Amendment Act of 2000 (D.C. Act 13-564, January 31, 2001,  48 DCR 1627).</p>
                 <p>For temporary (90 day) amendment of section, see § 25 of Technical Amendments Emergency Act of 2001 (D.C. Act 14-108, August 3, 2001,  48 DCR 7622).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of the Commemorative Works on Public Space Emergency Amendment Act of 2000 (D.C. Act 13-564, January 31, 2001,  48 DCR 1627).</p>
               </section>
             </section>
           </section>

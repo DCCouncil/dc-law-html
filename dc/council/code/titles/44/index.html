@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -60,19 +72,7 @@
           <p>
             <a href="/dc/council/code/titles/45/">Title 45. Compilation and Construction of Code.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/44/">Report Error</a>
@@ -87,66 +87,122 @@
           <h1>Title 44. Charitable and Curative Institutions.</h1>
           <section class="line-group toc child-link">
             <h2 class="line subheading">Subtitle I. Health Related Institutions.</h2>
-            <a href="/dc/council/code/titles/44/chapters/1/">Chapter 1. Assisted Living Residence Regulation.</a>
-            <p>§§ 44-101.01 - 44-114.01</p>
-            <a href="/dc/council/code/titles/44/chapters/1A/">Chapter 1A. Continuing Care Retirement Communities.</a>
-            <p>§§ 44-151.01 - 44-151.18</p>
-            <a href="/dc/council/code/titles/44/chapters/2/">Chapter 2. Clinical Laboratories.</a>
-            <p>§§ 44-201 - 44-213</p>
-            <a href="/dc/council/code/titles/44/chapters/2A/">Chapter 2A. Defibrillator Usage.</a>
-            <p>§§ 44-231 - 44-236</p>
-            <a href="/dc/council/code/titles/44/chapters/3/">Chapter 3. Grievance Procedures for Health Benefits Plans.</a>
-            <p>§§ 44-301.01 - 44-304.01</p>
-            <a href="/dc/council/code/titles/44/chapters/4/">Chapter 4. Health Services Planning.</a>
-            <p>§§ 44-401 - 44-422</p>
-            <a href="/dc/council/code/titles/44/chapters/5/">Chapter 5. Health-Care and Community Residence Facility, Hospice and Home Care Licensure.</a>
-            <p>§§ 44-501 - 44-554</p>
-            <a href="/dc/council/code/titles/44/chapters/6/">Chapter 6. Healthcare Entity Conversion.</a>
-            <p>§§ 44-601 - 44-610</p>
-            <a href="/dc/council/code/titles/44/chapters/6A/">Chapter 6A. Medicaid Hospital Outpatient Supplemental Payments and Medicaid Hospital Inpatient Rate Supplements.</a>
-            <p>§§ 44-631 - 44-664.18</p>
-            <a href="/dc/council/code/titles/44/chapters/7/">Chapter 7. Hospitals, Asylums, Charities Generally.</a>
-            <p>§§ 44-701 - 44-786</p>
-            <a href="/dc/council/code/titles/44/chapters/8/">Chapter 8. Medical Records.</a>
-            <p>§§ 44-801 - 44-805</p>
-            <a href="/dc/council/code/titles/44/chapters/9/">Chapter 9. Mental Health Services.</a>
-            <p>§§ 44-901 - 44-922</p>
-            <a href="/dc/council/code/titles/44/chapters/9A/">Chapter 9A. Not-for-Profit Hospital Corporation.</a>
-            <p>§§ 44-951.01 - 44-951.18</p>
-            <a href="/dc/council/code/titles/44/chapters/10/">Chapter 10. Nursing Homes and Community Residence Facilities Protections.</a>
-            <p>§§ 44-1001.01 - 44-1005.02</p>
-            <a href="/dc/council/code/titles/44/chapters/10A/">Chapter 10A. Nurse Staffing Agencies.</a>
-            <p>§§ 44-1051.01 - 44-1051.18</p>
-            <a href="/dc/council/code/titles/44/chapters/11/">Chapter 11. Public Benefit Corporation. [Repealed].</a>
-            <p>§§ 44-1101.01 - 44-1103.03</p>
-            <a href="/dc/council/code/titles/44/chapters/11A/">Chapter 11A. Stroke System of Care.</a>
-            <p>§§ 44-1151 - 44-1159</p>
-            <a href="/dc/council/code/titles/44/chapters/12/">Chapter 12. Substance Abuse Treatment and Prevention.</a>
-            <p>§§ 44-1201 - 44-1210</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1/">Chapter 1. Assisted Living Residence Regulation.</a>
+            </p>
+            <p>§§ 44-101.01 – 44-114.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/1A/">Chapter 1A. Continuing Care Retirement Communities.</a>
+            </p>
+            <p>§§ 44-151.01 – 44-151.18</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/2/">Chapter 2. Clinical Laboratories.</a>
+            </p>
+            <p>§§ 44-201 – 44-213</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/2A/">Chapter 2A. Defibrillator Usage.</a>
+            </p>
+            <p>§§ 44-231 – 44-236</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/3/">Chapter 3. Grievance Procedures for Health Benefits Plans.</a>
+            </p>
+            <p>§§ 44-301.01 – 44-304.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/4/">Chapter 4. Health Services Planning.</a>
+            </p>
+            <p>§§ 44-401 – 44-422</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/5/">Chapter 5. Health-Care and Community Residence Facility, Hospice and Home Care Licensure.</a>
+            </p>
+            <p>§§ 44-501 – 44-554</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/6/">Chapter 6. Healthcare Entity Conversion.</a>
+            </p>
+            <p>§§ 44-601 – 44-610</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/6A/">Chapter 6A. Medicaid Hospital Outpatient Supplemental Payments and Medicaid Hospital Inpatient Rate Supplements.</a>
+            </p>
+            <p>§§ 44-631 – 44-664.18</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/7/">Chapter 7. Hospitals, Asylums, Charities Generally.</a>
+            </p>
+            <p>§§ 44-701 – 44-786</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/8/">Chapter 8. Medical Records.</a>
+            </p>
+            <p>§§ 44-801 – 44-805</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/9/">Chapter 9. Mental Health Services.</a>
+            </p>
+            <p>§§ 44-901 – 44-922</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/9A/">Chapter 9A. Not-for-Profit Hospital Corporation.</a>
+            </p>
+            <p>§§ 44-951.01 – 44-951.18</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/10/">Chapter 10. Nursing Homes and Community Residence Facilities Protections.</a>
+            </p>
+            <p>§§ 44-1001.01 – 44-1005.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/10A/">Chapter 10A. Nurse Staffing Agencies.</a>
+            </p>
+            <p>§§ 44-1051.01 – 44-1051.18</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/11/">Chapter 11. Public Benefit Corporation. [Repealed].</a>
+            </p>
+            <p>§§ 44-1101.01 – 44-1103.03</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/11A/">Chapter 11A. Stroke System of Care.</a>
+            </p>
+            <p>§§ 44-1151 – 44-1159</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/12/">Chapter 12. Substance Abuse Treatment and Prevention.</a>
+            </p>
+            <p>§§ 44-1201 – 44-1210</p>
             <h2 class="line subheading">Subtitle II. Special Institutions.</h2>
-            <a href="/dc/council/code/titles/44/chapters/13/">Chapter 13. Industrial Home School.</a>
-            <p>§§ 44-1301 - 44-1304</p>
-            <a href="/dc/council/code/titles/44/chapters/14/">Chapter 14. Forest Haven.</a>
-            <p>§§ 44-1401 - 44-1404</p>
-            <a href="/dc/council/code/titles/44/chapters/15/">Chapter 15. Washington Humane Society.</a>
-            <p>§§ 44-1501 - 44-1511</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/13/">Chapter 13. Industrial Home School.</a>
+            </p>
+            <p>§§ 44-1301 – 44-1304</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/14/">Chapter 14. Forest Haven.</a>
+            </p>
+            <p>§§ 44-1401 – 44-1404</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/15/">Chapter 15. Washington Humane Society.</a>
+            </p>
+            <p>§§ 44-1501 – 44-1511</p>
             <h2 class="line subheading">Subtitle III. Management of Institutional Funds.</h2>
-            <a href="/dc/council/code/titles/44/chapters/16/">Chapter 16. Uniform Management of Institutional Funds. [Repealed].</a>
-            <p>§§ 44-1601 - 44-1609</p>
-            <a href="/dc/council/code/titles/44/chapters/16A/">Chapter 16A. Uniform Prudent Management of Institutional Funds.</a>
-            <p>§§ 44-1631 - 44-1639</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/16/">Chapter 16. Uniform Management of Institutional Funds. [Repealed].</a>
+            </p>
+            <p>§§ 44-1601 – 44-1609</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/16A/">Chapter 16A. Uniform Prudent Management of Institutional Funds.</a>
+            </p>
+            <p>§§ 44-1631 – 44-1639</p>
             <h2 class="line subheading">Subtitle IV. Charitable Solicitations.</h2>
-            <a href="/dc/council/code/titles/44/chapters/17/">Chapter 17. Charitable Solicitations.</a>
-            <p>§§ 44-1701 - 44-1714</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/17/">Chapter 17. Charitable Solicitations.</a>
+            </p>
+            <p>§§ 44-1701 – 44-1714</p>
             <h2 class="line subheading">Subtitle V. Repealed Provisions.</h2>
-            <a href="/dc/council/code/titles/44/chapters/18/">Chapter 18. Certificate of Need. [Repealed].</a>
-            <p>§§ 44-1801 - 44-1817</p>
-            <a href="/dc/council/code/titles/44/chapters/19/">Chapter 19. D.C. General Hospital Commission. [Repealed].</a>
-            <p>§§ 44-1901 - 44-1957</p>
-            <a href="/dc/council/code/titles/44/chapters/20/">Chapter 20. Health Services Planning Program. [Repealed].</a>
-            <p>§§ 44-2001 - 44-2019</p>
-            <a href="/dc/council/code/titles/44/chapters/21/">Chapter 21. Saint Elizabeths’ Hospital. [Repealed].</a>
-            <p>§§ 44-2101 - 44-2114</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/18/">Chapter 18. Certificate of Need. [Repealed].</a>
+            </p>
+            <p>§§ 44-1801 – 44-1817</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/19/">Chapter 19. D.C. General Hospital Commission. [Repealed].</a>
+            </p>
+            <p>§§ 44-1901 – 44-1957</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/20/">Chapter 20. Health Services Planning Program. [Repealed].</a>
+            </p>
+            <p>§§ 44-2001 – 44-2019</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/44/chapters/21/">Chapter 21. Saint Elizabeths’ Hospital. [Repealed].</a>
+            </p>
+            <p>§§ 44-2101 – 44-2114</p>
           </section>
           <section class="content"/>
         </section>

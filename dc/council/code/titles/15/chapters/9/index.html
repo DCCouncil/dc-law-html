@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/16/">Title 16. Particular Actions, Proceedings and Matters. [Enacted title]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/15/chapters/9/">Report Error</a>
@@ -87,20 +87,48 @@
         <section class="col8 body">
           <h1>Chapter 9. Uniform Foreign-Money Claims.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/15-901.html">§ 15–901. Definitions.</a>
-            <a href="/dc/council/code/sections/15-902.html">§ 15–902. Variation by agreement.</a>
-            <a href="/dc/council/code/sections/15-903.html">§ 15–903. Determining money of the claim.</a>
-            <a href="/dc/council/code/sections/15-904.html">§ 15–904. Determining amount of the money of certain contract claims.</a>
-            <a href="/dc/council/code/sections/15-905.html">§ 15–905. Asserting and defending a foreign-money claim.</a>
-            <a href="/dc/council/code/sections/15-906.html">§ 15–906. Judgments and awards on foreign-money claims; times of money conversion; form of judgment.</a>
-            <a href="/dc/council/code/sections/15-907.html">§ 15–907. Conversions of foreign money in distribution proceeding.</a>
-            <a href="/dc/council/code/sections/15-908.html">§ 15–908. Prejudgment and judgment interest.</a>
-            <a href="/dc/council/code/sections/15-909.html">§ 15–909. Enforcement of foreign judgments.</a>
-            <a href="/dc/council/code/sections/15-910.html">§ 15–910. Determining United States dollar value of foreign-money claims for limited purposes.</a>
-            <a href="/dc/council/code/sections/15-911.html">§ 15–911. Effect of currency revalorization.</a>
-            <a href="/dc/council/code/sections/15-912.html">§ 15–912. Supplementary general principles of law.</a>
-            <a href="/dc/council/code/sections/15-913.html">§ 15–913. Applicability.</a>
-            <a href="/dc/council/code/sections/15-914.html">§ 15–914. Uniformity of application and construction.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-901.html">§ 15–901. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-902.html">§ 15–902. Variation by agreement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-903.html">§ 15–903. Determining money of the claim.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-904.html">§ 15–904. Determining amount of the money of certain contract claims.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-905.html">§ 15–905. Asserting and defending a foreign-money claim.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-906.html">§ 15–906. Judgments and awards on foreign-money claims; times of money conversion; form of judgment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-907.html">§ 15–907. Conversions of foreign money in distribution proceeding.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-908.html">§ 15–908. Prejudgment and judgment interest.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-909.html">§ 15–909. Enforcement of foreign judgments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-910.html">§ 15–910. Determining United States dollar value of foreign-money claims for limited purposes.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-911.html">§ 15–911. Effect of currency revalorization.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-912.html">§ 15–912. Supplementary general principles of law.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-913.html">§ 15–913. Applicability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/15-914.html">§ 15–914. Uniformity of application and construction.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -132,8 +160,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 15-901.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in the introductory language, substituted “this chapter” for “this act”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in the introductory language, substituted “this chapter” for “this subchapter”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in the introductory language, substituted “this chapter” for “this act”.</p>
                 <h4>Editor's Notes</h4>
                 <p>Uniform Law: This section is based upon § 1 of the Uniform Foreign-Money Claims Act.</p>
               </section>
@@ -153,9 +181,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 15-902.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsec. (a), substituted “this chapter” for “this act”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (a), substituted “this chapter” for “this subchapter”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (a), substituted “this chapter” for “this subchapter”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsec. (a), substituted “this chapter” for “this act”.</p>
                 <h4>Editor's Notes</h4>
                 <p>Uniform Law: This section is based upon § 3 of the Uniform Foreign-Money Claims Act.</p>
               </section>
@@ -359,8 +387,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 15-912.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a> substituted “this chapter” for “this act” in both places.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “this chapter” for “this subchapter”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a> substituted “this chapter” for “this act” in both places.</p>
                 <h4>Editor's Notes</h4>
                 <p>Uniform Law: This section is based upon § 13 of the Uniform Foreign-Money Claims Act.</p>
               </section>
@@ -380,8 +408,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 15-913.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsecs. (a) and (b), substituted “this chapter” for “this act”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsecs. (a) and (b), substituted “this chapter” for “this subchapter”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsecs. (a) and (b), substituted “this chapter” for “this act”.</p>
                 <h4>Editor's Notes</h4>
                 <p>Uniform Law: This section is based upon § 2 of the Uniform Foreign-Money Claims Act.</p>
               </section>
@@ -400,8 +428,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 15-914.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a> substituted “this chapter” for “this act” in two places.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> substituted “this chapter” for “this subchapter”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a> substituted “this chapter” for “this act” in two places.</p>
                 <h4>Editor's Notes</h4>
                 <p>Uniform Law: This section is based upon § 14 of the Uniform Foreign-Money Claims Act.</p>
               </section>

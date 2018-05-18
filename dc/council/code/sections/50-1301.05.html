@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/50-1301.05a.html">§ 50–1301.05a. Production of documentary material.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/50-1301.05.html">Report Error</a>
@@ -101,15 +101,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-2-ch222.html#§5">May 25, 1954, 68 Stat. 122, ch. 222, § 5</a>; <a class="internal-link" href="/dc/council/laws/4-97.html">Apr. 3, 1982, D.C. Law 4-97, § 4, 29 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/9-30.html">Aug. 17, 1991, D.C. Law 9-30, § 5, 38 DCR 4215</a>; <a class="internal-link" href="/dc/council/laws/14-307.html">June 5, 2003, D.C. Law 14-307, § 1704(b), 49 DCR 11664</a>; <a class="internal-link" href="/dc/council/laws/15-307.html">Apr. 8, 2005, D.C. Law 15-307, § 202, 52 DCR 1700</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-405.</p>
                 <p>1973 Ed. § 40-421.</p>
+                <p>1981 Ed., § 40-405.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a>, in subsec. (a), substituted “$7” for “$5”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a>, in subsec. (a), designated the existing text as par. (1), and added par. (2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a>, in subsec. (a), substituted “$7” for “$5”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1704(b) of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
-                <p>For temporary (90 day) amendment of section, see § 1704(b) of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
                 <p>For temporary (90 day) amendment of section, see § 1704(b) of Fiscal Year 2003 Budget Support Amendment Second Congressional Review Emergency Act of 2003 (D.C. Act 15-103, June 20, 2003,  50 DCR 5499).</p>
+                <p>For temporary (90 day) amendment of section, see § 1704(b) of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
+                <p>For temporary (90 day) amendment of section, see § 1704(b) of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 109 of Omnibus Budget Support Temporary Act of 1991 (<a class="internal-link" href="/dc/council/laws/9-19.html">D.C. Law 9-19</a>, June 21, 1991, law notification  38 DCR 5786).</p>
                 <h4>Change in Government</h4>

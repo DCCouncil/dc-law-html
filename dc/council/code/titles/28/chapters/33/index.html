@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/28/chapters/35/">Chapter 35. Statute of Frauds.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/28/chapters/33/">Report Error</a>
@@ -87,21 +87,51 @@
         <section class="col8 body">
           <h1>Chapter 33. Interest and Usury.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/28-3301.html">§ 28–3301. Rate of interest expressed in contract.</a>
-            <a href="/dc/council/code/sections/28-3302.html">§ 28–3302. Rate of interest not expressed and on judgments.</a>
-            <a href="/dc/council/code/sections/28-3303.html">§ 28–3303. Usury defined.</a>
-            <a href="/dc/council/code/sections/28-3304.html">§ 28–3304. Action to recover usury paid.</a>
-            <a href="/dc/council/code/sections/28-3305.html">§ 28–3305. Unlawful interest credited on principal debt.</a>
-            <a href="/dc/council/code/sections/28-3306.html">§ 28–3306. Parties compelled to testify.</a>
-            <a href="/dc/council/code/sections/28-3307.html">§ 28–3307. Council of the District of Columbia authorized to exempt certain mortgages and loans.</a>
-            <a href="/dc/council/code/sections/28-3308.html">§ 28–3308. Finance charge on direct installment loans.</a>
-            <a href="/dc/council/code/sections/28-3309.html">§ 28–3309. Council of the District of Columbia authorized to exempt certain loans, and to change rates of interest.</a>
-            <a href="/dc/council/code/sections/28-3310.html">§ 28–3310. Consumer protections.</a>
-            <a href="/dc/council/code/sections/28-3311.html">§ 28–3311. Definition of interest.</a>
-            <a href="/dc/council/code/sections/28-3312.html">§ 28–3312. Unlawful practices.</a>
-            <a href="/dc/council/code/sections/28-3313.html">§ 28–3313. Penalties.</a>
-            <a href="/dc/council/code/sections/28-3314.html">§ 28–3314. Right of action.</a>
-            <a href="/dc/council/code/sections/28-3315.html">§ 28–3315. Exemption of institutions of higher learning from usury law.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3301.html">§ 28–3301. Rate of interest expressed in contract.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3302.html">§ 28–3302. Rate of interest not expressed and on judgments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3303.html">§ 28–3303. Usury defined.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3304.html">§ 28–3304. Action to recover usury paid.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3305.html">§ 28–3305. Unlawful interest credited on principal debt.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3306.html">§ 28–3306. Parties compelled to testify.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3307.html">§ 28–3307. Council of the District of Columbia authorized to exempt certain mortgages and loans.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3308.html">§ 28–3308. Finance charge on direct installment loans.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3309.html">§ 28–3309. Council of the District of Columbia authorized to exempt certain loans, and to change rates of interest.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3310.html">§ 28–3310. Consumer protections.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3311.html">§ 28–3311. Definition of interest.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3312.html">§ 28–3312. Unlawful practices.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3313.html">§ 28–3313. Penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3314.html">§ 28–3314. Right of action.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/28-3315.html">§ 28–3315. Exemption of institutions of higher learning from usury law.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -137,18 +167,18 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-509.html">Aug. 30, 1964, 78 Stat. 675, Pub. L. 88-509, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/92-200.html">Dec. 17, 1971, 85 Stat. 665, Pub. L. 92-200, § 1</a>; <a class="internal-link" href="/dc/council/laws/3-38.html">Nov. 20, 1979, D.C. Law 3-38, § 2, 26 DCR 2183</a>; <a class="internal-link" href="/dc/council/laws/3-73.html">July 1, 1980, D.C. Law 3-73, § 2, 27 DCR 2270</a>; <a class="internal-link" href="/dc/council/laws/4-150.html">Sept. 17, 1982, D.C. Law 4-150, § 302, 29 DCR 3377</a>; <a class="internal-link" href="/dc/council/laws/5-62.html">Mar. 14, 1984, D.C. Law 5-62, § 2, 31 DCR 114</a>; <a class="internal-link" href="/dc/council/laws/6-2.html">Apr. 23, 1985, D.C. Law 6-2, § 2, 32 DCR 1477</a>; <a class="internal-link" href="/dc/council/laws/6-5.html">June 4, 1985, D.C. Law 6-5, § 2, 32 DCR 2084</a>; <a class="internal-link" href="/dc/council/laws/17-42.html">Nov. 24, 2007, D.C. Law 17-42, § 3(a), 54 DCR 9988</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(i)(2), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-3301.</p>
                 <p>1973 Ed., § 28-3301.</p>
+                <p>1981 Ed., § 28-3301.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:9-201.html">28:9-201</a>, § <a class="internal-link" href="/dc/council/code/sections/28-3303.html">28-3303</a>, § <a class="internal-link" href="/dc/council/code/sections/28-3311.html">28-3311</a>, § <a class="internal-link" href="/dc/council/code/sections/31-1101.html">31-1101</a>, § <a class="internal-link" href="/dc/council/code/sections/42-2403.html">42-2403</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2884.10.html">47-2884.10</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-42.html">D.C. Law 17-42</a>, in subsec. (d)(1), substituted “an amount in excess of $2,500” for “an amount in excess of $1,000”; and added subsecs. (h) and (i).</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-378.html">D.C. Law 18-378</a>, in subsec. (d)(1)(D), substituted “, formed under, or subject to, Chapter 4 of Title 29 ” for “, as referred to in  sections 29-901 through  29-916”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-42.html">D.C. Law 17-42</a>, in subsec. (d)(1), substituted “an amount in excess of $2,500” for “an amount in excess of $1,000”; and added subsecs. (h) and (i).</p>
                 <h4>Cross References</h4>
-                <p>Insurance premium finance companies, application of law, see § <a class="internal-link" href="/dc/council/code/sections/31-1101.html">31-1101</a>.</p>
-                <p>Money lenders, interest and charges, see § <a class="internal-link" href="/dc/council/code/sections/26-901.html">26-901</a> et seq.</p>
-                <p>Pawnbrokers, excessive consideration prohibited, see § <a class="internal-link" href="/dc/council/code/sections/47-2884.10.html">47-2884.10</a>.</p>
                 <p>Real property wet settlement, financial lender duties, see § <a class="internal-link" href="/dc/council/code/sections/42-2403.html">42-2403</a>.</p>
+                <p>Pawnbrokers, excessive consideration prohibited, see § <a class="internal-link" href="/dc/council/code/sections/47-2884.10.html">47-2884.10</a>.</p>
+                <p>Money lenders, interest and charges, see § <a class="internal-link" href="/dc/council/code/sections/26-901.html">26-901</a> et seq.</p>
+                <p>Insurance premium finance companies, application of law, see § <a class="internal-link" href="/dc/council/code/sections/31-1101.html">31-1101</a>.</p>
                 <h4>References in Text</h4>
                 <p>The “Interest Rate Ceiling Amendment Act of 1983”, referred to in the last sentences of subsections (b) and (c), is <a class="internal-link" href="/dc/council/laws/5-62.html">D.C. Law 5-62</a>. The effective date of that Act is March 14, 1984.</p>
                 <h4>Editor's Notes</h4>
@@ -169,18 +199,18 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-509.html">Aug. 30, 1964, 78 Stat. 765, Pub. L. 88-509, § 1</a>; <a class="internal-link" href="/dc/council/laws/4-70.html">Mar. 10, 1982, D.C. Law 4-70, § 2, 28 DCR 5236</a>; <a class="internal-link" href="/dc/council/laws/4-112.html">June 4, 1982, D.C. Law 4-112, § 9, 29 DCR 1687</a>; <a class="internal-link" href="/dc/council/laws/7-61.html">Dec. 16, 1987, D.C. Law 7-61, § 2, 34 DCR 7089</a>; <a class="internal-link" href="/dc/council/laws/7-82.html">Mar. 9, 1988, D.C. Law 7-82, § 2, 34 DCR 8117</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-3302.</p>
                 <p>1973 Ed., § 28-3302.</p>
+                <p>1981 Ed., § 28-3302.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-359.09.html">2-359.09</a>, § <a class="internal-link" href="/dc/council/code/sections/31-1101.html">31-1101</a>, § <a class="internal-link" href="/dc/council/code/sections/31-4450.html">31-4450</a>, § <a class="internal-link" href="/dc/council/code/sections/32-509.html">32-509</a>, and § <a class="internal-link" href="/dc/council/code/sections/32-1204.html">32-1204</a>.</p>
                 <h4>Cross References</h4>
-                <p>Domestic life companies, merger or consolidation, dissenting shareholders, see § <a class="internal-link" href="/dc/council/code/sections/31-4450.html">31-4450</a>.</p>
-                <p>Family and medical leave, complaints, review, see § <a class="internal-link" href="/dc/council/code/sections/32-509.html">32-509</a>.</p>
-                <p>Government procurement, remedies, interest, see § <a class="internal-link" href="/dc/council/code/sections/2-359.09.html">2-359.09</a>.</p>
-                <p>Insurance premium finance companies, application of law, see § <a class="internal-link" href="/dc/council/code/sections/31-1101.html">31-1101</a>.</p>
-                <p>Money lenders, interest and charges, limitations, see § <a class="internal-link" href="/dc/council/code/sections/26-901.html">26-901</a> et seq.</p>
-                <p>Parental leave, administrative enforcement procedure, relief, see § <a class="internal-link" href="/dc/council/code/sections/32-1204.html">32-1204</a>.</p>
                 <p>Pawnbrokers, excessive consideration prohibited, see § <a class="internal-link" href="/dc/council/code/sections/47-2884.10.html">47-2884.10</a>.</p>
+                <p>Parental leave, administrative enforcement procedure, relief, see § <a class="internal-link" href="/dc/council/code/sections/32-1204.html">32-1204</a>.</p>
+                <p>Money lenders, interest and charges, limitations, see § <a class="internal-link" href="/dc/council/code/sections/26-901.html">26-901</a> et seq.</p>
+                <p>Insurance premium finance companies, application of law, see § <a class="internal-link" href="/dc/council/code/sections/31-1101.html">31-1101</a>.</p>
+                <p>Government procurement, remedies, interest, see § <a class="internal-link" href="/dc/council/code/sections/2-359.09.html">2-359.09</a>.</p>
+                <p>Family and medical leave, complaints, review, see § <a class="internal-link" href="/dc/council/code/sections/32-509.html">32-509</a>.</p>
+                <p>Domestic life companies, merger or consolidation, dissenting shareholders, see § <a class="internal-link" href="/dc/council/code/sections/31-4450.html">31-4450</a>.</p>
                 <h4>References in Text</h4>
                 <p>The “Consumer Credit Interest Rate Amendment Act of 1981”, referred to throughout subsection (c), is <a class="internal-link" href="/dc/council/laws/4-70.html">D.C. Law 4-70</a>.</p>
               </section>
@@ -200,11 +230,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-509.html">Aug. 30, 1964, 78 Stat. 675, Pub. L. 88-509, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/92-200.html">Dec. 17, 1971, 85 Stat. 665, Pub. L. 92-200, § 2</a>; <a class="internal-link" href="/dc/council/laws/12-111.html">May 12, 1998, D.C. Law 12-111, § 25(a), 45 DCR 1782</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-3303.</p>
                 <p>1973 Ed., § 28-3303.</p>
+                <p>1981 Ed., § 28-3303.</p>
                 <h4>Cross References</h4>
-                <p>Institutions of higher education, pleading usury as a defense, see § <a class="internal-link" href="/dc/council/code/sections/28-3315.html">28-3315</a>.</p>
                 <p>Pawnbrokers, excessive consideration prohibited, see § <a class="internal-link" href="/dc/council/code/sections/47-2884.10.html">47-2884.10</a>.</p>
+                <p>Institutions of higher education, pleading usury as a defense, see § <a class="internal-link" href="/dc/council/code/sections/28-3315.html">28-3315</a>.</p>
                 <h4>References in Text</h4>
                 <p>Sections 26-901 to  26-912, referred to in the last paragraph of this section, refer to the Act of Feb. 4, 1913, as amended, and as translated to the 2001 edition. <a class="internal-link" href="/dc/council/laws/18-378.html">D.C. Law 18-378</a> amended and enacted into law Title 29.</p>
               </section>
@@ -221,8 +251,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-509.html">Aug. 30, 1964, 78 Stat. 676, Pub. L. 88-509, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-3304.</p>
                 <p>1973 Ed., § 28-3304.</p>
+                <p>1981 Ed., § 28-3304.</p>
               </section>
             </section>
             <hr/>
@@ -237,8 +267,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-509.html">Aug. 30, 1964, 78 Stat. 676, Pub. L. 88-509, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-3305.</p>
                 <p>1973 Ed., § 28-3305.</p>
+                <p>1981 Ed., § 28-3305.</p>
               </section>
             </section>
             <hr/>
@@ -253,8 +283,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-509.html">Aug. 30, 1964, 78 Stat. 676, Pub. L. 88-509, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-3306.</p>
                 <p>1973 Ed., § 28-3306.</p>
+                <p>1981 Ed., § 28-3306.</p>
               </section>
             </section>
             <hr/>
@@ -269,8 +299,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-385.html">Aug. 20, 1970, 84 Stat. 828, Pub. L. 91-385, § 2(a)</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 27(d), 44 DCR 1271</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-3307.</p>
                 <p>1973 Ed., § 28-3307.</p>
+                <p>1981 Ed., § 28-3307.</p>
                 <h4>References in Text</h4>
                 <p>The National Housing Act, referred to in the first sentence of this section, is codified in  12 U.S.C. § 1701 et seq.</p>
                 <h4>Change in Government</h4>
@@ -295,8 +325,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-200.html">Dec. 17, 1971, 85 Stat. 665, Pub. L. 92-200, § 3</a>; <a class="internal-link" href="/dc/council/laws/3-38.html">Nov. 20, 1979, D.C. Law 3-38, § 3, 26 DCR 2183</a>; <a class="internal-link" href="/dc/council/laws/4-70.html">Mar. 10, 1982, D.C. Law 4-70, § 3, 28 DCR 5236</a>; <a class="internal-link" href="/dc/council/laws/5-62.html">Mar. 14, 1984, D.C. Law 5-62, § 3, 31 DCR 114</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 27(e), 44 DCR 1271</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-3308.</p>
                 <p>1973 Ed., § 28-3308.</p>
+                <p>1981 Ed., § 28-3308.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28-3301.html">28-3301</a>, § <a class="internal-link" href="/dc/council/code/sections/28-3303.html">28-3303</a>, and § <a class="internal-link" href="/dc/council/code/sections/28-3802.html">28-3802</a>.</p>
                 <h4>References in Text</h4>
@@ -315,8 +345,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-229.html">Dec. 29, 1973, 87 Stat. 945, Pub. L. 93-229, § 1(a)</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 27(f), 44 DCR 1271</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-3309.</p>
                 <p>1973 Ed., § 28-3309.</p>
+                <p>1981 Ed., § 28-3309.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to the District of Columbia Council and to a Commissioner of the District of Columbia. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of the Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -454,9 +484,9 @@
       (<a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(i)(3), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-631.</p>
-                <p>1981 Ed., § 29-820.</p>
                 <p>1973 Ed., § 29-421.</p>
+                <p>1981 Ed., § 29-820.</p>
+                <p>2001 Ed., § 29-631.</p>
               </section>
             </section>
             <hr/>

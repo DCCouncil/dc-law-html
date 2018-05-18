@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/16/chapters/5/subchapters/III/">Subchapter III. Attachment and Garnishment of Wages, etc.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/16/chapters/5/subchapters/II/">Report Error</a>
@@ -88,22 +88,54 @@
         <section class="col8 body">
           <h1>Subchapter II. Attachment and Garnishment After Judgment in Aid of Execution.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/16-541.html">§ 16–541. Definition and applicability.</a>
-            <a href="/dc/council/code/sections/16-542.html">§ 16–542. Issuance of attachment after judgment; costs.</a>
-            <a href="/dc/council/code/sections/16-543.html">§ 16–543. Revival of judgment unnecessary.</a>
-            <a href="/dc/council/code/sections/16-544.html">§ 16–544. Property subject to attachment.</a>
-            <a href="/dc/council/code/sections/16-545.html">§ 16–545. Multiple attachments against same judgment debtor.</a>
-            <a href="/dc/council/code/sections/16-546.html">§ 16–546. Attachments of credits.</a>
-            <a href="/dc/council/code/sections/16-547.html">§ 16–547. Retention of property or credits by garnishee.</a>
-            <a href="/dc/council/code/sections/16-548.html">§ 16–548. Attachment of judgments and money or property in hands of marshal.</a>
-            <a href="/dc/council/code/sections/16-549.html">§ 16–549. Attachment of money or property in hands of executor or administrator.</a>
-            <a href="/dc/council/code/sections/16-550.html">§ 16–550. Preservation of property; sale.</a>
-            <a href="/dc/council/code/sections/16-551.html">§ 16–551. Defending against the attachment; trial of issues.</a>
-            <a href="/dc/council/code/sections/16-552.html">§ 16–552. Interrogatories to garnishee; oral examination.</a>
-            <a href="/dc/council/code/sections/16-553.html">§ 16–553. Traverse of garnishee’s answers; trial of issue; costs and attorney’s fee.</a>
-            <a href="/dc/council/code/sections/16-554.html">§ 16–554. Claims to attached property.</a>
-            <a href="/dc/council/code/sections/16-555.html">§ 16–555. Condemnation and sale of property; proceeds of sale under interlocutory order.</a>
-            <a href="/dc/council/code/sections/16-556.html">§ 16–556. Judgment against garnishee.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-541.html">§ 16–541. Definition and applicability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-542.html">§ 16–542. Issuance of attachment after judgment; costs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-543.html">§ 16–543. Revival of judgment unnecessary.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-544.html">§ 16–544. Property subject to attachment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-545.html">§ 16–545. Multiple attachments against same judgment debtor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-546.html">§ 16–546. Attachments of credits.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-547.html">§ 16–547. Retention of property or credits by garnishee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-548.html">§ 16–548. Attachment of judgments and money or property in hands of marshal.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-549.html">§ 16–549. Attachment of money or property in hands of executor or administrator.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-550.html">§ 16–550. Preservation of property; sale.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-551.html">§ 16–551. Defending against the attachment; trial of issues.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-552.html">§ 16–552. Interrogatories to garnishee; oral examination.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-553.html">§ 16–553. Traverse of garnishee’s answers; trial of issue; costs and attorney’s fee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-554.html">§ 16–554. Claims to attached property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-555.html">§ 16–555. Condemnation and sale of property; proceeds of sale under interlocutory order.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-556.html">§ 16–556. Judgment against garnishee.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -118,12 +150,12 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 552, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-541.</p>
                 <p>1973 Ed., § 16-541.</p>
+                <p>1981 Ed., § 16-541.</p>
                 <h4>Cross References</h4>
-                <p>Child support enforcement, income withholding, see § <a class="internal-link" href="/dc/council/code/sections/46-208.html">46-208</a>.</p>
-                <p>Fraudulent conveyances, remedies of creditors, see § <a class="internal-link" href="/dc/council/code/sections/28-3107.html">28-3107</a>.</p>
                 <p>Superior Court of the District of Columbia, jurisdiction, see § <a class="internal-link" href="/dc/council/code/sections/11-921.html">11-921</a>.</p>
+                <p>Fraudulent conveyances, remedies of creditors, see § <a class="internal-link" href="/dc/council/code/sections/28-3107.html">28-3107</a>.</p>
+                <p>Child support enforcement, income withholding, see § <a class="internal-link" href="/dc/council/code/sections/46-208.html">46-208</a>.</p>
               </section>
             </section>
             <hr/>
@@ -138,8 +170,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 552, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-542.</p>
                 <p>1973 Ed., § 16-542.</p>
+                <p>1981 Ed., § 16-542.</p>
               </section>
             </section>
             <hr/>
@@ -154,8 +186,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 552, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-543.</p>
                 <p>1973 Ed., § 16-543.</p>
+                <p>1981 Ed., § 16-543.</p>
               </section>
             </section>
             <hr/>
@@ -170,8 +202,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 552, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-544.</p>
                 <p>1973 Ed., § 16-544.</p>
+                <p>1981 Ed., § 16-544.</p>
               </section>
             </section>
             <hr/>
@@ -186,8 +218,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 552, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-545.</p>
                 <p>1973 Ed., § 16-545.</p>
+                <p>1981 Ed., § 16-545.</p>
               </section>
             </section>
             <hr/>
@@ -202,8 +234,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 552, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-546.</p>
                 <p>1973 Ed., § 16-546.</p>
+                <p>1981 Ed., § 16-546.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/16-548.html">16-548</a>.</p>
               </section>
@@ -220,8 +252,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 552, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-547.</p>
                 <p>1973 Ed., § 16-547.</p>
+                <p>1981 Ed., § 16-547.</p>
               </section>
             </section>
             <hr/>
@@ -237,8 +269,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 553, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-548.</p>
                 <p>1973 Ed., § 16-548.</p>
+                <p>1981 Ed., § 16-548.</p>
               </section>
             </section>
             <hr/>
@@ -253,8 +285,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 553, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 555, Pub. L. 91-358, title I, § 145(b)(2)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-549.</p>
                 <p>1973 Ed., § 16-549.</p>
+                <p>1981 Ed., § 16-549.</p>
               </section>
             </section>
             <hr/>
@@ -269,8 +301,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 553, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-550.</p>
                 <p>1973 Ed., § 16-550.</p>
+                <p>1981 Ed., § 16-550.</p>
               </section>
             </section>
             <hr/>
@@ -285,8 +317,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 553, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-551.</p>
                 <p>1973 Ed., § 16-551.</p>
+                <p>1981 Ed., § 16-551.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/16-553.html">16-553</a>.</p>
               </section>
@@ -305,8 +337,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 553, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-552.</p>
                 <p>1973 Ed., § 16-552.</p>
+                <p>1981 Ed., § 16-552.</p>
               </section>
             </section>
             <hr/>
@@ -321,8 +353,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 554, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-553.</p>
                 <p>1973 Ed., § 16-553.</p>
+                <p>1981 Ed., § 16-553.</p>
               </section>
             </section>
             <hr/>
@@ -337,8 +369,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 554, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-554.</p>
                 <p>1973 Ed., § 16-554.</p>
+                <p>1981 Ed., § 16-554.</p>
               </section>
             </section>
             <hr/>
@@ -353,8 +385,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 554, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-555.</p>
                 <p>1973 Ed., § 16-555.</p>
+                <p>1981 Ed., § 16-555.</p>
                 <h4>Cross References</h4>
                 <p>Decrees, effect and enforcement, see §§ <a class="internal-link" href="/dc/council/code/sections/15-103.html">15-103</a> et seq., 15-301, and 16-541.</p>
               </section>
@@ -372,8 +404,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 554, Pub. L. 88-241, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-556.</p>
                 <p>1973 Ed., § 16-556.</p>
+                <p>1981 Ed., § 16-556.</p>
               </section>
             </section>
             <hr/>

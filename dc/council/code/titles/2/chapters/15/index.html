@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/2/chapters/16/">Chapter 16. Public Defender Service.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/2/chapters/15/">Report Error</a>
@@ -87,38 +87,70 @@
         <section class="col8 body">
           <h1>Chapter 15. Youth Affairs.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/I/">Subchapter I. Office of Youth Advocacy.</a>
-            <p>§§ 2-1501 - 2-1511</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/I-A/">Subchapter I-A. Department of Youth Rehabilitation Services.</a>
-            <p>§§ 2-1515.01 - 2-1515.54</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/I-B/">Subchapter I-B. Youth Jobs Fund.</a>
-            <p>§§ 2-1516.01 - 2-1516.01</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/I-C/">Subchapter I-C. Youth Behavioral Health.</a>
-            <p>§§ 2-1517.01 - 2-1517.52</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/II/">Subchapter II. Commission on Youth Affairs. [Repealed].</a>
-            <p>§§ 2-1521 - 2-1529</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/II-A/">Subchapter II-A. Gang and Crew Intervention Joint Working Group.</a>
-            <p>§§ 2-1531.01 - 2-1531.01</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/II-B/">Subchapter II-B. Commission on Juvenile Justice Reform.</a>
-            <p>§§ 2-1533.01 - 2-1533.02</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/II-C/">Subchapter II-C. Youth Bullying Prevention.</a>
-            <p>§§ 2-1535.01 - 2-1535.09</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/III/">Subchapter III. Juvenile Curfew.</a>
-            <p>§§ 2-1541 - 2-1543</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/III-A/">Subchapter III-A. Children and Youth Initiative. [Repealed]</a>
-            <p>§§ 2-1551 - 2-1554</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/III-B/">Subchapter III-B. Office of Out of School Time Grants and Youth Outcomes.</a>
-            <p>§§ 2-1555.01 - 2-1555.08</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/IV/">Subchapter IV. Youth Advisory Council.</a>
-            <p>§§ 2-1561 - 2-1564</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/IV-A/">Subchapter IV-A. Youth Council of the District of Columbia.</a>
-            <p>§§ 2-1565.01 - 2-1565.06</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/V/">Subchapter V. Mayor’s Youth Leadership Institute.</a>
-            <p>§§ 2-1571 - 2-1574</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/VI/">Subchapter VI. Youth Development Plan.</a>
-            <p>§§ 2-1581 - 2-1585</p>
-            <a href="/dc/council/code/titles/2/chapters/15/subchapters/VII/">Subchapter VII. Interagency Collaboration and Services Integration Commission.</a>
-            <p>§§ 2-1591 - 2-1597</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/I/">Subchapter I. Office of Youth Advocacy.</a>
+            </p>
+            <p>§§ 2-1501 – 2-1511</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/I-A/">Subchapter I-A. Department of Youth Rehabilitation Services.</a>
+            </p>
+            <p>§§ 2-1515.01 – 2-1515.54</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/I-B/">Subchapter I-B. Youth Jobs Fund.</a>
+            </p>
+            <p>§§ 2-1516.01 – 2-1516.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/I-C/">Subchapter I-C. Youth Behavioral Health.</a>
+            </p>
+            <p>§§ 2-1517.01 – 2-1517.52</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/II/">Subchapter II. Commission on Youth Affairs. [Repealed].</a>
+            </p>
+            <p>§§ 2-1521 – 2-1529</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/II-A/">Subchapter II-A. Gang and Crew Intervention Joint Working Group.</a>
+            </p>
+            <p>§§ 2-1531.01 – 2-1531.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/II-B/">Subchapter II-B. Commission on Juvenile Justice Reform.</a>
+            </p>
+            <p>§§ 2-1533.01 – 2-1533.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/II-C/">Subchapter II-C. Youth Bullying Prevention.</a>
+            </p>
+            <p>§§ 2-1535.01 – 2-1535.09</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/III/">Subchapter III. Juvenile Curfew.</a>
+            </p>
+            <p>§§ 2-1541 – 2-1543</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/III-A/">Subchapter III-A. Children and Youth Initiative. [Repealed]</a>
+            </p>
+            <p>§§ 2-1551 – 2-1554</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/III-B/">Subchapter III-B. Office of Out of School Time Grants and Youth Outcomes.</a>
+            </p>
+            <p>§§ 2-1555.01 – 2-1555.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/IV/">Subchapter IV. Youth Advisory Council.</a>
+            </p>
+            <p>§§ 2-1561 – 2-1564</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/IV-A/">Subchapter IV-A. Youth Council of the District of Columbia.</a>
+            </p>
+            <p>§§ 2-1565.01 – 2-1565.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/V/">Subchapter V. Mayor’s Youth Leadership Institute.</a>
+            </p>
+            <p>§§ 2-1571 – 2-1574</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/VI/">Subchapter VI. Youth Development Plan.</a>
+            </p>
+            <p>§§ 2-1581 – 2-1585</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/2/chapters/15/subchapters/VII/">Subchapter VII. Interagency Collaboration and Services Integration Commission.</a>
+            </p>
+            <p>§§ 2-1591 – 2-1597</p>
           </section>
           <section class="content">
             <hr/>
@@ -141,16 +173,16 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§2">Mar. 29, 1977, D.C. Law 1-93, § 2, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/9-194.html">Mar. 16, 1993, D.C. Law 9-194, § 2(a), 39 DCR 9010</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2601.</p>
                 <p>1973 Ed., § 6-2001.</p>
+                <p>1981 Ed., § 1-2601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) establishment of a Children and Youth Initiative to provide out-of-school programs, see §§ 2402 to 2404 of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
-                <p>For temporary (90-day) amendment of § 2404 of <a class="internal-link" href="/dc/council/laws/13-38.html">D.C. Law 13-38</a>, see § 2(b) of the Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Emergency Amendment Act of 1999 (D.C. Act 13-152, December 1, 1999,  46 DCR 10395).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-17, March 16, 2001,  48 DCR 2687).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Service Improvement and Fiscal Year 2000 Budget Support Emergency Amendment Act of 2002 (D.C. Act 14-347, April 24, 2002,  49 DCR 4410).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-17, March 16, 2001,  48 DCR 2687).</p>
+                <p>For temporary (90-day) amendment of § 2404 of <a class="internal-link" href="/dc/council/laws/13-38.html">D.C. Law 13-38</a>, see § 2(b) of the Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Emergency Amendment Act of 1999 (D.C. Act 13-152, December 1, 1999,  46 DCR 10395).</p>
+                <p>For temporary (90-day) establishment of a Children and Youth Initiative to provide out-of-school programs, see §§ 2402 to 2404 of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(a) of District of Columbia Youth Services Act of 1976 Temporary Amendment Act of 1992 (D.C. Law 9-151, September 15, 1992, law notification  39 DCR 7281).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of the Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Temporary Amendment Act of 1999 (D.C. Law 13-67, Apr. 5, 2000, law notification  47 DCR 2624).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(a) of District of Columbia Youth Services Act of 1976 Temporary Amendment Act of 1992 (D.C. Law 9-151, September 15, 1992, law notification  39 DCR 7281).</p>
                 <h4>References in Text</h4>
                 <p>Pursuant to Mayor’s Order 2000-20, the agency formerly known as the “Department of Recreation and Parks” shall be known as the “Department of Parks and Recreation.”</p>
                 <h4>Editor's Notes</h4>
@@ -176,8 +208,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§3">Mar. 29, 1977, D.C. Law 1-93, § 3, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2602.</p>
                 <p>1973 Ed., § 6-2002.</p>
+                <p>1981 Ed., § 1-2602.</p>
                 <h4>Editor's Notes</h4>
                 <p>Grants for youth oriented programs: D.C. Law 10-195 authorized the Youth Initiatives Office to make grants to community based organizations for youth oriented programs and for other purposes in order to address the crisis affecting District of Columbia youth.</p>
               </section>
@@ -209,13 +241,13 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§4">Mar. 29, 1977, D.C. Law 1-93, § 4, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2603.</p>
                 <p>1973 Ed., § 6-2003.</p>
+                <p>1981 Ed., § 1-2603.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1501.html">2-1501</a>.</p>
                 <h4>References in Text</h4>
-                <p>Pursuant to Mayor’s Order 2000-20, the agency formerly known as the “Department of Recreation and Parks” shall be known as the “Department of Parks and Recreation.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/1-36.html">D.C. Law 1-36</a>, referred to in subsection (e), is the District of Columbia Public Postsecondary Education Reorganization Act Amendments.</p>
+                <p>Pursuant to Mayor’s Order 2000-20, the agency formerly known as the “Department of Recreation and Parks” shall be known as the “Department of Parks and Recreation.”</p>
               </section>
             </section>
             <hr/>
@@ -267,8 +299,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§5">Mar. 29, 1977, D.C. Law 1-93, § 5, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/2-75.html">Apr. 28, 1978, D.C. Law 2-75, § 2, 24 DCR 7498</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2604.</p>
                 <p>1973 Ed., § 6-2004.</p>
+                <p>1981 Ed., § 1-2604.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1501.html">2-1501</a> and § <a class="internal-link" href="/dc/council/code/sections/2-1505.html">2-1505</a>.</p>
               </section>
@@ -292,8 +324,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§6">Mar. 29, 1977, D.C. Law 1-93, § 6, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2605.</p>
                 <p>1973 Ed., § 6-2005.</p>
+                <p>1981 Ed., § 1-2605.</p>
               </section>
             </section>
             <hr/>
@@ -324,8 +356,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§7">Mar. 29, 1977, D.C. Law 1-93, § 7, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/2-75.html">Apr. 28, 1978, D.C. Law 2-75, § 2, 24 DCR 7498</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2606.</p>
                 <p>1973 Ed., § 6-2006.</p>
+                <p>1981 Ed., § 1-2606.</p>
                 <h4>References in Text</h4>
                 <p>Pursuant to Mayor’s Order 2000-20, the agency formerly known as the “Department of Recreation” renamed the “Department of Recreation and Parks” shall be known as the “Department of Parks and Recreation.”</p>
                 <h4>Editor's Notes</h4>
@@ -344,8 +376,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§8">Mar. 29, 1977, D.C. Law 1-93, § 8, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2607.</p>
                 <p>1973 Ed., § 6-2007.</p>
+                <p>1981 Ed., § 1-2607.</p>
                 <h4>References in Text</h4>
                 <p>Pursuant to Mayor’s Order 2000-20, the agency formerly known as the “Department of Recreation” renamed the “Department of Recreation and Parks” shall be known as the “Department of Parks and Recreation.”</p>
               </section>
@@ -362,8 +394,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§9">Mar. 29, 1977, D.C. Law 1-93, § 9, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2608.</p>
                 <p>1973 Ed., § 6-2008.</p>
+                <p>1981 Ed., § 1-2608.</p>
                 <h4>References in Text</h4>
                 <p>Pursuant to Mayor’s Order 2000-20, the agency formerly known as the “Department of Recreation” renamed the “Department of Recreation and Parks” shall be known as the “Department of Parks and Recreation.”</p>
               </section>
@@ -380,8 +412,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§10">Mar. 29, 1977, D.C. Law 1-93, § 10, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2609.</p>
                 <p>1973 Ed., § 6-2009.</p>
+                <p>1981 Ed., § 1-2609.</p>
                 <h4>References in Text</h4>
                 <p>Pursuant to Mayor’s Order 2000-20, the agency formerly known as the “Department of Recreation” renamed the “Department of Recreation and Parks” shall be known as the “Department of Parks and Recreation.”</p>
               </section>
@@ -398,8 +430,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§11">Mar. 29, 1977, D.C. Law 1-93, § 11, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2610.</p>
                 <p>1973 Ed., § 6-2010.</p>
+                <p>1981 Ed., § 1-2610.</p>
                 <h4>References in Text</h4>
                 <p>Pursuant to Mayor’s Order 2000-20, the agency formerly known as the “Department of Recreation” renamed the “Department of Recreation and Parks” shall be known as the “Department of Parks and Recreation.”</p>
               </section>
@@ -416,8 +448,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-93.html#§12">Mar. 29, 1977, D.C. Law 1-93, § 12, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-2611.</p>
                 <p>1973 Ed., § 6-2011.</p>
+                <p>1981 Ed., § 1-2611.</p>
               </section>
             </section>
             <hr/>
@@ -455,19 +487,19 @@
       (<a class="internal-link" href="/dc/council/laws/15-335.html#§101">Apr. 12, 2005, D.C. Law 15-335, § 101, 52 DCR 2025</a>; <a class="internal-link" href="/dc/council/laws/19-141.html">June 7, 2012, D.C. Law 19-141, § 504(a), 59 DCR 3083</a>; <a class="internal-link" href="/dc/council/laws/20-126.html">July 17, 2014, D.C. Law 20-126, § 411(a), 61 DCR 3482</a>; <a class="internal-link" href="/dc/council/laws/21-238.html#§402(a)">Apr. 4, 2017, D.C. Law 21-238, § 402(a), 63 DCR 15312</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added pars. (1A), (1B), and (1C).</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-126.html">D.C. Law 20-126</a> added (2A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added pars. (1A), (1B), and (1C).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 101 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
-                <p>For temporary (90 day) addition, see § 101 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
-                <p>For temporary amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384), applicable as of October 1, 2013.</p>
                 <p>For temporary amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 11384), applicable as of October 1, 2013.</p>
+                <p>For temporary amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384), applicable as of October 1, 2013.</p>
+                <p>For temporary (90 day) addition, see § 101 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
+                <p>For temporary (90 day) addition, see § 101 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <h4>Short Title</h4>
                 <p>Section 4111 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle K of Title IV of the act may be cited as the “South Capitol Street Memorial Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6).</p>
                 <p>Section 501 of <a class="internal-link" href="/dc/council/laws/20-126.html">D.C. Law 20-126</a> provided that the Mayor, pursuant to subchapter I of Chapter 5 of Title 2 [§ <a class="internal-link" href="/dc/council/code/sections/2-501.html">2-501</a> et seq.], may issue rules to implement the provisions of the act.</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6).</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -492,36 +524,36 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1515.03.html">2-1515.03</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 102 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
-                <p>For temporary (90 day) addition, see § 102 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
                 <p>For temporary (90 days) addition, of provisions concerning a juvenile drug screening and drug treatment diversion plan, see § 513 of the Omnibus Criminal Code Amendments Congressional Review Emergency Amendment Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary (90 day) addition, see § 102 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
+                <p>For temporary (90 day) addition, see § 102 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 5061 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided that subtitle G of title V of the act may be cited as “Increase Local Capacity to Serve DYRS Committed Youth Act of 2011”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Sections 5062 to 5064 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided:</p>
-                <p>“Sec. 5062. Report on Department of Youth Rehabilitation Services plans to reduce residential placements outside of the District.</p>
-                <p>“No later than December 16, 2011, the Department of Youth Rehabilitation Services (’DYRS’) shall transmit to the Council a report summarizing the results and action items from the Request for Information concerning establishing in-patient drug treatment programs within 50 miles of the District.”</p>
-                <p>“Sec. 5063. Report on Department of Youth Rehabilitation Services youths in psychiatric residential treatment facilities and residential treatment centers.</p>
-                <p>“(a) DYRS shall conduct a study of DYRS youths in psychiatric residential treatment facilities ( ‘PRTFs’) and residential treatment centers (’RTCs’). The study shall evaluate the following:</p>
-                <p>“(1) The population based on demographic characteristics of youth;</p>
-                <p>“(2) The offense history of the youths;</p>
-                <p>“(3) The risk profile of the youths;</p>
-                <p>“(4) The behavioral health issues;</p>
-                <p>“(5) The substance abuse issues;</p>
-                <p>“(6) The past community-based service provision;</p>
-                <p>“(7) The reason for current placement; and</p>
-                <p>“(8) Other factors that DYRS determines to be significant.</p>
-                <p>“(b) No later than December 16, 2011, DYRS shall transmit to the Council a report summarizing the findings of the study, which shall include action items.</p>
-                <p>“(c) DYRS shall provide to the Council a quarterly census report on DYRS youth placed in PRTFs and RTCs. The report shall include the following:</p>
-                <p>“(1) The name of the centers;</p>
-                <p>“(2) The location of the centers;</p>
-                <p>“(3) The number of miles the centers are located outside of the District; and</p>
-                <p>“(4) The daily rate that the centers are charging the District.”</p>
-                <p>“Sec. 5064. Quarterly report on status of Medicaid eligibility.</p>
-                <p>“Beginning February 1, 2012, DYRS shall issue quarterly reports on the status of the Money Follows the Person program. The report shall include the following:</p>
-                <p>“(1) The number of applications submitted for Medicaid;</p>
-                <p>“(2) The number of applications approved for Medicaid; and</p>
                 <p>“(3) The amount of money obtained from Medicaid.”</p>
+                <p>“(2) The number of applications approved for Medicaid; and</p>
+                <p>“(1) The number of applications submitted for Medicaid;</p>
+                <p>“Beginning February 1, 2012, DYRS shall issue quarterly reports on the status of the Money Follows the Person program. The report shall include the following:</p>
+                <p>“Sec. 5064. Quarterly report on status of Medicaid eligibility.</p>
+                <p>“(4) The daily rate that the centers are charging the District.”</p>
+                <p>“(3) The number of miles the centers are located outside of the District; and</p>
+                <p>“(2) The location of the centers;</p>
+                <p>“(1) The name of the centers;</p>
+                <p>“(c) DYRS shall provide to the Council a quarterly census report on DYRS youth placed in PRTFs and RTCs. The report shall include the following:</p>
+                <p>“(b) No later than December 16, 2011, DYRS shall transmit to the Council a report summarizing the findings of the study, which shall include action items.</p>
+                <p>“(8) Other factors that DYRS determines to be significant.</p>
+                <p>“(7) The reason for current placement; and</p>
+                <p>“(6) The past community-based service provision;</p>
+                <p>“(5) The substance abuse issues;</p>
+                <p>“(4) The behavioral health issues;</p>
+                <p>“(3) The risk profile of the youths;</p>
+                <p>“(2) The offense history of the youths;</p>
+                <p>“(1) The population based on demographic characteristics of youth;</p>
+                <p>“(a) DYRS shall conduct a study of DYRS youths in psychiatric residential treatment facilities ( ‘PRTFs’) and residential treatment centers (’RTCs’). The study shall evaluate the following:</p>
+                <p>“Sec. 5063. Report on Department of Youth Rehabilitation Services youths in psychiatric residential treatment facilities and residential treatment centers.</p>
+                <p>“No later than December 16, 2011, the Department of Youth Rehabilitation Services (’DYRS’) shall transmit to the Council a report summarizing the results and action items from the Request for Information concerning establishing in-patient drug treatment programs within 50 miles of the District.”</p>
+                <p>“Sec. 5062. Report on Department of Youth Rehabilitation Services plans to reduce residential placements outside of the District.</p>
+                <p>Sections 5062 to 5064 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided:</p>
               </section>
             </section>
             <hr/>
@@ -543,8 +575,8 @@
       (<a class="internal-link" href="/dc/council/laws/15-335.html#§103">Apr. 12, 2005, D.C. Law 15-335, § 103, 52 DCR 2025</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 103 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <p>For temporary (90 day) addition, see § 103 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
+                <p>For temporary (90 day) addition, see § 103 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
               </section>
             </section>
             <hr/>
@@ -580,21 +612,21 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> deleted “and” from the end of par. (12), substituted “; and” for a period the end of par. (13), and added par. (14).</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-238.html">D.C. Law 21-238</a>: <a class="internal-link" href="/dc/council/laws/21-238.html#§701">§ 701 of D.C. Law 21-238</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-238.html#§402(b)">§ 402(b) of D.C. Law 21-238</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7026">Section 7026 of D.C. Law 22-33</a> amended <a class="internal-link" href="/dc/council/laws/21-238.html#§701(a)">§ 701(a) of D.C. Law 21-238</a>, removing the applicability restriction affecting this section, therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-238.html">D.C. Law 21-238</a> have been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-238.html">D.C. Law 21-238</a>: <a class="internal-link" href="/dc/council/laws/21-238.html#§701">§ 701 of D.C. Law 21-238</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-238.html#§402(b)">§ 402(b) of D.C. Law 21-238</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 104 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
-                <p>For temporary (90 day) addition, see § 104 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§3103">§ 3103 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
                 <p>For temporary (90 days) amendment of § 701|(a) of D.C. Law 21-238, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7026">§ 7026 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§3103">§ 3103 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 day) addition, see § 104 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
+                <p>For temporary (90 day) addition, see § 104 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <h4>Short Title</h4>
                 <p>Section 4111 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle K of Title IV of the act may be cited as the “South Capitol Street Memorial Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
                 <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6).</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -613,17 +645,17 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-276.html">D.C. Law 20-276</a> added (a)(2).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, see § 7004 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
-                <p>For temporary (90 day) amendment of section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, see § 7004 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 day) amendment of section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, see § 7004 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) amendment of section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, see § 7004 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <h4>Short Title</h4>
                 <p>Section 4111 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle K of Title IV of the act may be cited as the “South Capitol Street Memorial Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> provided: “Sec. 601. Applicability. This act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.”</p>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
-                <p>Section 7016 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> provided that Sections 7001, 7004, 7007, 7009, 7011, and 7015 of the act shall apply as of June 19, 2012.</p>
                 <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6).</p>
+                <p>Section 7016 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> provided that Sections 7001, 7004, 7007, 7009, 7011, and 7015 of the act shall apply as of June 19, 2012.</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> provided: “Sec. 601. Applicability. This act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.”</p>
               </section>
             </section>
             <hr/>
@@ -646,9 +678,9 @@
       (<a class="internal-link" href="/dc/council/laws/15-335.html">Apr. 12, 2005, D.C. Law 15-335, § 104b</a>; <a class="internal-link" href="/dc/council/laws/21-238.html#§402(c)">as added Apr. 4, 2017, D.C. Law 21-238, § 402(c), 63 DCR 15312</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-238.html">D.C. Law 21-238</a>: <a class="internal-link" href="/dc/council/laws/21-238.html#§701">§ 701 of D.C. Law 21-238</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-238.html#§402(c)">§ 402(c) of D.C. Law 21-238</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7026">Section 7026 of D.C. Law 22-33</a> amended <a class="internal-link" href="/dc/council/laws/21-238.html#§701(a)">§ 701(a) of D.C. Law 21-238</a>, removing the applicability restriction affecting this section, therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-238.html">D.C. Law 21-238</a> have been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-238.html">D.C. Law 21-238</a>: <a class="internal-link" href="/dc/council/laws/21-238.html#§701">§ 701 of D.C. Law 21-238</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-238.html#§402(c)">§ 402(c) of D.C. Law 21-238</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of § 701|(a) of D.C. Law 21-238, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7026">§ 7026 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -695,11 +727,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1515.01.html">2-1515.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> added subsec. (k).</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-126.html">D.C. Law 20-126</a> added (h-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> added subsec. (k).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 105 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <p>For temporary (90 day) addition, see § 105 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
+                <p>For temporary (90 day) addition, see § 105 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 5003 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle C of title V of the act may be cited as the “On-site Meal Expenses Amendment Act of 2008”.</p>
                 <h4>Editor's Notes</h4>
@@ -726,20 +758,20 @@
       (<a class="internal-link" href="/dc/council/laws/15-335.html#§106">Apr. 12, 2005, D.C. Law 15-335, § 106, 52 DCR 2025</a>; <a class="internal-link" href="/dc/council/laws/18-50.html">Sept. 23, 2009, D.C. Law 18-50, § 2, 56 DCR 5487</a>; <a class="internal-link" href="/dc/council/laws/18-284.html">Mar. 8, 2011, D.C. Law 18-284, § 2, 57 DCR 10477</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 21, 59 DCR 6190</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-50.html">D.C. Law 18-50</a> added subsec. (c).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-284.html">D.C. Law 18-284</a> rewrote subsec. (a); and added subsec. (d). Prior to amendment, subsec. (a) read as follows: “(a) Records pertaining to youth in the custody of the Department or contract providers shall be privileged and confidential and shall only be released pursuant to § <a class="internal-link" href="/dc/council/code/sections/16-2332.html">16-2332</a>.”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/16-2332.html">16-2332</a>” for “ section 16-2332” in (a)(5).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-284.html">D.C. Law 18-284</a> rewrote subsec. (a); and added subsec. (d). Prior to amendment, subsec. (a) read as follows: “(a) Records pertaining to youth in the custody of the Department or contract providers shall be privileged and confidential and shall only be released pursuant to § <a class="internal-link" href="/dc/council/code/sections/16-2332.html">16-2332</a>.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-50.html">D.C. Law 18-50</a> added subsec. (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 106 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
-                <p>For temporary (90 day) addition, see § 106 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Juvenile Records Access Emergency Amendment Act of 2008 (D.C. Act 17-532, October 2, 2008,  55 DCR 11048).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Records Access Emergency Amendment Act of 2009 (D.C. Act 18-17, February 24, 2009,  56 DCR 1939).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Records Access Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-76, May 25, 2009,  56 DCR 4153).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Second Records Access Emergency Amendment Act of 2009 (D.C. Act 18-105, June 12, 2009,  56 DCR 4670).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Records Access Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-76, May 25, 2009,  56 DCR 4153).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Records Access Emergency Amendment Act of 2009 (D.C. Act 18-17, February 24, 2009,  56 DCR 1939).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Juvenile Records Access Emergency Amendment Act of 2008 (D.C. Act 17-532, October 2, 2008,  55 DCR 11048).</p>
+                <p>For temporary (90 day) addition, see § 106 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
+                <p>For temporary (90 day) addition, see § 106 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 18-8 added subsec. (c) to read as follows:</p>
-                <p>“(c) Notwithstanding the confidentiality requirements of this section, the Chairman of the Committee on Human Services, or his designee, shall be permitted to obtain the records pertaining to youth in the custody of the Department when necessary for the discharge of the committee’s duties; provided, that the Department data is maintained, transmitted, and stored in a manner to protect the security and privacy of the youth identified and to prevent the disclosure of any of the data or information to any individual, entity, or agency not designated pursuant to subsection (b) of this section.”.</p>
                 <p>Section 4(b) of D.C. Law 18-8 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(c) Notwithstanding the confidentiality requirements of this section, the Chairman of the Committee on Human Services, or his designee, shall be permitted to obtain the records pertaining to youth in the custody of the Department when necessary for the discharge of the committee’s duties; provided, that the Department data is maintained, transmitted, and stored in a manner to protect the security and privacy of the youth identified and to prevent the disclosure of any of the data or information to any individual, entity, or agency not designated pursuant to subsection (b) of this section.”.</p>
+                <p>Section 2 of D.C. Law 18-8 added subsec. (c) to read as follows:</p>
                 <h4>Mayor's Orders</h4>
                 <p>Mayor’s Designation under the Second Records Access Emergency Amendment Act of 2009, see Mayor’s Order 2009-164, September 25,</p>
                 <h4>Delegation of Authority</h4>
@@ -777,9 +809,9 @@
       (<a class="internal-link" href="/dc/council/laws/15-335.html#§107">Apr. 12, 2005, D.C. Law 15-335, § 107, 52 DCR 2025</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 107 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
-                <p>For temporary (90 day) addition, see § 107 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Oak Hill Construction Streamlining Emergency Amendment Act of 2006 (D.C. Act 16-332, March 23, 2006,  53 DCR 2594).</p>
+                <p>For temporary (90 day) addition, see § 107 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
+                <p>For temporary (90 day) addition, see § 107 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Oak Hill Construction Streamlining Temporary Amendment Act of 2006 (D.C. Law 16-136, June 16, 2006, law notification  53 DCR 5764).</p>
               </section>
@@ -806,8 +838,8 @@
       (<a class="internal-link" href="/dc/council/laws/15-335.html#§108">Apr. 12, 2005, D.C. Law 15-335, § 108, 52 DCR 2025</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 108 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <p>For temporary (90 day) addition, see § 108 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
+                <p>For temporary (90 day) addition, see § 108 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
               </section>
             </section>
             <hr/>
@@ -822,8 +854,8 @@
       (<a class="internal-link" href="/dc/council/laws/15-335.html#§109">Apr. 12, 2005, D.C. Law 15-335, § 109, 52 DCR 2025</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 109 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <p>For temporary (90 day) addition, see § 109 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
+                <p>For temporary (90 day) addition, see § 109 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
               </section>
             </section>
             <hr/>
@@ -838,8 +870,8 @@
       (<a class="internal-link" href="/dc/council/laws/15-335.html#§110">Apr. 12, 2005, D.C. Law 15-335, § 110, 52 DCR 2025</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 110 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
                 <p>For temporary (90 day) addition, see § 110 of Department of Youth Rehabilitation Services Establishment Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-58, March 17, 2005,  52 DCR 3182).</p>
+                <p>For temporary (90 day) addition, see § 110 of Department of Youth Rehabilitation Services Establishment Emergency Act of 2004 (D.C. Act 15-657, December 29, 2004,  52 DCR 481).</p>
               </section>
             </section>
             <hr/>
@@ -926,9 +958,9 @@
       (<a class="internal-link" href="/dc/council/laws/17-219.html#§1009">Aug. 16, 2008, D.C. Law 17-219, § 1009, 55 DCR 7598</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, §  9016, 61 DCR 9990</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of this section, see §§ 9016 and 9029 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) repeal of this section, see § 9016 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) repeal of this section, see § 9016 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) repeal of this section, see § 9016 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) repeal of this section, see §§ 9016 and 9029 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 1008 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle D of title I of the act may be cited as the “Youth Jobs Fund Establishment Act of 2008”.</p>
                 <h4>Editor's Notes</h4>
@@ -951,28 +983,28 @@
       (<a class="internal-link" href="/dc/council/laws/19-141.html#§102">June 7, 2012, D.C. Law 19-141, § 102, 59 DCR 3083</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, see § 7004 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
-                <p>For temporary (90 day) amendment of section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, see § 7004 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
-                <p>For temporary (90 days) addition of a provision concerning the Deputy Mayor for Education’s additional reporting requirements, see § 10007 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) addition of a provision concerning the Deputy Mayor for Education’s additional reporting requirements, see § 10007 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) addition of a provision concerning the Deputy Mayor for Education’s additional reporting requirements, see § 10007 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) addition of a provision concerning the Deputy Mayor for Education’s additional reporting requirements, see § 10007 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) addition of a provision concerning the Deputy Mayor for Education’s additional reporting requirements, see § 10007 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 day) amendment of section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, see § 7004 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) amendment of section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, see § 7004 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <h4>Short Title</h4>
                 <p>Section 4111 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle K of Title IV of the act may be cited as the “South Capitol Street Memorial Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> provided: “Sec. 601. Applicability. This act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.”</p>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
-                <p>Section 7004 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> amended <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, to read as follows:</p>
-                <p>“Sec. 601. Applicability. Sections 302(b)(1), 304, and 502(a) shall apply upon the inclusion of their fiscal effect in an approved budget and financial plan.”</p>
-                <p>Section 7016 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> provided that Sections 7001, 7004, 7007, 7009, 7011, and 7015 of the act shall apply as of June 19, 2012.</p>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6).</p>
-                <p>Section 10007 of <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> provided: “Deputy Mayor for Education reporting requirements.</p>
-                <p>“By October 1, 2014, the Deputy Mayor for Education shall submit to the Council:</p>
-                <p>“(1) A report on its continued implementation of the South Capitol Street Memorial Amendment Act of 2012, effective June 7, 2012 (<a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>; D.C. Official Code Section 2-1517.01 et seq.), including a Fiscal Year 2015 spending plan;</p>
-                <p>“(2) Recommendations on expanding transportation subsidies to students between the ages of 21-24 years old enrolled in DCPS or a public charter school;</p>
-                <p>“(3) An update on the activities and Fiscal Year 2015 goals of the State Early Childhood Development Coordinating Council; and</p>
                 <p>“(4) A report on implementation of the Graduation Pathways Project and how it will identify students who are off-track, assess current programs, and create or expand programs in both sectors that have demonstrated success at reducing truancy and keeping students on track to graduate on time.”</p>
+                <p>“(3) An update on the activities and Fiscal Year 2015 goals of the State Early Childhood Development Coordinating Council; and</p>
+                <p>“(2) Recommendations on expanding transportation subsidies to students between the ages of 21-24 years old enrolled in DCPS or a public charter school;</p>
+                <p>“(1) A report on its continued implementation of the South Capitol Street Memorial Amendment Act of 2012, effective June 7, 2012 (<a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>; D.C. Official Code Section 2-1517.01 et seq.), including a Fiscal Year 2015 spending plan;</p>
+                <p>“By October 1, 2014, the Deputy Mayor for Education shall submit to the Council:</p>
+                <p>Section 10007 of <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> provided: “Deputy Mayor for Education reporting requirements.</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6).</p>
+                <p>Section 7016 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> provided that Sections 7001, 7004, 7007, 7009, 7011, and 7015 of the act shall apply as of June 19, 2012.</p>
+                <p>“Sec. 601. Applicability. Sections 302(b)(1), 304, and 502(a) shall apply upon the inclusion of their fiscal effect in an approved budget and financial plan.”</p>
+                <p>Section 7004 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> amended <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, to read as follows:</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> provided: “Sec. 601. Applicability. This act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.”</p>
               </section>
             </section>
             <hr/>
@@ -990,11 +1022,11 @@
       (<a class="internal-link" href="/dc/council/laws/19-141.html#§103">June 7, 2012, D.C. Law 19-141, § 103, 59 DCR 3083</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
                 <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6).</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -1012,13 +1044,13 @@
       (<a class="internal-link" href="/dc/council/laws/19-141.html#§202">June 7, 2012, D.C. Law 19-141, § 202, 59 DCR 3083</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 4111 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle K of Title IV of the act may be cited as the “South Capitol Street Memorial Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
                 <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6).</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -1081,16 +1113,16 @@
       (<a class="internal-link" href="/dc/council/laws/19-141.html#§203">June 7, 2012, D.C. Law 19-141, § 203, 59 DCR 3083</a>; <a class="internal-link" href="/dc/council/laws/22-33.html#§5052">Dec. 13, 2017, D.C. Law 22-33, § 5052, 64 DCR 7652</a>; <a class="internal-link" href="/dc/council/laws/22-98.html#§201">May 5, 2018, D.C. Law 22-98, § 201, 65 DCR 2874</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§5052">§ 5052 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/22-44.html#§108">§ 108 of Fiscal Year 2018 Budget Support Clarification Temporary Amendment Act of 2017 (D.C. Law 22-44, Jan. 25, 2018, 64 DCR 12387)</a>.</p>
                 <h4>Short Title</h4>
                 <p>Section 4111 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle K of Title IV of the act may be cited as the “South Capitol Street Memorial Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
                 <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6).</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -1119,13 +1151,13 @@
       (<a class="internal-link" href="/dc/council/laws/19-141.html#§502">June 7, 2012, D.C. Law 19-141, § 502, 59 DCR 3083</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 4111 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle K of Title IV of the act may be cited as the “South Capitol Street Memorial Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
                 <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6). Section 502(a) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> is no longer contingent upon funding.</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> originally provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that the applicability of only §§ 302(b)(1), 304, and 502(a) are contingent upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -1148,13 +1180,13 @@
       (<a class="internal-link" href="/dc/council/laws/19-141.html#§503">June 7, 2012, D.C. Law 19-141, § 503, 59 DCR 3083</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, § 601, see § 4112 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 4111 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle K of Title IV of the act may be cited as the “South Capitol Street Memorial Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that §§ 302(b)(1), 304, and 502(a) of the act shall apply upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
                 <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 4112, provided that §§ 302(b)(1)(A) and (C) and 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> shall apply to public charter schools upon the inclusion of their fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register. Section 302(b)(1)(A) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(A-i); Section 302(b)(1)(C) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added § <a class="internal-link" href="/dc/council/code/sections/38-203.html">38-203</a>(i)(B-i); and Section 304(b)(1)(D) of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a> added 5 DCMR § A2103(c)(6).</p>
+                <p>Section 601 of <a class="internal-link" href="/dc/council/laws/19-141.html">D.C. Law 19-141</a>, as amended by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7004, provided that §§ 302(b)(1), 304, and 502(a) of the act shall apply upon the inclusion of their fiscal effect in an approved budget and financial plan.</p>
               </section>
             </section>
             <hr/>
@@ -1172,8 +1204,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-2621.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) establishment of a Children and Youth Initiative to provide out-of-school programs, see §§ 2402 to 2404 of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
                 <p>For temporary (90-day) amendment of § 2404 of <a class="internal-link" href="/dc/council/laws/13-38.html">D.C. Law 13-38</a>, see § 2(b) of the Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Emergency Amendment Act of 1999 (D.C. Act 13-152, December 1, 1999,  46 DCR 10395).</p>
+                <p>For temporary (90-day) establishment of a Children and Youth Initiative to provide out-of-school programs, see §§ 2402 to 2404 of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of the Service Improvement and Fiscal Year 2000 Budget Support Special Education Student Funding Increase Non-service Nonprofit Provider Clarifying and Technical Temporary Amendment Act of 1999 (D.C. Law 13-67, Apr. 5, 2000, law notification  47 DCR 2624).</p>
                 <h4>Editor's Notes</h4>
@@ -1349,8 +1381,8 @@
       (<a class="internal-link" href="/dc/council/laws/18-88.html#§104">Dec. 10, 2009, D.C. Law 18-88, § 104, 56 DCR 7413</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 104 of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
                 <p>For temporary (90 day) addition, see § 104 of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
+                <p>For temporary (90 day) addition, see § 104 of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
               </section>
             </section>
             <hr/>
@@ -1375,12 +1407,12 @@
       (<a class="internal-link" href="/dc/council/laws/18-223.html#§5142">Sept. 24, 2010, D.C. Law 18-223, § 5142, 57 DCR 6242</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 5142 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
-                <p>For temporary establishment of the Alternatives to Juvenile Arrest and Secured Detention Working Group, see §§ 3041-3044 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384), applicable as of October 1, 2013.</p>
                 <p>For temporary establishment of the Alternatives to Juvenile Arrest and Secured Detention Working Group, see §§ 3041-3045 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 11384), applicable as of October 1, 2013.</p>
+                <p>For temporary establishment of the Alternatives to Juvenile Arrest and Secured Detention Working Group, see §§ 3041-3044 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384), applicable as of October 1, 2013.</p>
+                <p>For temporary (90 day) addition, see § 5142 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
                 <h4>Short Title</h4>
-                <p>Short title: Section 5141 of <a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> provided that subtitle O of title V of the act may be cited as the “Commission on Juvenile Justice Reform Establishment Act of 2010”.</p>
                 <p>Section 3041 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle E of Title III of the act may be cited as the “Alternatives to Juvenile Arrest and Secured Detention Working Group Establishment Act of 2013”.</p>
+                <p>Short title: Section 5141 of <a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> provided that subtitle O of title V of the act may be cited as the “Commission on Juvenile Justice Reform Establishment Act of 2010”.</p>
                 <h4>Editor's Notes</h4>
                 <p>Sections 3042 to 3045 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> established an Alternatives to Juvenile Arrest and Secured Detention Working Group (“Working Group”), responsible for developing a differential response policy, program, and budget for juvenile arrests with the goal of diverting more youth from arrest, prosecution, overnight detention, or pre-trial detention.</p>
               </section>
@@ -1645,11 +1677,11 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-2181.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) repeal expiration of this subchapter, see § 2 of the Juvenile Curfew and Retired Police Officer Redeployment Emergency Amendment Act of 1997 (D.C. Act 12-148, September 15, 1997,  44 DCR 5461).</p>
                 <p>For temporary (90 day) repeal of expiration of this subchapter, see § 2 of the Juvenile Curfew Emergency Amendment Act of 1998 (D.C. Act 12-345, April 27, 1998,  45 DCR 4616).</p>
+                <p>For temporary (90 day) repeal expiration of this subchapter, see § 2 of the Juvenile Curfew and Retired Police Officer Redeployment Emergency Amendment Act of 1997 (D.C. Act 12-148, September 15, 1997,  44 DCR 5461).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) repeal of § 6(b) of Law 11-48, see § 2 of Juvenile Curfew and Retired Police Officer Redeployment Temporary Amendment Act of 1997 (D.C. Law 12-45, February 26, 1998, law notification  45 DCR 1506).</p>
                 <p>For temporary (225 day) repeal of § 6(b) of Law 11-48, see § 2 of Juvenile Curfew Amendment Act of 1998 (D.C. Law 12-128, June 20, 1998, law notification  45 DCR 6499).</p>
+                <p>For temporary (225 day) repeal of § 6(b) of Law 11-48, see § 2 of Juvenile Curfew and Retired Police Officer Redeployment Temporary Amendment Act of 1997 (D.C. Law 12-45, February 26, 1998, law notification  45 DCR 1506).</p>
               </section>
             </section>
             <hr/>
@@ -1677,8 +1709,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-2182.</p>
                 <h4>Expiration of Law</h4>
-                <p>Expiration of Law 11-48</p>
                 <p>See notes to § <a class="internal-link" href="/dc/council/code/sections/2-1541.html">2-1541</a>.</p>
+                <p>Expiration of Law 11-48</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see § 101 of Enhanced Crime Prevention and Abatement Emergency Amendment Act of 2006 (D.C. Act 16-446, July 21, 2006,  53 DCR 6477).</p>
               </section>
@@ -1722,15 +1754,15 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-2183.</p>
                 <h4>Expiration of Law</h4>
-                <p>Expiration of Law 11-48</p>
                 <p>See notes to § <a class="internal-link" href="/dc/council/code/sections/2-1541.html">2-1541</a>.</p>
+                <p>Expiration of Law 11-48</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/2-1553.html">2-1553</a>, see § 1402 of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
                 <p>For temporary (90 day) enactments, see §§ 211 to 213 of Enhanced Crime Prevention and Abatement Emergency Amendment Act of 2006 (D.C. Act 16-446, July 21, 2006,  53 DCR 6477).</p>
+                <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/2-1553.html">2-1553</a>, see § 1402 of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
                 <h4>Editor's Notes</h4>
-                <p>Establishment of Alternative Curfew Hours for Individuals Below the Age of 17 Under the Enhanced Crime Prevention and Abatement Emergency Amendment Act of 2006, see Mayor’s Order 2006-102, July 27, 2006 ( 53 DCR 6396).</p>
-                <p>Establishment of Alternate Curfew Hours for Individuals Below the Age of 17 Under the Enhanced Crime Prevention and Abatement Emergency Amendment Act of 2006, see Mayor’s Order 2006-113, August 29, 2006 ( 53 DCR 9542).</p>
                 <p>Establishment of Alternate Curfew Hours for Individuals Below the Age of 17 Under the Enhanced Crime Prevention and Abatement Emergency Amendment Act of 2006, see Mayor’s Order 2006-125, October 3, 2006 ( 53 DCR 9317).</p>
+                <p>Establishment of Alternate Curfew Hours for Individuals Below the Age of 17 Under the Enhanced Crime Prevention and Abatement Emergency Amendment Act of 2006, see Mayor’s Order 2006-113, August 29, 2006 ( 53 DCR 9542).</p>
+                <p>Establishment of Alternative Curfew Hours for Individuals Below the Age of 17 Under the Enhanced Crime Prevention and Abatement Emergency Amendment Act of 2006, see Mayor’s Order 2006-102, July 27, 2006 ( 53 DCR 6396).</p>
               </section>
             </section>
             <hr/>
@@ -1746,9 +1778,9 @@
       (<a class="internal-link" href="/dc/council/laws/13-38.html#§2401">Oct. 20, 1999, D.C. Law 13-38, § 2401, 46 DCR 6407</a>; <a class="internal-link" href="/dc/council/laws/21-261.html#§10">Apr. 7, 2017, D.C. Law 21-261, § 10, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§10">§ 10 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§10">§ 10 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -1765,9 +1797,9 @@
       (<a class="internal-link" href="/dc/council/laws/13-38.html#§2402">Oct. 20, 1999, D.C. Law 13-38, § 2402, 46 DCR 6408</a>; <a class="internal-link" href="/dc/council/laws/21-261.html#§10">Apr. 7, 2017, D.C. Law 21-261, § 10, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§10">§ 10 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§10">§ 10 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -1784,27 +1816,27 @@
       (<a class="internal-link" href="/dc/council/laws/13-38.html#§2403">Oct. 20, 1999, D.C. Law 13-38, § 2403, 46 DCR 6408</a>; <a class="internal-link" href="/dc/council/laws/14-190.html">Oct. 1, 2002, D.C. Law 14-190, § 1402, 49 DCR 6968</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 5061(a), 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/18-223.html">Sept. 24, 2010, D.C. Law 18-223, § 5092, 57 DCR 6242</a>; <a class="internal-link" href="/dc/council/laws/21-36.html">Oct. 22, 2015, D.C. Law 21-36, § 5082, 62 DCR 10905</a>; <a class="internal-link" href="/dc/council/laws/21-261.html#§10">Apr. 7, 2017, D.C. Law 21-261, § 10, 64 DCR 2090</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (a), substituted “Subject to the requirements in subsections (a-1) and (a-2) of this section, the Mayor” for “The Mayor”; and added subsecs. (a-1), (a-2), and (c).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (a), substituted “nonprofit” for “non-profit”; and added subsecs. (a-1)(3) and (a-3).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> added (a-1)(4).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (a), substituted “nonprofit” for “non-profit”; and added subsecs. (a-1)(3) and (a-3).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (a), substituted “Subject to the requirements in subsections (a-1) and (a-2) of this section, the Mayor” for “The Mayor”; and added subsecs. (a-1), (a-2), and (c).</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§10">§ 10 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§10">§ 10 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Service Improvement and Fiscal Year 2000 Budget Support Emergency Amendment Act of 2003 (D.C. Act 15-47, March 24, 2003,  50 DCR 2818).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Children and Youth Initiative Establishment Emergency Amendment Act of 2009 (D.C. Act 18-94, May 25, 2009,  56 DCR 4313).</p>
-                <p>For temporary (90 day) amendment of section, see § 5061(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 5061(a) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 day) amendment of section, see § 5092 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
-                <p>For temporary (90 days) amendment of this section, see § 5082 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 5082 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 day) amendment of section, see § 5092 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) amendment of section, see § 5061(a) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 5061(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Children and Youth Initiative Establishment Emergency Amendment Act of 2009 (D.C. Act 18-94, May 25, 2009,  56 DCR 4313).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Service Improvement and Fiscal Year 2000 Budget Support Emergency Amendment Act of 2003 (D.C. Act 15-47, March 24, 2003,  50 DCR 2818).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of the Service Improvement and Fiscal Year 2000 Budget Support Temporary Amendment Act of 2002 (D.C. Law 14-172, July 23, 2002, law notification  49 DCR 8266).</p>
                 <p>For temporary (225 day) amendment of section, see § 2 of the Service Improvement and Fiscal Year 2000 Budget Support Temporary Amendment Act of 2003 (D.C. Law 15-15, June 21, 2003, law notification  50 DCR 5459).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of the Service Improvement and Fiscal Year 2000 Budget Support Temporary Amendment Act of 2002 (D.C. Law 14-172, July 23, 2002, law notification  49 DCR 8266).</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of Authority-Grant Making Authority to Child and Family Services Agency and Department of Youth Rehabilitation Services, see Mayor’s Order 2006-55, May 10, 2006 ( 53 DCR 5311).</p>
                 <p>Delegation of authority-Grant Making Authority to Department of Employment Services, see Mayor’s Order 2007-59, February 27, 2007.</p>
+                <p>Delegation of Authority-Grant Making Authority to Child and Family Services Agency and Department of Youth Rehabilitation Services, see Mayor’s Order 2006-55, May 10, 2006 ( 53 DCR 5311).</p>
               </section>
             </section>
             <hr/>
@@ -1819,13 +1851,13 @@
       (<a class="internal-link" href="/dc/council/laws/13-38.html#§2404a">Oct. 20, 1999, D.C. Law 13-38, § 2404a</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">as added Mar. 3, 2010, D.C. Law 18-111, § 5061(b), 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/21-261.html#§10">Apr. 7, 2017, D.C. Law 21-261, § 10, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§10">§ 10 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the repeal of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§10">§ 10 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 5061(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) addition, see § 5061(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 day) addition, see § 5061(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 5061(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>
@@ -1850,9 +1882,9 @@
       (<a class="internal-link" href="/dc/council/laws/21-261.html#§2">Apr. 7, 2017, D.C. Law 21-261, § 2, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§2">§ 2 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§2">§ 2 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -1871,9 +1903,9 @@
       (<a class="internal-link" href="/dc/council/laws/21-261.html#§3">Apr. 7, 2017, D.C. Law 21-261, § 3, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§3">§ 3 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§3">§ 3 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -1903,9 +1935,9 @@
       (<a class="internal-link" href="/dc/council/laws/21-261.html#§4">Apr. 7, 2017, D.C. Law 21-261, § 4, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§4">§ 4 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§4">§ 4 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -1940,12 +1972,12 @@
       (<a class="internal-link" href="/dc/council/laws/21-261.html#§5">Apr. 7, 2017, D.C. Law 21-261, § 5, 64 DCR 2090</a>; <a class="internal-link" href="/dc/council/laws/22-33.html#§4132">Dec. 13, 2017, D.C. Law 22-33, § 4132, 64 DCR 7652</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§5">§ 5 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§5">§ 5 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§4132">§ 4132 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
             </section>
             <hr/>
@@ -1972,9 +2004,9 @@
       (<a class="internal-link" href="/dc/council/laws/21-261.html#§6">Apr. 7, 2017, D.C. Law 21-261, § 6, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§6">§ 6 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§6">§ 6 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -1999,9 +2031,9 @@
       (<a class="internal-link" href="/dc/council/laws/21-261.html#§7">Apr. 7, 2017, D.C. Law 21-261, § 7, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§7">§ 7 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§7">§ 7 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -2026,9 +2058,9 @@
       (<a class="internal-link" href="/dc/council/laws/21-261.html#§8">Apr. 7, 2017, D.C. Law 21-261, § 8, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§8">§ 8 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§8">§ 8 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -2049,9 +2081,9 @@
       (<a class="internal-link" href="/dc/council/laws/21-261.html#§9">Apr. 7, 2017, D.C. Law 21-261, § 9, 64 DCR 2090</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§9">§ 9 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7032">Section 7032 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-261.html">D.C. Law 21-261</a>: <a class="internal-link" href="/dc/council/laws/21-261.html#§12">§ 12 of D.C. Law 21-261</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-261.html#§9">§ 9 of D.C. Law 21-261</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 12 of D.C. Law 21-261, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7032">§ 7032 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -2395,9 +2427,9 @@
       (<a class="internal-link" href="/dc/council/laws/16-192.html#§1152">Mar. 2, 2007, D.C. Law 16-192, § 1152, 53 DCR 6899</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 1152 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) addition, see § 1152 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
                 <p>For temporary (90 day) addition, see § 1152 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) addition, see § 1152 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) addition, see § 1152 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section of <a class="internal-link" href="/dc/council/laws/16-192.html">D.C. Law 16-192</a> provided that subtitle N of title I of the act may be cited as the “Youth Development Plan Implementation Strategy Act of 2006”.</p>
               </section>
@@ -2416,9 +2448,9 @@
       (<a class="internal-link" href="/dc/council/laws/16-192.html#§1153">Mar. 2, 2007, D.C. Law 16-192, § 1153, 53 DCR 6899</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 1153 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) addition, see § 1153 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
                 <p>For temporary (90 day) addition, see § 1153 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) addition, see § 1153 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) addition, see § 1153 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
               </section>
             </section>
             <hr/>
@@ -2442,9 +2474,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1584.html">2-1584</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 1154 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) addition, see § 1154 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
                 <p>For temporary (90 day) addition, see § 1154 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) addition, see § 1154 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) addition, see § 1154 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
               </section>
             </section>
             <hr/>
@@ -2463,9 +2495,9 @@
       (<a class="internal-link" href="/dc/council/laws/16-192.html#§1155">Mar. 2, 2007, D.C. Law 16-192, § 1155, 53 DCR 6899</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 1155 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) addition, see § 1155 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
                 <p>For temporary (90 day) addition, see § 1155 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) addition, see § 1155 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) addition, see § 1155 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
               </section>
             </section>
             <hr/>
@@ -2496,10 +2528,10 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1582.html">2-1582</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 1156 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
-                <p>For temporary (90 day) addition, see § 1156 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
-                <p>For temporary (90 day) addition, see § 1156 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
                 <p>For temporary (90 day) addition, see § 602 of Crime Bill Emergency Amendment Act of 2009 (D.C. Act 18-129, June 29, 2009,  56 DCR 5495).</p>
+                <p>For temporary (90 day) addition, see § 1156 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2007 (D.C. Act 17-1, January 16, 2007,  54 DCR 1165).</p>
+                <p>For temporary (90 day) addition, see § 1156 of Fiscal Year 2007 Budget Support Congressional Review Emergency Act of 2006 (D.C. Act 16-499, October 23, 2006,  53 DCR 8845).</p>
+                <p>For temporary (90 day) addition, see § 1156 of Fiscal Year 2007 Budget Support Emergency Act of 2006 (D.C. Act 16-477, August 8, 2006,  53 DCR 7068).</p>
               </section>
             </section>
             <hr/>
@@ -2543,8 +2575,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote par. (1), which had read as follows: “(1) ‘Commission’ means the Interagency Collaboration and Services Integration Commission established by § <a class="internal-link" href="/dc/council/code/sections/2-1594.html">2-1594</a>.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 4061(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 4061(a) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 4061(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 4060 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle G of title IV of the act may be cited as the “Interagency Collaboration and Services Integration Commission Establishment Amendment Act of 2009”.</p>
               </section>
@@ -2572,8 +2604,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote the lead-in language, which had read as follows: “The purpose of the Commission is to address the needs of at-risk children by reducing juvenile and family violence and promoting social and emotional skills among children and youth through the oversight of a comprehensive integrated service delivery system that includes:”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 4061(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 4061(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 4061(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>
@@ -2596,14 +2628,14 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1592.html">2-1592</a> and § <a class="internal-link" href="/dc/council/code/sections/38-271.02.html">38-271.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (a), substituted “the Statewide Commission on Children, Youth, and their Families” for “an Interagency Collaboration and Services Integration Commission”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “Chapter 3A of this title; except, that § <a class="internal-link" href="/dc/council/code/sections/2-352.01.html">2-352.01</a>(a) shall not apply” for “Unit A of Chapter 3 of Title 2; except, that the provisions of § <a class="internal-link" href="/dc/council/code/sections/2-301.05.html">2-301.05</a>(a), (b), (c), and (e) shall not apply” in (b)(5).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (a), substituted “the Statewide Commission on Children, Youth, and their Families” for “an Interagency Collaboration and Services Integration Commission”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 4061(c) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 4061(c) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 4061(c) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 5072 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> provided for the establishment of the Safe Children and Families Enrichment Services Task Force.</p>
                 <p>Section 5073 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> provided that §§ 5071 and 5072 of the act shall expire 6 months after September 20, 2012.</p>
+                <p>Section 5072 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> provided for the establishment of the Safe Children and Families Enrichment Services Task Force.</p>
               </section>
             </section>
             <hr/>
@@ -2656,12 +2688,12 @@
       (<a class="internal-link" href="/dc/council/laws/17-9.html#§505">June 12, 2007, D.C. Law 17-9, § 505, 54 DCR 4102</a>; <a class="internal-link" href="/dc/council/laws/17-202.html">July 18, 2008, D.C. Law 17-202, § 601, 55 DCR 6297</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 4061(d), 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 25(a), 59 DCR 6190</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-202.html">D.C. Law 17-202</a>, in subsec. (c), deleted “and” from the end of par. (2) and substituted “; and” for a period at the end of par. (3), and added par. (4).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (c)(3)(A), substituted “of the efforts to meet the objectives of the Commission, including a description of activities, alignment with the statewide education and youth development framework and strategic plan, and” for “of the objectives of the Commission, including”; in subsec. (c)(3)(B), deleted “and” from the end; and added subsecs. (c)(5), (6), (7).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated previously made punctuation corrections in (c)(3)(A) and (c)(4).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (c)(3)(A), substituted “of the efforts to meet the objectives of the Commission, including a description of activities, alignment with the statewide education and youth development framework and strategic plan, and” for “of the objectives of the Commission, including”; in subsec. (c)(3)(B), deleted “and” from the end; and added subsecs. (c)(5), (6), (7).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-202.html">D.C. Law 17-202</a>, in subsec. (c), deleted “and” from the end of par. (2) and substituted “; and” for a period at the end of par. (3), and added par. (4).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 4061(d) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 4061(d) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 4061(d) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>
@@ -2708,12 +2740,12 @@
       (<a class="internal-link" href="/dc/council/laws/17-9.html#§506">June 12, 2007, D.C. Law 17-9, § 506, 54 DCR 4102</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 4061(e), 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 25(b), 59 DCR 6190</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (a)(20), deleted “and” from the end; and added subsecs. (a)(22) to (24) and subsec. (c).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made punctuation correction.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made punctuation correction in (a)(21).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made punctuation correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (a)(20), deleted “and” from the end; and added subsecs. (a)(22) to (24) and subsec. (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 4061(e) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 4061(e) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 4061(e) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>

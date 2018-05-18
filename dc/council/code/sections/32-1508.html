@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/32-1509.html">§ 32–1509. Compensation for death.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/32-1508.html">Report Error</a>
@@ -161,10 +161,10 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/32-1501.html">32-1501</a>, § <a class="internal-link" href="/dc/council/code/sections/32-1524.html">32-1524</a>, and § <a class="internal-link" href="/dc/council/code/sections/32-1540.html">32-1540</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-49.html">D.C. Law 13-49</a> made a clarifying technical amendment.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (3)(V)(ii), substituted “has a disability” for “becomes disabled” and “had the disability” for “became disabled”; and in par. (5), substituted “the employee had the disability” for “becoming disabled”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in par. (4), substituted “spouse or domestic partner” for “widow or widower”; and, in par. (4)(E), substituted “surviving spouse or domestic partner” for “surviving spouse” and substituted “spouse, domestic partner, or child” for “wife, husband, or child”.</p>
                 <p>The 2012 amendment made a technical correction to <a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, § 31(d) which did not affect this section as codified.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a>, in par. (4), substituted “spouse or domestic partner” for “widow or widower”; and, in par. (4)(E), substituted “surviving spouse or domestic partner” for “surviving spouse” and substituted “spouse, domestic partner, or child” for “wife, husband, or child”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (3)(V)(ii), substituted “has a disability” for “becomes disabled” and “had the disability” for “became disabled”; and in par. (5), substituted “the employee had the disability” for “becoming disabled”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-49.html">D.C. Law 13-49</a> made a clarifying technical amendment.</p>
                 <h4>Editor's Notes</h4>
                 <p>Mayor authorized to issue rules: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/32-1501.html">32-1501</a>.</p>
               </section>

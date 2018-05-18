@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/8-1778.27.html">§ 8–1778.27. Limited liability.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-1778.26.html">Report Error</a>
@@ -105,14 +105,14 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see § 107 of Energy Efficiency Emergency Act of 2009 (D.C. Act 18-324, March 1, 2010,  57 DCR 1851).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 107 of D.C. Law 18-156 added a section to read as follows:</p>
-                <p>“Sec. 107. Financing and closing documents.</p>
-                <p>“(a) The Mayor is authorized to prescribe the final form and content of all Financing Documents and all Closing Documents to which the District is a party that may be necessary or appropriate to issue, sell, and deliver the bonds.</p>
-                <p>“(b) The Mayor is authorized to execute, in the name of the District and on its behalf, the Financing Documents and any Closing Documents to which the District is a party by the Mayor’s manual or facsimile signature.</p>
-                <p>“(c) If required, the official seal of the District, or a facsimile of it, shall be impressed, printed, or otherwise reproduced on the bonds, the other Financing Documents, and the Closing Documents to which the District is a party.</p>
-                <p>“(d) The Mayor’s execution and delivery of the Financing Documents and the Closing Documents to which the District is a party shall constitute conclusive evidence of the Mayor’s approval, on behalf of the District, of the final form and content of the executed Financing Documents and the executed Closing Documents.</p>
-                <p>“(e) The Mayor is authorized to deliver the executed and sealed Financing Documents and Closing Documents, on behalf of the District, prior to or simultaneously with the issuance, sale, and delivery of the bonds, and to ensure the due performance of the obligations of the District contained in the executed, sealed, and delivered Financing Documents and Closing Documents.”</p>
                 <p>Section 402(b) of D.C. Law 18-156 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(e) The Mayor is authorized to deliver the executed and sealed Financing Documents and Closing Documents, on behalf of the District, prior to or simultaneously with the issuance, sale, and delivery of the bonds, and to ensure the due performance of the obligations of the District contained in the executed, sealed, and delivered Financing Documents and Closing Documents.”</p>
+                <p>“(d) The Mayor’s execution and delivery of the Financing Documents and the Closing Documents to which the District is a party shall constitute conclusive evidence of the Mayor’s approval, on behalf of the District, of the final form and content of the executed Financing Documents and the executed Closing Documents.</p>
+                <p>“(c) If required, the official seal of the District, or a facsimile of it, shall be impressed, printed, or otherwise reproduced on the bonds, the other Financing Documents, and the Closing Documents to which the District is a party.</p>
+                <p>“(b) The Mayor is authorized to execute, in the name of the District and on its behalf, the Financing Documents and any Closing Documents to which the District is a party by the Mayor’s manual or facsimile signature.</p>
+                <p>“(a) The Mayor is authorized to prescribe the final form and content of all Financing Documents and all Closing Documents to which the District is a party that may be necessary or appropriate to issue, sell, and deliver the bonds.</p>
+                <p>“Sec. 107. Financing and closing documents.</p>
+                <p>Section 107 of D.C. Law 18-156 added a section to read as follows:</p>
               </section>
             </section>
           </section>

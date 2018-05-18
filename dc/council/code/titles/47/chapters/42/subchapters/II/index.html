@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/47/chapters/42/subchapters/III/">Subchapter III. Waiver and Abatement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/47/chapters/42/subchapters/II/">Report Error</a>
@@ -88,14 +88,30 @@
         <section class="col8 body">
           <h1>Subchapter II. Penalties.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/47-4211.html">§ 47–4211. Imposition of accuracy-related penalty.</a>
-            <a href="/dc/council/code/sections/47-4212.html">§ 47–4212. Imposition of fraud penalty.</a>
-            <a href="/dc/council/code/sections/47-4213.html">§ 47–4213. Failure to file return or to pay tax.</a>
-            <a href="/dc/council/code/sections/47-4214.html">§ 47–4214. Underpayment of estimated tax by individuals. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-4215.html">§ 47–4215. Underpayment of estimated tax by corporations, financial institutions, and unincorporated businesses. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-4216.html">§ 47–4216. Frivolous returns.</a>
-            <a href="/dc/council/code/sections/47-4217.html">§ 47–4217. Tax return preparers; aiding and abetting by others.</a>
-            <a href="/dc/council/code/sections/47-4218.html">§ 47–4218. Penalties for Qualified High Technology Company.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-4211.html">§ 47–4211. Imposition of accuracy-related penalty.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-4212.html">§ 47–4212. Imposition of fraud penalty.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-4213.html">§ 47–4213. Failure to file return or to pay tax.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-4214.html">§ 47–4214. Underpayment of estimated tax by individuals. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-4215.html">§ 47–4215. Underpayment of estimated tax by corporations, financial institutions, and unincorporated businesses. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-4216.html">§ 47–4216. Frivolous returns.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-4217.html">§ 47–4217. Tax return preparers; aiding and abetting by others.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-4218.html">§ 47–4218. Penalties for Qualified High Technology Company.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -137,12 +153,12 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-282.html">D.C. Law 14-282</a>, in subsec. (a)(2), substituted “greater than or equal to 400%, or less than or equal to 25%, of” for “400% or more greater or less than”; and in subsec. (a)(4), substituted “greater than or equal to 200%, or less than or equal to 50%, of” for “200% or more greater or less than”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 12(fff) of Tax Clarity and Recorder of Deeds Emergency Act of 2002 (D.C. Act 14-381, June 6, 2002,  49 DCR 5674).</p>
-                <p>For temporary (90 day) amendment of section, see § 12(ggg) of Tax Clarity and Related Amendments Emergency Act of 2002 (D.C. Act 14-456, July 23, 2002,  49 DCR 8107).</p>
                 <p>For temporary (90 day) amendment of section, see § 12(ggg) of Tax Clarity and Related Amendments Congressional Review Emergency Act of 2002 (D.C. Act 14-510, October 23, 2002,  49 DCR 10247).</p>
+                <p>For temporary (90 day) amendment of section, see § 12(ggg) of Tax Clarity and Related Amendments Emergency Act of 2002 (D.C. Act 14-456, July 23, 2002,  49 DCR 8107).</p>
+                <p>For temporary (90 day) amendment of section, see § 12(fff) of Tax Clarity and Recorder of Deeds Emergency Act of 2002 (D.C. Act 14-381, June 6, 2002,  49 DCR 5674).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 12(ggg) of Tax Clarity and Recorder of Deeds Temporary Act of 2002 (<a class="internal-link" href="/dc/council/laws/14-191.html">D.C. Law 14-191</a>, October 5, 2002, law notification  49 DCR 9549).</p>
                 <p>For temporary (225 day) amendment of section, see § 12(ggg) of Tax Clarity and Related Amendments Temporary Act of 2003 (<a class="internal-link" href="/dc/council/laws/14-228.html">D.C. Law 14-228</a>, March 23, 2003, law notification  50 DCR 2741).</p>
+                <p>For temporary (225 day) amendment of section, see § 12(ggg) of Tax Clarity and Recorder of Deeds Temporary Act of 2002 (<a class="internal-link" href="/dc/council/laws/14-191.html">D.C. Law 14-191</a>, October 5, 2002, law notification  49 DCR 9549).</p>
               </section>
             </section>
             <hr/>
@@ -164,8 +180,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-4211.html">47-4211</a> and § <a class="internal-link" href="/dc/council/code/sections/47-4478.html">47-4478</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-292.html">D.C. Law 16-292</a> substituted “spouse (including a domestic partner who files under § <a class="internal-link" href="/dc/council/code/sections/47-1805.01.html">47-1805.01</a>(f))” for “spouse”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-292.html">D.C. Law 16-292</a> substituted “spouse (including a domestic partner who files under § <a class="internal-link" href="/dc/council/code/sections/47-1805.01.html">47-1805.01</a>(f))” for “spouse”.</p>
               </section>
             </section>
             <hr/>
@@ -201,17 +217,17 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2763.html">47-2763</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (e)(3)(A), substituted “having a disability” for “became disabled”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in subsec. (e)(3)(A), substituted “developed a disability” for “having a disability”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (b)(1)(B)(ii) and (iii), which formerly read:</p>
-                <p>“(ii) One hundred percent of the tax shown on the return of the individual for the preceding taxable year if the individual filed a return for the preceding taxable year consisting of 12 months; or</p>
                 <p>“(iii) One hundred percent of the tax computed on the basis of the facts shown on his return for the preceding taxable year if the individual filed a return for the preceding taxable year consisting of 12 months.”</p>
+                <p>“(ii) One hundred percent of the tax shown on the return of the individual for the preceding taxable year if the individual filed a return for the preceding taxable year consisting of 12 months; or</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (b)(1)(B)(ii) and (iii), which formerly read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in subsec. (e)(3)(A), substituted “developed a disability” for “having a disability”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (e)(3)(A), substituted “having a disability” for “became disabled”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2 of Self-Assessing Taxpayer Fairness in Notice Emergency Act of 2005 (D.C. Act 16-241, December 22, 2005,  53 DCR 262).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Self-Assessing Taxpayer Fairness in Notice Emergency Act of 2005 (D.C. Act 16-241, December 22, 2005,  53 DCR 262).</p>
-                <p>For temporary (90 days) repeal of this section, see §§ 7132(c) and  7133 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) repeal of this section, see §§ 7122(c) and  7123 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) repeal of this section, see §§ 7122(c) and  7123 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) repeal of this section, see §§ 7122(c) and  7123 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) repeal of this section, see §§ 7132(c) and  7133 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Self-Assessing Taxpayer Fairness in Notice Emergency Act of 2005 (D.C. Act 16-241, December 22, 2005,  53 DCR 262).</p>
+                <p>For temporary (90 day) addition, see § 2 of Self-Assessing Taxpayer Fairness in Notice Emergency Act of 2005 (D.C. Act 16-241, December 22, 2005,  53 DCR 262).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 8061 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided that subtitle G of title VIII of the act may be cited as “Tax Penalty Safe Harbor Act of 2011”.</p>
                 <h4>Editor's Notes</h4>
@@ -232,21 +248,21 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2763.html">47-2763</a> and § <a class="internal-link" href="/dc/council/code/sections/47-4201.html">47-4201</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-282.html">D.C. Law 14-282</a> rewrote subsec. (e)(1) which had read as follows: “(1) The tax shown on the return for the taxable year (or, if no return is filed, the tax) reduced by applicable credits and estimated payments which are made timely, is less than $100; or”</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (b)(1)(B)(ii), which formerly read:</p>
                 <p>“(ii) One hundred percent of the tax shown on the return of the entity for the preceding taxable year if the individual filed a return for the preceding taxable year consisting of 12 months.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (b)(1)(B)(ii), which formerly read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-282.html">D.C. Law 14-282</a> rewrote subsec. (e)(1) which had read as follows: “(1) The tax shown on the return for the taxable year (or, if no return is filed, the tax) reduced by applicable credits and estimated payments which are made timely, is less than $100; or”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 12(ggg) of Tax Clarity and Recorder of Deeds Emergency Act of 2002 (D.C. Act 14-381, June 6, 2002,  49 DCR 5674).</p>
-                <p>For temporary (90 day) amendment of section, see § 12(hhh) of Tax Clarity and Related Amendments Emergency Act of 2002 (D.C. Act 14-456, July 23, 2002,  49 DCR 8107).</p>
-                <p>For temporary (90 day) amendment of section, see § 12(hhh) of Tax Clarity and Related Amendments Congressional Review Emergency Act of 2002 (D.C. Act 14-510, October 23, 2002,  49 DCR 10247).</p>
-                <p>For temporary (90 day) addition, see § 2 of Self-Assessing Taxpayer Fairness in Notice Emergency Act of 2005 (D.C. Act 16-241, December 22, 2005,  53 DCR 262).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Self-Assessing Taxpayer Fairness in Notice Emergency Act of 2005 (D.C. Act 16-241, December 22, 2005,  53 DCR 262).</p>
-                <p>For temporary (90 days) repeal of this section, see §§ 7132(c) and  7133 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) repeal of this section, see §§ 7122(c) and  7123 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) repeal of this section, see §§ 7122(c) and  7123 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) repeal of this section, see §§ 7122(c) and  7123 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) repeal of this section, see §§ 7132(c) and  7133 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Self-Assessing Taxpayer Fairness in Notice Emergency Act of 2005 (D.C. Act 16-241, December 22, 2005,  53 DCR 262).</p>
+                <p>For temporary (90 day) addition, see § 2 of Self-Assessing Taxpayer Fairness in Notice Emergency Act of 2005 (D.C. Act 16-241, December 22, 2005,  53 DCR 262).</p>
+                <p>For temporary (90 day) amendment of section, see § 12(hhh) of Tax Clarity and Related Amendments Congressional Review Emergency Act of 2002 (D.C. Act 14-510, October 23, 2002,  49 DCR 10247).</p>
+                <p>For temporary (90 day) amendment of section, see § 12(hhh) of Tax Clarity and Related Amendments Emergency Act of 2002 (D.C. Act 14-456, July 23, 2002,  49 DCR 8107).</p>
+                <p>For temporary (90 day) amendment of section, see § 12(ggg) of Tax Clarity and Recorder of Deeds Emergency Act of 2002 (D.C. Act 14-381, June 6, 2002,  49 DCR 5674).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 12(hhh) of Tax Clarity and Recorder of Deeds Temporary Act of 2002 (<a class="internal-link" href="/dc/council/laws/14-191.html">D.C. Law 14-191</a>, October 5, 2002, law notification  49 DCR 9549).</p>
                 <p>For temporary (225 day) amendment of section, see § 12(hhh) of Tax Clarity and Related Amendments Temporary Act of 2003 (<a class="internal-link" href="/dc/council/laws/14-228.html">D.C. Law 14-228</a>, March 23, 2003, law notification  50 DCR 2741).</p>
+                <p>For temporary (225 day) amendment of section, see § 12(hhh) of Tax Clarity and Recorder of Deeds Temporary Act of 2002 (<a class="internal-link" href="/dc/council/laws/14-191.html">D.C. Law 14-191</a>, October 5, 2002, law notification  49 DCR 9549).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>: Section 7123 of <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> provided that this subtitle shall be applicable for tax years beginning after December 31, 2014.</p>
               </section>
@@ -315,8 +331,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-217.html">D.C. Law 15-217</a>, rewrote subsec. (f); and repealed subsec. (g).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(j) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(j) of Office of Administrative Hearings Establishment Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-553, October 26, 2004,  51 DCR 10359).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(j) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/2-537.html">§ 2–537. Administrative appeals.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-536.html">Report Error</a>
@@ -113,27 +113,27 @@
       (<a class="internal-link" href="/us/congress/laws/public/90-614.html#§206">Oct. 21, 1968, Pub. L. 90-614, title II, § 206</a>; <a class="internal-link" href="/dc/council/laws/1-96.html">as added Mar. 29, 1977, D.C. Law 1-96, § 2, 23 DCR 3744</a>; <a class="internal-link" href="/dc/council/laws/9-241.html">Mar. 17, 1993, D.C. Law 9-241, § 9, 40 DCR 629</a>; <a class="internal-link" href="/dc/council/laws/13-283.html">Apr. 27, 2001, D.C. Law 13-283, § 3(e), 48 DCR 1917</a>; <a class="internal-link" href="/dc/council/laws/15-205.html">Dec. 7, 2004, D.C. Law 15-205, § 1222, 51 DCR 8441</a>; <a class="internal-link" href="/dc/council/laws/15-354.html">Apr. 13, 2005, D.C. Law 15-354, § 7, 52 DCR 2638</a>; <a class="internal-link" href="/dc/council/laws/16-91.html">Apr. 7, 2006, D.C. Law 16-91, § 133, 52 DCR 10637</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-1526.</p>
                 <p>1973 Ed., § 1-1526.</p>
+                <p>1981 Ed., § 1-1526.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-610.64.html">1-610.64</a> and § <a class="internal-link" href="/dc/council/code/sections/8-151.08.html">8-151.08</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-283.html">D.C. Law 13-283</a> rewrote the section which prior thereto read:</p>
-                <p>“Without limiting the meaning of other sections of this subchapter, the following categories of information are specifically made public information:</p>
-                <p>“(1) The names, salaries, title, and dates of employment of all employees and officers of the Mayor and an agency;</p>
-                <p>“(2) Administrative staff manuals and instructions to staff that affect a member of the public;</p>
-                <p>“(3) Final opinions, including concurring and dissenting opinions, as well as orders, made in the adjudication of cases;</p>
-                <p>“(4) Those statements of policy and interpretations of policy, acts, and rules which have been adopted by the Mayor or an agency;</p>
-                <p>“(5) Correspondence and materials referred to therein, by and with the Mayor or an agency, relating to any regulatory, supervisory, or enforcement responsibilities of the agency, whereby the agency determines, or states an opinion upon, or is asked to determine or state an opinion upon, the rights of the District, the public, or any private party;</p>
-                <p>“(6) Information in or taken from any account, voucher, or contract dealing with the receipt or expenditure of public or other funds by public bodies;</p>
-                <p>“(7) The minutes of all proceedings of all agencies; and</p>
-                <p>“(8) All names and mailing addresses of absentee real property owners and their agents. ‘Absentee real property owners’ means owners of real property located in the District that do not reside at the real property.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> added pars. (6A) and (8A) to subsec. (a).</p>
-                <p>D.C. Law 15-534, in subsec. (a), validated a previously made technical correction.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-91.html">D.C. Law 16-91</a>, in par. (6A) of subsec. (a), validated a previously made technical correction.</p>
+                <p>D.C. Law 15-534, in subsec. (a), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> added pars. (6A) and (8A) to subsec. (a).</p>
+                <p>“(8) All names and mailing addresses of absentee real property owners and their agents. ‘Absentee real property owners’ means owners of real property located in the District that do not reside at the real property.”</p>
+                <p>“(7) The minutes of all proceedings of all agencies; and</p>
+                <p>“(6) Information in or taken from any account, voucher, or contract dealing with the receipt or expenditure of public or other funds by public bodies;</p>
+                <p>“(5) Correspondence and materials referred to therein, by and with the Mayor or an agency, relating to any regulatory, supervisory, or enforcement responsibilities of the agency, whereby the agency determines, or states an opinion upon, or is asked to determine or state an opinion upon, the rights of the District, the public, or any private party;</p>
+                <p>“(4) Those statements of policy and interpretations of policy, acts, and rules which have been adopted by the Mayor or an agency;</p>
+                <p>“(3) Final opinions, including concurring and dissenting opinions, as well as orders, made in the adjudication of cases;</p>
+                <p>“(2) Administrative staff manuals and instructions to staff that affect a member of the public;</p>
+                <p>“(1) The names, salaries, title, and dates of employment of all employees and officers of the Mayor and an agency;</p>
+                <p>“Without limiting the meaning of other sections of this subchapter, the following categories of information are specifically made public information:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-283.html">D.C. Law 13-283</a> rewrote the section which prior thereto read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1222 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see § 1222 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 1222 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle U of title I of Law 15-205: Section 1221 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle U of title I of the act may be cited as Freedom of Information Amendment Act of 2004.</p>
                 <h4>Editor's Notes</h4>

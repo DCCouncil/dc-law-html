@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/25-103.html">§ 25–103. Exceptions to license requirement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/25-102.html">Report Error</a>
@@ -111,16 +111,16 @@
       (Jan. 24, 1934, 48 Stat. 323, ch. 4, § 9; June 29, 1953, 67 Stat. 102, ch. 159, § 404(b); <a class="internal-link" href="/dc/council/laws/4-157.html">Sept. 29, 1982, D.C. Law 4-157, § 5, 29 DCR 3617</a>; <a class="internal-link" href="/dc/council/laws/6-192.html">Feb. 24, 1987, D.C. Law 6-192, § 26(b), 33 DCR 7836</a>; <a class="internal-link" href="/dc/council/laws/13-298.html">May 3, 2001, D.C. Law 13-298, § 101, 48 DCR 2959</a>; <a class="internal-link" href="/dc/council/laws/15-187.html">Sept. 30, 2004, D.C. Law 15-187, § 401(c), 51 DCR 6525</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 25-102.</p>
                 <p>1973 Ed., § 25-109.</p>
+                <p>1981 Ed., § 25-102.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> added subsec. (e).</p>
                 <h4>Editor's Notes</h4>
-                <p>Sections 402 and 403 of <a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> provided:</p>
-                <p>“Sec. 402. Rules and regulations.</p>
-                <p>“The Mayor shall promulgate proposed rules and regulations to administer this title within 180 days of its effective date. The proposed rules and regulations, as well as any subsequent rules and regulations amending this title, shall be submitted to the Council for a 45-day period of review, excluding Saturdays, Sundays, legal holidays, and days of Council recess, If the Council does not approve or disapprove the rules and regulations, in whole or in part, by resolution with the 45-day review period, the proposed rules and regulations shall be deemed approved.</p>
-                <p>“Sec. 403. Applicability.</p>
                 <p>“Section 401 shall apply upon the effective date of the regulations promulgated under section 402.”</p>
+                <p>“Sec. 403. Applicability.</p>
+                <p>“The Mayor shall promulgate proposed rules and regulations to administer this title within 180 days of its effective date. The proposed rules and regulations, as well as any subsequent rules and regulations amending this title, shall be submitted to the Council for a 45-day period of review, excluding Saturdays, Sundays, legal holidays, and days of Council recess, If the Council does not approve or disapprove the rules and regulations, in whole or in part, by resolution with the 45-day review period, the proposed rules and regulations shall be deemed approved.</p>
+                <p>“Sec. 402. Rules and regulations.</p>
+                <p>Sections 402 and 403 of <a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> provided:</p>
               </section>
             </section>
           </section>

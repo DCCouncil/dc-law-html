@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-2002.06.html">§ 47–2002.06. Verizon Center sales taxes.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-2002.05.html">Report Error</a>
@@ -114,8 +114,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1217.12.html">2-1217.12</a>, § <a class="internal-link" href="/dc/council/code/sections/3-342.01.html">3-342.01</a>, § <a class="internal-link" href="/dc/council/code/sections/10-1202.01.html">10-1202.01</a>, § <a class="internal-link" href="/dc/council/code/sections/10-1601.02.html">10-1601.02</a>, § <a class="internal-link" href="/dc/council/code/sections/10-1601.03.html">10-1601.03</a>, § <a class="internal-link" href="/dc/council/code/sections/10-1601.04.html">10-1601.04</a>, § <a class="internal-link" href="/dc/council/code/sections/10-1601.05.html">10-1601.05</a>, § <a class="internal-link" href="/dc/council/code/sections/10-1601.06.html">10-1601.06</a>, § <a class="internal-link" href="/dc/council/code/sections/10-1601.07.html">10-1601.07</a>, § <a class="internal-link" href="/dc/council/code/sections/25-374.html">25-374</a>, § <a class="internal-link" href="/dc/council/code/sections/47-1817.01.html">47-1817.01</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2761.html">47-2761</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2762.html">47-2762</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 201(b) of Ballpark Omnibus Financing and Revenue Tax Provisions Emergency Amendment Act of 2004 (D.C. Act 15-719, January 4, 2005,  52 DCR 1790).</p>
                 <p>For temporary (90 day) addition, see § 201(b) of Ballpark Omnibus Financing and Revenue Tax Provisions Congressional Review Emergency Act of 2005 (D.C. Act 16-25, February 17, 2005,  52 DCR 2981).</p>
+                <p>For temporary (90 day) addition, see § 201(b) of Ballpark Omnibus Financing and Revenue Tax Provisions Emergency Amendment Act of 2004 (D.C. Act 15-719, January 4, 2005,  52 DCR 1790).</p>
               </section>
             </section>
           </section>

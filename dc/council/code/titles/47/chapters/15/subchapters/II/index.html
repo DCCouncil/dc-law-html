@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/47/chapters/16/">Chapter 16. Enforcement of Personal Property Taxes by Distraint or Levy.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/47/chapters/15/subchapters/II/">Report Error</a>
@@ -88,22 +88,54 @@
         <section class="col8 body">
           <h1>Subchapter II. Procedure.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/47-1521.html">§ 47–1521. Definitions.</a>
-            <a href="/dc/council/code/sections/47-1522.html">§ 47–1522. Levy of annual tax on personal property.</a>
-            <a href="/dc/council/code/sections/47-1523.html">§ 47–1523. Reporting requirement; valuation of property.</a>
-            <a href="/dc/council/code/sections/47-1524.html">§ 47–1524. Form of tax return; filing; extensions.</a>
-            <a href="/dc/council/code/sections/47-1525.html">§ 47–1525. Filing returns; notice to party; records; examination. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-1526.html">§ 47–1526. Assessment; collection; deadline; fraudulent returns; extensions. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-1527.html">§ 47–1527. Failure to file or fraudulent return; collection and enforcement.</a>
-            <a href="/dc/council/code/sections/47-1528.html">§ 47–1528. Deficiency; request for hearing.</a>
-            <a href="/dc/council/code/sections/47-1529.html">§ 47–1529. Acceleration of due date; distraint of taxpayer’s property. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-1530.html">§ 47–1530. Personal debt liability; priority; collection; “person” defined. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-1531.html">§ 47–1531. Failure to file; fraudulent return; penalties and interest. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-1532.html">§ 47–1532. Overpayment; credit or refund; time for filing; interest. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-1533.html">§ 47–1533. Appeal from assessment or denial of claim for refund.</a>
-            <a href="/dc/council/code/sections/47-1534.html">§ 47–1534. Violations; penalties; prosecutions. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-1535.html">§ 47–1535. Rules; powers of Mayor.</a>
-            <a href="/dc/council/code/sections/47-1536.html">§ 47–1536. Enforcement. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1521.html">§ 47–1521. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1522.html">§ 47–1522. Levy of annual tax on personal property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1523.html">§ 47–1523. Reporting requirement; valuation of property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1524.html">§ 47–1524. Form of tax return; filing; extensions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1525.html">§ 47–1525. Filing returns; notice to party; records; examination. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1526.html">§ 47–1526. Assessment; collection; deadline; fraudulent returns; extensions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1527.html">§ 47–1527. Failure to file or fraudulent return; collection and enforcement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1528.html">§ 47–1528. Deficiency; request for hearing.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1529.html">§ 47–1529. Acceleration of due date; distraint of taxpayer’s property. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1530.html">§ 47–1530. Personal debt liability; priority; collection; “person” defined. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1531.html">§ 47–1531. Failure to file; fraudulent return; penalties and interest. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1532.html">§ 47–1532. Overpayment; credit or refund; time for filing; interest. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1533.html">§ 47–1533. Appeal from assessment or denial of claim for refund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1534.html">§ 47–1534. Violations; penalties; prosecutions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1535.html">§ 47–1535. Rules; powers of Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-1536.html">§ 47–1536. Enforcement. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -148,8 +180,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-1522.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-123.html">D.C. Law 17-123</a>, in subsec. (a), substituted “$225,000” for “$50,000”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/13-38.html">D.C. Law 13-38</a> in subsec. (a) inserted the phrase “, in excess of $50,000 in value” immediately following the phrase “The rate of tax shall be $3.40 for each $100 of value of the taxable personal property”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-123.html">D.C. Law 17-123</a>, in subsec. (a), substituted “$225,000” for “$50,000”.</p>
               </section>
             </section>
             <hr/>
@@ -266,11 +298,11 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-1528.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-217.html">D.C. Law 15-217</a> rewrote the section.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a> repealed section 79 of <a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> which had amended this section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-217.html">D.C. Law 15-217</a> rewrote the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(a) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(a) of Office of Administrative Hearings Establishment Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-553, October 26, 2004,  51 DCR 10359).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(a) of Office of Administrative Hearings Establishment Emergency Amendment Act of 2004 (D.C. Act 15-513, August 2, 2004,  51 DCR 8976).</p>
               </section>
             </section>
             <hr/>

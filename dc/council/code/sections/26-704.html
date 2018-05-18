@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/26-705.html">§ 26–705. Prohibited acts.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/26-704.html">Report Error</a>
@@ -163,25 +163,25 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 3(b) of Bank Charter Modernization Emergency Amendment Act of 2007 (D.C. Act 17-66, July 9, 2007,  54 DCR 6819).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 3(b) of D.C. Law 17-31, in subsec. (b), repealed pars. (3) to (5) and amended par. (2) to read as follows:</p>
-                <p>“(2) The Commissioner shall either approve or disapprove the application and explain the reasons for the decision. No application required by this section shall be complete unless it is accompanied by an application fee in an amount to be established by the Commissioner and made payable to the District of Columbia Treasurer. No entity for which deposit insurance is required shall commence operations until the applicant has submitted evidence that the deposit insurance has been acquired.”; in subsec. (c), amended the lead-in text to read as follows: “Any authority granted to acquire any District bank holding company or District bank shall be contingent on the review and approval of the Commissioner as provided in this subsection. Upon the filing of a complete application, the following procedures shall apply:”, repealed pars. (1)(B), (3) to (5), and (7), and amended pars. (2) and (6) and added par. (8) to read as follows:</p>
-                <p>“(2) The Commissioner shall either approve or disapprove the application and explain the reasons for the decision. The Commissioner shall consider:</p>
-                <p>“(A) The financial and managerial resources of the bank holding company;</p>
-                <p>“(B) The future prospects and stability of the subsidiaries of the bank holding company and the bank whose assets or shares the bank holding company seeks to acquire;</p>
-                <p>“(C) The financial history of the bank holding company or its subsidiary;</p>
-                <p>“(D) The adequacy of the bank holding company’s community development program; and</p>
-                <p>“(E) Whether the acquisition may result in undue concentration of resources or substantial decrease of competition in the District.”</p>
-                <p>“(6) The Commissioner shall submit a copy of the approval or disapproval to the Federal Reserve Board.”</p>
-                <p>“(8) The Commissioner shall submit to the Council:</p>
-                <p>“(A) A quarterly report of any applications filed or decisions reached by the Commissioner pursuant to this section; and</p>
-                <p>“(B) An annual report of all actions that the Commissioner takes pursuant to this section.”; amended subsec. (d)(3)(M) to read as follows:</p>
-                <p>“(M) The applicant’s agreement to submit an annual report to the Commissioner and the Council updating any information submitted to the Commissioner with regard to the community development program.”; and, in subsec. (e)(1), deleted “or the Council”; and repealed subsecs. (f) to (i).</p>
                 <p>Section 5(b) of D.C. Law 17-31 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(M) The applicant’s agreement to submit an annual report to the Commissioner and the Council updating any information submitted to the Commissioner with regard to the community development program.”; and, in subsec. (e)(1), deleted “or the Council”; and repealed subsecs. (f) to (i).</p>
+                <p>“(B) An annual report of all actions that the Commissioner takes pursuant to this section.”; amended subsec. (d)(3)(M) to read as follows:</p>
+                <p>“(A) A quarterly report of any applications filed or decisions reached by the Commissioner pursuant to this section; and</p>
+                <p>“(8) The Commissioner shall submit to the Council:</p>
+                <p>“(6) The Commissioner shall submit a copy of the approval or disapproval to the Federal Reserve Board.”</p>
+                <p>“(E) Whether the acquisition may result in undue concentration of resources or substantial decrease of competition in the District.”</p>
+                <p>“(D) The adequacy of the bank holding company’s community development program; and</p>
+                <p>“(C) The financial history of the bank holding company or its subsidiary;</p>
+                <p>“(B) The future prospects and stability of the subsidiaries of the bank holding company and the bank whose assets or shares the bank holding company seeks to acquire;</p>
+                <p>“(A) The financial and managerial resources of the bank holding company;</p>
+                <p>“(2) The Commissioner shall either approve or disapprove the application and explain the reasons for the decision. The Commissioner shall consider:</p>
+                <p>“(2) The Commissioner shall either approve or disapprove the application and explain the reasons for the decision. No application required by this section shall be complete unless it is accompanied by an application fee in an amount to be established by the Commissioner and made payable to the District of Columbia Treasurer. No entity for which deposit insurance is required shall commence operations until the applicant has submitted evidence that the deposit insurance has been acquired.”; in subsec. (c), amended the lead-in text to read as follows: “Any authority granted to acquire any District bank holding company or District bank shall be contingent on the review and approval of the Commissioner as provided in this subsection. Upon the filing of a complete application, the following procedures shall apply:”, repealed pars. (1)(B), (3) to (5), and (7), and amended pars. (2) and (6) and added par. (8) to read as follows:</p>
+                <p>Section 3(b) of D.C. Law 17-31, in subsec. (b), repealed pars. (3) to (5) and amended par. (2) to read as follows:</p>
                 <h4>References in Text</h4>
                 <p>The District of Columbia Regional Interstate Banking Act of 1985 Amendments Act of 1985, referred to in subparagraph (c)(1)(B), is <a class="internal-link" href="/dc/council/laws/6-107.html">D.C. Law 6-107</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/11-142.html">D.C. Law 11-142</a> as subchapter II of Chapter 8 subchapter II of Chapter 7, 2001 Ed., and designation of the preexisting text as subchapter I, “subchapter” has been substituted for “chapter” in (a), (c)(1)(B), and (i).</p>
                 <p>Fees credited to the Office of Banking and Financial Institutions Enterprise Fund: Section 1804(1) of D.C. Law 12-60 provided that all fees received pursuant to §§ 26-804(b)(2) and 26-804(c)(1)(A) 1981 Ed. shall be credited to the Office of Banking and Financial Institutions Enterprise Fund. BB&amp;T Corporation Acquisition of Franklin Bancorporation, Inc., Approval Resolution of 1998: Pursuant to Resolution 12-519, effective June 2, 1998, the Council approved the recommendation of the Superintendent of the Office of Banking and Financial Institutions that the acquisition of Franklin Bancorporation, a District bank holding company, by BB&amp;T Corporation, a regional bank holding company be approved.</p>
+                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/11-142.html">D.C. Law 11-142</a> as subchapter II of Chapter 8 subchapter II of Chapter 7, 2001 Ed., and designation of the preexisting text as subchapter I, “subchapter” has been substituted for “chapter” in (a), (c)(1)(B), and (i).</p>
                 <h4>Resolutions</h4>
                 <p>Resolution 16-114, the “Bank of Georgetown Approval Resolution of 2005”, was approved effective April 5, 2005.</p>
               </section>

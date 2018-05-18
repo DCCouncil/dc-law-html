@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/37/chapters/2/subchapters/II/">Subchapter II. Definition of “Barrel of Corn.”</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/37-201.33.html">Report Error</a>
@@ -117,15 +117,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/66-3-ch118.html#§32a">Mar. 3, 1921, 41 Stat. 1220, ch. 118, § 32a</a>; <a class="internal-link" href="/dc/council/laws/15-205.html">as added Dec. 7, 2004, D.C. Law 15-205, § 2052, 51 DCR 8441</a>; <a class="internal-link" href="/dc/council/laws/17-20.html">Sept. 18, 2007, D.C. Law 17-20, § 2012, 54 DCR 7052</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 194, 56 DCR 1117</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> added subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (b)(1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> added subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2052 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
-                <p>For temporary (90 day) addition of section, see § 2052 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
                 <p>For temporary (90 day) amendment of section, see § 2012 of Fiscal Year 2008 Budget Support Emergency Act of 2007 (D.C. Act 17-74, July 25, 2007,  54 DCR 7549).</p>
+                <p>For temporary (90 day) addition of section, see § 2052 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) addition of section, see § 2052 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <h4>Short Title</h4>
-                <p>Short title of subtitle E of title II of Law 15-205: Section 2051 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle E of title II of the act may be cited as the Registration and Inspection of Weighing and Measuring Devices Amendment Act of 2004.</p>
                 <p>Short title: Section 2011 of <a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> provided that subtitle B of title II of the act may be cited as the “Weights and Measures Device Amendment Act of 2007”.</p>
+                <p>Short title of subtitle E of title II of Law 15-205: Section 2051 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle E of title II of the act may be cited as the Registration and Inspection of Weighing and Measuring Devices Amendment Act of 2004.</p>
               </section>
             </section>
           </section>

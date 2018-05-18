@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/3-406.html">§ 3–406. Issuance and renewal of licenses.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-405.html">Report Error</a>
@@ -177,13 +177,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-1541.06.html">7-1541.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in par. (1A) of subsec. (e), substituted “Public Health Funeral Establishment endorsement to a basic business license under the basic” for “Class A Public Health Funeral Establishment endorsed to a master business license under the master”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in subsecs. (e)(3) and (g)(7), substituted “§ <a class="internal-link" href="/dc/council/code/sections/3-420.html">3-420</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/3-403.html">3-403</a>(i)”; and, in subsec. (h)(4)(B), substituted “§ <a class="internal-link" href="/dc/council/code/sections/3-420.html">3-420</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/3-403.html">3-403</a>(d)”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> rewrote subsec. (e)(5); and added subsec. (i). Prior to amendment, subsec. (e)(5) read as follows: “(5) The Mayor shall provide all health care facilities, as those facilities are defined in § <a class="internal-link" href="/dc/council/code/sections/44-501.html">44-501</a>(a), a list of all funeral services establishments authorized to receive human remains for care or preparation in accordance with this chapter. The list shall consist only of funeral services establishments licensed and operating in the District of Columbia pursuant to this subsection, shall include the funeral services establishment license number, and shall be updated annually.”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> deleted “Except as provided by § <a class="internal-link" href="/dc/council/code/sections/3-420.html">3-420</a>” at the beginning of (h)(4)(B).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> rewrote subsec. (e)(5); and added subsec. (i). Prior to amendment, subsec. (e)(5) read as follows: “(5) The Mayor shall provide all health care facilities, as those facilities are defined in § <a class="internal-link" href="/dc/council/code/sections/44-501.html">44-501</a>(a), a list of all funeral services establishments authorized to receive human remains for care or preparation in accordance with this chapter. The list shall consist only of funeral services establishments licensed and operating in the District of Columbia pursuant to this subsection, shall include the funeral services establishment license number, and shall be updated annually.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in subsecs. (e)(3) and (g)(7), substituted “§ <a class="internal-link" href="/dc/council/code/sections/3-420.html">3-420</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/3-403.html">3-403</a>(i)”; and, in subsec. (h)(4)(B), substituted “§ <a class="internal-link" href="/dc/council/code/sections/3-420.html">3-420</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/3-403.html">3-403</a>(d)”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in par. (1A) of subsec. (e), substituted “Public Health Funeral Establishment endorsement to a basic business license under the basic” for “Class A Public Health Funeral Establishment endorsed to a master business license under the master”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2-3 of the Funeral Services Regulatory Emergency Amendment Act of 1992 (D.C. Act 9-230, June 19, 1992,  39 DCR 4919).</p>
                 <p>For temporary (90 day) amendment of section, see § 3(c) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August</p>
+                <p>For temporary amendment of section, see § 2-3 of the Funeral Services Regulatory Emergency Amendment Act of 1992 (D.C. Act 9-230, June 19, 1992,  39 DCR 4919).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see §§ 2 and 3 of Funeral Services Regulatory Temporary Amendment Act of 1992 (<a class="internal-link" href="/dc/council/laws/9-150.html">D.C. Law 9-150</a>, September 15, 1992, law notification  39 DCR 7280).</p>
                 <h4>References in Text</h4>

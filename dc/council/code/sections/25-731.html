@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/25-732.html">§ 25–732. Payment plan for use in extenuating circumstances. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/25-731.html">Report Error</a>
@@ -107,11 +107,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/25-733.html">25-733</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-361.html">D.C. Law 17-361</a> repealed subsecs. (e), (f), and (g), which had read as follows:</p>
-                <p>“(e) The failure of a retailer who contracts to purchase an alcoholic beverage for full payment in cash on delivery to make full payment upon delivery shall constitute a violation of this chapter.</p>
-                <p>“(f) A retailer shall not satisfy the obligation to pay for an alcoholic beverage unless the payment is dated on or before the date payment is due and is, upon presentation, promptly honored by the bank on which it is drawn.</p>
-                <p>“(g) The failure of a manufacturer or wholesaler to deposit the payment in the manufacturer’s or wholesaler’s bank for credit or collection, or present the payment to the bank on which it is drawn, within 5 days from the receipt of a payment shall constitute a violation of this chapter. Each day that the failure continues shall constitute a separate violation.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-270.html">D.C. Law 20-270</a> substituted “retailer or manufacturer' For “retailer” throughout the section.</p>
+                <p>“(g) The failure of a manufacturer or wholesaler to deposit the payment in the manufacturer’s or wholesaler’s bank for credit or collection, or present the payment to the bank on which it is drawn, within 5 days from the receipt of a payment shall constitute a violation of this chapter. Each day that the failure continues shall constitute a separate violation.”</p>
+                <p>“(f) A retailer shall not satisfy the obligation to pay for an alcoholic beverage unless the payment is dated on or before the date payment is due and is, upon presentation, promptly honored by the bank on which it is drawn.</p>
+                <p>“(e) The failure of a retailer who contracts to purchase an alcoholic beverage for full payment in cash on delivery to make full payment upon delivery shall constitute a violation of this chapter.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-361.html">D.C. Law 17-361</a> repealed subsecs. (e), (f), and (g), which had read as follows:</p>
               </section>
             </section>
           </section>

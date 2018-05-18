@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/5/chapters/9/">Chapter 9. Awards for Meritorious Service.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/5/chapters/8/">Report Error</a>
@@ -87,13 +87,27 @@
         <section class="col8 body">
           <h1>Chapter 8. Police Retirement While Under Disciplinary Investigation.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/5-801.html">§ 5–801. Definitions.</a>
-            <a href="/dc/council/code/sections/5-802.html">§ 5–802. Completion of disciplinary investigations.</a>
-            <a href="/dc/council/code/sections/5-803.html">§ 5–803. Conditional retirement.</a>
-            <a href="/dc/council/code/sections/5-804.html">§ 5–804. Penalties in lieu of discipline for members in conditional retirement.</a>
-            <a href="/dc/council/code/sections/5-805.html">§ 5–805. Payment of penalties.</a>
-            <a href="/dc/council/code/sections/5-806.html">§ 5–806. Administrative review.</a>
-            <a href="/dc/council/code/sections/5-807.html">§ 5–807. Applicability.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-801.html">§ 5–801. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-802.html">§ 5–802. Completion of disciplinary investigations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-803.html">§ 5–803. Conditional retirement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-804.html">§ 5–804. Penalties in lieu of discipline for members in conditional retirement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-805.html">§ 5–805. Payment of penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-806.html">§ 5–806. Administrative review.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-807.html">§ 5–807. Applicability.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

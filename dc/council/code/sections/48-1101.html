@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/48-1102.html">§ 48–1102. Factors to be considered in determining whether object is paraphernalia.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/48-1101.html">Report Error</a>
@@ -139,14 +139,14 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-1671.08.html">7-1671.08</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3101.html">42-3101</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3601.html">42-3601</a>, and § <a class="internal-link" href="/dc/council/code/sections/48-1104.html">48-1104</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-306.html">D.C. Law 16-306</a>, in par. (3)(L), deleted “or” from the end of sub-sub-par. (xiii), substituted a semicolon for a period at the end of sub-sub-par. (xiv), and added sub-sub-par. (xv).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in par. (3)(L), inserted “or” at the end of sub-subpar. (xiv).</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-189.html">D.C. Law 18-189</a> redesignated par. (1) as par. (1A); added par. (1); and, in par. (3)(L)(xv), substituted “cigar wrappers” for “cigar leaf wrappers”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in par. (3)(L), inserted “or” at the end of sub-subpar. (xiv).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-306.html">D.C. Law 16-306</a>, in par. (3)(L), deleted “or” from the end of sub-sub-par. (xiii), substituted a semicolon for a period at the end of sub-sub-par. (xiv), and added sub-sub-par. (xv).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 227(a) of Omnibus Public Safety Emergency Amendment Act of 2006 (D.C. Act 16-445, July 19, 2006,  53 DCR 6443).</p>
-                <p>For temporary (90 day) amendment of section, see § 227(a) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-490, October 18, 2006,  53 DCR 8686).</p>
-                <p>For temporary (90 day) amendment of section, see § 227(a) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-10, January 16, 2007,  54 DCR 1479).</p>
                 <p>For temporary (90 day) amendment of section, see § 227(a) of Omnibus Public Safety Second Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-25, April 19, 2007,  54 DCR 4036).</p>
+                <p>For temporary (90 day) amendment of section, see § 227(a) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-10, January 16, 2007,  54 DCR 1479).</p>
+                <p>For temporary (90 day) amendment of section, see § 227(a) of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-490, October 18, 2006,  53 DCR 8686).</p>
+                <p>For temporary (90 day) amendment of section, see § 227(a) of Omnibus Public Safety Emergency Amendment Act of 2006 (D.C. Act 16-445, July 19, 2006,  53 DCR 6443).</p>
                 <h4>Editor's Notes</h4>
                 <p>Former Chapter 6 of this title, containing §§ 33-601 to 33-612 1981 Ed., was repealed by § 604(a)(1) of D.C. Law 4-29. As to present provisions concerning controlled substances, see Chapter 9 of this title.</p>
               </section>

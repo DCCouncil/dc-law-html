@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/1-1162.22.html">§ 1–1162.22. Additional penalties for public officials.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-1162.21.html">Report Error</a>
@@ -126,12 +126,12 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-1161.01.html">1-1161.01</a>, § <a class="internal-link" href="/dc/council/code/sections/1-1162.10.html">1-1162.10</a>, § <a class="internal-link" href="/dc/council/code/sections/1-1162.15.html">1-1162.15</a>, § <a class="internal-link" href="/dc/council/code/sections/1-1162.22.html">1-1162.22</a>, § <a class="internal-link" href="/dc/council/code/sections/1-1162.32.html">1-1162.32</a>, and § <a class="internal-link" href="/dc/council/code/sections/1-1163.38.html">1-1163.38</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-75.html">D.C. Law 20-75</a> rewrote (a)(4), which previously read, “In addition to any civil penalty imposed under this subchapter, a violation of the Code of Conduct may result in remedial action in accordance with Chapter 6 of this title.”</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-122.html">D.C. Law 20-122</a> added (a)(5)(C).</p>
+                <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-75.html">D.C. Law 20-75</a> rewrote (a)(4), which previously read, “In addition to any civil penalty imposed under this subchapter, a violation of the Code of Conduct may result in remedial action in accordance with Chapter 6 of this title.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Board of Ethics and Government Accountability Emergency Amendment Act of 2013 (D.C. Act 20-24, March 7, 2013,  60 DCR 3984, 20 DCSTAT 483).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Board of Ethics and Government Accountability Congressional Review Emergency Amendment Act of 2013 (D.C. Act 20-245, December 27, 2013,  61 DCR 135, 20 DCSTAT 2639).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(g) of the Comprehensive Code of Conduct and BEGA Emergency Amendment Act of 2014, (D.C. Act 20-323, Apr. 28, 2014,  61 DCR 4681).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Board of Ethics and Government Accountability Congressional Review Emergency Amendment Act of 2013 (D.C. Act 20-245, December 27, 2013,  61 DCR 135, 20 DCSTAT 2639).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Board of Ethics and Government Accountability Emergency Amendment Act of 2013 (D.C. Act 20-24, March 7, 2013,  60 DCR 3984, 20 DCSTAT 483).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 2(b) of the Board of Ethics and Government Accountability Temporary Amendment Act of 2013 (D.C. Law 20-3, May 18, 2013,  60 DCR 4622, 20 DCSTAT 1266).</p>
               </section>

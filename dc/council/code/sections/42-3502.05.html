@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/42-3502.06.html">§ 42–3502.06. Rent ceilings abolished.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-3502.05.html">Report Error</a>
@@ -151,22 +151,22 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3501.03.html">42-3501.03</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.08.html">42-3502.08</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.09.html">42-3502.09</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.13.html">42-3502.13</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.17.html">42-3502.17</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.20.html">42-3502.20</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.21.html">42-3502.21</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3502.22.html">42-3502.22</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3504.01.html">42-3504.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subpar. (a)(7)(C), substituted “rent charged” for “rent ceiling”; and rewrote subsec. (g), which had read as follows: “(g) An amended registration statement shall be filed by each housing provider whose rental units are subject to registration under this chapter within 30 days of any event which changes or substantially affects the rents including vacant unit rent increases under § <a class="internal-link" href="/dc/council/code/sections/42-3502.13.html">42-3502.13</a>, services, facilities, or the housing provider or management of any rental unit in a registered housing accommodation. No amended registration statement shall be required for a change in rent under § <a class="internal-link" href="/dc/council/code/sections/42-3502.06.html">42-3502.06</a>(b).”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in subsec. (g)(2), substituted “The” for “Subject to appropriation, the”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (a)(7)(C).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> repealed (g)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (a)(7)(C).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in subsec. (g)(2), substituted “The” for “Subject to appropriation, the”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subpar. (a)(7)(C), substituted “rent charged” for “rent ceiling”; and rewrote subsec. (g), which had read as follows: “(g) An amended registration statement shall be filed by each housing provider whose rental units are subject to registration under this chapter within 30 days of any event which changes or substantially affects the rents including vacant unit rent increases under § <a class="internal-link" href="/dc/council/code/sections/42-3502.13.html">42-3502.13</a>, services, facilities, or the housing provider or management of any rental unit in a registered housing accommodation. No amended registration statement shall be required for a change in rent under § <a class="internal-link" href="/dc/council/code/sections/42-3502.06.html">42-3502.06</a>(b).”</p>
                 <h4>Expiration of Law</h4>
                 <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/42-3502.01.html">42-3502.01</a>.</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-270.html">D.C. Law 21-270</a>: <a class="internal-link" href="/dc/council/laws/21-270.html#§3">§ 3 of D.C. Law 21-270</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-270.html#§2">§ 2 of D.C. Law 21-270</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a), (b) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2122(b) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§2212(a)">§ 2212(a) of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 2122(b) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a), (b) of Rent Control Reform Emergency Amendment Act of 2006 (D.C. Act 16-470, July 31, 2006,  53 DCR 6772).</p>
                 <h4>References in Text</h4>
-                <p>Section 42-3404.13(a)(3), referred to in subparagraph (a)(3)(E), was repealed March 16, 1978 by <a class="internal-link" href="/dc/council/laws/2-54.html">D.C. Law 2-54</a>, § 903,  24 DCR 5334.</p>
-                <p>Section 42-4016, referred to in subsection (a)(3)(E), expired pursuant to § 907 of <a class="internal-link" href="/dc/council/laws/3-131.html">D.C. Law 3-131</a> on April 30, 1985.</p>
                 <p>Section 206(a)(4) of the Rental Housing Act of 1980, referred to in paragraph (a)(4), was codified as § 45-1515 1981 Ed., which expired April 30, 1985, pursuant to D.C. Law 3-131, § 907.</p>
+                <p>Section 42-4016, referred to in subsection (a)(3)(E), expired pursuant to § 907 of <a class="internal-link" href="/dc/council/laws/3-131.html">D.C. Law 3-131</a> on April 30, 1985.</p>
+                <p>Section 42-3404.13(a)(3), referred to in subparagraph (a)(3)(E), was repealed March 16, 1978 by <a class="internal-link" href="/dc/council/laws/2-54.html">D.C. Law 2-54</a>, § 903,  24 DCR 5334.</p>
                 <h4>Editor's Notes</h4>
                 <p>On November 5, 1985, pursuant to the Initiative, Referendum, and Recall Charter Amendments Act of 1977 (<a class="internal-link" href="/dc/council/laws/2-46.html">D.C. Law 2-46</a>), the electorate of the District of Columbia rejected paragraphs (a)(6), (a)(8), (a)(9), and (a)(10) of § 205 of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>.</p>
               </section>

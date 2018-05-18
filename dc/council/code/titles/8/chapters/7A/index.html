@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/7B/">Chapter 7B. Collection and Disposal of Refuse Authorized</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/8/chapters/7A/">Report Error</a>
@@ -87,8 +87,12 @@
         <section class="col8 body">
           <h1>Chapter 7A. Trash Collection Noise Violation Abatement.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/8-731.html">§ 8–731. Complaints of trash collection noise violations; hearings; notice of infraction.</a>
-            <a href="/dc/council/code/sections/8-732.html">§ 8–732. Rules.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-731.html">§ 8–731. Complaints of trash collection noise violations; hearings; notice of infraction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-732.html">§ 8–732. Rules.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -127,11 +131,11 @@
       (<a class="internal-link" href="/dc/council/laws/17-259.html#§3">Nov. 19, 2008, D.C. Law 17-259, § 3, 55 DCR 10881</a>.)
     </p>
                 <h4>Cross References</h4>
-                <p>Illegal dumping, enforcement, see § <a class="internal-link" href="/dc/council/code/sections/8-903.html">8-903</a>.</p>
-                <p>Illegal dumping, forfeitures, see § <a class="internal-link" href="/dc/council/code/sections/8-905.html">8-905</a>.</p>
-                <p>Illegal dumping, prohibition and penalties, see § <a class="internal-link" href="/dc/council/code/sections/8-902.html">8-902</a>.</p>
-                <p>Licensure, clean hands requirement, prohibition against issuance of licenses, see § <a class="internal-link" href="/dc/council/code/sections/47-2862.html">47-2862</a>.</p>
                 <p>Solid waste management and multi-material recycling, fines and penalties, see § <a class="internal-link" href="/dc/council/code/sections/8-1017.html">8-1017</a>.</p>
+                <p>Licensure, clean hands requirement, prohibition against issuance of licenses, see § <a class="internal-link" href="/dc/council/code/sections/47-2862.html">47-2862</a>.</p>
+                <p>Illegal dumping, prohibition and penalties, see § <a class="internal-link" href="/dc/council/code/sections/8-902.html">8-902</a>.</p>
+                <p>Illegal dumping, forfeitures, see § <a class="internal-link" href="/dc/council/code/sections/8-905.html">8-905</a>.</p>
+                <p>Illegal dumping, enforcement, see § <a class="internal-link" href="/dc/council/code/sections/8-903.html">8-903</a>.</p>
               </section>
             </section>
             <hr/>

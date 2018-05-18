@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/51-103.html">§ 51–103. Employer contributions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/51-102.html">Report Error</a>
@@ -101,16 +101,16 @@
       (<a class="internal-link" href="/us/congress/laws/public/74-1-ch794.html#§2">Aug. 28, 1935, 49 Stat. 947, ch. 794, § 2</a>; June 4, 1943, 57 Stat. 105, ch. 117, § 1; <a class="internal-link" href="/dc/council/laws/5-102.html">Aug. 10, 1984, D.C. Law 5-102, § 2(a), 31 DCR 2902</a>; <a class="internal-link" href="/dc/council/laws/10-15.html">Sept. 24, 1993, D.C. Law 10-15, § 202, 40 DCR 5420</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 46-102.</p>
                 <p>1973 Ed., § 46-302.</p>
+                <p>1981 Ed., § 46-102.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/51-101.html">51-101</a>, § <a class="internal-link" href="/dc/council/code/sections/51-114.html">51-114</a>, § <a class="internal-link" href="/dc/council/code/sections/51-119.html">51-119</a>, and § <a class="internal-link" href="/dc/council/code/sections/51-178.html">51-178</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) authorization of appropriations to improve the administration of the Unemployment Compensation Fund, see § 2 of Unemployment Compensation Funds Appropriation Authorization Emergency Act of 2003 (D.C. Act 15-193, October 24, 2003,  50 DCR 9512).</p>
                 <p>For temporary (90 day) authorization of appropriations to improve the administration of the Unemployment Compensation Fund, see § 2 of Unemployment Compensation Funds Appropriation Authorization Congressional Review Emergency Act of 2004 (D.C. Act 15-347, February 6, 2004,  51 DCR 1836).</p>
+                <p>For temporary (90 day) authorization of appropriations to improve the administration of the Unemployment Compensation Fund, see § 2 of Unemployment Compensation Funds Appropriation Authorization Emergency Act of 2003 (D.C. Act 15-193, October 24, 2003,  50 DCR 9512).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 102 of District of Columbia Unemployment Compensation Comprehensive Improvements Temporary Amendment Act of 1992 (D.C. Law 9-260, March 27, 1993, law notification  40 DCR 2330).</p>
                 <p>For temporary (225 day) addition, see § 2 of Unemployment Compensation Funds Appropriation Authorization Temporary Act of 2003 (D.C. Law 15-81, March 10, 2004, law notification  51 DCR 3373).</p>
+                <p>For temporary (225 day) amendment of section, see § 102 of District of Columbia Unemployment Compensation Comprehensive Improvements Temporary Amendment Act of 1992 (D.C. Law 9-260, March 27, 1993, law notification  40 DCR 2330).</p>
                 <h4>References in Text</h4>
                 <p>Title XII of the Social Security Act, referred to in subsection (b), is  42 U.S.C. §§ 1321- 1324.</p>
               </section>

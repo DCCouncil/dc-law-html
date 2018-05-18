@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/6/subchapters/XV/">Subchapter XV. Employee Rights and Responsibilities.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-614.14.html">Report Error</a>
@@ -104,14 +104,14 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-615.14.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> rewrote subsec. (c), which previously read:</p>
                 <p>“The Office of the District of Columbia Auditor shall conduct an audit of the performance reports of the District of Columbia that are submitted in 1997 and 1998.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> rewrote subsec. (c), which previously read:</p>
                 <h4>Cross References</h4>
-                <p>Mayor and Council members, coverage, see § <a class="internal-link" href="/dc/council/code/sections/1-602.02.html">1-602.02</a>.</p>
                 <p>Organization for personnel management, rules and regulations, see § <a class="internal-link" href="/dc/council/code/sections/1-604.04.html">1-604.04</a>.</p>
+                <p>Mayor and Council members, coverage, see § <a class="internal-link" href="/dc/council/code/sections/1-602.02.html">1-602.02</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 2402(b) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <p>For temporary (90 day) amendment of section, see § 2402(b) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) amendment of section, see § 2402(b) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
               </section>
             </section>
           </section>

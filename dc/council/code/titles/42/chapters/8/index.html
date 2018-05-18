@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/42/chapters/8A/">Chapter 8A. Mortgages, Deeds of Trust, and Foreclosure. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/42/chapters/8/">Report Error</a>
@@ -87,32 +87,84 @@
         <section class="col8 body">
           <h1>Chapter 8. Mortgages and Deeds of Trust.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/42-801.html">§ 42–801. Execution, acknowledgment, and recordation in same manner as deeds.</a>
-            <a href="/dc/council/code/sections/42-802.html">§ 42–802. Duty of Recorder.</a>
-            <a href="/dc/council/code/sections/42-803.html">§ 42–803. Estate of mortgagee or trustee; conveyance thereof.</a>
-            <a href="/dc/council/code/sections/42-804.html">§ 42–804. Survival of mortgagee’s or trustee’s title.</a>
-            <a href="/dc/council/code/sections/42-805.html">§ 42–805. While action pending, money due payable to mortgagee or court; effect thereof.</a>
-            <a href="/dc/council/code/sections/42-806.html">§ 42–806. Decree or order without hearing where defendant files request and plaintiff files admission.</a>
-            <a href="/dc/council/code/sections/42-807.html">§ 42–807. Limitations upon right of redemption in §§ 42-805 and 42-806.</a>
-            <a href="/dc/council/code/sections/42-808.html">§ 42–808. Conveyance or assurance by infant following court order.</a>
-            <a href="/dc/council/code/sections/42-809.html">§ 42–809. Conveyance or assurance by infant trustee or mortgagee under court order.</a>
-            <a href="/dc/council/code/sections/42-810.html">§ 42–810. Mortgagee may redeem prior mortgage; prior mortgage may not bar.</a>
-            <a href="/dc/council/code/sections/42-811.html">§ 42–811. Appointment of trustee in event of death of mortgagee or trustee; procedure; summary decree.</a>
-            <a href="/dc/council/code/sections/42-812.html">§ 42–812. Equity practice followed where answer sets up defense against foreclosure.</a>
-            <a href="/dc/council/code/sections/42-813.html">§ 42–813. Replacement of deceased, appointed trustee.</a>
-            <a href="/dc/council/code/sections/42-814.html">§ 42–814. Petition for new trustee; causes; procedure; written agreement of parties.</a>
-            <a href="/dc/council/code/sections/42-815.html">§ 42–815. Application to court to fix terms and determine notice of sale; notice under power of sale provision.</a>
-            <a href="/dc/council/code/sections/42-815.01.html">§ 42–815.01. Right to cure residential mortgage foreclosure default.</a>
-            <a href="/dc/council/code/sections/42-815.02.html">§ 42–815.02. Foreclosure mediation.</a>
-            <a href="/dc/council/code/sections/42-815.03.html">§ 42–815.03. Establishment of Foreclosure Mediation Fund.</a>
-            <a href="/dc/council/code/sections/42-815.04.html">§ 42–815.04. Construction.</a>
-            <a href="/dc/council/code/sections/42-816.html">§ 42–816. Sale of property — Deficiency judgments; limitations thereon; relief in suit to enforce vendor’s lien.</a>
-            <a href="/dc/council/code/sections/42-817.html">§ 42–817. Sale of property — Amount creditor to pay if purchaser.</a>
-            <a href="/dc/council/code/sections/42-818.html">§ 42–818. Commission to mortgagee or trustee; rates; when advertised sale not held.</a>
-            <a href="/dc/council/code/sections/42-818.01.html">§ 42–818.01. Tracking addresses.</a>
-            <a href="/dc/council/code/sections/42-818.02.html">§ 42–818.02. Procedures for release of deed of trust.</a>
-            <a href="/dc/council/code/sections/42-819.html">§ 42–819. Petition for deed of release after death of mortgagee or trustee; procedure; summary determination.</a>
-            <a href="/dc/council/code/sections/42-820.html">§ 42–820. Conveyance by and for individuals with mental disabilities following court order.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-801.html">§ 42–801. Execution, acknowledgment, and recordation in same manner as deeds.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-802.html">§ 42–802. Duty of Recorder.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-803.html">§ 42–803. Estate of mortgagee or trustee; conveyance thereof.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-804.html">§ 42–804. Survival of mortgagee’s or trustee’s title.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-805.html">§ 42–805. While action pending, money due payable to mortgagee or court; effect thereof.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-806.html">§ 42–806. Decree or order without hearing where defendant files request and plaintiff files admission.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-807.html">§ 42–807. Limitations upon right of redemption in §§ 42-805 and 42-806.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-808.html">§ 42–808. Conveyance or assurance by infant following court order.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-809.html">§ 42–809. Conveyance or assurance by infant trustee or mortgagee under court order.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-810.html">§ 42–810. Mortgagee may redeem prior mortgage; prior mortgage may not bar.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-811.html">§ 42–811. Appointment of trustee in event of death of mortgagee or trustee; procedure; summary decree.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-812.html">§ 42–812. Equity practice followed where answer sets up defense against foreclosure.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-813.html">§ 42–813. Replacement of deceased, appointed trustee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-814.html">§ 42–814. Petition for new trustee; causes; procedure; written agreement of parties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-815.html">§ 42–815. Application to court to fix terms and determine notice of sale; notice under power of sale provision.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-815.01.html">§ 42–815.01. Right to cure residential mortgage foreclosure default.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-815.02.html">§ 42–815.02. Foreclosure mediation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-815.03.html">§ 42–815.03. Establishment of Foreclosure Mediation Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-815.04.html">§ 42–815.04. Construction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-816.html">§ 42–816. Sale of property — Deficiency judgments; limitations thereon; relief in suit to enforce vendor’s lien.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-817.html">§ 42–817. Sale of property — Amount creditor to pay if purchaser.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-818.html">§ 42–818. Commission to mortgagee or trustee; rates; when advertised sale not held.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-818.01.html">§ 42–818.01. Tracking addresses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-818.02.html">§ 42–818.02. Procedures for release of deed of trust.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-819.html">§ 42–819. Petition for deed of release after death of mortgagee or trustee; procedure; summary determination.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-820.html">§ 42–820. Conveyance by and for individuals with mental disabilities following court order.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -127,15 +179,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§521">Mar. 3, 1901, 31 Stat. 1271, ch. 854, § 521</a>; June 30, 1902, 32 Stat. 532, ch. 1329; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-701.</p>
                 <p>1973 Ed., § 45-601.</p>
+                <p>1981 Ed., § 45-701.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-815.02.html">42-815.02</a> and § <a class="internal-link" href="/dc/council/code/sections/42-815.04.html">42-815.04</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
                 <h4>Editor's Notes</h4>
@@ -154,13 +206,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§523">Mar. 3, 1901, 31 Stat. 1271, ch. 854, § 523</a>; June 30, 1902, 32 Stat. 532, ch. 1329; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-702.</p>
                 <p>1973 Ed., § 45-602.</p>
+                <p>1981 Ed., § 45-702.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -177,13 +229,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§522">Mar. 3, 1901, 31 Stat. 1271, ch. 854, § 522</a>; June 30, 1902, 32 Stat. 532, ch. 1329; <a class="internal-link" href="/us/congress/laws/public/89-706.html">Nov. 2, 1966, 80 Stat. 1100, Pub. L. 89-706, § 1(a)</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-703.</p>
                 <p>1973 Ed., § 45-603.</p>
+                <p>1981 Ed., § 45-703.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -200,13 +252,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§533">Mar. 3, 1901, 31 Stat. 1272, ch. 854, § 533</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263,§ 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-704.</p>
                 <p>1973 Ed., § 45-604.</p>
+                <p>1981 Ed., § 45-704.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -223,15 +275,15 @@
       (7 Geo. 2, ch. 20, § 1, 1734; Kilty’s Rep. 251; Alex. Br. Stat. 726; Comp. Stat., D.C., p. 395, § 1; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-705.</p>
                 <p>1973 Ed., § 45-605.</p>
+                <p>1981 Ed., § 45-705.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-807.html">42-807</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1,</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -248,15 +300,15 @@
       (7 Geo. 2, ch. 20, § 2, 1734; Kilty’s Rep. 251; Alex. Br. Stat. 727; Comp.Stat., D.C., p. 396, § 2; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-706.</p>
                 <p>1973 Ed., § 45-606.</p>
+                <p>1981 Ed., § 45-706.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-807.html">42-807</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -273,13 +325,13 @@
       (7 Geo. 2, ch. 20, § 3, 1734; Kilty’s Rep. 251; Alex. Br. Stat. 728; Comp. Stat., D.C., p. 397, § 3; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-707.</p>
                 <p>1973 Ed., § 45-607.</p>
+                <p>1981 Ed., § 45-707.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -296,13 +348,13 @@
       (7 Anne, ch. 19, § 1, 1708; Kilty’s Rep. 247; Alex. Br. Stat. 679; Comp.Stat., D.C., p. 79, § 13; <a class="internal-link" href="/dc/council/laws/1-75.html">July 22, 1976, D.C. Law 1-75, § 4(i), 23 DCR 1181</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-708.</p>
                 <p>1973 Ed., § 45-608.</p>
+                <p>1981 Ed., § 45-708.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -319,13 +371,13 @@
       (7 Anne, ch. 19, § 2, 1708; Kilty’s Rep. 247; Alex. Br. Stat. 680; Comp. Stat., D.C., p. 79, § 14; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b) 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-709.</p>
                 <p>1973 Ed., § 45-609.</p>
+                <p>1981 Ed., § 45-709.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -342,13 +394,13 @@
       (4 &amp; 5 W. &amp; M., ch. 16, § 4, 1692; Kilty’s Rep. 242; Alex. Br. Stat. 579; Comp. Stat., D.C. 237, § 26; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-710.</p>
                 <p>1973 Ed., § 45-610.</p>
+                <p>1981 Ed., § 45-710.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -365,15 +417,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§534">Mar. 3, 1901, 31 Stat. 1272, ch. 854, § 534</a>; June 30, 1902, 32 Stat. 532, ch. 1329; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/89-706.html">Nov. 2, 1966, 80 Stat. 1100, Pub. L. 89-706, § 1(b)</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 576, Pub. L. 91-358, title I, § 158(c)(1)</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-711.</p>
                 <p>1973 Ed., § 45-611.</p>
+                <p>1981 Ed., § 45-711.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-813.html">42-813</a> and § <a class="internal-link" href="/dc/council/code/sections/42-814.html">42-814</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1,</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -390,13 +442,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§535">Mar. 3, 1901, 31 Stat. 1273, ch. 854, § 535</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263,§ 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-712.</p>
                 <p>1973 Ed., § 45-612.</p>
+                <p>1981 Ed., § 45-712.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -413,13 +465,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§536">Mar. 3, 1901, 31 Stat. 1273, ch. 854, § 536</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263,§ 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-713.</p>
                 <p>1973 Ed., § 45-613.</p>
+                <p>1981 Ed., § 45-713.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -437,15 +489,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§538">Mar. 3, 1901, 31 Stat. 1274, ch. 854, § 538</a>; June 30, 1902, 32 Stat. 532, ch. 1329; <a class="internal-link" href="/us/congress/laws/public/89-706.html">Nov. 2, 1966, 80 Stat. 1100, Pub. L. 89-706, § 1(d)</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-714.</p>
                 <p>1973 Ed., § 45-614.</p>
+                <p>1981 Ed., § 45-714.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-803.html">42-803</a>, § <a class="internal-link" href="/dc/council/code/sections/42-811.html">42-811</a>, § <a class="internal-link" href="/dc/council/code/sections/42-819.html">42-819</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-1349.html">47-1349</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -473,18 +525,18 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§539">Mar. 3, 1901, 31 Stat. 1274, ch. 854, § 539</a>; June 30, 1902, 32 Stat. 532, ch. 1329; <a class="internal-link" href="/us/congress/laws/public/90-566.html">Oct. 12, 1968, 82 Stat. 1002, Pub. L. 90-566, § 1</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>; <a class="internal-link" href="/dc/council/laws/18-314.html">Mar. 12, 2011, D.C. Law 18-314, § 2(a), 57 DCR 12404</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-715.</p>
                 <p>1973 Ed., § 45-615.</p>
+                <p>1981 Ed., § 45-715.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-815.01.html">42-815.01</a> and § <a class="internal-link" href="/dc/council/code/sections/42-815.02.html">42-815.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-314.html">D.C. Law 18-314</a> rewrote subsec. (b); and added subsecs. (c) and (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
-                <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Saving D.C. Homes from Foreclosure Emergency Amendment Act of 2010 (D.C. Act 18-599, November 17, 2010,  57 DCR 11026).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(a) of Saving D.C. Homes from Foreclosure Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-8, February 11, 2011,  58 DCR 1418).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Saving D.C. Homes from Foreclosure Emergency Amendment Act of 2010 (D.C. Act 18-599, November 17, 2010,  57 DCR 11026).</p>
+                <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
                 <h4>Editor's Notes</h4>
@@ -517,23 +569,23 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-815.02.html">42-815.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-314.html">D.C. Law 18-314</a> rewrote subsec. (a), which had read as follows: “(a) For the purposes of this act, the term ‘residential mortgage’ means a loan used to acquire or refinance property which is a single family dwelling, including a condominium or cooperative unit, which is the principal place of abode of the debtor or the debtor and his immediate family.”</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-40.html">D.C. Law 20-40</a> substituted “but shall not include debts incurred, and currently obligating solely, an entity, as defined by D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/29-101.02.html">29-101.02</a>(10)” for “at least one of which is the principal place of abode of the debtor or his immediate family” in (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-314.html">D.C. Law 18-314</a> rewrote subsec. (a), which had read as follows: “(a) For the purposes of this act, the term ‘residential mortgage’ means a loan used to acquire or refinance property which is a single family dwelling, including a condominium or cooperative unit, which is the principal place of abode of the debtor or the debtor and his immediate family.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
-                <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1,</p>
-                <p>For temporary amendment of (a), see § 2(a) of the Saving D.C. Homes from Foreclosure Enhanced Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-493, October 26, 2012,  59 DCR 12722), applicable as of September 13, 2012.</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(a) of the Saving D.C. Homes From Foreclosure Enhanced Emergency Act of 2013 (D.C. Act 20-71, May 16, 2013,  60 DCR 7240, 20 DCSTAT 1419).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(a) of the Saving D.C. Homes From Foreclosure Enhanced Congressional Review Emergency Act of 2013 (D.C. Act 20-117, July 24, 2013,  60 DCR 11112, 20 DCSTAT 1818).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(a) of the Saving D.C. Homes From Foreclosure Enhanced Emergency Act of 2013 (D.C. Act 20-71, May 16, 2013,  60 DCR 7240, 20 DCSTAT 1419).</p>
+                <p>For temporary amendment of (a), see § 2(a) of the Saving D.C. Homes from Foreclosure Enhanced Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-493, October 26, 2012,  59 DCR 12722), applicable as of September 13, 2012.</p>
+                <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1,</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
-                <p>Section 2(a) of D.C. Law 19-41, in subsec. (a), deleted “, at least one of which is the principal place of abode of the debtor or his immediate family”.</p>
-                <p>Section 4(b) of D.C. Law 19-41 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(a) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> amended (a) to read as follows:</p>
-                <p>“(a) For the purposes of this chapter, the term ‘residential mortgage’ means a loan secured by a deed of trust or mortgage, used to acquire or refinance real property which is improved by 4 or fewer single-family dwellings, including condominium or cooperative units.”</p>
-                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> provided that the act shall expire after 225 days of its having taken effect.</p>
                 <p>For temporary (225 days) amendment of this section, see § 2(a) of the Saving D.C. Homes From Foreclosure Enhanced Temporary Amendment Act of 2013 (D.C. Law 20-15, September 19, 2013,  60 DCR 9559, 20 DCSTAT 1768).</p>
+                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(a) For the purposes of this chapter, the term ‘residential mortgage’ means a loan secured by a deed of trust or mortgage, used to acquire or refinance real property which is improved by 4 or fewer single-family dwellings, including condominium or cooperative units.”</p>
+                <p>Section 2(a) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> amended (a) to read as follows:</p>
+                <p>Section 4(b) of D.C. Law 19-41 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(a) of D.C. Law 19-41, in subsec. (a), deleted “, at least one of which is the principal place of abode of the debtor or his immediate family”.</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
                 <h4>References in Text</h4>
                 <p>This act, referred to in subsection (a), is the Act of March 3, 1901, Chapter 854.</p>
                 <h4>Editor's Notes</h4>
@@ -659,30 +711,30 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-815.html">42-815</a> and § <a class="internal-link" href="/dc/council/code/sections/42-815.04.html">42-815.04</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction in the subsection designations; and substituted “Chapter 3A of Title 2” for “§ <a class="internal-link" href="/dc/council/code/sections/2-301.01.html">2-301.01</a> et seq.” in (i).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-40.html">D.C. Law 20-40</a> rewrote this section.</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction in the subsection designations; and substituted “Chapter 3A of Title 2” for “§ <a class="internal-link" href="/dc/council/code/sections/2-301.01.html">2-301.01</a> et seq.” in (i).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(c) of Saving D.C. Homes from Foreclosure Emergency Amendment Act of 2010 (D.C. Act 18-599, November 17, 2010,  57 DCR 11026).</p>
-                <p>For temporary (90 day) addition of section, see § 2(c) of Saving D.C. Homes from Foreclosure Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-8, February 11, 2011,  58 DCR 1418).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Saving D.C. Homes from Foreclosure Emergency Amendment Act of 2011 (D.C. Act 19-147, August 9, 2011,  58 DCR 6828).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Saving D.C. Homes from Foreclosure Enhanced Emergency Amendment Act of 2012 (D.C. Act 19-378, June 15, 2012,  59 DCR 7380).</p>
-                <p>For temporary amendment of (e) through (i), and addition of (h-1) through (h-4), see § 2(b) of the Saving D.C. Homes from Foreclosure Enhanced Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-493, October 26, 2012,  59 DCR 12722), applicable as of September 13, 2012.</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Saving D.C. Homes From Foreclosure Enhanced Emergency Act of 2013 (D.C. Act 20-71, May 16, 2013,  60 DCR 7240, 20 DCSTAT 1419).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(b) of the Saving D.C. Homes From Foreclosure Enhanced Congressional Review Emergency Act of 2013 (D.C. Act 20-117, July 24, 2013,  60 DCR 11112, 20 DCSTAT 1818).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the Saving D.C. Homes From Foreclosure Enhanced Emergency Act of 2013 (D.C. Act 20-71, May 16, 2013,  60 DCR 7240, 20 DCSTAT 1419).</p>
+                <p>For temporary amendment of (e) through (i), and addition of (h-1) through (h-4), see § 2(b) of the Saving D.C. Homes from Foreclosure Enhanced Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-493, October 26, 2012,  59 DCR 12722), applicable as of September 13, 2012.</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Saving D.C. Homes from Foreclosure Enhanced Emergency Amendment Act of 2012 (D.C. Act 19-378, June 15, 2012,  59 DCR 7380).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Saving D.C. Homes from Foreclosure Emergency Amendment Act of 2011 (D.C. Act 19-147, August 9, 2011,  58 DCR 6828).</p>
+                <p>For temporary (90 day) addition of section, see § 2(c) of Saving D.C. Homes from Foreclosure Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-8, February 11, 2011,  58 DCR 1418).</p>
+                <p>For temporary (90 day) addition of section, see § 2(c) of Saving D.C. Homes from Foreclosure Emergency Amendment Act of 2010 (D.C. Act 18-599, November 17, 2010,  57 DCR 11026).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(b) of D.C. Law 19-41 designated the second subsec. (e) as subsec. (f); redesignated subsecs. (f) to (i) as subsecs. (g) to (j); repealed the newly designated subsec. (h); and added subsecs. (h-1) to (h-4) to read as follows:</p>
-                <p>“(h-1) A foreclosure sale of a property secured by a residential mortgage shall be void if a lender files a notice of intention to foreclose on a residential mortgage without a mediation certificate.</p>
-                <p>“(h-2) A borrower shall have the same rights to assert claims for a defective notice of default on residential mortgage as the law provides for a defective notice of intention to foreclose on a residential mortgage.</p>
-                <p>“(h-3) Except as provided for in subsections (h-1) and (h-2) of this section, a mediation certificate shall serve as conclusive evidence that all other provisions of the act and implementing regulations have been complied with and can be relied upon by a bona fide purchaser and a bona fide purchaser’s lender or assigns.</p>
-                <p>“(h-4) Nothing in this act shall be construed to limit a borrower’s right to assert a claim for fraud or monetary damages against the borrower’s lender.”</p>
-                <p>Section 4(b) of D.C. Law 19-41 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(b) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> redesignated the second subsection (e) as (f), redesignated (f) through (i) as (g) through (j), repealed (h), and added (h-1), (h-2), (h-3), (h-4) to read as follows:</p>
-                <p>“(h-1) A foreclosure sale of property secured by a residential mortgage shall be void if a lender files a notice of intention to foreclose on a residential mortgage without a mediation certificate.</p>
-                <p>“(h-2) A borrower shall have the same rights to assert a claim for a defective notice of default on residential mortgage as the law provides for a defective notice of intention to foreclose on a residential mortgage.</p>
-                <p>“(h-3) Except as provided in subsections (h-1) and (h-2) of this section, a mediation certificate shall serve as conclusive evidence that all other provisions of this act and implementing regulations have been complied with and can be relied upon by a bona fide purchaser and a bona fide purchaser’s lender or assigns.</p>
-                <p>“(h-4) Nothing in this act shall be construed to limit a borrower’s right to assert a claim for fraud or monetary damages against the borrower’s lender.”</p>
-                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> provided that the act shall expire after 225 days of its having taken effect.</p>
                 <p>For temporary (225 days) amendment of this section, see § 2(b) of the Saving D.C. Homes From Foreclosure Enhanced Temporary Amendment Act of 2013 (D.C. Law 20-15, September 19, 2013,  60 DCR 9559, 20 DCSTAT 1768).</p>
+                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(h-4) Nothing in this act shall be construed to limit a borrower’s right to assert a claim for fraud or monetary damages against the borrower’s lender.”</p>
+                <p>“(h-3) Except as provided in subsections (h-1) and (h-2) of this section, a mediation certificate shall serve as conclusive evidence that all other provisions of this act and implementing regulations have been complied with and can be relied upon by a bona fide purchaser and a bona fide purchaser’s lender or assigns.</p>
+                <p>“(h-2) A borrower shall have the same rights to assert a claim for a defective notice of default on residential mortgage as the law provides for a defective notice of intention to foreclose on a residential mortgage.</p>
+                <p>“(h-1) A foreclosure sale of property secured by a residential mortgage shall be void if a lender files a notice of intention to foreclose on a residential mortgage without a mediation certificate.</p>
+                <p>Section 2(b) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> redesignated the second subsection (e) as (f), redesignated (f) through (i) as (g) through (j), repealed (h), and added (h-1), (h-2), (h-3), (h-4) to read as follows:</p>
+                <p>Section 4(b) of D.C. Law 19-41 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(h-4) Nothing in this act shall be construed to limit a borrower’s right to assert a claim for fraud or monetary damages against the borrower’s lender.”</p>
+                <p>“(h-3) Except as provided for in subsections (h-1) and (h-2) of this section, a mediation certificate shall serve as conclusive evidence that all other provisions of the act and implementing regulations have been complied with and can be relied upon by a bona fide purchaser and a bona fide purchaser’s lender or assigns.</p>
+                <p>“(h-2) A borrower shall have the same rights to assert claims for a defective notice of default on residential mortgage as the law provides for a defective notice of intention to foreclose on a residential mortgage.</p>
+                <p>“(h-1) A foreclosure sale of a property secured by a residential mortgage shall be void if a lender files a notice of intention to foreclose on a residential mortgage without a mediation certificate.</p>
+                <p>Section 2(b) of D.C. Law 19-41 designated the second subsec. (e) as subsec. (f); redesignated subsecs. (f) to (i) as subsecs. (g) to (j); repealed the newly designated subsec. (h); and added subsecs. (h-1) to (h-4) to read as follows:</p>
                 <h4>References in Text</h4>
                 <p>This act, referred to in subsecs. (a)(7) and (h), is the Act of March 3, 1901, Chapter 854.</p>
                 <h4>Editor's Notes</h4>
@@ -710,23 +762,23 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-40.html">D.C. Law 20-40</a> rewrote (a) which formerly read: “(a) There is established as a nonlapsing fund the Foreclosure Mediation Fund (‘Fund’), which shall be used solely to pay the costs of the administration of the foreclosure mediation established by § <a class="internal-link" href="/dc/council/code/sections/42-815.02.html">42-815.02</a>. The Mayor shall deposit in the Fund all fees and penalties generated pursuant to the foreclosure mediation program.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2(c) of Saving D.C. Homes from Foreclosure Emergency Amendment Act of 2010 (D.C. Act 18-599, November 17, 2010,  57 DCR 11026).</p>
-                <p>For temporary (90 day) addition of section, see § 2(c) of Saving D.C. Homes from Foreclosure Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-8, February 11, 2011,  58 DCR 1418).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Saving D.C. Homes from Foreclosure Enhanced Emergency Amendment Act of 2012 (D.C. Act 19-378, June 15, 2012,  59 DCR 7380).</p>
-                <p>For temporary amendment of (a), see § 2(c) of the Saving D.C. Homes from Foreclosure Enhanced Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-493, October 26, 2012,  59 DCR 12722), applicable as of September 13, 2012.</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(c) of the Saving D.C. Homes From Foreclosure Enhanced Emergency Act of 2013 (D.C. Act 20-71, May 16, 2013,  60 DCR 7240, 20 DCSTAT 1419).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(c) of the Saving D.C. Homes From Foreclosure Enhanced Congressional Review Emergency Act of 2013 (D.C. Act 20-117, July 24, 2013,  60 DCR 11112, 20 DCSTAT 1818).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(c) of the Saving D.C. Homes From Foreclosure Enhanced Emergency Act of 2013 (D.C. Act 20-71, May 16, 2013,  60 DCR 7240, 20 DCSTAT 1419).</p>
+                <p>For temporary amendment of (a), see § 2(c) of the Saving D.C. Homes from Foreclosure Enhanced Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-493, October 26, 2012,  59 DCR 12722), applicable as of September 13, 2012.</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Saving D.C. Homes from Foreclosure Enhanced Emergency Amendment Act of 2012 (D.C. Act 19-378, June 15, 2012,  59 DCR 7380).</p>
+                <p>For temporary (90 day) addition of section, see § 2(c) of Saving D.C. Homes from Foreclosure Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-8, February 11, 2011,  58 DCR 1418).</p>
+                <p>For temporary (90 day) addition of section, see § 2(c) of Saving D.C. Homes from Foreclosure Emergency Amendment Act of 2010 (D.C. Act 18-599, November 17, 2010,  57 DCR 11026).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(c) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> amended (a) and (b) to read as follows:</p>
-                <p>“(a) There is established as a nonlapsing fund the Foreclosure Mediation Fund (“Fund”), into which shall be deposited the fees and penalties generated by the foreclosure mediation program, the District’s share of proceeds from the February 2012 consent judgments between the federal government and participating states, and any future designated settlements or funds. The February 2012 consent judgments are with Citibank, Wells Fargo, Ally Financial as successor of GMAC, Bank of America, and J.P. Morgan Chase.</p>
-                <p>“(b) The Fund shall be used for one or more of the following purposes:</p>
-                <p>“(1) Payment of mortgage-related or foreclosure-related counseling;</p>
-                <p>“(2) Mortgage-related or foreclosure-related legal assistance or advocacy;</p>
-                <p>“(3) Mortgage-related or foreclosure-related mediation;</p>
-                <p>“(4) Outreach or assistance to help current and former homeowners secure the benefits for which they are eligible under mortgage-related or foreclosure-related settlements or judgments; and</p>
-                <p>“(5) Enforcement work in the area of financial fraud or consumer protection.”</p>
-                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> provided that the act shall expire after 225 days of its having taken effect.</p>
                 <p>For temporary (225 days) amendment of this section, see § 2(c) of the Saving D.C. Homes From Foreclosure Enhanced Temporary Amendment Act of 2013 (D.C. Law 20-15, September 19, 2013,  60 DCR 9559, 20 DCSTAT 1768).</p>
+                <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(5) Enforcement work in the area of financial fraud or consumer protection.”</p>
+                <p>“(4) Outreach or assistance to help current and former homeowners secure the benefits for which they are eligible under mortgage-related or foreclosure-related settlements or judgments; and</p>
+                <p>“(3) Mortgage-related or foreclosure-related mediation;</p>
+                <p>“(2) Mortgage-related or foreclosure-related legal assistance or advocacy;</p>
+                <p>“(1) Payment of mortgage-related or foreclosure-related counseling;</p>
+                <p>“(b) The Fund shall be used for one or more of the following purposes:</p>
+                <p>“(a) There is established as a nonlapsing fund the Foreclosure Mediation Fund (“Fund”), into which shall be deposited the fees and penalties generated by the foreclosure mediation program, the District’s share of proceeds from the February 2012 consent judgments between the federal government and participating states, and any future designated settlements or funds. The February 2012 consent judgments are with Citibank, Wells Fargo, Ally Financial as successor of GMAC, Bank of America, and J.P. Morgan Chase.</p>
+                <p>Section 2(c) of <a class="internal-link" href="/dc/council/laws/19-173.html">D.C. Law 19-173</a> amended (a) and (b) to read as follows:</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-40.html">D.C. Law 20-40</a>: Section 8 of <a class="internal-link" href="/dc/council/laws/20-40.html">D.C. Law 20-40</a> provided that §§ 2 and 3 of the act shall apply as of November 7, 2011.</p>
               </section>
@@ -760,15 +812,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§95">Mar. 3, 1901, 31 Stat. 1204, ch. 854, § 95</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263,§ 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-716.</p>
                 <p>1973 Ed., § 45-616.</p>
+                <p>1981 Ed., § 45-716.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-815.04.html">42-815.04</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -785,13 +837,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§544">Mar. 3, 1901, 31 Stat. 1274, ch. 854, § 544</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263,§ 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-717.</p>
                 <p>1973 Ed., § 45-617.</p>
+                <p>1981 Ed., § 45-717.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -809,13 +861,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§545">Mar. 3, 1901, 31 Stat. 1274, ch. 854, § 545</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263,§ 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-718.</p>
                 <p>1973 Ed., § 45-618.</p>
+                <p>1981 Ed., § 45-718.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -936,15 +988,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§537">Mar. 3, 1901, 31 Stat. 1273, ch. 854, § 537</a>; June 30, 1902, 32 Stat. 532, ch. 1329; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 130, § 127; <a class="internal-link" href="/us/congress/laws/public/89-706.html">Nov. 2, 1966, 80 Stat. 1100, Pub. L. 89-706, § 1(c)</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 576, Pub. L. 91-358, title I, § 158(c)(2)</a>; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-719.</p>
                 <p>1973 Ed., § 45-619.</p>
+                <p>1981 Ed., § 45-719.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-814.html">42-814</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1,</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Protections from Predatory Lending and Mortgage Foreclosure Improvements Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-86.html">D.C. Law 14-86</a>, March 19, 2002, law notification  49 DCR 2991).</p>
               </section>
@@ -961,15 +1013,15 @@
       (4 Geo. 2, ch. 10, §§ 1, 2, 1731; Kilty’s Rep. 249; Alex. Br. Stat. 700; Comp. Stat. D.C., p. 78, § 11; <a class="internal-link" href="/dc/council/laws/13-263.html">Apr. 3, 2001, D.C. Law 13-263, § 1601, 48 DCR 991</a>; <a class="internal-link" href="/dc/council/laws/14-132.html">May 7, 2002, D.C. Law 14-132, § 602(b), 49 DCR 2551</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 58, 53 DCR 6198</a>; <a class="internal-link" href="/dc/council/laws/19-169.html">Sept. 26, 2012, D.C. Law 19-169, § 26(a), 59 DCR 5567</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-720.</p>
                 <p>1973 Ed., § 45-620.</p>
+                <p>1981 Ed., § 45-720.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in the section heading, substituted “individuals with mental disabilities” for “mentally handicapped”; substituted “persons with mental retardation or mental illness or non compos mentis” for “persons being idiot, lunatic, or non compos mentis” and substituted “without mental retardation or mental illness or non compos mentis” for “not idiot, lunatic, or non compos mentis”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “an intellectual disability” for “mental retardation” wherever it appears in the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in the section heading, substituted “individuals with mental disabilities” for “mentally handicapped”; substituted “persons with mental retardation or mental illness or non compos mentis” for “persons being idiot, lunatic, or non compos mentis” and substituted “without mental retardation or mental illness or non compos mentis” for “not idiot, lunatic, or non compos mentis”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-132.html">D.C. Law 14-132</a> revived this section as of November 6, 2001. This section had been previously repealed by <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a>, § 1601.</p>
                 <h4>Emergency Legislation</h4>
-                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <p>For temporary (90 day) revival of section, see § 403(b) of Home Loan Protection Emergency Act of 2002 (D.C. Act 14-295, March 1, 2002,  49 DCR 2534).</p>
+                <p>Section 2 of Act 14-188, the “Protections from Predatory Lending and Mortgage Foreclosure Improvements Emergency Amendment Act”, deemed approved Nov. 27, 2001, without the signature of the Mayor, provided that <a class="internal-link" href="/dc/council/laws/13-263.html">D.C. Law 13-263</a> shall not apply beginning November 6, 2001, through March 6, 2002.</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
               </section>

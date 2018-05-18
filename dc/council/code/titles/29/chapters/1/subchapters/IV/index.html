@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/29/chapters/1/subchapters/V/">Subchapter V. Foreign Entities.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29/chapters/1/subchapters/IV/">Report Error</a>
@@ -88,20 +88,48 @@
         <section class="col8 body">
           <h1>Subchapter IV. Registered Agent.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/29-104.01.html">§ 29–104.01. Definitions.</a>
-            <a href="/dc/council/code/sections/29-104.02.html">§ 29–104.02. Entities required to designate and maintain registered agent.</a>
-            <a href="/dc/council/code/sections/29-104.03.html">§ 29–104.03. Addresses in filings.</a>
-            <a href="/dc/council/code/sections/29-104.04.html">§ 29–104.04. Designation of registered agent.</a>
-            <a href="/dc/council/code/sections/29-104.05.html">§ 29–104.05. Listing of commercial registered agent.</a>
-            <a href="/dc/council/code/sections/29-104.06.html">§ 29–104.06. Termination of listing of commercial registered agent.</a>
-            <a href="/dc/council/code/sections/29-104.07.html">§ 29–104.07. Change of registered agent by entity.</a>
-            <a href="/dc/council/code/sections/29-104.08.html">§ 29–104.08. Change of name, address, type of entity, or jurisdiction of formation by noncommercial registered agent.</a>
-            <a href="/dc/council/code/sections/29-104.09.html">§ 29–104.09. Change of name, address, type of entity, or jurisdiction of formation by commercial registered agent.</a>
-            <a href="/dc/council/code/sections/29-104.10.html">§ 29–104.10. Resignation of registered agent.</a>
-            <a href="/dc/council/code/sections/29-104.11.html">§ 29–104.11. Designation of registered agent by nonregistered foreign entity or nonfiling domestic entity.</a>
-            <a href="/dc/council/code/sections/29-104.12.html">§ 29–104.12. Service of process, notice, or demand on entity.</a>
-            <a href="/dc/council/code/sections/29-104.13.html">§ 29–104.13. Duties of registered agent.</a>
-            <a href="/dc/council/code/sections/29-104.14.html">§ 29–104.14. Personal jurisdiction.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.01.html">§ 29–104.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.02.html">§ 29–104.02. Entities required to designate and maintain registered agent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.03.html">§ 29–104.03. Addresses in filings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.04.html">§ 29–104.04. Designation of registered agent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.05.html">§ 29–104.05. Listing of commercial registered agent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.06.html">§ 29–104.06. Termination of listing of commercial registered agent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.07.html">§ 29–104.07. Change of registered agent by entity.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.08.html">§ 29–104.08. Change of name, address, type of entity, or jurisdiction of formation by noncommercial registered agent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.09.html">§ 29–104.09. Change of name, address, type of entity, or jurisdiction of formation by commercial registered agent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.10.html">§ 29–104.10. Resignation of registered agent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.11.html">§ 29–104.11. Designation of registered agent by nonregistered foreign entity or nonfiling domestic entity.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.12.html">§ 29–104.12. Service of process, notice, or demand on entity.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.13.html">§ 29–104.13. Duties of registered agent.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-104.14.html">§ 29–104.14. Personal jurisdiction.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -223,8 +251,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 2(a)(19)(B) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided: “(B) Subsection (b) is amended by striking the phrase ‘and other notice and documents’ and inserting the phrase ‘, notices, and demands’ in its place.” Because this  language did not match the statute text of § <a class="internal-link" href="/dc/council/code/sections/29-104.05.html">29-104.05</a>(b), the amendment could not be implemented.</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Section 2(a)(19)(B) of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided: “(B) Subsection (b) is amended by striking the phrase ‘and other notice and documents’ and inserting the phrase ‘, notices, and demands’ in its place.” Because this  language did not match the statute text of § <a class="internal-link" href="/dc/council/code/sections/29-104.05.html">29-104.05</a>(b), the amendment could not be implemented.</p>
               </section>
             </section>
             <hr/>
@@ -411,8 +439,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> in rewrote the introductory language of (b); substituted “by” for “on behalf of” in (b)(2); substituted “designation” for “appointment” in (c); and in rewrote the first sentence in (d).</p>
                 <h4>Cross References</h4>
-                <p>Withdrawal of foreign filing entity that has converted to a foreign nonfiling entity, see § <a class="internal-link" href="/dc/council/code/sections/29-105.09.html">29-105.09</a>.</p>
                 <p>Administrative dissolution, reinstatement, see § <a class="internal-link" href="/dc/council/code/sections/29-106.03.html">29-106.03</a>.</p>
+                <p>Withdrawal of foreign filing entity that has converted to a foreign nonfiling entity, see § <a class="internal-link" href="/dc/council/code/sections/29-105.09.html">29-105.09</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
               </section>

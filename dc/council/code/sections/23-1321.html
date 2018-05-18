@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/23-1322.html">§ 23–1322. Detention prior to trial.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/23-1321.html">Report Error</a>
@@ -129,16 +129,16 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/23-1322.html">23-1322</a>, § <a class="internal-link" href="/dc/council/code/sections/23-1323.html">23-1323</a>, § <a class="internal-link" href="/dc/council/code/sections/23-1324.html">23-1324</a>, § <a class="internal-link" href="/dc/council/code/sections/23-1325.html">23-1325</a>, § <a class="internal-link" href="/dc/council/code/sections/23-1326.html">23-1326</a>, § <a class="internal-link" href="/dc/council/code/sections/23-1328.html">23-1328</a>, and § <a class="internal-link" href="/dc/council/code/sections/23-1329.html">23-1329</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-310.html">D.C. Law 13-310</a>, in subsec. (a), inserted “, murder in the second degree”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a> rewrote sub-subpar. (1)(B)(xi) of subsec. (c) which had read as follows: “(xi) Return to custody for specified hours following release for employment, schooling, or other limited purposes;”</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-126.html">D.C. Law 20-126</a> rewrote (c)(1)(B)(ix).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a> rewrote sub-subpar. (1)(B)(xi) of subsec. (c) which had read as follows: “(xi) Return to custody for specified hours following release for employment, schooling, or other limited purposes;”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-310.html">D.C. Law 13-310</a>, in subsec. (a), inserted “, murder in the second degree”.</p>
                 <h4>Cross References</h4>
                 <p>Bail and collateral security, see § <a class="internal-link" href="/dc/council/code/sections/16-704.html">16-704</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 601 of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
-                <p>For temporary (90 day) amendment of section, see § 2102 of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
-                <p>For temporary (90 day) amendment of section, see § 2102 of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
                 <p>For temporary (90 day) amendment of section, see § 2102 of Fiscal Year 2003 Budget Support Amendment Second Congressional Review Emergency Act of 2003 (D.C. Act 15-103, June 20, 2003,  50 DCR 5499).</p>
+                <p>For temporary (90 day) amendment of section, see § 2102 of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
+                <p>For temporary (90 day) amendment of section, see § 2102 of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
+                <p>For temporary amendment of section, see § 601 of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 501 of <a class="internal-link" href="/dc/council/laws/20-126.html">D.C. Law 20-126</a> provided that the Mayor, pursuant to subchapter I of Chapter 5 of Title 2 [§ <a class="internal-link" href="/dc/council/code/sections/2-501.html">2-501</a> et seq.], may issue rules to implement the provisions of the act.</p>
               </section>

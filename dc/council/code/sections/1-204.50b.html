@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -65,19 +77,7 @@
           <p>
             <a href="/dc/council/code/sections/1-204.51.html">§ 1–204.51. Special rules regarding certain contracts.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-204.50b.html">Report Error</a>
@@ -119,13 +119,13 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-130.2.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) approval of financial management policy, see § 2 of FY 2001 Comprehensive Financial Management Policy Approval Emergency Act of 2002 (D.C. Act 14-342, April 26, 2002,  49 DCR 4293).</p>
                 <p>For temporary (90 day) amendment of section, see § 1802 of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
+                <p>For temporary (90 day) approval of financial management policy, see § 2 of FY 2001 Comprehensive Financial Management Policy Approval Emergency Act of 2002 (D.C. Act 14-342, April 26, 2002,  49 DCR 4293).</p>
                 <h4>Short Title</h4>
                 <p>Short title of title XVIII of Law 14-190: Section 1801 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided that title XVIII of the act may be cited as the FY 2002 Comprehensive Financial Management Policy Approval Act of 2002.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 154 (c) of Public Law 106-522 provided: “This section and the amendments made by this section shall take effect on October 1, 2000.”</p>
                 <p>Section 1802 of D.C. Law 14-190 provided: “Pursuant to section 450B of the District of Columbia Home Rule Act, approved November 22, 2000 (114 Stat. 2475; D.C. Official Code § 1-204.50b), the Council hereby approves the FY 2002 Comprehensive Financial Management Policy approved by the Mayor and transmitted to the Council on March 18, 2002.”</p>
+                <p>Section 154 (c) of Public Law 106-522 provided: “This section and the amendments made by this section shall take effect on October 1, 2000.”</p>
               </section>
             </section>
           </section>

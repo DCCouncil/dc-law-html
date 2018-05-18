@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-624.html">§ 28:9-624. Waiver.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-623.html">Report Error</a>
@@ -109,10 +109,10 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:9-602.html">28:9-602</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-614.html">28:9-614</a>, and § <a class="internal-link" href="/dc/council/code/sections/28:9-624.html">28:9-624</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. Former  Section 9-506.</p>
-                <p>2. Redemption Right. Under this section, as under former  Section 9-506, the debtor or another secured party may redeem collateral as long as the secured party has not collected ( Section 9-607), disposed of or contracted for the disposition of ( Section 9-610), or accepted ( Section 9-620) the collateral. Although this section generally follows former  Section 9-506, it extends the right of redemption to holders of nonconsensual liens. To redeem the collateral a person must tender fulfillment of all obligations secured, plus certain expenses. If the entire balance of a secured obligation has been accelerated, it would be necessary to tender the entire balance. A tender of fulfillment obviously means more than a new promise to perform an existing promise. It requires payment in full of all monetary obligations then due and performance in full of all other obligations then matured. If unmatured secured obligations remain, the security interest continues to secure them (i.e., as if there had been no default).</p>
-                <p>3. Redemption of Remaining Collateral Following Partial Enforcement. Under  Section 9-610 a secured party may make successive dispositions of portions of its collateral. These dispositions would not affect the debtor’s, another secured party’s, or a lienholder’s right to redeem the remaining collateral.</p>
                 <p>4. Effect of “Repledging.”  Section 9-207 generally permits a secured party having possession or control of collateral to create a security interest in the collateral. As explained in the Comments to that section, the debtor’s right (as opposed to its practical ability) to redeem collateral is not affected by, and does not affect, the priority of a security interest created by the debtor’s secured party.</p>
+                <p>3. Redemption of Remaining Collateral Following Partial Enforcement. Under  Section 9-610 a secured party may make successive dispositions of portions of its collateral. These dispositions would not affect the debtor’s, another secured party’s, or a lienholder’s right to redeem the remaining collateral.</p>
+                <p>2. Redemption Right. Under this section, as under former  Section 9-506, the debtor or another secured party may redeem collateral as long as the secured party has not collected ( Section 9-607), disposed of or contracted for the disposition of ( Section 9-610), or accepted ( Section 9-620) the collateral. Although this section generally follows former  Section 9-506, it extends the right of redemption to holders of nonconsensual liens. To redeem the collateral a person must tender fulfillment of all obligations secured, plus certain expenses. If the entire balance of a secured obligation has been accelerated, it would be necessary to tender the entire balance. A tender of fulfillment obviously means more than a new promise to perform an existing promise. It requires payment in full of all monetary obligations then due and performance in full of all other obligations then matured. If unmatured secured obligations remain, the security interest continues to secure them (i.e., as if there had been no default).</p>
+                <p>1. Source. Former  Section 9-506.</p>
               </section>
             </section>
           </section>

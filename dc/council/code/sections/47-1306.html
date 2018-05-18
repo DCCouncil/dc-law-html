@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1307.html">§ 47–1307. Real property tax assignment; sale and transfers — Report to be filed with Recorder of Deeds; disposition of surplus; redemption.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1306.html">Report Error</a>
@@ -101,13 +101,13 @@
       (Feb. 28, 1898, 30 Stat. 250, ch. 32, § 4; July 1, 1902, 32 Stat. 635, ch. 1358, § 1(4); <a class="internal-link" href="/dc/council/laws/6-135.html">Aug. 9, 1986, D.C. Law 6-135, § 14(b), 33 DCR 3771</a>; <a class="internal-link" href="/dc/council/laws/8-31.html">Sept. 20, 1989, D.C. Law 8-31, § 5(b), 36 DCR 4750</a>; <a class="internal-link" href="/dc/council/laws/8-136.html">June 13, 1990, D.C. Law 8-136, § 9(a)(2), 37 DCR 2620</a>; <a class="internal-link" href="/dc/council/laws/11-52.html">Sept. 26, 1995, D.C. Law 11-52, § 109(c), 42 DCR 3684</a>; <a class="internal-link" href="/dc/council/laws/11-153.html">Sept. 9, 1996, D.C. Law 11-153, § 3(c), 43 DCR 4380</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-1306.</p>
                 <p>1973 Ed., § 47-1005.</p>
+                <p>1981 Ed., § 47-1306.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-1205.html">47-1205</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Application of §§ 104(c), 109(b), (c) and (d), 110, and 111 of Law 11-52: Section 1602 of <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a> provided that the provisions of §§ 104(c), 109(b), (c), and (d), 110, and 111 of that act shall apply to the real property tax sale conducted in July 1995 and for each sale conducted thereafter.</p>
                 <p>Office of Collector of Taxes abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/47-401.html">47-401</a>.</p>
+                <p>Application of §§ 104(c), 109(b), (c) and (d), 110, and 111 of Law 11-52: Section 1602 of <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a> provided that the provisions of §§ 104(c), 109(b), (c), and (d), 110, and 111 of that act shall apply to the real property tax sale conducted in July 1995 and for each sale conducted thereafter.</p>
               </section>
             </section>
           </section>

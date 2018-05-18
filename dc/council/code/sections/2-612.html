@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/2/chapters/6/subchapters/III/">Subchapter III. Government Notices in Newspapers.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-612.html">Report Error</a>
@@ -108,17 +108,17 @@
       (<a class="internal-link" href="/dc/council/laws/2-153.html#§3">Mar. 6, 1979, D.C. Law 2-153, § 3, 25 DCR 6960</a>; <a class="internal-link" href="/dc/council/laws/16-169.html">Sept. 29, 2006, D.C. Law 16-169, § 6, 53 DCR 6223</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 123, 56 DCR 1117</a>; <a class="internal-link" href="/dc/council/laws/19-168.html">Sept. 20, 2012, D.C. Law 19-168, § 1114(b), 59 DCR 8025</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-1612.</p>
                 <p>1973 Ed., § 1-1612.</p>
+                <p>1981 Ed., § 1-1612.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-1408.html">6-1408</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-169.html">D.C. Law 16-169</a> adds par. (5A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in the punctuation in par. (5A).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> substituted “the District of Columbia Register and the District of Columbia Municipal Regulations” for “District of Columbia Statutes-at-Large, the District of Columbia Register, and the District of Columbia Municipal Regulations” in (1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in the punctuation in par. (5A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-169.html">D.C. Law 16-169</a> adds par. (5A).</p>
                 <h4>Cross References</h4>
-                <p>Editorial standards, exemptions, see § <a class="internal-link" href="/dc/council/code/sections/6-1408.html">6-1408</a>.</p>
                 <p>Public records management, see § <a class="internal-link" href="/dc/council/code/sections/2-1701.html">2-1701</a> et seq.</p>
+                <p>Editorial standards, exemptions, see § <a class="internal-link" href="/dc/council/code/sections/6-1408.html">6-1408</a>.</p>
               </section>
             </section>
           </section>

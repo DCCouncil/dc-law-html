@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/8-1778.22.html">§ 8–1778.22. Bond authorization.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-1778.21.html">Report Error</a>
@@ -112,13 +112,13 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see §§ 102, 201 of Energy Efficiency Emergency Act of 2009 (D.C. Act 18-324, March 1, 2010, 57</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 102 of D.C. Law 18-156 added a section to read as follows:</p>
-                <p>“Sec. 102. Creation of the Special Energy Assessment Fund.</p>
-                <p>“(a)(1) There is established as a nonlapsing fund the Special Energy Assessment Fund. The Chief Financial Officer shall establish additional accounts in the Special Energy Assessment Fund, consisting of a Special Energy Assessment Bond Debt Service Account for each series of bonds and a single Special Energy Assessment Program Administrative Account. The Chief Financial Officer shall pay, or direct the payment of, all receipts of the principal and interest portion of each Special Assessment into the Special Energy Assessment Bond Debt Service Account applicable to the series of bonds secured by the payment of that Special Assessment, and the Chief Financial Officer shall pay, or direct the payment of, the receipt of the administrative costs portion of each Special Assessment into the Special Energy Assessment Program Administrative Account. The Mayor shall pledge and create a security interest in the Special Assessment revenues and all other funds deposited in each Special Energy Assessment Bonds Debt Service Account to pay the Debt Service on the applicable series of bonds without further action by the Council as permitted by section 490(f) of the Home Rule Act. The Chief Financial Officer shall pay from the Special Energy Assessment Program Administrative Account the annual costs of administering the collection and maintenance of the Special Assessment and the annual costs of administering the energy efficiency loan program authorized by Title II. Except for the Special Assessment revenues and any other amounts specifically authorized by the Council, all Debt Service and administrative costs shall be paid only from receipts from the Special Assessments and no other District funds shall be deposited in any fund or account created by this act or used for the purposes of such fund or account.</p>
-                <p>“(2) Except as provided by subsection (c) of this section, all funds deposited into the Special Energy Assessment Fund, and any interest earned on those funds, shall not revert to the unrestricted fund balance of the General Fund of the District of Columbia at the end of a fiscal year, or at any other time, but shall be continually available for the uses and purposes set forth in this section without regard to fiscal year limitation, subject to authorization by Congress.</p>
-                <p>“(b) Receipt of the principal and interest portion of the Special Assessment and all amounts deposited in each Special Energy Assessment Bond Debt Service Account, plus all investments or earnings on those amounts, shall be irrevocably dedicated and pledged to the payment of the principal of, and interest on, the applicable bonds as provided in this act. Any escrow or other agreement entered into by the District providing for holding funds for the benefit of the holders of the bonds shall be maintained as long as any of the bonds are outstanding under the applicable Financing Documents. The administrative costs portion of the Special Assessment deposited in the Special Energy Assessment Program Administrative Account, plus all investments or earnings or those amounts, shall be used only for the payment of the costs of administering the program authorized by Title II.</p>
-                <p>“(c) If, at the end of any fiscal year of the District following the issuance of bonds, the value of cash and investments in a Special Energy Assessment Bond Debt Service Account exceeds the amount of all payments authorized by this act and the Financing Documents applicable to that series of bonds, including required deposits into reserve funds, amounts to be set aside for additional series of bonds, and any coverage requirements associated with the sale of the bonds, during the upcoming fiscal year, the excess shall be transferred to the General Fund of the District of Columbia, unless the District elects to use the excess to redeem that series of bonds prior to maturity. Amounts deposited in the Special Energy Assessment Program Administrative Account shall remain in, and shall be used for the purposes of, that account.”</p>
                 <p>Section 402(b) of D.C. Law 18-156 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(c) If, at the end of any fiscal year of the District following the issuance of bonds, the value of cash and investments in a Special Energy Assessment Bond Debt Service Account exceeds the amount of all payments authorized by this act and the Financing Documents applicable to that series of bonds, including required deposits into reserve funds, amounts to be set aside for additional series of bonds, and any coverage requirements associated with the sale of the bonds, during the upcoming fiscal year, the excess shall be transferred to the General Fund of the District of Columbia, unless the District elects to use the excess to redeem that series of bonds prior to maturity. Amounts deposited in the Special Energy Assessment Program Administrative Account shall remain in, and shall be used for the purposes of, that account.”</p>
+                <p>“(b) Receipt of the principal and interest portion of the Special Assessment and all amounts deposited in each Special Energy Assessment Bond Debt Service Account, plus all investments or earnings on those amounts, shall be irrevocably dedicated and pledged to the payment of the principal of, and interest on, the applicable bonds as provided in this act. Any escrow or other agreement entered into by the District providing for holding funds for the benefit of the holders of the bonds shall be maintained as long as any of the bonds are outstanding under the applicable Financing Documents. The administrative costs portion of the Special Assessment deposited in the Special Energy Assessment Program Administrative Account, plus all investments or earnings or those amounts, shall be used only for the payment of the costs of administering the program authorized by Title II.</p>
+                <p>“(2) Except as provided by subsection (c) of this section, all funds deposited into the Special Energy Assessment Fund, and any interest earned on those funds, shall not revert to the unrestricted fund balance of the General Fund of the District of Columbia at the end of a fiscal year, or at any other time, but shall be continually available for the uses and purposes set forth in this section without regard to fiscal year limitation, subject to authorization by Congress.</p>
+                <p>“(a)(1) There is established as a nonlapsing fund the Special Energy Assessment Fund. The Chief Financial Officer shall establish additional accounts in the Special Energy Assessment Fund, consisting of a Special Energy Assessment Bond Debt Service Account for each series of bonds and a single Special Energy Assessment Program Administrative Account. The Chief Financial Officer shall pay, or direct the payment of, all receipts of the principal and interest portion of each Special Assessment into the Special Energy Assessment Bond Debt Service Account applicable to the series of bonds secured by the payment of that Special Assessment, and the Chief Financial Officer shall pay, or direct the payment of, the receipt of the administrative costs portion of each Special Assessment into the Special Energy Assessment Program Administrative Account. The Mayor shall pledge and create a security interest in the Special Assessment revenues and all other funds deposited in each Special Energy Assessment Bonds Debt Service Account to pay the Debt Service on the applicable series of bonds without further action by the Council as permitted by section 490(f) of the Home Rule Act. The Chief Financial Officer shall pay from the Special Energy Assessment Program Administrative Account the annual costs of administering the collection and maintenance of the Special Assessment and the annual costs of administering the energy efficiency loan program authorized by Title II. Except for the Special Assessment revenues and any other amounts specifically authorized by the Council, all Debt Service and administrative costs shall be paid only from receipts from the Special Assessments and no other District funds shall be deposited in any fund or account created by this act or used for the purposes of such fund or account.</p>
+                <p>“Sec. 102. Creation of the Special Energy Assessment Fund.</p>
+                <p>Section 102 of D.C. Law 18-156 added a section to read as follows:</p>
               </section>
             </section>
           </section>

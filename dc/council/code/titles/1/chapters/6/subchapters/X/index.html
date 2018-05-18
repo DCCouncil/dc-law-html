@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/6/subchapters/X-A/">Subchapter X-A. Executive Service.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/6/subchapters/X/">Report Error</a>
@@ -88,8 +88,12 @@
         <section class="col8 body">
           <h1>Subchapter X. Executive Service.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-610.01.html">§ 1–610.01. Creation of Executive Service. [Repealed]</a>
-            <a href="/dc/council/code/sections/1-610.02.html">§ 1–610.02. Incumbents. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-610.01.html">§ 1–610.01. Creation of Executive Service. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-610.02.html">§ 1–610.02. Incumbents. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -104,8 +108,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1001">Mar. 3, 1979, D.C. Law 2-139, § 1001, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/7-203.html">Mar. 16, 1989, D.C. Law 7-203, § 2(d), 36 DCR 450</a>; <a class="internal-link" href="/dc/council/laws/11-259.html">Apr. 12, 1997, D.C. Law 11-259, § 304(b), 44 DCR 1423</a>; <a class="internal-link" href="/dc/council/laws/12-124.html">June 10, 1998, D.C. Law 12-124, § 101(l), 45 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/13-91.html">Apr. 12, 2000. D.C. Law 13-91, § 158(b), 47 DCR 520</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-611.1.</p>
                 <p>1973 Ed., § 1-340.1.</p>
+                <p>1981 Ed., § 1-611.1.</p>
                 <h4>Cross References</h4>
                 <p>Procurement, criteria for Council review of multiyear contracts and contracts in excess of $1 million, see § <a class="internal-link" href="/dc/council/code/sections/2-301.05a.html">2-301.05a</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -124,8 +128,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1002">Mar. 3, 1979, D.C. Law 2-139, § 1002, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/11-259.html">Apr. 12, 1997, D.C. Law 11-259, § 304, 44 DCR 1423</a>; <a class="internal-link" href="/dc/council/laws/13-91.html">Apr. 12, 2000. D.C. Law 13-91, § 158(b), 47 DCR 520</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-611.2.</p>
                 <p>1973 Ed., § 1-340.2.</p>
+                <p>1981 Ed., § 1-611.2.</p>
               </section>
             </section>
             <hr/>

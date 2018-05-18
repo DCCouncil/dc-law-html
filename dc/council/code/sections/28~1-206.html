@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/28/articles/1/parts/III/">Part III. Territorial Applicability and General Rules.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:1-206.html">Report Error</a>
@@ -105,9 +105,9 @@
                 <h4>Editor's Notes</h4>
                 <p>The 2013 revision of this article deleted former § <a class="internal-link" href="/dc/council/code/sections/28:1-206.html">28:1-206</a>. Former § <a class="internal-link" href="/dc/council/code/sections/28:1-206.html">28:1-206</a> concerned a statute of frauds for kinds of personal property not otherwise covered, was derived from Dec. 30, 1963, 77 Stat. 636, Pub. L. 88-243, § 1; Apr. 9, 1997, <a class="internal-link" href="/dc/council/laws/11-240.html">D.C. Law 11-240</a>, § 3(c),  44 DCR 1087. The other articles of the Uniform Commercial Code make individual determinations as to requirements for memorializing transactions within their scope, so that the primary effect of former  Section 1-206 was to impose a writing requirement on sales transactions not otherwise governed by the UCC. Per the official commentary appearing under § <a class="internal-link" href="/dc/council/code/sections/28:1-206.html">28:1-206</a>: “Deletion of former  Section 1-206 did not constitute a recommendation as to whether such sales transactions should be covered by a Statute of Frauds; rather, it reflected determination that there was no need for uniform commercial law to resolve that issue.”</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Source:</strong> Former  Section 1-201(31).</p>
-                <p><strong>Changes from former law:</strong> None, other than stylistic changes.</p>
                 <p>1. Several sections of the Uniform Commercial Code state that there is a “presumption” as to a certain fact, or that the fact is “presumed.” This section, derived from the definition appearing in former  Section 1-201(31), indicates the effect of those provisions on the proof process.</p>
+                <p><strong>Changes from former law:</strong> None, other than stylistic changes.</p>
+                <p><strong>Source:</strong> Former  Section 1-201(31).</p>
               </section>
             </section>
           </section>

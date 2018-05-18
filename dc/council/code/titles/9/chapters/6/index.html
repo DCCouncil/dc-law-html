@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/9/chapters/6A/">Chapter 6A. Block Parties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/9/chapters/6/">Report Error</a>
@@ -87,14 +87,30 @@
         <section class="col8 body">
           <h1>Chapter 6. Removal of Snow and Ice From Streets and Sidewalks.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/9-601.html">§ 9–601. Removal from sidewalks by owner of abutting property.</a>
-            <a href="/dc/council/code/sections/9-602.html">§ 9–602. Removal from sidewalks adjacent to public property.</a>
-            <a href="/dc/council/code/sections/9-602.01.html">§ 9–602.01. Mayor's authority to enter into agreements with certain entities for removal of snow and ice.</a>
-            <a href="/dc/council/code/sections/9-603.html">§ 9–603. Removal from sidewalks adjacent to federal buildings.</a>
-            <a href="/dc/council/code/sections/9-604.html">§ 9–604. Temporary use of sand and ashes. [Repealed]</a>
-            <a href="/dc/council/code/sections/9-605.html">§ 9–605. Failure of owner or occupant to remove — Removal by Mayor. [Repealed]</a>
-            <a href="/dc/council/code/sections/9-606.html">§ 9–606. Failure of owner or occupant to remove — Suit to recover cost.</a>
-            <a href="/dc/council/code/sections/9-607.html">§ 9–607. Rules.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-601.html">§ 9–601. Removal from sidewalks by owner of abutting property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-602.html">§ 9–602. Removal from sidewalks adjacent to public property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-602.01.html">§ 9–602.01. Mayor's authority to enter into agreements with certain entities for removal of snow and ice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-603.html">§ 9–603. Removal from sidewalks adjacent to federal buildings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-604.html">§ 9–604. Temporary use of sand and ashes. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-605.html">§ 9–605. Failure of owner or occupant to remove — Removal by Mayor. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-606.html">§ 9–606. Failure of owner or occupant to remove — Suit to recover cost.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/9-607.html">§ 9–607. Rules.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -110,8 +126,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/67-2-ch318.html#§1">Sept. 16, 1922, 42 Stat. 845, ch. 318, § 1</a>; <a class="internal-link" href="/dc/council/laws/20-211.html">Mar. 11, 2015, D.C. Law 20-211, § 2(a), 61 DCR 13074</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-901.</p>
                 <p>1973 Ed., § 7-801.</p>
+                <p>1981 Ed., § 7-901.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-211.html">D.C. Law 20-211</a> rewrote the section.</p>
               </section>
@@ -128,8 +144,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/67-2-ch318.html#§2">Sept. 16, 1922, 42 Stat. 845, ch. 318, § 2</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-902.</p>
                 <p>1973 Ed., § 7-802.</p>
+                <p>1981 Ed., § 7-902.</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 14 of Pub. L. 93-140, § 14, 87 Stat. 507, effective Oct. 26, 1973, provided that, notwithstanding any other provision of law, appropriations for the Department of Transportation and the Department of Environmental Services of the government of the District of Columbia shall be available for purposes of snow and ice removal when so ordered by the Mayor of the District of Columbia. Section 14 of Pub. L. 93-140, § 14 was codified as § 9-607 in the 2001 Ed., as § 7-907 in the 1981 Ed.,  and as § 7-807 in the 1973 Ed. The Department of Transportation was substituted for Department of Highways and Traffic, near the beginning of this note, pursuant to Reorganization Plan No. 2 of 1975, dated July 24, 1975. The functions of the Department of Transportation were transferred to the Department of Public Works by Reorganization Plan No. 4 of 1983, effective March 1, 1984; the functions of the Department of Transportation were transferred to the Department of Public Works by Reorganization Plan No. 4 of 1983, effective March 1, 1984. This note originated at a time when local government powers were delegated to the District of Columbia Council and to a Commissioner of the District of Columbia; later abolished, these branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, appropriate changes in terminology were made in this note.</p>
                 <h4>Change in Government</h4>
@@ -161,8 +177,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/67-2-ch318.html#§3">Sept. 16, 1922, 42 Stat. 845, ch. 318, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-903.</p>
                 <p>1973 Ed., § 7-803.</p>
+                <p>1981 Ed., § 7-903.</p>
               </section>
             </section>
             <hr/>
@@ -177,8 +193,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/67-2-ch318.html#§4">Sept. 16, 1922, 42 Stat. 845, ch. 318, § 4</a>; <a class="internal-link" href="/dc/council/laws/20-211.html">Mar. 11, 2015, D.C. Law 20-211, § 2(b), 61 DCR 13074</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-904.</p>
                 <p>1973 Ed., § 7-804.</p>
+                <p>1981 Ed., § 7-904.</p>
               </section>
             </section>
             <hr/>
@@ -193,8 +209,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/67-2-ch318.html#§5">Sept. 16, 1922, 42 Stat. 846, ch. 318, § 5</a>; <a class="internal-link" href="/dc/council/laws/20-211.html">Mar. 11, 2015, D.C. Law 20-211, § 2(c), 61 DCR 13074</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-905.</p>
                 <p>1973 Ed., § 7-805.</p>
+                <p>1981 Ed., § 7-905.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -220,8 +236,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/67-2-ch318.html#§6">Sept. 16, 1922, 42 Stat. 846, ch. 318, § 6</a>; <a class="internal-link" href="/dc/council/laws/20-211.html">Mar. 11, 2015, D.C. Law 20-211, § 2(d), 61 DCR 13074</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 7-906.</p>
                 <p>1973 Ed., § 7-806.</p>
+                <p>1981 Ed., § 7-906.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-211.html">D.C. Law 20-211</a> rewrote the section.</p>
               </section>

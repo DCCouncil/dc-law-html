@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/31-2403.01.html">§ 31–2403.01. Pre-litigation discovery of insurance.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-2403.html">Report Error</a>
@@ -135,13 +135,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (d), par. (2)(A), rewrote the introductory paragraph, repealed sub-subpars. (i) through (iii), and deleted “or revoked” following “has been suspended” in sub-subpar. (iv); and repealed subsec. (d), par. (4)(A). Subsec. (d), par. (2)(A), introductory paragraph and sub-subpars (i) through (iii), and subsec. (d), par. (4)(A) had read:</p>
-                <p>“(2)(A) The Director shall suspend or revoke the license, reciprocity sticker, or registration certificate issued to the owner or operator of a motor vehicle who has been convicted of a violation of this chapter, or who knowingly operates or knowingly permits the operation of an uninsured motor vehicle, or who falsely certifies to the Director that a motor vehicle is an insured motor vehicle, or who knowingly provides the Director with false or inaccurate information as requested by the Director pursuant to this chapter.</p>
-                <p>“(i) Whenever a license, reciprocity sticker, or registration certificate has been revoked or suspended under the provisions of this subsection the reasons therefor shall be set forth in the order of revocation or suspension. The order shall take effect 5 days after service or notice on the person whose license, reciprocity sticker, or registration certificate is revoked or suspended unless the person shall have filed with the Director, within the 5-day period, written application for a hearing; provided, that application to the Director for a hearing shall not operate as a stay of the order of the Director when the order has been issued revoking or suspending a reciprocity sticker or registration certificate. The hearing by the Director shall only cover the issues of whether a policy motor vehicle of insurance has been issued to the person and had been in effect on the day the order of revocation or suspension was issued and whether the person provided the Director with false or inaccurate information.</p>
-                <p>“(ii) If, following the hearing provided for in this subsection, the Director shall sustain the order of revocation or suspension, the order shall become effective immediately.</p>
-                <p>“(iii) Where the registration certificate, license, or reciprocity sticker has been revoked, no new registration certificate, license, or reciprocity sticker shall be issued to the person for 6 months after the effective date of the order of revocation; provided, that no new registration certificate or reciprocity sticker shall be issued to the person until the motor vehicle is an insured motor vehicle.”</p>
-                <p>“(4)(A) The reasonable costs incurred by the District government in administering and enforcing the requirements of this section and § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a> shall be paid from the Administration Fund.”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-186.html">D.C. Law 19-186</a> added (d)(5).</p>
+                <p>“(4)(A) The reasonable costs incurred by the District government in administering and enforcing the requirements of this section and § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a> shall be paid from the Administration Fund.”</p>
+                <p>“(iii) Where the registration certificate, license, or reciprocity sticker has been revoked, no new registration certificate, license, or reciprocity sticker shall be issued to the person for 6 months after the effective date of the order of revocation; provided, that no new registration certificate or reciprocity sticker shall be issued to the person until the motor vehicle is an insured motor vehicle.”</p>
+                <p>“(ii) If, following the hearing provided for in this subsection, the Director shall sustain the order of revocation or suspension, the order shall become effective immediately.</p>
+                <p>“(i) Whenever a license, reciprocity sticker, or registration certificate has been revoked or suspended under the provisions of this subsection the reasons therefor shall be set forth in the order of revocation or suspension. The order shall take effect 5 days after service or notice on the person whose license, reciprocity sticker, or registration certificate is revoked or suspended unless the person shall have filed with the Director, within the 5-day period, written application for a hearing; provided, that application to the Director for a hearing shall not operate as a stay of the order of the Director when the order has been issued revoking or suspending a reciprocity sticker or registration certificate. The hearing by the Director shall only cover the issues of whether a policy motor vehicle of insurance has been issued to the person and had been in effect on the day the order of revocation or suspension was issued and whether the person provided the Director with false or inaccurate information.</p>
+                <p>“(2)(A) The Director shall suspend or revoke the license, reciprocity sticker, or registration certificate issued to the owner or operator of a motor vehicle who has been convicted of a violation of this chapter, or who knowingly operates or knowingly permits the operation of an uninsured motor vehicle, or who falsely certifies to the Director that a motor vehicle is an insured motor vehicle, or who knowingly provides the Director with false or inaccurate information as requested by the Director pursuant to this chapter.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (d), par. (2)(A), rewrote the introductory paragraph, repealed sub-subpars. (i) through (iii), and deleted “or revoked” following “has been suspended” in sub-subpar. (iv); and repealed subsec. (d), par. (4)(A). Subsec. (d), par. (2)(A), introductory paragraph and sub-subpars (i) through (iii), and subsec. (d), par. (4)(A) had read:</p>
                 <h4>Cross References</h4>
                 <p>Violations, penalties, and adjudications under this chapter, see § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a>.</p>
                 <h4>Transfer of Functions</h4>

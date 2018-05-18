@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/3/chapters/9/">Chapter 9. Criminal Justice Supervisory Board.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-801.html">Report Error</a>
@@ -98,11 +98,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch159.html#§401">June 29, 1953, 67 Stat. 101, ch. 159, § 401</a>; <a class="internal-link" href="/us/congress/laws/public/88-60.html">July 8, 1963, 77 Stat. 77, Pub. L. 88-60, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(a), 157(f)</a>; <a class="internal-link" href="/dc/council/laws/19-320.html">June 19, 2013, D.C. Law 19-320, § 513, 60 DCR 3390</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1001.</p>
                 <p>1973 Ed., § 2-1901.</p>
+                <p>1981 Ed., § 2-1001.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary repeal of section, see § 514 of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) repeal of this section, see § 514 of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary repeal of section, see § 514 of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <h4>References in Text</h4>
                 <p>The Act of October 17, 1968, Pub. L. 90-578, terminated the office of United States Commissioner and established in place thereof the office of United States Magistrate, referred to in subsection (b)(6) of this section. The Act became operative in the District on June 27, 1969, when 2 United States Magistrates assumed office pursuant to appointment by order of the District Court, dated June 20, 1969.</p>
                 <h4>Change in Government</h4>

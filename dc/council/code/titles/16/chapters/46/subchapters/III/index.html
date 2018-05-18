@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/16/chapters/46/subchapters/IV/">Subchapter IV. Child Abduction Prevention.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/16/chapters/46/subchapters/III/">Report Error</a>
@@ -88,23 +88,57 @@
         <section class="col8 body">
           <h1>Subchapter III. Enforcement.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/16-4603.01.html">§ 16–4603.01. Definitions.</a>
-            <a href="/dc/council/code/sections/16-4603.02.html">§ 16–4603.02. Enforcement under Hague Convention.</a>
-            <a href="/dc/council/code/sections/16-4603.03.html">§ 16–4603.03. Duty to enforce.</a>
-            <a href="/dc/council/code/sections/16-4603.04.html">§ 16–4603.04. Temporary visitation.</a>
-            <a href="/dc/council/code/sections/16-4603.05.html">§ 16–4603.05. Registration of child-custody determination.</a>
-            <a href="/dc/council/code/sections/16-4603.06.html">§ 16–4603.06. Enforcement of registered determination.</a>
-            <a href="/dc/council/code/sections/16-4603.07.html">§ 16–4603.07. Simultaneous proceedings.</a>
-            <a href="/dc/council/code/sections/16-4603.08.html">§ 16–4603.08. Expedited enforcement of child-custody determination.</a>
-            <a href="/dc/council/code/sections/16-4603.09.html">§ 16–4603.09. Service of petition and order.</a>
-            <a href="/dc/council/code/sections/16-4603.10.html">§ 16–4603.10. Hearing and order.</a>
-            <a href="/dc/council/code/sections/16-4603.11.html">§ 16–4603.11. Warrant to take physical custody of child.</a>
-            <a href="/dc/council/code/sections/16-4603.12.html">§ 16–4603.12. Costs, fees, and expenses.</a>
-            <a href="/dc/council/code/sections/16-4603.13.html">§ 16–4603.13. Recognition and enforcement.</a>
-            <a href="/dc/council/code/sections/16-4603.14.html">§ 16–4603.14. Appeals.</a>
-            <a href="/dc/council/code/sections/16-4603.15.html">§ 16–4603.15. Role of Attorney General for the District of Columbia.</a>
-            <a href="/dc/council/code/sections/16-4603.16.html">§ 16–4603.16. Role of law enforcement.</a>
-            <a href="/dc/council/code/sections/16-4603.17.html">§ 16–4603.17. Costs and expenses.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.01.html">§ 16–4603.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.02.html">§ 16–4603.02. Enforcement under Hague Convention.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.03.html">§ 16–4603.03. Duty to enforce.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.04.html">§ 16–4603.04. Temporary visitation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.05.html">§ 16–4603.05. Registration of child-custody determination.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.06.html">§ 16–4603.06. Enforcement of registered determination.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.07.html">§ 16–4603.07. Simultaneous proceedings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.08.html">§ 16–4603.08. Expedited enforcement of child-custody determination.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.09.html">§ 16–4603.09. Service of petition and order.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.10.html">§ 16–4603.10. Hearing and order.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.11.html">§ 16–4603.11. Warrant to take physical custody of child.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.12.html">§ 16–4603.12. Costs, fees, and expenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.13.html">§ 16–4603.13. Recognition and enforcement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.14.html">§ 16–4603.14. Appeals.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.15.html">§ 16–4603.15. Role of Attorney General for the District of Columbia.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.16.html">§ 16–4603.16. Role of law enforcement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/16-4603.17.html">§ 16–4603.17. Costs and expenses.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

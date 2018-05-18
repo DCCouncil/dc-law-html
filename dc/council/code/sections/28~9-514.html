@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-515.html">§ 28:9-515. Duration and effectiveness of financing statement; effect of lapsed financing statement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-514.html">Report Error</a>
@@ -107,10 +107,10 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:9-511.html">28:9-511</a>, § <a class="internal-link" href="/dc/council/code/sections/28:9-516.html">28:9-516</a>, and § <a class="internal-link" href="/dc/council/code/sections/28:9-519.html">28:9-519</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. Former  Section 9-405.</p>
-                <p>2. Assignments. This section provides a permissive device whereby a secured party of record may effectuate an assignment of its power to affect a financing statement. It may also be useful for a secured party who has assigned all or part of its security interest or agricultural lien and wishes to have the fact noted of record, so that inquiries concerning the transaction would be addressed to the assignee. See  Section 9-502, Comment 2. Upon the filing of an assignment, the assignee becomes the “secured party of record“ and may authorize the filing of a continuation statement, termination statement, or other amendment. Note that under  Section 9-310(c) no filing of an assignment is required as a condition of continuing the perfected status of the security interest against creditors and transferees of the original debtor. However, if an assignment is not filed, the assignor remains the secured party of record, with the power (even if not the right) to authorize the filing of effective amendments. See  Sections 9-511(c),  9-509(d).</p>
-                <p>Where a record of a mortgage is effective as a financing statement filed as a fixture filing ( Section 9-502(c)), then an assignment of record of the security interest may be made only in the manner in which an assignment of record of the mortgage may be made under local real-property law.</p>
                 <p>3. Comparison to Prior Law. Most of the changes reflected in this section are for clarification or to embrace medium-neutral drafting. As a general matter, this section preserves the opportunity given by former  Section 9-405 to assign a security interest of record in one of two different ways. Under subsection (a), a secured party may assign all of its power to affect a financing statement by naming an assignee in the initial financing statement. The secured party of record may accomplish the same result under subsection (b) by making a subsequent filing. Subsection (b) also may be used for an assignment of only some of the secured party of record’s power to affect a financing statement, e.g., the power to affect the financing statement as it relates to particular items of collateral or as it relates to an undivided interest in a security interest in all the collateral. An initial financing statement may not be used to change the secured party of record under these circumstances. However, an amendment adding the assignee as a secured party of record may be used.</p>
+                <p>Where a record of a mortgage is effective as a financing statement filed as a fixture filing ( Section 9-502(c)), then an assignment of record of the security interest may be made only in the manner in which an assignment of record of the mortgage may be made under local real-property law.</p>
+                <p>2. Assignments. This section provides a permissive device whereby a secured party of record may effectuate an assignment of its power to affect a financing statement. It may also be useful for a secured party who has assigned all or part of its security interest or agricultural lien and wishes to have the fact noted of record, so that inquiries concerning the transaction would be addressed to the assignee. See  Section 9-502, Comment 2. Upon the filing of an assignment, the assignee becomes the “secured party of record“ and may authorize the filing of a continuation statement, termination statement, or other amendment. Note that under  Section 9-310(c) no filing of an assignment is required as a condition of continuing the perfected status of the security interest against creditors and transferees of the original debtor. However, if an assignment is not filed, the assignor remains the secured party of record, with the power (even if not the right) to authorize the filing of effective amendments. See  Sections 9-511(c),  9-509(d).</p>
+                <p>1. Source. Former  Section 9-405.</p>
               </section>
             </section>
           </section>

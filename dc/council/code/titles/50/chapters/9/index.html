@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/50/chapters/9A/">Chapter 9A. Department of Transportation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/50/chapters/9/">Report Error</a>
@@ -87,12 +87,18 @@
         <section class="col8 body">
           <h1>Chapter 9. Department of Motor Vehicles.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/50/chapters/9/subchapters/I/">Subchapter I. Establishment and Organization.</a>
-            <p>§§ 50-901 - 50-906</p>
-            <a href="/dc/council/code/titles/50/chapters/9/subchapters/II/">Subchapter II. Regulations.</a>
-            <p>§§ 50-911 - 50-911</p>
-            <a href="/dc/council/code/titles/50/chapters/9/subchapters/III/">Subchapter III. Mobile Customer Service Center Program.</a>
-            <p>§§ 50-915 - 50-915</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/50/chapters/9/subchapters/I/">Subchapter I. Establishment and Organization.</a>
+            </p>
+            <p>§§ 50-901 – 50-906</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/50/chapters/9/subchapters/II/">Subchapter II. Regulations.</a>
+            </p>
+            <p>§§ 50-911 – 50-911</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/50/chapters/9/subchapters/III/">Subchapter III. Mobile Customer Service Center Program.</a>
+            </p>
+            <p>§§ 50-915 – 50-915</p>
           </section>
           <section class="content">
             <hr/>
@@ -114,22 +120,22 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-2402.html">31-2402</a> and § <a class="internal-link" href="/dc/council/code/sections/50-2301.02.html">50-2301.02</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of §§ <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a> to 50-906, see §§ 1422-1427 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), §§ 1422-1427 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669), and §§ 1422-1427 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 13-41, March 31, 1999,  46 DCR 3446).</p>
-                <p>For temporary (90-day) addition of Chapter 1A, see §§ 1421 to 1427 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1999 (D.C. Act 13-41, March 31, 1999,  46 DCR 3446).</p>
-                <p>For temporary (90 day) provisions for budget submission by the Division of Transportation, see § 1603 of Fiscal Year 2002 Budget Support Emergency Act of 2001 (D.C. Act 14-124, August 3, 2001,  48 DCR 7861).</p>
-                <p>For temporary (90 day) reclassification of positions at the Department of Motor Vehicles, see § 642 of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2002,  50 DCR 5613).</p>
                 <p>For temporary (90 day) reclassification of positions at the Department of Motor Vehicles, see § 642 of Fiscal Year 2004 Budget Support Congressional Review Emergency Act of 2003 (D.C. Act 15-149, September 22, 2003,  50 DCR 8360).</p>
+                <p>For temporary (90 day) reclassification of positions at the Department of Motor Vehicles, see § 642 of Fiscal Year 2004 Budget Support Emergency Act of 2003 (D.C. Act 15-105, June 20, 2002,  50 DCR 5613).</p>
+                <p>For temporary (90 day) provisions for budget submission by the Division of Transportation, see § 1603 of Fiscal Year 2002 Budget Support Emergency Act of 2001 (D.C. Act 14-124, August 3, 2001,  48 DCR 7861).</p>
+                <p>For temporary (90-day) addition of Chapter 1A, see §§ 1421 to 1427 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1999 (D.C. Act 13-41, March 31, 1999,  46 DCR 3446).</p>
+                <p>For temporary addition of §§ <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a> to 50-906, see §§ 1422-1427 of the Fiscal Year 1999 Budget Support Emergency Act of 1998 (D.C. Act 12-401, July 13, 1998,  45 DCR 4794), §§ 1422-1427 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 12-564, January 12, 1999,  46 DCR 669), and §§ 1422-1427 of the Fiscal Year 1999 Budget Support Congressional Review Emergency Act of 1998 (D.C. Act 13-41, March 31, 1999,  46 DCR 3446).</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle E of title VI of Law 15-39: Section 641 of <a class="internal-link" href="/dc/council/laws/15-39.html">D.C. Law 15-39</a> provided that subtitle E of title VI of the act may be cited as the Position Reclassification of Department of Motor Vehicles Staff Amendment Act of 2003.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 642 of D.C. Law. 15-39 provided: “The Mayor and Director of the Office of Personnel shall complete classification and compensation studies of the positions of motor vehicle inspectors and front-line counter employees at the Department of Motor Vehicles by November 1, 2003.”</p>
-                <p>Section 1830 of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a> provided that this chapter shall apply as of October 1, 1998.</p>
-                <p>Department of Motor Vehicles Establishment Act of 1988: Section 1821 of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a> provided that this chapter may be cited as the “Department of Motor Vehicles Establishment Act of 1998.”</p>
-                <p>Section 1703 of <a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a>, as amended by Mar. 13, 2004, <a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, § 91,  51 DCR 881, provided:</p>
-                <p>“Budget submission—Division of Transportation of the Department of Public Works.</p>
-                <p>“(a) In the budget which the Mayor is required to submit to the Council each year, the Mayor shall provide sufficient revenues or funds for the operation and administration of the Division of Transportation of the Department of Public Works. The budgeted revenues or funds shall not include any funds which have been or will be deposited in the Local Roads Construction and Maintenance Fund pursuant to section 102 of the Highway Trust Fund Establishment Act of 1996, effective April 9, 1997 (<a class="internal-link" href="/dc/council/laws/11-184.html">D.C. Law 11-184</a>; D.C. Official Code 9-111.01).</p>
-                <p>“(b) In FY 2002, $28,580,000 in local appropriations shall be used for the operation and administration expenses of the Division of Transportation of the Department of Public Works.</p>
                 <p>“(c) In FY 2002, not more than $18 million may be taken from the rights-of way fees to be used for operation and administration expenses for the Division of Transportation of the Department of Public Works with all remaining rights-of-way fees dedicated to the fund established by section 102a of Highway Trust Fund Establishment Act of 1996, passed on second reading on June 5, 2001 (Enrolled version of Bill 14-144) [D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/9-111.01a.html">9-111.01a</a>.]</p>
+                <p>“(b) In FY 2002, $28,580,000 in local appropriations shall be used for the operation and administration expenses of the Division of Transportation of the Department of Public Works.</p>
+                <p>“(a) In the budget which the Mayor is required to submit to the Council each year, the Mayor shall provide sufficient revenues or funds for the operation and administration of the Division of Transportation of the Department of Public Works. The budgeted revenues or funds shall not include any funds which have been or will be deposited in the Local Roads Construction and Maintenance Fund pursuant to section 102 of the Highway Trust Fund Establishment Act of 1996, effective April 9, 1997 (<a class="internal-link" href="/dc/council/laws/11-184.html">D.C. Law 11-184</a>; D.C. Official Code 9-111.01).</p>
+                <p>“Budget submission—Division of Transportation of the Department of Public Works.</p>
+                <p>Section 1703 of <a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a>, as amended by Mar. 13, 2004, <a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, § 91,  51 DCR 881, provided:</p>
+                <p>Department of Motor Vehicles Establishment Act of 1988: Section 1821 of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a> provided that this chapter may be cited as the “Department of Motor Vehicles Establishment Act of 1998.”</p>
+                <p>Section 1830 of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a> provided that this chapter shall apply as of October 1, 1998.</p>
+                <p>Section 642 of D.C. Law. 15-39 provided: “The Mayor and Director of the Office of Personnel shall complete classification and compensation studies of the positions of motor vehicle inspectors and front-line counter employees at the Department of Motor Vehicles by November 1, 2003.”</p>
               </section>
             </section>
             <hr/>
@@ -146,8 +152,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 40-152.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
                 <p>For temporary (90-day) addition of Chapter 1A, see notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
+                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Application of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a>: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
               </section>
@@ -178,8 +184,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a> validated a previously made technical amendment in subsec. (2).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
                 <p>For temporary (90-day) addition of Chapter 1A, see notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
+                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Application of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a>: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
               </section>
@@ -216,8 +222,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a>, deleted “and” at the end of par. (2)(E); substituted “: and” for a period at the end of par. (3); and added par. (4).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
                 <p>For temporary (90-day) addition of Chapter 1A, see notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
+                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Application of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a>: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
               </section>
@@ -239,8 +245,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a> validated a previously made technical amendment in subsec. (a).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
                 <p>For temporary (90-day) addition of Chapter 1A, see notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
+                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Application of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a>: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
               </section>
@@ -259,29 +265,29 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 40-156.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
-                <p>For temporary (90-day) addition of Chapter 1A, see notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see §  7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see §  7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see §  7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see §  7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see §  7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90-day) addition of Chapter 1A, see notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
+                <p>For temporary addition of chapter, see note to § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Application of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a>: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
-                <p>50-907. Ticket adjudication ombudsman.</p>
-                <p><strong>(a)</strong>There is established within the Department an ombudsman for ticket adjudication, who shall report to the Director.</p>
-                <p><strong>(b)</strong>The Mayor shall establish the qualifications of the ombudsman, which shall include a demonstrated ability through education or experience to analyze issues and matters of law, administration, and policy.</p>
-                <p><strong>(c)</strong>The Mayor shall establish the duties of the ombudsman, including that the ombudsman shall:</p>
-                <p><strong>(1)</strong>Receive complaints and concerns on the law, rules, policies, and procedures regarding the adjudication of moving violations, automated traffic enforcement violations, and parking, standing, stopping, and pedestrian violations;</p>
-                <p><strong>(2)</strong>Respond to complaints and concerns in a timely fashion with accurate and helpful information;</p>
-                <p><strong>(3)</strong>Determine the validity of a complaint quickly and professionally;</p>
-                <p><strong>(4)</strong>Generate options for a response, and offer a recommendation among the options;</p>
-                <p><strong>(5)</strong>Make a referral to appropriate Department staff, when appropriate;</p>
-                <p><strong>(6)</strong>Identify systemic concerns, including those raised by citizens, related to traffic adjudication;</p>
-                <p><strong>(7)</strong>Recommend policy changes, staff training, and strategies to improve traffic adjudication; and</p>
-                <p><strong>(8)</strong>Offer technical and procedural guidance; provided, that the ombudsman shall not render legal advice.</p>
-                <p><strong>(d)</strong>The Ombudsman shall have access to the records and files of the Department as necessary to carry out the ombudsman’s duties and as allowed by federal and local law.</p>
-                <p><strong>(e)</strong>The Ombudsman shall not be held personally liable or be subject to retaliatory action for the good-faith performance of duties, except that no immunity shall extend to criminal acts, or other acts that violate District or federal law.</p>
-                <p>(Mar. 26, 1999, <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a>, § 1828, as added July 23, 2014, <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 2, 61 DCR 5711.)</p>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
+                <p>(Mar. 26, 1999, <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a>, § 1828, as added July 23, 2014, <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 2, 61 DCR 5711.)</p>
+                <p><strong>(e)</strong>The Ombudsman shall not be held personally liable or be subject to retaliatory action for the good-faith performance of duties, except that no immunity shall extend to criminal acts, or other acts that violate District or federal law.</p>
+                <p><strong>(d)</strong>The Ombudsman shall have access to the records and files of the Department as necessary to carry out the ombudsman’s duties and as allowed by federal and local law.</p>
+                <p><strong>(8)</strong>Offer technical and procedural guidance; provided, that the ombudsman shall not render legal advice.</p>
+                <p><strong>(7)</strong>Recommend policy changes, staff training, and strategies to improve traffic adjudication; and</p>
+                <p><strong>(6)</strong>Identify systemic concerns, including those raised by citizens, related to traffic adjudication;</p>
+                <p><strong>(5)</strong>Make a referral to appropriate Department staff, when appropriate;</p>
+                <p><strong>(4)</strong>Generate options for a response, and offer a recommendation among the options;</p>
+                <p><strong>(3)</strong>Determine the validity of a complaint quickly and professionally;</p>
+                <p><strong>(2)</strong>Respond to complaints and concerns in a timely fashion with accurate and helpful information;</p>
+                <p><strong>(1)</strong>Receive complaints and concerns on the law, rules, policies, and procedures regarding the adjudication of moving violations, automated traffic enforcement violations, and parking, standing, stopping, and pedestrian violations;</p>
+                <p><strong>(c)</strong>The Mayor shall establish the duties of the ombudsman, including that the ombudsman shall:</p>
+                <p><strong>(b)</strong>The Mayor shall establish the qualifications of the ombudsman, which shall include a demonstrated ability through education or experience to analyze issues and matters of law, administration, and policy.</p>
+                <p><strong>(a)</strong>There is established within the Department an ombudsman for ticket adjudication, who shall report to the Director.</p>
+                <p>50-907. Ticket adjudication ombudsman.</p>
+                <p>Application of <a class="internal-link" href="/dc/council/laws/12-175.html">D.C. Law 12-175</a>: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/50-901.html">50-901</a>.</p>
               </section>
             </section>
             <hr/>
@@ -301,9 +307,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> validated a previously made technical correction.</p>
                 <h4>Resolutions</h4>
-                <p>Resolution 15-736, the “Commercial Driver’s License Rulemaking Approval Resolution of 2004”, was approved effective November 9, 2004.</p>
-                <p>Resolution 15-738, the “Special Use Identification Tag Rulemaking Approval Resolution of 2004”, was approved effective November 9, 2004.</p>
                 <p>Resolution 16-351, the “Driver License and Reciprocity Application Rulemaking Disapproval Resolution of 2005”, was approved effective November 1, 2005.</p>
+                <p>Resolution 15-738, the “Special Use Identification Tag Rulemaking Approval Resolution of 2004”, was approved effective November 9, 2004.</p>
+                <p>Resolution 15-736, the “Commercial Driver’s License Rulemaking Approval Resolution of 2004”, was approved effective November 9, 2004.</p>
               </section>
             </section>
             <hr/>

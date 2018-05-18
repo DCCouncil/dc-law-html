@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-408.html">§ 28:9-408. Restrictions on assignment of promissory notes, health-care-insurance receivables, and certain general intangibles ineffective.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-407.html">Report Error</a>
@@ -107,9 +107,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § 28:2A-303, § <a class="internal-link" href="/dc/council/code/sections/28:9-401.html">28:9-401</a>, and § <a class="internal-link" href="/dc/council/code/sections/28:9-406.html">28:9-406</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. Section 2A-303.</p>
-                <p>2. Restrictions on Assignment Generally Ineffective. Under subsection (a), as under former Section 2A-303(3), a term in a lease agreement which prohibits or restricts the creation of a security interest generally is ineffective. This reflects the general policy of  Section 9-406(d) and former  Section 9-318(4). This section has been conformed in several respects to analogous provisions in  Sections 9-406,  9-408, and  9-409, including the substitution of “ineffective” for “not enforceable” and the substitution of “assignment or transfer of, or the creation, attachment, perfection, or enforcement of a security interest” for “creation or enforcement of a security interest.”</p>
                 <p>3. Exceptions for Certain Transfers and Delegations. Subsection (b) provides exceptions to the general ineffectiveness of restrictions under subsection (a). A term that otherwise is ineffective under subsection (a)(2) is effective to the extent that a lessee transfers its right to possession and use of goods or if either party delegates material performance of the lease contract in violation of the term. However, under subsection (c), as under former Section 2A-303(3), a lessor’s creation of a security interest in its interest in a lease contract or its residual interest in the leased goods is not a material impairment under Section 2A-303(4) (former Section 2A-303(5)), absent an actual delegation of the lessor’s material performance. The terms of the lease contract determine whether the lessor, in fact, has any remaining obligations to perform. If it does, it is then necessary to determine whether there has been an actual delegation of “material performance.” See Section 2A-303, Comments 3 and 4.</p>
+                <p>2. Restrictions on Assignment Generally Ineffective. Under subsection (a), as under former Section 2A-303(3), a term in a lease agreement which prohibits or restricts the creation of a security interest generally is ineffective. This reflects the general policy of  Section 9-406(d) and former  Section 9-318(4). This section has been conformed in several respects to analogous provisions in  Sections 9-406,  9-408, and  9-409, including the substitution of “ineffective” for “not enforceable” and the substitution of “assignment or transfer of, or the creation, attachment, perfection, or enforcement of a security interest” for “creation or enforcement of a security interest.”</p>
+                <p>1. Source. Section 2A-303.</p>
               </section>
             </section>
           </section>

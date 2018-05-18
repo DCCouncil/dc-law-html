@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/47-2853.47.html">§ 47–2853.47. Permits; issuance. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-2853.46.html">Report Error</a>
@@ -102,15 +102,15 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-2853.46.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(h) of Non-Health Related Occupations and Professions Licensure Emergency Act of 2006 (D.C. Act 16-255, January 26, 2006,  53 DCR 763).</p>
-                <p>For temporary (90 day) repeal of section 3 of <a class="internal-link" href="/dc/council/laws/19-43.html">D.C. Law 19-43</a>, see § 7010 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <p>For temporary (90 day) repeal of section 3 of <a class="internal-link" href="/dc/council/laws/19-43.html">D.C. Law 19-43</a>, see § 7010 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) repeal of section 3 of <a class="internal-link" href="/dc/council/laws/19-43.html">D.C. Law 19-43</a>, see § 7010 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(h) of Non-Health Related Occupations and Professions Licensure Emergency Act of 2006 (D.C. Act 16-255, January 26, 2006,  53 DCR 763).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(h) of D.C. Law 16-101 deleted “; or by a public accountant or a firm of public accountants;”.</p>
                 <p>Section 4(b) of D.C. Law 16-101 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(h) of D.C. Law 16-101 deleted “; or by a public accountant or a firm of public accountants;”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/19-43.html">D.C. Law 19-43</a> provided: “Sec. 3. Applicability. This act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.”</p>
                 <p>Section 3 of <a class="internal-link" href="/dc/council/laws/19-43.html">D.C. Law 19-43</a> provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan. <a class="internal-link" href="/dc/council/laws/19-43.html">D.C. Law 19-43</a>, § 3, was repealed by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a>, § 7010.</p>
+                <p>Section 3 of <a class="internal-link" href="/dc/council/laws/19-43.html">D.C. Law 19-43</a> provided: “Sec. 3. Applicability. This act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan.”</p>
               </section>
             </section>
           </section>

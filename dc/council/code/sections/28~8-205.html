@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:8-206.html">§ 28:8-206. Completion or alteration of security certificate.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:8-205.html">Report Error</a>
@@ -101,21 +101,21 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 735, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/9-196.html">Mar. 16, 1993, D.C. Law 9-196, § 4, 39 DCR 9165</a>; <a class="internal-link" href="/dc/council/laws/11-240.html">Apr. 9, 1997, D.C. Law 11-240, § 2, 44 DCR 1087</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:8-205.</p>
                 <p>1973 Ed., § 28:8-205.</p>
+                <p>1981 Ed., § 28:8-205.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:8-202.html">28:8-202</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. The problem of forged or unauthorized signatures may arise where an employee of the issuer, transfer agent, or registrar has access to securities which the employee is required to prepare for issue by affixing the corporate seal or by adding a signature necessary for issue. This section is based upon the issuer’s duty to avoid the negligent entrusting of securities to such persons.</p>
-                <p>Issuers have long been held responsible for signatures placed upon securities by parties whom they have held out to the public as authorized to prepare such securities.  See Fifth Avenue Bank of New York v. The Forty-Second &amp; Grand Street Ferry Railroad Co., 137 N.Y. 231, 33 N.E. 378, 19 L.R.A. 331, 33 Am.St.Rep. 712 (1893);  Jarvis v. Manhattan Beach Co., 148 N.Y. 652, 43 N.E. 68, 31 L.R.A. 776, 51 Am.St.Rep. 727 (1896). The “apparent authority” concept of some of the case-law, however, is here extended and this section expressly rejects the technical distinction, made by courts reluctant to recognize forged signatures, between cases where forgers sign signatures they are authorized to sign under proper circumstances and those in which they sign signatures they are never authorized to sign.  Citizens’ &amp; Southern National Bank v. Trust Co. of Georgia, 50 Ga.App. 681, 179 S.E. 278 (1935). Normally the purchaser is not in a position to determine which signature a forger, entrusted with the preparation of securities, has “apparent authority” to sign. The issuer, on the other hand, can protect itself against such fraud by the careful selection and bonding of agents and employees, or by action over against transfer agents and registrars who in turn may bond their personnel.</p>
-                <p>2. The issuer cannot be held liable for the honesty of employees not entrusted, directly or indirectly, with the signing, preparation, or responsible handling of similar securities and whose possible commission of forgery it has no reason to anticipate. The result in such cases as  Hudson Trust Co. v. American Linseed Co., 232 N.Y. 350, 134 N.E. 178 (1922), and  Dollar Savings Fund &amp; Trust Co. v. Pittsburgh Plate Glass Co., 213 Pa. 307, 62 A. 916, 5 Ann.Cas. 248 (1906) is here adopted.</p>
-                <p>3. This section is not concerned with forged or unauthorized indorsements, but only with unauthorized signatures of issuers, transfer agents, etc., placed upon security certificates during the course of their issue. The protection here stated is available to all purchasers for value without notice and not merely to subsequent purchasers.</p>
-                <p><strong>Definitional Cross References</strong> “Certificated security”.  Section 8-102(a)(4).</p>
-                <p>“Issuer”.  Section 8-201.</p>
-                <p>“Notice”.  Section 1-201(25).</p>
-                <p>“Purchaser”.  Sections 1-201(33) and  8-116.</p>
-                <p>“Security certificate”.  Section 8-102(a)(14).</p>
                 <p>“Unauthorized signature”.  Section 1-201(43).</p>
+                <p>“Security certificate”.  Section 8-102(a)(14).</p>
+                <p>“Purchaser”.  Sections 1-201(33) and  8-116.</p>
+                <p>“Notice”.  Section 1-201(25).</p>
+                <p>“Issuer”.  Section 8-201.</p>
+                <p><strong>Definitional Cross References</strong> “Certificated security”.  Section 8-102(a)(4).</p>
+                <p>3. This section is not concerned with forged or unauthorized indorsements, but only with unauthorized signatures of issuers, transfer agents, etc., placed upon security certificates during the course of their issue. The protection here stated is available to all purchasers for value without notice and not merely to subsequent purchasers.</p>
+                <p>2. The issuer cannot be held liable for the honesty of employees not entrusted, directly or indirectly, with the signing, preparation, or responsible handling of similar securities and whose possible commission of forgery it has no reason to anticipate. The result in such cases as  Hudson Trust Co. v. American Linseed Co., 232 N.Y. 350, 134 N.E. 178 (1922), and  Dollar Savings Fund &amp; Trust Co. v. Pittsburgh Plate Glass Co., 213 Pa. 307, 62 A. 916, 5 Ann.Cas. 248 (1906) is here adopted.</p>
+                <p>Issuers have long been held responsible for signatures placed upon securities by parties whom they have held out to the public as authorized to prepare such securities.  See Fifth Avenue Bank of New York v. The Forty-Second &amp; Grand Street Ferry Railroad Co., 137 N.Y. 231, 33 N.E. 378, 19 L.R.A. 331, 33 Am.St.Rep. 712 (1893);  Jarvis v. Manhattan Beach Co., 148 N.Y. 652, 43 N.E. 68, 31 L.R.A. 776, 51 Am.St.Rep. 727 (1896). The “apparent authority” concept of some of the case-law, however, is here extended and this section expressly rejects the technical distinction, made by courts reluctant to recognize forged signatures, between cases where forgers sign signatures they are authorized to sign under proper circumstances and those in which they sign signatures they are never authorized to sign.  Citizens’ &amp; Southern National Bank v. Trust Co. of Georgia, 50 Ga.App. 681, 179 S.E. 278 (1935). Normally the purchaser is not in a position to determine which signature a forger, entrusted with the preparation of securities, has “apparent authority” to sign. The issuer, on the other hand, can protect itself against such fraud by the careful selection and bonding of agents and employees, or by action over against transfer agents and registrars who in turn may bond their personnel.</p>
+                <p>1. The problem of forged or unauthorized signatures may arise where an employee of the issuer, transfer agent, or registrar has access to securities which the employee is required to prepare for issue by affixing the corporate seal or by adding a signature necessary for issue. This section is based upon the issuer’s duty to avoid the negligent entrusting of securities to such persons.</p>
               </section>
             </section>
           </section>

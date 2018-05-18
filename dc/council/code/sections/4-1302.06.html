@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/4-1302.07.html">§ 4–1302.07. Expungement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/4-1302.06.html">Report Error</a>
@@ -100,15 +100,15 @@
       (<a class="internal-link" href="/dc/council/laws/2-22.html#§206">Sept. 23, 1977, D.C. Law 2-22, title II, § 206, 24 DCR 3341</a>; <a class="internal-link" href="/dc/council/laws/14-206.html">Oct. 19, 2002, D.C. Law 14-206, § 2(k), 49 DCR 7815</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2116.</p>
                 <p>1973 Ed., § 6-2116.</p>
+                <p>1981 Ed., § 6-2116.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/4-1302.07.html">4-1302.07</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-206.html">D.C. Law 14-206</a> substituted “incorrect or establish that a report is unfounded” for “incorrect”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) delay of the applicability of provisions changing the manner in which the Child and Family Services Agency will process reports of child abuse and neglect, see § 3 of Improved Child Abuse Investigations Technical Emergency Amendment Act of 2002 (D.C. Act 14-494, October 23, 2002,  49 DCR 9781).</p>
                 <p>For temporary (90 day) delay of the applicability of provisions changing the manner in which the Child and Family Services Agency will process reports of child abuse and neglect, see § 3 of Improved Child Abuse Investigations Technical Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-603, January 7, 2003,  50 DCR 687).</p>
+                <p>For temporary (90 day) delay of the applicability of provisions changing the manner in which the Child and Family Services Agency will process reports of child abuse and neglect, see § 3 of Improved Child Abuse Investigations Technical Emergency Amendment Act of 2002 (D.C. Act 14-494, October 23, 2002,  49 DCR 9781).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 3(b) of Improved Child Abuse Investigations Technical Temporary Amendment Act of 2002 (D.C. Law 14-240, March 25, 2003, law notification  50 DCR 2753).</p>
                 <h4>Editor's Notes</h4>

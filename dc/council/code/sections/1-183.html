@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/2/">Chapter 2. District of Columbia Home Rule.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-183.html">Report Error</a>
@@ -108,21 +108,21 @@
       (<a class="internal-link" href="/dc/council/laws/15-240.html#§4">Mar. 16, 2005, D.C. Law 15-240, § 4, 51 DCR 11225</a>; <a class="internal-link" href="/dc/council/laws/17-110.html">Feb. 27, 2008, D.C. Law 17-110, § 2(b), 55 DCR 223</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 1102(b), 61 DCR 9990</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-110.html">D.C. Law 17-110</a>, in subsec. (c)(5), substituted “activities, purchases, and functions” for “activities, and functions”; and, in subsec. (d) added the second and third sentences.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added (e).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-110.html">D.C. Law 17-110</a>, in subsec. (c)(5), substituted “activities, purchases, and functions” for “activities, and functions”; and, in subsec. (d) added the second and third sentences.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 4 of District of Columbia Emancipation Day Fund Emergency Act of 2002 (D.C. Act 14-263, January 30, 2002,  49 DCR 1443).</p>
-                <p>For temporary (90 day) addition, see § 4 of Emancipation Day Fund Emergency Act of 2003 (D.C. Act 15-17, February 25, 2003,  50 DCR 1948).</p>
-                <p>For temporary (90 day) addition, see § 4 of District of Columbia Emancipation Day Parade and Fund Emergency Act of 2004 (D.C. Act 15-343, January 29, 2004,  51 DCR 1827).</p>
-                <p>For temporary (90 day) use of prior budgeted reserve funds for Emancipation Day activities, see § 2 of Emancipation Day Reserve Fund Allocation Emergency Act of 2004 (D.C. Act 15-641, November 30, 2004,  52 DCR 1261).</p>
-                <p>For temporary (90 day) addition, see § 4 of District of Columbia Emancipation Day Parade and Fund Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-660, December 29, 2004,  52 DCR 797).</p>
-                <p>For temporary (90 days) amendment of this section, see § 1102(b) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 1102(b) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 1102(b) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 1102(b) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 1102(b) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) addition, see § 4 of District of Columbia Emancipation Day Parade and Fund Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-660, December 29, 2004,  52 DCR 797).</p>
+                <p>For temporary (90 day) use of prior budgeted reserve funds for Emancipation Day activities, see § 2 of Emancipation Day Reserve Fund Allocation Emergency Act of 2004 (D.C. Act 15-641, November 30, 2004,  52 DCR 1261).</p>
+                <p>For temporary (90 day) addition, see § 4 of District of Columbia Emancipation Day Parade and Fund Emergency Act of 2004 (D.C. Act 15-343, January 29, 2004,  51 DCR 1827).</p>
+                <p>For temporary (90 day) addition, see § 4 of Emancipation Day Fund Emergency Act of 2003 (D.C. Act 15-17, February 25, 2003,  50 DCR 1948).</p>
+                <p>For temporary (90 day) addition, see § 4 of District of Columbia Emancipation Day Fund Emergency Act of 2002 (D.C. Act 14-263, January 30, 2002,  49 DCR 1443).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) addition, see § 4 of District of Columbia Emancipation Day Fund Temporary Act of 2002 (D.C. Law 14-125, May 2, 2002, law notification  49 DCR 4400).</p>
-                <p>For temporary (225 day) addition, see § 4 of Emancipation Day Fund Temporary Act of 2003 (D.C. Law 15-9, June 5, 2003, law notification  50 DCR 4873).</p>
                 <p>For temporary (225 day) addition, see § 4 of District of Columbia Emancipation Day Parade and Fund Temporary Act of 2004 (D.C. Law 15-138, April 22, 2004, law notification  51 DCR 4922).</p>
+                <p>For temporary (225 day) addition, see § 4 of Emancipation Day Fund Temporary Act of 2003 (D.C. Law 15-9, June 5, 2003, law notification  50 DCR 4873).</p>
+                <p>For temporary (225 day) addition, see § 4 of District of Columbia Emancipation Day Fund Temporary Act of 2002 (D.C. Law 14-125, May 2, 2002, law notification  49 DCR 4400).</p>
               </section>
             </section>
           </section>

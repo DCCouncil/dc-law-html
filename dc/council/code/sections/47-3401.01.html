@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-3401.02.html">§ 47–3401.02. Short-term advances for seasonal cash-flow management.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-3401.01.html">Report Error</a>
@@ -136,19 +136,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-301.115a.html">1-301.115a</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>Section 156 (d) of Laws 13-91 validated a previously made technical amendment in subsecs. (4)(b) and (c)(2)(B).</p>
                 <p>Section 160 (b) of <a class="internal-link" href="/dc/council/laws/13-91.html">D.C. Law 13-91</a> made a technical correction.</p>
+                <p>Section 156 (d) of Laws 13-91 validated a previously made technical amendment in subsecs. (4)(b) and (c)(2)(B).</p>
                 <h4>Cross References</h4>
-                <p>Budget and financial management, existing provisions and procedure and practice preserved, borrowing and spending limitations, see § <a class="internal-link" href="/dc/council/code/sections/1-206.03.html">1-206.03</a>.</p>
-                <p>Budget and financial management, suspension of activities upon payment of Authority obligations, see § <a class="internal-link" href="/dc/council/code/sections/47-391.07.html">47-391.07</a>.</p>
-                <p>District government, financial plan and budget, control periods described, initiation under certain sections, see § <a class="internal-link" href="/dc/council/code/sections/47-392.09.html">47-392.09</a>.</p>
-                <p>District government, financial plan and budget, deposit of annual federal contribution with Authority, exception, see § <a class="internal-link" href="/dc/council/code/sections/47-392.05.html">47-392.05</a>.</p>
-                <p>District government, financial plan and budget, restrictions on borrowing during control year, application to certain sections, see § <a class="internal-link" href="/dc/council/code/sections/47-392.04.html">47-392.04</a>.</p>
-                <p>District government, financial plan and budget, special rules for Fiscal Year 1996, prohibition against allocation of advances if certification in effect, see § <a class="internal-link" href="/dc/council/code/sections/47-392.08.html">47-392.08</a>.</p>
                 <p>Procurement, office of the Inspector General, powers, duty to provide certification, see § <a class="internal-link" href="/dc/council/code/sections/2-302.08.html">2-302.08</a>.</p>
+                <p>District government, financial plan and budget, special rules for Fiscal Year 1996, prohibition against allocation of advances if certification in effect, see § <a class="internal-link" href="/dc/council/code/sections/47-392.08.html">47-392.08</a>.</p>
+                <p>District government, financial plan and budget, restrictions on borrowing during control year, application to certain sections, see § <a class="internal-link" href="/dc/council/code/sections/47-392.04.html">47-392.04</a>.</p>
+                <p>District government, financial plan and budget, deposit of annual federal contribution with Authority, exception, see § <a class="internal-link" href="/dc/council/code/sections/47-392.05.html">47-392.05</a>.</p>
+                <p>District government, financial plan and budget, control periods described, initiation under certain sections, see § <a class="internal-link" href="/dc/council/code/sections/47-392.09.html">47-392.09</a>.</p>
+                <p>Budget and financial management, suspension of activities upon payment of Authority obligations, see § <a class="internal-link" href="/dc/council/code/sections/47-391.07.html">47-391.07</a>.</p>
+                <p>Budget and financial management, existing provisions and procedure and practice preserved, borrowing and spending limitations, see § <a class="internal-link" href="/dc/council/code/sections/1-206.03.html">1-206.03</a>.</p>
                 <h4>References in Text</h4>
-                <p>The “Balanced Budget Act of 1997,” referred to in (b)(2), is Pub. L. 105-33, 111 Stat. 251, effective August 5, 1997.</p>
                 <p>The “District of Columbia Financial Responsibility and Management Assistance Act of 1995,” referred to in (b)(4)(A), is Pub. L. 104-8, 109 Stat. 97, approved April 17, 1995.</p>
+                <p>The “Balanced Budget Act of 1997,” referred to in (b)(2), is Pub. L. 105-33, 111 Stat. 251, effective August 5, 1997.</p>
               </section>
             </section>
           </section>

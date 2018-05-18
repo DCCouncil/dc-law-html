@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/1-315.05.html">§ 1–315.05. Contents and format of reorganization plan.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-315.04.html">Report Error</a>
@@ -108,13 +108,13 @@
                 <h4>Cross References</h4>
                 <p>National capital revitalization corporation, transfer of authority from office of economic development, see § <a class="internal-link" href="/dc/council/code/sections/2-1219.29.html">2-1219.29</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Reorganization Plan #2 of 1993 for the Office of the Assistant City Administrator for Human Resources Development Approval Resolution of 1993: Pursuant to Resolution 10-123, effective August 6, 1993, the Council approved Reorganization Plan #2 of 1993 for the Office of the Assistant City Administrator for Human Resources Development.</p>
-                <p>Reorganization Plan No. 6 of 1993 Transferring the Bureau of Correctional Services from the Department of Human Services to the Department of Corrections Disapproval Resolution of 1993: Pursuant to Resolution 10-211, effective December 17, 1993, the Council disapproved Reorganization Plan No. 6 of 1993 transferring the Bureau of Correctional Services from the Department of Human Services to the Department of Corrections.</p>
-                <p>Reorganization Plan No. 4 of 1996: The administrative and management support functions in the Department of Human Services as set forth in Sections III. (A), (B), (C), (D), (E), and (F), of Reorganization Plan No. 3 of 1986, dated January 3, 1987, that relate to the functions set forth in section V. (A)(I) above were transferred to the Department of Health.</p>
-                <p>Reorganization Plan No. 4 of 1996: Pursuant to Reorganization Plan No. 4 of 1996, each of the functions assigned, and authorities delegated to the Director of the Department of Human Services as set forth in Sections III. (K), (L), and (P), of Reorganization Plan No. 3 of 1986, dated January 3, 1987; and.</p>
-                <p>Reorganization Plan No. 5 of 1996: Pursuant to Reorganization Plan No. 5 of 1996, the function of providing mental health services to inmates in Department of Corrections facilities provided by the Bureau of Correctional Services, Commission on Mental Health Services, were transferred to the Department of Corrections.</p>
-                <p>International Business Program abolished: Pursuant to Reorganization Plan No. 7 of 1996, effective December 13, 1996, the International Business Program in the Office of Economic Development was abolished and its functions transferred to the Office of International Affairs which was created as an independent subordinate agency within the Executive Office of the Mayor. Additionally, Reorganization Plan No. 7 of 1996 transferred to the Office of International Affairs, 2 International Business Program positions, associated property, records and unexpended balances of appropriations, and other funds, if any, that related to the positions and functions assigned to the Office of International Affairs.</p>
                 <p>Transfer of powers, duties, and responsibilities from Office of Economic Development: Section 30(d) of <a class="internal-link" href="/dc/council/laws/12-144.html">D.C. Law 12-144</a> provided for the transfer of the powers, duties, and responsibilities of the Office of Economic Development to the Board of Directors of the National Capital Revitalization Corporation, and for the abolition of the Office of Economic Development.</p>
+                <p>International Business Program abolished: Pursuant to Reorganization Plan No. 7 of 1996, effective December 13, 1996, the International Business Program in the Office of Economic Development was abolished and its functions transferred to the Office of International Affairs which was created as an independent subordinate agency within the Executive Office of the Mayor. Additionally, Reorganization Plan No. 7 of 1996 transferred to the Office of International Affairs, 2 International Business Program positions, associated property, records and unexpended balances of appropriations, and other funds, if any, that related to the positions and functions assigned to the Office of International Affairs.</p>
+                <p>Reorganization Plan No. 5 of 1996: Pursuant to Reorganization Plan No. 5 of 1996, the function of providing mental health services to inmates in Department of Corrections facilities provided by the Bureau of Correctional Services, Commission on Mental Health Services, were transferred to the Department of Corrections.</p>
+                <p>Reorganization Plan No. 4 of 1996: Pursuant to Reorganization Plan No. 4 of 1996, each of the functions assigned, and authorities delegated to the Director of the Department of Human Services as set forth in Sections III. (K), (L), and (P), of Reorganization Plan No. 3 of 1986, dated January 3, 1987; and.</p>
+                <p>Reorganization Plan No. 4 of 1996: The administrative and management support functions in the Department of Human Services as set forth in Sections III. (A), (B), (C), (D), (E), and (F), of Reorganization Plan No. 3 of 1986, dated January 3, 1987, that relate to the functions set forth in section V. (A)(I) above were transferred to the Department of Health.</p>
+                <p>Reorganization Plan No. 6 of 1993 Transferring the Bureau of Correctional Services from the Department of Human Services to the Department of Corrections Disapproval Resolution of 1993: Pursuant to Resolution 10-211, effective December 17, 1993, the Council disapproved Reorganization Plan No. 6 of 1993 transferring the Bureau of Correctional Services from the Department of Human Services to the Department of Corrections.</p>
+                <p>Reorganization Plan #2 of 1993 for the Office of the Assistant City Administrator for Human Resources Development Approval Resolution of 1993: Pursuant to Resolution 10-123, effective August 6, 1993, the Council approved Reorganization Plan #2 of 1993 for the Office of the Assistant City Administrator for Human Resources Development.</p>
                 <h4>Mayor's Orders</h4>
                 <p>Implementation of Reorganization Plan No. 2 of 1992, Establishment of the District of Columbia Office of Tourism and Promotions: See Mayor’s Order 93-81, June 21, 1993.</p>
               </section>

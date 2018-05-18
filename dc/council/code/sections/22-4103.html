@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/22-4104.html">§ 22–4104. Duties of the Advisory Council. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/22-4103.html">Report Error</a>
@@ -100,11 +100,11 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 24-1103.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of § 24-1116, see § 2 of the Sex Offender Registration Immunity From Liability Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-50, April 6, 1999,  46 DCR 3634).</p>
-                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Emergency Act of 1999 (D.C. Act 13-133, August 4, 1999,  46 DCR 6771).</p>
-                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Legislative Review Emergency Act of 1999 (D.C. Act 13-176, November 2, 1999,  46 DCR 9244).</p>
-                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Congressional Review Emergency Act of 1999 (D.C. Act 13-229, January 11, 2000,  47 DCR 487).</p>
                 <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Congressional Review Emergency Act of 2000 (D.C. Act 13-308, April 7, 2000,  47 DCR 2714).</p>
+                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Congressional Review Emergency Act of 1999 (D.C. Act 13-229, January 11, 2000,  47 DCR 487).</p>
+                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Legislative Review Emergency Act of 1999 (D.C. Act 13-176, November 2, 1999,  46 DCR 9244).</p>
+                <p>For temporary (90-day) repeal of sections, see § 19 of the Sex Offender Registration Emergency Act of 1999 (D.C. Act 13-133, August 4, 1999,  46 DCR 6771).</p>
+                <p>For temporary (90-day) amendment of § 24-1116, see § 2 of the Sex Offender Registration Immunity From Liability Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-50, April 6, 1999,  46 DCR 3634).</p>
               </section>
             </section>
           </section>

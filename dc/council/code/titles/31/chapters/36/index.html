@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/31/chapters/37/">Chapter 37. Medicare Supplement Insurance.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/31/chapters/36/">Report Error</a>
@@ -87,19 +87,45 @@
         <section class="col8 body">
           <h1>Chapter 36. Long-Term Care Insurance.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/31-3601.html">§ 31–3601. Definitions.</a>
-            <a href="/dc/council/code/sections/31-3602.html">§ 31–3602. Scope.</a>
-            <a href="/dc/council/code/sections/31-3603.html">§ 31–3603. Long-term insurance; who may issue.</a>
-            <a href="/dc/council/code/sections/31-3604.html">§ 31–3604. Group policies issued in other states.</a>
-            <a href="/dc/council/code/sections/31-3605.html">§ 31–3605. Standards for long-term care insurance.</a>
-            <a href="/dc/council/code/sections/31-3606.html">§ 31–3606. Disclosure.</a>
-            <a href="/dc/council/code/sections/31-3607.html">§ 31–3607. Minimum number of members for associations.</a>
-            <a href="/dc/council/code/sections/31-3608.html">§ 31–3608. Monthly reports.</a>
-            <a href="/dc/council/code/sections/31-3609.html">§ 31–3609. Incontestability period.</a>
-            <a href="/dc/council/code/sections/31-3609.01.html">§ 31–3609.01. Denial of claims.</a>
-            <a href="/dc/council/code/sections/31-3610.html">§ 31–3610. Nonforfeiture benefits.</a>
-            <a href="/dc/council/code/sections/31-3611.html">§ 31–3611. Rules and regulations.</a>
-            <a href="/dc/council/code/sections/31-3612.html">§ 31–3612. Penalties.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3601.html">§ 31–3601. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3602.html">§ 31–3602. Scope.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3603.html">§ 31–3603. Long-term insurance; who may issue.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3604.html">§ 31–3604. Group policies issued in other states.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3605.html">§ 31–3605. Standards for long-term care insurance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3606.html">§ 31–3606. Disclosure.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3607.html">§ 31–3607. Minimum number of members for associations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3608.html">§ 31–3608. Monthly reports.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3609.html">§ 31–3609. Incontestability period.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3609.01.html">§ 31–3609.01. Denial of claims.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3610.html">§ 31–3610. Nonforfeiture benefits.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3611.html">§ 31–3611. Rules and regulations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-3612.html">§ 31–3612. Penalties.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -143,13 +169,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-3604.html">31-3604</a>, § <a class="internal-link" href="/dc/council/code/sections/31-3605.html">31-3605</a>, § <a class="internal-link" href="/dc/council/code/sections/31-3606.html">31-3606</a>, § <a class="internal-link" href="/dc/council/code/sections/31-3610.html">31-3610</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-1803.03.html">47-1803.03</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a>, in par. (5)(A), substituted “loss of functional capacity as well as qualified long-term care insurance contracts” for “loss of functional capacity”; and added par. (8).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-166.html">D.C. Law 15-166</a>, in par. (3), substituted “Commissioner of the Department of Insurance, Securities, and Banking” for “Commissioner of the District of Columbia Department of Insurance and Securities Regulation”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a>, in par. (5)(A), substituted “loss of functional capacity as well as qualified long-term care insurance contracts” for “loss of functional capacity”; and added par. (8).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 2(a) of the Long-Term Care Insurance Emergency Amendment Act of 2000 (D.C. Act 13-312, April 7, 2000,  47 DCR 2738).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(a) of the Long-Term Care Insurance Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-370, July 10, 2000,  47 DCR 5838).</p>
-                <p>For temporary (90 day) amendment of section, see § 502(a) of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
                 <p>For temporary (90 day) amendment of section, see § 4(v) of Consolidation of Financial Services Emergency Amendment Act of 2004 (D.C. Act 15-381, February 27, 2004,  51 DCR 2653).</p>
+                <p>For temporary (90 day) amendment of section, see § 502(a) of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(a) of the Long-Term Care Insurance Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-370, July 10, 2000,  47 DCR 5838).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(a) of the Long-Term Care Insurance Emergency Amendment Act of 2000 (D.C. Act 13-312, April 7, 2000,  47 DCR 2738).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of Long-Term Care Insurance Temporary Amendment Act of 2000 (D.C. Law 13-147, July 18, 2000, law notification  47 DCR 6097).</p>
                 <h4>Short Title</h4>
@@ -262,13 +288,13 @@
       (<a class="internal-link" href="/dc/council/laws/13-121.html#§7">May 23, 2000, D.C. Law 13-121, § 7, 47 DCR 2038</a>; <a class="internal-link" href="/dc/council/laws/14-190.html">Oct. 1, 2002, D.C. Law 14-190, § 502(b), 49 DCR 6968</a>; <a class="internal-link" href="/dc/council/laws/15-105.html">Mar. 13, 2004, D.C. Law 15-105, § 67, 51 DCR 881</a>; <a class="internal-link" href="/dc/council/laws/15-354.html">Apr. 13, 2005, D.C. Law 15-354, § 44, 52 DCR 2638</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a>, in subsec. (b)(7), substituted “qualified long-term care insurance contract” for “long-term insurance care contract” in two places; and added subsec. (f).</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsecs. (b) and (f), validated previously made technical corrections.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (b)(7), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsecs. (b) and (f), validated previously made technical corrections.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a>, in subsec. (b)(7), substituted “qualified long-term care insurance contract” for “long-term insurance care contract” in two places; and added subsec. (f).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 2(b) of the Long-Term Care Insurance Emergency Amendment Act of 2000 (D.C. Act 13-312, April 7, 2000,  47 DCR 2738).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(b) of the Long-Term Care Insurance Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-370, July 10, 2000,  47 DCR 5838).</p>
                 <p>For temporary (90 day) amendment of section, see § 502(b) of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(b) of the Long-Term Care Insurance Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-370, July 10, 2000,  47 DCR 5838).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(b) of the Long-Term Care Insurance Emergency Amendment Act of 2000 (D.C. Act 13-312, April 7, 2000,  47 DCR 2738).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of Long-Term Care Insurance Temporary Amendment Act of 2000 (D.C. Law 13-147, July 18, 2000, law notification  47 DCR 6097).</p>
               </section>
@@ -328,9 +354,9 @@
       (<a class="internal-link" href="/dc/council/laws/13-121.html#§10">May 23, 2000, D.C. Law 13-121, § 10, 47 DCR 2038</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of § 35-4909.1 1981 Ed., see § 2(c) of the Long-Term Care Insurance Emergency Amendment Act of 2000 (D.C. Act 13-312, April 7, 2000,  47 DCR 2738).</p>
-                <p>For temporary (90-day) addition of § 35-4909.1 1981 Ed., see § 2(c) of the Long-Term Care Insurance Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-370, July 10, 2000,  47 DCR 5838).</p>
                 <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/31-3609.01.html">31-3609.01</a>, see § 502(c) of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
+                <p>For temporary (90-day) addition of § 35-4909.1 1981 Ed., see § 2(c) of the Long-Term Care Insurance Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-370, July 10, 2000,  47 DCR 5838).</p>
+                <p>For temporary (90-day) addition of § 35-4909.1 1981 Ed., see § 2(c) of the Long-Term Care Insurance Emergency Amendment Act of 2000 (D.C. Act 13-312, April 7, 2000,  47 DCR 2738).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(c) of Long-Term Care Insurance Temporary Amendment Act of 2000 (D.C. Law 13-147, July 18, 2000, law notification  47 DCR 6097).</p>
               </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/1-609.05.html">§ 1–609.05. Lack of job protection; procedural protection.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-609.04.html">Report Error</a>
@@ -105,15 +105,15 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§904">Mar. 3, 1979, D.C. Law 2-139, § 904, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/6-177.html">Feb. 24, 1987, D.C. Law 6-177, § 3(j), 33 DCR 7241</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 302(i), 43 DCR 2978</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 3(f), 53 DCR 6198</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-610.4.</p>
                 <p>1973 Ed., § 1-339.4.</p>
+                <p>1981 Ed., § 1-610.4.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-602.04.html">1-602.04</a>, § <a class="internal-link" href="/dc/council/code/sections/1-607.02.html">1-607.02</a>, § <a class="internal-link" href="/dc/council/code/sections/1-609.05.html">1-609.05</a>, and § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (2), substituted “persons with disabilities” for “developmentally disabled or handicapped persons”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
                 <p>Repeal of § 4(b) of Law 6-177: Section 3(b) of <a class="internal-link" href="/dc/council/laws/8-74.html">D.C. Law 8-74</a>, effective March 15, 1990, provided that § 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> is repealed.</p>
+                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority for Summer Youth Employment Program participants, see Mayor’s Order 83-131, May 24, 1983; Mayor’s Order 84-86, April 6, 1984.</p>
               </section>

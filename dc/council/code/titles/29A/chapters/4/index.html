@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/29A/chapters/5/">Chapter 5. Foreign Trade Zones. [Transferred].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29A/chapters/4/">Report Error</a>
@@ -87,27 +87,69 @@
         <section class="col8 body">
           <h1>Chapter 4. Professional Corporations. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/29A-401.html">§ 29A-401. Short title. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-402.html">§ 29A-402. Definitions. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-403.html">§ 29A-403. Applicability. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-404.html">§ 29A-404. Construction. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-405.html">§ 29A-405. Purpose for organization; powers authorized. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-406.html">§ 29A-406. Incorporation. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-407.html">§ 29A-407. Number of directors. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-408.html">§ 29A-408. Qualifications of shareholders, director, and officer; “officer” defined. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-409.html">§ 29A-409. Corporate name. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-410.html">§ 29A-410. Proxy prohibited. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-411.html">§ 29A-411. Professional relationship; liabilities. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-412.html">§ 29A-412. Transfer of shares. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-413.html">§ 29A-413. Merger or consolidation restricted. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-414.html">§ 29A-414. Foreign professional corporations; requirement for admission to transact business in District; certificate of authority. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-415.html">§ 29A-415. Disqualified professional. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-416.html">§ 29A-416. Disposition of stock of disqualified, deceased, legally incompetent shareholder. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-417.html">§ 29A-417. Redemption price. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-418.html">§ 29A-418. Perpetual existence; dissolution. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-419.html">§ 29A-419. Annual report; contents. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-420.html">§ 29A-420. Penalty for noncompliance with chapter. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-421.html">§ 29A-421. Treatment of professional corporation as unincorporated business for purpose of franchise tax. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-401.html">§ 29A-401. Short title. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-402.html">§ 29A-402. Definitions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-403.html">§ 29A-403. Applicability. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-404.html">§ 29A-404. Construction. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-405.html">§ 29A-405. Purpose for organization; powers authorized. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-406.html">§ 29A-406. Incorporation. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-407.html">§ 29A-407. Number of directors. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-408.html">§ 29A-408. Qualifications of shareholders, director, and officer; “officer” defined. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-409.html">§ 29A-409. Corporate name. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-410.html">§ 29A-410. Proxy prohibited. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-411.html">§ 29A-411. Professional relationship; liabilities. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-412.html">§ 29A-412. Transfer of shares. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-413.html">§ 29A-413. Merger or consolidation restricted. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-414.html">§ 29A-414. Foreign professional corporations; requirement for admission to transact business in District; certificate of authority. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-415.html">§ 29A-415. Disqualified professional. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-416.html">§ 29A-416. Disposition of stock of disqualified, deceased, legally incompetent shareholder. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-417.html">§ 29A-417. Redemption price. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-418.html">§ 29A-418. Perpetual existence; dissolution. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-419.html">§ 29A-419. Annual report; contents. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-420.html">§ 29A-420. Penalty for noncompliance with chapter. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-421.html">§ 29A-421. Treatment of professional corporation as unincorporated business for purpose of franchise tax. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -122,9 +164,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 576, Pub. L. 92-180, § 1</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-401.</p>
-                <p>1981 Ed., § 29-601.</p>
                 <p>1973 Ed., § 29-1101.</p>
+                <p>1981 Ed., § 29-601.</p>
+                <p>2001 Ed., § 29-401.</p>
               </section>
             </section>
             <hr/>
@@ -139,9 +181,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 576, Pub. L. 92-180, § 2</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-402.</p>
-                <p>1981 Ed., § 29-602.</p>
                 <p>1973 Ed., § 29-1102.</p>
+                <p>1981 Ed., § 29-602.</p>
+                <p>2001 Ed., § 29-402.</p>
               </section>
             </section>
             <hr/>
@@ -156,9 +198,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 577, Pub. L. 92-180, § 3</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-403.</p>
-                <p>1981 Ed., § 29-603.</p>
                 <p>1973 Ed., § 29-1103.</p>
+                <p>1981 Ed., § 29-603.</p>
+                <p>2001 Ed., § 29-403.</p>
               </section>
             </section>
             <hr/>
@@ -173,9 +215,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 577, Pub. L. 92-180, § 4</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-404.</p>
-                <p>1981 Ed., § 29-604.</p>
                 <p>1973 Ed., § 29-1104.</p>
+                <p>1981 Ed., § 29-604.</p>
+                <p>2001 Ed., § 29-404.</p>
               </section>
             </section>
             <hr/>
@@ -190,9 +232,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 577, Pub. L. 92-180, § 5</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-406.</p>
-                <p>1981 Ed., § 29-605.</p>
                 <p>1973 Ed., § 29-1105.</p>
+                <p>1981 Ed., § 29-605.</p>
+                <p>2001 Ed., § 29-406.</p>
               </section>
             </section>
             <hr/>
@@ -207,9 +249,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 578, Pub. L. 92-180, § 6</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-406.</p>
-                <p>1981 Ed., § 29-606.</p>
                 <p>1973 Ed., § 29-1106.</p>
+                <p>1981 Ed., § 29-606.</p>
+                <p>2001 Ed., § 29-406.</p>
               </section>
             </section>
             <hr/>
@@ -224,9 +266,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 578, Pub. L. 92-180, § 7</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-407.</p>
-                <p>1981 Ed., § 29-607.</p>
                 <p>1973 Ed., § 29-1107.</p>
+                <p>1981 Ed., § 29-607.</p>
+                <p>2001 Ed., § 29-407.</p>
               </section>
             </section>
             <hr/>
@@ -241,9 +283,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 578, Pub. L. 92-180, § 8</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-408.</p>
-                <p>1981 Ed., § 29-608.</p>
                 <p>1973 Ed., § 29-1108.</p>
+                <p>1981 Ed., § 29-608.</p>
+                <p>2001 Ed., § 29-408.</p>
               </section>
             </section>
             <hr/>
@@ -258,9 +300,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 578, Pub. L. 92-180, § 9</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-409</p>
-                <p>1981 Ed., § 29-609.</p>
                 <p>1973 Ed., § 29-1109.</p>
+                <p>1981 Ed., § 29-609.</p>
+                <p>2001 Ed., § 29-409</p>
               </section>
             </section>
             <hr/>
@@ -275,9 +317,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 578, Pub. L. 92-180, § 10</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-410.</p>
-                <p>1981 Ed., § 29-610.</p>
                 <p>1973 Ed., § 29-1110.</p>
+                <p>1981 Ed., § 29-610.</p>
+                <p>2001 Ed., § 29-410.</p>
               </section>
             </section>
             <hr/>
@@ -292,9 +334,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 578, Pub. L. 92-180, § 11</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-411.</p>
-                <p>1981 Ed., § 29-611.</p>
                 <p>1973 Ed., § 29-1111.</p>
+                <p>1981 Ed., § 29-611.</p>
+                <p>2001 Ed., § 29-411.</p>
               </section>
             </section>
             <hr/>
@@ -309,9 +351,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 579, Pub. L. 92-180, § 12</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-412.</p>
-                <p>1981 Ed., § 29-612.</p>
                 <p>1973 Ed., § 29-1112.</p>
+                <p>1981 Ed., § 29-612.</p>
+                <p>2001 Ed., § 29-412.</p>
               </section>
             </section>
             <hr/>
@@ -326,9 +368,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 580, Pub. L. 92-180, § 13</a>; <a class="internal-link" href="/dc/council/laws/10-138.html">July 23, 1994, D.C. Law 10-138, § 78, 41 DCR 3010</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-413.</p>
-                <p>1981 Ed., § 29-613.</p>
                 <p>1973 Ed., § 29-1113.</p>
+                <p>1981 Ed., § 29-613.</p>
+                <p>2001 Ed., § 29-413.</p>
               </section>
             </section>
             <hr/>
@@ -343,9 +385,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 580, Pub. L. 92-180, § 14</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-414.</p>
-                <p>1981 Ed., § 29-614.</p>
                 <p>1973 Ed., § 29-1114.</p>
+                <p>1981 Ed., § 29-614.</p>
+                <p>2001 Ed., § 29-414.</p>
               </section>
             </section>
             <hr/>
@@ -360,9 +402,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 580, Pub. L. 92-180, § 15</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-415.</p>
-                <p>1981 Ed., § 29-615.</p>
                 <p>1973 Ed., § 29-1115.</p>
+                <p>1981 Ed., § 29-615.</p>
+                <p>2001 Ed., § 29-415.</p>
               </section>
             </section>
             <hr/>
@@ -377,9 +419,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 580, Pub. L. 92-180, § 16</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-416.</p>
-                <p>1981 Ed., § 29-616.</p>
                 <p>1973 Ed., § 29-1116.</p>
+                <p>1981 Ed., § 29-616.</p>
+                <p>2001 Ed., § 29-416.</p>
               </section>
             </section>
             <hr/>
@@ -394,9 +436,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 581, Pub. L. 92-180, § 17</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-417.</p>
-                <p>1981 Ed., § 29-617.</p>
                 <p>1973 Ed., § 29-1117.</p>
+                <p>1981 Ed., § 29-617.</p>
+                <p>2001 Ed., § 29-417.</p>
               </section>
             </section>
             <hr/>
@@ -411,9 +453,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 582, Pub. L. 92-180, § 18</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-418.</p>
-                <p>1981 Ed., § 29-618.</p>
                 <p>1973 Ed., § 29-1118.</p>
+                <p>1981 Ed., § 29-618.</p>
+                <p>2001 Ed., § 29-418.</p>
               </section>
             </section>
             <hr/>
@@ -428,9 +470,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 582, Pub. L. 92-180, § 19</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-419.</p>
-                <p>1981 Ed., § 29-619.</p>
                 <p>1973 Ed., § 29-1119.</p>
+                <p>1981 Ed., § 29-619.</p>
+                <p>2001 Ed., § 29-419.</p>
               </section>
             </section>
             <hr/>
@@ -445,9 +487,9 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-180.html">Dec. 10, 1971, 85 Stat. 582, Pub. L. 92-180, § 20</a>; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42, § 425, 32 DCR 4450</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(n), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-420.</p>
-                <p>1981 Ed., § 29-620.</p>
                 <p>1973 Ed., § 29-1120.</p>
+                <p>1981 Ed., § 29-620.</p>
+                <p>2001 Ed., § 29-420.</p>
               </section>
             </section>
             <hr/>
@@ -462,8 +504,8 @@
       (<a class="internal-link" href="/dc/council/laws/6-16.html">Sept. 5, 1985, D.C. Law 6-16, § 2(a), 32 DCR 3578</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-421.</p>
                 <p>1981 Ed., § 29-621.</p>
+                <p>2001 Ed., § 29-421.</p>
               </section>
             </section>
             <hr/>

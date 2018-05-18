@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:3-416.html">§ 28:3-416. Transfer warranties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:3-415.html">Report Error</a>
@@ -103,16 +103,16 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 684, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/10-249.html">Mar. 23, 1995, D.C. Law 10-249, § 2(d), 42 DCR 467</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:3-415.</p>
                 <p>1973 Ed., § 28:3-414.</p>
+                <p>1981 Ed., § 28:3-415.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:3-412.html">28:3-412</a>, § <a class="internal-link" href="/dc/council/code/sections/28:3-413.html">28:3-413</a>, § <a class="internal-link" href="/dc/council/code/sections/28:3-414.html">28:3-414</a>, § <a class="internal-link" href="/dc/council/code/sections/28:3-503.html">28:3-503</a>, and § <a class="internal-link" href="/dc/council/code/sections/28:5-108.html">28:5-108</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Subsections (a) and (b) restate the substance of former  Section 3-414(1). Subsection (2) of former  Section 3-414 has been dropped because it is superfluous. Although notice of dishonor is not mentioned in subsection (a), it must be given in some cases to charge an indorser. It is covered in subsection (c). Regulation CC s 229.35(b) provides that a bank handling a check for collection or return is liable to a bank that subsequently handles the check to the extent the latter bank does not receive payment for the check. This liability applies whether or not the bank incurring the liability indorsed the check.</p>
-                <p>2.  Section 3-503 states when notice of dishonor is required and how it must be given. If required notice of dishonor is not given in compliance with  Section 3-503, subsection (c) of  Section 3-415 states that the effect is to discharge the indorser’s obligation.</p>
-                <p>3. Subsection (d) is similar in effect to  Section 3-414(c) if the draft is accepted by a bank after the indorsement is made. See Comment 3 to  Section 3-414. If a draft is accepted by a bank before the indorsement is made, the indorser incurs the obligation stated in subsection (a).</p>
-                <p>4. Subsection (e) modified former  Sections 3-503(2)(b) and  3-502(1)(a) by stating a 30-day rather than a seven-day period, and stating it as an absolute rather than a presumptive period.</p>
                 <p>5. As stated in subsection (a), the obligation of an indorser to pay the amount due on the instrument is generally owed not only to a person entitled to enforce the instrument but also to a subsequent indorser who paid the instrument. But if the prior indorser and the subsequent indorser are both anomalous indorsers, this rule does not apply. In that case,  Section 3-116 applies. Under  Section 3-116(a), the anomalous indorsers are jointly and severally liable and if either pays the instrument the indorser who pays has a right of contribution against the other.  Section 3-116(b). The right to contribution in  Section 3-116(b) is subject to “agreement of the affected parties.” Suppose the subsequent indorser can prove an agreement with the prior indorser under which the prior indorser agreed to treat the subsequent indorser as a guarantor of the obligation of the prior indorser. Rights of the two indorsers between themselves would be governed by the agreement. Under suretyship law, the subsequent indorser under such an agreement is referred to as a sub-surety. Under the agreement, if the subsequent indorser pays the instrument there is a right to reimbursement from the prior indorser; if the prior indorser pays the instrument, there is no right of recourse against the subsequent indorser. See PEB Commentary No. 11, dated February 10, 1994 [Uniform Laws Annotated, UCC, APP II, Comment 11].</p>
+                <p>4. Subsection (e) modified former  Sections 3-503(2)(b) and  3-502(1)(a) by stating a 30-day rather than a seven-day period, and stating it as an absolute rather than a presumptive period.</p>
+                <p>3. Subsection (d) is similar in effect to  Section 3-414(c) if the draft is accepted by a bank after the indorsement is made. See Comment 3 to  Section 3-414. If a draft is accepted by a bank before the indorsement is made, the indorser incurs the obligation stated in subsection (a).</p>
+                <p>2.  Section 3-503 states when notice of dishonor is required and how it must be given. If required notice of dishonor is not given in compliance with  Section 3-503, subsection (c) of  Section 3-415 states that the effect is to discharge the indorser’s obligation.</p>
+                <p>1. Subsections (a) and (b) restate the substance of former  Section 3-414(1). Subsection (2) of former  Section 3-414 has been dropped because it is superfluous. Although notice of dishonor is not mentioned in subsection (a), it must be given in some cases to charge an indorser. It is covered in subsection (c). Regulation CC s 229.35(b) provides that a bank handling a check for collection or return is liable to a bank that subsequently handles the check to the extent the latter bank does not receive payment for the check. This liability applies whether or not the bank incurring the liability indorsed the check.</p>
               </section>
             </section>
           </section>

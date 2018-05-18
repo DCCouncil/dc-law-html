@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/31-106.01.html">§ 31–106.01. Student Loan Ombudsman.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-106.html">Report Error</a>
@@ -103,11 +103,11 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 35-126.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-166.html">D.C. Law 15-166</a> designated the text of the existing section as subsection (a); in subsec. (a), substituted “Commissioner” for “Commissioner of Insurance and Securities” and substituted “Department” for “Department of Insurance and Securities Regulation”; and added subsec. (b).</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> rewrote subsec. (b)(1); and, in subsec. (b)(2), substituted “Associate Commissioner for Securities and Banking” for “Director of the Bureau of Banking and Financial Institutions”. Prior to amendment, subsec. (b)(1) read as follows: “(b)(1) The Bureau of Banking and Financial Institutions is hereby established to administer the District of Columbia Banking Code under supervision of the Commissioner.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-166.html">D.C. Law 15-166</a> designated the text of the existing section as subsection (a); in subsec. (a), substituted “Commissioner” for “Commissioner of Insurance and Securities” and substituted “Department” for “Department of Insurance and Securities Regulation”; and added subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(f) of Consolidation of Financial Services Emergency Amendment Act of 2004 (D.C. Act 15-381, February 27, 2004,  51 DCR 2653).</p>
                 <p>For temporary (90 day) amendment of section, see § 2112(c) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(f) of Consolidation of Financial Services Emergency Amendment Act of 2004 (D.C. Act 15-381, February 27, 2004,  51 DCR 2653).</p>
               </section>
             </section>
           </section>

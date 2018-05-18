@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/29A/chapters/8/">Chapter 8. Charitable, Educational, and Religious Associations. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29A/chapters/7/subchapters/II/">Report Error</a>
@@ -88,10 +88,18 @@
         <section class="col8 body">
           <h1>Subchapter II. Conveyances. [Repealed].</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/29A-731.html">§ 29A-731. Conveyances to religious congregations; not void for want of trustees. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-732.html">§ 29A-732. Trustees — Procedure for appointment to receive conveyances. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-733.html">§ 29A-733. Trustees — Suits for title, possession or enjoyment of property. [Repealed]</a>
-            <a href="/dc/council/code/sections/29A-734.html">§ 29A-734. Limitations on use of land. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-731.html">§ 29A-731. Conveyances to religious congregations; not void for want of trustees. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-732.html">§ 29A-732. Trustees — Procedure for appointment to receive conveyances. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-733.html">§ 29A-733. Trustees — Suits for title, possession or enjoyment of property. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29A-734.html">§ 29A-734. Limitations on use of land. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -106,9 +114,9 @@
       (R.S., D.C., § 453; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(p), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-731.</p>
-                <p>1981 Ed., § 29-913.</p>
                 <p>1973 Ed., § 29-513.</p>
+                <p>1981 Ed., § 29-913.</p>
+                <p>2001 Ed., § 29-731.</p>
               </section>
             </section>
             <hr/>
@@ -123,9 +131,9 @@
       (R.S., D.C., § 454; June 25, 1936, 49 Stat. 1921, ch. 804; June 25, 1948, 62 Stat. 991, ch. 646, § 32(b); May 24, 1949, 63 Stat. 107, ch. 139, § 127; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 576, Pub. L. 91-358, title I, § 158(a)(2)</a>; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(p), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-732.</p>
-                <p>1981 Ed., § 29-914.</p>
                 <p>1973 Ed., § 29-514.</p>
+                <p>1981 Ed., § 29-914.</p>
+                <p>2001 Ed., § 29-732.</p>
               </section>
             </section>
             <hr/>
@@ -140,9 +148,9 @@
       (R.S., D.C., § 455; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(p), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-733.</p>
-                <p>1981 Ed., § 29-915.</p>
                 <p>1973 Ed., § 29-515.</p>
+                <p>1981 Ed., § 29-915.</p>
+                <p>2001 Ed., § 29-733.</p>
               </section>
             </section>
             <hr/>
@@ -157,9 +165,9 @@
       (R.S., D.C., § 456; <a class="internal-link" href="/dc/council/laws/18-378.html">July 2, 2011, D.C. Law 18-378, § 3(p), 58 DCR 1720</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § 29-734.</p>
-                <p>1981 Ed., § 29-916.</p>
                 <p>1973 Ed., § 29-516.</p>
+                <p>1981 Ed., § 29-916.</p>
+                <p>2001 Ed., § 29-734.</p>
               </section>
             </section>
             <hr/>

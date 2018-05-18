@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/7/chapters/15/subchapters/II-A/">Subchapter II-A. Revised Uniform Anatomical Gift Act.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-1521.11.html">Report Error</a>
@@ -99,15 +99,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-268.html">May 26, 1970, 84 Stat. 266, Pub. L. 91-268, § 1-12</a>; <a class="internal-link" href="/dc/council/laws/6-194.html">Feb. 28, 1987, D.C. Law 6-194, § 2, 34 DCR 479</a>; <a class="internal-link" href="/dc/council/laws/9-157.html">Sept. 29, 1992, D.C. Law 9-157, § 2, 39 DCR 5686</a>; <a class="internal-link" href="/dc/council/laws/11-125.html">May 24, 1996, D.C. Law 11-125, § 2, 43 DCR 1548</a>; <a class="internal-link" href="/dc/council/laws/17-145.html">Apr. 15, 2008, D.C. Law 17-145, § 30(d), 55 DCR 2532</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., §§ 2-1501 to 2-1511.</p>
-                <p>2001 Ed., § 7-1521.10a.</p>
                 <p>1973 Ed., § 2-271 to 2-277.</p>
+                <p>2001 Ed., § 7-1521.10a.</p>
+                <p>1981 Ed., §§ 2-1501 to 2-1511.</p>
                 <h4>Editor's Notes</h4>
-                <p>Mayor authorized to issue rules: Section 4 of <a class="internal-link" href="/dc/council/laws/9-157.html">D.C. Law 9-157</a> provided that the Mayor shall issue rules to implement the provisions of the act.</p>
                 <p>Uniform Law: This subchapter was based upon §§ 1 to 9 of the Uniform Anatomical Gift Act (1968 Act).</p>
+                <p>Mayor authorized to issue rules: Section 4 of <a class="internal-link" href="/dc/council/laws/9-157.html">D.C. Law 9-157</a> provided that the Mayor shall issue rules to implement the provisions of the act.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to Law 6-194, see Mayor’s Order 87-145, June 19, 1987.</p>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/9-157.html">D.C. Law 9-157</a>, the “Tissue Transplantation Distribution Amendment Act of 1992”, see Mayor’s Order 93-61, May 12, 1993.</p>
+                <p>Delegation of authority pursuant to Law 6-194, see Mayor’s Order 87-145, June 19, 1987.</p>
               </section>
             </section>
           </section>

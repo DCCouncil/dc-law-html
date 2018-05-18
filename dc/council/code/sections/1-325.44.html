@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/1-325.45.html">§ 1–325.45. Annual report; review of funding priorities.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-325.44.html">Report Error</a>
@@ -118,17 +118,17 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a>, in subsec. (b)(4), validated a previously made technical correction.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 4045 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of School Modernization Funds Submission Requirements Waiver Emergency Amendment Act of 2007 (D.C. Act 17-30, April 19, 2007,  54 DCR 4079).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of School Modernization Use of Funds Requirements Emergency Amendment Act of 2007 (D.C. Act 17-129, October 5, 2007,  54 DCR 10030).</p>
-                <p>For temporary (90 day) amendment of section, see § 3 of School Modernization Use of Funds Requirement Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-229, December 27, 2007,  55 DCR 225).</p>
-                <p>For temporary (90 days) school modernization library funding, see § 4122 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) school modernization library funding, see § 4122 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) school modernization library funding, see § 4122 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of School Modernization Use of Funds Requirement Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-229, December 27, 2007,  55 DCR 225).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of School Modernization Use of Funds Requirements Emergency Amendment Act of 2007 (D.C. Act 17-129, October 5, 2007,  54 DCR 10030).</p>
+                <p>For temporary (90 day) amendment of section, see § 3 of School Modernization Funds Submission Requirements Waiver Emergency Amendment Act of 2007 (D.C. Act 17-30, April 19, 2007,  54 DCR 4079).</p>
+                <p>For temporary (90 day) addition, see § 4045 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 3 of D.C. Law 17-15 repealed subsec. (a).</p>
-                <p>Section 5(b) of D.C. Law 17-15 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 3 of D.C. Law 17-97, in subsec. (a), in the heading, substituted “Office of Public Education Facilities Modernization” for “District of Columbia Public Schools”, in par. (1), substituted “Facilities Master Plan” for “Master Facilities Plan” and “Chancellor” for “Superintendent”, in par. (2), substituted “Facilities Master Plan” for “Master Facilities Plan”, in the lead-in language of par. (3), substituted “,which shall include” for “and approved by the Board of Education which shall include”, in par. (3)(C), substituted “Facilities Master Plan” for “Master Facilities Plan”, and in par. (3)(D), deleted “developed by the Superintendent,”.</p>
                 <p>Section 7(b) of D.C. Law 17-97 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 3 of D.C. Law 17-97, in subsec. (a), in the heading, substituted “Office of Public Education Facilities Modernization” for “District of Columbia Public Schools”, in par. (1), substituted “Facilities Master Plan” for “Master Facilities Plan” and “Chancellor” for “Superintendent”, in par. (2), substituted “Facilities Master Plan” for “Master Facilities Plan”, in the lead-in language of par. (3), substituted “,which shall include” for “and approved by the Board of Education which shall include”, in par. (3)(C), substituted “Facilities Master Plan” for “Master Facilities Plan”, and in par. (3)(D), deleted “developed by the Superintendent,”.</p>
+                <p>Section 5(b) of D.C. Law 17-15 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 3 of D.C. Law 17-15 repealed subsec. (a).</p>
                 <h4>Short Title</h4>
                 <p>Section 4121 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle L of Title IV of the act may be cited as the “School Modernization Library Initial Circulation Funding Act of 2013”.</p>
                 <h4>Editor's Notes</h4>

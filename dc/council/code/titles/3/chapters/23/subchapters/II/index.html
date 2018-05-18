@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/3/chapters/23/subchapters/III/">Subchapter III. Physical Therapists.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/3/chapters/23/subchapters/II/">Report Error</a>
@@ -88,25 +88,63 @@
         <section class="col8 body">
           <h1>Subchapter II. Practical Nurses.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/3-2302.01.html">§ 3–2302.01. Definitions [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.02.html">§ 3–2302.02. Exemption of federal employees [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.03.html">§ 3–2302.03. Gratuitous or for-hire nursing [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.04.html">§ 3–2302.04. Use of title or abbreviation [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.05.html">§ 3–2302.05. Mayor authorized to delegate functions [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.06.html">§ 3–2302.06. Practical Nurses’ Examining Board [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.07.html">§ 3–2302.07. Rules and regulations; curricula and standards for schools; accreditation; affiliation of programs; studies and investigations; subpoenas [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.08.html">§ 3–2302.08. Qualifications of applicant; examinations; issuance of license without examination; fee; closed applications; reopening [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.09.html">§ 3–2302.09. Expiration of license; annual renewal; reinstatement of lapsed licensees; nonpracticing list [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.10.html">§ 3–2302.10. Accreditation of schools of practical nursing [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.11.html">§ 3–2302.11. Fees [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.12.html">§ 3–2302.12. Denial, revocation, or suspension of license or certificate of renewal [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.13.html">§ 3–2302.13. Review of decisions and orders of Mayor [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.14.html">§ 3–2302.14. Unlawful acts [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.15.html">§ 3–2302.15. Penalty for violation of § 3-2302.04 or § 3-2302.14 [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.16.html">§ 3–2302.16. Prosecution for violation of § 3-2302.04 or § 3-2302.14 [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.17.html">§ 3–2302.17. Severability [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.18.html">§ 3–2302.18. Appropriations [Repealed]</a>
-            <a href="/dc/council/code/sections/3-2302.19.html">§ 3–2302.19. Effective date [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.01.html">§ 3–2302.01. Definitions [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.02.html">§ 3–2302.02. Exemption of federal employees [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.03.html">§ 3–2302.03. Gratuitous or for-hire nursing [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.04.html">§ 3–2302.04. Use of title or abbreviation [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.05.html">§ 3–2302.05. Mayor authorized to delegate functions [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.06.html">§ 3–2302.06. Practical Nurses’ Examining Board [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.07.html">§ 3–2302.07. Rules and regulations; curricula and standards for schools; accreditation; affiliation of programs; studies and investigations; subpoenas [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.08.html">§ 3–2302.08. Qualifications of applicant; examinations; issuance of license without examination; fee; closed applications; reopening [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.09.html">§ 3–2302.09. Expiration of license; annual renewal; reinstatement of lapsed licensees; nonpracticing list [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.10.html">§ 3–2302.10. Accreditation of schools of practical nursing [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.11.html">§ 3–2302.11. Fees [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.12.html">§ 3–2302.12. Denial, revocation, or suspension of license or certificate of renewal [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.13.html">§ 3–2302.13. Review of decisions and orders of Mayor [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.14.html">§ 3–2302.14. Unlawful acts [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.15.html">§ 3–2302.15. Penalty for violation of § 3-2302.04 or § 3-2302.14 [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.16.html">§ 3–2302.16. Prosecution for violation of § 3-2302.04 or § 3-2302.14 [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.17.html">§ 3–2302.17. Severability [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.18.html">§ 3–2302.18. Appropriations [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-2302.19.html">§ 3–2302.19. Effective date [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

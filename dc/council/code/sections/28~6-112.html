@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/28/articles/7/">Article 7. Documents of Title.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:6-112.html">Report Error</a>
@@ -100,8 +100,8 @@
                 <h4>Cross References</h4>
                 <p>Notice of bulk sale, § <a class="internal-link" href="/dc/council/code/sections/47-4461.html">47-4461</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 410 (f) of <a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> provided: “Section 407 shall apply as of January 1, 2001.”</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-215.html">D.C. Law 20-215</a>: Section 32 of <a class="internal-link" href="/dc/council/laws/20-215.html">D.C. Law 20-215</a> provided that the act shall apply as of January 1, 2016.</p>
+                <p>Section 410 (f) of <a class="internal-link" href="/dc/council/laws/13-305.html">D.C. Law 13-305</a> provided: “Section 407 shall apply as of January 1, 2001.”</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/6-333.02.html">§ 6–333.02. Relocation advisory services for persons displaced by condominium conversion, or by rehabilitation, demolition, or discontinuance from housing use of building.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/6-333.01.html">Report Error</a>
@@ -104,13 +104,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-646.html#§209">Jan. 2, 1971, 84 Stat. 1899, Pub. L. 91-646, title II, § 209</a>; <a class="internal-link" href="/dc/council/laws/3-19.html">Sept. 28, 1979, D.C. Law 3-19, § 12, 26 DCR 361</a>; <a class="internal-link" href="/dc/council/laws/3-86.html">Sept. 10, 1980, D.C. Law 3-86, §§ 211, 303(b), 27 DCR 2975</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-834.</p>
                 <p>1973 Ed., § 5-732a.</p>
+                <p>1981 Ed., § 5-834.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3171.04.html">42-3171.04</a> and § <a class="internal-link" href="/dc/council/code/sections/42-3403.03.html">42-3403.03</a>.</p>
                 <h4>Cross References</h4>
-                <p>Highways, public utility relocation expenses, see §§ <a class="internal-link" href="/dc/council/code/sections/9-107.02.html">9-107.02</a> and <a class="internal-link" href="/dc/council/code/sections/9-401.03.html">9-401.03</a>.</p>
                 <p>Mayor to provide relocation assistance, see § <a class="internal-link" href="/dc/council/code/sections/42-3403.03.html">42-3403.03</a>.</p>
+                <p>Highways, public utility relocation expenses, see §§ <a class="internal-link" href="/dc/council/code/sections/9-107.02.html">9-107.02</a> and <a class="internal-link" href="/dc/council/code/sections/9-401.03.html">9-401.03</a>.</p>
                 <h4>References in Text</h4>
                 <p>The words “§§ 210 and 211 of this title” and “title III of this act,” referred to in the first and second sentences, respectively, of subsection (a) of this section, refer to §§ 210 and 211 of title II, and title III, respectively, of the Act of January 2, 1971, 84 Stat. 1894, Pub. L. 91-646.</p>
                 <h4>Delegation of Authority</h4>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/10/chapters/12/subchapters/I/parts/D/">Part D. Eminent Domain for Hotel.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/10/chapters/12/subchapters/I/parts/C/">Report Error</a>
@@ -89,12 +89,24 @@
         <section class="col8 body">
           <h1>Part C. Land Lease Authority for Hotel.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/10-1202.21.html">§ 10–1202.21. Findings.</a>
-            <a href="/dc/council/code/sections/10-1202.22.html">§ 10–1202.22. Lease authority for the Mayor.</a>
-            <a href="/dc/council/code/sections/10-1202.23.html">§ 10–1202.23. Lease authority for the Authority.</a>
-            <a href="/dc/council/code/sections/10-1202.23a.html">§ 10–1202.23a. Use of new convention center vault space.</a>
-            <a href="/dc/council/code/sections/10-1202.23b.html">§ 10–1202.23b. Grant of easements over District property.</a>
-            <a href="/dc/council/code/sections/10-1202.24.html">§ 10–1202.24. Authority for vault space permit or airspace lease.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1202.21.html">§ 10–1202.21. Findings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1202.22.html">§ 10–1202.22. Lease authority for the Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1202.23.html">§ 10–1202.23. Lease authority for the Authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1202.23a.html">§ 10–1202.23a. Use of new convention center vault space.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1202.23b.html">§ 10–1202.23b. Grant of easements over District property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/10-1202.24.html">§ 10–1202.24. Authority for vault space permit or airspace lease.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -135,19 +147,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/10-1202.04.html">10-1202.04</a> and § <a class="internal-link" href="/dc/council/code/sections/10-1202.24.html">10-1202.24</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-144.html">D.C. Law 17-144</a> rewrote the section.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-339.html">D.C. Law 17-339</a> added par. (6).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in the credit, renumbered the section designation from § 702 to § 222.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-78.html">D.C. Law 18-78</a> designated the existing text as subsec. (a); in the lead-in text of subsec. (a), substituted “a portion of Lot 26 (formerly known as Lots 18, 21, 801 through 806, 830 through 839, 843, and 845), Square 370” for “Lots 18, 21, 801 through 806, 830 through 839, 843, and 845 in Square 370”; in subsec. (a)(1), substituted “on the 3rd anniversary of operations” for “in the 4th year of operations”; in subsec. (a)(4), substituted “debt financing as permitted under the Hotel Development and Funding Agreement and lease” for “a loan for the new convention center hotel”; and added subsec. (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in the credit, renumbered the section designation from § 702 to § 222.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-339.html">D.C. Law 17-339</a> added par. (6).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-144.html">D.C. Law 17-144</a> rewrote the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 201 of New Convention Center Hotel Omnibus Financing and Development Emergency Act of 2006 (D.C. Act 16-404, June 26, 2006,  53 DCR 5404).</p>
-                <p>For temporary (90 day) amendment, see § 2(a) of New Convention Center Hotel Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-412, June 18, 2008,  55 DCR 7026).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of New Convention Center Hotel Combined Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-604, December 16, 2008,  56 DCR 17).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of New Convention Center Hotel Technical Amendments Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-28, March 16, 2009,  56 DCR 2319).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(e) of New Convention Center Hotel Emergency Amendment Act of 2009 (D.C. Act 18-186, August 12, 2009,  56 DCR 6967).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of New Convention Center Hotel Technical Amendments Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-28, March 16, 2009,  56 DCR 2319).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of New Convention Center Hotel Combined Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-604, December 16, 2008,  56 DCR 17).</p>
+                <p>For temporary (90 day) amendment, see § 2(a) of New Convention Center Hotel Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-412, June 18, 2008,  55 DCR 7026).</p>
+                <p>For temporary (90 day) addition, see § 201 of New Convention Center Hotel Omnibus Financing and Development Emergency Act of 2006 (D.C. Act 16-404, June 26, 2006,  53 DCR 5404).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(a) of D.C. Law 17-228 added par. (6) to read as follows: “(6) The lease may be subordinated to a leasehold mortgage securing development financing for the developer and may permit the issuance of a new lease upon foreclosure on the same terms and conditions as the prior lease.”.</p>
                 <p>Section 5(b) of D.C. Law 17-228 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(a) of D.C. Law 17-228 added par. (6) to read as follows: “(6) The lease may be subordinated to a leasehold mortgage securing development financing for the developer and may permit the issuance of a new lease upon foreclosure on the same terms and conditions as the prior lease.”.</p>
               </section>
             </section>
             <hr/>
@@ -172,22 +184,22 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/10-1202.24.html">10-1202.24</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-144.html">D.C. Law 17-144</a> rewrote the section.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-339.html">D.C. Law 17-339</a> added pars. (5) and (6).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in the credit, renumbered the section designation from § 703 to § 223.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-78.html">D.C. Law 18-78</a> substituted “a portion of Lot 26 (formerly known as Lots 22 and 24), Square 370” for “Lots 22 and 24, Square 370”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in the credit, renumbered the section designation from § 703 to § 223.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-339.html">D.C. Law 17-339</a> added pars. (5) and (6).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-144.html">D.C. Law 17-144</a> rewrote the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) additions, see § 201 of New Convention Center Hotel Omnibus Financing and Development Emergency Act of 2006 (D.C. Act 16-404, June 26, 2006,  53 DCR 5404).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of New Convention Center Hotel Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-412, June 18, 2008,  55 DCR 7026).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of New Convention Center Hotel Combined Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-604, December 16, 2008,  56 DCR 17).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of New Convention Center Hotel Technical Amendments Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-28, March 16, 2009,  56 DCR 2319).</p>
-                <p>For temporary (90 day) addition, see § 2(c) of New Convention Center Hotel Technical Amendments Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-28, March 16, 2009,  56 DCR 2319).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(f) of New Convention Center Hotel Emergency Amendment Act of 2009 (D.C. Act 18-186, August 12, 2009,  56 DCR 6967).</p>
+                <p>For temporary (90 day) addition, see § 2(c) of New Convention Center Hotel Technical Amendments Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-28, March 16, 2009,  56 DCR 2319).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of New Convention Center Hotel Technical Amendments Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-28, March 16, 2009,  56 DCR 2319).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of New Convention Center Hotel Combined Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-604, December 16, 2008,  56 DCR 17).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of New Convention Center Hotel Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-412, June 18, 2008,  55 DCR 7026).</p>
+                <p>For temporary (90 day) additions, see § 201 of New Convention Center Hotel Omnibus Financing and Development Emergency Act of 2006 (D.C. Act 16-404, June 26, 2006,  53 DCR 5404).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(b) of D.C. Law 17-228 added pars. (5) and (6) to read as follows:</p>
-                <p>“(5) Lease payments shall be payable from cash available after payment of the developer’s debt service on a loan for the New Convention Center Hotel.</p>
-                <p>“(6) The lease may be subordinated to a leasehold mortgage securing development financing for the developer and may permit the issuance of a new lease upon foreclosure on the same terms and conditions as the prior lease.”.</p>
                 <p>Section 5(b) of D.C. Law 17-228 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(6) The lease may be subordinated to a leasehold mortgage securing development financing for the developer and may permit the issuance of a new lease upon foreclosure on the same terms and conditions as the prior lease.”.</p>
+                <p>“(5) Lease payments shall be payable from cash available after payment of the developer’s debt service on a loan for the New Convention Center Hotel.</p>
+                <p>Section 2(b) of D.C. Law 17-228 added pars. (5) and (6) to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -206,17 +218,17 @@
       (<a class="internal-link" href="/dc/council/laws/10-188.html#§703a">Sept. 28, 1994, D.C. Law 10-188, § 703a</a>; <a class="internal-link" href="/dc/council/laws/17-339.html">as added Mar. 21, 2009, D.C. Law 17-339, § 2(c), 56 DCR 947</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(a) of New Convention Center Hotel Emergency Amendment Act of 2008 (D.C. Act 17-556, October 27, 2008,  55 DCR 12004).</p>
                 <p>For temporary (90 day) addition, see § 2(c) of New Convention Center Hotel Combined Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-604, December 16, 2008,  56 DCR 17).</p>
+                <p>For temporary (90 day) addition, see § 2(a) of New Convention Center Hotel Emergency Amendment Act of 2008 (D.C. Act 17-556, October 27, 2008,  55 DCR 12004).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(a) of D.C. Law 17-294 added a section to read as follows:</p>
-                <p>“Sec. 703a. Use of new convention center vault space.</p>
-                <p>“(a) Notwithstanding any other provision of law, with respect to the airspace located below the portion of N Street, N.W., between 7th and 9th Streets, N.W., and 9th Street, N.W., between and including N Street, N.W., and Massachusetts Avenue, N.W., and the adjoining sidewalks abutting the new convention center in which the Authority was permitted to construct, and has constructed, a portion of the new convention center, including loading docks, access ramps, and associated driveways, the Authority may enter into one or more agreements with Marriott International, Inc., or its designee, to permit Marriott International, Inc., or its designee to:</p>
-                <p>“(1) Use the new convention center’s access ramp and associated driveways;</p>
-                <p>“(2) Construct and maintain within such airspace access ways from the new convention center’s access ramp and associated driveways for the purpose of entering and exiting from the proposed loading docks of the new convention center hotel and such other purposes as may be authorized by the Authority; and</p>
-                <p>“(3) Construct, operate, and maintain within such airspace a pedestrian connector between the new convention center hotel and the new convention center.</p>
-                <p>“(b) The agreement regarding the pedestrian connector authorized under subsection (a) of this section may provide that Marriott International, Inc., or its designee, shall be responsible for the operation and maintenance of the pedestrian connector and, if so provided, that the Authority shall pay 50% of the costs to operate and maintain the pedestrian connector.”.</p>
                 <p>Section 4(b) of D.C. Law 17-294 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(b) The agreement regarding the pedestrian connector authorized under subsection (a) of this section may provide that Marriott International, Inc., or its designee, shall be responsible for the operation and maintenance of the pedestrian connector and, if so provided, that the Authority shall pay 50% of the costs to operate and maintain the pedestrian connector.”.</p>
+                <p>“(3) Construct, operate, and maintain within such airspace a pedestrian connector between the new convention center hotel and the new convention center.</p>
+                <p>“(2) Construct and maintain within such airspace access ways from the new convention center’s access ramp and associated driveways for the purpose of entering and exiting from the proposed loading docks of the new convention center hotel and such other purposes as may be authorized by the Authority; and</p>
+                <p>“(1) Use the new convention center’s access ramp and associated driveways;</p>
+                <p>“(a) Notwithstanding any other provision of law, with respect to the airspace located below the portion of N Street, N.W., between 7th and 9th Streets, N.W., and 9th Street, N.W., between and including N Street, N.W., and Massachusetts Avenue, N.W., and the adjoining sidewalks abutting the new convention center in which the Authority was permitted to construct, and has constructed, a portion of the new convention center, including loading docks, access ramps, and associated driveways, the Authority may enter into one or more agreements with Marriott International, Inc., or its designee, to permit Marriott International, Inc., or its designee to:</p>
+                <p>“Sec. 703a. Use of new convention center vault space.</p>
+                <p>Section 2(a) of D.C. Law 17-294 added a section to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -250,19 +262,19 @@
       (<a class="internal-link" href="/dc/council/laws/16-163.html#§704">Sept. 19, 2006, D.C. Law 16-163, § 704</a>; <a class="internal-link" href="/dc/council/laws/17-144.html">as added Apr. 15, 2008, D.C. Law 17-144, § 3(e), 55 DCR 2527</a>; <a class="internal-link" href="/dc/council/laws/17-339.html">Mar. 21, 2009, D.C. Law 17-339, § 2(d), 56 DCR 947</a>; <a class="internal-link" href="/dc/council/laws/18-78.html">Oct. 22, 2009, D.C. Law 18-78, § 2(g), 56 DCR 6959</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-339.html">D.C. Law 17-339</a> rewrote the section, which had read as follows: “Notwithstanding any other provision of law, the Mayor is authorized to issue a permit for vault space adjacent to the real property subject to the lease referenced in §§ <a class="internal-link" href="/dc/council/code/sections/10-1202.22.html">10-1202.22</a> and <a class="internal-link" href="/dc/council/code/sections/10-1202.23.html">10-1202.23</a> in accordance with subchapter I of Chapter 11 of this title, coterminous with such lease and at no additional rent or fee.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-78.html">D.C. Law 18-78</a> inserted “The recording of any airspace lease executed pursuant to this section among the land records of the District of Columbia shall be exempt from the recordation tax imposed by § <a class="internal-link" href="/dc/council/code/sections/42-1103.html">42-1103</a>.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-339.html">D.C. Law 17-339</a> rewrote the section, which had read as follows: “Notwithstanding any other provision of law, the Mayor is authorized to issue a permit for vault space adjacent to the real property subject to the lease referenced in §§ <a class="internal-link" href="/dc/council/code/sections/10-1202.22.html">10-1202.22</a> and <a class="internal-link" href="/dc/council/code/sections/10-1202.23.html">10-1202.23</a> in accordance with subchapter I of Chapter 11 of this title, coterminous with such lease and at no additional rent or fee.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment, see § 2(c) of New Convention Center Hotel Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-412, June 18, 2008,  55 DCR 7026).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of New Convention Center Hotel Emergency Amendment Act of 2008 (D.C. Act 17-556, October 27, 2008,  55 DCR 12004).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of New Convention Center Hotel Combined Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-604, December 16, 2008,  56 DCR 17).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of New Convention Center Hotel Technical Amendments Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-28, March 16, 2009,  56 DCR 2319).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(g) of New Convention Center Hotel Emergency Amendment Act of 2009 (D.C. Act 18-186, August 12, 2009,  56 DCR 6967).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of New Convention Center Hotel Technical Amendments Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-28, March 16, 2009,  56 DCR 2319).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of New Convention Center Hotel Combined Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-604, December 16, 2008,  56 DCR 17).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of New Convention Center Hotel Emergency Amendment Act of 2008 (D.C. Act 17-556, October 27, 2008,  55 DCR 12004).</p>
+                <p>For temporary (90 day) amendment, see § 2(c) of New Convention Center Hotel Technical Amendments Emergency Amendment Act of 2008 (D.C. Act 17-412, June 18, 2008,  55 DCR 7026).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(c) of D.C. Law 17-228, at the end of the section heading, inserted “or airspace lease”; substituted “permit or lease” for “permit”; substituted “vault space or airspace” for “vault space”; and substituted “and the District of Columbia Public Space Utilization Act, approved October 17, 1968 (82 Stat. 1166; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/10-1121.01.html">10-1121.01</a> et seq.), coterminous” for “coterminous”.</p>
-                <p>Section 5(b) of D.C. Law 17-228 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2(b) of D.C. Law 17-294 amended this section to read as follows: “Sec. 704. Authority for vault space permit or airspace lease. ”Notwithstanding any other provision of law, the Mayor may issue a permit or airspace lease to Marriott International, Inc., or its designee, for vault space or airspace adjacent to the real property subject to the leases referenced in sections 702 and 703, having a term not to exceed 99 years, or such longer period as may be otherwise determined by the Mayor, and at no additional rent or fee, except as may be otherwise determined by the Mayor, but otherwise in accordance with the District of Columbia Public Space Rental Act, approved October 17, 1968 (82 Stat. 1156; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/10-1101.01.html">10-1101.01</a> et seq.), and the District of Columbia Public Space Utilization Act, approved October 17, 1968 (82 Stat. 1166; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/10-1121.01.html">10-1121.01</a> et seq.), as applicable.”.</p>
                 <p>Section 4(b) of D.C. Law 17-294 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(b) of D.C. Law 17-294 amended this section to read as follows: “Sec. 704. Authority for vault space permit or airspace lease. ”Notwithstanding any other provision of law, the Mayor may issue a permit or airspace lease to Marriott International, Inc., or its designee, for vault space or airspace adjacent to the real property subject to the leases referenced in sections 702 and 703, having a term not to exceed 99 years, or such longer period as may be otherwise determined by the Mayor, and at no additional rent or fee, except as may be otherwise determined by the Mayor, but otherwise in accordance with the District of Columbia Public Space Rental Act, approved October 17, 1968 (82 Stat. 1156; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/10-1101.01.html">10-1101.01</a> et seq.), and the District of Columbia Public Space Utilization Act, approved October 17, 1968 (82 Stat. 1166; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/10-1121.01.html">10-1121.01</a> et seq.), as applicable.”.</p>
+                <p>Section 5(b) of D.C. Law 17-228 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(c) of D.C. Law 17-228, at the end of the section heading, inserted “or airspace lease”; substituted “permit or lease” for “permit”; substituted “vault space or airspace” for “vault space”; and substituted “and the District of Columbia Public Space Utilization Act, approved October 17, 1968 (82 Stat. 1166; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/10-1121.01.html">10-1121.01</a> et seq.), coterminous” for “coterminous”.</p>
               </section>
             </section>
             <hr/>

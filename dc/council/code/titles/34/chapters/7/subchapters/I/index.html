@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/34/chapters/7/subchapters/II/">Subchapter II. Prosecution for Violation of Public Service Commission Rules.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/34/chapters/7/subchapters/I/">Report Error</a>
@@ -88,17 +88,39 @@
         <section class="col8 body">
           <h1>Subchapter I. General.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/34-701.html">§ 34–701. False statements in securing approval for stock issue.</a>
-            <a href="/dc/council/code/sections/34-702.html">§ 34–702. Demanding or receiving greater or less than established rates.</a>
-            <a href="/dc/council/code/sections/34-703.html">§ 34–703. Reduced rates for consumer furnishing facilities prohibited.</a>
-            <a href="/dc/council/code/sections/34-704.html">§ 34–704. Rebates.</a>
-            <a href="/dc/council/code/sections/34-705.html">§ 34–705. Failure or refusal to furnish information; furnishing false information; failure to keep proper accounts.</a>
-            <a href="/dc/council/code/sections/34-706.html">§ 34–706. Failure to perform duty or obey Commission order; violation of pipeline safety regulation.</a>
-            <a href="/dc/council/code/sections/34-707.html">§ 34–707. Destruction of apparatus or appliance of Commission.</a>
-            <a href="/dc/council/code/sections/34-708.html">§ 34–708. Each day’s default to constitute separate and distinct offense.</a>
-            <a href="/dc/council/code/sections/34-709.html">§ 34–709. Commission authorized to regulate rates.</a>
-            <a href="/dc/council/code/sections/34-710.html">§ 34–710. Fines, penalties and forfeitures to be paid into Treasury.</a>
-            <a href="/dc/council/code/sections/34-711.html">§ 34–711. Rights, penalties and forfeitures not released; penalties and forfeitures cumulative.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-701.html">§ 34–701. False statements in securing approval for stock issue.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-702.html">§ 34–702. Demanding or receiving greater or less than established rates.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-703.html">§ 34–703. Reduced rates for consumer furnishing facilities prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-704.html">§ 34–704. Rebates.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-705.html">§ 34–705. Failure or refusal to furnish information; furnishing false information; failure to keep proper accounts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-706.html">§ 34–706. Failure to perform duty or obey Commission order; violation of pipeline safety regulation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-707.html">§ 34–707. Destruction of apparatus or appliance of Commission.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-708.html">§ 34–708. Each day’s default to constitute separate and distinct offense.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-709.html">§ 34–709. Commission authorized to regulate rates.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-710.html">§ 34–710. Fines, penalties and forfeitures to be paid into Treasury.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-711.html">§ 34–711. Rights, penalties and forfeitures not released; penalties and forfeitures cumulative.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -113,8 +135,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-701.html">Mar. 4, 1913, 37 Stat. 991, ch. 150, § 8, par. 80</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-301.</p>
                 <p>1973 Ed., § 43-901.</p>
+                <p>1981 Ed., § 43-301.</p>
               </section>
             </section>
             <hr/>
@@ -129,11 +151,11 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-702.html">Mar. 4, 1913, 37 Stat. 991, ch. 150, § 8, par. 81</a>; <a class="internal-link" href="/dc/council/laws/13-107.html">May 9, 2000, D.C. Law 13-107, § 201(c), 47 DCR 1091</a>; <a class="internal-link" href="/dc/council/laws/15-227.html">Mar. 16, 2005, D.C. Law 15-227, § 17(d), 51 DCR 10549</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-302.</p>
                 <p>1973 Ed., § 43-902.</p>
+                <p>1981 Ed., § 43-302.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-107.html">D.C. Law 13-107</a> in lieu of the phrase “electric corporation, water power company,” substituted “electric company”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-227.html">D.C. Law 15-227</a> substituted “gas company” for “gas corporation”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-107.html">D.C. Law 13-107</a> in lieu of the phrase “electric corporation, water power company,” substituted “electric company”.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 7(d) of Prevention of Unauthorized Switching of Customer Natural Gas Accounts Temporary Act of 2001 (D.C. Law 14-13, July 10, 2001, law notification  48 DCR 6589).</p>
               </section>
@@ -150,8 +172,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-703.html">Mar. 4, 1913, 37 Stat. 991, ch. 150, § 8, par. 82</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-303.</p>
                 <p>1973 Ed., § 43-903.</p>
+                <p>1981 Ed., § 43-303.</p>
               </section>
             </section>
             <hr/>
@@ -166,8 +188,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-704.html">Mar. 4, 1913, 37 Stat. 991, ch. 150, § 8, par. 83</a>; <a class="internal-link" href="/dc/council/laws/13-107.html">May 9, 2000, D.C. Law 13-107, § 201(d), 47 DCR 1091</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-304.</p>
                 <p>1973 Ed., § 43-904.</p>
+                <p>1981 Ed., § 43-304.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-107.html">D.C. Law 13-107</a> deleted “firm, or corporation” following “person” in the first and second sentence, deleted in the first sentence “District of Columbia” preceding “, or for any service”, and inserted in its place “District of Columbia by a public utility”.</p>
               </section>
@@ -184,8 +206,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-705.html">Mar. 4, 1913, 37 Stat. 992, ch. 150, § 8, par. 84</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-305.</p>
                 <p>1973 Ed., § 43-905.</p>
+                <p>1981 Ed., § 43-305.</p>
               </section>
             </section>
             <hr/>
@@ -213,19 +235,19 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-706.html">Mar. 4, 1913, 37 Stat. 992, ch. 150, § 8, par. 85</a>; <a class="internal-link" href="/us/congress/laws/public/92-94.html">Aug. 11, 1971, 85 Stat. 319, Pub. L. 92-94, § 1(b)</a>; <a class="internal-link" href="/dc/council/laws/5-153.html">Mar. 14, 1985, D.C. Law 5-153, § 3(f), 31 DCR 6440</a>; <a class="internal-link" href="/dc/council/laws/9-109.html">May 21, 1992, D.C. Law 9-109, § 2, 39 DCR 2158</a>; <a class="internal-link" href="/dc/council/laws/15-342.html">Apr. 12, 2005, D.C. Law 15-342, § 303(b), 52 DCR 2346</a>; <a class="internal-link" href="/dc/council/laws/18-223.html">Sept. 24, 2010, D.C. Law 18-223, § 2222(b), 57 DCR 6242</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 2082(a), 58 DCR 6226</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-306.</p>
                 <p>1973 Ed., § 43-906.</p>
+                <p>1981 Ed., § 43-306.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/34-731.html">34-731</a>, § <a class="internal-link" href="/dc/council/code/sections/34-732.html">34-732</a>, and § <a class="internal-link" href="/dc/council/code/sections/34-912.html">34-912</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-342.html">D.C. Law 15-342</a> substituted “$5,000” for “$300”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (c), added the first sentence; and added subsec. (d).</p>
                 <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> added subsec. (e).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (c), added the first sentence; and added subsec. (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-342.html">D.C. Law 15-342</a> substituted “$5,000” for “$300”.</p>
                 <h4>Cross References</h4>
                 <p>Public service commission, powers and duties, see § <a class="internal-link" href="/dc/council/code/sections/34-402.html">34-402</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 303(b) of Omnibus Utility Emergency Amendment Act of 2005 (D.C. Act 16-12, January 28, 2005,  52 DCR 2945).</p>
                 <p>For temporary (90 day) amendment of section, see § 2222(b) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) amendment of section, see § 303(b) of Omnibus Utility Emergency Amendment Act of 2005 (D.C. Act 16-12, January 28, 2005,  52 DCR 2945).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 2081 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided that subtitle I of title II of the act may be cited as “Public Service Commission Amendment Act of 2011”.</p>
                 <h4>References in Text</h4>
@@ -244,8 +266,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-707.html">Mar. 4, 1913, 37 Stat. 992, ch. 150, § 8, par. 86</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-309.</p>
                 <p>1973 Ed., § 43-909.</p>
+                <p>1981 Ed., § 43-309.</p>
               </section>
             </section>
             <hr/>
@@ -260,8 +282,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-708.html">Mar. 4, 1913, 37 Stat. 992, ch. 150, § 8, par. 87</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-310.</p>
                 <p>1973 Ed., § 43-910.</p>
+                <p>1981 Ed., § 43-310.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/34-1552.html">34-1552</a>.</p>
               </section>
@@ -278,11 +300,11 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-709.html">Mar. 4, 1913, 37 Stat. 992, ch. 150, § 8, par. 88</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-311.</p>
                 <p>1973 Ed., § 43-911.</p>
+                <p>1981 Ed., § 43-311.</p>
                 <h4>Cross References</h4>
-                <p>Commission rate schedules, amendments, see § <a class="internal-link" href="/dc/council/code/sections/34-602.html">34-602</a>.</p>
                 <p>Rate investigations, see §§ <a class="internal-link" href="/dc/council/code/sections/34-908.html">34-908</a> et seq.</p>
+                <p>Commission rate schedules, amendments, see § <a class="internal-link" href="/dc/council/code/sections/34-602.html">34-602</a>.</p>
               </section>
             </section>
             <hr/>
@@ -297,8 +319,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-710.html">Mar. 4, 1913, 37 Stat. 996, ch. 150, § 8, par. 98</a>; Feb. 22, 1921, 41 Stat. 1144, ch. 70, § 7; June 28, 1944, 58 Stat. 533, ch. 300, § 18.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-312.</p>
                 <p>1973 Ed., § 43-912.</p>
+                <p>1981 Ed., § 43-312.</p>
               </section>
             </section>
             <hr/>
@@ -313,8 +335,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/34-711.html">Mar. 4, 1913, 37 Stat. 994, ch. 150, § 8, par. 93</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 43-313.</p>
                 <p>1973 Ed., § 43-913.</p>
+                <p>1981 Ed., § 43-313.</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/24-241.06.html">§ 24–241.06. Trust fund for earnings; disbursements.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/24-241.05.html">Report Error</a>
@@ -100,8 +100,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§6">Nov. 10, 1966, 80 Stat. 1519, Pub. L. 89-803, § 6</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(a)</a>; <a class="internal-link" href="/dc/council/laws/11-273.html">June 3, 1997, D.C. Law 11-273, § 4(d), 43 DCR 6168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-465.</p>
                 <p>1973 Ed., § 24-465.</p>
+                <p>1981 Ed., § 24-465.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 4(e) of the Zero Tolerance for Guns Emergency Amendment Act of 1996 (D.C. Act 11-390, August 26, 1996,  43 DCR 4986), § 4(d) of the Zero Tolerance for Guns Congressional Adjournment Emergency Amendment Act of 1996 (D.C. Act 11-436, December 4, 1996,  43 DCR 6651), and see § 4(d) of the Zero Tolerance for Guns Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-35, March 11, 1997,  44 DCR 1928).</p>
               </section>

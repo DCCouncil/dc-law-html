@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/titles/6/chapters/7/subchapters/I/parts/B/">Part B. Fees; Notices.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/6-701.12.html">Report Error</a>
@@ -100,8 +100,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/59-1-ch957.html#§12">Mar. 19, 1906, ch. 957, § 12</a>; June 4, 1934, 48 Stat. 846, ch. 388; <a class="internal-link" href="/dc/council/laws/6-216.html">Mar. 21, 1987, D.C. Law 6-216, § 13(d), 34 DCR 1072</a>; <a class="internal-link" href="/dc/council/laws/21-118.html#§7(b)">May 18, 2016, D.C. Law 21-118, § 7(b), 63 DCR 4645</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-512.</p>
                 <p>1973 Ed., § 5-312.</p>
+                <p>1981 Ed., § 5-512.</p>
                 <h4>References in Text</h4>
                 <p>The “Construction Codes Approval and Amendments Act of 1986,” referred to in paragraph (8), is <a class="internal-link" href="/dc/council/code/titles/6/chapters/14/">D.C. Law 6-216</a>.</p>
               </section>

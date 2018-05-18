@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/47/chapters/28/subchapters/I-B/">Subchapter I-B. Non-Health Related Occupations and Professions Licensure.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/47/chapters/28/subchapters/I-A/">Report Error</a>
@@ -88,31 +88,81 @@
         <section class="col8 body">
           <h1>Subchapter I-A. General Provisions.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/47-2851.01.html">§ 47–2851.01. Definitions.</a>
-            <a href="/dc/council/code/sections/47-2851.02.html">§ 47–2851.02. License required.</a>
-            <a href="/dc/council/code/sections/47-2851.02a.html">§ 47–2851.02a. License exemption for de minimis business activity.</a>
-            <a href="/dc/council/code/sections/47-2851.03.html">§ 47–2851.03. Endorsement categories; exemptions.</a>
-            <a href="/dc/council/code/sections/47-2851.03a.html">§ 47–2851.03a. Existing licenses eliminated.</a>
-            <a href="/dc/council/code/sections/47-2851.03b.html">§ 47–2851.03b. Unique identifying number.</a>
-            <a href="/dc/council/code/sections/47-2851.03c.html">§ 47–2851.03c. Agencies’ power to inspect and revoke licensure.</a>
-            <a href="/dc/council/code/sections/47-2851.03d.html">§ 47–2851.03d. General Business License and General Contractor/Construction Manager License.</a>
-            <a href="/dc/council/code/sections/47-2851.04.html">§ 47–2851.04. License application and fees.</a>
-            <a href="/dc/council/code/sections/47-2851.05.html">§ 47–2851.05. Business license center.</a>
-            <a href="/dc/council/code/sections/47-2851.06.html">§ 47–2851.06. Public information.</a>
-            <a href="/dc/council/code/sections/47-2851.07.html">§ 47–2851.07. Issuance of licenses.</a>
-            <a href="/dc/council/code/sections/47-2851.08.html">§ 47–2851.08. Basic business license application fees; renewal fees.</a>
-            <a href="/dc/council/code/sections/47-2851.09.html">§ 47–2851.09. License expiration date.</a>
-            <a href="/dc/council/code/sections/47-2851.10.html">§ 47–2851.10. Lapsed and reinstated licenses.</a>
-            <a href="/dc/council/code/sections/47-2851.11.html">§ 47–2851.11. Denial of master [basic]</a>
-            <a href="/dc/council/code/sections/47-2851.12.html">§ 47–2851.12. Additional licenses.</a>
-            <a href="/dc/council/code/sections/47-2851.13.html">§ 47–2851.13. Establishment of Basic Business License Fund; disposition of license fees, penalties, and fines.</a>
-            <a href="/dc/council/code/sections/47-2851.14.html">§ 47–2851.14. Certain professional licenses exempt. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-2851.15.html">§ 47–2851.15. Existing licenses or permits.</a>
-            <a href="/dc/council/code/sections/47-2851.16.html">§ 47–2851.16. Third party inspections for license endorsements.</a>
-            <a href="/dc/council/code/sections/47-2851.17.html">§ 47–2851.17. Performance audit. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-2851.18.html">§ 47–2851.18. Participation of District agencies.</a>
-            <a href="/dc/council/code/sections/47-2851.19.html">§ 47–2851.19. Amnesty period.</a>
-            <a href="/dc/council/code/sections/47-2851.20.html">§ 47–2851.20. Authorization of Director to promulgate regulations.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.01.html">§ 47–2851.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.02.html">§ 47–2851.02. License required.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.02a.html">§ 47–2851.02a. License exemption for de minimis business activity.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.03.html">§ 47–2851.03. Endorsement categories; exemptions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.03a.html">§ 47–2851.03a. Existing licenses eliminated.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.03b.html">§ 47–2851.03b. Unique identifying number.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.03c.html">§ 47–2851.03c. Agencies’ power to inspect and revoke licensure.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.03d.html">§ 47–2851.03d. General Business License and General Contractor/Construction Manager License.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.04.html">§ 47–2851.04. License application and fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.05.html">§ 47–2851.05. Business license center.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.06.html">§ 47–2851.06. Public information.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.07.html">§ 47–2851.07. Issuance of licenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.08.html">§ 47–2851.08. Basic business license application fees; renewal fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.09.html">§ 47–2851.09. License expiration date.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.10.html">§ 47–2851.10. Lapsed and reinstated licenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.11.html">§ 47–2851.11. Denial of master [basic]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.12.html">§ 47–2851.12. Additional licenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.13.html">§ 47–2851.13. Establishment of Basic Business License Fund; disposition of license fees, penalties, and fines.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.14.html">§ 47–2851.14. Certain professional licenses exempt. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.15.html">§ 47–2851.15. Existing licenses or permits.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.16.html">§ 47–2851.16. Third party inspections for license endorsements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.17.html">§ 47–2851.17. Performance audit. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.18.html">§ 47–2851.18. Participation of District agencies.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.19.html">§ 47–2851.19. Amnesty period.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2851.20.html">§ 47–2851.20. Authorization of Director to promulgate regulations.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -150,15 +200,15 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/22-4510.html">22-4510</a>, § <a class="internal-link" href="/dc/council/code/sections/37-131.02.html">37-131.02</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2855.01.html">47-2855.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, added new par. (1); added par. (1A); redesignated existing par. (1)(A) as par. (1B)(A); in redesignated par. (1B)(A), substituted “in the District of Columbia.” for “, and which pays, or is subject to the payment of, taxes on earnings, or fees in lieu of taxes, to the District of Columbia, or which qualifies for tax-exempt status under District law.”; repealed pars. (6) and (7); in par. 8, deleted “to register with the District to do business in the District and”; and, in par. (12), substituted “basic” for “master”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in par. (1B), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, added new par. (1); added par. (1A); redesignated existing par. (1)(A) as par. (1B)(A); in redesignated par. (1B)(A), substituted “in the District of Columbia.” for “, and which pays, or is subject to the payment of, taxes on earnings, or fees in lieu of taxes, to the District of Columbia, or which qualifies for tax-exempt status under District law.”; repealed pars. (6) and (7); in par. 8, deleted “to register with the District to do business in the District and”; and, in par. (12), substituted “basic” for “master”.</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Religious Organization Congressional Review Emergency Act of 2002 (D.C. Act 14-535, December 2, 2002,  49 DCR 11645).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Religious Organization Exemption Emergency Act of 2002 (D.C. Act 14-415, July 17, 2002,  49 DCR 7382).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Religious Organization Exemption Congressional Review Emergency Act of 2003 (D.C. Act 15-45, March 24, 2003,  50 DCR 2812).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(c) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Religious Organization Exemption Congressional Review Emergency Act of 2003 (D.C. Act 15-45, March 24, 2003,  50 DCR 2812).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Religious Organization Exemption Emergency Act of 2002 (D.C. Act 14-415, July 17, 2002,  49 DCR 7382).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Religious Organization Congressional Review Emergency Act of 2002 (D.C. Act 14-535, December 2, 2002,  49 DCR 11645).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Religious Organization Exemption Amendment Temporary Act of 2002 (D.C. Law 14-216, March 25, 2002, law notification  50 DCR 2729).</p>
                 <h4>Editor's Notes</h4>
@@ -206,9 +256,9 @@
       (<a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">Feb. 18, 2017, D.C. Law 21-213, § 3(c), 63 DCR 15330</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7024">Section 7024 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a>. Therefore the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a> has been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 4 of D.C. Law 21-213, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7024">§ 7024 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
@@ -261,14 +311,14 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/25-313.html">25-313</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a> rewrote the section.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> repealed par. (1) of subsec. (a) which had read as follows: “(1) Alcoholic beverages, except that a basic business license bearing an Alcoholic Beverages endorsement shall also indicate the class of endorsement applicable for the licensed business;”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a> rewrote the section.</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 116(l) of Mental Health Service Delivery Reform Congressional Review Emergency Act of 2001 (D.C. Act 14-144, October 23, 2001,  48 DCR 9947).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-31.html#§5">§ 5 of Stun Gun Regulation Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-31, Mar. 27, 2017, 64 DCR 3084)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
+                <p>For temporary (90 day) amendment of section, see § 116(l) of Mental Health Service Delivery Reform Congressional Review Emergency Act of 2001 (D.C. Act 14-144, October 23, 2001,  48 DCR 9947).</p>
               </section>
             </section>
             <hr/>
@@ -505,17 +555,17 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-2851.3a.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-277.html">D.C. Law 13-277</a>, in subsec. (k)(3)(B), added the second sentence.</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-56.html">D.C. Law 14-56</a>, in subsec., (k)(1)(B), added the last sentence.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsec. (f), validated a previously made technical correction.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> repealed subsec. (a).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (f), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-187.html">D.C. Law 15-187</a> repealed subsec. (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsec. (f), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-56.html">D.C. Law 14-56</a>, in subsec., (k)(1)(B), added the last sentence.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-277.html">D.C. Law 13-277</a>, in subsec. (k)(3)(B), added the second sentence.</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 16(l) of Department of Mental Health Establishment Emergency Amendment Act of 2001 (D.C. Act 14-55, May 2, 2001,  48 DCR 4390).</p>
-                <p>For temporary (90 day) amendment of section, see § 16(l) of Department of Mental Health Establishment Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-101, July 23, 2001,  48 DCR 7123).</p>
                 <p>For temporary (90 day) amendment of section, see § 116(l) of Mental Health Service Delivery Reform Congressional Review Emergency Act of 2001 (D.C. Act 14-144, October 23, 2001,  48 DCR 9947).</p>
+                <p>For temporary (90 day) amendment of section, see § 16(l) of Department of Mental Health Establishment Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-101, July 23, 2001,  48 DCR 7123).</p>
+                <p>For temporary (90 day) amendment of section, see § 16(l) of Department of Mental Health Establishment Emergency Amendment Act of 2001 (D.C. Act 14-55, May 2, 2001,  48 DCR 4390).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 16(l) of Department of Mental Health Establishment Temporary Amendment Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-51.html">D.C. Law 14-51</a>, October 30, 2001, law notification  49 DCR 352).</p>
                 <h4>Short Title</h4>
@@ -602,19 +652,19 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-2851.4.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a), substituted “basic” for “master”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (a), added the second sentence; and, in subsec. (c)(1), designated the existing text as subpar. (A) and added subpar. (B).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a), substituted “basic” for “master”.</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(f) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
-                <p>For temporary (90 day) amendment of section, see §  210 of Fiscal Year 2010 Balanced Budget Support Emergency Act of 2010 (D.C. Act 18-450, June 28, 2010,  57 DCR 5635).</p>
-                <p>For temporary (90 day) amendment of section, see §  210 of Fiscal Year 2010 Balanced Budget Support Congressional Review Emergency Act of 2010 (D.C. Act 18-531, August 6, 2010,  57 DCR 8109).</p>
                 <p>For temporary (90 day) amendment of section, see §§  2030, 2054 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) amendment of section, see §  210 of Fiscal Year 2010 Balanced Budget Support Congressional Review Emergency Act of 2010 (D.C. Act 18-531, August 6, 2010,  57 DCR 8109).</p>
+                <p>For temporary (90 day) amendment of section, see §  210 of Fiscal Year 2010 Balanced Budget Support Emergency Act of 2010 (D.C. Act 18-450, June 28, 2010,  57 DCR 5635).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(f) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 210 of D.C. Law 18-222, in subsec. (c)(1), designated the existing text as subpar. (A) and added subpar. (B) to read as follows:</p>
-                <p>“(B) The Director, pursuant to subchapter I of Chapter 5 of Title 2, may revise such fees as are established by this subchapter. The proposed rules issued pursuant to this subparagraph shall be submitted to the Council for a 90-day period of review, excluding Saturdays, Sundays, legal holidays, and days of Council recess. If the Council does not approve or disapprove the proposed rules, in whole or in part, by resolution within this 90-day review period, the proposed rules shall be deemed disapproved.”.</p>
                 <p>Section 2002(b) of D.C. Law 18-222 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(B) The Director, pursuant to subchapter I of Chapter 5 of Title 2, may revise such fees as are established by this subchapter. The proposed rules issued pursuant to this subparagraph shall be submitted to the Council for a 90-day period of review, excluding Saturdays, Sundays, legal holidays, and days of Council recess. If the Council does not approve or disapprove the proposed rules, in whole or in part, by resolution within this 90-day review period, the proposed rules shall be deemed disapproved.”.</p>
+                <p>Section 210 of D.C. Law 18-222, in subsec. (c)(1), designated the existing text as subpar. (A) and added subpar. (B) to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -676,10 +726,10 @@
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Master Business Registration Delay Emergency Act of 2002 (D.C. Act 14-595, January 7, 2003,  50 DCR 647).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Master Business Registration Delay Congressional Review Emergency Act of 2003 (D.C. Act 15-73, April 16, 2003,  50 DCR 3616).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Master Business Registration Second Delay Emergency Act of 2003 (D.C. Act 15-83, May 19, 2003,  50 DCR 4100).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(h) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Master Business Registration Second Delay Emergency Act of 2003 (D.C. Act 15-83, May 19, 2003,  50 DCR 4100).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Master Business Registration Delay Congressional Review Emergency Act of 2003 (D.C. Act 15-73, April 16, 2003,  50 DCR 3616).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Master Business Registration Delay Emergency Act of 2002 (D.C. Act 14-595, January 7, 2003,  50 DCR 647).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of Master Business Registration Temporary Act of 2003 (D.C. Law 14-302, May 3, 2003, law notification  50 DCR 3776).</p>
               </section>
@@ -709,14 +759,14 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-2851.7.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a), substituted “basic business license application” for “master application” in two places; in subsecs. (b) and (e)(1), substituted “basic” for “master”; repealed subsec. (c)(2); and in subsec. (f), substituted “basic business license application” for “master application”. Prior to repeal, subsec. (c)(2) had read as follows: “(2) The Center shall have the authority to issue, without endorsement, a Class B license for which the proper fee payment and a completed application form has been received and for which no pre-licensing or renewal approval action is required by any regulatory agency.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a>, in subsec. (a), substituted “business license application, along with proof of Workers’ Compensation insurance coverage, or an exemption therefrom, to the Center” for “business license application to the Center”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a), substituted “basic business license application” for “master application” in two places; in subsecs. (b) and (e)(1), substituted “basic” for “master”; repealed subsec. (c)(2); and in subsec. (f), substituted “basic business license application” for “master application”. Prior to repeal, subsec. (c)(2) had read as follows: “(2) The Center shall have the authority to issue, without endorsement, a Class B license for which the proper fee payment and a completed application form has been received and for which no pre-licensing or renewal approval action is required by any regulatory agency.”</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(i) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
-                <p>For temporary (90 day) amendment of section, see §  1104 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
                 <p>For temporary (90 day) amendment of section, see §  1104 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see §  1104 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(i) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
               </section>
             </section>
             <hr/>
@@ -738,17 +788,17 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-2851.8.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a> rewrote subsec. (a)(1) which had read as follows: “(a)(1) The Center shall collect a fee of $25 for each master business license it issues, plus $5 for each endorsement added to the master business license.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a)(1), substituted “basic” for “master” wherever appearing; in subsecs. (a)(2) and (b)(2), substituted “Basic” for “Master”; in subsec. (c), deleted “inspected or uninspected” preceding “license endorsements”; and in subsec. (d), substituted “General Fund of the District of Columbia” for “general fund” and “government” for “Government”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in the section heading and subsecs. (a)(2) and (b)(2), validated previously made technical corrections.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> rewrote subsecs. (a)(1) and (b)(1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in the section heading and subsecs. (a)(2) and (b)(2), validated previously made technical corrections.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a)(1), substituted “basic” for “master” wherever appearing; in subsecs. (a)(2) and (b)(2), substituted “Basic” for “Master”; in subsec. (c), deleted “inspected or uninspected” preceding “license endorsements”; and in subsec. (d), substituted “General Fund of the District of Columbia” for “general fund” and “government” for “Government”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-307.html">D.C. Law 14-307</a> rewrote subsec. (a)(1) which had read as follows: “(a)(1) The Center shall collect a fee of $25 for each master business license it issues, plus $5 for each endorsement added to the master business license.”</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1607 of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
-                <p>For temporary (90 day) amendment of section, see § 1607 of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
-                <p>For temporary (90 day) amendment of section, see § 1607 of Fiscal Year 2003 Budget Support Amendment Second Congressional Review Emergency Act of 2003 (D.C. Act 15-103, June 20, 2003,  50 DCR 5499).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(j) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August</p>
+                <p>For temporary (90 day) amendment of section, see § 1607 of Fiscal Year 2003 Budget Support Amendment Second Congressional Review Emergency Act of 2003 (D.C. Act 15-103, June 20, 2003,  50 DCR 5499).</p>
+                <p>For temporary (90 day) amendment of section, see § 1607 of the Fiscal Year 2003 Budget Support Amendment Congressional Review Emergency Act of 2003 (D.C. Act 15-27, February 24, 2003,  50 DCR 2151).</p>
+                <p>For temporary (90 day) amendment of section, see § 1607 of Fiscal Year 2003 Budget Support Amendment Emergency Act of 2002 (D.C. Act 14-544, December 4, 2002,  49 DCR 11700).</p>
               </section>
             </section>
             <hr/>
@@ -770,8 +820,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2805.01.html">47-2805.01</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2851.05.html">47-2851.05</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2851.15.html">47-2851.15</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a> substituted “basic” for “master” throughout the section.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-277.html">D.C. Law 19-277</a> rewrote (a)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a> substituted “basic” for “master” throughout the section.</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
@@ -797,13 +847,13 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-2851.10.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote subsecs. (a), (b) and (c).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-277.html">D.C. Law 19-277</a> substituted “60 days” for “30 days” in (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote subsecs. (a), (b) and (c).</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2041(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 2041(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 2041(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 2040 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle E of title II of the act may be cited as the “Business Licensing Processing Adjustment Act of 2009”.</p>
               </section>
@@ -827,8 +877,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-2851.11.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-183.html">D.C. Law 13-183</a> rewrote subsec. (a)(2) which formerly provided: “The person or business is delinquent in taxes, periodic reports, or penalties owing to the District, or is not validly registered in accordance with District law; the Department of Finance and Revenue shall cooperate with the business license center to determine if such taxes, fees, or penalties are owing.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a), substituted “basic” for “master” in the introductory paragraph and in par. (4).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-183.html">D.C. Law 13-183</a> rewrote subsec. (a)(2) which formerly provided: “The person or business is delinquent in taxes, periodic reports, or penalties owing to the District, or is not validly registered in accordance with District law; the Department of Finance and Revenue shall cooperate with the business license center to determine if such taxes, fees, or penalties are owing.”</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
@@ -876,17 +926,17 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-733.html">7-733</a> and § <a class="internal-link" href="/dc/council/code/sections/47-2851.08.html">47-2851.08</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a), substituted “Basic” for “Master” and “proprietary” for “propriety”; and in subsecs. (b) and (c), substituted “basic” for “master” throughout.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in the section heading, validated a previously made technical correction.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> added subsec. (d).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-71.html">D.C. Law 18-71</a> rewrote subsec. (b), which had read as follows: “(b) All fees collected for the issuance of a basic business license and endorsements, including renewals and fines, shall be deposited in the Fund by the Treasurer of the District of Columbia. The entire cost of the basic business licensing system shall be paid from the Fund and no other appropriated funds may be used for that purpose.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in the section heading, substituted “license fees, penalties, and fines” for “licensing fees”; and rewrote subsec. (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-71.html">D.C. Law 18-71</a> rewrote subsec. (b), which had read as follows: “(b) All fees collected for the issuance of a basic business license and endorsements, including renewals and fines, shall be deposited in the Fund by the Treasurer of the District of Columbia. The entire cost of the basic business licensing system shall be paid from the Fund and no other appropriated funds may be used for that purpose.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> added subsec. (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in the section heading, validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (a), substituted “Basic” for “Master” and “proprietary” for “propriety”; and in subsecs. (b) and (c), substituted “basic” for “master” throughout.</p>
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(n) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
-                <p>For temporary (90 day) amendment of section, see § 2041(c) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 2041(c) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 2041(c) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(n) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
               </section>
             </section>
             <hr/>
@@ -975,8 +1025,8 @@
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(q) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <p>For temporary (90 days) repeal of this section, see <a class="internal-link" href="/dc/council/acts/21-403.html#§12(c)(2)">§ 12(c)(2) of Repeal of Outdated and Unnecessary Audit Mandates Emergency Amendment Act of 2016 (D.C. Act 21-403, May 21, 2016, 63 DCR 7925)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2(q) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
               </section>
             </section>
             <hr/>
@@ -1016,10 +1066,10 @@
                 <h4>Applicability</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-213.html">D.C. Law 21-213</a>: <a class="internal-link" href="/dc/council/laws/21-213.html#§4">§ 4 of D.C. Law 21-213</a> provided that the creation of this section by <a class="internal-link" href="/dc/council/laws/21-213.html#§3(c)">§ 3(c) of D.C. Law 21-213</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Master Business Registration Delay Emergency Act of 2002 (D.C. Act 14-595, January 7, 2003,  50 DCR 647).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Master Business Registration Delay Congressional Review Emergency Act of 2003 (D.C. Act 15-73, April 16, 2003,  50 DCR 3616).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Master Business Registration Second Delay Emergency Act of 2003 (D.C. Act 15-83, May 19, 2003,  50 DCR 4100).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(r) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Master Business Registration Second Delay Emergency Act of 2003 (D.C. Act 15-83, May 19, 2003,  50 DCR 4100).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Master Business Registration Delay Congressional Review Emergency Act of 2003 (D.C. Act 15-73, April 16, 2003,  50 DCR 3616).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Master Business Registration Delay Emergency Act of 2002 (D.C. Act 14-595, January 7, 2003,  50 DCR 647).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of Master Business Registration Temporary Act of 2003 (D.C. Law 14-302, May 3, 2003, law notification  50 DCR 3776).</p>
                 <h4>References in Text</h4>

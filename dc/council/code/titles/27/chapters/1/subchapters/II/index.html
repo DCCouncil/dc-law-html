@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/28/">Title 28. Commercial Instruments and Transactions. [Enacted title]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/27/chapters/1/subchapters/II/">Report Error</a>
@@ -88,12 +88,24 @@
         <section class="col8 body">
           <h1>Subchapter II. Private Contractor and Subcontractor Prompt Payment.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/27-131.html">§ 27–131. Definitions.</a>
-            <a href="/dc/council/code/sections/27-132.html">§ 27–132. Prompt payments to contractors.</a>
-            <a href="/dc/council/code/sections/27-133.html">§ 27–133. Failure to make prompt payments to a contractor.</a>
-            <a href="/dc/council/code/sections/27-134.html">§ 27–134. Prompt payments to subcontractors.</a>
-            <a href="/dc/council/code/sections/27-135.html">§ 27–135. Failure to make prompt payments to a subcontractor.</a>
-            <a href="/dc/council/code/sections/27-136.html">§ 27–136. Applicability.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/27-131.html">§ 27–131. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/27-132.html">§ 27–132. Prompt payments to contractors.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/27-133.html">§ 27–133. Failure to make prompt payments to a contractor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/27-134.html">§ 27–134. Prompt payments to subcontractors.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/27-135.html">§ 27–135. Failure to make prompt payments to a subcontractor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/27-136.html">§ 27–136. Applicability.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

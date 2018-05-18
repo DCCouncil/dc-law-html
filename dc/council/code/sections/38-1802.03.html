@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/38-1802.04.html">§ 38–1802.04. Duties, powers, and other requirements, of public charter schools.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-1802.03.html">Report Error</a>
@@ -142,14 +142,14 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-1802.04.html">38-1802.04</a>, § <a class="internal-link" href="/dc/council/code/sections/38-1802.09.html">38-1802.09</a>, § <a class="internal-link" href="/dc/council/code/sections/38-1802.14.html">38-1802.14</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-392.25.html">47-392.25</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>Section 120 (c)(2)(B) of Public Law 106-522 deleted reference to par. (17) in the enumeration at the beginning of subsec. (h)(2).</p>
-                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> added subsec. (c) (3) and (4).</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a>, in subsec. (j)(2), substituted “.of Columbia or by the Office of the State Superintendent of Education. In the case of review by the Office of the State Superintendent of Education, the Office of the State Superintendent of Education shall issue procedures for the submission and review of appeals.” for “of Columbia.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> added subsec. (c) (3) and (4).</p>
+                <p>Section 120 (c)(2)(B) of Public Law 106-522 deleted reference to par. (17) in the enumeration at the beginning of subsec. (h)(2).</p>
                 <h4>Cross References</h4>
                 <p>Disposition of certain school property, preference for public charter school, see § <a class="internal-link" href="/dc/council/code/sections/47-392.25.html">47-392.25</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2503(b) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <p>For temporary (90 day) repeal of section 804 of <a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a>, see § 4043(b) of Fiscal Year 2008 Budget Support Emergency Act of 2007 (D.C. Act 17-74, July 25, 2007,  54 DCR 7549).</p>
+                <p>For temporary (90 day) amendment of section, see § 2503(b) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability: Section 804 of <a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a> provided that section 802 shall apply upon enactment by Congress. Section 804 of <a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a> was repealed by section 4043(b) of <a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a>.</p>
               </section>

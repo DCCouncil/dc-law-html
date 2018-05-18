@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/44-802.html">§ 44–802. Authority to transmit data or information.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/44-801.html">Report Error</a>
@@ -112,8 +112,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-112.html#§2">Sept. 29, 1978, D.C. Law 2-112, § 2, 25 DCR 1471</a>; <a class="internal-link" href="/dc/council/laws/9-234.html">Mar. 17, 1993, D.C. Law 9-234, § 2(a), 40 DCR 605</a>; <a class="internal-link" href="/dc/council/laws/17-147.html">Apr. 15, 2008, D.C. Law 17-147, § 6, 55 DCR 2558</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 32-501.</p>
                 <p>1973 Ed., § 32-361.</p>
+                <p>1981 Ed., § 32-501.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/17-147.html">D.C. Law 17-147</a>, in par. (2), inserted “, or the Fire and Emergency Medical Services Department to the extent that it is operating as a pre-hospital medical care provider”; and, in par. (3), added “The term ‘health professional’ also includes employees of the Fire and Emergency Medical Services Department who provide emergency medical services in accordance with approved medical protocols or under the direction of a physician licensed in accordance with Chapter 12 of Title 3.”</p>
               </section>

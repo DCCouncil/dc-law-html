@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -60,19 +72,7 @@
           <p>
             <a href="/dc/council/code/titles/11/">Title 11. Organization and Jurisdiction of the Courts. [Enacted title]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/10/">Report Error</a>
@@ -87,55 +87,101 @@
           <h1>Title 10. Parks, Public Buildings, Grounds, and Space.</h1>
           <section class="line-group toc child-link">
             <h2 class="line subheading">Subtitle I. Parks and Playgrounds.</h2>
-            <a href="/dc/council/code/titles/10/chapters/1/">Chapter 1. General Provisions.</a>
-            <p>§§ 10-101 - 10-168</p>
-            <a href="/dc/council/code/titles/10/chapters/2/">Chapter 2. Recreation Board.</a>
-            <p>§§ 10-201 - 10-226</p>
-            <a href="/dc/council/code/titles/10/chapters/3/">Chapter 3. Fundraising for Recreational Facilities.</a>
-            <p>§§ 10-301 - 10-308</p>
-            <a href="/dc/council/code/titles/10/chapters/4/">Chapter 4. Recreation Volunteer Background Check and Screening. [Repealed].</a>
-            <p>§§ 10-401 - 10-413</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/1/">Chapter 1. General Provisions.</a>
+            </p>
+            <p>§§ 10-101 – 10-168</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/2/">Chapter 2. Recreation Board.</a>
+            </p>
+            <p>§§ 10-201 – 10-226</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/3/">Chapter 3. Fundraising for Recreational Facilities.</a>
+            </p>
+            <p>§§ 10-301 – 10-308</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/4/">Chapter 4. Recreation Volunteer Background Check and Screening. [Repealed].</a>
+            </p>
+            <p>§§ 10-401 – 10-413</p>
             <h2 class="line subheading">Subtitle II. Public Buildings and Grounds.</h2>
-            <a href="/dc/council/code/titles/10/chapters/5/">Chapter 5. Regulatory Provisions.</a>
-            <p>§§ 10-501.01 - 10-513.01</p>
-            <a href="/dc/council/code/titles/10/chapters/5A/">Chapter 5A. Department of General Services.</a>
-            <p>§§ 10-551.01 - 10-551.10</p>
-            <a href="/dc/council/code/titles/10/chapters/6/">Chapter 6. Construction of Public Buildings.</a>
-            <p>§§ 10-601 - 10-620</p>
-            <a href="/dc/council/code/titles/10/chapters/7/">Chapter 7. Repairs and Improvements of Public Buildings.</a>
-            <p>§§ 10-701 - 10-712</p>
-            <a href="/dc/council/code/titles/10/chapters/7A/">Chapter 7A. Removal of Trees on the Public Land.</a>
-            <p>§§ 10-731 - 10-731</p>
-            <a href="/dc/council/code/titles/10/chapters/8/">Chapter 8. Sale of Public Lands.</a>
-            <p>§§ 10-801 - 10-839</p>
-            <a href="/dc/council/code/titles/10/chapters/9/">Chapter 9. Exchange of District-Owned Land.</a>
-            <p>§§ 10-901 - 10-904</p>
-            <a href="/dc/council/code/titles/10/chapters/10/">Chapter 10. Department of Real Estate Services. [Repealed].</a>
-            <p>§§ 10-1001 - 10-1018</p>
-            <a href="/dc/council/code/titles/10/chapters/10A/">Chapter 10A. District Facilities Planning Advisory Committee.</a>
-            <p>§§ 10-1031 - 10-1032</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/5/">Chapter 5. Regulatory Provisions.</a>
+            </p>
+            <p>§§ 10-501.01 – 10-513.01</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/5A/">Chapter 5A. Department of General Services.</a>
+            </p>
+            <p>§§ 10-551.01 – 10-551.10</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/6/">Chapter 6. Construction of Public Buildings.</a>
+            </p>
+            <p>§§ 10-601 – 10-620</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/7/">Chapter 7. Repairs and Improvements of Public Buildings.</a>
+            </p>
+            <p>§§ 10-701 – 10-712</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/7A/">Chapter 7A. Removal of Trees on the Public Land.</a>
+            </p>
+            <p>§§ 10-731 – 10-731</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/8/">Chapter 8. Sale of Public Lands.</a>
+            </p>
+            <p>§§ 10-801 – 10-839</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/9/">Chapter 9. Exchange of District-Owned Land.</a>
+            </p>
+            <p>§§ 10-901 – 10-904</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/10/">Chapter 10. Department of Real Estate Services. [Repealed].</a>
+            </p>
+            <p>§§ 10-1001 – 10-1018</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/10A/">Chapter 10A. District Facilities Planning Advisory Committee.</a>
+            </p>
+            <p>§§ 10-1031 – 10-1032</p>
             <h2 class="line subheading">Subtitle III. Use of Public Space.</h2>
-            <a href="/dc/council/code/titles/10/chapters/11/">Chapter 11. Rental and Utilization of Public Space.</a>
-            <p>§§ 10-1101.01 - 10-1141.07</p>
-            <a href="/dc/council/code/titles/10/chapters/11A/">Chapter 11A. Abatement of Dangerous Conditions on Public Space.</a>
-            <p>§§ 10-1181.01 - 10-1181.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/11/">Chapter 11. Rental and Utilization of Public Space.</a>
+            </p>
+            <p>§§ 10-1101.01 – 10-1141.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/11A/">Chapter 11A. Abatement of Dangerous Conditions on Public Space.</a>
+            </p>
+            <p>§§ 10-1181.01 – 10-1181.07</p>
             <h2 class="line subheading">Subtitle IV. Specific Locales.</h2>
-            <a href="/dc/council/code/titles/10/chapters/12/">Chapter 12. Washington Convention and Sports Authority.</a>
-            <p>§§ 10-1201.01 - 10-1280</p>
-            <a href="/dc/council/code/titles/10/chapters/13/">Chapter 13. John A. Wilson Building.</a>
-            <p>§§ 10-1301 - 10-1336</p>
-            <a href="/dc/council/code/titles/10/chapters/14/">Chapter 14. National Children’s Island.</a>
-            <p>§§ 10-1401 - 10-1432</p>
-            <a href="/dc/council/code/titles/10/chapters/15/">Chapter 15. Reservation 13.</a>
-            <p>§§ 10-1501 - 10-1505</p>
-            <a href="/dc/council/code/titles/10/chapters/16/">Chapter 16. Ballpark Development.</a>
-            <p>§§ 10-1601.01 - 10-1603.08</p>
-            <a href="/dc/council/code/titles/10/chapters/17/">Chapter 17. Wilson Building and Baseball Stadium Message Boards.</a>
-            <p>§§ 10-1701 - 10-1701</p>
-            <a href="/dc/council/code/titles/10/chapters/18/">Chapter 18. Waterfront Park at the Yards.</a>
-            <p>§§ 10-1801 - 10-1805</p>
-            <a href="/dc/council/code/titles/10/chapters/19/">Chapter 19. Walter Reed Army Medical Center.</a>
-            <p>§§ 10-1901 - 10-1906</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/12/">Chapter 12. Washington Convention and Sports Authority.</a>
+            </p>
+            <p>§§ 10-1201.01 – 10-1280</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/13/">Chapter 13. John A. Wilson Building.</a>
+            </p>
+            <p>§§ 10-1301 – 10-1336</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/14/">Chapter 14. National Children’s Island.</a>
+            </p>
+            <p>§§ 10-1401 – 10-1432</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/15/">Chapter 15. Reservation 13.</a>
+            </p>
+            <p>§§ 10-1501 – 10-1505</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/16/">Chapter 16. Ballpark Development.</a>
+            </p>
+            <p>§§ 10-1601.01 – 10-1603.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/17/">Chapter 17. Wilson Building and Baseball Stadium Message Boards.</a>
+            </p>
+            <p>§§ 10-1701 – 10-1701</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/18/">Chapter 18. Waterfront Park at the Yards.</a>
+            </p>
+            <p>§§ 10-1801 – 10-1805</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/10/chapters/19/">Chapter 19. Walter Reed Army Medical Center.</a>
+            </p>
+            <p>§§ 10-1901 – 10-1906</p>
           </section>
           <section class="content"/>
         </section>

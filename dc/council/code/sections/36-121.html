@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/36-122.html">§ 36–122. Unauthorized use or sale of registered bottles.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/36-121.html">Report Error</a>
@@ -99,11 +99,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/69-1-ch737.html#§1">July 3, 1926, 44 Stat. 809, ch. 737, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/89-493.html">July 5, 1966, 80 Stat. 263, Pub. L. 89-493, § 7</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 48-201.</p>
                 <p>1973 Ed., § 48-201.</p>
+                <p>1981 Ed., § 48-201.</p>
                 <h4>Cross References</h4>
-                <p>Labeling of milk containers, see § <a class="internal-link" href="/dc/council/code/sections/37-201.14.html">37-201.14</a>.</p>
                 <p>Milk, cream, and ice cream, see § <a class="internal-link" href="/dc/council/code/sections/48-601.html">48-601</a> et seq.</p>
+                <p>Labeling of milk containers, see § <a class="internal-link" href="/dc/council/code/sections/37-201.14.html">37-201.14</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Health Department abolished: The Health Department of the District of Columbia, including the office of the head thereof, was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. Reorganization Order No. 57 of the Board of Commissioners, dated June 30, 1953, and Reorganization Order No. 52, dated June 30, 1953, combined and redesignated Organization Order No. 141, dated February 11, 1964, established under the direction and control of a Commissioner, a Department of Public Health headed by a Director, for the purpose of planning, implementing, and directing public health and hospital care programs, and for performing certain other allied medical and para-medical functions. The Anatomical Board was established under the direction and control of the Director of Public Health consisting of members as prescribed in the D. C. Code. Prior to redesignation, the Order abolished the previously existing Health Department, Gallinger Hospital, Glenn Dale Sanatorium, and the Anatomical Board, and transferred their functions and positions to the new Department. The organization of the new Department was set out in the Order. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967. Functions stated in Organization Order No. 141 were transferred to the Director of the Department of Human Resources by Commissioner’s Order No. 69-96, dated March 7, 1969, as amended by Commissioner’s Order No. 70-83, dated March 6, 1970. The Department of Human Resources was replaced by Reorganization Plan No. 2 of 1979, dated February 21, 1980, which Plan established the Department of Human Services.</p>
               </section>

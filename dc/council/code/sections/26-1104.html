@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/26-1105.html">§ 26–1105. Acquisition of control; application.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/26-1104.html">Report Error</a>
@@ -123,12 +123,12 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-38.html">D.C. Law 18-38</a>, in subsec. (d)(1), substituted “mortgage lender, mortgage broker, mortgage loan originator, or loan officer” for “mortgage lender or mortgage broker”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(b) of the Mortgage Lender and Broker Act of 1996 Time Extension Emergency Act of 1996 (D.C. Act 11-439, December 4, 1996,  44 DCR 6656), and § 2(b) of the Mortgage Lender and Broker Act of 1996 Time Extension Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-21, March 3, 1997,  44 DCR 1768).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Mortgage Lender and Broker Emergency Amendment Act of 2008 (D.C. Act 17-617, December 22, 2008,  56 DCR 189).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(d) of Mortgage Lender and Broker Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-31, March 16, 2009,  56 DCR 2327).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Mortgage Lender and Broker Emergency Amendment Act of 2008 (D.C. Act 17-617, December 22, 2008,  56 DCR 189).</p>
+                <p>For temporary amendment of section, see § 2(b) of the Mortgage Lender and Broker Act of 1996 Time Extension Emergency Act of 1996 (D.C. Act 11-439, December 4, 1996,  44 DCR 6656), and § 2(b) of the Mortgage Lender and Broker Act of 1996 Time Extension Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-21, March 3, 1997,  44 DCR 1768).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(d) of D.C. Law 17-350, in subsec. (c), inserted the following sentence at the end: “To assist in the performance of the Commissioner’s duties under this act, the Commissioner may contract with a third party, including the SRR, the Conference of State Bank Supervisors, or its affiliates or subsidiaries, to perform any functions, including the collection of licensing and processing fees, collection of contact information and other identifying information, fingerprints, written consent to a criminal background check, personal history and experience, and conduct of examinations related to mortgage loan originator, loan officer, mortgage lender, or mortgage broker activities, that the Commissioner may consider appropriate.”; and, in subsec. (d)(1), substituted “mortgage lender, mortgage broker, mortgage loan originator, or loan officer” for “mortgage lender or mortgage broker”.</p>
                 <p>Section 5(b) of D.C. Law 17-350 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2(d) of D.C. Law 17-350, in subsec. (c), inserted the following sentence at the end: “To assist in the performance of the Commissioner’s duties under this act, the Commissioner may contract with a third party, including the SRR, the Conference of State Bank Supervisors, or its affiliates or subsidiaries, to perform any functions, including the collection of licensing and processing fees, collection of contact information and other identifying information, fingerprints, written consent to a criminal background check, personal history and experience, and conduct of examinations related to mortgage loan originator, loan officer, mortgage lender, or mortgage broker activities, that the Commissioner may consider appropriate.”; and, in subsec. (d)(1), substituted “mortgage lender, mortgage broker, mortgage loan originator, or loan officer” for “mortgage lender or mortgage broker”.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1074.html">§ 47–1074. Theatre Downtown, Inc.; lot 26, square 406.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1073.html">Report Error</a>
@@ -101,12 +101,12 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see §§ 2(b), 3 of Triangle Community Garden Equitable Real Property Tax Exemption and Relief Act of 2006 (D.C. Act 16-330, March 23, 2006,  53 DCR 2589).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(b) of D.C. Law 16-135 added § <a class="internal-link" href="/dc/council/code/sections/47-1074.html">47-1074</a> to read as follows:</p>
-                <p>“§ <a class="internal-link" href="/dc/council/code/sections/47-1074.html">47-1074</a>. Triangle Community Garden; lot 58, square 1966.</p>
-                <p>“(a) The real property located at lot 58, square 1966 shall be exempt from taxation so long as the real property is used as a community garden.</p>
-                <p>“(b)(1) The Council orders that all unpaid real property taxes, interest, penalties, fees, and other related charges assessed against real property located at lot 58, square 1966, shall be forgiven and the amount necessary to redeem the real property under § <a class="internal-link" href="/dc/council/code/sections/47-1361.html">47-1361</a>(a)(1) shall be deposited with the Chief Financial Officer on behalf of the owner; provided, that all other amounts necessary to redeem the real property under § <a class="internal-link" href="/dc/council/code/sections/47-1361.html">47-1361</a> are paid from any source to the Chief Financial Officer on behalf of the owner; provided further, that if the real property is used for any purpose other than as a community garden, the sum of all such unpaid real property tax and penalties and all real property taxes accruing thereafter, plus 5% interest, shall be paid to the District of Columbia; provided further, that this subsection shall constitute a lien against the real property to secure the repayment of such amounts.</p>
-                <p>“(2) Any person who uses the real property as a community garden shall have standing to redeem the real property on behalf of the owner.”</p>
                 <p>Section 6(b) of D.C. Law 16-135 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) Any person who uses the real property as a community garden shall have standing to redeem the real property on behalf of the owner.”</p>
+                <p>“(b)(1) The Council orders that all unpaid real property taxes, interest, penalties, fees, and other related charges assessed against real property located at lot 58, square 1966, shall be forgiven and the amount necessary to redeem the real property under § <a class="internal-link" href="/dc/council/code/sections/47-1361.html">47-1361</a>(a)(1) shall be deposited with the Chief Financial Officer on behalf of the owner; provided, that all other amounts necessary to redeem the real property under § <a class="internal-link" href="/dc/council/code/sections/47-1361.html">47-1361</a> are paid from any source to the Chief Financial Officer on behalf of the owner; provided further, that if the real property is used for any purpose other than as a community garden, the sum of all such unpaid real property tax and penalties and all real property taxes accruing thereafter, plus 5% interest, shall be paid to the District of Columbia; provided further, that this subsection shall constitute a lien against the real property to secure the repayment of such amounts.</p>
+                <p>“(a) The real property located at lot 58, square 1966 shall be exempt from taxation so long as the real property is used as a community garden.</p>
+                <p>“§ <a class="internal-link" href="/dc/council/code/sections/47-1074.html">47-1074</a>. Triangle Community Garden; lot 58, square 1966.</p>
+                <p>Section 2(b) of D.C. Law 16-135 added § <a class="internal-link" href="/dc/council/code/sections/47-1074.html">47-1074</a> to read as follows:</p>
               </section>
             </section>
           </section>

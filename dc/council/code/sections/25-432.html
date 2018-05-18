@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/25-433.html">§ 25–433. Decisions of the board; petition for reconsideration.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/25-432.html">Report Error</a>
@@ -105,11 +105,11 @@
       (<a class="internal-link" href="/dc/council/laws/13-298.html">May 3, 2001, D.C. Law 13-298, § 101, 48 DCR 2959</a>; <a class="internal-link" href="/dc/council/laws/19-310.html">May 1, 2013, D.C. Law 19-310, § 2(p), 60 DCR 3410</a>; <a class="internal-link" href="/dc/council/laws/20-270.html">May 2, 2015, D.C. Law 20-270, § 2(c)(1), 62 DCR 1866</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-310.html">D.C. Law 19-310</a> inserted “to be held within 75 days of the end of the protest period, for new license applications” in (b)(1).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-270.html">D.C. Law 20-270</a> substituted “the Board shall consider” for ” the Board shall schedule an administrative review to consider” in (a).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-310.html">D.C. Law 19-310</a> inserted “to be held within 75 days of the end of the protest period, for new license applications” in (b)(1).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of (b)(1), see § 2(p) of the Omnibus Alcoholic Beverage Regulation Emergency Amendment Act of 2012 (D.C. Act 19-597, January 14, 2013,  60 DCR 1001).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(p) of the Omnibus Alcoholic Beverage Regulation Congressional Review Emergency Act of 2013 (D.C. Act 20-52, April 22, 2013,  60 DCR 6372, 20 DCSTAT 1388).</p>
+                <p>For temporary amendment of (b)(1), see § 2(p) of the Omnibus Alcoholic Beverage Regulation Emergency Amendment Act of 2012 (D.C. Act 19-597, January 14, 2013,  60 DCR 1001).</p>
               </section>
             </section>
           </section>

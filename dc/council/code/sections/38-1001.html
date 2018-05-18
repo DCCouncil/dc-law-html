@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/38-1002.html">§ 38–1002. Fees for select District of Columbia Board of Education adult, community, and continuing education courses.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-1001.html">Report Error</a>
@@ -102,11 +102,11 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) addition, see § 2 of Get DC Residents Training for Jobs Now Emergency Act of 2008 (D.C. Act 17-649, January 6, 2009,  56 DCR 907).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 17-377 added a section to read as follows:</p>
-                <p>“Sec. 2. Plan to establish evening and weekend adult career technical education programs.</p>
-                <p>“(a) The Mayor shall develop and present to the Council a plan to establish evening and weekend adult career technical training at the Academy of Construction and Design at Cardozo Senior High School, the Hospitality High School at Roosevelt High School, and the Phelps Architecture, Construction and Engineering High School.</p>
-                <p>“(b) The plan shall establish a curriculum, framework, and an estimated cost to implement, beginning in the summer of 2009, evening and weekend adult career technical education classes for District residents at the Academy of Construction and Design at Cardozo Senior High School, the Hospitality High School at Roosevelt High School, and the Phelps Architecture, Construction and Engineering High School.”</p>
                 <p>Section 4(b) of D.C. Law 17-377 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(b) The plan shall establish a curriculum, framework, and an estimated cost to implement, beginning in the summer of 2009, evening and weekend adult career technical education classes for District residents at the Academy of Construction and Design at Cardozo Senior High School, the Hospitality High School at Roosevelt High School, and the Phelps Architecture, Construction and Engineering High School.”</p>
+                <p>“(a) The Mayor shall develop and present to the Council a plan to establish evening and weekend adult career technical training at the Academy of Construction and Design at Cardozo Senior High School, the Hospitality High School at Roosevelt High School, and the Phelps Architecture, Construction and Engineering High School.</p>
+                <p>“Sec. 2. Plan to establish evening and weekend adult career technical education programs.</p>
+                <p>Section 2 of D.C. Law 17-377 added a section to read as follows:</p>
               </section>
             </section>
           </section>

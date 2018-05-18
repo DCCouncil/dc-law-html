@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/44-637.html">§ 44–637. Rules. [Expired]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/44-636.html">Report Error</a>
@@ -99,15 +99,15 @@
       (<a class="internal-link" href="/dc/council/laws/18-223.html#§5017">Sept. 24, 2010, D.C. Law 18-223, § 5017, 57 DCR 6242</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 1107 of Fiscal Year 2010 Balanced Budget Support Emergency Act of 2010 (D.C. Act 18-450, June 28, 2010,  57 DCR 5635).</p>
-                <p>For temporary (90 day) addition, see § 5017 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
                 <p>For temporary (90 day) addition, see §§ 1107 of Fiscal Year 2010 Balanced Budget Support Congressional Review Emergency Act of 2010 (D.C. Act 18-531, August 6, 2010,  57 DCR 8109).</p>
+                <p>For temporary (90 day) addition, see § 5017 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) addition, see § 1107 of Fiscal Year 2010 Balanced Budget Support Emergency Act of 2010 (D.C. Act 18-450, June 28, 2010,  57 DCR 5635).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 1107 of D.C. Law 18-222 added a section to read as follows:</p>
-                <p>“Sec. 1107. Federal determinations; suspension and termination of assessment.</p>
-                <p>“(a) If the federal government determines that an assessment imposed on a hospital pursuant to this act does not satisfy the requirements for federal financial participation set forth in section 1903(w) of the Social Security Act, approved July 30, 1965 (70 Stat. 349;  42 U.S.C. § 1396b(w)), the determination shall not affect the validity, amount, applicable rate, or any other terms of an assessment on other hospitals imposed by this act.</p>
-                <p>“(b) If the federal government determines that an exclusion for hospitals specified under this act would prevent an assessment imposed by this act from qualifying as a broad-based health care related tax, as that term is defined in section 1903(w)(3)(B) of the Social Security Act, approved July 30, 1965 (79 Stat. 349;  42 U.S.C. § 1396b(w)(3)(B)), the exclusion shall not be made.”</p>
                 <p>Section 2002(b) of D.C. Law 18-222 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(b) If the federal government determines that an exclusion for hospitals specified under this act would prevent an assessment imposed by this act from qualifying as a broad-based health care related tax, as that term is defined in section 1903(w)(3)(B) of the Social Security Act, approved July 30, 1965 (79 Stat. 349;  42 U.S.C. § 1396b(w)(3)(B)), the exclusion shall not be made.”</p>
+                <p>“(a) If the federal government determines that an assessment imposed on a hospital pursuant to this act does not satisfy the requirements for federal financial participation set forth in section 1903(w) of the Social Security Act, approved July 30, 1965 (70 Stat. 349;  42 U.S.C. § 1396b(w)), the determination shall not affect the validity, amount, applicable rate, or any other terms of an assessment on other hospitals imposed by this act.</p>
+                <p>“Sec. 1107. Federal determinations; suspension and termination of assessment.</p>
+                <p>Section 1107 of D.C. Law 18-222 added a section to read as follows:</p>
               </section>
             </section>
           </section>

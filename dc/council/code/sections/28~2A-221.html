@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/28/articles/2A/parts/III/">Part III. Effect of Lease Contract.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-221.html">Report Error</a>
@@ -103,22 +103,22 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 28:2A-221.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Section 2-613.</p>
-                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology. Purpose: Due to the vagaries of determining the amount of due allowance ( Section 2-613(b), no attempt was made in subsection (b) to treat a problem unique to lease contracts and installment sales contracts: determining how to recapture the allowance, e.g., application to the first or last rent payments or allocation, pro rata, to all rent payments.</p>
-                <p><strong>Cross References:</strong>Section 2-613.</p>
-                <p><strong>Definitional Cross References:</strong> “Conforming”. Section 2A-103(1)(d).</p>
-                <p>“Consumer lease”. Section 2A-103(1)(e).</p>
-                <p>“Delivery”.  Section 1-201(14).</p>
-                <p>“Fault”. Section 2A-103(1)(f).</p>
-                <p>“Finance lease”. Section 2A-103(1)(g).</p>
-                <p>“Goods”. Section 2A-103(1)(h).</p>
-                <p>“Lease”. Section 2A-103(1)(j).</p>
-                <p>“Lease agreement”. Section 2A-103(1)(k).</p>
-                <p>“Lease contract”. Section 2A-193(1)(l).</p>
-                <p>“Lessee”. Section 2A-103(1)(n).</p>
-                <p>“Lessor”. Section 2A-103(1)(p).</p>
-                <p>“Rights”.  Section 1-201(36).</p>
                 <p>“Supplier”. Section 2A-103(1)(x).</p>
+                <p>“Rights”.  Section 1-201(36).</p>
+                <p>“Lessor”. Section 2A-103(1)(p).</p>
+                <p>“Lessee”. Section 2A-103(1)(n).</p>
+                <p>“Lease contract”. Section 2A-193(1)(l).</p>
+                <p>“Lease agreement”. Section 2A-103(1)(k).</p>
+                <p>“Lease”. Section 2A-103(1)(j).</p>
+                <p>“Goods”. Section 2A-103(1)(h).</p>
+                <p>“Finance lease”. Section 2A-103(1)(g).</p>
+                <p>“Fault”. Section 2A-103(1)(f).</p>
+                <p>“Delivery”.  Section 1-201(14).</p>
+                <p>“Consumer lease”. Section 2A-103(1)(e).</p>
+                <p><strong>Definitional Cross References:</strong> “Conforming”. Section 2A-103(1)(d).</p>
+                <p><strong>Cross References:</strong>Section 2-613.</p>
+                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology. Purpose: Due to the vagaries of determining the amount of due allowance ( Section 2-613(b), no attempt was made in subsection (b) to treat a problem unique to lease contracts and installment sales contracts: determining how to recapture the allowance, e.g., application to the first or last rent payments or allocation, pro rata, to all rent payments.</p>
+                <p><strong>Uniform Statutory Source:</strong>Section 2-613.</p>
               </section>
             </section>
           </section>

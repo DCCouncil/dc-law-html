@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/42/chapters/20/">Chapter 20. Horizontal Property Regimes.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/42/chapters/19/">Report Error</a>
@@ -87,14 +87,22 @@
         <section class="col8 body">
           <h1>Chapter 19. Condominiums.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/42/chapters/19/subchapters/I/">Subchapter I. General Provisions.</a>
-            <p>§§ 42-1901.01 - 42-1901.08</p>
-            <a href="/dc/council/code/titles/42/chapters/19/subchapters/II/">Subchapter II. Establishment of Condominiums.</a>
-            <p>§§ 42-1902.01 - 42-1902.30</p>
-            <a href="/dc/council/code/titles/42/chapters/19/subchapters/III/">Subchapter III. Control and Governance of Condominiums.</a>
-            <p>§§ 42-1903.01 - 42-1903.21</p>
-            <a href="/dc/council/code/titles/42/chapters/19/subchapters/IV/">Subchapter IV. Registration and Offering of Condominiums.</a>
-            <p>§§ 42-1904.01 - 42-1904.18</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/19/subchapters/I/">Subchapter I. General Provisions.</a>
+            </p>
+            <p>§§ 42-1901.01 – 42-1901.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/19/subchapters/II/">Subchapter II. Establishment of Condominiums.</a>
+            </p>
+            <p>§§ 42-1902.01 – 42-1902.30</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/19/subchapters/III/">Subchapter III. Control and Governance of Condominiums.</a>
+            </p>
+            <p>§§ 42-1903.01 – 42-1903.21</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/42/chapters/19/subchapters/IV/">Subchapter IV. Registration and Offering of Condominiums.</a>
+            </p>
+            <p>§§ 42-1904.01 – 42-1904.18</p>
           </section>
           <section class="content">
             <hr/>
@@ -119,8 +127,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§101">Mar. 29, 1977, D.C. Law 1-89, title I, § 101, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(a), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/9-82.html">Mar. 20, 1992, D.C. Law 9-82, § 2(a), 39 DCR 683</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(a), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1801.</p>
                 <p>1973 Ed., § 5-1201.</p>
+                <p>1981 Ed., § 45-1801.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3401.03.html">42-3401.03</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -208,17 +216,17 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§102">Mar. 29, 1977, D.C. Law 1-89, title I, § 102, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/2-110.html">Sept. 22, 1978, D.C. Law 2-110, § 2, 25 DCR 1461</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(b), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/9-82.html">Mar. 20, 1992, D.C. Law 9-82, § 2(b), 39 DCR 683</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 49(a), 44 DCR 1271</a>; <a class="internal-link" href="/dc/council/laws/17-231.html">Sept. 12, 2008, D.C. Law 17-231, § 36(a), 55 DCR 6758</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(b), 61 DCR 4304</a>; <a class="internal-link" href="/dc/council/laws/21-241.html#§2(a)">Apr. 7, 2017, D.C. Law 21-241, § 2(a), 64 DCR 1602</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1802.</p>
                 <p>1973 Ed., § 5-1202.</p>
+                <p>1981 Ed., § 45-1802.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.06.html">42-1902.06</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3401.03.html">42-3401.03</a>, § <a class="internal-link" href="/dc/council/code/sections/47-802.html">47-802</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-1302.html">47-1302</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a> added par. (12A).</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-109.html">D.C. Law 20-109</a> added (12B) and (32).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a> added par. (12A).</p>
                 <h4>Cross References</h4>
-                <p>Real property assessment and tax, taxpayer defined with reference to interests under this section, see § <a class="internal-link" href="/dc/council/code/sections/47-802.html">47-802</a>.</p>
-                <p>Real property tax sales, condominium, notice to record owner, see § <a class="internal-link" href="/dc/council/code/sections/47-1302.html">47-1302</a>.</p>
                 <p>Rental housing conversion and sale, condominium defined, see § <a class="internal-link" href="/dc/council/code/sections/42-3401.03.html">42-3401.03</a>.</p>
+                <p>Real property tax sales, condominium, notice to record owner, see § <a class="internal-link" href="/dc/council/code/sections/47-1302.html">47-1302</a>.</p>
+                <p>Real property assessment and tax, taxpayer defined with reference to interests under this section, see § <a class="internal-link" href="/dc/council/code/sections/47-802.html">47-802</a>.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of Condominium Act of 1976 Technical and Clarifying Temporary Amendment Act of 1991 (D.C. Law 9-38, August 17, 1991, law notification  38 DCR 5805).</p>
                 <h4>References in Text</h4>
@@ -241,8 +249,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§103">Mar. 29, 1977, D.C. Law 1-89, title I, § 103, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(c), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/17-231.html">Sept. 12, 2008, D.C. Law 17-231, § 36(b), 55 DCR 6758</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1803.</p>
                 <p>1973 Ed., § 5-1203.</p>
+                <p>1981 Ed., § 45-1803.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1902.26.html">42-1902.26</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -263,8 +271,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§104">Mar. 29, 1977, D.C. Law 1-89, title I, § 104, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(d), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/19-150.html">July 13, 2012, D.C. Law 19-150, § 2, 59 DCR 5132</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1804.</p>
                 <p>1973 Ed., § 5-1204.</p>
+                <p>1981 Ed., § 45-1804.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-150.html">D.C. Law 19-150</a> designated the existing text as subsec. (a); and added subsec. (b).</p>
               </section>
@@ -281,8 +289,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§105">Mar. 29, 1977, D.C. Law 1-89, title I, § 105, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1805.</p>
                 <p>1973 Ed., § 5-1205.</p>
+                <p>1981 Ed., § 45-1805.</p>
               </section>
             </section>
             <hr/>
@@ -302,8 +310,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§106">Mar. 29, 1977, D.C. Law 1-89, title I, § 106, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(e), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1806.</p>
                 <p>1973 Ed., § 5-1206.</p>
+                <p>1981 Ed., § 45-1806.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1903.10.html">42-1903.10</a>.</p>
               </section>
@@ -355,8 +363,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§201">Mar. 29, 1977, D.C. Law 1-89, title II, § 201, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(h), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1811.</p>
                 <p>1973 Ed., § 5-1211.</p>
+                <p>1981 Ed., § 45-1811.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1904.10.html">42-1904.10</a>.</p>
                 <h4>Cross References</h4>
@@ -377,8 +385,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§202">Mar. 29, 1977, D.C. Law 1-89, title II, § 202, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(i), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1812.</p>
                 <p>1973 Ed., § 5-1212.</p>
+                <p>1981 Ed., § 45-1812.</p>
               </section>
             </section>
             <hr/>
@@ -393,8 +401,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§203">Mar. 29, 1977, D.C. Law 1-89, title II, § 203, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1813.</p>
                 <p>1973 Ed., § 5-1213.</p>
+                <p>1981 Ed., § 45-1813.</p>
               </section>
             </section>
             <hr/>
@@ -409,8 +417,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§204">Mar. 29, 1977, D.C. Law 1-89, title II, § 204, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(j), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1814.</p>
                 <p>1973 Ed., § 5-1214.</p>
+                <p>1981 Ed., § 45-1814.</p>
               </section>
             </section>
             <hr/>
@@ -425,8 +433,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§205">Mar. 29, 1977, D.C. Law 1-89, title II, § 205, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(k), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1815.</p>
                 <p>1973 Ed., § 5-1215.</p>
+                <p>1981 Ed., § 45-1815.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1904.10.html">42-1904.10</a>.</p>
                 <h4>Cross References</h4>
@@ -450,8 +458,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§206">Mar. 29, 1977, D.C. Law 1-89, title II, § 206, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1816.</p>
                 <p>1973 Ed., § 5-1216.</p>
+                <p>1981 Ed., § 45-1816.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.10.html">42-1902.10</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.14.html">42-1902.14</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1903.06.html">42-1903.06</a>.</p>
               </section>
@@ -468,8 +476,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§207">Mar. 29, 1977, D.C. Law 1-89, title II, § 207, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1817.</p>
                 <p>1973 Ed., § 5-1217.</p>
+                <p>1981 Ed., § 45-1817.</p>
               </section>
             </section>
             <hr/>
@@ -488,8 +496,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§208">Mar. 29, 1977, D.C. Law 1-89, title II, § 208, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(l), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1818.</p>
                 <p>1973 Ed., § 5-1218.</p>
+                <p>1981 Ed., § 45-1818.</p>
               </section>
             </section>
             <hr/>
@@ -505,8 +513,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§209">Mar. 29, 1977, D.C. Law 1-89, title II, § 209, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(m), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(c), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1819.</p>
                 <p>1973 Ed., § 5-1219.</p>
+                <p>1981 Ed., § 45-1819.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1903.13.html">42-1903.13</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -579,8 +587,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§210">Mar. 29, 1977, D.C. Law 1-89, title II, § 210, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(n), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1820.</p>
                 <p>1973 Ed., § 5-1220.</p>
+                <p>1981 Ed., § 45-1820.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1902.12.html">42-1902.12</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.13.html">42-1902.13</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.15.html">42-1902.15</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.19.html">42-1902.19</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.20.html">42-1902.20</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1903.02.html">42-1903.02</a>.</p>
               </section>
@@ -603,8 +611,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§211">Mar. 29, 1977, D.C. Law 1-89, title II, § 211, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1821.</p>
                 <p>1973 Ed., § 5-1221.</p>
+                <p>1981 Ed., § 45-1821.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1902.10.html">42-1902.10</a>.</p>
               </section>
@@ -626,8 +634,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§212">Mar. 29, 1977, D.C. Law 1-89, title II, § 212, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1822.</p>
                 <p>1973 Ed., § 5-1222.</p>
+                <p>1981 Ed., § 45-1822.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1902.15.html">42-1902.15</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.17.html">42-1902.17</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.19.html">42-1902.19</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1903.01.html">42-1903.01</a>.</p>
               </section>
@@ -649,8 +657,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§213">Mar. 29, 1977, D.C. Law 1-89, title II, § 213, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(o), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/9-82.html">Mar. 20, 1992, D.C. Law 9-82, § 2(e), 39 DCR 683</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1823.</p>
                 <p>1973 Ed., § 5-1223.</p>
+                <p>1981 Ed., § 45-1823.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1902.10.html">42-1902.10</a>.</p>
                 <h4>Temporary Legislation</h4>
@@ -674,8 +682,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§214">Mar. 29, 1977, D.C. Law 1-89, title II, § 214, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1824.</p>
                 <p>1973 Ed., § 5-1224.</p>
+                <p>1981 Ed., § 45-1824.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.02.html">42-1901.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.01.html">42-1902.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.10.html">42-1902.10</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.11.html">42-1902.11</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.12.html">42-1902.12</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.15.html">42-1902.15</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.17.html">42-1902.17</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.18.html">42-1902.18</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.19.html">42-1902.19</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1903.01.html">42-1903.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1903.05.html">42-1903.05</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1904.03.html">42-1904.03</a>.</p>
               </section>
@@ -692,8 +700,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§215">Mar. 29, 1977, D.C. Law 1-89, title II, § 215, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1825.</p>
                 <p>1973 Ed., § 5-1225.</p>
+                <p>1981 Ed., § 45-1825.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1902.14.html">42-1902.14</a>.</p>
               </section>
@@ -711,8 +719,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§216">Mar. 29, 1977, D.C. Law 1-89, title II, § 216, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1826.</p>
                 <p>1973 Ed., § 5-1226.</p>
+                <p>1981 Ed., § 45-1826.</p>
               </section>
             </section>
             <hr/>
@@ -729,8 +737,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§217">Mar. 29, 1977, D.C. Law 1-89, title II, § 217, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1827.</p>
                 <p>1973 Ed., § 5-1227.</p>
+                <p>1981 Ed., § 45-1827.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.02.html">42-1901.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.15.html">42-1902.15</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1902.19.html">42-1902.19</a>.</p>
               </section>
@@ -750,8 +758,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§218">Mar. 29, 1977, D.C. Law 1-89, title II, § 218, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1828.</p>
                 <p>1973 Ed., § 5-1228.</p>
+                <p>1981 Ed., § 45-1828.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.02.html">42-1901.02</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1902.26.html">42-1902.26</a>.</p>
               </section>
@@ -768,8 +776,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§219">Mar. 29, 1977, D.C. Law 1-89, title II, § 219, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1829.</p>
                 <p>1973 Ed., § 5-1229.</p>
+                <p>1981 Ed., § 45-1829.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.02.html">42-1901.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.04.html">42-1902.04</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1902.15.html">42-1902.15</a>.</p>
               </section>
@@ -786,8 +794,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§220">Mar. 29, 1977, D.C. Law 1-89, title II, § 220, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1830.</p>
                 <p>1973 Ed., § 5-1230.</p>
+                <p>1981 Ed., § 45-1830.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.02.html">42-1901.02</a>.</p>
               </section>
@@ -804,8 +812,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§221">Mar. 29, 1977, D.C. Law 1-89, title II, § 221, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1831.</p>
                 <p>1973 Ed., § 5-1231.</p>
+                <p>1981 Ed., § 45-1831.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.02.html">42-1901.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.23.html">42-1902.23</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1903.09.html">42-1903.09</a>.</p>
               </section>
@@ -822,8 +830,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§222">Mar. 29, 1977, D.C. Law 1-89, title II, § 222, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1832.</p>
                 <p>1973 Ed., § 5-1232.</p>
+                <p>1981 Ed., § 45-1832.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.02.html">42-1901.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.23.html">42-1902.23</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.30.html">42-1902.30</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1903.09.html">42-1903.09</a>.</p>
               </section>
@@ -842,8 +850,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§223">Mar. 29, 1977, D.C. Law 1-89, title II, § 223, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(p), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/9-82.html">Mar. 20, 1992, D.C. Law 9-82, § 2(f), 39 DCR 683</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1833.</p>
                 <p>1973 Ed., § 5-1233.</p>
+                <p>1981 Ed., § 45-1833.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(f) of Condominium Act of 1976 Technical and Clarifying Temporary Amendment Act of 1991 (D.C. Law 9-38, August 17, 1991, law notification  38 DCR 5805).</p>
               </section>
@@ -861,8 +869,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§224">Mar. 29, 1977, D.C. Law 1-89, title II, § 224, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1834.</p>
                 <p>1973 Ed., § 5-1234.</p>
+                <p>1981 Ed., § 45-1834.</p>
               </section>
             </section>
             <hr/>
@@ -887,8 +895,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§225">Mar. 29, 1977, D.C. Law 1-89, title II, § 225, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(q), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(d), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1835.</p>
                 <p>1973 Ed., § 5-1235.</p>
+                <p>1981 Ed., § 45-1835.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1902.24.html">42-1902.24</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -917,8 +925,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§226">Mar. 29, 1977, D.C. Law 1-89, title II, § 226, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(r), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(e), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1836.</p>
                 <p>1973 Ed., § 5-1236.</p>
+                <p>1981 Ed., § 45-1836.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1902.18.html">42-1902.18</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1902.25.html">42-1902.25</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -954,8 +962,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§227">Mar. 29, 1977, D.C. Law 1-89, title II, § 227, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(s), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/9-82.html">Mar. 20, 1992, D.C. Law 9-82, § 2(g), 39 DCR 683</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(f), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1837.</p>
                 <p>1973 Ed., § 5-1237.</p>
+                <p>1981 Ed., § 45-1837.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1902.10.html">42-1902.10</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -991,8 +999,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§228">Mar. 29, 1977, D.C. Law 1-89, title II, § 228, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(t), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/9-82.html">Mar. 20, 1992, D.C. Law 9-82, § 2(h), 39 DCR 683</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1838.</p>
                 <p>1973 Ed., § 5-1238.</p>
+                <p>1981 Ed., § 45-1838.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1903.10.html">42-1903.10</a>.</p>
                 <h4>Temporary Legislation</h4>
@@ -1018,8 +1026,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§229">Mar. 29, 1977, D.C. Law 1-89, title II, § 229, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1839.</p>
                 <p>1973 Ed., § 5-1239.</p>
+                <p>1981 Ed., § 45-1839.</p>
               </section>
             </section>
             <hr/>
@@ -1077,44 +1085,44 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§301">Mar. 29, 1977, D.C. Law 1-89, title III, § 301, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(v), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1841.</p>
                 <p>1973 Ed., § 5-1241.</p>
+                <p>1981 Ed., § 45-1841.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.02.html">42-1901.02</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1903.18.html">42-1903.18</a>.</p>
                 <h4>Cross References</h4>
                 <p>Condominium or unit owners association defined, homestead housing preservation, see § <a class="internal-link" href="/dc/council/code/sections/42-2103.html">42-2103</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of provisions authorizing the 8th Street Plaza Condominium Association, Inc., to correct and amend its condominium instruments and to file documents associated with convertible and expandable land, see §§ 2 and 3 of the 8th Street Plaza Condominium Association, Inc. Clarification Act of 2012 (Oct. 22, 2012, D.C Act 19-431,  59 DCR 9416).</p>
-                <p>For temporary (90 days) amendment of D.C. Law 19-178, §§ 2 and 3, see § 7008 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of D.C. Law 19-178, §§ 2 and 3, see § 7008 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of D.C. Law 19-178, §§ 2 and 3, see § 7008 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary addition of provisions authorizing the 8th Street Plaza Condominium Association, Inc., to correct and amend its condominium instruments and to file documents associated with convertible and expandable land, see §§ 2 and 3 of the 8th Street Plaza Condominium Association, Inc. Clarification Act of 2012 (Oct. 22, 2012, D.C Act 19-431,  59 DCR 9416).</p>
                 <h4>Short Title</h4>
                 <p>Section 7001 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle A of Title VII of the act may be cited as the “Subject to Appropriations Repealers Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 2 of D.C. Law 19-178, as amended by section 7008(a) of Law 20–61, provided:</p>
-                <p>“(a)(1) Notwithstanding any provision of law to the contrary, the principal officer of the 8th Street Plaza Condominium Association, Inc., ‘8th Street Association’) for the 8th Street Condominium, located in Square 5956W and Lots 26, 27, 817, 818, and 2001 through 2034 in Square 5956 (‘8th Street Condominium’) may:</p>
-                <p>“(A) Through a simple majority of a quorum of its Board of Directors, correct, amend, and restate its condominium instruments, including its bylaws, declaration, and plats and plans (‘modified instruments’), to correct any errors or omissions made by the declarant or other person; and</p>
-                <p>“(B) File the appropriate documents with the Mayor associated with convertible and expandable land (‘C &amp; E land’) to be added to the 8th Street Condominium.</p>
-                <p>“(2) Notwithstanding any provision of law to the contrary, the Office of Tax and Revenue shall not require pre-payment of real property taxes and the Office of the Surveyor shall accept the modified instruments, and the C &amp; E land documents or instruments, if any, for filing.</p>
-                <p>“(b)(1) The modified instruments and any C &amp; E land documents or instruments shall be exempt from any filing fees established by the Mayor for services rendered by the Office of the Surveyor or the Recorder of Deeds.</p>
-                <p>“(2) The exemptions granted by paragraph (1) of this subsection shall expire on October 1, 2014.</p>
-                <p>“(c)(1) On the date that any modified instrument or C &amp; E land document or instrument is filed with the Mayor, the Office of Tax and Revenue, the Recorder of Deeds, or the Office of the Surveyor, the Office of Tax and Revenue is authorized to reassess or redistribute, in accordance with D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/47-835.html">47-835</a>, any real property tax related to the 8th Street Condominium that is levied, unpaid, due, or resulting from these documents or instruments as of the date that the document or instrument was filed.</p>
-                <p>“(2) Any document or instrument filed pursuant to this act shall apply prospectively only for assessment and taxation purposes, and any lot created, discontinued, modified, or adjusted based on such document or instrument shall be effective for assessment and taxation purposes as of the beginning of the half tax year immediately succeeding the date such document or instrument is filed.</p>
-                <p>“(d) Except as provided in subsection (e) of this section, any lien for unpaid real property taxes or any tax sale outstanding with respect to any lot constituting part of the 8th Street Condominium shall be unimpaired by any document or instrument filed pursuant to this act.</p>
-                <p>“(e) If a lot is discontinued as a result of a filing made pursuant to this act, any unpaid real property tax for any period preceding the effective date of discontinuance shall be forgiven.”</p>
-                <p>Section 3 of D.C. Law 19-178 provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
-                <p>Section 2 of D.C. Law 19-178, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 7008(a), provided:</p>
-                <p>“(a)(1) Notwithstanding any provision of law to the contrary, the principal officer of the 8th Street Plaza Condominium Association, Inc., ‘8th Street Association’) for the 8th Street Condominium, located in Square 5956W and Lots 26, 27, 817, 818, and 2001 through 2034 in Square 5956 (’8th Street Condominium’) may:</p>
-                <p>“(A) Through a simple majority of a quorum of its Board of Directors, correct, amend, and restate its condominium instruments, including its bylaws, declaration, and plats and plans (’modified instruments’), to correct any errors or omissions made by the declarant or other person; and</p>
-                <p>“(B) File the appropriate documents with the Mayor associated with convertible and expandable land (‘C &amp; E land’) to be added to the 8th Street Condominium.</p>
-                <p>“(2) Notwithstanding any provision of law to the contrary, the Office of Tax and Revenue shall not require pre-payment of real property taxes and the Office of the Surveyor shall accept the modified instruments, and the C &amp; E land documents or instruments, if any, for filing.</p>
-                <p>“(b)(1) The modified instruments and any C &amp; E land documents or instruments shall be exempt from any filing fees established by the Mayor for services rendered by the Office of the Surveyor or the Recorder of Deeds.</p>
-                <p>“(2) The exemptions granted by paragraph (1) of this subsection shall expire on October 1, 2014.</p>
-                <p>“(c)(1) On the date that any modified instrument or C &amp; E land document or instrument is filed with the Mayor, the Office of Tax and Revenue, the Recorder of Deeds, or the Office of the Surveyor, the Office of Tax and Revenue is authorized to reassess or redistribute, in accordance with D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/47-835.html">47-835</a>, any real property tax related to the 8th Street Condominium that is levied, unpaid, due, or resulting from these documents or instruments as of the date that the document or instrument was filed.</p>
-                <p>“(2) Any document or instrument filed pursuant to this act shall apply prospectively only for assessment and taxation purposes, and any lot created, discontinued, modified, or adjusted based on such document or instrument shall be effective for assessment and taxation purposes as of the beginning of the half tax year immediately succeeding the date such document or instrument is filed.</p>
-                <p>“(d) Except as provided in subsection (e) of this section, any lien for unpaid real property taxes or any tax sale outstanding with respect to any lot constituting part of the 8th Street Condominium shall be unimpaired by any document or instrument filed pursuant to this act.</p>
-                <p>“(e) If a lot is discontinued as a result of a filing made pursuant to this act, any unpaid real property tax for any period preceding the effective date of discontinuance shall be forgiven.”</p>
-                <p>Section 3 of D.C. Law 19-178 provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
                 <p>Section 7008(b) of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> repealed D.C. Law 19-178, § 3.</p>
+                <p>Section 3 of D.C. Law 19-178 provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
+                <p>“(e) If a lot is discontinued as a result of a filing made pursuant to this act, any unpaid real property tax for any period preceding the effective date of discontinuance shall be forgiven.”</p>
+                <p>“(d) Except as provided in subsection (e) of this section, any lien for unpaid real property taxes or any tax sale outstanding with respect to any lot constituting part of the 8th Street Condominium shall be unimpaired by any document or instrument filed pursuant to this act.</p>
+                <p>“(2) Any document or instrument filed pursuant to this act shall apply prospectively only for assessment and taxation purposes, and any lot created, discontinued, modified, or adjusted based on such document or instrument shall be effective for assessment and taxation purposes as of the beginning of the half tax year immediately succeeding the date such document or instrument is filed.</p>
+                <p>“(c)(1) On the date that any modified instrument or C &amp; E land document or instrument is filed with the Mayor, the Office of Tax and Revenue, the Recorder of Deeds, or the Office of the Surveyor, the Office of Tax and Revenue is authorized to reassess or redistribute, in accordance with D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/47-835.html">47-835</a>, any real property tax related to the 8th Street Condominium that is levied, unpaid, due, or resulting from these documents or instruments as of the date that the document or instrument was filed.</p>
+                <p>“(2) The exemptions granted by paragraph (1) of this subsection shall expire on October 1, 2014.</p>
+                <p>“(b)(1) The modified instruments and any C &amp; E land documents or instruments shall be exempt from any filing fees established by the Mayor for services rendered by the Office of the Surveyor or the Recorder of Deeds.</p>
+                <p>“(2) Notwithstanding any provision of law to the contrary, the Office of Tax and Revenue shall not require pre-payment of real property taxes and the Office of the Surveyor shall accept the modified instruments, and the C &amp; E land documents or instruments, if any, for filing.</p>
+                <p>“(B) File the appropriate documents with the Mayor associated with convertible and expandable land (‘C &amp; E land’) to be added to the 8th Street Condominium.</p>
+                <p>“(A) Through a simple majority of a quorum of its Board of Directors, correct, amend, and restate its condominium instruments, including its bylaws, declaration, and plats and plans (’modified instruments’), to correct any errors or omissions made by the declarant or other person; and</p>
+                <p>“(a)(1) Notwithstanding any provision of law to the contrary, the principal officer of the 8th Street Plaza Condominium Association, Inc., ‘8th Street Association’) for the 8th Street Condominium, located in Square 5956W and Lots 26, 27, 817, 818, and 2001 through 2034 in Square 5956 (’8th Street Condominium’) may:</p>
+                <p>Section 2 of D.C. Law 19-178, as amended by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>, § 7008(a), provided:</p>
+                <p>Section 3 of D.C. Law 19-178 provided that the act shall apply upon the inclusion of its fiscal effect in an approved budget and financial plan, as certified by the Chief Financial Officer to the Budget Director of the Council in a certification published by the Council in the District of Columbia Register.</p>
+                <p>“(e) If a lot is discontinued as a result of a filing made pursuant to this act, any unpaid real property tax for any period preceding the effective date of discontinuance shall be forgiven.”</p>
+                <p>“(d) Except as provided in subsection (e) of this section, any lien for unpaid real property taxes or any tax sale outstanding with respect to any lot constituting part of the 8th Street Condominium shall be unimpaired by any document or instrument filed pursuant to this act.</p>
+                <p>“(2) Any document or instrument filed pursuant to this act shall apply prospectively only for assessment and taxation purposes, and any lot created, discontinued, modified, or adjusted based on such document or instrument shall be effective for assessment and taxation purposes as of the beginning of the half tax year immediately succeeding the date such document or instrument is filed.</p>
+                <p>“(c)(1) On the date that any modified instrument or C &amp; E land document or instrument is filed with the Mayor, the Office of Tax and Revenue, the Recorder of Deeds, or the Office of the Surveyor, the Office of Tax and Revenue is authorized to reassess or redistribute, in accordance with D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/47-835.html">47-835</a>, any real property tax related to the 8th Street Condominium that is levied, unpaid, due, or resulting from these documents or instruments as of the date that the document or instrument was filed.</p>
+                <p>“(2) The exemptions granted by paragraph (1) of this subsection shall expire on October 1, 2014.</p>
+                <p>“(b)(1) The modified instruments and any C &amp; E land documents or instruments shall be exempt from any filing fees established by the Mayor for services rendered by the Office of the Surveyor or the Recorder of Deeds.</p>
+                <p>“(2) Notwithstanding any provision of law to the contrary, the Office of Tax and Revenue shall not require pre-payment of real property taxes and the Office of the Surveyor shall accept the modified instruments, and the C &amp; E land documents or instruments, if any, for filing.</p>
+                <p>“(B) File the appropriate documents with the Mayor associated with convertible and expandable land (‘C &amp; E land’) to be added to the 8th Street Condominium.</p>
+                <p>“(A) Through a simple majority of a quorum of its Board of Directors, correct, amend, and restate its condominium instruments, including its bylaws, declaration, and plats and plans (‘modified instruments’), to correct any errors or omissions made by the declarant or other person; and</p>
+                <p>“(a)(1) Notwithstanding any provision of law to the contrary, the principal officer of the 8th Street Plaza Condominium Association, Inc., ‘8th Street Association’) for the 8th Street Condominium, located in Square 5956W and Lots 26, 27, 817, 818, and 2001 through 2034 in Square 5956 (‘8th Street Condominium’) may:</p>
+                <p>Section 2 of D.C. Law 19-178, as amended by section 7008(a) of Law 20–61, provided:</p>
               </section>
             </section>
             <hr/>
@@ -1137,8 +1145,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§302">Mar. 29, 1977, D.C. Law 1-89, title III, § 302, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(w), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1842.</p>
                 <p>1973 Ed., § 5-1242.</p>
+                <p>1981 Ed., § 45-1842.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.02.html">42-1901.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.02.html">42-1902.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.30.html">42-1902.30</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1903.01.html">42-1903.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1903.09.html">42-1903.09</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1903.18.html">42-1903.18</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1904.07.html">42-1904.07</a>.</p>
               </section>
@@ -1181,8 +1189,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§303">Mar. 29, 1977, D.C. Law 1-89, title III, § 303, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(x), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(g), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1843.</p>
                 <p>1973 Ed., § 5-1243.</p>
+                <p>1981 Ed., § 45-1843.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1903.10.html">42-1903.10</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1903.18.html">42-1903.18</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -1202,8 +1210,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§304">Mar. 29, 1977, D.C. Law 1-89, title III, § 304, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(y), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1844.</p>
                 <p>1973 Ed., § 5-1244.</p>
+                <p>1981 Ed., § 45-1844.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1903.05.html">42-1903.05</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1903.18.html">42-1903.18</a>.</p>
               </section>
@@ -1228,8 +1236,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§305">Mar. 29, 1977, D.C. Law 1-89, title III, § 305, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(z), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/9-82.html">Mar. 20, 1992, D.C. Law 9-82, § 2(j), 39 DCR 683</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(h), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1845.</p>
                 <p>1973 Ed., § 5-1245.</p>
+                <p>1981 Ed., § 45-1845.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1903.18.html">42-1903.18</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -1249,8 +1257,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§306">Mar. 29, 1977, D.C. Law 1-89, title III, § 306, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1846.</p>
                 <p>1973 Ed., § 5-1246.</p>
+                <p>1981 Ed., § 45-1846.</p>
               </section>
             </section>
             <hr/>
@@ -1270,8 +1278,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§307">Mar. 29, 1977, D.C. Law 1-89, title III, § 307, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(aa), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(i), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1847.</p>
                 <p>1973 Ed., § 5-1247.</p>
+                <p>1981 Ed., § 45-1847.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1904.04.html">42-1904.04</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -1313,8 +1321,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§308">Mar. 29, 1977, D.C. Law 1-89, title III, § 308, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(bb), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(j), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1848.</p>
                 <p>1973 Ed., § 5-1248.</p>
+                <p>1981 Ed., § 45-1848.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1903.18.html">42-1903.18</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -1369,8 +1377,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§309">Mar. 29, 1977, D.C. Law 1-89, title III, § 309, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(cc), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/11-110.html">Apr. 18, 1996, D.C. Law 11-110,§ 48(a), 43 DCR 530</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1849.</p>
                 <p>1973 Ed., § 5-1249.</p>
+                <p>1981 Ed., § 45-1849.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a>.</p>
               </section>
@@ -1406,8 +1414,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§310">Mar. 29, 1977, D.C. Law 1-89, title III, § 310, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(dd), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/11-110.html">Apr. 18, 1996, D.C. Law 11-110,§ 48(b), 43 DCR 530</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(k), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1850.</p>
                 <p>1973 Ed., § 5-1250.</p>
+                <p>1981 Ed., § 45-1850.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-109.html">D.C. Law 20-109</a> added “Unless the condominium instruments expressly provide otherwise” in (b); added (d-1); repealed (e)(5) and made related changes; and added (j)(2).</p>
               </section>
@@ -1424,8 +1432,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§311">Mar. 29, 1977, D.C. Law 1-89, title III, § 311, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(ee), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1851.</p>
                 <p>1973 Ed., § 5-1251.</p>
+                <p>1981 Ed., § 45-1851.</p>
               </section>
             </section>
             <hr/>
@@ -1445,8 +1453,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§312">Mar. 29, 1977, D.C. Law 1-89, title III, § 312, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(ff), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1852.</p>
                 <p>1973 Ed., § 5-1252.</p>
+                <p>1981 Ed., § 45-1852.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1902.02.html">42-1902.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1903.05.html">42-1903.05</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1903.09.html">42-1903.09</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1903.13.html">42-1903.13</a>.</p>
               </section>
@@ -1531,8 +1539,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§313">Mar. 29, 1977, D.C. Law 1-89, title III, § 313, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(gg), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/9-82.html">Mar. 20, 1992, D.C. Law 9-82, § 2(k), 39 DCR 683</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(l), 61 DCR 4304</a>; <a class="internal-link" href="/dc/council/laws/21-241.html#§2(d)">Apr. 7, 2017, D.C. Law 21-241, § 2(d), 64 DCR 1602</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1853.</p>
                 <p>1973 Ed., § 5-1253.</p>
+                <p>1981 Ed., § 45-1853.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1902.02.html">42-1902.02</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1904.11.html">42-1904.11</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -1570,8 +1578,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§314">Mar. 29, 1977, D.C. Law 1-89, title III, § 314, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(hh), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(m), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1854.</p>
                 <p>1973 Ed., § 5-1254.</p>
+                <p>1981 Ed., § 45-1854.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -1590,8 +1598,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§315">Mar. 29, 1977, D.C. Law 1-89, title III, § 315, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(ii), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1855.</p>
                 <p>1973 Ed., § 5-1255.</p>
+                <p>1981 Ed., § 45-1855.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1904.11.html">42-1904.11</a>.</p>
               </section>
@@ -1626,9 +1634,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1903.17.html">42-1903.17</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-46.html">D.C. Law 13-46</a> added subsecs. (f) and (g) and rewrote subsec. (e) which formerly provided:</p>
-                <p>“(e)(1) Prior to the declarant’s first conveyance of a residential unit to a purchaser, the declarant shall post a bond or letter of credit with the Mayor in the amount of 10% of the estimated construction or conversion costs, or shall provide any other form of security the Mayor shall approve to satisfy any costs that arise from the declarant’s failure to satisfy the requirements of this section. The other security may include a lien in favor of the Mayor against the declarant’s equity in any unsold units, including any non-residential units, in which event the unsold units will be valued, for purposes of computing the declarant’s equity, at 90% of the current listed sales price of the units, or if not listed, then the current listed sales price of comparable units in the condominium. The bond, letter of credit, or other security shall be reduced at the declarant’s request in pro rata segments (based on the residential unit’s percentage interest in the residential portion of the condominium) 2 years after the conveyance of each unit; provided, however, that in no event shall the security be reduced below 50% of the original amount of the security until one year after transfer of control of the residential executive board of the condominium association to purchasing residential unit owners other than the declarant. For purposes of this subsection, ’transfer of control’ shall have occurred when 51% or more of the residential executive board is composed of residential unit owners other than the declarant, or successor declarant, or the declarant’s selections or nominees. At the end of 5 years from the conveyance of the first residential unit to a purchaser, and provided one year has passed following transfer of control by the declarant, the declarant may sell unsold residential units as resale units, in which event no warranty against structural defects in the units under this section shall be required and the bond shall be reduced pro rata as to those unsold units. The bonding requirements pursuant to this subsection and the warranties required under this section are applicable only to residential condominiums or the residential condominium portion of mixed use condominiums or mixed use projects. If residential condominium units are part of a mixed use condominium, the cost of the residential portion of the condominium shall include the residential condominium units’ pro rata share of common elements, based on the residential condominium units’ percentage interest in the common elements. If a residential condominium is part of a mixed use project, the cost of the residential condominium includes its pro rata share of those portions of the project directly supporting, enclosing or servicing the residential condominium.</p>
                 <p>“(2) If claims for structural defects under this section are pending at the time the bond or other security posted would otherwise no longer be required, then the bond or other security shall be required to be maintained in the amount of the claim, until the claims have been finally resolved and the bond or other security has been made available to satisfy the declarant’s responsibilities to the unit owners and association under this section. The bylaws and other condominium documents to be prepared by the declarant shall not restrict or hinder the residential executive board’s right to assert claims under this section.”</p>
+                <p>“(e)(1) Prior to the declarant’s first conveyance of a residential unit to a purchaser, the declarant shall post a bond or letter of credit with the Mayor in the amount of 10% of the estimated construction or conversion costs, or shall provide any other form of security the Mayor shall approve to satisfy any costs that arise from the declarant’s failure to satisfy the requirements of this section. The other security may include a lien in favor of the Mayor against the declarant’s equity in any unsold units, including any non-residential units, in which event the unsold units will be valued, for purposes of computing the declarant’s equity, at 90% of the current listed sales price of the units, or if not listed, then the current listed sales price of comparable units in the condominium. The bond, letter of credit, or other security shall be reduced at the declarant’s request in pro rata segments (based on the residential unit’s percentage interest in the residential portion of the condominium) 2 years after the conveyance of each unit; provided, however, that in no event shall the security be reduced below 50% of the original amount of the security until one year after transfer of control of the residential executive board of the condominium association to purchasing residential unit owners other than the declarant. For purposes of this subsection, ’transfer of control’ shall have occurred when 51% or more of the residential executive board is composed of residential unit owners other than the declarant, or successor declarant, or the declarant’s selections or nominees. At the end of 5 years from the conveyance of the first residential unit to a purchaser, and provided one year has passed following transfer of control by the declarant, the declarant may sell unsold residential units as resale units, in which event no warranty against structural defects in the units under this section shall be required and the bond shall be reduced pro rata as to those unsold units. The bonding requirements pursuant to this subsection and the warranties required under this section are applicable only to residential condominiums or the residential condominium portion of mixed use condominiums or mixed use projects. If residential condominium units are part of a mixed use condominium, the cost of the residential portion of the condominium shall include the residential condominium units’ pro rata share of common elements, based on the residential condominium units’ percentage interest in the common elements. If a residential condominium is part of a mixed use project, the cost of the residential condominium includes its pro rata share of those portions of the project directly supporting, enclosing or servicing the residential condominium.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-46.html">D.C. Law 13-46</a> added subsecs. (f) and (g) and rewrote subsec. (e) which formerly provided:</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2 of Condominium Warranty Bond Release Discretion Clarification Emergency Amendment Act of 2006 (D.C. Act 16-420, July 18, 2006,  53 DCR 6163).</p>
                 <h4>Editor's Notes</h4>
@@ -1752,8 +1760,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§401">Mar. 29, 1977, D.C. Law 1-89, title IV, § 401, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(pp), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1861.</p>
                 <p>1973 Ed., § 5-1261.</p>
+                <p>1981 Ed., § 45-1861.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1904.11.html">42-1904.11</a>.</p>
               </section>
@@ -1773,8 +1781,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§402">Mar. 29, 1977, D.C. Law 1-89, title IV, § 402, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(qq), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1862.</p>
                 <p>1973 Ed., § 5-1262.</p>
+                <p>1981 Ed., § 45-1862.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1904.01.html">42-1904.01</a>.</p>
               </section>
@@ -1805,8 +1813,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§403">Mar. 29, 1977, D.C. Law 1-89, title IV, § 403, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 49(b), 44 DCR 1271</a>; <a class="internal-link" href="/dc/council/laws/18-223.html">Sept. 24, 2010, D.C. Law 18-223, § 2102, 57 DCR 6242</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1863.</p>
                 <p>1973 Ed., § 5-1263.</p>
+                <p>1981 Ed., § 45-1863.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1904.01.html">42-1904.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1904.12.html">42-1904.12</a>, § <a class="internal-link" href="/dc/council/code/sections/42-2857.01.html">42-2857.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3402.11.html">42-3402.11</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -1870,8 +1878,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§405">Mar. 29, 1977, D.C. Law 1-89, title IV, § 405, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(rr), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/9-82.html">Mar. 20, 1992, D.C. Law 9-82, § 2(n), 39 DCR 683</a>; <a class="internal-link" href="/dc/council/laws/12-81.html">Mar. 24, 1998, D.C. Law 12-81, § 54, 45 DCR 745</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(n), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1864.</p>
                 <p>1973 Ed., § 5-1264.</p>
+                <p>1981 Ed., § 45-1864.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1903.12.html">42-1903.12</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1904.01.html">42-1904.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1904.03.html">42-1904.03</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1904.08.html">42-1904.08</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -1897,8 +1905,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§405">Mar. 29, 1977, D.C. Law 1-89, title IV, § 405, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1865.</p>
                 <p>1973 Ed., § 5-1265.</p>
+                <p>1981 Ed., § 45-1865.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1904.01.html">42-1904.01</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1904.06.html">42-1904.06</a>.</p>
               </section>
@@ -1917,13 +1925,13 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§406">Mar. 29, 1977, D.C. Law 1-89, title IV, § 406, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1866.</p>
                 <p>1973 Ed., § 5-1266.</p>
+                <p>1981 Ed., § 45-1866.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1903.02.html">42-1903.02</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1904.01.html">42-1904.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1904.16.html">42-1904.16</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3401.03.html">42-3401.03</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3402.11.html">42-3402.11</a>.</p>
                 <h4>Cross References</h4>
-                <p>Rental housing conversion and sale, applicability to prior housing accommodations conversions, see § <a class="internal-link" href="/dc/council/code/sections/42-3402.11.html">42-3402.11</a>.</p>
                 <p>Rental housing conversion and sale, condominium conversion as issuance of notice of filing pursuant to this section, see § <a class="internal-link" href="/dc/council/code/sections/42-3401.03.html">42-3401.03</a>.</p>
+                <p>Rental housing conversion and sale, applicability to prior housing accommodations conversions, see § <a class="internal-link" href="/dc/council/code/sections/42-3402.11.html">42-3402.11</a>.</p>
               </section>
             </section>
             <hr/>
@@ -1938,8 +1946,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§407">Mar. 29, 1977, D.C. Law 1-89, title IV, § 407, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1867.</p>
                 <p>1973 Ed., § 5-1267.</p>
+                <p>1981 Ed., § 45-1867.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1904.01.html">42-1904.01</a>.</p>
               </section>
@@ -1967,13 +1975,13 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§408">Mar. 29, 1977, D.C. Law 1-89, title IV, § 408, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/3-86.html">Sept. 10, 1980, D.C. Law 3-86, § 207, 27 DCR 2975</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(tt), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1868.</p>
                 <p>1973 Ed., § 5-1268.</p>
+                <p>1981 Ed., § 45-1868.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1904.01.html">42-1904.01</a> and § <a class="internal-link" href="/dc/council/code/sections/42-3402.11.html">42-3402.11</a>.</p>
                 <h4>Cross References</h4>
-                <p>Cooperative conversion, see § <a class="internal-link" href="/dc/council/code/sections/42-3402.06.html">42-3402.06</a>.</p>
                 <p>Rental housing conversion and sale, applicability to prior housing accommodations conversions, see § <a class="internal-link" href="/dc/council/code/sections/42-3402.11.html">42-3402.11</a>.</p>
+                <p>Cooperative conversion, see § <a class="internal-link" href="/dc/council/code/sections/42-3402.06.html">42-3402.06</a>.</p>
               </section>
             </section>
             <hr/>
@@ -2001,8 +2009,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§409">Mar. 29, 1977, D.C. Law 1-89, title IV, § 409, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(o), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1869.</p>
                 <p>1973 Ed., § 5-1269.</p>
+                <p>1981 Ed., § 45-1869.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1904.01.html">42-1904.01</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -2036,8 +2044,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§410">Mar. 29, 1977, D.C. Law 1-89, title IV, § 410, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/21-241.html#§2(e)">Apr. 7, 2017, D.C. Law 21-241, § 2(e), 64 DCR 1602</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1870.</p>
                 <p>1973 Ed., § 5-1270.</p>
+                <p>1981 Ed., § 45-1870.</p>
                 <h4>Editor's Notes</h4>
                 <p>
         Section 3 of D.C. Law 21-241 stated that within 180 days after April 7, 2017, the Mayor, pursuant subchapter I of Chapter 5 of Title 2, shall issue rules to implement the provisions of Law 21-241.
@@ -2072,8 +2080,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§411">Mar. 29, 1977, D.C. Law 1-89, title IV, § 411, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(uu), 38 DCR 261</a>; <a class="internal-link" href="/dc/council/laws/9-82.html">Mar. 20, 1992, D.C. Law 9-82, § 2(o), 39 DCR 683</a>; <a class="internal-link" href="/dc/council/laws/20-109.html">June 21, 2014, D.C. Law 20-109, § 2(p), 61 DCR 4304</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1871.</p>
                 <p>1973 Ed., § 5-1271.</p>
+                <p>1981 Ed., § 45-1871.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a> and § <a class="internal-link" href="/dc/council/code/sections/42-1903.08.html">42-1903.08</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -2110,8 +2118,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§412">Mar. 29, 1977, D.C. Law 1-89, title IV, § 412, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/8-233.html">Mar. 8, 1991, D.C. Law 8-233, § 2(vv), 38 DCR 261</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1872.</p>
                 <p>1973 Ed., § 5-1272.</p>
+                <p>1981 Ed., § 45-1872.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a>, § <a class="internal-link" href="/dc/council/code/sections/42-1904.01.html">42-1904.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-1904.17.html">42-1904.17</a>.</p>
               </section>
@@ -2130,8 +2138,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§413">Mar. 29, 1977, D.C. Law 1-89, title IV, § 413, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1873.</p>
                 <p>1973 Ed., § 5-1273.</p>
+                <p>1981 Ed., § 45-1873.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-1901.01.html">42-1901.01</a>.</p>
               </section>
@@ -2149,8 +2157,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§414">Mar. 29, 1977, D.C. Law 1-89, title IV, § 414, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1874.</p>
                 <p>1973 Ed., § 5-1274.</p>
+                <p>1981 Ed., § 45-1874.</p>
               </section>
             </section>
             <hr/>
@@ -2172,8 +2180,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§415">Mar. 29, 1977, D.C. Law 1-89, title IV, § 415, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1875.</p>
                 <p>1973 Ed., § 5-1275.</p>
+                <p>1981 Ed., § 45-1875.</p>
               </section>
             </section>
             <hr/>
@@ -2188,8 +2196,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§416">Mar. 29, 1977, D.C. Law 1-89, title IV, § 416, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1876.</p>
                 <p>1973 Ed., § 5-1276.</p>
+                <p>1981 Ed., § 45-1876.</p>
               </section>
             </section>
             <hr/>
@@ -2205,8 +2213,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§417">Mar. 29, 1977, D.C. Law 1-89, title IV, § 417, 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42, § 420, 32 DCR 4450</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1877.</p>
                 <p>1973 Ed., § 5-1277.</p>
+                <p>1981 Ed., § 45-1877.</p>
               </section>
             </section>
             <hr/>
@@ -2221,8 +2229,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-89.html#§418">Mar. 29, 1977, D.C. Law 1-89, title IV, § 418, 23 DCR 9532b</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1878.</p>
                 <p>1973 Ed., § 5-1278.</p>
+                <p>1981 Ed., § 45-1878.</p>
               </section>
             </section>
             <hr/>

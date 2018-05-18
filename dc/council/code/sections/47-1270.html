@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/47-1271.html">§ 47–1271. ICF/IDD [ICF/IID]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-1270.html">Report Error</a>
@@ -111,18 +111,18 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-1272.html">47-1272</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2012 amendment by 19-169, rewrote (3); substituted “ICF-IDD” for “ICF-MR” in (6); and substituted “persons with intellectual disabilities” for “the mentally retarded” in (7).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> redesignated former (1) as (1B); added (1), (1A), (2A), and (5A); and substituted “DHCF” for “the Department of Health” in (4).</p>
+                <p>The 2012 amendment by 19-169, rewrote (3); substituted “ICF-IDD” for “ICF-MR” in (6); and substituted “persons with intellectual disabilities” for “the mentally retarded” in (7).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 5022(a) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 5022(a) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5022(a) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 5021 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle C of Title V of the act may be cited as the “Stevie Sellows Intermediate Care Facility Quality Improvement Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 7067 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> repealed section 3 of <a class="internal-link" href="/dc/council/laws/16-68.html">D.C. Law 16-68</a>.</p>
-                <p>Section 33(b)(1) of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “ICF-IDD Assessment” for “ICF-MR Assessment” in the chapter heading.</p>
-                <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>: Section 11001 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that, except as otherwise provided, the act shall apply as of October 1, 2013.</p>
+                <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
+                <p>Section 33(b)(1) of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “ICF-IDD Assessment” for “ICF-MR Assessment” in the chapter heading.</p>
+                <p>Section 7067 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> repealed section 3 of <a class="internal-link" href="/dc/council/laws/16-68.html">D.C. Law 16-68</a>.</p>
               </section>
             </section>
           </section>

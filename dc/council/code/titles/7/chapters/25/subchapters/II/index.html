@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/7/chapters/25/subchapters/III/">Subchapter III. Estates Containing Firearms.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/7/chapters/25/subchapters/II/">Report Error</a>
@@ -88,24 +88,60 @@
         <section class="col8 body">
           <h1>Subchapter II. Firearms and Destructive Devices.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/7-2502.01.html">§ 7–2502.01. Registration requirements.</a>
-            <a href="/dc/council/code/sections/7-2502.02.html">§ 7–2502.02. Registration of certain firearms prohibited.</a>
-            <a href="/dc/council/code/sections/7-2502.03.html">§ 7–2502.03. Qualifications for registration; information required for registration.</a>
-            <a href="/dc/council/code/sections/7-2502.04.html">§ 7–2502.04. Fingerprints and photographs of applicants; application in person required.</a>
-            <a href="/dc/council/code/sections/7-2502.05.html">§ 7–2502.05. Application signed under oath; fees.</a>
-            <a href="/dc/council/code/sections/7-2502.06.html">§ 7–2502.06. Time for filing registration applications.</a>
-            <a href="/dc/council/code/sections/7-2502.07.html">§ 7–2502.07. Issuance of registration certificate; time period; corrections.</a>
-            <a href="/dc/council/code/sections/7-2502.07a.html">§ 7–2502.07a. Expiration and renewal of registration certificate.</a>
-            <a href="/dc/council/code/sections/7-2502.08.html">§ 7–2502.08. Duties of registrants.</a>
-            <a href="/dc/council/code/sections/7-2502.09.html">§ 7–2502.09. Revocation of registration certificate.</a>
-            <a href="/dc/council/code/sections/7-2502.10.html">§ 7–2502.10. Procedure for denial and revocation of registration certificate.</a>
-            <a href="/dc/council/code/sections/7-2502.11.html">§ 7–2502.11. Information prohibited from use as evidence in criminal proceedings.</a>
-            <a href="/dc/council/code/sections/7-2502.11a.html">§ 7–2502.11a. Freedom of information exception.</a>
-            <a href="/dc/council/code/sections/7-2502.12.html">§ 7–2502.12. Definition of self-defense sprays.</a>
-            <a href="/dc/council/code/sections/7-2502.13.html">§ 7–2502.13. Possession of self-defense sprays.</a>
-            <a href="/dc/council/code/sections/7-2502.14.html">§ 7–2502.14. Registration of self-defense sprays. [Repealed]</a>
-            <a href="/dc/council/code/sections/7-2502.15.html">§ 7–2502.15. Possession of stun guns.</a>
-            <a href="/dc/council/code/sections/7-2502.16.html">§ 7–2502.16. Sale of stun guns.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.01.html">§ 7–2502.01. Registration requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.02.html">§ 7–2502.02. Registration of certain firearms prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.03.html">§ 7–2502.03. Qualifications for registration; information required for registration.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.04.html">§ 7–2502.04. Fingerprints and photographs of applicants; application in person required.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.05.html">§ 7–2502.05. Application signed under oath; fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.06.html">§ 7–2502.06. Time for filing registration applications.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.07.html">§ 7–2502.07. Issuance of registration certificate; time period; corrections.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.07a.html">§ 7–2502.07a. Expiration and renewal of registration certificate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.08.html">§ 7–2502.08. Duties of registrants.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.09.html">§ 7–2502.09. Revocation of registration certificate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.10.html">§ 7–2502.10. Procedure for denial and revocation of registration certificate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.11.html">§ 7–2502.11. Information prohibited from use as evidence in criminal proceedings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.11a.html">§ 7–2502.11a. Freedom of information exception.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.12.html">§ 7–2502.12. Definition of self-defense sprays.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.13.html">§ 7–2502.13. Possession of self-defense sprays.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.14.html">§ 7–2502.14. Registration of self-defense sprays. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.15.html">§ 7–2502.15. Possession of stun guns.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2502.16.html">§ 7–2502.16. Sale of stun guns.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -137,32 +173,32 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§201">Sept. 24, 1976, D.C. Law 1-85, title II, § 201, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/9-266.html">May 7, 1993, D.C. Law 9-266, § 2(a), 39 DCR 5676</a>; <a class="internal-link" href="/dc/council/laws/12-176.html">Mar. 26, 1999, D.C. Law 12-176,§ 5, 45 DCR 5662</a>; <a class="internal-link" href="/dc/council/laws/12-264.html">Apr. 20, 1999, D.C. Law 12-264, § 19, 46 DCR 2118</a>; <a class="internal-link" href="/dc/council/laws/17-372.html">Mar. 31, 2009, D.C. Law 17-372, § 3(b), 56 DCR 1365</a>; <a class="internal-link" href="/dc/council/laws/19-170.html">Sept. 29, 2012, D.C. Law 19-170, § 2(b), 59 DCR 5691</a>; <a class="internal-link" href="/dc/council/laws/20-279.html">June 16, 2015, D.C. Law 20-279, § 2(a), 62 DCR 1944</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2311.</p>
                 <p>1973 Ed., § 6-1811.</p>
+                <p>1981 Ed., § 6-2311.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-2504.01.html">7-2504.01</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2507.06.html">7-2507.06</a>, and § <a class="internal-link" href="/dc/council/code/sections/7-2508.01.html">7-2508.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a>, in subsec. (b)(3), substituted “that such weapon shall be transported in accordance with § <a class="internal-link" href="/dc/council/code/sections/22-4504.02.html">22-4504.02</a>; or” for “that such weapon shall be unloaded, securely wrapped, and carried in open view”; and added subsec. (b)(4).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> added (a)(4), (a)(5), (b)(5), and (c); and made related changes.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-279.html">D.C. Law 20-279</a> added “or place of business” in (b)(4).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> added (a)(4), (a)(5), (b)(5), and (c); and made related changes.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a>, in subsec. (b)(3), substituted “that such weapon shall be transported in accordance with § <a class="internal-link" href="/dc/council/code/sections/22-4504.02.html">22-4504.02</a>; or” for “that such weapon shall be unloaded, securely wrapped, and carried in open view”; and added subsec. (b)(4).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary authorization for seizure and forfeiture of firearms under certain circumstances, see § 2(b) of the Zero Tolerance for Guns Emergency Amendment Act of 1996 (D.C. Act 11-390, August 26, 1996,  43 DCR 4986).</p>
-                <p>For temporary amendment of section, see § 5 of the Arson Investigators Emergency Amendment Act of 1998 (D.C. Act 12-406, July 13, 1998,  45 DCR 4833),§ 5 of the Arson Investigators Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-466, October 28, 1998,  45 DCR 7838), and § 5 of the Arson Investigators Second Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-539, December 24, 1998,  45 DCR 297).</p>
-                <p>For temporary (90 day) amendment of section, see § 3(b) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
-                <p>For temporary amendment of (a) and (b), and addition of (c), see § 2(b) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(a) of the License to Carry a Pistol Emergency Amendment Act of 2014 (D.C. Act 20-447, Oct. 7, 2014, 61 DCR 10765, 20 STAT 4175).</p>
-                <p>For temporary (90 days) repeal of emergency D.C. Act 20-447, § 4, the act’s applicability clause, see § 2 of the License to Carry a Pistol Clarification Emergency Amendment Act of 2014 (D.C. Act 20-448, Oct. 7, 2014,  61 DCR 10777, 20 STAT 4187).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(a) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
-                <p>For temporary (90 days) repeal of emergency D.C. Act 20-447, see § 4(b) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015,  62 DCR 866, 21 STAT 527).</p>
-                <p>For temporary (90 days) repeal of temporary D.C. Act 20-169, see § 4(c) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015,  62 DCR 866, 21 STAT 527).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(a) of the License to Carry a Pistol Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-74, June 4, 2015,  62 DCR 8242, 21 DCSTAT 1451).</p>
+                <p>For temporary (90 days) repeal of temporary D.C. Act 20-169, see § 4(c) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015,  62 DCR 866, 21 STAT 527).</p>
+                <p>For temporary (90 days) repeal of emergency D.C. Act 20-447, see § 4(b) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015,  62 DCR 866, 21 STAT 527).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(a) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
+                <p>For temporary (90 days) repeal of emergency D.C. Act 20-447, § 4, the act’s applicability clause, see § 2 of the License to Carry a Pistol Clarification Emergency Amendment Act of 2014 (D.C. Act 20-448, Oct. 7, 2014,  61 DCR 10777, 20 STAT 4187).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(a) of the License to Carry a Pistol Emergency Amendment Act of 2014 (D.C. Act 20-447, Oct. 7, 2014, 61 DCR 10765, 20 STAT 4175).</p>
+                <p>For temporary amendment of (a) and (b), and addition of (c), see § 2(b) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(b) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
+                <p>For temporary amendment of section, see § 5 of the Arson Investigators Emergency Amendment Act of 1998 (D.C. Act 12-406, July 13, 1998,  45 DCR 4833),§ 5 of the Arson Investigators Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-466, October 28, 1998,  45 DCR 7838), and § 5 of the Arson Investigators Second Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-539, December 24, 1998,  45 DCR 297).</p>
+                <p>For temporary authorization for seizure and forfeiture of firearms under certain circumstances, see § 2(b) of the Zero Tolerance for Guns Emergency Amendment Act of 1996 (D.C. Act 11-390, August 26, 1996,  43 DCR 4986).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 2(a) of the License to Carry a Pistol Temporary Amendment Act of 2014 (D.C. Law 20-169, May 5, 2015, 61 DCR 11814).</p>
                 <h4>Editor's Notes</h4>
-                <p>Employees of United States Department of Agriculture authorized to carry firearms: Public Law 97-312 provided that any employee of the United States Department of Agriculture designated by the Secretary of Agriculture and the Attorney General of the United States may carry a firearm and use a firearm when necessary for self-protection, in accordance with rules and regulations issued by the Secretary of Agriculture and the Attorney General of the United States, while such employee is engaged in the performance of the employee’s official duties to (1) carry out any law or regulation related to the control, eradication, or prevention of the introduction or dissemination of communicable disease of livestock or poultry into the United States or (2) perform any duty related to such disease control, eradication, or prevention, subject to the direction of the Secretary.</p>
                 <p>Seizure and forfeiture of conveyances used in firearms offenses: Section 2(b) of <a class="internal-link" href="/dc/council/laws/11-273.html">D.C. Law 11-273</a> provided for the forfeiture and seizure of any conveyance, including vehicles and vessels in which any person or persons transport, possess, or conceal any firearm as defined in § <a class="internal-link" href="/dc/council/code/sections/7-2501.01.html">7-2501.01</a>, or in any manner use to facilitate a violation of §§ <a class="internal-link" href="/dc/council/code/sections/22-4503.html">22-4503</a> and <a class="internal-link" href="/dc/council/code/sections/22-4504.html">22-4504</a>. <a class="internal-link" href="/dc/council/laws/11-273.html">D.C. Law 11-273</a> became effective on June 3, 1997.</p>
+                <p>Employees of United States Department of Agriculture authorized to carry firearms: Public Law 97-312 provided that any employee of the United States Department of Agriculture designated by the Secretary of Agriculture and the Attorney General of the United States may carry a firearm and use a firearm when necessary for self-protection, in accordance with rules and regulations issued by the Secretary of Agriculture and the Attorney General of the United States, while such employee is engaged in the performance of the employee’s official duties to (1) carry out any law or regulation related to the control, eradication, or prevention of the introduction or dissemination of communicable disease of livestock or poultry into the United States or (2) perform any duty related to such disease control, eradication, or prevention, subject to the direction of the Secretary.</p>
               </section>
             </section>
             <hr/>
@@ -191,29 +227,29 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§202">Sept. 24, 1976, D.C. Law 1-85, title II, § 202, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/2-62.html">Mar. 16, 1978, D.C. Law 2-62, § 2, 24 DCR 5780</a>; <a class="internal-link" href="/dc/council/laws/9-266.html">May 7, 1993, D.C. Law 9-266, § 2(b), 39 DCR 5676</a>; <a class="internal-link" href="/dc/council/laws/17-372.html">Mar. 31, 2009, D.C. Law 17-372, § 3(c), 56 DCR 1365</a>; <a class="internal-link" href="/dc/council/laws/19-170.html">Sept. 29, 2012, D.C. Law 19-170, § 2(c), 59 DCR 5691</a>; <a class="internal-link" href="/dc/council/laws/20-279.html">June 16, 2015, D.C. Law 20-279, § 2(b), 62 DCR 1944</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2312.</p>
                 <p>1973 Ed., § 6-1812.</p>
+                <p>1981 Ed., § 6-2312.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-2502.09.html">7-2502.09</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2504.01.html">7-2504.01</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2505.02.html">7-2505.02</a>, and § <a class="internal-link" href="/dc/council/code/sections/7-2507.06a.html">7-2507.06a</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a>, in subsec. (a), deleted “or” from the end of par. (3), rewrote par. (4), and added pars. (5), (6), and (7); and repealed subsec. (b).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> added (a)(4)(D); and made related changes.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-279.html">D.C. Law 20-279</a> rewrote (a)(4)(C).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> added (a)(4)(D); and made related changes.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a>, in subsec. (a), deleted “or” from the end of par. (3), rewrote par. (4), and added pars. (5), (6), and (7); and repealed subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment, see § 2(a) of Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-422, July 16, 2008,</p>
-                <p>For temporary amendment of (a)(4), see § 2(c) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Second Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-502, September 16, 2008,  55 DCR 9904).</p>
-                <p>For temporary (90 day) repeal of D.C. Act 17-422, see § 5 of Second Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-502, September 16, 2008,  55 DCR 9904).</p>
-                <p>For temporary (90 day) amendment of section, see §§ 2(b) and 4 of Second Firearms Control Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-601, December 12, 2008,  56 DCR 9).</p>
-                <p>For temporary (90 day) amendment of section, see § 3(c) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the License to Carry a Pistol Emergency Amendment Act of 2014 (D.C. Act 20-447, Oct. 7, 2014,  61 DCR 10765, 20 STAT 4175).</p>
-                <p>For temporary (90 days) repeal of emergency D.C. Act 20-447, § 4, the act’s applicability clause, see § 2 of the License to Carry a Pistol Clarification Emergency Amendment Act of 2014 (D.C. Act 20-448, Oct. 7, 2014,  61 DCR 10777, 20 STAT 4187).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(b) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
-                <p>For temporary  (90 days) repeal of emergency D.C. Act 20-447, see § 4(b) of  the  License to Carry a Pistol Second Emergency Amendment  Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
-                <p>For temporary (90 days) repeal of temporary D.C. Act 20-169, see § 4(c) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015,  62 DCR 866, 21 STAT 527).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(b) of the License to Carry a Pistol Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-74, June 4, 2015,  62 DCR 8242, 21 DCSTAT 1451).</p>
+                <p>For temporary (90 days) repeal of temporary D.C. Act 20-169, see § 4(c) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015,  62 DCR 866, 21 STAT 527).</p>
+                <p>For temporary  (90 days) repeal of emergency D.C. Act 20-447, see § 4(b) of  the  License to Carry a Pistol Second Emergency Amendment  Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
+                <p>For temporary (90 days) repeal of emergency D.C. Act 20-447, § 4, the act’s applicability clause, see § 2 of the License to Carry a Pistol Clarification Emergency Amendment Act of 2014 (D.C. Act 20-448, Oct. 7, 2014,  61 DCR 10777, 20 STAT 4187).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(b) of the License to Carry a Pistol Emergency Amendment Act of 2014 (D.C. Act 20-447, Oct. 7, 2014,  61 DCR 10765, 20 STAT 4175).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(c) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 2(b) and 4 of Second Firearms Control Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-601, December 12, 2008,  56 DCR 9).</p>
+                <p>For temporary (90 day) repeal of D.C. Act 17-422, see § 5 of Second Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-502, September 16, 2008,  55 DCR 9904).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Second Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-502, September 16, 2008,  55 DCR 9904).</p>
+                <p>For temporary amendment of (a)(4), see § 2(c) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
+                <p>For temporary (90 day) amendment, see § 2(a) of Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-422, July 16, 2008,</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 2(b) of the License to Carry a Pistol Temporary Amendment Act of 2014 (D.C. Law 20-169, May 5, 2015, 61 DCR 11814).</p>
               </section>
@@ -277,28 +313,28 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§203">Sept. 24, 1976, D.C. Law 1-85, title II, § 203, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/2-62.html">Mar. 16, 1978, D.C. Law 2-62, § 2, 24 DCR 5780</a>; <a class="internal-link" href="/dc/council/laws/17-372.html">Mar. 31, 2009, D.C. Law 17-372, § 3(d), 56 DCR 1365</a>; <a class="internal-link" href="/dc/council/laws/18-377.html">June 3, 2011, D.C. Law 18-377, § 2(a), 58 DCR 1174</a>; <a class="internal-link" href="/dc/council/laws/19-170.html">Sept. 29, 2012, D.C. Law 19-170, § 2(d), 59 DCR 5691</a>; <a class="internal-link" href="/dc/council/laws/20-279.html">June 16, 2015, D.C. Law 20-279, § 2(c), 62 DCR 1944</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2313.</p>
                 <p>1973 Ed., § 6-1813.</p>
+                <p>1981 Ed., § 6-2313.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-2502.04.html">7-2502.04</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2502.05.html">7-2502.05</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2502.07a.html">7-2502.07a</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2502.09.html">7-2502.09</a>, and § <a class="internal-link" href="/dc/council/code/sections/7-2504.02.html">7-2504.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a>, in subsec. (a)(4), deleted “or” from the end of par. (A) and added pars. (C) and (D); added subsec. (a)(6A); in subsec. (a)(10), substituted “and, in particular, the safe and responsible use, handling, and storage of the same in accordance with training, tests, and standards” for “and the safe and responsible use of the same in accordance with tests and standards” and deleted “and” from the end; in subsec. (a)(11), substituted a semicolon for a period; added subsecs. (a)(12), (13), and (14); and added subsecs. (d) and (e).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a> rewrote subsec. (a)(4)(D); in subsec. (a)(9), substituted “firearm” for “pistol”; in subsec. (a)(14), substituted “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.08.html">7-2502.08</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.09.html">7-2502.09</a>”; rewrote subsec. (b)(3); and repealed subsec. (b)(8).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> rewrote (a)(2); rewrote (a)(4)(B) through (a)(4)(D); added (a)(4)(E); rewrote (a)(10) and (a)(11); rewrote (a)(13)(A) and (a)(13)(B); and repealed (d), which formerly read: “The Chief shall require any registered pistol to be submitted for a ballistics identification procedure and shall establish a reasonable fee for the procedure.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-279.html">D.C. Law 20-279</a> added (a)(4)(F) and made related changes.</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> rewrote (a)(2); rewrote (a)(4)(B) through (a)(4)(D); added (a)(4)(E); rewrote (a)(10) and (a)(11); rewrote (a)(13)(A) and (a)(13)(B); and repealed (d), which formerly read: “The Chief shall require any registered pistol to be submitted for a ballistics identification procedure and shall establish a reasonable fee for the procedure.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a> rewrote subsec. (a)(4)(D); in subsec. (a)(9), substituted “firearm” for “pistol”; in subsec. (a)(14), substituted “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.08.html">7-2502.08</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.09.html">7-2502.09</a>”; rewrote subsec. (b)(3); and repealed subsec. (b)(8).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a>, in subsec. (a)(4), deleted “or” from the end of par. (A) and added pars. (C) and (D); added subsec. (a)(6A); in subsec. (a)(10), substituted “and, in particular, the safe and responsible use, handling, and storage of the same in accordance with training, tests, and standards” for “and the safe and responsible use of the same in accordance with tests and standards” and deleted “and” from the end; in subsec. (a)(11), substituted a semicolon for a period; added subsecs. (a)(12), (13), and (14); and added subsecs. (d) and (e).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment, see § 2(b) of Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-422, July 16, 2008,  55 DCR 8237).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(c) of Second Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-502, September 16, 2008,  55 DCR 9904).</p>
-                <p>For temporary (90 day) repeal of D.C. Act 17-422, see § 5 of Second Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-502, September 16, 2008,  55 DCR 9904).</p>
-                <p>For temporary (90 day) amendment of section, see §§ 2(c) and 4 of Second Firearms Control Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-601, December 12, 2008,  56 DCR 9).</p>
-                <p>For temporary (90 day) amendment of section, see § 3(d) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
-                <p>For temporary (90 day) amendment of section, see § 502(a) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
-                <p>For temporary (90 day) amendment of section, see § 502(a) of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
-                <p>For temporary amendment of (a) and repeal of (d), see § 2(d) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(c) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(c) of the License to Carry a Pistol Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-74, June 4, 2015,  62 DCR 8242, 21 DCSTAT 1451).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(c) of the License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
+                <p>For temporary amendment of (a) and repeal of (d), see § 2(d) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
+                <p>For temporary (90 day) amendment of section, see § 502(a) of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
+                <p>For temporary (90 day) amendment of section, see § 502(a) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(d) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 2(c) and 4 of Second Firearms Control Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-601, December 12, 2008,  56 DCR 9).</p>
+                <p>For temporary (90 day) repeal of D.C. Act 17-422, see § 5 of Second Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-502, September 16, 2008,  55 DCR 9904).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(c) of Second Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-502, September 16, 2008,  55 DCR 9904).</p>
+                <p>For temporary (90 day) amendment, see § 2(b) of Firearms Control Emergency Amendment Act of 2008 (D.C. Act 17-422, July 16, 2008,  55 DCR 8237).</p>
               </section>
             </section>
             <hr/>
@@ -315,16 +351,16 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§204">Sept. 24, 1976, D.C. Law 1-85, title II, § 204, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/2-62.html">Mar. 16, 1978, D.C. Law 2-62, § 2, 24 DCR 5780</a>; <a class="internal-link" href="/dc/council/laws/17-372.html">Mar. 31, 2009, D.C. Law 17-372, § 3(e), 56 DCR 1365</a>; <a class="internal-link" href="/dc/council/laws/19-170.html">Sept. 29, 2012, D.C. Law 19-170, § 2(e), 59 DCR 5691</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2314.</p>
                 <p>1973 Ed., § 6-1814.</p>
+                <p>1981 Ed., § 6-2314.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a>, in subsec. (a), substituted “6 years” for “5 years”; and, in subsec. (c), substituted “shall be transported in accordance with § <a class="internal-link" href="/dc/council/code/sections/22-4504.02.html">22-4504.02</a>” for “shall be unloaded and securely wrapped, and carried in open view”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> rewrote (a) and (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a>, in subsec. (a), substituted “6 years” for “5 years”; and, in subsec. (c), substituted “shall be transported in accordance with § <a class="internal-link" href="/dc/council/code/sections/22-4504.02.html">22-4504.02</a>” for “shall be unloaded and securely wrapped, and carried in open view”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(e) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(e) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
                 <p>For temporary amendment of (a) and (b), see § 2(e) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(e) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(e) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
               </section>
             </section>
             <hr/>
@@ -341,18 +377,18 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§205">Sept. 24, 1976, D.C. Law 1-85, title II, § 205, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/17-372.html">Mar. 31, 2009, D.C. Law 17-372, § 3(f), 56 DCR 1365</a>; <a class="internal-link" href="/dc/council/laws/19-170.html">Sept. 29, 2012, D.C. Law 19-170, § 2(f), 59 DCR 5691</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2315.</p>
                 <p>1973 Ed., § 6-1815.</p>
+                <p>1981 Ed., § 6-2315.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-2507.06.html">7-2507.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a>, in subsec. (a), substituted “§§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a> or § <a class="internal-link" href="/dc/council/code/sections/7-2502.07a.html">7-2502.07a</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> added (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a>, in subsec. (a), substituted “§§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a> or § <a class="internal-link" href="/dc/council/code/sections/7-2502.07a.html">7-2502.07a</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(f) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(f) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(f) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
                 <p>For temporary addition of (c), see § 2(f) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(f) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(f) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(f) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of Authority pursuant to <a class="internal-link" href="/dc/council/laws/1-85.html">D.C. Law 1-85</a>, the Firearms Control Regulation Act of 1975</p>
               </section>
@@ -370,14 +406,14 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§206">Sept. 24, 1976, D.C. Law 1-85, title II, § 206, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/2-62.html">Mar. 16, 1978, D.C. Law 2-62, § 2, 24 DCR 5780</a>; <a class="internal-link" href="/dc/council/laws/19-170.html">Sept. 29, 2012, D.C. Law 19-170, § 2(g), 59 DCR 5691</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2316.</p>
                 <p>1973 Ed., § 6-1816.</p>
+                <p>1981 Ed., § 6-2316.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> repealed (b), which formerly read: “Any firearm validly registered under prior regulations must be registered pursuant to this unit in accordance with procedures to be promulgated by the Chief. An application to register such firearm shall be filed pursuant to this unit within 60 days of September 24, 1976.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) repeal of section, see § 2(g) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
-                <p>For temporary (90 day) repeal of section, see § 2(g) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
                 <p>For temporary repeal of (b), see § 2(g) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
+                <p>For temporary (90 day) repeal of section, see § 2(g) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
+                <p>For temporary (90 day) repeal of section, see § 2(g) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
               </section>
             </section>
             <hr/>
@@ -400,8 +436,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§207">Sept. 24, 1976, D.C. Law 1-85, title II, § 207, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/2-62.html">Mar. 16, 1978, D.C. Law 2-62, § 2, 24 DCR 5780</a>; <a class="internal-link" href="/dc/council/laws/9-266.html">May 7, 1993, D.C. Law 9-266, § 2(c), 39 DCR 5676</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2317.</p>
                 <p>1973 Ed., § 6-1817.</p>
+                <p>1981 Ed., § 6-2317.</p>
               </section>
             </section>
             <hr/>
@@ -431,16 +467,16 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-2502.05.html">7-2502.05</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a> substituted “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>(a)” for “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> added the (c)(1) designation; redesignated former (c)(1) through (c)(3) as (c)(1)(A) through (c)(1)(C); added (c)(2); repealed (d), which formerly read: “A registrant shall submit to a background check once every 6 years to confirm that the registrant continues to qualify for registration under § <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>(a)”; repealed (f), which formerly read: “An applicant for the renewal of a registration certificate may be charged a reasonable fee to cover the administrative costs incurred by the Metropolitan Police Department in connection with the renewal”; in (g), in the first sentence, substituted “registration certificates” for “registrations” and “before January 1, 2011” for “prior to March 31, 2009” and rewrote the second sentence; and added (h).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a> substituted “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>(a)” for “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 3(g) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
-                <p>For temporary (90 day) amendment of section, see § 502(b) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
-                <p>For temporary (90 day) amendment of section, see § 502(b) of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Firearms Registration Renewal Emergency Amendment Act of 2012 (D.C. Act 19-324, March 18, 2012,  59 DCR 2258).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(h) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(h) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
                 <p>For temporary amendment of (c) and (g), repeal of (d) and (f), and addition of (h), see § 2(h) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(h) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(h) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Firearms Registration Renewal Emergency Amendment Act of 2012 (D.C. Act 19-324, March 18, 2012,  59 DCR 2258).</p>
+                <p>For temporary (90 day) amendment of section, see § 502(b) of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
+                <p>For temporary (90 day) amendment of section, see § 502(b) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
+                <p>For temporary (90 day) addition, see § 3(g) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
               </section>
             </section>
             <hr/>
@@ -469,31 +505,31 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§208">Sept. 24, 1976, D.C. Law 1-85, title II, § 208, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/18-377.html">June 3, 2011, D.C. Law 18-377, § 2(c), 58 DCR 1174</a>; <a class="internal-link" href="/dc/council/laws/19-170.html">Sept. 29, 2012, D.C. Law 19-170, § 2(i), 59 DCR 5691</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2318.</p>
                 <p>1973 Ed., § 6-1818.</p>
+                <p>1981 Ed., § 6-2318.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2507.06.html">7-2507.06</a>, and § <a class="internal-link" href="/dc/council/code/sections/24-261.02a.html">24-261.02a</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a> rewrote the section, which formerly read:</p>
-                <p>“Each person and organization holding a registration certificate, in addition to any other requirements imposed by this unit, or the acts of Congress, shall:</p>
-                <p>“(1) Notify the Chief in writing of:</p>
-                <p>“(A) The loss, theft, or destruction of the registration certificate or of a registered firearm (including the circumstances, if known) immediately upon discovery of such loss, theft, or destruction;</p>
-                <p>“(B) A change in any of the information appearing on the registration certificate or required by § <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>;</p>
-                <p>“(C) The sale, transfer or other disposition of the firearm not less than 48 hours prior to delivery, pursuant to such sale, transfer or other disposition, including:</p>
-                <p>“(i) Identification of the registrant, the firearm and the serial number of the registration certificate;</p>
-                <p>“(ii) The name, residence, and business address and date of birth of the person to whom the firearm has been sold or transferred; and</p>
-                <p>“(iii) Whether the firearm was sold or how it was otherwise transferred or disposed of.</p>
-                <p>“(2) Return to the Chief, the registration certificate for any firearm which is lost, stolen, destroyed, or otherwise transferred or disposed of, at the time he notifies the Chief of such loss, theft, destruction, sale, transfer, or other disposition.</p>
-                <p>“(3) Have in his possession, whenever in possession of a firearm, the registration certificate for such firearm, and exhibit the same upon the demand of a member of the Metropolitan Police Department, or other law enforcement officer.”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-170.html">D.C. Law 19-170</a> added “penalties” in the section heading.</p>
+                <p>“(3) Have in his possession, whenever in possession of a firearm, the registration certificate for such firearm, and exhibit the same upon the demand of a member of the Metropolitan Police Department, or other law enforcement officer.”</p>
+                <p>“(2) Return to the Chief, the registration certificate for any firearm which is lost, stolen, destroyed, or otherwise transferred or disposed of, at the time he notifies the Chief of such loss, theft, destruction, sale, transfer, or other disposition.</p>
+                <p>“(iii) Whether the firearm was sold or how it was otherwise transferred or disposed of.</p>
+                <p>“(ii) The name, residence, and business address and date of birth of the person to whom the firearm has been sold or transferred; and</p>
+                <p>“(i) Identification of the registrant, the firearm and the serial number of the registration certificate;</p>
+                <p>“(C) The sale, transfer or other disposition of the firearm not less than 48 hours prior to delivery, pursuant to such sale, transfer or other disposition, including:</p>
+                <p>“(B) A change in any of the information appearing on the registration certificate or required by § <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>;</p>
+                <p>“(A) The loss, theft, or destruction of the registration certificate or of a registered firearm (including the circumstances, if known) immediately upon discovery of such loss, theft, or destruction;</p>
+                <p>“(1) Notify the Chief in writing of:</p>
+                <p>“Each person and organization holding a registration certificate, in addition to any other requirements imposed by this unit, or the acts of Congress, shall:</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a> rewrote the section, which formerly read:</p>
                 <h4>Cross References</h4>
                 <p>Applicability to private operator, see § <a class="internal-link" href="/dc/council/code/sections/24-261.02a.html">24-261.02a</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 502(c) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
-                <p>For temporary (90 day) amendment of section, see § 502(c) of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
-                <p>For temporary (90 day) amendment of section heading, see § 2(i) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
-                <p>For temporary (90 day) amendment of section heading, see § 2(i) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
                 <p>For temporary amendment of the section heading, see § 2(i) of the Firearms Second Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-510, October 26, 2012,  59 DCR 12808).</p>
+                <p>For temporary (90 day) amendment of section heading, see § 2(i) of the Firearms Amendments Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-394, July 18, 2012,  59 DCR 8694).</p>
+                <p>For temporary (90 day) amendment of section heading, see § 2(i) of Firearms Emergency Amendment Act of 2012 (D.C. Act 19-352, May 11, 2012,  59 DCR 5116).</p>
+                <p>For temporary (90 day) amendment of section, see § 502(c) of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
+                <p>For temporary (90 day) amendment of section, see § 502(c) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
               </section>
             </section>
             <hr/>
@@ -513,19 +549,19 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§209">Sept. 24, 1976, D.C. Law 1-85, title II, § 209, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/17-372.html">Mar. 31, 2009, D.C. Law 17-372, § 3(h), 56 DCR 1365</a>; <a class="internal-link" href="/dc/council/laws/18-377.html">June 3, 2011, D.C. Law 18-377,§ 2(d), 58 DCR 1174</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2319.</p>
                 <p>1973 Ed., § 6-1819.</p>
+                <p>1981 Ed., § 6-2319.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1831.03.html">2-1831.03</a> and § <a class="internal-link" href="/dc/council/code/sections/24-261.02a.html">24-261.02a</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a> designated subsec. (a); in subsec. (a), inserted “or” at the end of par. (2), substituted a period for “; and” at the end of par. (3), and repealed par. (4); and added subsec. (b). Prior to repeal, par. (4) of subsec. (a) read as follows: “(4) There is a violation or omission of the duties, obligations or requirements imposed by § <a class="internal-link" href="/dc/council/code/sections/7-2502.08.html">7-2502.08</a>.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-377.html">D.C. Law 18-377</a>, in subsec. (a)(1), substituted “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>(a)” for “§ <a class="internal-link" href="/dc/council/code/sections/7-2502.03.html">7-2502.03</a>”; and rewrote subsec. (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-372.html">D.C. Law 17-372</a> designated subsec. (a); in subsec. (a), inserted “or” at the end of par. (2), substituted a period for “; and” at the end of par. (3), and repealed par. (4); and added subsec. (b). Prior to repeal, par. (4) of subsec. (a) read as follows: “(4) There is a violation or omission of the duties, obligations or requirements imposed by § <a class="internal-link" href="/dc/council/code/sections/7-2502.08.html">7-2502.08</a>.”</p>
                 <h4>Cross References</h4>
                 <p>Applicability to private operator, see § <a class="internal-link" href="/dc/council/code/sections/24-261.02a.html">24-261.02a</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(h) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
-                <p>For temporary (90 day) amendment of section, see § 502(d) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
                 <p>For temporary (90 day) amendment of section, see § 502(d) of Public Safety Legislation Sixty-Day Layover Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-45, April 20, 2011,  58 DCR 3701).</p>
+                <p>For temporary (90 day) amendment of section, see § 502(d) of Public Safety Legislation Sixty-Day Layover Emergency Amendment Act of 2010 (D.C. Act 18-693, January 18, 2011,  58 DCR 640).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(h) of Firearms Registration Emergency Amendment Act of 2008 (D.C. Act 17-651, January 6, 2009,  56 DCR 911).</p>
               </section>
             </section>
             <hr/>
@@ -546,8 +582,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§210">Sept. 24, 1976, D.C. Law 1-85, title II, § 210, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/2-62.html">Mar. 16, 1978, D.C. Law 2-62, § 2, 24 DCR 5780</a>; <a class="internal-link" href="/dc/council/laws/17-372.html">Mar. 31, 2009, D.C. Law 17-372, § 3(i), 56 DCR 1365</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2320.</p>
                 <p>1973 Ed., § 6-1820.</p>
+                <p>1981 Ed., § 6-2320.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-1831.03.html">2-1831.03</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2504.06.html">7-2504.06</a>, § <a class="internal-link" href="/dc/council/code/sections/7-2505.01.html">7-2505.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/7-2507.05.html">7-2507.05</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -568,14 +604,14 @@
       (<a class="internal-link" href="/dc/council/laws/1-85.html#§211">Sept. 24, 1976, D.C. Law 1-85, title II, § 211, 23 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/2-62.html">Mar. 16, 1978, D.C. Law 2-62, § 2, 24 DCR 5780</a>; <a class="internal-link" href="/dc/council/laws/5-24.html">Aug. 2, 1983, D.C. Law 5-24, § 13, 30 DCR 3341</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-2321.</p>
                 <p>1973 Ed., § 6-1821.</p>
+                <p>1981 Ed., § 6-2321.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of <a class="internal-link" href="/dc/council/laws/1-85.html">D.C. Law 1-85</a>, § 211a, concerning freedom of information exception, see § 2(c) of the  License to Carry a Pistol Emergency Amendment Act of 2014 (D.C. Act 20-447, Oct. 7, 2014, 61 DCR 10765, 20 STAT 4175).</p>
-                <p>For temporary (90 days) repeal of emergency D.C. Act 20-447, § 4, the act’s applicability clause, see §  2 of the License to Carry a Pistol Clarification Emergency Amendment Act of 2014 (D.C. Act 20-448, Oct. 7, 2014, 61 DCR 10777, 20 STAT 4187).</p>
-                <p>For temporary (90 days) addition of <a class="internal-link" href="/dc/council/laws/1-85.html">D.C. Law 1-85</a>, § 211a, concerning a freedom of information exception, see § 2(d) of the  License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
-                <p>For temporary  (90 days) repeal of emergency D.C. Act 20-447, see § 4(b) of  the  License to Carry a Pistol Second Emergency Amendment  Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
                 <p>For temporary (90 days) repeal of temporary D.C. Act 20-169, see § 4(c) of the  License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
+                <p>For temporary  (90 days) repeal of emergency D.C. Act 20-447, see § 4(b) of  the  License to Carry a Pistol Second Emergency Amendment  Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
+                <p>For temporary (90 days) addition of <a class="internal-link" href="/dc/council/laws/1-85.html">D.C. Law 1-85</a>, § 211a, concerning a freedom of information exception, see § 2(d) of the  License to Carry a Pistol Second Emergency Amendment Act of 2014 (D.C. Act 20-564, Jan. 6, 2015, 62 DCR 866, 21 STAT 527).</p>
+                <p>For temporary (90 days) repeal of emergency D.C. Act 20-447, § 4, the act’s applicability clause, see §  2 of the License to Carry a Pistol Clarification Emergency Amendment Act of 2014 (D.C. Act 20-448, Oct. 7, 2014, 61 DCR 10777, 20 STAT 4187).</p>
+                <p>For temporary (90 days) addition of <a class="internal-link" href="/dc/council/laws/1-85.html">D.C. Law 1-85</a>, § 211a, concerning freedom of information exception, see § 2(c) of the  License to Carry a Pistol Emergency Amendment Act of 2014 (D.C. Act 20-447, Oct. 7, 2014, 61 DCR 10765, 20 STAT 4175).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) addition of <a class="internal-link" href="/dc/council/laws/1-85.html">D.C. Law 1-85</a>, § 211a, concerning a freedom of information exception, see § 2(c) of the  License to Carry a Pistol Temporary Amendment Act of 2014 (D.C. Law 20-169, May 5, 2015, 61 DCR 11814).</p>
               </section>
@@ -645,8 +681,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-2324.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal of this section, see <a class="internal-link" href="/dc/council/acts/22-31.html#§2(c)">§ 2(c) of Stun Gun Regulation Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-31, Mar. 27, 2017, 64 DCR 3084)</a>.</p>
                 <p>For temporary (90 days) addition of §§ 7-2502.15 and 7-2502.16, see <a class="internal-link" href="/dc/council/acts/22-31.html#§2(c)">§ 2(c) of Stun Gun Regulation Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-31, Mar. 27, 2017, 64 DCR 3084)</a>.</p>
+                <p>For temporary (90 days) repeal of this section, see <a class="internal-link" href="/dc/council/acts/22-31.html#§2(c)">§ 2(c) of Stun Gun Regulation Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-31, Mar. 27, 2017, 64 DCR 3084)</a>.</p>
               </section>
             </section>
             <hr/>

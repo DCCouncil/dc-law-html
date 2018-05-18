@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/5-723.02.html">§ 5–723.02. Longevity compensation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/5-723.01.html">Report Error</a>
@@ -149,14 +149,14 @@
       (<a class="internal-link" href="/dc/council/code/sections/5-723.01.html">Sept. 1, 1916, 39 Stat. 718, ch. 433, § 12(n-1)</a>; <a class="internal-link" href="/dc/council/laws/14-190.html">as added Oct. 1, 2002, D.C. Law 14-190,§ 3722(a), 49 DCR 6968</a>; <a class="internal-link" href="/dc/council/laws/15-105.html">Mar. 13, 2004, D.C. Law 15-105, § 40(b), 51 DCR 881</a>; <a class="internal-link" href="/dc/council/laws/19-314.html">May 1, 2013, D.C. Law 19-314, § 2(f), 60 DCR 3466</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsecs. (a) and (b), validated previously made technical corrections.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-314.html">D.C. Law 19-314</a> rewrote the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsecs. (a) and (b), validated previously made technical corrections.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 2(e) of the Police and Firefighter’s Retirement and Disability Omnibus Emergency Amendment Act of 2012 (D.C. Act 19-585, January 1, 2013,  60 DCR 151).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2(f) of the Police and Firefighter’s Retirement and Disability Omnibus Congressional Review Emergency Act of 2013 (D.C. Act 20-33, March 19, 2013,  60 DCR 4630, 20 DCSTAT 493).</p>
+                <p>For temporary addition of section, see § 2(e) of the Police and Firefighter’s Retirement and Disability Omnibus Emergency Amendment Act of 2012 (D.C. Act 19-585, January 1, 2013,  60 DCR 151).</p>
                 <h4>References in Text</h4>
-                <p>Section 401(a)(17) of the Internal Revenue Code of 1986, referred to in par. (1), is classified as  26 U.S.C. § 401(a)(17).</p>
                 <p>Section 415 of the Internal Revenue Code of 1986, referred to in par. (2), is classified as  26 U.S.C. § 415.</p>
+                <p>Section 401(a)(17) of the Internal Revenue Code of 1986, referred to in par. (1), is classified as  26 U.S.C. § 401(a)(17).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 3723 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided: “This subtitle subtitle B of title XXXVII, §§ 3721 to 3724, of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> shall apply as of January 1, 2002.”</p>
               </section>

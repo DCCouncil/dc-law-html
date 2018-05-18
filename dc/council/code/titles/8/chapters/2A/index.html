@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/2B/">Chapter 2B. Residential Indoor Mold Assessment and Remediation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/8/chapters/2A/">Report Error</a>
@@ -87,10 +87,14 @@
         <section class="col8 body">
           <h1>Chapter 2A. Paint Hazards and Paint Stewardship.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/8/chapters/2A/subchapters/I/">Subchapter I. Lead-Hazard Prevention and Elimination.</a>
-            <p>§§ 8-231.01 - 8-231.20</p>
-            <a href="/dc/council/code/titles/8/chapters/2A/subchapters/II/">Subchapter II. Paint Stewardship.</a>
-            <p>§§ 8-233.01 - 8-233.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/2A/subchapters/I/">Subchapter I. Lead-Hazard Prevention and Elimination.</a>
+            </p>
+            <p>§§ 8-231.01 – 8-231.20</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/8/chapters/2A/subchapters/II/">Subchapter II. Paint Stewardship.</a>
+            </p>
+            <p>§§ 8-233.01 – 8-233.06</p>
           </section>
           <section class="content">
             <hr/>
@@ -176,8 +180,8 @@
       (<a class="internal-link" href="/dc/council/laws/17-381.html#§2">Mar. 31, 2009, D.C. Law 17-381, § 2, 56 DCR 1596</a>; <a class="internal-link" href="/dc/council/laws/18-348.html">Mar. 31, 2011, D.C. Law 18-348, § 2(a), 58 DCR 717</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 60(a), 59 DCR 6190</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-348.html">D.C. Law 18-348</a>, in par. (1), substituted “a set of measures, except interim controls, that eliminates” for “set of measures that eliminate”; in pars. (4), (29), and (32), substituted “1978,” for “March 1, 1978,”; added par. (9A); in par. (13), substituted “or adopted by the Mayor” for “and adopted by the Mayor”; in par. (20), substituted “which shall be adopted” for “and adopted”; rewrote par. (24); in par. (26), substituted “lead-based paint hazards” for “lead hazards” and substituted “to tenants, purchasers, or prospective tenants or purchasers” for “to prospective rental tenants”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> deleted the comma following “1978” in (29).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-348.html">D.C. Law 18-348</a>, in par. (1), substituted “a set of measures, except interim controls, that eliminates” for “set of measures that eliminate”; in pars. (4), (29), and (32), substituted “1978,” for “March 1, 1978,”; added par. (9A); in par. (13), substituted “or adopted by the Mayor” for “and adopted by the Mayor”; in par. (20), substituted “which shall be adopted” for “and adopted”; rewrote par. (24); in par. (26), substituted “lead-based paint hazards” for “lead hazards” and substituted “to tenants, purchasers, or prospective tenants or purchasers” for “to prospective rental tenants”.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of Authority—Lead-Hazard Prevention and Elimination Act of 2008, see Mayor’s Order 2009-113, June 18, 2009 ( 56 DCR 6861).</p>
               </section>
@@ -196,8 +200,8 @@
       (<a class="internal-link" href="/dc/council/laws/17-381.html#§3">Mar. 31, 2009, D.C. Law 17-381, § 3, 56 DCR 1596</a>; <a class="internal-link" href="/dc/council/laws/18-348.html">Mar. 31, 2011, D.C. Law 18-348, § 2(b), 58 DCR 717</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 60(b), 59 DCR 6190</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-348.html">D.C. Law 18-348</a>, in subsec. (a), deleted “March 1,” following “prior to”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> deleted the comma following “1978” in (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-348.html">D.C. Law 18-348</a>, in subsec. (a), deleted “March 1,” following “prior to”.</p>
               </section>
             </section>
             <hr/>
@@ -234,8 +238,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-231.10.html">8-231.10</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>D.C. Law 18- 348, in subsec. (b), substituted “shall take” for “shall, in his or her discretion” and substituted “1978,” for “March 1, 1978,”; in subsec. (c), substituted “and may order the property owner to perform any action considered necessary by the Mayor to protect the health and safety of the occupants of the property, including relocation in accordance with subsection (d)(1)(D) of this section” for “and order the property owner to perform those measures required to eliminate the lead-based paint hazards and underlying conditions, and any other action considered necessary by the Mayor to protect the health and safety of the occupants of the property”; and, in subsec. (d)(2)(A), substituted “examination and a reasonable amount of time has passed to allow the tenant to return to the dwelling unit” for “examination”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> made a technical correction to <a class="internal-link" href="/dc/council/laws/18-348.html">D.C. Law 18-348</a> which did not affect this section as codified.</p>
+                <p>D.C. Law 18- 348, in subsec. (b), substituted “shall take” for “shall, in his or her discretion” and substituted “1978,” for “March 1, 1978,”; in subsec. (c), substituted “and may order the property owner to perform any action considered necessary by the Mayor to protect the health and safety of the occupants of the property, including relocation in accordance with subsection (d)(1)(D) of this section” for “and order the property owner to perform those measures required to eliminate the lead-based paint hazards and underlying conditions, and any other action considered necessary by the Mayor to protect the health and safety of the occupants of the property”; and, in subsec. (d)(2)(A), substituted “examination and a reasonable amount of time has passed to allow the tenant to return to the dwelling unit” for “examination”.</p>
               </section>
             </section>
             <hr/>
@@ -396,8 +400,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-231.06.html">8-231.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-348.html">D.C. Law 18-348</a>, in subsec. (a), substituted “any structure” for “dwelling unit or child-occupied facility” and substituted “1978,” for “March 1, 1978,”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction in (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-348.html">D.C. Law 18-348</a>, in subsec. (a), substituted “any structure” for “dwelling unit or child-occupied facility” and substituted “1978,” for “March 1, 1978,”.</p>
               </section>
             </section>
             <hr/>
@@ -635,17 +639,17 @@
       (<a class="internal-link" href="/dc/council/laws/20-205.html#§2">Mar. 11, 2015, D.C. Law 20-205, § 2, 61 DCR 12587</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) prohibition of the operation of an automobile paint spray booth in Ward 5, see § 2 of the Ward 5 Paint Spray Booth Conditional Moratorium Emergency Act of 2015 (D.C. Act 21-121, July 24, 2015,  62 DCR 10188).</p>
-                <p>For temporary (90 days) prohibition of the operation of an automobile paint spray booth in Ward 5, see §§ 2, 3 and 5 of the Ward 5 Paint Spray Booth Conditional Moratorium Emergency Act of 2015 (D.C. Act 21-189, Oct. 28, 2015,  62 DCR 14227).</p>
-                <p>For temporary (90 days) repeal of D.C. Law 21-35, see §  4 of the Ward 5 Paint Spray Booth Conditional Moratorium Emergency Act of 2015 (D.C. Act 21-189, Oct. 28, 2015,  62 DCR 14227).</p>
-                <p>For provision providing for the expiration of D.C. Act 21-189 upon the promulgation of rules by the Mayor that revise section 718 of Chapter 20 of the District of Columbia Municipal Regulations ( 20 DCMR §718), see § 5 of the Ward 5 Paint Spray Booth Conditional Moratorium Emergency Act of 2015 (D.C. Act 21-189, Oct. 28, 2015,  62 DCR 14227).</p>
-                <p>For temporary (90 days) repeal of D.C. Law 21-35, see § 4 of the Ward 5 Paint Spray Booth Conditional Moratorium Congressional Review Emergency Act of 2016 (D.C. Act 21-287, Jan. 27, 2016,  63 DCR 1197).</p>
                 <p>For temporary (90 days) prohibition of the operation of an automobile paint spray booth in Ward 5, see §§ 2, 3, and 5 of the Ward 5 Paint Spray Booth Conditional Moratorium Congressional Review Emergency Act of 2016 (D.C. Act 21-287, Jan. 27, 2016,  63 DCR 1197).</p>
+                <p>For temporary (90 days) repeal of D.C. Law 21-35, see § 4 of the Ward 5 Paint Spray Booth Conditional Moratorium Congressional Review Emergency Act of 2016 (D.C. Act 21-287, Jan. 27, 2016,  63 DCR 1197).</p>
+                <p>For provision providing for the expiration of D.C. Act 21-189 upon the promulgation of rules by the Mayor that revise section 718 of Chapter 20 of the District of Columbia Municipal Regulations ( 20 DCMR §718), see § 5 of the Ward 5 Paint Spray Booth Conditional Moratorium Emergency Act of 2015 (D.C. Act 21-189, Oct. 28, 2015,  62 DCR 14227).</p>
+                <p>For temporary (90 days) repeal of D.C. Law 21-35, see §  4 of the Ward 5 Paint Spray Booth Conditional Moratorium Emergency Act of 2015 (D.C. Act 21-189, Oct. 28, 2015,  62 DCR 14227).</p>
+                <p>For temporary (90 days) prohibition of the operation of an automobile paint spray booth in Ward 5, see §§ 2, 3 and 5 of the Ward 5 Paint Spray Booth Conditional Moratorium Emergency Act of 2015 (D.C. Act 21-189, Oct. 28, 2015,  62 DCR 14227).</p>
+                <p>For temporary (90 days) prohibition of the operation of an automobile paint spray booth in Ward 5, see § 2 of the Ward 5 Paint Spray Booth Conditional Moratorium Emergency Act of 2015 (D.C. Act 21-121, July 24, 2015,  62 DCR 10188).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) prohibition of the operation of an automobile paint spray booth in Ward 5, see §§ 2 and 3 of the Ward 5 Paint Spray Booth Moratorium Temporary Act of 2015 (D.C. Law 21-35, Oct. 21, 2015,  62 DCR 10903).</p>
-                <p>For temporary (225 days) repeal of D.C. Law 21-35, see § 4 of the Ward 5 Paint Spray Booth Conditional Moratorium Temporary Act of 2015 (D.C. Law 21-58, Jan. 30, 2016,  62 DCR 15605).</p>
-                <p>For temporary (225 days) prohibition of the operation of an automobile paint spray booth in Ward 5, see §§ 2, 3, and 5 of the Ward 5 Paint Spray Booth Conditional Moratorium Temporary Act of 2015 (D.C. Law 21-58, Jan. 30, 2016,  62 DCR 15605).</p>
                 <p>For temporary (225 days) addition of paint spray moratorium, see <a class="internal-link" href="/dc/council/laws/21-177.html#§2">§ 2 of Ward 5 Paint Spray Booth Conditional Moratorium Temporary Amendment Act of 2016 (D.C. Law 21-177, Dec. 17, 2016, 63 DCR 13590)</a>.</p>
+                <p>For temporary (225 days) prohibition of the operation of an automobile paint spray booth in Ward 5, see §§ 2, 3, and 5 of the Ward 5 Paint Spray Booth Conditional Moratorium Temporary Act of 2015 (D.C. Law 21-58, Jan. 30, 2016,  62 DCR 15605).</p>
+                <p>For temporary (225 days) repeal of D.C. Law 21-35, see § 4 of the Ward 5 Paint Spray Booth Conditional Moratorium Temporary Act of 2015 (D.C. Law 21-58, Jan. 30, 2016,  62 DCR 15605).</p>
+                <p>For temporary (225 days) prohibition of the operation of an automobile paint spray booth in Ward 5, see §§ 2 and 3 of the Ward 5 Paint Spray Booth Moratorium Temporary Act of 2015 (D.C. Law 21-35, Oct. 21, 2015,  62 DCR 10903).</p>
               </section>
             </section>
             <hr/>

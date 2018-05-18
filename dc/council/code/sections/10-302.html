@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/10-302.01.html">§ 10–302.01. Fee-based use permits.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/10-302.html">Report Error</a>
@@ -109,19 +109,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/10-302.02.html">10-302.02</a> and § <a class="internal-link" href="/dc/council/code/sections/10-307.html">10-307</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (b); and added subsec. (c). Prior to amendment, subsec. (b) read as follows: “(b) The Department shall manage such property or funds in accordance with the provisions or conditions of the donation, gift, grant or other type of transfer, including but not limited to the investment of the principal of such property or funds. The Mayor shall consider the donor’s choice of which site, program or operation should be the recipient of the property.”</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-275.html">D.C. Law 19-275</a> rewrote (b)(3).</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-280.html">D.C. Law 19-280</a> substituted “Department” for “Department of Recreation and Parks (‘Department’ or ‘Departmental’)” in (a); and added (b-1) and (d).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-271.html">D.C. Law 20-271</a> substituted “Department of Parks and Recreation” for “Department of Recreation and Parks” in the section heading.</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-280.html">D.C. Law 19-280</a> substituted “Department” for “Department of Recreation and Parks (‘Department’ or ‘Departmental’)” in (a); and added (b-1) and (d).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-275.html">D.C. Law 19-275</a> rewrote (b)(3).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (b); and added subsec. (c). Prior to amendment, subsec. (b) read as follows: “(b) The Department shall manage such property or funds in accordance with the provisions or conditions of the donation, gift, grant or other type of transfer, including but not limited to the investment of the principal of such property or funds. The Mayor shall consider the donor’s choice of which site, program or operation should be the recipient of the property.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/10-301.html">10-301</a>.</p>
-                <p>For temporary (90 days) amendment of this section, see § 304(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, November 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
-                <p>For temporary (90 days) amendment of this section, see § 304(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-7, Feb. 26, 2015,  62 DCR 2646, 21 STAT 807).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-107.html#§2">§ 2 of Fort Dupont Ice Arena Programming Emergency Amendment Act of 2017 (D.C. Act 22-107, July 25, 2017, 64 DCR 7390)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-161.html#§2">§ 2 of Fort Dupont Ice Arena Programming Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-161, Oct. 23, 2017, 64 DCR 10774)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-107.html#§2">§ 2 of Fort Dupont Ice Arena Programming Emergency Amendment Act of 2017 (D.C. Act 22-107, July 25, 2017, 64 DCR 7390)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 304(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-7, Feb. 26, 2015,  62 DCR 2646, 21 STAT 807).</p>
+                <p>For temporary (90 days) amendment of this section, see § 304(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, November 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
+                <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/10-301.html">10-301</a>.</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-179.html#§2">§ 2 of Fort Dupont Ice Arena Programming Temporary Amendment Act of 2016 (D.C. Law 21-179, Dec. 28, 2016, 63 DCR 13595)</a>.</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/22-29.html#§2">§ 2 of Fort Dupont Ice Arena Programming Temporary Amendment Act of 2017 (D.C. Law 22-29, Dec. 1, 2017, 64 DCR 10168)</a>.</p>
+                <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-179.html#§2">§ 2 of Fort Dupont Ice Arena Programming Temporary Amendment Act of 2016 (D.C. Law 21-179, Dec. 28, 2016, 63 DCR 13595)</a>.</p>
                 <h4>References in Text</h4>
                 <p>Pursuant to Mayor’s Order 2000-20, the agency formerly known as the Department of Recreation and Parks shall be known as the Department of Parks and Recreation.</p>
                 <h4>Delegation of Authority</h4>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/34/chapters/21/">Chapter 21. Sanitary Sewage Works.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/34/chapters/20/">Report Error</a>
@@ -87,15 +87,33 @@
         <section class="col8 body">
           <h1>Chapter 20. Telecommunications Competition.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/34-2001.html">§ 34–2001. Definitions.</a>
-            <a href="/dc/council/code/sections/34-2002.html">§ 34–2002. Regulation of local exchange carriers.</a>
-            <a href="/dc/council/code/sections/34-2003.html">§ 34–2003. Universal Service Trust Fund.</a>
-            <a href="/dc/council/code/sections/34-2003.01.html">§ 34–2003.01. Cases in process.</a>
-            <a href="/dc/council/code/sections/34-2004.html">§ 34–2004. Access to public ways.</a>
-            <a href="/dc/council/code/sections/34-2005.html">§ 34–2005. Access to buildings.</a>
-            <a href="/dc/council/code/sections/34-2006.html">§ 34–2006. Exemptions.</a>
-            <a href="/dc/council/code/sections/34-2007.html">§ 34–2007. Taxation of local exchange providers.</a>
-            <a href="/dc/council/code/sections/34-2008.html">§ 34–2008. Implementation policy.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-2001.html">§ 34–2001. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-2002.html">§ 34–2002. Regulation of local exchange carriers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-2003.html">§ 34–2003. Universal Service Trust Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-2003.01.html">§ 34–2003.01. Cases in process.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-2004.html">§ 34–2004. Access to public ways.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-2005.html">§ 34–2005. Access to buildings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-2006.html">§ 34–2006. Exemptions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-2007.html">§ 34–2007. Taxation of local exchange providers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/34-2008.html">§ 34–2008. Implementation policy.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -147,10 +165,10 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/34-403.html">34-403</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (22), substituted “persons or persons with disabilities” for “or disabled persons”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-165.html">D.C. Law 17-165</a> added pars. (7A), (19A), and (23).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in par. (22).</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> added par. (20A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in par. (22).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-165.html">D.C. Law 17-165</a> added pars. (7A), (19A), and (23).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (22), substituted “persons or persons with disabilities” for “or disabled persons”.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2224(a) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
                 <h4>References in Text</h4>
@@ -248,13 +266,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/34-912.html">34-912</a> and § <a class="internal-link" href="/dc/council/code/sections/34-2008.html">34-2008</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-342.html">D.C. Law 15-342</a>, in subsec. (m), substituted “$250,000” for “$100,000”, and substituted “$150,000” for “50,000”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> added subsecs. (h-1) to (h-5).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-342.html">D.C. Law 15-342</a>, in subsec. (m), substituted “$250,000” for “$100,000”, and substituted “$150,000” for “50,000”.</p>
                 <h4>Cross References</h4>
                 <p>Investigations of public utilities, assessing expenses, see § <a class="internal-link" href="/dc/council/code/sections/34-912.html">34-912</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see §§ 305, 402 of Omnibus Utility Emergency Amendment Act of 2005 (D.C. Act 16-12, January 28, 2005,  52 DCR 2945).</p>
                 <p>For temporary (90 day) amendment of section, see § 2224(b) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 305, 402 of Omnibus Utility Emergency Amendment Act of 2005 (D.C. Act 16-12, January 28, 2005,  52 DCR 2945).</p>
                 <h4>References in Text</h4>
                 <p>The federal Telecommunications Act of 1996, Pub. L. 104-104, referred to in (b) and (k), is codified throughout Title 47 of the United States Code.</p>
                 <h4>Editor's Notes</h4>
@@ -283,9 +301,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/34-2002.html">34-2002</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-165.html">D.C. Law 17-165</a>, in subsec. (b), substituted “local exchange carriers and Voice Over Internet Protocol Service providers” for “local exchange carriers”, and substituted “LEC’s share and Voice Over Internet Protocol Service provider’s share” for “LEC’s share”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (b), rewrote the second sentence which had read: “The determination of each LEC’s share and Voice Over Internet Protocol Service provider’s share shall be in proportion to each carrier’s total revenues for local exchange services provided in the District during the previous year.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (b), designated the existing text as par. (1); in subsec. (b)(1), substituted “local exchange carriers (’LEC’) and Voice Over” for “local exchange carriers and Voice Over”; and added subsec. (b)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (b), rewrote the second sentence which had read: “The determination of each LEC’s share and Voice Over Internet Protocol Service provider’s share shall be in proportion to each carrier’s total revenues for local exchange services provided in the District during the previous year.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-165.html">D.C. Law 17-165</a>, in subsec. (b), substituted “local exchange carriers and Voice Over Internet Protocol Service providers” for “local exchange carriers”, and substituted “LEC’s share and Voice Over Internet Protocol Service provider’s share” for “LEC’s share”.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2224(c) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
               </section>

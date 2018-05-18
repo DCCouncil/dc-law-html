@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/38-651.11.html">§ 38–651.11. Liability.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-651.10.html">Report Error</a>
@@ -100,13 +100,13 @@
       (<a class="internal-link" href="/dc/council/laws/17-107.html#§11">Feb. 2, 2008, D.C. Law 17-107, § 11, 54 DCR 12230</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 7 of Student Access to Treatment Emergency Amendment Act of 2007 (D.C. Act 17-82, July 26, 2007,  54 DCR 7999).</p>
                 <p>For temporary (90 day) addition, see § 7 of Student Access to Treatment Congressional Review Emergency Act of 2007 (D.C. Act 17-140, October 17, 2007,  54 DCR 10736).</p>
+                <p>For temporary (90 day) addition, see § 7 of Student Access to Treatment Emergency Amendment Act of 2007 (D.C. Act 17-82, July 26, 2007,  54 DCR 7999).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 7 of Law 17-52 added a section to read as follows:</p>
-                <p>“Sec. 7. Misuse.</p>
-                <p>“A student who self-administers medication while at school, at a school-sponsored activity, or while on school-sponsored transportation for a purpose other than his or her own authorized treatment may be subject to disciplinary action by the school; provided, that disciplinary action shall not limit or restrict the access of a student to his or her prescribed medication. The school shall promptly notify the responsible person of any disciplinary action imposed.”</p>
                 <p>Section 11(b) of D.C. Law 17-52 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“A student who self-administers medication while at school, at a school-sponsored activity, or while on school-sponsored transportation for a purpose other than his or her own authorized treatment may be subject to disciplinary action by the school; provided, that disciplinary action shall not limit or restrict the access of a student to his or her prescribed medication. The school shall promptly notify the responsible person of any disciplinary action imposed.”</p>
+                <p>“Sec. 7. Misuse.</p>
+                <p>Section 7 of Law 17-52 added a section to read as follows:</p>
               </section>
             </section>
           </section>

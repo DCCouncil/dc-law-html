@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/6/chapters/11/subchapters/II/">Subchapter II. Historic Rhodes Tavern.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/6/chapters/11/subchapters/I/">Report Error</a>
@@ -88,33 +88,87 @@
         <section class="col8 body">
           <h1>Subchapter I. General Provisions.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/6-1101.html">§ 6–1101. Declaration and purposes.</a>
-            <a href="/dc/council/code/sections/6-1102.html">§ 6–1102. Definitions.</a>
-            <a href="/dc/council/code/sections/6-1103.html">§ 6–1103. Historic Preservation Review Board.</a>
-            <a href="/dc/council/code/sections/6-1104.html">§ 6–1104. Demolitions.</a>
-            <a href="/dc/council/code/sections/6-1104.01.html">§ 6–1104.01. Maintenance of property; prevention of demolition by neglect. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-1104.02.html">§ 6–1104.02. Prevention of demolition by neglect. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-1104.03.html">§ 6–1104.03. Revolving fund. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-1105.html">§ 6–1105. Alterations.</a>
-            <a href="/dc/council/code/sections/6-1106.html">§ 6–1106. Subdivisions.</a>
-            <a href="/dc/council/code/sections/6-1107.html">§ 6–1107. New construction.</a>
-            <a href="/dc/council/code/sections/6-1108.html">§ 6–1108. Application for preliminary review.</a>
-            <a href="/dc/council/code/sections/6-1108.01.html">§ 6–1108.01. Conceptual review of public safety facilities.</a>
-            <a href="/dc/council/code/sections/6-1108.02.html">§ 6–1108.02. Effect of District undertaking; comment by State Historic Preservation Officer.</a>
-            <a href="/dc/council/code/sections/6-1108.03.html">§ 6–1108.03. Notice requirements.</a>
-            <a href="/dc/council/code/sections/6-1109.html">§ 6–1109. Regulations.</a>
-            <a href="/dc/council/code/sections/6-1109.01.html">§ 6–1109.01. Violations.</a>
-            <a href="/dc/council/code/sections/6-1109.02.html">§ 6–1109.02. Maintenance of property.</a>
-            <a href="/dc/council/code/sections/6-1109.03.html">§ 6–1109.03. Prevention of demolition by neglect.</a>
-            <a href="/dc/council/code/sections/6-1109.04.html">§ 6–1109.04. Annual notice to property owners.</a>
-            <a href="/dc/council/code/sections/6-1110.html">§ 6–1110. Penalties; remedies; enforcement.</a>
-            <a href="/dc/council/code/sections/6-1110.01.html">§ 6–1110.01. Historic Landmark-District Protection Fund; establishment.</a>
-            <a href="/dc/council/code/sections/6-1110.02.html">§ 6–1110.02. Targeted Homeowner Grant Program.</a>
-            <a href="/dc/council/code/sections/6-1111.html">§ 6–1111. Insanitary and unsafe buildings.</a>
-            <a href="/dc/council/code/sections/6-1112.html">§ 6–1112. Administrative procedures.</a>
-            <a href="/dc/council/code/sections/6-1113.html">§ 6–1113. Annual report.</a>
-            <a href="/dc/council/code/sections/6-1114.html">§ 6–1114. Severability.</a>
-            <a href="/dc/council/code/sections/6-1115.html">§ 6–1115. Effective date.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1101.html">§ 6–1101. Declaration and purposes.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1102.html">§ 6–1102. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1103.html">§ 6–1103. Historic Preservation Review Board.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1104.html">§ 6–1104. Demolitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1104.01.html">§ 6–1104.01. Maintenance of property; prevention of demolition by neglect. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1104.02.html">§ 6–1104.02. Prevention of demolition by neglect. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1104.03.html">§ 6–1104.03. Revolving fund. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1105.html">§ 6–1105. Alterations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1106.html">§ 6–1106. Subdivisions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1107.html">§ 6–1107. New construction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1108.html">§ 6–1108. Application for preliminary review.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1108.01.html">§ 6–1108.01. Conceptual review of public safety facilities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1108.02.html">§ 6–1108.02. Effect of District undertaking; comment by State Historic Preservation Officer.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1108.03.html">§ 6–1108.03. Notice requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1109.html">§ 6–1109. Regulations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1109.01.html">§ 6–1109.01. Violations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1109.02.html">§ 6–1109.02. Maintenance of property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1109.03.html">§ 6–1109.03. Prevention of demolition by neglect.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1109.04.html">§ 6–1109.04. Annual notice to property owners.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1110.html">§ 6–1110. Penalties; remedies; enforcement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1110.01.html">§ 6–1110.01. Historic Landmark-District Protection Fund; establishment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1110.02.html">§ 6–1110.02. Targeted Homeowner Grant Program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1111.html">§ 6–1111. Insanitary and unsafe buildings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1112.html">§ 6–1112. Administrative procedures.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1113.html">§ 6–1113. Annual report.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1114.html">§ 6–1114. Severability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-1115.html">§ 6–1115. Effective date.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -145,8 +199,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§2">Mar. 3, 1979, D.C. Law 2-144, § 2, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185, § 2(a), 53 DCR 6712</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1001.</p>
                 <p>1973 Ed., § 5-821.</p>
+                <p>1981 Ed., § 5-1001.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-1102.html">6-1102</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1103.html">6-1103</a>, and § <a class="internal-link" href="/dc/council/code/sections/6-1108.01.html">6-1108.01</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -203,27 +257,27 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§3">Mar. 3, 1979, D.C. Law 2-144, § 3, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/8-232.html">Mar. 8, 1991, D.C. Law 8-232, § 2, 38 DCR 259</a>; <a class="internal-link" href="/dc/council/laws/12-86.html">Apr. 29, 1998, D.C. Law 12-86, § 503(a), 45 DCR 1172</a>; <a class="internal-link" href="/dc/council/laws/13-281.html">Apr. 27, 2001, D.C. Law 13-281, § 104(a), 48 DCR 1888</a>; <a class="internal-link" href="/dc/council/laws/13-313.html">June 19, 2001, D.C. Law 13-313, § 9, 48 DCR 1873</a>; <a class="internal-link" href="/dc/council/laws/15-228.html">Mar. 16, 2005, D.C. Law 15-228, § 2(a), 51 DCR 10562</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185, § 2(b), 53 DCR 6712</a>; <a class="internal-link" href="/dc/council/laws/16-189.html">Mar. 2, 2007, D.C. Law 16-189, § 2(a), 53 DCR 6786</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 126, 56 DCR 1117</a>; <a class="internal-link" href="/dc/council/laws/20-95.html">Mar. 14, 2014, D.C. Law 20-95, § 2(a), 61 DCR 966</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1002.</p>
                 <p>1973 Ed., § 5-822.</p>
+                <p>1981 Ed., § 5-1002.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-801.html">6-801</a>, § <a class="internal-link" href="/dc/council/code/sections/6-802.html">6-802</a>, § <a class="internal-link" href="/dc/council/code/sections/6-803.html">6-803</a>, § <a class="internal-link" href="/dc/council/code/sections/6-901.html">6-901</a>, and § <a class="internal-link" href="/dc/council/code/sections/6-1108.01.html">6-1108.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> added subsec. (3A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a> validated a previously made technical amendment.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-228.html">D.C. Law 15-228</a> added par. (10A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a> rewrote par. (1); in par. (3A), inserted “substantial” preceding “deterioration”; added pars. (4A) and (6A); in par. (6)(B), deleted “pursuant to the procedures contained in § <a class="internal-link" href="/dc/council/code/sections/6-1103.html">6-1103</a>(c)(5)” following “landmark”; and, in par. (12), inserted “or ‘SHPO’ ”. Prior to amendment, par. (1) read as follows: “(1) ‘Alter’ or ‘alteration’ means a change in the exterior appearance of a building or structure or its site, not covered by the definition of demolition, for which a permit is required; except, that “alter” or “alteration” also means a change in any interior space which has been specifically designated as an historic landmark.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-189.html">D.C. Law 16-189</a> added par. (1A).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> made technical corrections in the designation of paragraphs and subparagraphs.</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-95.html">D.C. Law 20-95</a> rewrote (4A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> made technical corrections in the designation of paragraphs and subparagraphs.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-189.html">D.C. Law 16-189</a> added par. (1A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a> rewrote par. (1); in par. (3A), inserted “substantial” preceding “deterioration”; added pars. (4A) and (6A); in par. (6)(B), deleted “pursuant to the procedures contained in § <a class="internal-link" href="/dc/council/code/sections/6-1103.html">6-1103</a>(c)(5)” following “landmark”; and, in par. (12), inserted “or ‘SHPO’ ”. Prior to amendment, par. (1) read as follows: “(1) ‘Alter’ or ‘alteration’ means a change in the exterior appearance of a building or structure or its site, not covered by the definition of demolition, for which a permit is required; except, that “alter” or “alteration” also means a change in any interior space which has been specifically designated as an historic landmark.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-228.html">D.C. Law 15-228</a> added par. (10A).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a> validated a previously made technical amendment.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-281.html">D.C. Law 13-281</a> added subsec. (3A).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Historic Preservation Process for Public Safety Facilities Emergency Amendment Act of 2004 (D.C. Act 15-502, August 2, 2004,  51 DCR 8817).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Historic Preservation Process for Public Safety Facilities Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-595, November 30, 2004,  51 DCR 11215).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Historic Preservation Process for Public Safety Facilities Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-24, February 17, 2005,  52 DCR 2978).</p>
-                <p>For temporary (90 day) amendment of section, see §§ 2(a), 4 of Targeted Historic Preservation Assistance Emergency Amendment Act of 2006 (D.C. Act 16-472, July 31, 2006,  53 DCR 6781).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(a) of Targeted Historic Preservation Assistance Congressional Review Emergency Act of 2006 (D.C. Act 16-500, October 23, 2006,  53 DCR 9046).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 2(a), 4 of Targeted Historic Preservation Assistance Emergency Amendment Act of 2006 (D.C. Act 16-472, July 31, 2006,  53 DCR 6781).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Historic Preservation Process for Public Safety Facilities Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-24, February 17, 2005,  52 DCR 2978).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Historic Preservation Process for Public Safety Facilities Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-595, November 30, 2004,  51 DCR 11215).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Historic Preservation Process for Public Safety Facilities Emergency Amendment Act of 2004 (D.C. Act 15-502, August 2, 2004,  51 DCR 8817).</p>
                 <h4>Editor's Notes</h4>
-                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
                 <p>Section 4 of <a class="internal-link" href="/dc/council/laws/16-189.html">D.C. Law 16-189</a> provided: “The implementation of the provisions of this act is subject to appropriations and nothing in this act shall be construed to create an entitlement.”</p>
+                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
               </section>
             </section>
             <hr/>
@@ -247,28 +301,28 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§4">Mar. 3, 1979, D.C. Law 2-144, § 4, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/12-86.html">Apr. 29, 1998, D.C. Law 12-86, § 503(b), 45 DCR 1172</a>; <a class="internal-link" href="/dc/council/laws/13-172.html">Oct. 19, 2000, D.C. Law 13-172, § 403(a), 47 DCR 6308</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185, § 2(c), 53 DCR 6712</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1003.</p>
                 <p>1973 Ed., § 5-823.</p>
+                <p>1981 Ed., § 5-1003.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1102.html">6-1102</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1108.01.html">6-1108.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/9-202.02.html">9-202.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> repealed par. (c)(5), which had read:</p>
-                <p>“Consider applications to designate historic landmarks under the contested case procedures contained in § 1-1509.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a>, in subsec. (a), substituted “comprised of nine members who” for “whose members” and deleted the last sentence which had read: “Any body which functions as the District of Columbia State Review Board pursuant to the Act of October 15, 1966 ( 16 U.S.C. § 470 et seq.) as of the effective date of this subchapter, shall function as the Review Board pursuant to this section until a Review Board is established and its members nominated by the Mayor and confirmed by the Council of the District of Columbia pursuant to this section.”; in subsec, (b), inserted “The term of office of each member of the Review Board shall be 3 years, staggered so that one third of the appointments expire each year. Any member appointed to fill a vacancy occurring prior to the expiration of the term for which his or her predecessor was appointed shall be appointed for the remainder of such term. Upon expiration of his or her term of office, a member shall continue to serve until his or her successor is appointed.”; in subsec. (d)(1), substituted “during the 12-month period after the denial” for “within 12 months of the denial”; and, in subsec. (d)(2), substituted “the Review Board shall not accept a new application for the same property during the 12-month period following the withdrawal” for “no more than 1 new application may be filed 12 months from the date that the application is withdrawn”.</p>
+                <p>“Consider applications to designate historic landmarks under the contested case procedures contained in § 1-1509.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> repealed par. (c)(5), which had read:</p>
                 <h4>Cross References</h4>
-                <p>Duties of mayor prior to consideration of application, see § <a class="internal-link" href="/dc/council/code/sections/9-202.02.html">9-202.02</a>.</p>
-                <p>Historic Preservation Review Board, chairperson and members, compensation, see § <a class="internal-link" href="/dc/council/code/sections/1-611.08.html">1-611.08</a>.</p>
                 <p>Nomination and approval of agency heads, see § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.</p>
+                <p>Historic Preservation Review Board, chairperson and members, compensation, see § <a class="internal-link" href="/dc/council/code/sections/1-611.08.html">1-611.08</a>.</p>
+                <p>Duties of mayor prior to consideration of application, see § <a class="internal-link" href="/dc/council/code/sections/9-202.02.html">9-202.02</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see § 403(a) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <p>For temporary (90 day) amendment of section, see § 403(a) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) addition of section, see § 403(a) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <h4>Editor's Notes</h4>
-                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
-                <p>Section 20(c) of <a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a>, amends <a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> by adding a new section 403a which provided:</p>
                 <p>Sec. 403a. Applicability. “Section 403(a) and (b)(1)(A) and (B) shall apply only prospectively to hearings held by the Mayor or the Historic Preservation Board after the effective date of this title.”</p>
+                <p>Section 20(c) of <a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a>, amends <a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> by adding a new section 403a which provided:</p>
+                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
                 <h4>Mayor's Orders</h4>
-                <p>Historic Preservation Review Board established: See Mayor’s Orders 83-119, May 6, 1983, and 88-213, September 23, 1988, for the functions, composition, terms, and compensation for members of the Board.</p>
                 <p>Amendment of Mayor’s Order 83-119, dated May 6, 1983, Establishment of Historic Preservation Review Board: See Mayor’s Order 98-12, February 12, 1998 ( 45 DCR 1089).</p>
+                <p>Historic Preservation Review Board established: See Mayor’s Orders 83-119, May 6, 1983, and 88-213, September 23, 1988, for the functions, composition, terms, and compensation for members of the Board.</p>
               </section>
             </section>
             <hr/>
@@ -303,17 +357,17 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§5">Mar. 3, 1979, D.C. Law 2-144, § 5, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185, § 2(d), 53 DCR 6712</a>; <a class="internal-link" href="/dc/council/laws/20-249.html#§2(a)">Apr. 30, 2015, D.C. Law 20-249, § 2(a), 62 DCR 1512</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1004.</p>
                 <p>1973 Ed., § 5-824.</p>
+                <p>1981 Ed., § 5-1004.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-1102.html">6-1102</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1103.html">6-1103</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1105.html">6-1105</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1106.html">6-1106</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1108.html">6-1108</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1108.01.html">6-1108.01</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1110.html">6-1110</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1113.html">6-1113</a>, § <a class="internal-link" href="/dc/council/code/sections/42-3173.04.html">42-3173.04</a>, and § <a class="internal-link" href="/dc/council/code/sections/42-3173.05.html">42-3173.05</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a>, in subsec. (c), substituted “if the Review Board or Commission of Fine Arts has advised” for “if the Review Board has advised”.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a> would have rewritten (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a>, in subsec. (c), substituted “if the Review Board or Commission of Fine Arts has advised” for “if the Review Board has advised”.</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(a)">§ 2(a) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7005">Section 7005 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a>. Therefore the changes made to this section by D.C. Law 20-249 have been given effect.
         </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(a)">§ 2(a) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
               </section>
             </section>
             <hr/>
@@ -376,17 +430,17 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§6">Mar. 3, 1979, D.C. Law 2-144, § 6, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/7-231.html">May 10, 1989, D.C. Law 7-231, § 20, 36 DCR 492</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185, § 2(h), 53 DCR 6712</a>; <a class="internal-link" href="/dc/council/laws/20-249.html#§2(b)">Apr. 30, 2015, D.C. Law 20-249, § 2(b), 62 DCR 1512</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1005.</p>
                 <p>1973 Ed., § 5-825.</p>
+                <p>1981 Ed., § 5-1005.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-1108.html">6-1108</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1108.01.html">6-1108.01</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1110.html">6-1110</a>, and § <a class="internal-link" href="/dc/council/code/sections/6-1113.html">6-1113</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a>, in subsec. (d), inserted “If the Commission of Fine Arts recommends against granting the application, the Historic Preservation Office shall notify the applicant of the Commission of Fine Arts’ recommendation.”; and added subsec. (h).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a> would have rewritten (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a>, in subsec. (d), inserted “If the Commission of Fine Arts recommends against granting the application, the Historic Preservation Office shall notify the applicant of the Commission of Fine Arts’ recommendation.”; and added subsec. (h).</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(b)">§ 2(b) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7005">Section 7005 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a>. Therefore the changes made to this section by D.C. Law 20-249 have been given effect.
         </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(b)">§ 2(b) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
               </section>
             </section>
             <hr/>
@@ -407,17 +461,17 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§7">Mar. 3, 1979, D.C. Law 2-144, § 7, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185, § 2(i), 53 DCR 6712</a>; <a class="internal-link" href="/dc/council/laws/20-249.html#§2(c)">Apr. 30, 2015, D.C. Law 20-249, § 2(c), 62 DCR 1512</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1006.</p>
                 <p>1973 Ed., § 5-826.</p>
+                <p>1981 Ed., § 5-1006.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-1108.html">6-1108</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1108.01.html">6-1108.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/6-1113.html">6-1113</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a>, in subsec. (c), substituted “historic district or a subdivision that assembles land with the lot of a historic landmark” for “historic district”; and, in subsec. (g), “no subdivision shall be permitted to record” for “no subdivision permit shall be issued”.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a> would have rewritten (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a>, in subsec. (c), substituted “historic district or a subdivision that assembles land with the lot of a historic landmark” for “historic district”; and, in subsec. (g), “no subdivision shall be permitted to record” for “no subdivision permit shall be issued”.</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(c)">§ 2(c) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7005">Section 7005 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a>. Therefore the changes made to this section by D.C. Law 20-249 have been given effect.
         </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(c)">§ 2(c) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Editor's Notes</h4>
                 <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter”, where applicable, in this section.</p>
               </section>
@@ -439,17 +493,17 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§8">Mar. 3, 1979, D.C. Law 2-144, § 8, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185, § 2(j), 53 DCR 6712</a>; <a class="internal-link" href="/dc/council/laws/20-249.html#§2(d)">Apr. 30, 2015, D.C. Law 20-249, § 2(d), 62 DCR 1512</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1007.</p>
                 <p>1973 Ed., § 5-827.</p>
+                <p>1981 Ed., § 5-1007.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-1104.html">6-1104</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1106.html">6-1106</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1108.html">6-1108</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1108.01.html">6-1108.01</a>, § <a class="internal-link" href="/dc/council/code/sections/6-1110.html">6-1110</a>, and § <a class="internal-link" href="/dc/council/code/sections/6-1113.html">6-1113</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a>, in subsec. (d), inserted “If the Commission of Fine Arts recommends against granting the application, the Historic Preservation Office shall notify the applicant of the Commission of Fine Arts’ recommendation.”; and, in subsec. (f), inserted “Notwithstanding a finding of incompatibility, the Mayor may find that issuance of the permit is necessary to allow the construction of a project of special merit.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a> would have rewritten (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a>, in subsec. (d), inserted “If the Commission of Fine Arts recommends against granting the application, the Historic Preservation Office shall notify the applicant of the Commission of Fine Arts’ recommendation.”; and, in subsec. (f), inserted “Notwithstanding a finding of incompatibility, the Mayor may find that issuance of the permit is necessary to allow the construction of a project of special merit.”</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(d)">§ 2(d) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7005">Section 7005 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a>. Therefore the changes made to this section by D.C. Law 20-249 have been given effect.
         </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(d)">§ 2(d) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
               </section>
             </section>
             <hr/>
@@ -468,15 +522,15 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§9">Mar. 3, 1979, D.C. Law 2-144, § 9, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185, § 2(k), 53 DCR 6712</a>; <a class="internal-link" href="/dc/council/laws/20-249.html#§2(e)">Apr. 30, 2015, D.C. Law 20-249, § 2(e), 62 DCR 1512</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1008.</p>
                 <p>1973 Ed., § 5-828.</p>
+                <p>1981 Ed., § 5-1008.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a> designated the existing text as subsec. (a); and added subsecs. (b) and (c).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a> would have added “in accordance with this subsection and § <a class="internal-link" href="/dc/council/code/sections/6-1108.03.html">6-1108.03</a>” in (a) and (b); and would have added (a-1) and (b-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a> designated the existing text as subsec. (a); and added subsecs. (b) and (c).</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(e)">§ 2(e) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7005">Section 7005 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a>. Therefore the changes made to this section by D.C. Law 20-249 have been given effect.
         </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(e)">§ 2(e) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Editor's Notes</h4>
                 <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
               </section>
@@ -502,9 +556,9 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§9a">Mar. 3, 1979, D.C. Law 2-144, § 9a</a>; <a class="internal-link" href="/dc/council/laws/15-228.html">as added Mar. 16, 2005, D.C. Law 15-228, § 2(b), 51 DCR 10562</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(b) of Historic Preservation Process for Public Safety Facilities Emergency Amendment Act of 2004 (D.C. Act 15-502, August 2, 2004,  51 DCR 8817).</p>
-                <p>For temporary (90 day) addition, see § 2(b) of Historic Preservation Process for Public Safety Facilities Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-595, November 30, 2004,  51 DCR 11215).</p>
                 <p>For temporary (90 day) addition, see § 2(b) of Historic Preservation Process for Public Safety Facilities Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-24, February 17, 2005,  52 DCR 2978).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Historic Preservation Process for Public Safety Facilities Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-595, November 30, 2004,  51 DCR 11215).</p>
+                <p>For temporary (90 day) addition, see § 2(b) of Historic Preservation Process for Public Safety Facilities Emergency Amendment Act of 2004 (D.C. Act 15-502, August 2, 2004,  51 DCR 8817).</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of Authority pursuant to the Targeted Historic Preservation Assistance Amendment Act of 2006, see Mayor’s Order 2008-80, June 5, 2008 ( 55 DCR 6940).</p>
               </section>
@@ -544,9 +598,9 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§9c">March 3, 1979, D.C. Law 2-144, §  9c</a>; <a class="internal-link" href="/dc/council/laws/20-249.html#§2(f)">as added Apr. 30, 2015, D.C. Law 20-249, § 2(f), 62 DCR 1512</a>.)
     </p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(f)">§ 2(f) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7005">Section 7005 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a>. Therefore the changes made to this section by D.C. Law 20-249 have been given effect.
         </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-249.html">D.C. Law 20-249</a>: <a class="internal-link" href="/dc/council/laws/20-249.html#§3">§ 3 of D.C. Law 20-249</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/20-249.html#§2(f)">§ 2(f) of D.C. Law 20-249</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
               </section>
             </section>
             <hr/>
@@ -561,8 +615,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§10">Mar. 3, 1979, D.C. Law 2-144, § 10, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185, § 2(m), 53 DCR 6712</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1009.</p>
                 <p>1973 Ed., § 5-829.</p>
+                <p>1981 Ed., § 5-1009.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a> deleted the second sentence which had read as follows: “Such regulations shall be issued to take effect within 60 days from the effective date of this subchapter.”</p>
                 <h4>Editor's Notes</h4>
@@ -657,20 +711,20 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§11">Mar. 3, 1979, D.C. Law 2-144, § 11, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42, § 412, 32 DCR 4450</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185,§  2(o), 53 DCR 6712</a>; <a class="internal-link" href="/dc/council/laws/16-189.html">Mar. 2, 2007, D.C. Law 16-189, § 2(b), 53 DCR 6786</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 128(a), 56 DCR 1117</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1010.</p>
                 <p>1973 Ed., § 5-830.</p>
+                <p>1981 Ed., § 5-1010.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-1109.02.html">6-1109.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a> added subsec. (d).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-189.html">D.C. Law 16-189</a> added subsec. (e).</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in the designation of subsec. (e).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-189.html">D.C. Law 16-189</a> added subsec. (e).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-185.html">D.C. Law 16-185</a> added subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see §§ 2(b), 4 of Targeted Historic Preservation Assistance Emergency Amendment Act of 2006 (D.C. Act 16-472, July 31, 2006,  53 DCR 6781).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(b) of Targeted Historic Preservation Assistance Congressional Review Emergency Act of 2006 (D.C. Act 16-500, October 23, 2006,  53 DCR 9046).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 2(b), 4 of Targeted Historic Preservation Assistance Emergency Amendment Act of 2006 (D.C. Act 16-472, July 31, 2006,  53 DCR 6781).</p>
                 <h4>Editor's Notes</h4>
-                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
                 <p>Section 4 of <a class="internal-link" href="/dc/council/laws/16-189.html">D.C. Law 16-189</a> provided: “The implementation of the provisions of this act is subject to appropriations and nothing in this act shall be construed to create an entitlement.”</p>
+                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
               </section>
             </section>
             <hr/>
@@ -696,8 +750,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/6-1110.02.html">6-1110.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (b), deleted “and” from the end of par. (5 ), substituted “; and” for a period the end of par. (6), and added par. (7).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “10-C DCMR § 205” for “10 DCMR § C 205” in (b)(7).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (b), deleted “and” from the end of par. (5 ), substituted “; and” for a period the end of par. (6), and added par. (7).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 2011 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided that subtitle B of title II of the act may be cited as “Historic Preservation Fee Authorization Clarification Amendment Act of 2011”.</p>
                 <h4>Editor's Notes</h4>
@@ -750,19 +804,19 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§11b">Mar. 3, 1979, D.C. Law 2-144, § 11b</a>; <a class="internal-link" href="/dc/council/laws/16-189.html">as added Mar. 2, 2007, D.C. Law 16-189, § 2(c), 53 DCR 6786</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 128(b), 56 DCR 1117</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 2121, 57 DCR 181</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in the section designation.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsec. (k)(2), substituted “fiscal year” for “fiscal year, beginning from fiscal year 2006 through fiscal year 2010”; and, in subsec. (k)(2), deleted “applicable” following “each”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in the section designation.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(c) of Targeted Historic Preservation Assistance Emergency Amendment Act of 2006 (D.C. Act 16-472, July 31, 2006,  53 DCR 6781).</p>
-                <p>For temporary (90 day) addition, see § 2(c) of Targeted Historic Preservation Assistance Congressional Review Emergency Act of 2006 (D.C. Act 16-500, October 23, 2006,  53 DCR 9046).</p>
-                <p>For temporary (90 day) amendment, see § 2 of Targeted Historic Housing Preservation Assistance Emergency Amendment Act of 2008 (D.C. Act 17-470, July 28, 2008,  55 DCR 8761).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Targeted Historic Housing Preservation Assistance Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-546, October 20, 2008,  55 DCR 11434).</p>
-                <p>For temporary (90 day) amendment of section, see § 2121 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 2121 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 2121 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Targeted Historic Housing Preservation Assistance Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-546, October 20, 2008,  55 DCR 11434).</p>
+                <p>For temporary (90 day) amendment, see § 2 of Targeted Historic Housing Preservation Assistance Emergency Amendment Act of 2008 (D.C. Act 17-470, July 28, 2008,  55 DCR 8761).</p>
+                <p>For temporary (90 day) addition, see § 2(c) of Targeted Historic Preservation Assistance Congressional Review Emergency Act of 2006 (D.C. Act 16-500, October 23, 2006,  53 DCR 9046).</p>
+                <p>For temporary (90 day) addition, see § 2(c) of Targeted Historic Preservation Assistance Emergency Amendment Act of 2006 (D.C. Act 16-472, July 31, 2006,  53 DCR 6781).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 17-277, in subsec. (e), added par. (3) to read as follows:</p>
-                <p>“(3) A grant made to a taxpayer pursuant to this section shall be excluded in the computation of District gross income.”.</p>
                 <p>Section 5(b) of D.C. Law 17-277 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(3) A grant made to a taxpayer pursuant to this section shall be excluded in the computation of District gross income.”.</p>
+                <p>Section 2 of D.C. Law 17-277, in subsec. (e), added par. (3) to read as follows:</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 2120 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle M of title II of the act may be cited as the “Targeted Homeowner Grant Program Funding Amendment Act of 2009”.</p>
                 <h4>Editor's Notes</h4>
@@ -783,11 +837,11 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§12">Mar. 3, 1979, D.C. Law 2-144, § 12, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/14-114.html">Apr. 19 2002, D.C. Law 14-114, § 102, 49 DCR 1468</a>; <a class="internal-link" href="/dc/council/laws/14-213.html">Oct. 19, 2002, D.C. Law 14-213, § 14, 49 DCR 8140</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1011.</p>
                 <p>1973 Ed., § 5-831.</p>
+                <p>1981 Ed., § 5-1011.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-114.html">D.C. Law 14-114</a> added subsec. (c).</p>
                 <p><a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>, in subsec. (c), validated previously made technical corrections.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-114.html">D.C. Law 14-114</a> added subsec. (c).</p>
                 <h4>Editor's Notes</h4>
                 <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
               </section>
@@ -805,22 +859,22 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§13">Mar. 3, 1979, D.C. Law 2-144, § 13, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/12-86.html">Apr. 29, 1998, D.C. Law 12-86, § 503(c), 45 DCR 1172</a>; <a class="internal-link" href="/dc/council/laws/13-172.html">Oct. 19, 2000, D.C. Law 13-172, § 403(b), 47 DCR 6308</a>; <a class="internal-link" href="/dc/council/laws/13-313.html">June 19, 2001, D.C. Law 13-313, § 20(b), 48 DCR 1873</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1012.</p>
                 <p>1973 Ed., § 5-832.</p>
+                <p>1981 Ed., § 5-1012.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a>, in subsec. (a), substituted “120 days” for “60 days” and deleted “, or the application shall be deemed approved by the Mayor” at the end of the second sentence, and in subsec. (b), struck the second and third sentences, which had read:</p>
-                <p>“The hearing by the Review Board upon the filing of an application to designate a historic landmark shall be conducted under the contested case procedures contained in § 1-1509. Any final order of the Mayor under this act and any final order of the Review Board regarding the designation of a historic landmark shall be reviewable in the District of Columbia Court of Appeals.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a>, in subsec. (a), substituted “alteration, subdivision,” for “subdivision”.</p>
+                <p>“The hearing by the Review Board upon the filing of an application to designate a historic landmark shall be conducted under the contested case procedures contained in § 1-1509. Any final order of the Mayor under this act and any final order of the Review Board regarding the designation of a historic landmark shall be reviewable in the District of Columbia Court of Appeals.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a>, in subsec. (a), substituted “120 days” for “60 days” and deleted “, or the application shall be deemed approved by the Mayor” at the end of the second sentence, and in subsec. (b), struck the second and third sentences, which had read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 403(b) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
-                <p>For temporary (90-day) amendment of section, see §§ 2(a), (b) and 3(a), (b) of the Fiscal Year 2001 Budget Support Emergency Amendment Act of 2000 (D.C. Act 13-381, July 24, 2000,  47 DCR 6695).</p>
                 <p>For temporary (90 day) amendment of section, see § 403(b) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) amendment of section, see §§ 2(a), (b) and 3(a), (b) of the Fiscal Year 2001 Budget Support Emergency Amendment Act of 2000 (D.C. Act 13-381, July 24, 2000,  47 DCR 6695).</p>
+                <p>For temporary (90-day) amendment of section, see § 403(b) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see §§ 2, 3 of (D.C. Law 13-197, October 21, 2000, law notification  47 DCR 8987).</p>
                 <h4>Editor's Notes</h4>
-                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
-                <p>Section 20(c) of <a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a>, amends <a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> by adding a new section 403a which provided:</p>
                 <p>“Sec. 403a. Applicability. Section 403(a) and (b)(1)(A) and (B) shall app only prospectively to hearings held by the Mayor or the Historic Preservation Board after the effective date of this title.”</p>
+                <p>Section 20(c) of <a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a>, amends <a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> by adding a new section 403a which provided:</p>
+                <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
               </section>
             </section>
             <hr/>
@@ -843,8 +897,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§14">Mar. 3, 1979, D.C. Law 2-144, § 14, 25 DCR 6939</a>; <a class="internal-link" href="/dc/council/laws/16-185.html">Nov. 16, 2006, D.C. Law 16-185, § 2(q), 53 DCR 6712</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1013.</p>
                 <p>1973 Ed., § 5-833.</p>
+                <p>1981 Ed., § 5-1013.</p>
                 <h4>Editor's Notes</h4>
                 <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
               </section>
@@ -861,8 +915,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§16">Mar. 3, 1979, D.C. Law 2-144, § 16, 25 DCR 6939</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1014.</p>
                 <p>1973 Ed., § 5-834.</p>
+                <p>1981 Ed., § 5-1014.</p>
                 <h4>Editor's Notes</h4>
                 <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
               </section>
@@ -879,8 +933,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-144.html#§17">Mar. 3, 1979, D.C. Law 2-144, § 17, 25 DCR 6939</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 5-1015.</p>
                 <p>1973 Ed., § 5-835.</p>
+                <p>1981 Ed., § 5-1015.</p>
                 <h4>Editor's Notes</h4>
                 <p>Because of the codification of <a class="internal-link" href="/dc/council/laws/5-69.html">D.C. Law 5-69</a> as subchapter II of this chapter, and the designation of the preexisting text of Chapter 11 as subchapter I, “subchapter” has been substituted for “chapter,” where applicable, in this section.</p>
               </section>

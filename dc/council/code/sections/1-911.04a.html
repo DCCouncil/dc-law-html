@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/10/">Chapter 10. Elections.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/1-911.04a.html">Report Error</a>
@@ -102,9 +102,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-91.html">D.C. Law 16-91</a> validated a previously made technical correction.</p>
                 <h4>Editor's Notes</h4>
-                <p>Conditional applicability of subtitle B of Title I of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a>: Section 1015 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided:</p>
-                <p>“This subtitle shall not apply until the enactment by Congress of section 139 of the fiscal year 2005 Budget Request Act, passed on 1st reading on May 14, 2004 (Enrolled version of Bill 15-765) or until enactment of other Congressional legislation that authorizes the Council of the District of Columbia to transfer authority of the administration of the retirement plans of the District of Columbia, whichever occurs first.”</p>
                 <p>Section 4(a) of Pub. L. 108-489 provided: “(a) In general. — Section 424(c)(21) of the District of Columbia Home Rule Act ( sec. 1-204.24c(21), D.C. Official Code) is amended by striking ‘systems’ and inserting the following: ‘systems (other than the retirement system for police officers, fire fighters, and teachers)’.”</p>
+                <p>“This subtitle shall not apply until the enactment by Congress of section 139 of the fiscal year 2005 Budget Request Act, passed on 1st reading on May 14, 2004 (Enrolled version of Bill 15-765) or until enactment of other Congressional legislation that authorizes the Council of the District of Columbia to transfer authority of the administration of the retirement plans of the District of Columbia, whichever occurs first.”</p>
+                <p>Conditional applicability of subtitle B of Title I of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a>: Section 1015 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided:</p>
               </section>
             </section>
           </section>

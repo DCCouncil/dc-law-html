@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/8-1810.01.html">§ 8–1810.01. Animal Education and Outreach Fund.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-1810.html">Report Error</a>
@@ -101,12 +101,12 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§11">Oct. 18, 1979, D.C. Law 3-30, § 11, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/22-37.html#§2(l)">Dec. 20, 2017, D.C. Law 22-37, § 2(l), 64 DCR 11682</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1010.</p>
                 <p>1973 Ed., § 6-2410.</p>
+                <p>1981 Ed., § 6-1010.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(k)">§ 2(k) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
-                <p>For temporary (90 days) creation of § 8-1810.01, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(l)">§ 2(l) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(l)">§ 2(l) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) creation of § 8-1810.01, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(l)">§ 2(l) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(k)">§ 2(k) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to law 3-30, see Mayor’s Order 83-206, August 2, 1983.</p>
               </section>

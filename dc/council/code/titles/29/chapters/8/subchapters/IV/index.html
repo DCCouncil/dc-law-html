@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/29/chapters/8/subchapters/V/">Subchapter V. Transferable Interests and Rights of Transferees and Creditors.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/29/chapters/8/subchapters/IV/">Report Error</a>
@@ -88,16 +88,36 @@
         <section class="col8 body">
           <h1>Subchapter IV. Relations of Members to Each Other and to Limited Liability Company.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/29-804.01.html">§ 29–804.01. Becoming member.</a>
-            <a href="/dc/council/code/sections/29-804.02.html">§ 29–804.02. Form of contribution.</a>
-            <a href="/dc/council/code/sections/29-804.03.html">§ 29–804.03. Liability for contributions.</a>
-            <a href="/dc/council/code/sections/29-804.04.html">§ 29–804.04. Sharing of and right to distributions before dissolution.</a>
-            <a href="/dc/council/code/sections/29-804.05.html">§ 29–804.05. Limitations on distribution.</a>
-            <a href="/dc/council/code/sections/29-804.06.html">§ 29–804.06. Liability for improper distributions.</a>
-            <a href="/dc/council/code/sections/29-804.07.html">§ 29–804.07. Management of limited liability company.</a>
-            <a href="/dc/council/code/sections/29-804.08.html">§ 29–804.08. Reimbursement, indemnification, advancement, and insurance.</a>
-            <a href="/dc/council/code/sections/29-804.09.html">§ 29–804.09. Standards of conduct for members and managers.</a>
-            <a href="/dc/council/code/sections/29-804.10.html">§ 29–804.10. Right of members, managers, and dissociated members to information.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-804.01.html">§ 29–804.01. Becoming member.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-804.02.html">§ 29–804.02. Form of contribution.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-804.03.html">§ 29–804.03. Liability for contributions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-804.04.html">§ 29–804.04. Sharing of and right to distributions before dissolution.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-804.05.html">§ 29–804.05. Limitations on distribution.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-804.06.html">§ 29–804.06. Liability for improper distributions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-804.07.html">§ 29–804.07. Management of limited liability company.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-804.08.html">§ 29–804.08. Reimbursement, indemnification, advancement, and insurance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-804.09.html">§ 29–804.09. Standards of conduct for members and managers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/29-804.10.html">§ 29–804.10. Right of members, managers, and dissociated members to information.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -123,8 +143,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote (c)(4).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 401 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 401 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -141,8 +161,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 402 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 402 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -162,8 +182,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 403 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 403 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -183,8 +203,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> added the last sentence in (d).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 404 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 404 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -216,8 +236,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> rewrote (a), (c), and (d).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 405 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 405 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -287,8 +307,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “Except as otherwise expressly provided in this chapter, the” for “The” at the beginning of (b)(1); substituted “activities and affairs” for “activities” in (b), (c) and (f); substituted “activities and affairs of the company may” for “activities of the company shall” in (b)(4); substituted “may” for “shall” in (b)(5); and added (g) and (h).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 407 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 407 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -309,8 +329,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “Reimbursement, indemnification, advancement,” for “Indemnification” in the section heading; substituted “§ <a class="internal-link" href="/dc/council/code/sections/29-801.07.html">29-801.07</a>(c)(13)” for “§ <a class="internal-link" href="/dc/council/code/sections/29-801.07.html">29-801.07</a>(g)” in (b); and added (c).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 408 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 408 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -348,8 +368,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> deleted “fiduciary” preceding “duties” in (a); substituted “activities and affairs” for “activities” in (b); rewrote (c); substituted “duties and obligations” for “duties” in (d); redesignated former (g) as present (i); in present (i)(4) substituted “Subsections (f) and (g)” for “Subsection (f)”; and added present (g) and (h).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 409 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 409 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>
@@ -388,8 +408,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> substituted “activities and affairs” for “activities” throughout the section.</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 410 of the Uniform Limited Company Act (2006 Act).</p>
                 <p>Application of Law 19-210: Section 7 of <a class="internal-link" href="/dc/council/laws/19-210.html">D.C. Law 19-210</a> provided that the act shall apply as of January 1, 2012.</p>
+                <p>Uniform Law: This section is based on § 410 of the Uniform Limited Company Act (2006 Act).</p>
               </section>
             </section>
             <hr/>

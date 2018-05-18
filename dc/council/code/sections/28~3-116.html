@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:3-117.html">§ 28:3-117. Other agreements affecting instrument.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:3-116.html">Report Error</a>
@@ -103,8 +103,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:3-103.html">28:3-103</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Subsection (a) replaces subsection (e) of former  Section 3-118. Subsection (b) states contribution rights of parties with joint and several liability by referring to applicable law. But subsection (b) is subject to  Section 3-419(e). If one of the parties with joint and several liability is an accommodation party and the other is the accommodated party,  Section 3-419(e) applies. Subsection (c) deals with discharge. The discharge of a jointly and severally liable obligor does not affect the right of other obligors to seek contribution from the discharged obligor.</p>
                 <p>2. Indorsers normally do not have joint and several liability. Rather, an earlier indorser has liability to a later indorser. But indorsers can have joint and several liability in two cases. If an instrument is payable to two payees jointly, both payees must indorse. The indorsement is a joint indorsement and the indorsers have joint and several liability and subsection (b) applies. The other case is that of two or more anomalous indorsers. The term is defined in  Section 3-205(d). An anomalous indorsement normally indicates that the indorser signed as an accommodation party. If more than one accommodation party indorses a note as an accommodation to the maker, the indorsers have joint and several liability and subsection (b) applies.</p>
+                <p>1. Subsection (a) replaces subsection (e) of former  Section 3-118. Subsection (b) states contribution rights of parties with joint and several liability by referring to applicable law. But subsection (b) is subject to  Section 3-419(e). If one of the parties with joint and several liability is an accommodation party and the other is the accommodated party,  Section 3-419(e) applies. Subsection (c) deals with discharge. The discharge of a jointly and severally liable obligor does not affect the right of other obligors to seek contribution from the discharged obligor.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/28/chapters/27/subchapters/II/">Subchapter II. Computation of Time.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28-2701.html">Report Error</a>
@@ -99,15 +99,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-509.html">Aug. 30, 1964, 78 Stat. 671, Pub. L. 88-509, § 1</a>; <a class="internal-link" href="/dc/council/laws/1-11.html">Aug. 1, 1975, D.C. Law 1-11, § 103, 22 DCR 1804</a>; <a class="internal-link" href="/dc/council/laws/2-13.html">July 12, 1977, D.C. Law 2-13, § 2, 24 DCR 1443</a>; <a class="internal-link" href="/dc/council/laws/4-77.html">Mar. 16, 1982, D.C. Law 4-77, § 2, 29 DCR 46</a>; <a class="internal-link" href="/dc/council/laws/5-155.html">Mar. 14, 1985, D.C. Law 5-155, § 3, 32 DCR 11</a>; <a class="internal-link" href="/dc/council/laws/16-91.html">Apr. 7, 2006, D.C. Law 16-91, § 109, 52 DCR 10637</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-2701.</p>
                 <p>1973 Ed., § 28-2701.</p>
+                <p>1981 Ed., § 28-2701.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-632.06.html">1-632.06</a> and § <a class="internal-link" href="/dc/council/code/sections/47-1401.html">47-1401</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-91.html">D.C. Law 16-91</a>, substituted “the third Monday in February; District of Columbia Emancipation Day, April 16;” for “the third Monday in February;”.</p>
                 <h4>Cross References</h4>
-                <p>Holidays, recognition of Dr. King’s birthday, see § <a class="internal-link" href="/dc/council/code/sections/1-504.html">1-504</a>.</p>
                 <p>Merit system, continuation of existing laws, see § <a class="internal-link" href="/dc/council/code/sections/1-632.06.html">1-632.06</a>.</p>
+                <p>Holidays, recognition of Dr. King’s birthday, see § <a class="internal-link" href="/dc/council/code/sections/1-504.html">1-504</a>.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/5-155.html">D.C. Law 5-155</a> provided that §§ 2 and 3 of the act shall take effect January 1, 1986.</p>
               </section>

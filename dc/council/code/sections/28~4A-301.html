@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:4A-302.html">§ 28:4A-302. Obligations of receiving bank in execution of payment order.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:4A-301.html">Report Error</a>
@@ -104,9 +104,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § 28:4A-105.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. The terms “executed,” “execution” and “execution date” are used only with respect to a payment order to a receiving bank other than the beneficiary’s bank. The beneficiary’s bank can accept the payment order that it receives, but it does not execute the order. Execution refers to the act of the receiving bank in issuing a payment order “intended to carry out” the payment order that the bank received. A receiving bank has executed an order even if the order issued by the bank does not carry out the order received by the bank. For example, the bank may have erroneously issued an order to the wrong beneficiary, or in the wrong amount or to the wrong beneficiary’s bank. In each of these cases execution has occurred but the execution is erroneous. Erroneous execution is covered in Section 4A-303.</p>
-                <p>2. “Execution date” refers to the time a payment order should be executed rather than the day it is actually executed. Normally the sender will not specify an execution date, but most payment orders are meant to be executed immediately. Thus, the execution date is normally the day the order is received by the receiving bank. It is common for the sender to specify a “payment date“ which is defined in Section 4A-401 as ‘’the day on which the amount of the order is payable to the beneficiary by the beneficiary’s bank.“ Except for automated clearing house transfers, if a funds transfer is entirely within the United States and the payment is to be carried out electronically, the execution date is the payment date unless the order is received after the payment date. If the payment is to be carried out through an automated clearing house, execution may occur before the payment date. In an ACH transfer the beneficiary is usually paid one or two days after issue of the originator’s payment order. The execution date is determined by the stated payment date and is a date before the payment date on which execution is reasonably necessary to allow payment on the payment date. A funds transfer system rule could also determine the execution date of orders received by the receiving bank if both the sender and the receiving bank are participants in the funds transfer system. The execution date can be determined by the payment order itself or by separate instructions of the sender or an agreement of the sender and the receiving bank. The second sentence of subsection (b) must be read in the light of Section 4A-106 which states that if a payment order is received after the cut-off time of the receiving bank it may be treated by the bank as received at the opening of the next funds transfer business day.</p>
                 <p>3. Execution on the execution date is timely, but the order can be executed before or after the execution date. Section 4A-209(d) and Section 4A-402(c) state the consequences of early execution and Section 4A-305(a) states the consequences of late execution.</p>
+                <p>2. “Execution date” refers to the time a payment order should be executed rather than the day it is actually executed. Normally the sender will not specify an execution date, but most payment orders are meant to be executed immediately. Thus, the execution date is normally the day the order is received by the receiving bank. It is common for the sender to specify a “payment date“ which is defined in Section 4A-401 as ‘’the day on which the amount of the order is payable to the beneficiary by the beneficiary’s bank.“ Except for automated clearing house transfers, if a funds transfer is entirely within the United States and the payment is to be carried out electronically, the execution date is the payment date unless the order is received after the payment date. If the payment is to be carried out through an automated clearing house, execution may occur before the payment date. In an ACH transfer the beneficiary is usually paid one or two days after issue of the originator’s payment order. The execution date is determined by the stated payment date and is a date before the payment date on which execution is reasonably necessary to allow payment on the payment date. A funds transfer system rule could also determine the execution date of orders received by the receiving bank if both the sender and the receiving bank are participants in the funds transfer system. The execution date can be determined by the payment order itself or by separate instructions of the sender or an agreement of the sender and the receiving bank. The second sentence of subsection (b) must be read in the light of Section 4A-106 which states that if a payment order is received after the cut-off time of the receiving bank it may be treated by the bank as received at the opening of the next funds transfer business day.</p>
+                <p>1. The terms “executed,” “execution” and “execution date” are used only with respect to a payment order to a receiving bank other than the beneficiary’s bank. The beneficiary’s bank can accept the payment order that it receives, but it does not execute the order. Execution refers to the act of the receiving bank in issuing a payment order “intended to carry out” the payment order that the bank received. A receiving bank has executed an order even if the order issued by the bank does not carry out the order received by the bank. For example, the bank may have erroneously issued an order to the wrong beneficiary, or in the wrong amount or to the wrong beneficiary’s bank. In each of these cases execution has occurred but the execution is erroneous. Erroneous execution is covered in Section 4A-303.</p>
               </section>
             </section>
           </section>

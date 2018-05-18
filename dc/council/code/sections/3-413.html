@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/3-413.01.html">§ 3–413.01. Disputes.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-413.html">Report Error</a>
@@ -113,13 +113,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/3-412.html">3-412</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> rewrote subsec. (a) which had read as follows: “(a) The oldest adult member of each class shall have prior claim of the human remains over the others in the same class, as follows: Spouse, adult child, father, mother, adult brother, adult sister, adult grandchild, adult nephew or niece, paternal grandparent, maternal grandparent, paternal uncle or aunt, maternal uncle or aunt, adult child of paternal uncle or aunt or adult child of maternal uncle or aunt, paternal great-grandparent, maternal great-grandparent, brother or sister of paternal grandparent, brother or sister of maternal grandparent, kindred of the spouse of the deceased in accordance with the preceding order of priority, or any adult friend or volunteer.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-145.html">D.C. Law 17-145</a>, in subsec. (e), substituted “ subchapter II-A of Chapter 15 of Title 7” for “subchapter II of Chapter 15 of Title 7”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (e).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-145.html">D.C. Law 17-145</a>, in subsec. (e), substituted “ subchapter II-A of Chapter 15 of Title 7” for “subchapter II of Chapter 15 of Title 7”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> rewrote subsec. (a) which had read as follows: “(a) The oldest adult member of each class shall have prior claim of the human remains over the others in the same class, as follows: Spouse, adult child, father, mother, adult brother, adult sister, adult grandchild, adult nephew or niece, paternal grandparent, maternal grandparent, paternal uncle or aunt, maternal uncle or aunt, adult child of paternal uncle or aunt or adult child of maternal uncle or aunt, paternal great-grandparent, maternal great-grandparent, brother or sister of paternal grandparent, brother or sister of maternal grandparent, kindred of the spouse of the deceased in accordance with the preceding order of priority, or any adult friend or volunteer.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of the Funeral Services Emergency Amendment Act of 2000 (D.C. Act 13-445, November 7, 2000,  47 DCR 9209).</p>
-                <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/3-413.01.html">3-413.01</a>, see § 2(b) of the Funeral Services Emergency Amendment Act of 2000 (D.C. Act 13-445, November 7, 2000,  47 DCR 9209).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(a) of Funeral Services Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-8, March 2, 2001,  48 DCR 2487).</p>
+                <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/3-413.01.html">3-413.01</a>, see § 2(b) of the Funeral Services Emergency Amendment Act of 2000 (D.C. Act 13-445, November 7, 2000,  47 DCR 9209).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of the Funeral Services Emergency Amendment Act of 2000 (D.C. Act 13-445, November 7, 2000,  47 DCR 9209).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of Funeral Services Temporary Amendment Act of 2000 (D.C. Law 13-219, April 3, 2001, law notification  48 DCR 3461).</p>
               </section>

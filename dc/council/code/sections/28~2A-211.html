@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2A-212.html">§ 28:2A-212. Implied warranty of merchantability.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-211.html">Report Error</a>
@@ -105,21 +105,21 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § 28:2A-214 and § 28:2A-516.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Section 2-312.</p>
-                <p><strong>Changes:</strong> This section is modeled on the provisions of  Section 2-312, with modifications to reflect the limited interest transferred by a lease contract and the total interest transferred by a sale.  Section 2-312(2), which is omitted here, is incorporated in Section 2A-214. The warranty of quiet possession was abolished with respect to sales of goods.  Section 2-312 official comment 1. Section 2A-211(1) reinstates the warranty of quiet possession with respect to leases. Inherent in the nature of the limited interest transferred by the lease—the right to possession and use of the goods—is the need of the lessee for protection greater than that afforded to the buyer. Since the scope of the protection is limited to claims or interests that arose from acts or omissions of the lessor, the lessor will be in position to evaluate the potential cost, certainly a far better position than that enjoyed by the lessee. Further, to the extent the market will allow, the lessor can attempt to pass on the anticipated additional cost to the lessee in the guise of higher rent.</p>
-                <p><strong>Purposes:</strong> General language was chosen for subsection (1) that expresses the essence of the lessee’s expectation: with an exception for infringement and the like, no person holding a claim or interest that arose from an act or omission of the lessor will be able to interfere with the lessee’s use and enjoyment of the goods for the lease term. Subsection (2), like other similar provisions in later sections, excludes the finance lessor from extending this warranty; with few exceptions (Sections 2A-210 and 2A-211(1)), the lessee under a finance lease is to look to the supplier for warranties and the like or, in some cases as to warranties, to the manufacturer if a warranty made by that person is passed on. Subsections (2) and (3) are derived from  Section 2-312(3). These subsections, as well as the analogue, should be construed so that applicable principles of law and equity supplement their provisions. Sections 2A-103(4) and 1-103.</p>
-                <p><strong>Cross References:</strong>Sections 2-312,  2-312(1),  2-312(2),  2-312 official comment 1, 2A-210, 2A-211(1) and 2A-214.</p>
-                <p><strong>Definitional Cross References:</strong> “Delivery”.  Section 1-201(14).</p>
-                <p>“Finance lease”. Section 2A-103(1)(g).</p>
-                <p>“Goods”. Section 2A-103(1)(h).</p>
-                <p>“Lease”. Section 2A-103(1)(j).</p>
-                <p>“Lease contract”. Section 2A-103(1)(l).</p>
-                <p>“Leasehold interest”. Section 2A-103(1)(m).</p>
-                <p>“Lessee”. Section 2A-103(1)(n).</p>
-                <p>“Lessor”. Section 2A-103(1)(p).</p>
-                <p>“Merchant”.  Section 2-104(1).</p>
-                <p>“Person”.  Section 1-201(30).</p>
                 <p>“Supplier”. Section 2A-103(1)(x).</p>
+                <p>“Person”.  Section 1-201(30).</p>
+                <p>“Merchant”.  Section 2-104(1).</p>
+                <p>“Lessor”. Section 2A-103(1)(p).</p>
+                <p>“Lessee”. Section 2A-103(1)(n).</p>
+                <p>“Leasehold interest”. Section 2A-103(1)(m).</p>
+                <p>“Lease contract”. Section 2A-103(1)(l).</p>
+                <p>“Lease”. Section 2A-103(1)(j).</p>
+                <p>“Goods”. Section 2A-103(1)(h).</p>
+                <p>“Finance lease”. Section 2A-103(1)(g).</p>
+                <p><strong>Definitional Cross References:</strong> “Delivery”.  Section 1-201(14).</p>
+                <p><strong>Cross References:</strong>Sections 2-312,  2-312(1),  2-312(2),  2-312 official comment 1, 2A-210, 2A-211(1) and 2A-214.</p>
+                <p><strong>Purposes:</strong> General language was chosen for subsection (1) that expresses the essence of the lessee’s expectation: with an exception for infringement and the like, no person holding a claim or interest that arose from an act or omission of the lessor will be able to interfere with the lessee’s use and enjoyment of the goods for the lease term. Subsection (2), like other similar provisions in later sections, excludes the finance lessor from extending this warranty; with few exceptions (Sections 2A-210 and 2A-211(1)), the lessee under a finance lease is to look to the supplier for warranties and the like or, in some cases as to warranties, to the manufacturer if a warranty made by that person is passed on. Subsections (2) and (3) are derived from  Section 2-312(3). These subsections, as well as the analogue, should be construed so that applicable principles of law and equity supplement their provisions. Sections 2A-103(4) and 1-103.</p>
+                <p><strong>Changes:</strong> This section is modeled on the provisions of  Section 2-312, with modifications to reflect the limited interest transferred by a lease contract and the total interest transferred by a sale.  Section 2-312(2), which is omitted here, is incorporated in Section 2A-214. The warranty of quiet possession was abolished with respect to sales of goods.  Section 2-312 official comment 1. Section 2A-211(1) reinstates the warranty of quiet possession with respect to leases. Inherent in the nature of the limited interest transferred by the lease—the right to possession and use of the goods—is the need of the lessee for protection greater than that afforded to the buyer. Since the scope of the protection is limited to claims or interests that arose from acts or omissions of the lessor, the lessor will be in position to evaluate the potential cost, certainly a far better position than that enjoyed by the lessee. Further, to the extent the market will allow, the lessor can attempt to pass on the anticipated additional cost to the lessee in the guise of higher rent.</p>
+                <p><strong>Uniform Statutory Source:</strong>Section 2-312.</p>
               </section>
             </section>
           </section>

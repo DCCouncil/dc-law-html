@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/8/subchapters/IV/">Subchapter IV. District of Columbia Federal Pension Liability Trust Fund.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/8/subchapters/III/">Report Error</a>
@@ -88,10 +88,18 @@
         <section class="col8 body">
           <h1>Subchapter III. Determinations and Review of Eligibility and Payments; Information Sharing.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-805.01.html">§ 1–805.01. Determination of eligibility for and amount of Federal benefit payments made by Trustee.</a>
-            <a href="/dc/council/code/sections/1-805.02.html">§ 1–805.02. Procedures for resolving claims arising from denied benefit payments.</a>
-            <a href="/dc/council/code/sections/1-805.03.html">§ 1–805.03. Transfer of and access to records of District Government.</a>
-            <a href="/dc/council/code/sections/1-805.04.html">§ 1–805.04. Federal information sharing for verification of benefit determinations.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-805.01.html">§ 1–805.01. Determination of eligibility for and amount of Federal benefit payments made by Trustee.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-805.02.html">§ 1–805.02. Procedures for resolving claims arising from denied benefit payments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-805.03.html">§ 1–805.03. Transfer of and access to records of District Government.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-805.04.html">§ 1–805.04. Federal information sharing for verification of benefit determinations.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -166,8 +174,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-763.4.</p>
                 <h4>References in Text</h4>
-                <p>Section 6103 of the Internal Revenue Code of 1986, referred to in the introductory paragraph of (a), is  26 U.S.C § 6103.</p>
                 <p>Section 11024(b) of the District of Columbia Retirement Protection Act of 1997, referred to in (c), is § 11024(b) of subtitle A of Title XI of Pub. L. 105-33, 111 Stat. 715.</p>
+                <p>Section 6103 of the Internal Revenue Code of 1986, referred to in the introductory paragraph of (a), is  26 U.S.C § 6103.</p>
                 <h4>Editor's Notes</h4>
                 <p>Amendments to Internal Revenue Code: For amendments to the Internal Revenue Code related to District of Columbia Retirement Programs, see § 11024(b) of Title XI of Pub. L. 105-33, 111 Stat. 721, the National Capital Revitalization and Self-Government Improvement Act of 1997.</p>
               </section>

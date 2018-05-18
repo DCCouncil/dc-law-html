@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/42/chapters/15/">Chapter 15. Uses and Trusts.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/42/chapters/14/">Report Error</a>
@@ -87,10 +87,18 @@
         <section class="col8 body">
           <h1>Chapter 14. Sale of Contingent and Limited Interests.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/42-1401.html">§ 42–1401. Sale of life estate and contingent remainder in issue upon application of life tenant.</a>
-            <a href="/dc/council/code/sections/42-1402.html">§ 42–1402. Application for sale by verified bill; contents; parties.</a>
-            <a href="/dc/council/code/sections/42-1403.html">§ 42–1403. Proceeds of sale held by court and treated as real estate.</a>
-            <a href="/dc/council/code/sections/42-1404.html">§ 42–1404. Sale of limited estate and future interest generally; court decree; binding effect thereof.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1401.html">§ 42–1401. Sale of life estate and contingent remainder in issue upon application of life tenant.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1402.html">§ 42–1402. Application for sale by verified bill; contents; parties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1403.html">§ 42–1403. Proceeds of sale held by court and treated as real estate.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/42-1404.html">§ 42–1404. Sale of limited estate and future interest generally; court decree; binding effect thereof.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -105,8 +113,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§97">Mar. 3, 1901, 31 Stat. 1205, ch. 854, § 97</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1001.</p>
                 <p>1973 Ed., § 45-1101.</p>
+                <p>1981 Ed., § 45-1001.</p>
               </section>
             </section>
             <hr/>
@@ -121,8 +129,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§98">Mar. 3, 1901, 31 Stat. 1205, ch. 854, § 98</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1002.</p>
                 <p>1973 Ed., § 45-1102.</p>
+                <p>1981 Ed., § 45-1002.</p>
               </section>
             </section>
             <hr/>
@@ -137,8 +145,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§99">Mar. 3, 1901, 31 Stat. 1205, ch. 854, § 99</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1003.</p>
                 <p>1973 Ed., § 45-1103.</p>
+                <p>1981 Ed., § 45-1003.</p>
               </section>
             </section>
             <hr/>
@@ -153,8 +161,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§100">Mar. 3, 1901, 31 Stat. 1205, ch. 854, § 100</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 45-1004.</p>
                 <p>1973 Ed., § 45-1104.</p>
+                <p>1981 Ed., § 45-1004.</p>
               </section>
             </section>
             <hr/>

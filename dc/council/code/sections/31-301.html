@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/31-302.html">§ 31–302. General requirements for filing audited financial reports and audit committee appointments; extensions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-301.html">Report Error</a>
@@ -127,8 +127,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-317.html">D.C. Law 18-317</a> added pars. (1A), (1B), (2A), (3A), (3B), and (5) to (8).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Annual Financing Reporting Modernization Emergency Amendment Act of 2010 (D.C. Act 18-665, December 28, 2010,  58 DCR 80).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(a) of Annual Financial Reporting Modernization Congressional Review Emergency Amendment Act of 2011 (D.C. Act 19-30, March 15, 2011,  58 DCR 2591).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Annual Financing Reporting Modernization Emergency Amendment Act of 2010 (D.C. Act 18-665, December 28, 2010,  58 DCR 80).</p>
                 <h4>Editor's Notes</h4>
                 <p>Mayor authorized to issue rules: Section 16 of <a class="internal-link" href="/dc/council/laws/10-48.html">D.C. Law 10-48</a> provided that the Mayor shall, pursuant to subchapter I of Chapter 15 of Title 1 [subchapter I of Chapter 5 of Title 2, 2001 Ed.], issue rules to implement the provisions of this chapter.</p>
                 <h4>Delegation of Authority</h4>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/4/subchapters/II/">Subchapter II. Pesticide Education and Control.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/8/chapters/4/subchapters/I/">Report Error</a>
@@ -88,30 +88,78 @@
         <section class="col8 body">
           <h1>Subchapter I. Pesticide Operations.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/8-401.html">§ 8–401. Definitions.</a>
-            <a href="/dc/council/code/sections/8-402.html">§ 8–402. Registration pesticides.</a>
-            <a href="/dc/council/code/sections/8-403.html">§ 8–403. Pesticide applicators.</a>
-            <a href="/dc/council/code/sections/8-403.01.html">§ 8–403.01. Information to be supplied customers.</a>
-            <a href="/dc/council/code/sections/8-403.02.html">§ 8–403.02. Information to be supplied multi-unit property residents and tenants.</a>
-            <a href="/dc/council/code/sections/8-403.03.html">§ 8–403.03. Signs posted for exterior application.</a>
-            <a href="/dc/council/code/sections/8-403.04.html">§ 8–403.04. Reduced-risk pesticides and methods of pest control.</a>
-            <a href="/dc/council/code/sections/8-403.05.html">§ 8–403.05. Notification to abutting properties.</a>
-            <a href="/dc/council/code/sections/8-404.html">§ 8–404. Registered technicians.</a>
-            <a href="/dc/council/code/sections/8-405.html">§ 8–405. Pesticide dealers.</a>
-            <a href="/dc/council/code/sections/8-406.html">§ 8–406. Pesticide operators.</a>
-            <a href="/dc/council/code/sections/8-407.html">§ 8–407. Liability insurance.</a>
-            <a href="/dc/council/code/sections/8-408.html">§ 8–408. Application of this subchapter to governmental entities and public applicators.</a>
-            <a href="/dc/council/code/sections/8-409.html">§ 8–409. Records and reports.</a>
-            <a href="/dc/council/code/sections/8-410.html">§ 8–410. Denial, suspension, modification, and revocation of certification or license.</a>
-            <a href="/dc/council/code/sections/8-411.html">§ 8–411. Administration and enforcement; adoption of regulations.</a>
-            <a href="/dc/council/code/sections/8-412.html">§ 8–412. Enforcement.</a>
-            <a href="/dc/council/code/sections/8-413.html">§ 8–413. Reports of pesticide accidents or losses.</a>
-            <a href="/dc/council/code/sections/8-414.html">§ 8–414. Storage and disposal.</a>
-            <a href="/dc/council/code/sections/8-415.html">§ 8–415. Reciprocity.</a>
-            <a href="/dc/council/code/sections/8-416.html">§ 8–416. Cooperative agreements.</a>
-            <a href="/dc/council/code/sections/8-417.html">§ 8–417. Unlawful acts.</a>
-            <a href="/dc/council/code/sections/8-418.html">§ 8–418. Penalties.</a>
-            <a href="/dc/council/code/sections/8-419.html">§ 8–419. Severability.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-401.html">§ 8–401. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-402.html">§ 8–402. Registration pesticides.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-403.html">§ 8–403. Pesticide applicators.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-403.01.html">§ 8–403.01. Information to be supplied customers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-403.02.html">§ 8–403.02. Information to be supplied multi-unit property residents and tenants.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-403.03.html">§ 8–403.03. Signs posted for exterior application.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-403.04.html">§ 8–403.04. Reduced-risk pesticides and methods of pest control.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-403.05.html">§ 8–403.05. Notification to abutting properties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-404.html">§ 8–404. Registered technicians.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-405.html">§ 8–405. Pesticide dealers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-406.html">§ 8–406. Pesticide operators.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-407.html">§ 8–407. Liability insurance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-408.html">§ 8–408. Application of this subchapter to governmental entities and public applicators.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-409.html">§ 8–409. Records and reports.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-410.html">§ 8–410. Denial, suspension, modification, and revocation of certification or license.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-411.html">§ 8–411. Administration and enforcement; adoption of regulations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-412.html">§ 8–412. Enforcement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-413.html">§ 8–413. Reports of pesticide accidents or losses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-414.html">§ 8–414. Storage and disposal.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-415.html">§ 8–415. Reciprocity.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-416.html">§ 8–416. Cooperative agreements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-417.html">§ 8–417. Unlawful acts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-418.html">§ 8–418. Penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-419.html">§ 8–419. Severability.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

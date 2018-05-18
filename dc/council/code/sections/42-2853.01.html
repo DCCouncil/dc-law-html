@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/42-2853.02.html">§ 42–2853.02. Low-Income Housing Tax Credit Fund.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-2853.01.html">Report Error</a>
@@ -104,9 +104,9 @@
       (<a class="internal-link" href="/dc/council/laws/15-299.html#§2">Apr. 8, 2005, D.C. Law 15-299, § 2, 52 DCR 1502</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) fund provisions, see § 2 of Low-Income Housing Tax Credit Non-Reverting/Non Lapsing Proprietary Fund Emergency Act of 2004 (D.C. Act 15-511, August 2, 2004,  51 DCR 8969).</p>
-                <p>For temporary (90 day) fund provisions, see § 2 of Low-Income Housing Tax Credit Fund Congressional Review Emergency Act of 2004 (D.C. Act 15-730, January 19, 2005,  52 DCR 1958).</p>
                 <p>For temporary (90 day) fund provisions, see § 2 of Low-Income Housing Tax Credit Fund Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-39, February 17, 2005,  52 DCR 3037).</p>
+                <p>For temporary (90 day) fund provisions, see § 2 of Low-Income Housing Tax Credit Fund Congressional Review Emergency Act of 2004 (D.C. Act 15-730, January 19, 2005,  52 DCR 1958).</p>
+                <p>For temporary (90 day) fund provisions, see § 2 of Low-Income Housing Tax Credit Non-Reverting/Non Lapsing Proprietary Fund Emergency Act of 2004 (D.C. Act 15-511, August 2, 2004,  51 DCR 8969).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Low-Income Housing Tax Credit Fund Temporary Act of 2004 (<a class="internal-link" href="/dc/council/laws/15-230.html">D.C. Law 15-230</a>, March 16, 2005, law notification  52 DCR 3556).</p>
                 <h4>References in Text</h4>

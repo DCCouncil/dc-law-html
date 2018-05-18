@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/7-221.html">§ 7–221. Vital records fees and fund.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-220.html">Report Error</a>
@@ -115,19 +115,19 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-269.html">D.C. Law 13-269</a> added subsec. (h).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 3(e) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 1997 (D.C. Act 12-222, December 23, 1997,  44 DCR 114).</p>
-                <p>For temporary amendment of section, see § 3(e) of the Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-309, March 20, 1998,  45 DCR 1923), § 3(e) of the Child Support and Welfare Reform Compliance Second Emergency Amendment Act of 1998 (D.C. Act 12-439, August 12, 1998,  45 DCR 6110), § 3(e) of the Child Support and Welfare Reform Compliance Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-503, October 27, 1998,  45 DCR 8495), and § 3(e) of the Child Support and Welfare Reform Compliance Second Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-600, January 20, 1999,  46 DCR 1239).</p>
-                <p>For temporary repeal of <a class="internal-link" href="/dc/council/laws/12-103.html">D.C. Law 12-103</a>, see § 13 of the Child Support and Welfare Reform Compliance Second Emergency Amendment Act of 1998 (D.C. Act 12-439, August 12, 1998,  45 DCR 6110).</p>
-                <p>For temporary (90-day) amendment of section, see § 103(e) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 1999 (D.C. Act 13-126, August 4, 1999,  46 DCR 6606).</p>
-                <p>For temporary (90-day) amendment of section, see § 103(e) of the Child Support and Welfare Reform Compliance Legislative Review Emergency Amendment Act of 1999 (D.C. Act 13-177, November 2, 1999,  46 DCR 9678).</p>
-                <p>For temporary (90-day) amendment of section, see § 103(e) of the Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-241, January 11, 2000,  47 DCR 581).</p>
-                <p>For temporary (90 day) amendment of section, see § 103(e) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 2000 (D.C. Act 13-446, November 7, 2000,  47 DCR 9213).</p>
                 <p>For temporary (90 day) amendment of section, see § 104(e) of Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-5, February 13, 2001,  48 DCR 2440).</p>
+                <p>For temporary (90 day) amendment of section, see § 103(e) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 2000 (D.C. Act 13-446, November 7, 2000,  47 DCR 9213).</p>
+                <p>For temporary (90-day) amendment of section, see § 103(e) of the Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-241, January 11, 2000,  47 DCR 581).</p>
+                <p>For temporary (90-day) amendment of section, see § 103(e) of the Child Support and Welfare Reform Compliance Legislative Review Emergency Amendment Act of 1999 (D.C. Act 13-177, November 2, 1999,  46 DCR 9678).</p>
+                <p>For temporary (90-day) amendment of section, see § 103(e) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 1999 (D.C. Act 13-126, August 4, 1999,  46 DCR 6606).</p>
+                <p>For temporary repeal of <a class="internal-link" href="/dc/council/laws/12-103.html">D.C. Law 12-103</a>, see § 13 of the Child Support and Welfare Reform Compliance Second Emergency Amendment Act of 1998 (D.C. Act 12-439, August 12, 1998,  45 DCR 6110).</p>
+                <p>For temporary amendment of section, see § 3(e) of the Child Support and Welfare Reform Compliance Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-309, March 20, 1998,  45 DCR 1923), § 3(e) of the Child Support and Welfare Reform Compliance Second Emergency Amendment Act of 1998 (D.C. Act 12-439, August 12, 1998,  45 DCR 6110), § 3(e) of the Child Support and Welfare Reform Compliance Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-503, October 27, 1998,  45 DCR 8495), and § 3(e) of the Child Support and Welfare Reform Compliance Second Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-600, January 20, 1999,  46 DCR 1239).</p>
+                <p>For temporary amendment of section, see § 3(e) of the Child Support and Welfare Reform Compliance Emergency Amendment Act of 1997 (D.C. Act 12-222, December 23, 1997,  44 DCR 114).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 3(e) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1998 (<a class="internal-link" href="/dc/council/laws/12-103.html">D.C. Law 12-103</a>, May 8, 1998, law notification  45 DCR 3254).</p>
-                <p>For temporary (225 day) amendment of section, see § 3(e) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1998 (<a class="internal-link" href="/dc/council/laws/12-210.html">D.C. Law 12-210</a>, April 13, 1999, law notification  46 DCR 3832).</p>
-                <p>For temporary (225 day) amendment of section, see § 103(e) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1999 (D.C. Law 13-57, March 7, 2000, law notification  47 DCR 1979).</p>
                 <p>For temporary (225 day) amendment of section, see § 103(e) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 2000 (<a class="internal-link" href="/dc/council/laws/13-207.html">D.C. Law 13-207</a>, March 31, 2001, law notification  48 DCR 3238).</p>
+                <p>For temporary (225 day) amendment of section, see § 103(e) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1999 (D.C. Law 13-57, March 7, 2000, law notification  47 DCR 1979).</p>
+                <p>For temporary (225 day) amendment of section, see § 3(e) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1998 (<a class="internal-link" href="/dc/council/laws/12-210.html">D.C. Law 12-210</a>, April 13, 1999, law notification  46 DCR 3832).</p>
+                <p>For temporary (225 day) amendment of section, see § 3(e) of Child Support and Welfare Reform Compliance Temporary Amendment Act of 1998 (<a class="internal-link" href="/dc/council/laws/12-103.html">D.C. Law 12-103</a>, May 8, 1998, law notification  45 DCR 3254).</p>
               </section>
             </section>
           </section>

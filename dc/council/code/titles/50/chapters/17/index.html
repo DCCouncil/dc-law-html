@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/50/chapters/17A/">Chapter 17A. Distracted Driving Prevention.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/50/chapters/17/">Report Error</a>
@@ -87,17 +87,39 @@
         <section class="col8 body">
           <h1>Chapter 17. Child Restraint.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/50-1701.html">§ 50–1701. Findings; purpose.</a>
-            <a href="/dc/council/code/sections/50-1702.html">§ 50–1702. Definitions.</a>
-            <a href="/dc/council/code/sections/50-1703.html">§ 50–1703. Requirements.</a>
-            <a href="/dc/council/code/sections/50-1703.01.html">§ 50–1703.01. Child Passenger Safety Program.</a>
-            <a href="/dc/council/code/sections/50-1703.02.html">§ 50–1703.02. Child Passenger Safety Fund. [Repealed]</a>
-            <a href="/dc/council/code/sections/50-1704.html">§ 50–1704. Seats to conform to federal safety standards.</a>
-            <a href="/dc/council/code/sections/50-1704.01.html">§ 50–1704.01. Administration.</a>
-            <a href="/dc/council/code/sections/50-1705.html">§ 50–1705. Application of chapter.</a>
-            <a href="/dc/council/code/sections/50-1706.html">§ 50–1706. Penalty; waiver of fine.</a>
-            <a href="/dc/council/code/sections/50-1707.html">§ 50–1707. Evidentiary effect; basis for civil liability.</a>
-            <a href="/dc/council/code/sections/50-1708.html">§ 50–1708. Rules; public information program.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1701.html">§ 50–1701. Findings; purpose.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1702.html">§ 50–1702. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1703.html">§ 50–1703. Requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1703.01.html">§ 50–1703.01. Child Passenger Safety Program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1703.02.html">§ 50–1703.02. Child Passenger Safety Fund. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1704.html">§ 50–1704. Seats to conform to federal safety standards.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1704.01.html">§ 50–1704.01. Administration.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1705.html">§ 50–1705. Application of chapter.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1706.html">§ 50–1706. Penalty; waiver of fine.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1707.html">§ 50–1707. Evidentiary effect; basis for civil liability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1708.html">§ 50–1708. Rules; public information program.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -269,8 +291,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 40-1206.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-212.html">D.C. Law 14-212</a> rewrote subsec. (a) which had read as follows: “(a) Any individual who violates any provision of this chapter shall be subject to a fine of $55, and the violation shall be processed and adjudicated under the provisions applicable to parking, standing, stopping, and pedestrian infractions which are set forth in subchapter III of Chapter 23 of this title.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (a)(2), substituted “as moving violations” for “under the provisions applicable to parking, standing, stopping, and pedestrian infractions which are set forth in subchapter III of Chapter 23 of this title”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-212.html">D.C. Law 14-212</a> rewrote subsec. (a) which had read as follows: “(a) Any individual who violates any provision of this chapter shall be subject to a fine of $55, and the violation shall be processed and adjudicated under the provisions applicable to parking, standing, stopping, and pedestrian infractions which are set forth in subchapter III of Chapter 23 of this title.”</p>
                 <h4>Transfer of Functions</h4>
                 <p>The functions of the Department of Transportation were transferred to the Department of Public Works by Reorganization Plan No. 4 of 1983, effective March 1, 1984.</p>
               </section>

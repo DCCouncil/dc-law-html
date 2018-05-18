@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/8-109.10.html">§ 8–109.10. Construction.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-109.09.html">Report Error</a>
@@ -110,8 +110,8 @@
                 <h4>Short Title</h4>
                 <p>Short title: Section 6061 of <a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> provided that subtitle G of title VI of the act may be cited as the “Environmental Impact Screening Forms and Environmental Impact Statements Amendment Act of 2010”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Approval and disapproval of proposed Environmental Policy Act rules: Pursuant to Resolution 8-314, the “District of Columbia Environmental Policy Act of 1989 Proposed Rulemaking Approval &amp; Disapproval Resolution of 1990,” effective December 21, 1990, the Council approved, in part, and disapproved, in part, the proposed rules to implement the District of Columbia Environmental Policy Act of 1989.</p>
                 <p>District of Columbia Environmental Policy Act Proposed Rulemaking Approval Resolution of 1994: Pursuant to Proposed Resolution 11-25, deemed approved February 18, 1995, Council approved the proposed rulemaking adopting Chapter 72 (Environmental Policy Act Regulations) of Title 20, DCMR, issued pursuant to the “District of Columbia Environmental Policy Act of 1989.”</p>
+                <p>Approval and disapproval of proposed Environmental Policy Act rules: Pursuant to Resolution 8-314, the “District of Columbia Environmental Policy Act of 1989 Proposed Rulemaking Approval &amp; Disapproval Resolution of 1990,” effective December 21, 1990, the Council approved, in part, and disapproved, in part, the proposed rules to implement the District of Columbia Environmental Policy Act of 1989.</p>
               </section>
             </section>
           </section>

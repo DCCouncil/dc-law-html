@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-615.html">§ 28:9-615. Application of proceeds of disposition; liability for deficiency and right to surplus.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-614.html">Report Error</a>
@@ -137,9 +137,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:9-602.html">28:9-602</a> and § <a class="internal-link" href="/dc/council/code/sections/28:9-613.html">28:9-613</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. New.</p>
-                <p>2. Notification in Consumer-Goods Transactions. Paragraph (1) sets forth the information required for a reasonable notification in a consumer-goods transaction. A notification that lacks any of the information set forth in paragraph (1) is insufficient as a matter of law. Compare  Section 9-613(2), under which the trier of fact may find a notification to be sufficient even if it lacks some information listed in paragraph (1) of that section.</p>
                 <p>3. Safe-Harbor Form of Notification; Errors in Information. Although paragraph (2) provides that a particular phrasing of a notification is not required, paragraph (3) specifies a safe-harbor form that, when properly completed, satisfies paragraph (1). Paragraphs (4), (5), and (6) contain special rules applicable to erroneous and additional information. Under paragraph (4), a notification in the safe-harbor form specified in paragraph (3) is not rendered insufficient if it contains additional information at the end of the form. Paragraph (5) provides that non-misleading errors in information contained in a notification are permitted if the safe-harbor form is used and if the errors are in information not required by paragraph (1). Finally, if a notification is in a form other than the paragraph (3) safe-harbor form, other law determines the effect of including in the notification information other than that required by paragraph (1).</p>
+                <p>2. Notification in Consumer-Goods Transactions. Paragraph (1) sets forth the information required for a reasonable notification in a consumer-goods transaction. A notification that lacks any of the information set forth in paragraph (1) is insufficient as a matter of law. Compare  Section 9-613(2), under which the trier of fact may find a notification to be sufficient even if it lacks some information listed in paragraph (1) of that section.</p>
+                <p>1. Source. New.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/10-308.html">§ 10–308. Athletic Field Permit Coordination Committee.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/10-307.html">Report Error</a>
@@ -107,12 +107,12 @@
       (<a class="internal-link" href="/dc/council/laws/10-246.html#§7a">Mar. 23, 1995, D.C. Law 10-246, § 7a</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">as added Sept. 14, 2011, D.C. Law 19-21, § 6042(d), 58 DCR 6226</a>; <a class="internal-link" href="/dc/council/laws/19-280.html">Apr. 23, 2013, D.C. Law 19-280, § 2(d), 60 DCR 2124</a>; <a class="internal-link" href="/dc/council/laws/20-216.html">Mar. 11, 2015, D.C. Law 20-216, § 2, 61 DCR 13104</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-280.html">D.C. Law 19-280</a> redesignated the existing paragraph as (a); and added (b).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-216.html">D.C. Law 20-216</a> substituted “§ <a class="internal-link" href="/dc/council/code/sections/10-302.html">10-302</a>(b-1) and (d) and § <a class="internal-link" href="/dc/council/code/sections/10-302.01.html">10-302.01</a>” for “§ <a class="internal-link" href="/dc/council/code/sections/10-302.html">10-302</a>(b-1) and (d), § <a class="internal-link" href="/dc/council/code/sections/10-302.01.html">10-302.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/10-302.02.html">10-302.02</a>” in (b)(2).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-280.html">D.C. Law 19-280</a> redesignated the existing paragraph as (a); and added (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Department of Parks and Recreation Fee-based Use Permit Authority Clarification Emergency Amendment Act of 2014 (D.C. Act 20-299, March 14, 2014,  61 DCR 2570, 20 DCSTAT 3068).</p>
-                <p>For temporary (90 days) amendment of this section, see §§  2 and 3 of the Department of Parks and Recreation Fee-based Use Permit Authority Clarification Congressional Review Emergency Amendment Act of 2014, (D.C. Act 20-353, June 17, 2014, 61 DCR 6334).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2 of the Department of Parks and Recreation Fee-based Use Permit Authority Clarification Emergency Amendment Act of 2015 (D.C. Act 21-5, Feb. 23, 2015,  62 DCR 2472, 21 STAT 804).</p>
+                <p>For temporary (90 days) amendment of this section, see §§  2 and 3 of the Department of Parks and Recreation Fee-based Use Permit Authority Clarification Congressional Review Emergency Amendment Act of 2014, (D.C. Act 20-353, June 17, 2014, 61 DCR 6334).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Department of Parks and Recreation Fee-based Use Permit Authority Clarification Emergency Amendment Act of 2014 (D.C. Act 20-299, March 14, 2014,  61 DCR 2570, 20 DCSTAT 3068).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 2 of the Department of Parks and Recreation Feebased Use Permit Authority Clarification Temporary Amendment Act of 2014 (D.C. Law 20-113, June 21, 2014,  61 DCR 4332).</p>
               </section>

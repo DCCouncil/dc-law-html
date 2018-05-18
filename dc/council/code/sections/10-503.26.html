@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/titles/10/chapters/5/subchapters/III/">Subchapter III. Details and Transfers from MPD to Capitol Police.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/10-503.26.html">Report Error</a>
@@ -107,16 +107,16 @@
       (<a class="internal-link" href="/dc/council/code/sections/10-503.26.html">July 31, 1946, 60 Stat. 721, ch. 707, § 16(a)</a>; <a class="internal-link" href="/us/congress/laws/public/90-108.html">Oct. 20, 1967, 81 Stat. 277, Pub. L. 90-108, § 1(d)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 9-128.</p>
                 <p>1973 Ed., § 9-132.</p>
+                <p>1981 Ed., § 9-128.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-204.23.html">1-204.23</a>, § <a class="internal-link" href="/dc/council/code/sections/1-207.39.html">1-207.39</a>, and § <a class="internal-link" href="/dc/council/code/sections/2-1002.html">2-1002</a>.</p>
                 <h4>Cross References</h4>
-                <p>District planning, responsibilities of mayor, see § <a class="internal-link" href="/dc/council/code/sections/1-204.23.html">1-204.23</a>.</p>
                 <p>National Capital Planning Commission, see § <a class="internal-link" href="/dc/council/code/sections/2-1002.html">2-1002</a>.</p>
+                <p>District planning, responsibilities of mayor, see § <a class="internal-link" href="/dc/council/code/sections/1-204.23.html">1-204.23</a>.</p>
                 <h4>References in Text</h4>
-                <p>Section 901(3) of Title 15, United States Code, referred to in paragraph (2) of this section, was repealed by the Act of June 19, 1968, 82 Stat. 234, Pub. L. 90-351, § 906.</p>
                 <p>Section 121(1) of Title 50, United States Code, referred to in paragraph (4) of this section, was repealed by the Act of October 15, 1970, 84 Stat. 960, Pub. L. 91-452, § 1106(a).</p>
+                <p>Section 901(3) of Title 15, United States Code, referred to in paragraph (2) of this section, was repealed by the Act of June 19, 1968, 82 Stat. 234, Pub. L. 90-351, § 906.</p>
               </section>
             </section>
           </section>

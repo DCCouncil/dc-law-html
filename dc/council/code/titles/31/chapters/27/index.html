@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/31/chapters/28/">Chapter 28. Access to Emergency Medical Services.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/31/chapters/27/">Report Error</a>
@@ -87,20 +87,48 @@
         <section class="col8 body">
           <h1>Chapter 27. Regulation of Casualty and Other Insurance Rates.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/31-2701.html">§ 31–2701. Definitions.</a>
-            <a href="/dc/council/code/sections/31-2702.html">§ 31–2702. Applicability of chapter.</a>
-            <a href="/dc/council/code/sections/31-2703.html">§ 31–2703. Making of rates.</a>
-            <a href="/dc/council/code/sections/31-2704.html">§ 31–2704. Filing requirements of individual companies; adjustment of rates; removal of discriminations.</a>
-            <a href="/dc/council/code/sections/31-2705.html">§ 31–2705. Cooperative and concerted action authorized.</a>
-            <a href="/dc/council/code/sections/31-2706.html">§ 31–2706. Filing requirements of organizations of companies; unfair practices; supervision of rating organizations. [Repealed]</a>
-            <a href="/dc/council/code/sections/31-2707.html">§ 31–2707. Information to be furnished to insured or Commissioner; grievance procedure.</a>
-            <a href="/dc/council/code/sections/31-2708.html">§ 31–2708. Additional powers and duties of Commissioner.</a>
-            <a href="/dc/council/code/sections/31-2709.html">§ 31–2709. Violations.</a>
-            <a href="/dc/council/code/sections/31-2710.html">§ 31–2710. Judicial proceedings to contest actions of Commissioner.</a>
-            <a href="/dc/council/code/sections/31-2711.html">§ 31–2711. [Omitted]</a>
-            <a href="/dc/council/code/sections/31-2712.html">§ 31–2712. [Omitted]</a>
-            <a href="/dc/council/code/sections/31-2713.html">§ 31–2713. [Omitted]</a>
-            <a href="/dc/council/code/sections/31-2714.html">§ 31–2714. Exemptions and limitations.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2701.html">§ 31–2701. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2702.html">§ 31–2702. Applicability of chapter.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2703.html">§ 31–2703. Making of rates.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2704.html">§ 31–2704. Filing requirements of individual companies; adjustment of rates; removal of discriminations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2705.html">§ 31–2705. Cooperative and concerted action authorized.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2706.html">§ 31–2706. Filing requirements of organizations of companies; unfair practices; supervision of rating organizations. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2707.html">§ 31–2707. Information to be furnished to insured or Commissioner; grievance procedure.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2708.html">§ 31–2708. Additional powers and duties of Commissioner.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2709.html">§ 31–2709. Violations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2710.html">§ 31–2710. Judicial proceedings to contest actions of Commissioner.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2711.html">§ 31–2711. [Omitted]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2712.html">§ 31–2712. [Omitted]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2713.html">§ 31–2713. [Omitted]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2714.html">§ 31–2714. Exemptions and limitations.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -130,23 +158,23 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch324.html#§1">May 20, 1948, 62 Stat. 242, ch. 324, § 1</a>; <a class="internal-link" href="/dc/council/laws/11-268.html">May 21, 1997, D.C. Law 11-268, § 10(t), 44 DCR 1730</a>; <a class="internal-link" href="/dc/council/laws/13-265.html">Apr. 3, 2001, D.C. Law 13-265, § 201, 48 DCR 1225</a>; <a class="internal-link" href="/dc/council/laws/13-299.html">May 5, 2001, D.C. Law 13-299, § 2(a), 48 DCR 2211</a>; <a class="internal-link" href="/dc/council/laws/14-153.html">June 25, 2002, D.C. Law 14-153, § 2, 49 DCR 4257</a>; <a class="internal-link" href="/dc/council/laws/15-166.html">June 11, 2004, D.C. Law 15-166, § 4(p), 51 DCR 2817</a>; <a class="internal-link" href="/dc/council/laws/16-263.html">Mar. 14, 2007, D.C. Law 16-263, § 101(a), 54 DCR 807</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1701.</p>
                 <p>1973 Ed., § 35-1501.</p>
+                <p>1981 Ed., § 35-1701.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-265.html">D.C. Law 13-265</a> amended the definition of exempt commercial risk.</p>
-                <p><a class="internal-link" href="/dc/council/laws/13-299.html">D.C. Law 13-299</a> added the definition of exempt commercial risk.</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-153.html">D.C. Law 14-153</a> amended the definition of exempt commercial risk without any change.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-166.html">D.C. Law 15-166</a>, in the definition of commissioner, substituted “Commissioner of the Department of Insurance, Securities, and Banking” for “Commissioner of Insurance and Securities”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-263.html">D.C. Law 16-263</a> added par. (8).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-166.html">D.C. Law 15-166</a>, in the definition of commissioner, substituted “Commissioner of the Department of Insurance, Securities, and Banking” for “Commissioner of Insurance and Securities”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-153.html">D.C. Law 14-153</a> amended the definition of exempt commercial risk without any change.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-299.html">D.C. Law 13-299</a> added the definition of exempt commercial risk.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-265.html">D.C. Law 13-265</a> amended the definition of exempt commercial risk.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Insurance Economic Development Emergency Amendment Act of 2001 (D.C. Act 14-131, October 2, 2001,  48 DCR 9568).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Insurance Economic Development Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-218, December 21, 2001,  49 DCR 393).</p>
                 <p>For temporary (90 day) amendment of section, see § 4(p) of Consolidation of Financial Services Emergency Amendment Act of 2004 (D.C. Act 15-381, February 27, 2004,  51 DCR 2653).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Insurance Economic Development Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-218, December 21, 2001,  49 DCR 393).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Insurance Economic Development Emergency Amendment Act of 2001 (D.C. Act 14-131, October 2, 2001,  48 DCR 9568).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Insurance Economic Development Temporary Amendment Act of 2001 (D.C. Law 14-61, January 24, 2002, law notification  49 DCR 990).</p>
                 <h4>Editor's Notes</h4>
-                <p>Department of Insurance abolished: The Department of Insurance, including the Superintendent, was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. Reorganization Order No. 43, dated June 23, 1953, as amended, established, under the direction and control of a Commissioner, a Department of Insurance headed by a Superintendent. The Order provided for the organization of the Department, abolished the previously existing Department of Insurance, and provided that all functions and positions of the previous Department would be transferred to the new Department of Insurance, including the duties, powers, and authorities of all officers and employees; and that all personnel, property, records and unexpended balances relating to the functions and positions transferred would also be transferred to the new Department. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967. The functions of the Superintendent of Insurance were transferred to the Department of Consumer and Regulatory Affairs by Reorganization Plan No. 1 of 1983, effective March 31, 1983. Pursuant to the provisions of <a class="internal-link" href="/dc/council/laws/11-268.html">D.C. Law 11-268</a>, the Department of Insurance and Securities Regulation was established and the duties of the Superintendent of Insurance and the Insurance Administration were assumed by the Commissioner of Insurance and Securities and the Insurance Administration in the Department of Consumer and Regulatory Affairs was abolished.</p>
                 <p>Section 3 of <a class="internal-link" href="/dc/council/laws/14-153.html">D.C. Law 14-153</a> provided: “Section 2 shall apply as of May 15, 2001.”</p>
+                <p>Department of Insurance abolished: The Department of Insurance, including the Superintendent, was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. Reorganization Order No. 43, dated June 23, 1953, as amended, established, under the direction and control of a Commissioner, a Department of Insurance headed by a Superintendent. The Order provided for the organization of the Department, abolished the previously existing Department of Insurance, and provided that all functions and positions of the previous Department would be transferred to the new Department of Insurance, including the duties, powers, and authorities of all officers and employees; and that all personnel, property, records and unexpended balances relating to the functions and positions transferred would also be transferred to the new Department. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967. The functions of the Superintendent of Insurance were transferred to the Department of Consumer and Regulatory Affairs by Reorganization Plan No. 1 of 1983, effective March 31, 1983. Pursuant to the provisions of <a class="internal-link" href="/dc/council/laws/11-268.html">D.C. Law 11-268</a>, the Department of Insurance and Securities Regulation was established and the duties of the Superintendent of Insurance and the Insurance Administration were assumed by the Commissioner of Insurance and Securities and the Insurance Administration in the Department of Consumer and Regulatory Affairs was abolished.</p>
               </section>
             </section>
             <hr/>
@@ -166,8 +194,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch324.html#§2">May 20, 1948, 62 Stat. 242, ch. 324, § 2</a>; <a class="internal-link" href="/dc/council/laws/10-40.html">Oct. 21, 1993, D.C. Law 10-40, § 14, 40 DCR 6009</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1702.</p>
                 <p>1973 Ed., § 35-1502.</p>
+                <p>1981 Ed., § 35-1702.</p>
               </section>
             </section>
             <hr/>
@@ -201,15 +229,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch324.html#§3">May 20, 1948, 62 Stat. 243, ch. 324, § 3</a>; <a class="internal-link" href="/dc/council/laws/4-155.html">Sept. 18, 1982, D.C. Law 4-155,§ 14(a), 29 DCR 3491</a>; <a class="internal-link" href="/dc/council/laws/6-96.html">Mar. 4, 1986, D.C. Law 6-96, § 3, 32 DCR 7245</a>; <a class="internal-link" href="/dc/council/laws/11-268.html">May 21, 1997, D.C. Law 11-268, § 10(t), 44 DCR 1730</a>; <a class="internal-link" href="/dc/council/laws/11-160.html">Sept. 20, 1996, D.C. Law 11-160, § 4, 43 DCR 3722</a>; <a class="internal-link" href="/dc/council/laws/16-263.html">Mar. 14, 2007, D.C. Law 16-263, § 101(b), 54 DCR 807</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1703.</p>
                 <p>1973 Ed., § 35-1503.</p>
+                <p>1981 Ed., § 35-1703.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-2704.html">31-2704</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-263.html">D.C. Law 16-263</a> added subsec. (f-1).</p>
                 <h4>Editor's Notes</h4>
-                <p>Report by Commissioner of Insurance and Securities: Section 5 of <a class="internal-link" href="/dc/council/laws/11-160.html">D.C. Law 11-160</a> provided that “Within two years of September 20, 1996, the Commissioner of Insurance and Securities shall prepare and submit to the Council of the District of Columbia for its review a report on the impact of this act on the private passenger motor vehicle insurance market or any part thereof, the funding for the Office of Insurance, the District of Columbia insurance premium tax, the number of insurers doing business in the District, and the number of insurers domiciled in the District of Columbia. In preparing such report, the Commissioner may request from specific private passenger motor vehicle insurers doing business in the District, or from all such insurers, reasonable and pertinent information. Information which is proprietary to any affected insurer shall be treated as confidential by the Commissioner, but may be used in the aggregate with other information from other affected insurers for statistical or other reporting purposes.”</p>
                 <p>Department of Insurance abolished: See Historical and Statutory Notes following § 35-2701.</p>
+                <p>Report by Commissioner of Insurance and Securities: Section 5 of <a class="internal-link" href="/dc/council/laws/11-160.html">D.C. Law 11-160</a> provided that “Within two years of September 20, 1996, the Commissioner of Insurance and Securities shall prepare and submit to the Council of the District of Columbia for its review a report on the impact of this act on the private passenger motor vehicle insurance market or any part thereof, the funding for the Office of Insurance, the District of Columbia insurance premium tax, the number of insurers doing business in the District, and the number of insurers domiciled in the District of Columbia. In preparing such report, the Commissioner may request from specific private passenger motor vehicle insurers doing business in the District, or from all such insurers, reasonable and pertinent information. Information which is proprietary to any affected insurer shall be treated as confidential by the Commissioner, but may be used in the aggregate with other information from other affected insurers for statistical or other reporting purposes.”</p>
               </section>
             </section>
             <hr/>
@@ -234,8 +262,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch324.html#§4">May 20, 1948, 62 Stat. 243, ch. 324, § 4</a>; <a class="internal-link" href="/dc/council/laws/11-268.html">May 21, 1997, D.C. Law 11-268, § 10(t), 44 DCR 1730</a>; <a class="internal-link" href="/dc/council/laws/12-81.html">Mar. 24, 1998, D.C. Law 12-81, § 30(a), 45 DCR 745</a>; <a class="internal-link" href="/dc/council/laws/16-263.html">Mar. 14, 2007, D.C. Law 16-263, § 101(c), 54 DCR 807</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1704.</p>
                 <p>1973 Ed., § 35-1504.</p>
+                <p>1981 Ed., § 35-1704.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-263.html">D.C. Law 16-263</a> rewrote subsec. (c) which had read as follows: “(c) After such an investigation of any such rates, the Commissioner shall, before ordering any appropriate adjustment thereof, hold a hearing upon not less than 10-days written notice specifying the matters to be considered at such hearing, to every company and rating organization which filed such rates, provided the Commissioner need not hold such hearing in the event he is advised by every such company and rating organization that they do not desire such hearing. If after such hearing the Commissioner determines that any or all of such rates are excessive or inadequate, he shall order appropriate adjustment thereof. Pending such investigation and order of the Commissioner, rates shall be deemed to have been made in accordance with the terms of this chapter. No order of adjustment shall affect any contract or policy made or issued prior to the effective date of such order unless: (1) the adjustment to be effected is substantial and exceeds the cost to the companies of making the adjustment; and (2) the order is made after the prescribed investigation and hearing and within 30 days after the filing of rates affected. In no event shall an order of adjustment affect an existing contract or policy other than one of workmen’s compensation or automobile liability insurance required by law, order, rule, or regulation of a public authority, or a contract or policy of any type as to which the rates are not, by general custom of the business or because of rarity and peculiar characteristics, written according to normal classification or rating procedure.”</p>
                 <h4>Editor's Notes</h4>
@@ -259,8 +287,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch324.html#§5">May 20, 1948, 62 Stat. 244, ch. 324, § 5</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1705.</p>
                 <p>1973 Ed., § 35-1505.</p>
+                <p>1981 Ed., § 35-1705.</p>
               </section>
             </section>
             <hr/>
@@ -275,14 +303,14 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch324.html#§303">May 20, 1948, 62 Stat. 245, ch. 324, § 6</a>; <a class="internal-link" href="/dc/council/laws/10-233.html">Mar. 21, 1995, D.C. Law 10-233, § 7, 42 DCR 24</a>; <a class="internal-link" href="/dc/council/laws/11-110.html">Apr. 18, 1996, D.C. Law 11-110, § 39, 43 DCR 530</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997,D.C. Law 11-255, § 40, 44 DCR 1271</a>; <a class="internal-link" href="/dc/council/laws/11-268.html">May 21, 1997, D.C. Law 11-268, § 10(t), 44DCR 1730</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2003(jj), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/13-265.html">Apr. 3, 2001, D.C. Law 13-265, § 126(c), 48 DCR 1225</a>; <a class="internal-link" href="/dc/council/laws/14-213.html">redesignated § 303, Oct. 19, 2002, D.C. Law 14-213, § 20(b), 49 DCR 8140</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1706.</p>
                 <p>1973 Ed., § 35-1506.</p>
+                <p>1981 Ed., § 35-1706.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For purported temporary (90 day) amendment of section, see § 3(x) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <h4>Editor's Notes</h4>
-                <p>D.C. Act 15-145, § 3(x) and <a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, § 3(x), purported to amend subsec. (c)(5) of this section previously repealed by <a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>.</p>
-                <p>Office of Collector of Taxes abolished: The Office of the Collector of Taxes was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. All functions of the Office of the Collector of Taxes including the functions of all officers, employees, and subordinate agencies were transferred to the Director, Department of General Administration by Reorganization Order No. 3, dated August 28, 1952. Reorganization Order No. 20, dated November 10, 1952, transferred the functions of the Collector of Taxes to the Finance Office. The same Order provided for the Office of the Collector of Taxes headed by a Collector in the Finance Office, and abolished the previously existing Office of the Collector of Taxes. Reorganization Order No. 20 was superseded and replaced by Organization Order No. 121, dated December 12, 1957, which provided that the Finance Office (consisting of the Office of the Finance Officer, Property Tax Division, Revenue Division, Treasury Division, Accounting Division, and Data Processing Division) would continue under the direction and control of the Director of General Administration, and that the Treasury Division would perform the function of collecting revenues of the District of Columbia and depositing the same with the Treasurer of the United States. Organization Order No. 121, was revoked by Organization Order No. 3, dated December 13, 1967, Part IVC of which prescribed the functions of the Finance Office within a newly established Department of General Administration. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967. Functions of the Finance Office as stated in Part IVC of Organization Order No. 3 were transferred to the Director of the Department of Finance and Revenue by Commissioner’s Order No. 69-96, dated March 7, 1969. The collection functions of the Director of the Department of Finance and Revenue were transferred to the District of Columbia Treasurer by § <a class="internal-link" href="/dc/council/code/sections/47-316.html">47-316</a> on March 5, 1981.</p>
                 <p>Department of Insurance abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/31-2701.html">31-2701</a>.</p>
+                <p>Office of Collector of Taxes abolished: The Office of the Collector of Taxes was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. All functions of the Office of the Collector of Taxes including the functions of all officers, employees, and subordinate agencies were transferred to the Director, Department of General Administration by Reorganization Order No. 3, dated August 28, 1952. Reorganization Order No. 20, dated November 10, 1952, transferred the functions of the Collector of Taxes to the Finance Office. The same Order provided for the Office of the Collector of Taxes headed by a Collector in the Finance Office, and abolished the previously existing Office of the Collector of Taxes. Reorganization Order No. 20 was superseded and replaced by Organization Order No. 121, dated December 12, 1957, which provided that the Finance Office (consisting of the Office of the Finance Officer, Property Tax Division, Revenue Division, Treasury Division, Accounting Division, and Data Processing Division) would continue under the direction and control of the Director of General Administration, and that the Treasury Division would perform the function of collecting revenues of the District of Columbia and depositing the same with the Treasurer of the United States. Organization Order No. 121, was revoked by Organization Order No. 3, dated December 13, 1967, Part IVC of which prescribed the functions of the Finance Office within a newly established Department of General Administration. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967. Functions of the Finance Office as stated in Part IVC of Organization Order No. 3 were transferred to the Director of the Department of Finance and Revenue by Commissioner’s Order No. 69-96, dated March 7, 1969. The collection functions of the Director of the Department of Finance and Revenue were transferred to the District of Columbia Treasurer by § <a class="internal-link" href="/dc/council/code/sections/47-316.html">47-316</a> on March 5, 1981.</p>
+                <p>D.C. Act 15-145, § 3(x) and <a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, § 3(x), purported to amend subsec. (c)(5) of this section previously repealed by <a class="internal-link" href="/dc/council/laws/14-213.html">D.C. Law 14-213</a>.</p>
               </section>
             </section>
             <hr/>
@@ -300,8 +328,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch324.html#§7">May 20, 1948, 62 Stat. 246, ch. 324, § 7</a>; <a class="internal-link" href="/dc/council/laws/11-268.html">May 21, 1997, D.C. Law 11-268, § 10(t), 44 DCR 1730</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1707.</p>
                 <p>1973 Ed., § 35-1507.</p>
+                <p>1981 Ed., § 35-1707.</p>
                 <h4>Editor's Notes</h4>
                 <p>Department of Insurance abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/31-2701.html">31-2701</a>.</p>
               </section>
@@ -323,8 +351,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch324.html#§8">May 20, 1948, 62 Stat. 246, ch. 324, § 8</a>; <a class="internal-link" href="/dc/council/laws/11-268.html">May 21, 1997, D.C. Law 11-268, § 10(t), 44 DCR 1730</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1708.</p>
                 <p>1973 Ed., § 35-1508.</p>
+                <p>1981 Ed., § 35-1708.</p>
                 <h4>Editor's Notes</h4>
                 <p>Department of Insurance abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/31-2701.html">31-2701</a>.</p>
                 <h4>Change in Government</h4>
@@ -343,8 +371,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch324.html#§9">May 20, 1948, 62 Stat. 247, ch. 324, § 9</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1709.</p>
                 <p>1973 Ed., § 35-1509.</p>
+                <p>1981 Ed., § 35-1709.</p>
               </section>
             </section>
             <hr/>
@@ -359,8 +387,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-2-ch324.html#§10">May 20, 1948, 62 Stat. 247, ch. 324, § 10</a>; <a class="internal-link" href="/dc/council/laws/11-268.html">May 21, 1997, D.C. Law 11-268,§ 10, 44 DCR 1730</a>; <a class="internal-link" href="/dc/council/laws/12-81.html">Mar. 24, 1998, D.C. Law 12-81, § 30(b), 45 DCR 745</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-1710.</p>
                 <p>1973 Ed., § 35-1510.</p>
+                <p>1981 Ed., § 35-1710.</p>
                 <h4>Editor's Notes</h4>
                 <p>Department of Insurance abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/31-2701.html">31-2701</a>.</p>
               </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/24/chapters/2/subchapters/VI/">Subchapter VI. Resocialization Furlough Program.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/24/chapters/2/subchapters/V/">Report Error</a>
@@ -88,16 +88,36 @@
         <section class="col8 body">
           <h1>Subchapter V. Work Release Program.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/24-241.01.html">§ 24–241.01. Authority granted to establish program.</a>
-            <a href="/dc/council/code/sections/24-241.02.html">§ 24–241.02. Recommendations; order of court or Board of Parole required.</a>
-            <a href="/dc/council/code/sections/24-241.03.html">§ 24–241.03. Conditions for release.</a>
-            <a href="/dc/council/code/sections/24-241.04.html">§ 24–241.04. Regulations; individual plans.</a>
-            <a href="/dc/council/code/sections/24-241.05.html">§ 24–241.05. Suspension of work release privilege; violations of work release plan.</a>
-            <a href="/dc/council/code/sections/24-241.06.html">§ 24–241.06. Trust fund for earnings; disbursements.</a>
-            <a href="/dc/council/code/sections/24-241.07.html">§ 24–241.07. Support of dependents.</a>
-            <a href="/dc/council/code/sections/24-241.08.html">§ 24–241.08. Designation of Mayor as representative of Attorney General.</a>
-            <a href="/dc/council/code/sections/24-241.09.html">§ 24–241.09. “Mayor” defined; authority of Commissioners.</a>
-            <a href="/dc/council/code/sections/24-241.10.html">§ 24–241.10. Prisoner not agent, employee or servant of District.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-241.01.html">§ 24–241.01. Authority granted to establish program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-241.02.html">§ 24–241.02. Recommendations; order of court or Board of Parole required.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-241.03.html">§ 24–241.03. Conditions for release.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-241.04.html">§ 24–241.04. Regulations; individual plans.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-241.05.html">§ 24–241.05. Suspension of work release privilege; violations of work release plan.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-241.06.html">§ 24–241.06. Trust fund for earnings; disbursements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-241.07.html">§ 24–241.07. Support of dependents.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-241.08.html">§ 24–241.08. Designation of Mayor as representative of Attorney General.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-241.09.html">§ 24–241.09. “Mayor” defined; authority of Commissioners.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-241.10.html">§ 24–241.10. Prisoner not agent, employee or servant of District.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -112,8 +132,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§2">Nov. 10, 1966, 80 Stat. 1519, Pub. L. 89-803, § 2</a>; <a class="internal-link" href="/dc/council/laws/4-202.html">Mar. 10, 1983, D.C. Law 4-202, § 5, 30 DCR 173</a>; <a class="internal-link" href="/dc/council/laws/11-273.html">June 3, 1997, D.C. Law 11-273, § 4(a), 43 DCR 6168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-461.</p>
                 <p>1973 Ed., § 24-461.</p>
+                <p>1981 Ed., § 24-461.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-241.02.html">24-241.02</a>.</p>
                 <h4>Emergency Legislation</h4>
@@ -132,8 +152,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§3">Nov. 10, 1966, 80 Stat. 1519, Pub. L. 89-803, § 3</a>; <a class="internal-link" href="/dc/council/laws/4-202.html">Mar. 10, 1983, D.C. Law 4-202, § 6, 30 DCR 173</a>; <a class="internal-link" href="/dc/council/laws/11-274.html">June 3, 1997, D.C. Law 11-274, § 19(c), 44 DCR 1232</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-462.</p>
                 <p>1973 Ed., § 24-462.</p>
+                <p>1981 Ed., § 24-462.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 4(b) of the Zero Tolerance for Guns Congressional Adjournment Emergency Amendment Act of 1996 (D.C. Act 11-436, December 4, 1996,  43 DCR 6651), and see § 4(b) of the Zero Tolerance for Guns Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-35, March 11, 1997,  44 DCR 1928).</p>
               </section>
@@ -150,8 +170,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§4">Nov. 10, 1966, 80 Stat. 1519, Pub. L. 89-803, § 4</a>; <a class="internal-link" href="/dc/council/laws/11-273.html">June 3, 1997, D.C. Law 11-273, § 4(b), 43 DCR 6168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-463.</p>
                 <p>1973 Ed., § 24-463.</p>
+                <p>1981 Ed., § 24-463.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 4(b) of the Zero Tolerance for Guns Emergency Amendment Act of 1996 (D.C. Act 11-390, August 26, 1996,  43 DCR 4986), § 4(b) of the Zero Tolerance for Guns Congressional Adjournment Emergency Amendment Act of 1996 (D.C. Act 11-436, December 4, 1996,  43 DCR 6651), and § 4(b) of the Zero Tolerance for Guns Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-35, March 11, 1997,  44 DCR 1928).</p>
               </section>
@@ -168,8 +188,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§5">Nov. 10, 1966, 80 Stat. 1519, Pub. L. 89-803, § 5</a>; <a class="internal-link" href="/dc/council/laws/11-273.html">June 3, 1997, D.C. Law 11-273, § 4, 43 DCR 6168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-464.</p>
                 <p>1973 Ed., § 24-464.</p>
+                <p>1981 Ed., § 24-464.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 4(d) of the Zero Tolerance for Guns Emergency Amendment Act of 1996 (D.C. Act 11-390, August 26, 1996,  43 DCR 4986) and § 4(c) of the Zero Tolerance for Guns Congressional Adjournment Emergency Amendment Act of 1996 (D.C. Act 11-436, December 4, 1996,  43 DCR 6651), see § 4(c) of the Zero Tolerance for Guns Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-35, March 11, 1997,  44 DCR 1928).</p>
                 <h4>Change in Government</h4>
@@ -189,8 +209,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§6">Nov. 10, 1966, 80 Stat. 1519, Pub. L. 89-803, § 6</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(a)</a>; <a class="internal-link" href="/dc/council/laws/11-273.html">June 3, 1997, D.C. Law 11-273, § 4(d), 43 DCR 6168</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-465.</p>
                 <p>1973 Ed., § 24-465.</p>
+                <p>1981 Ed., § 24-465.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 4(e) of the Zero Tolerance for Guns Emergency Amendment Act of 1996 (D.C. Act 11-390, August 26, 1996,  43 DCR 4986), § 4(d) of the Zero Tolerance for Guns Congressional Adjournment Emergency Amendment Act of 1996 (D.C. Act 11-436, December 4, 1996,  43 DCR 6651), and see § 4(d) of the Zero Tolerance for Guns Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-35, March 11, 1997,  44 DCR 1928).</p>
               </section>
@@ -207,8 +227,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§7">Nov. 10, 1966, 80 Stat. 1520, Pub. L. 89-803, § 7</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-466.</p>
                 <p>1973 Ed., § 24-466.</p>
+                <p>1981 Ed., § 24-466.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-241.07.html">24-241.07</a>.</p>
                 <h4>Change in Government</h4>
@@ -227,8 +247,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§8">Nov. 10, 1966, 80 Stat. 1520, Pub. L. 89-803, § 8</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-467.</p>
                 <p>1973 Ed., § 24-467.</p>
+                <p>1981 Ed., § 24-467.</p>
                 <h4>Transfer of Functions</h4>
                 <p>Reorganization Order No. 58 as amended, redesignated as Organization Order No. 140 and amended, established under the direction and control of a Commissioner, a Department of Public Welfare, headed by a Director with the purpose of planning, implementing and directing public welfare programs. Reorganization Order No. 58 provided that the previously existing Board of Public Welfare would be abolished. That Order also transferred specified functions of the former Board to the Department of Public Health and the Department of Public Welfare. Functions of the Department of Public Welfare and of the Department of Public Health as set forth in Organization Order Nos. 140 and 141, respectively, were transferred to the Director of the Department of Human Resources by Commissioner’s Order No. 69-96, dated March 7, 1969, as amended by Commissioner’s Order No. 70-83, dated March 6, 1970. The Department of Human Resources was replaced by the Department of Human Services by Reorganization Plan No. 2 of 1979, dated February 21, 1980.</p>
                 <h4>Change in Government</h4>
@@ -247,8 +267,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§9">Nov. 10, 1966, 80 Stat. 1520, Pub. L. 89-803, § 9</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-468.</p>
                 <p>1973 Ed., § 24-468.</p>
+                <p>1981 Ed., § 24-468.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -266,8 +286,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§10">Nov. 10, 1966, 80 Stat. 1520, Pub. L. 89-803, § 10</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-469.</p>
                 <p>1973 Ed., § 24-469.</p>
+                <p>1981 Ed., § 24-469.</p>
                 <h4>References in Text</h4>
                 <p>Reorganization Plan No. 5 of 1952, referred to in subsection (b) of this section, is set out in its entirety in Volume 1.</p>
                 <h4>Change in Government</h4>
@@ -286,8 +306,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/89-803.html#§12">Nov. 10, 1966, 80 Stat. 1521, Pub. L. 89-803, § 12</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-470.</p>
                 <p>1973 Ed., § 24-470.</p>
+                <p>1981 Ed., § 24-470.</p>
               </section>
             </section>
             <hr/>

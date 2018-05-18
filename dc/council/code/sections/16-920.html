@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/16-921.html">§ 16–921. Validity of marriage, action to determine.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/16-920.html">Report Error</a>
@@ -98,8 +98,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 563, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/89-217.html">Sept. 29, 1965, 79 Stat. 890, Pub. L. 89-217, § 4</a>; <a class="internal-link" href="/dc/council/laws/14-207.html">Oct. 19, 2002, D.C. Law 14-207, § 2(m), 49 DCR 7827</a>; <a class="internal-link" href="/dc/council/laws/21-105.html">Apr. 9, 2016, D.C. Law 21-105, § 2(g), 63 DCR 217</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-920.</p>
                 <p>1973 Ed., § 16-920.</p>
+                <p>1981 Ed., § 16-920.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-207.html">D.C. Law 14-207</a> rewrote the section which had read as follows: “A decree, annulling or dissolving a marriage, or granting an absolute divorce, shall not become effective until the time for noting an appeal shall have expired, and, if notice of appeal has been entered, such decree shall not become effective until the date of the final disposition of the appeal.”</p>
               </section>

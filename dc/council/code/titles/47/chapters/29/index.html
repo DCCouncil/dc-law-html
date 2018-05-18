@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/47/chapters/30/">Chapter 30. Private Employment Agency Licenses. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/47/chapters/29/">Report Error</a>
@@ -87,17 +87,39 @@
         <section class="col8 body">
           <h1>Chapter 29. Admission to Licensed Places; Posting of Price Scale.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/47-2901.html">§ 47–2901. Discrimination because of race or color prohibited in licensed places of amusement; penalty.</a>
-            <a href="/dc/council/code/sections/47-2902.html">§ 47–2902. Discrimination because of race or color prohibited in licensed hotels and restaurants; penalty.</a>
-            <a href="/dc/council/code/sections/47-2903.html">§ 47–2903. Increase of penalty provisions in § 47-2901.</a>
-            <a href="/dc/council/code/sections/47-2904.html">§ 47–2904. Recovery of fine; payment of moiety.</a>
-            <a href="/dc/council/code/sections/47-2905.html">§ 47–2905. Posting of price scale. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-2906.html">§ 47–2906. Penalty for failure to post price scale. [Repealed]</a>
-            <a href="/dc/council/code/sections/47-2907.html">§ 47–2907. Restaurants, hotels, barber shops, bathing houses, ice cream saloons, and soda fountains required to serve well-behaved persons.</a>
-            <a href="/dc/council/code/sections/47-2908.html">§ 47–2908. Licensed restaurants, eating houses, barrooms, sample rooms, ice cream saloons, or soda fountains required to post price list.</a>
-            <a href="/dc/council/code/sections/47-2909.html">§ 47–2909. Transmission of price list to Assessor.</a>
-            <a href="/dc/council/code/sections/47-2910.html">§ 47–2910. Licensed restaurants, eating houses, barrooms, sample rooms, ice cream saloons, or soda fountains required to serve well-behaved persons at common prices.</a>
-            <a href="/dc/council/code/sections/47-2911.html">§ 47–2911. Failure to post or file price list; charging other or greater price; failure to serve any well-behaved person; penalty; enforcement.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2901.html">§ 47–2901. Discrimination because of race or color prohibited in licensed places of amusement; penalty.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2902.html">§ 47–2902. Discrimination because of race or color prohibited in licensed hotels and restaurants; penalty.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2903.html">§ 47–2903. Increase of penalty provisions in § 47-2901.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2904.html">§ 47–2904. Recovery of fine; payment of moiety.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2905.html">§ 47–2905. Posting of price scale. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2906.html">§ 47–2906. Penalty for failure to post price scale. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2907.html">§ 47–2907. Restaurants, hotels, barber shops, bathing houses, ice cream saloons, and soda fountains required to serve well-behaved persons.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2908.html">§ 47–2908. Licensed restaurants, eating houses, barrooms, sample rooms, ice cream saloons, or soda fountains required to post price list.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2909.html">§ 47–2909. Transmission of price list to Assessor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2910.html">§ 47–2910. Licensed restaurants, eating houses, barrooms, sample rooms, ice cream saloons, or soda fountains required to serve well-behaved persons at common prices.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2911.html">§ 47–2911. Failure to post or file price list; charging other or greater price; failure to serve any well-behaved person; penalty; enforcement.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -112,8 +134,8 @@
       (June 10, 1869, ch. 36, p. 22, Corp. Laws of Wash., 66th Council, §§ 1, 2; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2901.</p>
                 <p>1973 Ed., § 47-2901.</p>
+                <p>1981 Ed., § 47-2901.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2903.html">47-2903</a> and § <a class="internal-link" href="/dc/council/code/sections/47-2904.html">47-2904</a>.</p>
                 <h4>Cross References</h4>
@@ -135,8 +157,8 @@
       (Mar. 7, 1870, ch. 42, p. 22, Corp. Laws of Wash., 67th Council, §§ 1, 2; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2902.</p>
                 <p>1973 Ed., § 47-2902.</p>
+                <p>1981 Ed., § 47-2902.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2903.html">47-2903</a> and § <a class="internal-link" href="/dc/council/code/sections/47-2904.html">47-2904</a>.</p>
                 <h4>Cross References</h4>
@@ -155,8 +177,8 @@
       (Mar. 7, 1870, ch. 42, p. 22, Corp. Laws of Wash., 67th Council, § 3; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2903.</p>
                 <p>1973 Ed., § 47-2903.</p>
+                <p>1981 Ed., § 47-2903.</p>
               </section>
             </section>
             <hr/>
@@ -171,8 +193,8 @@
       (Mar. 7, 1870, ch. 42, p. 22, Corp. Laws of Wash., 67th Council, §§ 4, 5; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2904.</p>
                 <p>1973 Ed., § 47-2904.</p>
+                <p>1981 Ed., § 47-2904.</p>
               </section>
             </section>
             <hr/>
@@ -187,8 +209,8 @@
       (Leg. Assem., June 20, 1872, § 1; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/15-154.html">Apr. 29, 2004, D.C. Law 15-154, § 11(b), 50 DCR 10996</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2905.</p>
                 <p>1973 Ed., § 47-2905.</p>
+                <p>1981 Ed., § 47-2905.</p>
               </section>
             </section>
             <hr/>
@@ -203,8 +225,8 @@
       (Leg. Assem., June 20, 1872, § 2; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42, § 484, 32 DCR 4450</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>; <a class="internal-link" href="/dc/council/laws/15-154.html">Apr. 29, 2004, D.C. Law 15-154, § 11(c), 50 DCR 10996</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2906.</p>
                 <p>1973 Ed., § 47-2906.</p>
+                <p>1981 Ed., § 47-2906.</p>
               </section>
             </section>
             <hr/>
@@ -219,8 +241,8 @@
       (Leg. Assem., June 20, 1872, § 3; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2907.</p>
                 <p>1973 Ed., § 47-2907.</p>
+                <p>1981 Ed., § 47-2907.</p>
                 <h4>Cross References</h4>
                 <p>Discriminatory practices in public accommodations, prohibition, see § <a class="internal-link" href="/dc/council/code/sections/2-140.html">2-140</a></p>
                 <h4>Editor's Notes</h4>
@@ -239,8 +261,8 @@
       (3 Leg. Assem., June 26, 1873, ch. 46, § 1; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2908.</p>
                 <p>1973 Ed., § 47-2908.</p>
+                <p>1981 Ed., § 47-2908.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2911.html">47-2911</a>.</p>
               </section>
@@ -257,8 +279,8 @@
       (3 Leg. Assem., June 26, 1873, ch. 46, § 2; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2909.</p>
                 <p>1973 Ed., § 47-2909.</p>
+                <p>1981 Ed., § 47-2909.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2911.html">47-2911</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -277,8 +299,8 @@
       (3 Leg. Assem., June 26, 1873, ch. 46, § 3; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2910.</p>
                 <p>1973 Ed., § 47-2910.</p>
+                <p>1981 Ed., § 47-2910.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2911.html">47-2911</a>.</p>
               </section>
@@ -295,8 +317,8 @@
       (3 Leg. Assem., June 26, 1873, ch. 46, § 4; Apr. 1, 1942, 56 Stat. 190, ch. 207, § 1; <a class="internal-link" href="/us/congress/laws/public/88-60.html">July 8, 1963, 77 Stat. 77, Pub. L. 88-60, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(a)</a>; <a class="internal-link" href="/dc/council/laws/11-254.html">enacted, Apr. 9, 1997, D.C. Law 11-254, § 2, 44 DCR 1575</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 47-2911.</p>
                 <p>1973 Ed., § 47-2911.</p>
+                <p>1981 Ed., § 47-2911.</p>
                 <h4>Editor's Notes</h4>
                 <p>Office of Assessor abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/47-413.html">47-413</a>.</p>
               </section>

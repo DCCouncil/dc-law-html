@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/38-1802.14a.html">§ 38–1802.14a. Charter schools admissions task force.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-1802.14.html">Report Error</a>
@@ -143,31 +143,31 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-271.02.html">38-271.02</a>, § <a class="internal-link" href="/dc/council/code/sections/38-1800.02.html">38-1800.02</a>, and § <a class="internal-link" href="/dc/council/code/sections/38-1835.01.html">38-1835.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>Pub. L. 108-335, as amended by Pub. L. 108-447, rewrote subsec. (f), and added subsec. (h). Prior to amendment, subsec. (f) had read as follows: “(f) Audit.—The Board shall provide for an audit of the financial statements of the Board by an independent certified public accountant in accordance with Government auditing standards for financial audits issued by the Comptroller General of the United States.”</p>
-                <p>Pub. L. 108-447 amended Pub. L. 108-335. See Effective Dates note.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a>, in subsec. (b)(3), inserted “, and all meetings of the Board shall be open to the public and shall provide a reasonable time during the meeting for public comment”; and added subsec. (i).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-108.html">D.C. Law 17-108</a>, in subsec. (d)(1), inserted “The Executive Director shall be a District resident throughout his or her term and failure to maintain District residency shall result in a forfeiture of the position.”; and, in subsec. (d)(2), inserted “Notwithstanding the provisions of Unit A of Chapter 14 of Title 2, each qualified District resident applicant shall receive an additional 10-point preference over a qualified non-District resident applicant for all positions within the Board unless the applicant declines the preference. This 10-point preference shall be in addition to, and not instead of, qualifications established for the position. All persons hired after December 21, 2007, shall submit proof of residency upon employment in a manner determined by the Board. An applicant claiming the hiring preference under this section shall agree in writing to maintain bona fide District residency for a period of 7 consecutive years from the effective date of hire and shall provide proof of such residency annually to the Director of Personnel for the first 7 years of employment. Failure to maintain District residency for the consecutive 7-year period shall result in forfeiture of employment. The Board shall submit to the Mayor and Council annual reports detailing the names of all new employees and their pay schedules, titles, and place of residence.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-202.html">D.C. Law 17-202</a> added subsec. (j).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> designated the former last six sentences of subsec. (d)(2) as subsec. (d)(3).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> rewrote the lead-in language of subsec. (a)(2); rewrote subsec. (a)(3); repealed subsec. (a)(4); and, in subsec. (d)(1), deleted “, but no individual so appointed shall be paid in excess of the rate payable for level EG-16 of the Educational Service of the District of Columbia” following “necessary”.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> added (g-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> rewrote the lead-in language of subsec. (a)(2); rewrote subsec. (a)(3); repealed subsec. (a)(4); and, in subsec. (d)(1), deleted “, but no individual so appointed shall be paid in excess of the rate payable for level EG-16 of the Educational Service of the District of Columbia” following “necessary”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> designated the former last six sentences of subsec. (d)(2) as subsec. (d)(3).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-202.html">D.C. Law 17-202</a> added subsec. (j).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-108.html">D.C. Law 17-108</a>, in subsec. (d)(1), inserted “The Executive Director shall be a District resident throughout his or her term and failure to maintain District residency shall result in a forfeiture of the position.”; and, in subsec. (d)(2), inserted “Notwithstanding the provisions of Unit A of Chapter 14 of Title 2, each qualified District resident applicant shall receive an additional 10-point preference over a qualified non-District resident applicant for all positions within the Board unless the applicant declines the preference. This 10-point preference shall be in addition to, and not instead of, qualifications established for the position. All persons hired after December 21, 2007, shall submit proof of residency upon employment in a manner determined by the Board. An applicant claiming the hiring preference under this section shall agree in writing to maintain bona fide District residency for a period of 7 consecutive years from the effective date of hire and shall provide proof of such residency annually to the Director of Personnel for the first 7 years of employment. Failure to maintain District residency for the consecutive 7-year period shall result in forfeiture of employment. The Board shall submit to the Mayor and Council annual reports detailing the names of all new employees and their pay schedules, titles, and place of residence.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a>, in subsec. (b)(3), inserted “, and all meetings of the Board shall be open to the public and shall provide a reasonable time during the meeting for public comment”; and added subsec. (i).</p>
+                <p>Pub. L. 108-447 amended Pub. L. 108-335. See Effective Dates note.</p>
+                <p>Pub. L. 108-335, as amended by Pub. L. 108-447, rewrote subsec. (f), and added subsec. (h). Prior to amendment, subsec. (f) had read as follows: “(f) Audit.—The Board shall provide for an audit of the financial statements of the Board by an independent certified public accountant in accordance with Government auditing standards for financial audits issued by the Comptroller General of the United States.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) repeal of section 804 of <a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a>, see § 4043(b) of Fiscal Year 2008 Budget Support Emergency Act of 2007 (D.C. Act 17-74, July 25, 2007,  54 DCR 7549).</p>
-                <p>For temporary (90 day) amendment of section, see § 4082 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
-                <p>For temporary (90 day) addition of section, see § 4052 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
-                <p>For temporary (90 day) amendment of § 4052 of Act 19-383, see § 2 of the District of Columbia School Reform Extension of Time Emergency Amendment Act of 2012 (D.C. Act 19-410, July 24, 2012,  59 DCR 9137).</p>
-                <p>For temporary (90 day) amendment of § 4052 of Act 19-385, see § 3 of the District of Columbia School Reform Extension of Time Emergency Amendment Act of 2012 (D.C. Act 19-410, July 24, 2012,  59 DCR 9137).</p>
-                <p>For temporary (90 day) addition of section, see § 4052 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
                 <p>For temporary (90 days) addition of this section, see § 4182 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
+                <p>For temporary (90 day) addition of section, see § 4052 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) amendment of § 4052 of Act 19-385, see § 3 of the District of Columbia School Reform Extension of Time Emergency Amendment Act of 2012 (D.C. Act 19-410, July 24, 2012,  59 DCR 9137).</p>
+                <p>For temporary (90 day) amendment of § 4052 of Act 19-383, see § 2 of the District of Columbia School Reform Extension of Time Emergency Amendment Act of 2012 (D.C. Act 19-410, July 24, 2012,  59 DCR 9137).</p>
+                <p>For temporary (90 day) addition of section, see § 4052 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
+                <p>For temporary (90 day) amendment of section, see § 4082 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) repeal of section 804 of <a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a>, see § 4043(b) of Fiscal Year 2008 Budget Support Emergency Act of 2007 (D.C. Act 17-74, July 25, 2007,  54 DCR 7549).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 4081 of <a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a> provided that subtitle I of title IV of the act may be cited as the “Public Charter School Board Membership Selection and Staff Compensation Clarification Amendment Act of 2010”.</p>
                 <h4>Effective Dates</h4>
                 <p>Section 103(b) of Div. J, title I, of Pub. L. 108-447, provided: “The amendments made by this section shall take effect as if included in the enactment of the District of Columbia Appropriations Act, 2005 [Pub. L. 108-335]”.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 346(d) of Pub. L. 108-335, 118 Stat. 1352, the District of Columbia Appropriations Act, 2005, provided:</p>
-                <p>“(d) Hereafter section 2214(f) of Public Law 104-143 ( D.C. Code 38-1802.14(f)), shall apply to the District of Columbia Board of Education Charter Schools Office.”</p>
-                <p>Applicability: Section 804 of <a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a> provided that section 802 shall apply upon enactment by Congress. Section 804 of Section 804 of <a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a> was repealed by section 4043 (b) of <a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a>.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a> was repealed by section 4043(b) of <a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a>.</p>
+                <p>Applicability: Section 804 of <a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a> provided that section 802 shall apply upon enactment by Congress. Section 804 of Section 804 of <a class="internal-link" href="/dc/council/laws/17-9.html">D.C. Law 17-9</a> was repealed by section 4043 (b) of <a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a>.</p>
+                <p>“(d) Hereafter section 2214(f) of Public Law 104-143 ( D.C. Code 38-1802.14(f)), shall apply to the District of Columbia Board of Education Charter Schools Office.”</p>
+                <p>Section 346(d) of Pub. L. 108-335, 118 Stat. 1352, the District of Columbia Appropriations Act, 2005, provided:</p>
               </section>
             </section>
           </section>

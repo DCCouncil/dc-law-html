@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/2-1217.06.html">§ 2–1217.06. TIF bond issuance.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/2-1217.05.html">Report Error</a>
@@ -110,8 +110,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-144.html">D.C. Law 14-144</a>, at the end of subsec. (a), added two new sentences to read as follows: “In certifying the initial sales tax amount, the Collector may determine, at the time of issuance of the TIF bonds that are to be secured by the sales tax increment revenues from the TIF area, that a single re-certification of the initial sales tax amount shall be made when the CFO advises that the new financial systems of the District have been implemented. Any re-certified initial sales tax amount shall control, regardless of whether it results in an increase or a decrease from the amount initially certified.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of §§ 1-2293.1 to 1-2293.11 1981 Ed. see note to § 2-1217.01.</p>
                 <p>For temporary (90 day) amendment of section, see § 2(b) of Tax Increment Financing Emergency Amendment Act of 2002 (D.C. Act 14-282, February 25, 2002,  49 DCR 2305).</p>
+                <p>For temporary addition of §§ 1-2293.1 to 1-2293.11 1981 Ed. see note to § 2-1217.01.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of the Tax Increment Financing Temporary Amendment Act of 2002 (D.C. Law 14-139, May 21, 2002, law notification  49 DCR 5056).</p>
               </section>

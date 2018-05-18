@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/38-1702.12.html">§ 38–1702.12. District of Columbia public school services [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-1702.11.html">Report Error</a>
@@ -101,11 +101,11 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 31-2811.</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Laws 13-143 added subsec. (e).</p>
                 <p>Subsection 5(b) of D.C. Laws 13-143 Provided: “This act shall expire after 225 days of its having taken effect or upon the effective date of the Moratorium on Conversion of Existing District of Columbia Public Schools into Charter Schools Amendment Act of 2000, or upon the date that final action is taken on Bill 13-582, the ‘District of Columbia School Reform Amendment Act of 1999’ and Bill 13-583, the ‘District of Columbia Public Charter School Conversion Petition Process Amendment Act of 2000’, or on amendments in the nature of a substitute to these two bills, whichever occurs first.”</p>
+                <p>Section 2 of D.C. Laws 13-143 added subsec. (e).</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 153 of Public Law 106-113 Amended Section 603(e)(2)(B) of the Student Loan Marketing Association Reorganization Act of 1996 (Public Law 104-208; 110 Stat. 3009-293).</p>
                 <p>Section 161 of Public Law 106-522 amended Section 603(e) of the Student Association Reorganization Act of 1996 (Public Law 104-208; 110 Stat. 3009-293).</p>
+                <p>Section 153 of Public Law 106-113 Amended Section 603(e)(2)(B) of the Student Loan Marketing Association Reorganization Act of 1996 (Public Law 104-208; 110 Stat. 3009-293).</p>
               </section>
             </section>
           </section>

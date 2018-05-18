@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/31/chapters/23/">Chapter 23. United States Branch Domestication of Non-U.S. Insurers.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/31/chapters/22A/">Report Error</a>
@@ -87,31 +87,81 @@
         <section class="col8 body">
           <h1>Chapter 22A. Unfair Insurance Trade Practices.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/31-2231.01.html">§ 31–2231.01. Definitions.</a>
-            <a href="/dc/council/code/sections/31-2231.02.html">§ 31–2231.02. General prohibition.</a>
-            <a href="/dc/council/code/sections/31-2231.03.html">§ 31–2231.03. Misrepresentations and false advertising of insurance policies.</a>
-            <a href="/dc/council/code/sections/31-2231.04.html">§ 31–2231.04. False information and advertising generally.</a>
-            <a href="/dc/council/code/sections/31-2231.05.html">§ 31–2231.05. Defamation.</a>
-            <a href="/dc/council/code/sections/31-2231.06.html">§ 31–2231.06. Boycott, coercion, and intimidation.</a>
-            <a href="/dc/council/code/sections/31-2231.07.html">§ 31–2231.07. Illegal dealing in premiums; excess charges for insurance.</a>
-            <a href="/dc/council/code/sections/31-2231.08.html">§ 31–2231.08. False statements and entries.</a>
-            <a href="/dc/council/code/sections/31-2231.09.html">§ 31–2231.09. Stock operations and advisory board contracts.</a>
-            <a href="/dc/council/code/sections/31-2231.10.html">§ 31–2231.10. Failure to maintain marketing and performance records.</a>
-            <a href="/dc/council/code/sections/31-2231.11.html">§ 31–2231.11. Unfair discrimination.</a>
-            <a href="/dc/council/code/sections/31-2231.12.html">§ 31–2231.12. Rebates: life, health, and annuities.</a>
-            <a href="/dc/council/code/sections/31-2231.13.html">§ 31–2231.13. Unfair discrimination and rebates prohibited; property, casualty, and surety insurance.</a>
-            <a href="/dc/council/code/sections/31-2231.14.html">§ 31–2231.14. Interlocking ownerships, management.</a>
-            <a href="/dc/council/code/sections/31-2231.15.html">§ 31–2231.15. Unfair financial planning practices; an insurance agent or broker.</a>
-            <a href="/dc/council/code/sections/31-2231.16.html">§ 31–2231.16. Failure to provide claims history.</a>
-            <a href="/dc/council/code/sections/31-2231.17.html">§ 31–2231.17. Unfair claim settlement practices.</a>
-            <a href="/dc/council/code/sections/31-2231.18.html">§ 31–2231.18. Failure to maintain complaint handling procedures.</a>
-            <a href="/dc/council/code/sections/31-2231.19.html">§ 31–2231.19. Misrepresentation in insurance application.</a>
-            <a href="/dc/council/code/sections/31-2231.20.html">§ 31–2231.20. Favored agent or insurer; coercion of debtors.</a>
-            <a href="/dc/council/code/sections/31-2231.21.html">§ 31–2231.21. “Twisting” prohibited.</a>
-            <a href="/dc/council/code/sections/31-2231.22.html">§ 31–2231.22. Powers of the Commissioner; cease and desist orders.</a>
-            <a href="/dc/council/code/sections/31-2231.23.html">§ 31–2231.23. Hearings.</a>
-            <a href="/dc/council/code/sections/31-2231.24.html">§ 31–2231.24. Judicial review.</a>
-            <a href="/dc/council/code/sections/31-2231.25.html">§ 31–2231.25. Regulations.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.01.html">§ 31–2231.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.02.html">§ 31–2231.02. General prohibition.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.03.html">§ 31–2231.03. Misrepresentations and false advertising of insurance policies.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.04.html">§ 31–2231.04. False information and advertising generally.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.05.html">§ 31–2231.05. Defamation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.06.html">§ 31–2231.06. Boycott, coercion, and intimidation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.07.html">§ 31–2231.07. Illegal dealing in premiums; excess charges for insurance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.08.html">§ 31–2231.08. False statements and entries.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.09.html">§ 31–2231.09. Stock operations and advisory board contracts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.10.html">§ 31–2231.10. Failure to maintain marketing and performance records.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.11.html">§ 31–2231.11. Unfair discrimination.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.12.html">§ 31–2231.12. Rebates: life, health, and annuities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.13.html">§ 31–2231.13. Unfair discrimination and rebates prohibited; property, casualty, and surety insurance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.14.html">§ 31–2231.14. Interlocking ownerships, management.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.15.html">§ 31–2231.15. Unfair financial planning practices; an insurance agent or broker.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.16.html">§ 31–2231.16. Failure to provide claims history.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.17.html">§ 31–2231.17. Unfair claim settlement practices.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.18.html">§ 31–2231.18. Failure to maintain complaint handling procedures.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.19.html">§ 31–2231.19. Misrepresentation in insurance application.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.20.html">§ 31–2231.20. Favored agent or insurer; coercion of debtors.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.21.html">§ 31–2231.21. “Twisting” prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.22.html">§ 31–2231.22. Powers of the Commissioner; cease and desist orders.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.23.html">§ 31–2231.23. Hearings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.24.html">§ 31–2231.24. Judicial review.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/31-2231.25.html">§ 31–2231.25. Regulations.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -297,10 +347,10 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-2231.12.html">31-2231.12</a> and § <a class="internal-link" href="/dc/council/code/sections/31-2231.24.html">31-2231.24</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> rewrote subsec. (c) which had read as follows: “(c) No person shall refuse to insure, refuse to continue to insure, or limit the amount of coverage available to an individual because of the sex, marital status, race, religion, or national origin of the individual. Nothing in this subsection shall prohibit an insurer from taking marital status into account for the purpose of defining persons eligible for dependent benefits. Nothing in this section shall prohibit or limit the operation of fraternal benefit societies.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-177.html">D.C. Law 17-177</a>, in subsec. (c), substituted “sexual orientation, gender identity or expression” for “sexual orientation”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-360.html">D.C. Law 18-360</a>, in subsec. (b), substituted “health insurance” for “health insurance policy”, “policy or contract of accident or health insurance ” for “contract or policy”, and “policy or contract of health insurance” for “policy or contract”; added subsec. (b-1); and, in subsec. (c), substituted “political affiliation, or an individual’s status as a victim of an intrafamily offense, sexual assault, dating violence, or stalking” for “or political affiliation”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “accident or health insurance” for the third occurrence of “health insurance” in (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-360.html">D.C. Law 18-360</a>, in subsec. (b), substituted “health insurance” for “health insurance policy”, “policy or contract of accident or health insurance ” for “contract or policy”, and “policy or contract of health insurance” for “policy or contract”; added subsec. (b-1); and, in subsec. (c), substituted “political affiliation, or an individual’s status as a victim of an intrafamily offense, sexual assault, dating violence, or stalking” for “or political affiliation”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-177.html">D.C. Law 17-177</a>, in subsec. (c), substituted “sexual orientation, gender identity or expression” for “sexual orientation”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> rewrote subsec. (c) which had read as follows: “(c) No person shall refuse to insure, refuse to continue to insure, or limit the amount of coverage available to an individual because of the sex, marital status, race, religion, or national origin of the individual. Nothing in this subsection shall prohibit an insurer from taking marital status into account for the purpose of defining persons eligible for dependent benefits. Nothing in this section shall prohibit or limit the operation of fraternal benefit societies.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2502(a) of Fiscal Year 2002 Budget Support Emergency Act of 2001 (D.C. Act 14-124, August 3, 2001,  48 DCR 7861).</p>
                 <h4>Editor's Notes</h4>
@@ -365,9 +415,9 @@
       (<a class="internal-link" href="/dc/council/laws/13-265.html#§113">Apr. 3, 2001, D.C. Law 13-265, § 113, 48 DCR 1225</a>; <a class="internal-link" href="/dc/council/laws/14-28.html">Oct. 3, 2001, D.C. Law 14-28, § 2702(b), 48 DCR 6981</a>; <a class="internal-link" href="/dc/council/laws/17-177.html">June 25, 2008, D.C. Law 17-177, § 16(c), 55 DCR 3696</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> rewrote subsec. (d) which had read:</p>
-                <p>“(d) Notwithstanding any other provision in this section, an insurer shall not make or permit a differential in ratings, premium payments, or dividends based on the sex, physical handicap, or disability of an applicant or policyholder unless there is actuarial justification for the differential.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-177.html">D.C. Law 17-177</a>, in subsec. (d), substituted “sexual orientation, gender identity or expression” for “sexual orientation”.</p>
+                <p>“(d) Notwithstanding any other provision in this section, an insurer shall not make or permit a differential in ratings, premium payments, or dividends based on the sex, physical handicap, or disability of an applicant or policyholder unless there is actuarial justification for the differential.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> rewrote subsec. (d) which had read:</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment section, see § 2502(b) of Fiscal Year 2002 Budget Support Emergency Act of 2001 (D.C. Act 14-124, August 3, 2001,  48 DCR 7861).</p>
               </section>

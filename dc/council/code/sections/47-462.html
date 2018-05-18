@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/47-463.html">§ 47–463. Tax Revision Commission — Composition; selection of Director.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/47-462.html">Report Error</a>
@@ -118,16 +118,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 47-462.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsecs. (a)(1), (b)(6), and (d); in subsec. (a)(2), deleted “and” from the end; added subsecs. (a)(4) and (5); in subsec. (b)(2), substituted “recommending potential modifications to tax rates” for “enabling the possibility that general rates might be reduced”; and, in subsec. (c), substituted “June 2, 1998, and entitled ‘Taxing Simply, Taxing Fairly’ ”for “December 5, 1977, pursuant to Council Resolution 1-149”.</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted a semicolon for the period at the end of (a)(3).</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-211.html">D.C. Law 19-211</a> added (b)(7).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> substituted “December 31, 2013” for “9 months after the Commission’s appointment” in (d).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-211.html">D.C. Law 19-211</a> added (b)(7).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted a semicolon for the period at the end of (a)(3).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsecs. (a)(1), (b)(6), and (d); in subsec. (a)(2), deleted “and” from the end; added subsecs. (a)(4) and (5); in subsec. (b)(2), substituted “recommending potential modifications to tax rates” for “enabling the possibility that general rates might be reduced”; and, in subsec. (c), substituted “June 2, 1998, and entitled ‘Taxing Simply, Taxing Fairly’ ”for “December 5, 1977, pursuant to Council Resolution 1-149”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/47-461.html">47-461</a>.</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Tax Revision Commission Report Extension and Procurement Streamlining Emergency Act of 2013 (D.C. Act 20-19, March 1, 2013,  60 DCR 3974, 20 DCSTAT 476).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Tax Revision Commission Report Extension and Procurement Streamlining Congressional Review Emergency Act of 2013 (D.C. Act 20-67, May 15, 2013,  60 DCR 7232, 20 DCSTAT 1417).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7142 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7142 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7142 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Tax Revision Commission Report Extension and Procurement Streamlining Congressional Review Emergency Act of 2013 (D.C. Act 20-67, May 15, 2013,  60 DCR 7232, 20 DCSTAT 1417).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Tax Revision Commission Report Extension and Procurement Streamlining Emergency Act of 2013 (D.C. Act 20-19, March 1, 2013,  60 DCR 3974, 20 DCSTAT 476).</p>
+                <p>See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/47-461.html">47-461</a>.</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 2 of the Tax Revision Commission Report Extension and Procurement Streamlining Temporary Amendment Act of 2013 (D.C. Law 20-5, May 18, 2013,  60 DCR 4667, 20 DCSTAT 1272).</p>
                 <h4>Short Title</h4>

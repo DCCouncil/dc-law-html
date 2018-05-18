@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/5-133.20.html">§ 5–133.20. Procedures for electronic recording of interrogations. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/5-133.19.html">Report Error</a>
@@ -101,16 +101,16 @@
       (<a class="internal-link" href="/dc/council/laws/14-190.html#§2702">Oct. 1, 2002, D.C. Law 14-190, § 2702, 49 DCR 6968</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/5-133.19.html">5-133.19</a>, see § 2 of Metropolitan Police Department Video Surveillance Regulations Emergency Act of 2002 (D.C. Act 14-302, March 25, 2002,  49 DCR 3393).</p>
                 <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/5-133.19.html">5-133.19</a>, see § 2602 of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
+                <p>For temporary (90 day) addition of § <a class="internal-link" href="/dc/council/code/sections/5-133.19.html">5-133.19</a>, see § 2 of Metropolitan Police Department Video Surveillance Regulations Emergency Act of 2002 (D.C. Act 14-302, March 25, 2002,  49 DCR 3393).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) addition, see § 2 of Metropolitan Police Department Video Surveillance Regulations Temporary Act of 2002 (D.C. Law 14-158, June 25, 2002, law notification  49 DCR 6494).</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle A of title XXVII of Law 14-190: Section 2701 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided that subtitle A of title XXVII of the act may be cited as the Metropolitan Police Department Video Surveillance Regulations Act of 2002.</p>
                 <h4>Resolutions</h4>
-                <p>Resolution 14-609, the “Metropolitan Police Department Closed Circuit Television System Regulations Approval Resolution of 2002”, was approved effective November 22, 2002.</p>
-                <p>Resolution 16-699, the “Metropolitan Police Department Closed Circuit Television System Regulations Amendment Disapproval</p>
                 <p>Resolution of 2006“, was approved effective July 7, 2006.</p>
+                <p>Resolution 16-699, the “Metropolitan Police Department Closed Circuit Television System Regulations Amendment Disapproval</p>
+                <p>Resolution 14-609, the “Metropolitan Police Department Closed Circuit Television System Regulations Approval Resolution of 2002”, was approved effective November 22, 2002.</p>
               </section>
             </section>
           </section>

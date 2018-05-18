@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/7/chapters/20B/">Chapter 20B. Treatment for Sexual Partners.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/7/chapters/20A/">Report Error</a>
@@ -87,19 +87,45 @@
         <section class="col8 body">
           <h1>Chapter 20A. Health Care Ombudsman Program.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/7-2071.01.html">§ 7–2071.01. Definitions.</a>
-            <a href="/dc/council/code/sections/7-2071.02.html">§ 7–2071.02. Establishment of Health Care Ombudsman Program.</a>
-            <a href="/dc/council/code/sections/7-2071.03.html">§ 7–2071.03. Program evaluation.</a>
-            <a href="/dc/council/code/sections/7-2071.04.html">§ 7–2071.04. Duties.</a>
-            <a href="/dc/council/code/sections/7-2071.05.html">§ 7–2071.05. Public outreach.</a>
-            <a href="/dc/council/code/sections/7-2071.06.html">§ 7–2071.06. Data collection and reporting.</a>
-            <a href="/dc/council/code/sections/7-2071.07.html">§ 7–2071.07. Access to records; confidentiality.</a>
-            <a href="/dc/council/code/sections/7-2071.08.html">§ 7–2071.08. Immunity from liability.</a>
-            <a href="/dc/council/code/sections/7-2071.09.html">§ 7–2071.09. Non-retaliation.</a>
-            <a href="/dc/council/code/sections/7-2071.10.html">§ 7–2071.10. Requirements for health benefits plans and HealthCare Alliance.</a>
-            <a href="/dc/council/code/sections/7-2071.11.html">§ 7–2071.11. Advisory Council.</a>
-            <a href="/dc/council/code/sections/7-2071.12.html">§ 7–2071.12. Funding for the Ombudsman Program.</a>
-            <a href="/dc/council/code/sections/7-2071.13.html">§ 7–2071.13. Contingent effectiveness of chapter. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.01.html">§ 7–2071.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.02.html">§ 7–2071.02. Establishment of Health Care Ombudsman Program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.03.html">§ 7–2071.03. Program evaluation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.04.html">§ 7–2071.04. Duties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.05.html">§ 7–2071.05. Public outreach.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.06.html">§ 7–2071.06. Data collection and reporting.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.07.html">§ 7–2071.07. Access to records; confidentiality.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.08.html">§ 7–2071.08. Immunity from liability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.09.html">§ 7–2071.09. Non-retaliation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.10.html">§ 7–2071.10. Requirements for health benefits plans and HealthCare Alliance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.11.html">§ 7–2071.11. Advisory Council.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.12.html">§ 7–2071.12. Funding for the Ombudsman Program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-2071.13.html">§ 7–2071.13. Contingent effectiveness of chapter. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

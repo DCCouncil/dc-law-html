@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/5/chapters/15/">Chapter 15. Department of Forensic Sciences.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/5/chapters/14/">Report Error</a>
@@ -87,26 +87,66 @@
         <section class="col8 body">
           <h1>Chapter 14. Chief Medical Examiner.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/5-1401.html">§ 5–1401. Definitions.</a>
-            <a href="/dc/council/code/sections/5-1402.html">§ 5–1402. Establishment of the Office of the Chief Medical Examiner; appointments, qualifications, and compensation.</a>
-            <a href="/dc/council/code/sections/5-1403.html">§ 5–1403. Supporting services and facilities.</a>
-            <a href="/dc/council/code/sections/5-1404.html">§ 5–1404. Former duties of coroner; oaths; teaching; other duties.</a>
-            <a href="/dc/council/code/sections/5-1405.html">§ 5–1405. Deaths — determinations and investigations; cremations.</a>
-            <a href="/dc/council/code/sections/5-1406.html">§ 5–1406. Deaths — Notification; penalties for noncompliance.</a>
-            <a href="/dc/council/code/sections/5-1406.01.html">§ 5–1406.01. Mass fatality management and response.</a>
-            <a href="/dc/council/code/sections/5-1407.html">§ 5–1407. Subpoena power for access to confidential medical records.</a>
-            <a href="/dc/council/code/sections/5-1408.html">§ 5–1408. Possession of evidence and property.</a>
-            <a href="/dc/council/code/sections/5-1409.html">§ 5–1409. Examination; further investigation and autopsy.</a>
-            <a href="/dc/council/code/sections/5-1410.html">§ 5–1410. Autopsy by pathologist other than a medical examiner.</a>
-            <a href="/dc/council/code/sections/5-1411.html">§ 5–1411. Delivery of body; expenses.</a>
-            <a href="/dc/council/code/sections/5-1412.html">§ 5–1412. Maintenance of records; annual report.</a>
-            <a href="/dc/council/code/sections/5-1413.html">§ 5–1413. Records as evidence.</a>
-            <a href="/dc/council/code/sections/5-1414.html">§ 5–1414. Autopsies performed under court order.</a>
-            <a href="/dc/council/code/sections/5-1415.html">§ 5–1415. Tissue transplants. [Repealed]</a>
-            <a href="/dc/council/code/sections/5-1416.html">§ 5–1416. Personnel, records, functions, and authority transferred.</a>
-            <a href="/dc/council/code/sections/5-1417.html">§ 5–1417. Regulations and fees.</a>
-            <a href="/dc/council/code/sections/5-1418.html">§ 5–1418. Office of the Chief Medical Examiner Management Fund.</a>
-            <a href="/dc/council/code/sections/5-1419.html">§ 5–1419. Impaired driving program; chemical testing.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1401.html">§ 5–1401. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1402.html">§ 5–1402. Establishment of the Office of the Chief Medical Examiner; appointments, qualifications, and compensation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1403.html">§ 5–1403. Supporting services and facilities.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1404.html">§ 5–1404. Former duties of coroner; oaths; teaching; other duties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1405.html">§ 5–1405. Deaths — determinations and investigations; cremations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1406.html">§ 5–1406. Deaths — Notification; penalties for noncompliance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1406.01.html">§ 5–1406.01. Mass fatality management and response.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1407.html">§ 5–1407. Subpoena power for access to confidential medical records.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1408.html">§ 5–1408. Possession of evidence and property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1409.html">§ 5–1409. Examination; further investigation and autopsy.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1410.html">§ 5–1410. Autopsy by pathologist other than a medical examiner.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1411.html">§ 5–1411. Delivery of body; expenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1412.html">§ 5–1412. Maintenance of records; annual report.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1413.html">§ 5–1413. Records as evidence.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1414.html">§ 5–1414. Autopsies performed under court order.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1415.html">§ 5–1415. Tissue transplants. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1416.html">§ 5–1416. Personnel, records, functions, and authority transferred.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1417.html">§ 5–1417. Regulations and fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1418.html">§ 5–1418. Office of the Chief Medical Examiner Management Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1419.html">§ 5–1419. Impaired driving program; chemical testing.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -126,13 +166,13 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “intellectual disability” for “mental retardation” in (3).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of applicability provision, see § 2920 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <p>For temporary (90 day) addition of section, see § 2902 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90 day) addition of applicability provision, see § 2920 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
                 <h4>Mayor's Orders</h4>
-                <p>Autopsies of Deceased Clients of the Mental Retardation and Developmental Disability Administration, see Mayor’s Order 2004-76, May 13, 2004 ( 51 DCR 5278).</p>
                 <p>Autopsies of Deceased Consumers of the Mental Retardation and Developmental Disabilities Administration, see Mayor’s Order 2006-123, September 28, 2006 ( 53 DCR 9314).</p>
+                <p>Autopsies of Deceased Clients of the Mental Retardation and Developmental Disability Administration, see Mayor’s Order 2004-76, May 13, 2004 ( 51 DCR 5278).</p>
               </section>
             </section>
             <hr/>
@@ -158,26 +198,26 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-1416.html">5-1416</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-339.html">D.C. Law 15-339</a> rewrote subsec. (c); and added subsec. (f). Prior to amendment, subsec. (c) read as follows: “(c) The CME, the Deputy CME, and any medical examiners appointed pursuant to subsection (b) of this section shall be physicians licensed to practice medicine in the District of Columbia. The CME, the Deputy CME, and any medical examiners appointed after the effective date of this chapter shall be certified in forensic pathology by the American Board of Pathology or be eligible for such certification.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-115.html">D.C. Law 17-115</a> rewrote subsec. (c) which had read as follows: “(c) The CME, the Deputy CME, and any medical examiners appointed pursuant to subsection (b) of this section shall be physicians licensed to practice medicine in the District of Columbia. The CME, the Deputy CME, and any medical examiners appointed after October 19, 2000, shall be certified in forensic pathology by the American Board of Pathology or be eligible for such certification, except that the Mayor may waive the certification requirement for any individual appointed as CME to fill the unexpired term ending on April 30, 2007.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a> rewrote subsec. (c)(3), which had read as follows: “(3) The certification requirement of paragraph (2) of this subsection may be waived by the Mayor until October 1, 2008 for the CME. Any individual appointed as the CME to fill the term beginning on May 1, 2007, and ending on April 30, 2013, pursuant to this waiver shall not be eligible to serve as CME after October 1, 2008, and shall not be eligible to serve in a holdover status after October 1, 2008, unless he or she meets the certification requirement.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added “to be paid at an annual rate of $ 206,000” in (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a> rewrote subsec. (c)(3), which had read as follows: “(3) The certification requirement of paragraph (2) of this subsection may be waived by the Mayor until October 1, 2008 for the CME. Any individual appointed as the CME to fill the term beginning on May 1, 2007, and ending on April 30, 2013, pursuant to this waiver shall not be eligible to serve as CME after October 1, 2008, and shall not be eligible to serve in a holdover status after October 1, 2008, unless he or she meets the certification requirement.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-115.html">D.C. Law 17-115</a> rewrote subsec. (c) which had read as follows: “(c) The CME, the Deputy CME, and any medical examiners appointed pursuant to subsection (b) of this section shall be physicians licensed to practice medicine in the District of Columbia. The CME, the Deputy CME, and any medical examiners appointed after October 19, 2000, shall be certified in forensic pathology by the American Board of Pathology or be eligible for such certification, except that the Mayor may waive the certification requirement for any individual appointed as CME to fill the unexpired term ending on April 30, 2007.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-339.html">D.C. Law 15-339</a> rewrote subsec. (c); and added subsec. (f). Prior to amendment, subsec. (c) read as follows: “(c) The CME, the Deputy CME, and any medical examiners appointed pursuant to subsection (b) of this section shall be physicians licensed to practice medicine in the District of Columbia. The CME, the Deputy CME, and any medical examiners appointed after the effective date of this chapter shall be certified in forensic pathology by the American Board of Pathology or be eligible for such certification.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2903 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Emergency Amendment Act of 2004 (D.C. Act 15-643, December 20, 2004,  51 DCR 11833).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Emergency Amendment Act of 2007 (D.C. Act 17-136, October 17, 2007,  54 DCR 10725).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-253, January 23, 2008,  55 DCR 1266).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Emergency Amendment Act of 2008 (D.C. Act 17-600, December 12, 2008,  56 DCR 7).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-4, January 23, 2009,  56 DCR 1627).</p>
-                <p>For temporary (90 day) amendment of section, see § 203 of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
-                <p>For temporary (90 day) amendment of section, see § 203 of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3042 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3042 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 3042 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3042 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 3042 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) amendment of section, see § 203 of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
+                <p>For temporary (90 day) amendment of section, see § 203 of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-4, January 23, 2009,  56 DCR 1627).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Emergency Amendment Act of 2008 (D.C. Act 17-600, December 12, 2008,  56 DCR 7).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-253, January 23, 2008,  55 DCR 1266).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Emergency Amendment Act of 2007 (D.C. Act 17-136, October 17, 2007,  54 DCR 10725).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Emergency Amendment Act of 2004 (D.C. Act 15-643, December 20, 2004,  51 DCR 11833).</p>
+                <p>For temporary (90 day) addition of section, see § 2903 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Temporary Amendment Act of 2007 (D.C. Law 17-70, January 23, 2008, law notification  55 DCR 1450).</p>
-                <p>Section 2 of D.C. Law 17-335 amended subsec. (c)(3) to read as follows: “(3) The certification requirement of paragraph (2) of this subsection may be waived by the Mayor for the CME appointed to fill the term beginning on May 1, 2007 and ending on April 30, 2013.”</p>
                 <p>Section 4(b) of D.C. Law 17-335 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 2 of D.C. Law 17-335 amended subsec. (c)(3) to read as follows: “(3) The certification requirement of paragraph (2) of this subsection may be waived by the Mayor for the CME appointed to fill the term beginning on May 1, 2007 and ending on April 30, 2013.”</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Appointment of the Chief Medical Examiner Temporary Amendment Act of 2007 (D.C. Law 17-70, January 23, 2008, law notification  55 DCR 1450).</p>
               </section>
             </section>
             <hr/>
@@ -217,9 +257,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> added subsecs. (c) and (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2905 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
-                <p>For temporary (90 day) amendment of section, see § 19(a) of Child Fatality Review Committee Establishment Emergency Act of 2001 (D.C. Act 14-40, April 25, 2001,  48 DCR 5917).</p>
                 <p>For temporary (90 day) amendment of section, see § 19(a) of Child Fatality Review Committee Establishment Legislative Review Emergency Act of 2001 (D.C. Act 14-82, July 9, 2001,  48 DCR 6355).</p>
+                <p>For temporary (90 day) amendment of section, see § 19(a) of Child Fatality Review Committee Establishment Emergency Act of 2001 (D.C. Act 14-40, April 25, 2001,  48 DCR 5917).</p>
+                <p>For temporary (90 day) addition of section, see § 2905 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 19(a) of Child Fatality Review Committee Establishment Temporary Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-20.html">D.C. Law 14-20</a>, September 6, 2001, law notification  48 DCR 9090).</p>
               </section>
@@ -257,9 +297,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a>, in subsec. (b)(2), inserted “for infants one year of age and younger” before the semicolon.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2906 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
-                <p>For temporary (90 day) amendment of section, see § 19(b) of Child Fatality Review Committee Establishment Emergency Act of 2001 (D.C. Act 14-40, April 25, 2001,  48 DCR 5917).</p>
                 <p>For temporary (90 day) amendment of section, see § 19(b) of Child Fatality Review Committee Establishment Legislative Review Emergency Act of 2001 (D.C. Act 14-82, July 9, 2001,  48 DCR 6355).</p>
+                <p>For temporary (90 day) amendment of section, see § 19(b) of Child Fatality Review Committee Establishment Emergency Act of 2001 (D.C. Act 14-40, April 25, 2001,  48 DCR 5917).</p>
+                <p>For temporary (90 day) addition of section, see § 2906 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 19(b) of Child Fatality Review Committee Establishment Temporary Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-20.html">D.C. Law 14-20</a>, September 6, 2001, law notification  48 DCR 9090).</p>
                 <h4>Delegation of Authority</h4>
@@ -431,12 +471,12 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-1413.html">5-1413</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> substituted “official, and the Child Fatality Review Committee when necessary for the discharge of its official duties” for “official” in subsec. (b).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-174.html">D.C. Law 15-174</a> added subsec. (a-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-28.html">D.C. Law 14-28</a> substituted “official, and the Child Fatality Review Committee when necessary for the discharge of its official duties” for “official” in subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 2913 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
-                <p>For temporary (90 day) amendment of section, see § 19(c) of Child Fatality Review Committee Establishment Emergency Act of 2001 (D.C. Act 14-40, April 25, 2001,  48 DCR 5917).</p>
                 <p>For temporary (90 day) amendment of section, see § 19(c) of Child Fatality Review Committee Establishment Legislative Review Emergency Act of 2001 (D.C. Act 14-82, July 9, 2001,  48 DCR 6355).</p>
+                <p>For temporary (90 day) amendment of section, see § 19(c) of Child Fatality Review Committee Establishment Emergency Act of 2001 (D.C. Act 14-40, April 25, 2001,  48 DCR 5917).</p>
+                <p>For temporary (90 day) addition of section, see § 2913 of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 19(c) of Child Fatality Review Committee Establishment Temporary Act of 2001 (<a class="internal-link" href="/dc/council/laws/14-20.html">D.C. Law 14-20</a>, September 6, 2001, law notification  48 DCR 9090).</p>
                 <h4>Delegation of Authority</h4>
@@ -548,9 +588,9 @@
       (<a class="internal-link" href="/dc/council/laws/13-172.html#§2918a">Oct. 19, 2000, D.C. Law 13-172, § 2918a</a>; <a class="internal-link" href="/dc/council/laws/16-33.html">as added Oct. 20, 2005, D.C. Law 16-33, § 3002, 52 DCR 7503</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 9051, 58 DCR 6226</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 3002 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
-                <p>For temporary (90 day) addition of section, see § 202 of Comprehensive Impaired Driving and Alcohol Testing Program Emergency Amendment Act of 2012 (D.C. Act 19-429, July 30, 2012,  59 DCR 9387).</p>
                 <p>For temporary addition of <a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a>, § 2918b, concerning blood and urine testing for the District’s impaired driving program, see § 202 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Amendment Act of 2012 (D.C Act 19-508, October 26, 2012,  59 DCR 13325).</p>
+                <p>For temporary (90 day) addition of section, see § 202 of Comprehensive Impaired Driving and Alcohol Testing Program Emergency Amendment Act of 2012 (D.C. Act 19-429, July 30, 2012,  59 DCR 9387).</p>
+                <p>For temporary (90 day) addition, see § 3002 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
                 <h4>Short Title</h4>
                 <p>Short title of subtitle A of title III of Law 16-33: Section 3001 of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a> provided that subtitle A of title III of the act may be cited as the Office of the Chief Medical Examiner Management Fund Amendment Act of 2005.</p>
               </section>
@@ -572,11 +612,11 @@
       (<a class="internal-link" href="/dc/council/laws/13-172.html#§2918b">Oct. 19, 2000, D.C. Law 13-172, § 2918b</a>; <a class="internal-link" href="/dc/council/laws/19-266.html">as added Apr. 27, 2013, D.C. Law 19-266, § 202, 59 DCR 12957</a>; <a class="internal-link" href="/dc/council/laws/19-260.html">Apr. 20, 2013, D.C. Law 19-260, § 2, 60 DCR 1292</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-260.html">D.C. Law 19-260</a> substituted “180 days” for “3 months” in (b).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-266.html">D.C. Law 19-266</a> added this section.</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-260.html">D.C. Law 19-260</a> substituted “180 days” for “3 months” in (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 202 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Act of 2013 (D.C. Act 20-3, January 29, 2013,  60 DCR 2762, 20 DCSTAT 410).</p>
                 <p>For temporary (90 days) addition of this section, see § 202 of the Comprehensive Impaired Driving and Alcohol Testing Program Second Congressional Review Emergency Act of 2013 (D.C. Act 20-51, April 17, 2013,  60 DCR 6344, 20 DCSTAT 1360).</p>
+                <p>For temporary (90 days) addition of this section, see § 202 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Act of 2013 (D.C. Act 20-3, January 29, 2013,  60 DCR 2762, 20 DCSTAT 410).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/19-260.html">D.C. Law 19-260</a> provided that the Act shall apply as of the effective date of the Comprehensive Impaired Driving and Alcohol Breath Testing Program Amendment Act of 2012, signed by the Mayor on October 24, 2012 (D.C. Act 19-489;  59 DCR 12957), which became <a class="internal-link" href="/dc/council/laws/19-266.html">D.C. Law 19-266</a>, effective April 27, 2013.</p>
               </section>

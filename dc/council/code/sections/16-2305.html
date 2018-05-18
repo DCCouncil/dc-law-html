@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/16-2305.01.html">§ 16–2305.01. Findings.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/16-2305.html">Report Error</a>
@@ -105,15 +105,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, 77 Stat. 588, Pub. L. 88-241, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 526, Pub. L. 91-358, title I, § 121(a)</a>; <a class="internal-link" href="/dc/council/laws/2-22.html">Sept. 23, 1977, D.C. Law 2-22, title I, § 110(b), 24 DCR 3341</a>; <a class="internal-link" href="/dc/council/laws/12-81.html">Mar. 24, 1998, D.C. Law 12-81, § 10(x), 45 DCR 745</a>; <a class="internal-link" href="/dc/council/laws/13-277.html">Apr. 4, 2001, D.C. Law 13-277, § 3(a)(2), (3), 48 DCR 2043</a>; <a class="internal-link" href="/dc/council/laws/15-261.html">Mar. 17, 2005, D.C. Law 15-261, § 1002(a), 52 DCR 1188</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-2305.</p>
                 <p>1973 Ed., § 16-2305.</p>
+                <p>1981 Ed., § 16-2305.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/4-1301.09.html">4-1301.09</a>, § <a class="internal-link" href="/dc/council/code/sections/16-2305.02.html">16-2305.02</a>, § <a class="internal-link" href="/dc/council/code/sections/16-2333.html">16-2333</a>, § <a class="internal-link" href="/dc/council/code/sections/16-2335.html">16-2335</a>, § <a class="internal-link" href="/dc/council/code/sections/16-2335.02.html">16-2335.02</a>, and § <a class="internal-link" href="/dc/council/code/sections/16-2384.html">16-2384</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-277.html">D.C. Law 13-277</a> rewrote subsec. (a) which formerly read:</p>
-                <p>“(a) Complaints alleging delinquency, need of supervision, or neglect shall be referred to the Director of Social Services who shall conduct a preliminary inquiry to determine whether the best interests of the child or the public require that a petition be filed. If judicial action appears warranted, under intake criteria established by rule of the Superior Court, the Director shall recommend that a petition be filed. If the Director decides not to recommend the filing of a petition, the complainant in a delinquency or neglect case shall have a right to have that decision reviewed by the Corporation Counsel, and the Director shall notify the complainant of such right of review. Complaints alleging neglect submitted by the Child Protective Services Division of the Department of Human Services shall be referred directly to the Corporation Counsel of the District of Columbia.”</p>
-                <p>and in subsec. (c) substituted “If the Director of Social Services has refused to recommend the filing of a delinquency petition, or if the Director of the Agency has refused to recommend the filing of a neglect petition” for “If the Director of Social Services has refused to recommend the filing of a delinquency or neglect petition” in the second sentence.</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-261.html">D.C. Law 15-261</a>, in subsec. (c), designated the existing language as par. (1), and added par. (2).</p>
+                <p>and in subsec. (c) substituted “If the Director of Social Services has refused to recommend the filing of a delinquency petition, or if the Director of the Agency has refused to recommend the filing of a neglect petition” for “If the Director of Social Services has refused to recommend the filing of a delinquency or neglect petition” in the second sentence.</p>
+                <p>“(a) Complaints alleging delinquency, need of supervision, or neglect shall be referred to the Director of Social Services who shall conduct a preliminary inquiry to determine whether the best interests of the child or the public require that a petition be filed. If judicial action appears warranted, under intake criteria established by rule of the Superior Court, the Director shall recommend that a petition be filed. If the Director decides not to recommend the filing of a petition, the complainant in a delinquency or neglect case shall have a right to have that decision reviewed by the Corporation Counsel, and the Director shall notify the complainant of such right of review. Complaints alleging neglect submitted by the Child Protective Services Division of the Department of Human Services shall be referred directly to the Corporation Counsel of the District of Columbia.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-277.html">D.C. Law 13-277</a> rewrote subsec. (a) which formerly read:</p>
                 <h4>Cross References</h4>
                 <p>Substantiated reports, referral and social investigation, agency plan, report of investigation, see § <a class="internal-link" href="/dc/council/code/sections/4-1301.09.html">4-1301.09</a>.</p>
               </section>

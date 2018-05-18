@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/50/chapters/25/">Chapter 25. Public Parking Authority.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/50/chapters/24/subchapters/II/">Report Error</a>
@@ -88,21 +88,51 @@
         <section class="col8 body">
           <h1>Subchapter II. Removal and Disposition of Abandoned and Other Unlawfully Parked Vehicles.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/50-2421.01.html">§ 50–2421.01. Short title.</a>
-            <a href="/dc/council/code/sections/50-2421.02.html">§ 50–2421.02. Definitions.</a>
-            <a href="/dc/council/code/sections/50-2421.03.html">§ 50–2421.03. Unlawful acts.</a>
-            <a href="/dc/council/code/sections/50-2421.04.html">§ 50–2421.04. Removal of abandoned and dangerous vehicles from public space; penalties.</a>
-            <a href="/dc/council/code/sections/50-2421.05.html">§ 50–2421.05. Removal of abandoned, dangerous, and unlawfully parked vehicles from private property.</a>
-            <a href="/dc/council/code/sections/50-2421.06.html">§ 50–2421.06. Post-removal disposition of certain vehicles without further notice.</a>
-            <a href="/dc/council/code/sections/50-2421.07.html">§ 50–2421.07. Impoundment of vehicles, notice to owners and lienholders.</a>
-            <a href="/dc/council/code/sections/50-2421.08.html">§ 50–2421.08. Vehicle reclamation periods.</a>
-            <a href="/dc/council/code/sections/50-2421.09.html">§ 50–2421.09. Procedures for reclaiming impounded vehicles; lien; penalties.</a>
-            <a href="/dc/council/code/sections/50-2421.10.html">§ 50–2421.10. Disposal of unclaimed vehicles; penalties; auction admission fees.</a>
-            <a href="/dc/council/code/sections/50-2421.11.html">§ 50–2421.11. Owners and lienholders remedy.</a>
-            <a href="/dc/council/code/sections/50-2421.12.html">§ 50–2421.12. Rulemaking authority.</a>
-            <a href="/dc/council/code/sections/50-2421.13.html">§ 50–2421.13. [Reserved].</a>
-            <a href="/dc/council/code/sections/50-2421.14.html">§ 50–2421.14. Effect of the repeal of provisions.</a>
-            <a href="/dc/council/code/sections/50-2421.15.html">§ 50–2421.15. Applicability.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.01.html">§ 50–2421.01. Short title.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.02.html">§ 50–2421.02. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.03.html">§ 50–2421.03. Unlawful acts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.04.html">§ 50–2421.04. Removal of abandoned and dangerous vehicles from public space; penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.05.html">§ 50–2421.05. Removal of abandoned, dangerous, and unlawfully parked vehicles from private property.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.06.html">§ 50–2421.06. Post-removal disposition of certain vehicles without further notice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.07.html">§ 50–2421.07. Impoundment of vehicles, notice to owners and lienholders.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.08.html">§ 50–2421.08. Vehicle reclamation periods.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.09.html">§ 50–2421.09. Procedures for reclaiming impounded vehicles; lien; penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.10.html">§ 50–2421.10. Disposal of unclaimed vehicles; penalties; auction admission fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.11.html">§ 50–2421.11. Owners and lienholders remedy.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.12.html">§ 50–2421.12. Rulemaking authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.13.html">§ 50–2421.13. [Reserved].</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.14.html">§ 50–2421.14. Effect of the repeal of provisions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-2421.15.html">§ 50–2421.15. Applicability.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -205,8 +235,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “of not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “of not more than $500” in (e).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of this section, see § 4 of Removal and Disposition of Abandoned and Other Unlawfully Parked Vehicles Reform Congressional Review Emergency Act of 2003 (D.C. Act 15-171, October 6, 2003,  50 DCR 9163).</p>
                 <p>For temporary (90 days) amendment of this section, see § 276(a) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
+                <p>For temporary (90 day) addition of this section, see § 4 of Removal and Disposition of Abandoned and Other Unlawfully Parked Vehicles Reform Congressional Review Emergency Act of 2003 (D.C. Act 15-171, October 6, 2003,  50 DCR 9163).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
               </section>
@@ -321,20 +351,20 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/22-2724.html">22-2724</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2201.03.html">50-2201.03</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-2702.html">50-2702</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-139.html">D.C. Law 16-139</a>, in the lead-in language to subsec. (a), substituted “impounded vehicle stored at a District government impoundment facility” for “impounded vehicle”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (a), repealed pars. (1), (2), and (3).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a>, in subsec. (a)(6), inserted “; provided further, that the towing fee shall be $1,000 if the vehicle was impounded pursuant to a violation of  18 DCMR § 2405.3(e)” following “to tow the vehicle”.</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $500” in (c).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> rewrote (a)(4).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $500” in (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a>, in subsec. (a)(6), inserted “; provided further, that the towing fee shall be $1,000 if the vehicle was impounded pursuant to a violation of  18 DCMR § 2405.3(e)” following “to tow the vehicle”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (a), repealed pars. (1), (2), and (3).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-139.html">D.C. Law 16-139</a>, in the lead-in language to subsec. (a), substituted “impounded vehicle stored at a District government impoundment facility” for “impounded vehicle”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of this section, see § 9 of Removal and Disposition of Abandoned and Other Unlawfully Parked Vehicles Reform Congressional Review Emergency Act of 2003 (D.C. Act 15-171, October 6, 2003,  50 DCR 9163).</p>
-                <p>For temporary (90 day) amendment of section, see § 6073 of Fiscal Year 2008 Budget Support Emergency Act of 2007 (D.C. Act 17-74, July 25, 2007,  54 DCR 7549).</p>
-                <p>For temporary (90 days) amendment of this section, see § 276(b) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
-                <p>For temporary (90 days) amendment of this section, see § 6013 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 6013 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 6013 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 days) amendment of this section, see § 276(b) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
+                <p>For temporary (90 day) amendment of section, see § 6073 of Fiscal Year 2008 Budget Support Emergency Act of 2007 (D.C. Act 17-74, July 25, 2007,  54 DCR 7549).</p>
+                <p>For temporary (90 day) addition of this section, see § 9 of Removal and Disposition of Abandoned and Other Unlawfully Parked Vehicles Reform Congressional Review Emergency Act of 2003 (D.C. Act 15-171, October 6, 2003,  50 DCR 9163).</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a>: Section 11001 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that, except as otherwise provided, the act shall apply as of October 1, 2013.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
               </section>
             </section>
             <hr/>
@@ -355,12 +385,12 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/22-2724.html">22-2724</a> and § <a class="internal-link" href="/dc/council/code/sections/50-2402.html">50-2402</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (c), deleted “from” following “retain”; and, in subsec. (e), substituted “all proceeds in this subsection” for “the remainder”.</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “the day of the auctions. The proceeds from the fee” for “that day, and all proceeds in this subsection” in (e).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “of not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not to exceed $5,000” in (d).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “the day of the auctions. The proceeds from the fee” for “that day, and all proceeds in this subsection” in (e).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (c), deleted “from” following “retain”; and, in subsec. (e), substituted “all proceeds in this subsection” for “the remainder”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of this section, see § 10 of Removal and Disposition of Abandoned and Other Unlawfully Parked Vehicles Reform Congressional Review Emergency Act of 2003 (D.C. Act 15-171, October 6, 2003,  50 DCR 9163).</p>
                 <p>For temporary (90 days) amendment of this section, see § 276(c) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
+                <p>For temporary (90 day) addition of this section, see § 10 of Removal and Disposition of Abandoned and Other Unlawfully Parked Vehicles Reform Congressional Review Emergency Act of 2003 (D.C. Act 15-171, October 6, 2003,  50 DCR 9163).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
               </section>

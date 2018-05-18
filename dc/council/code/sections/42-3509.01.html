@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/42-3509.02.html">§ 42–3509.02. Attorney’s fees.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/42-3509.01.html">Report Error</a>
@@ -116,8 +116,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/42-3505.05.html">42-3505.05</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsec. (a), substituted “rent charged” for “rent ceiling”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (g), substituted “tenant or tenant with a disability” for “or disabled tenant”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-145.html">D.C. Law 16-145</a>, in subsec. (a), substituted “rent charged” for “rent ceiling”.</p>
                 <h4>Expiration of Law</h4>
                 <p>Section 907 of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, as amended by § 2(d) of <a class="internal-link" href="/dc/council/laws/8-48.html">D.C. Law 8-48</a> and § 818 of <a class="internal-link" href="/dc/council/laws/11-52.html">D.C. Law 11-52</a>, provided that all subchapters of the act, except III and V, shall terminate on December 31, 2000.</p>
                 <h4>Emergency Legislation</h4>
@@ -125,8 +125,8 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 4 of Tenant Assistance Program Amendment Temporary Act of 1987 (D.C. Law 7-48, December 10, 1987, law notification  34 DCR 8107).</p>
                 <h4>Editor's Notes</h4>
-                <p>Application of 9-154: Section 3 of <a class="internal-link" href="/dc/council/laws/9-154.html">D.C. Law 9-154</a> provided that the act shall not apply to any increase in a rent ceiling for a rental unit, or to any increase in the rent charged for a rental unit, when the capital improvement petition has been approved by the Rent Administrator and the resultant rent increase was implemented prior to September 26, 1992.</p>
                 <p>For temporary amendment to the termination provision of <a class="internal-link" href="/dc/council/laws/6-10.html">D.C. Law 6-10</a>, see § 818 of the Omnibus Budget Support Congressional Review Emergency Act of 1995 (D.C. Act 11-124, July 27, 1995,  42 DCR 4160).</p>
+                <p>Application of 9-154: Section 3 of <a class="internal-link" href="/dc/council/laws/9-154.html">D.C. Law 9-154</a> provided that the act shall not apply to any increase in a rent ceiling for a rental unit, or to any increase in the rent charged for a rental unit, when the capital improvement petition has been approved by the Rent Administrator and the resultant rent increase was implemented prior to September 26, 1992.</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/8-633.05.html">§ 8–633.05. Cleanup standards.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-633.04.html">Report Error</a>
@@ -100,8 +100,8 @@
       (<a class="internal-link" href="/dc/council/laws/13-312.html#§304">June 13, 2001, D.C. Law 13-312, § 304, 48 DCR 3804</a>; <a class="internal-link" href="/dc/council/laws/18-369.html">Apr. 8, 2011, D.C. Law 18-369, § 2(a), (f), 58 DCR 996</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-369.html">D.C. Law 18-369</a> substituted “DDOE” for “EHA” throughout the section; in the section heading, substituted “ ”security of the cleanup action plan“ for ”security“; and rewrote subsec. (a), which formerly read:</p>
                 <p>“(a) An applicant shall pay a $10,000 fee, upon submission of an application to participate in the Program.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-369.html">D.C. Law 18-369</a> substituted “DDOE” for “EHA” throughout the section; in the section heading, substituted “ ”security of the cleanup action plan“ for ”security“; and rewrote subsec. (a), which formerly read:</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2(a), (f) of Brownfield Revitalization Emergency Amendment Act of 2010 (D.C. Act 18-667, December 28, 2010,  58 DCR 95).</p>
               </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/28:9-305.html">§ 28:9-305. Law governing perfection and priority of security interests in investment property.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:9-304.html">Report Error</a>
@@ -108,9 +108,9 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-299.html">D.C. Law 19-299</a> substituted “its customer” for “the debtor” in (b)(1).</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. Source. New; derived from  Section 8-110(e) and former  Section 9-103(6).</p>
-                <p>2. Deposit Accounts. Under this section, the law of the “bank’s jurisdiction” governs perfection and priority of a security interest in deposit accounts. Subsection (b) contains rules for determining the “bank’s jurisdiction.” The substance of these rules is substantially similar to that of the rules determining the “security intermediary’s jurisdiction” under former  Section 8-110(e), except that subsection (b)(1) provides more flexibility than the analogous provision in former  Section 8-110(e)(1). Subsection (b)(1) permits the parties to choose the law of one jurisdiction to govern perfection and priority of security interests and a different governing law for other purposes. The parties’ choice is effective, even if the jurisdiction whose law is chosen bears no relationship to the parties or the transaction.  Section 8-110(e)(1) has been conformed to subsection (b)(1) of this section, and  Section 9-305(b)(1), concerning a commodity intermediary’s jurisdiction, makes a similar departure from former  Section 9-103(6)(e)(i).</p>
                 <p>3. Change in Law Governing Perfection. When the bank’s jurisdiction changes, the jurisdiction whose law governs perfection under subsection (a) changes, as well. Nevertheless, the change will not result in an immediate loss of perfection. See  Section 9-316(f), (g).</p>
+                <p>2. Deposit Accounts. Under this section, the law of the “bank’s jurisdiction” governs perfection and priority of a security interest in deposit accounts. Subsection (b) contains rules for determining the “bank’s jurisdiction.” The substance of these rules is substantially similar to that of the rules determining the “security intermediary’s jurisdiction” under former  Section 8-110(e), except that subsection (b)(1) provides more flexibility than the analogous provision in former  Section 8-110(e)(1). Subsection (b)(1) permits the parties to choose the law of one jurisdiction to govern perfection and priority of security interests and a different governing law for other purposes. The parties’ choice is effective, even if the jurisdiction whose law is chosen bears no relationship to the parties or the transaction.  Section 8-110(e)(1) has been conformed to subsection (b)(1) of this section, and  Section 9-305(b)(1), concerning a commodity intermediary’s jurisdiction, makes a similar departure from former  Section 9-103(6)(e)(i).</p>
+                <p>1. Source. New; derived from  Section 8-110(e) and former  Section 9-103(6).</p>
               </section>
             </section>
           </section>

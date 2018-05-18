@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/3/chapters/5/subchapters/II/">Subchapter II. Repealed Provisions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/3/chapters/5/subchapters/I/">Report Error</a>
@@ -88,25 +88,63 @@
         <section class="col8 body">
           <h1>Subchapter I. General.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/3-501.html">§ 3–501. Purposes. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-502.html">§ 3–502. Definitions. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-503.html">§ 3–503. Persons previously licensed. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-504.html">§ 3–504. Animal facility license required. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-505.html">§ 3–505. Board of Veterinary Examiners; duties of Mayor. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-506.html">§ 3–506. Fees; expiration date of licenses. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-507.html">§ 3–507. Qualifications for issuance of license. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-508.html">§ 3–508. License renewal. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-509.html">§ 3–509. Denial, suspension, or revocation of licenses; grounds; reinstatement. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-510.html">§ 3–510. Hearing procedures. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-511.html">§ 3–511. Appeal procedures. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-512.html">§ 3–512. Certification of animal technicians. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-512.01.html">§ 3–512.01. Permitted practice without a license; exemption for services provided during emergency. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-512.02.html">§ 3–512.02. Issuance of animal license; collection of fees. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-513.html">§ 3–513. Exceptions. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-514.html">§ 3–514. Prohibited acts. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-515.html">§ 3–515. Penalties. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-516.html">§ 3–516. Prosecutions. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-517.html">§ 3–517. Injunctions. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-501.html">§ 3–501. Purposes. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-502.html">§ 3–502. Definitions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-503.html">§ 3–503. Persons previously licensed. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-504.html">§ 3–504. Animal facility license required. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-505.html">§ 3–505. Board of Veterinary Examiners; duties of Mayor. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-506.html">§ 3–506. Fees; expiration date of licenses. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-507.html">§ 3–507. Qualifications for issuance of license. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-508.html">§ 3–508. License renewal. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-509.html">§ 3–509. Denial, suspension, or revocation of licenses; grounds; reinstatement. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-510.html">§ 3–510. Hearing procedures. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-511.html">§ 3–511. Appeal procedures. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-512.html">§ 3–512. Certification of animal technicians. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-512.01.html">§ 3–512.01. Permitted practice without a license; exemption for services provided during emergency. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-512.02.html">§ 3–512.02. Issuance of animal license; collection of fees. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-513.html">§ 3–513. Exceptions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-514.html">§ 3–514. Prohibited acts. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-515.html">§ 3–515. Penalties. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-516.html">§ 3–516. Prosecutions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-517.html">§ 3–517. Injunctions. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

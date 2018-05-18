@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/7/chapters/7D/">Chapter 7D. Department of Health Care Finance.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/7/chapters/7C/">Report Error</a>
@@ -87,24 +87,60 @@
         <section class="col8 body">
           <h1>Chapter 7C. Department on Disability Services.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/7-761.01.html">§ 7–761.01. Short title.</a>
-            <a href="/dc/council/code/sections/7-761.02.html">§ 7–761.02. Definitions.</a>
-            <a href="/dc/council/code/sections/7-761.03.html">§ 7–761.03. Establishment and purpose of the Department on Disability Services.</a>
-            <a href="/dc/council/code/sections/7-761.04.html">§ 7–761.04. Organization.</a>
-            <a href="/dc/council/code/sections/7-761.05.html">§ 7–761.05. Duties.</a>
-            <a href="/dc/council/code/sections/7-761.05a.html">§ 7–761.05a. Ticket to Work Employment Network Fund.</a>
-            <a href="/dc/council/code/sections/7-761.05b.html">§ 7–761.05b. Contribution to costs of supports.</a>
-            <a href="/dc/council/code/sections/7-761.05c.html">§ 7–761.05c. Contribution to Costs of Supports Fund.</a>
-            <a href="/dc/council/code/sections/7-761.06.html">§ 7–761.06. Appointment and authority of the Director.</a>
-            <a href="/dc/council/code/sections/7-761.06a.html">§ 7–761.06a. Reporting requirements.</a>
-            <a href="/dc/council/code/sections/7-761.06b.html">§ 7–761.06b. Reports and notices to be made available to the public.</a>
-            <a href="/dc/council/code/sections/7-761.07.html">§ 7–761.07. Medicaid services.</a>
-            <a href="/dc/council/code/sections/7-761.08.html">§ 7–761.08. Transfers of authority.</a>
-            <a href="/dc/council/code/sections/7-761.09.html">§ 7–761.09. Rulemaking and contracting authority.</a>
-            <a href="/dc/council/code/sections/7-761.10.html">§ 7–761.10. Delegation and redelegation of authority.</a>
-            <a href="/dc/council/code/sections/7-761.11.html">§ 7–761.11. Rescission.</a>
-            <a href="/dc/council/code/sections/7-761.12.html">§ 7–761.12. Family Support Council.</a>
-            <a href="/dc/council/code/sections/7-761.13.html">§ 7–761.13. Formal complaints.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.01.html">§ 7–761.01. Short title.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.02.html">§ 7–761.02. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.03.html">§ 7–761.03. Establishment and purpose of the Department on Disability Services.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.04.html">§ 7–761.04. Organization.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.05.html">§ 7–761.05. Duties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.05a.html">§ 7–761.05a. Ticket to Work Employment Network Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.05b.html">§ 7–761.05b. Contribution to costs of supports.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.05c.html">§ 7–761.05c. Contribution to Costs of Supports Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.06.html">§ 7–761.06. Appointment and authority of the Director.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.06a.html">§ 7–761.06a. Reporting requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.06b.html">§ 7–761.06b. Reports and notices to be made available to the public.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.07.html">§ 7–761.07. Medicaid services.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.08.html">§ 7–761.08. Transfers of authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.09.html">§ 7–761.09. Rulemaking and contracting authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.10.html">§ 7–761.10. Delegation and redelegation of authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.11.html">§ 7–761.11. Rescission.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.12.html">§ 7–761.12. Family Support Council.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-761.13.html">§ 7–761.13. Formal complaints.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -162,13 +198,13 @@
       (<a class="internal-link" href="/dc/council/laws/16-264.html">Mar. 14, 2007, D.C. Law 16-264, § 113</a>; <a class="internal-link" href="/dc/council/laws/16-264.html#§102">Mar. 14, 2007, D.C. Law 16-264, § 102, 54 DCR 818</a>; <a class="internal-link" href="/dc/council/laws/19-169.html">Sept. 26, 2012, D.C. Law 19-169, § 15(a), 59 DCR 5567</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 5002(a), 61 DCR 9990</a>; <a class="internal-link" href="/dc/council/laws/21-160.html#§5022(a)">Oct. 8, 2016, D.C. Law 21-160, § 5022(a), 63 DCR 10775</a>; <a class="internal-link" href="/dc/council/laws/22-93.html#§101(a)">May 5, 2018, D.C. Law 22-93, § 101(a), 65 DCR 2823</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a>, in (1), substituted “persons with intellectual disabilities” for “persons with mental retardation” in the first sentence, substituted “person with an intellectual disability” for “person with mental retardation” in the first and second sentences, and substituted “intellectual disabilities” for “mental retardation” at the end of the second sentence; added (7A); and repealed (10) and (11), which formerly read: “(10) ‘Mental retardation’ or ‘persons with mental retardation’ means a substantial limitation in capacity that manifests before 18 years of age and is characterized by significantly subaverage intellectual functioning, existing concurrently with 2 or more significant limitations in adaptive functioning. (11) ‘MRDDA’ means the former Mental Retardation and Developmental Disabilities Administration within the Department of Human Services.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added (3A); repealed (8); and substituted “DCHF” for “Medical Assistance Administration” in (9).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a>, in (1), substituted “persons with intellectual disabilities” for “persons with mental retardation” in the first sentence, substituted “person with an intellectual disability” for “person with mental retardation” in the first and second sentences, and substituted “intellectual disabilities” for “mental retardation” at the end of the second sentence; added (7A); and repealed (10) and (11), which formerly read: “(10) ‘Mental retardation’ or ‘persons with mental retardation’ means a substantial limitation in capacity that manifests before 18 years of age and is characterized by significantly subaverage intellectual functioning, existing concurrently with 2 or more significant limitations in adaptive functioning. (11) ‘MRDDA’ means the former Mental Retardation and Developmental Disabilities Administration within the Department of Human Services.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 102 of Developmental Disabilities Services Management Reform Emergency Amendment Act of 2006 (D.C. Act 16-672, December 28, 2006,  54 DCR 1155).</p>
-                <p>For temporary (90 days) amendment of this section, see §  5002(a) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see §  5002(a) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see §  5002(a) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see §  5002(a) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see §  5002(a) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) addition, see § 102 of Developmental Disabilities Services Management Reform Emergency Amendment Act of 2006 (D.C. Act 16-672, December 28, 2006,  54 DCR 1155).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
               </section>
@@ -252,16 +288,16 @@
       (<a class="internal-link" href="/dc/council/laws/16-264.html#§105">Mar. 14, 2007, D.C. Law 16-264, § 105, 54 DCR 818</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 5071(a), 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 5003, 58 DCR 6226</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 5002(b), 61 DCR 9990</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in par. (5), deleted “; and” from the end; in par. (6), substituted a semicolon for a period at the end; and added pars. (7) and (8).</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> deleted “and” from the end of par. (7)(I); substituted “; and” for a period the end of par. (8); and added par. (9).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> substituted “DCHF” for “MAA” in (4).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> deleted “and” from the end of par. (7)(I); substituted “; and” for a period the end of par. (8); and added par. (9).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in par. (5), deleted “; and” from the end; in par. (6), substituted a semicolon for a period at the end; and added pars. (7) and (8).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 105 of Developmental Disabilities Services Management Reform Emergency Amendment Act of 2006 (D.C. Act 16-672, December 28, 2006,  54 DCR 1155).</p>
-                <p>For temporary (90 day) amendment of section, see § 5071(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 5071(a) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 days) amendment of this section, see § 5002(b) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 5002(b) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 5002(b) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5002(b) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5002(b) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) amendment of section, see § 5071(a) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 5071(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) addition, see § 105 of Developmental Disabilities Services Management Reform Emergency Amendment Act of 2006 (D.C. Act 16-672, December 28, 2006,  54 DCR 1155).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 5070 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle H of title V of the act may be cited as the “Department on Disability Services Reporting, Waiting List, and Assessment Amendment Act of 2009”.</p>
               </section>
@@ -284,8 +320,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> added this section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 5032 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) addition of this section, see § 5032 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) addition of this section, see § 5032 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 5031 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle D of Title V of the act may be cited as the “Developmental Disabilities Service Management Reform Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -350,10 +386,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> added “including issuing grants and stipends” in (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 106 of Developmental Disabilities Services Management Reform Emergency Amendment Act of 2006 (D.C. Act 16-672, December 28, 2006,  54 DCR 1155).</p>
-                <p>For temporary (90 days) amendment of this section, see § 5002(c) of the  Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 5002(c) of the  Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 5002(c) of the  Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5002(c) of the  Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5002(c) of the  Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) addition, see § 106 of Developmental Disabilities Services Management Reform Emergency Amendment Act of 2006 (D.C. Act 16-672, December 28, 2006,  54 DCR 1155).</p>
               </section>
             </section>
             <hr/>
@@ -376,8 +412,8 @@
       (<a class="internal-link" href="/dc/council/laws/16-264.html#§106a">Mar. 14, 2007, D.C. Law 16-264, § 106a</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">as added Mar. 3, 2010, D.C. Law 18-111, § 5071(b), 57 DCR 181</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 5071(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) addition, see § 5071(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 5071(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>
@@ -392,8 +428,8 @@
       (<a class="internal-link" href="/dc/council/laws/16-264.html#§106b">Mar. 14, 2007, D.C. Law 16-264, § 106b</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">as added Mar. 3, 2010, D.C. Law 18-111, § 5071(b), 57 DCR 181</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 5071(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) addition, see § 5071(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 5071(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>
@@ -409,13 +445,13 @@
       (<a class="internal-link" href="/dc/council/laws/16-264.html#§107">Mar. 14, 2007, D.C. Law 16-264, § 107, 54 DCR 818</a>; <a class="internal-link" href="/dc/council/laws/19-169.html">Sept. 26, 2012, D.C. Law 19-169, § 15(c), 59 DCR 5567</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 5002(d), 61 DCR 9990</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “intellectual or developmental disabilities” for “mental retardation” in (a).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> rewrote (a); and substituted “DCHF” for “Medical Assistance Administration” in (b).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> substituted “intellectual or developmental disabilities” for “mental retardation” in (a).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 107 of Developmental Disabilities Services Management Reform Emergency Amendment Act of 2006 (D.C. Act 16-672, December 28, 2006,  54 DCR 1155).</p>
-                <p>For temporary (90 days) amendment of this section, see § 5002(d) of the  Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see § 5002(d) of the  Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see § 5002(d) of the  Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5002(d) of the  Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5002(d) of the  Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) addition, see § 107 of Developmental Disabilities Services Management Reform Emergency Amendment Act of 2006 (D.C. Act 16-672, December 28, 2006,  54 DCR 1155).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 35 of <a class="internal-link" href="/dc/council/laws/19-169.html">D.C. Law 19-169</a> provided that no provision of the act shall impair any right or obligation existing under law.</p>
               </section>
@@ -511,9 +547,9 @@
       (<a class="internal-link" href="/dc/council/laws/16-264.html#§112">Mar. 14, 2007, D.C. Law 16-264, § 112</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">as added Feb. 26, 2015, D.C. Law 20-155, §  5002(e), 61 DCR 9990</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see §  5002(e) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) addition of this section, see §  5002(e) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) addition of this section, see §  5002(e) of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) addition of this section, see §  5002(e) of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) addition of this section, see §  5002(e) of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>

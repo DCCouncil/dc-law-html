@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/37-112.html">§ 37–112. Insurance.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/37-111.html">Report Error</a>
@@ -141,16 +141,16 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/37-101.html">37-101</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-49.html">D.C. Law 13-49</a>, in par. (a)(3), added subpar. (C).</p>
-                <p>Subsection 14(c) of <a class="internal-link" href="/dc/council/laws/13-49.html">D.C. Law 13-49</a> provided: “This section shall apply as of April 16, 1999.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a>, in subsec. (e), added “The EMCAC may establish a bank account and receive and disburse funds.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-195.html">D.C. Law 15-195</a>, in subsec. (a), repealed par. (1), rewrote pars. (5) and (6), repealed par. (7), and rewrote par. (8); rewrote subsec. (c); in subsec. (d), substituted “With the exception of the voting representatives of the food market vendors and non-food market vendors,” for “With the exception of the non-voting representative of the Tenants Council and the voting representatives of the food market vendors and non-food market vendors,”; in subsec. (f), added a new sentence at the end; and in par. (1) of subsec. (i), deleted “and one member to represent the Tenants Council as a non-voting member on the EMCAC” following “appoint a chair to conduct its meetings”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a>, in subsec. (e), added “The EMCAC may establish a bank account and receive and disburse funds.”</p>
+                <p>Subsection 14(c) of <a class="internal-link" href="/dc/council/laws/13-49.html">D.C. Law 13-49</a> provided: “This section shall apply as of April 16, 1999.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-49.html">D.C. Law 13-49</a>, in par. (a)(3), added subpar. (C).</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2 of Eastern Market Emergency Amendment Act of 2003 (D.C. Act 15-116, July 29, 2003,  50 DCR 6594.</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/15-60.html">D.C. Law 15-60</a>, repealed subsec. (a)(1); and rewrote subsec. (c) to read as follows:</p>
-                <p>“Members of the EMCAC shall serve for 2-year terms, except that the representative from ANC 6B shall not serve for any period longer than his or her service as a Commissioner. ANC 6B shall identify the EMCAC representative. To create staggered terms, the initial non-ANC members shall determine by lot that half shall serve for one year.”</p>
                 <p>Section 4(b) of <a class="internal-link" href="/dc/council/laws/15-60.html">D.C. Law 15-60</a> provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“Members of the EMCAC shall serve for 2-year terms, except that the representative from ANC 6B shall not serve for any period longer than his or her service as a Commissioner. ANC 6B shall identify the EMCAC representative. To create staggered terms, the initial non-ANC members shall determine by lot that half shall serve for one year.”</p>
+                <p>Section 2 of <a class="internal-link" href="/dc/council/laws/15-60.html">D.C. Law 15-60</a>, repealed subsec. (a)(1); and rewrote subsec. (c) to read as follows:</p>
               </section>
             </section>
           </section>

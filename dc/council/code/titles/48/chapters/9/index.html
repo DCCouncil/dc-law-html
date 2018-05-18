@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/48/chapters/9A/">Chapter 9A. Marijuana Consumption in Public Space.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/48/chapters/9/">Report Error</a>
@@ -87,20 +87,34 @@
         <section class="col8 body">
           <h1>Chapter 9. Controlled Substances Act.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/48/chapters/9/subchapters/I/">Subchapter I. Definitions.</a>
-            <p>§§ 48-901.01 - 48-901.02</p>
-            <a href="/dc/council/code/titles/48/chapters/9/subchapters/II/">Subchapter II. Standards and Schedules.</a>
-            <p>§§ 48-902.01 - 48-902.14</p>
-            <a href="/dc/council/code/titles/48/chapters/9/subchapters/III/">Subchapter III. Regulation of Manufacture, Distribution, and Dispensing.</a>
-            <p>§§ 48-903.01 - 48-903.09</p>
-            <a href="/dc/council/code/titles/48/chapters/9/subchapters/IV/">Subchapter IV. Offenses and Penalties.</a>
-            <p>§§ 48-904.01 - 48-904.10</p>
-            <a href="/dc/council/code/titles/48/chapters/9/subchapters/V/">Subchapter V. Enforcement and Administrative Provisions.</a>
-            <p>§§ 48-905.01 - 48-905.07</p>
-            <a href="/dc/council/code/titles/48/chapters/9/subchapters/VI/">Subchapter VI. Miscellaneous.</a>
-            <p>§§ 48-906.01 - 48-906.03</p>
-            <a href="/dc/council/code/titles/48/chapters/9/subchapters/VII/">Subchapter VII. Drug Interdiction and Demand Reduction Fund.</a>
-            <p>§§ 48-907.01 - 48-907.03</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/48/chapters/9/subchapters/I/">Subchapter I. Definitions.</a>
+            </p>
+            <p>§§ 48-901.01 – 48-901.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/48/chapters/9/subchapters/II/">Subchapter II. Standards and Schedules.</a>
+            </p>
+            <p>§§ 48-902.01 – 48-902.14</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/48/chapters/9/subchapters/III/">Subchapter III. Regulation of Manufacture, Distribution, and Dispensing.</a>
+            </p>
+            <p>§§ 48-903.01 – 48-903.09</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/48/chapters/9/subchapters/IV/">Subchapter IV. Offenses and Penalties.</a>
+            </p>
+            <p>§§ 48-904.01 – 48-904.10</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/48/chapters/9/subchapters/V/">Subchapter V. Enforcement and Administrative Provisions.</a>
+            </p>
+            <p>§§ 48-905.01 – 48-905.07</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/48/chapters/9/subchapters/VI/">Subchapter VI. Miscellaneous.</a>
+            </p>
+            <p>§§ 48-906.01 – 48-906.03</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/48/chapters/9/subchapters/VII/">Subchapter VII. Drug Interdiction and Demand Reduction Fund.</a>
+            </p>
+            <p>§§ 48-907.01 – 48-907.03</p>
           </section>
           <section class="content">
             <hr/>
@@ -185,9 +199,9 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-131.html#§2(a)">§ 2(a) of Revised Synthetics Abatement and Full Enforcement Drug Control Temporary Amendment Act of 2016 (D.C. Law 21-131, July 1, 2016, 63 DCR 7110)</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Mayor to implement public information program: Section 5 of <a class="internal-link" href="/dc/council/laws/8-138.html">D.C. Law 8-138</a> provided that within 10 days of June 13, 1990, the Mayor shall implement an extensive public information program to detail the new penalty structure established under this act.</p>
-                <p>Drug house abatement: Section 2(a) of <a class="internal-link" href="/dc/council/laws/12-127.html">D.C. Law 12-127</a> provided that whoever shall erect, establish, continue, maintain, use, own, occupy, or release any building, erection, or place which is resorted to by persons using controlled substances in violation of § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a> et seq., for the purpose of using any of these substances or for the purpose of keeping or selling any of these substances in violation of the Controlled Substances Act of 1981, is guilty of a nuisance, and the building, erection, or place, or the ground itself in or upon which such activity is conducted, permitted, or carried on, continued, or exists, and the furniture, fixtures, and contents thereof, are also declared a nuisance and disorderly house, and shall be enjoined and abated as hereinafter provided.</p>
                 <p>Uniform Law: Chapter 5, Controlled Substances, is based upon provisions contained in the Uniform Controlled Substances Act (1970, 1990, and 1994 Acts).</p>
+                <p>Drug house abatement: Section 2(a) of <a class="internal-link" href="/dc/council/laws/12-127.html">D.C. Law 12-127</a> provided that whoever shall erect, establish, continue, maintain, use, own, occupy, or release any building, erection, or place which is resorted to by persons using controlled substances in violation of § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a> et seq., for the purpose of using any of these substances or for the purpose of keeping or selling any of these substances in violation of the Controlled Substances Act of 1981, is guilty of a nuisance, and the building, erection, or place, or the ground itself in or upon which such activity is conducted, permitted, or carried on, continued, or exists, and the furniture, fixtures, and contents thereof, are also declared a nuisance and disorderly house, and shall be enjoined and abated as hereinafter provided.</p>
+                <p>Mayor to implement public information program: Section 5 of <a class="internal-link" href="/dc/council/laws/8-138.html">D.C. Law 8-138</a> provided that within 10 days of June 13, 1990, the Mayor shall implement an extensive public information program to detail the new penalty structure established under this act.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to Law 4-29, see Mayor’s Order 85-171, October 18, 1985, as amended by Mayor’s Order 87-121, May 27, 1987.</p>
               </section>
@@ -223,14 +237,14 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a>, in (d), substituted “the Mayor may similarly designate, reschedule, or delete the controlled substance” for “the Mayor may similarly propose to control or delete the substance” and added “or may otherwise designate, reschedule or delete as a controlled substance”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 301(a) of the Omnibus Public Safety and Justice Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013, 60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of (d), see § 301(a) of the Omnibus Criminal Code Amendments Congressional Review Emergency Amendment Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary (90 days) amendment of this section, see § 301(a) of the Omnibus Public Safety and Justice Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013, 60 DCR 1017).</p>
                 <h4>References in Text</h4>
                 <p>Section 25-103, referred to in subsection (e) of this section, is part of Title 25, D.C. Official Code, which title was amended and enacted by <a class="internal-link" href="/dc/council/laws/13-298.html">D.C. Law 13-298</a>, effective May 3, 2001. For disposition of the subject matter of former Title 25, see the Disposition Table preceding § <a class="internal-link" href="/dc/council/code/sections/25-101.html">25-101</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Pursuant to subsection (b), sufentanil was added to the list of enumerated controlled substances in Schedule II, appearing in subparagraph (A) of paragraph (1) of § <a class="internal-link" href="/dc/council/code/sections/48-902.06.html">48-902.06</a>, by an order published upon adoption of the rule in  32 DCR 1097.</p>
-                <p>Pursuant to subsection (b), buprenorphine was rescheduled from Schedule II to Schedule V of enumerated controlled substances appearing in § <a class="internal-link" href="/dc/council/code/sections/48-902.12.html">48-902.12</a>(3), by an order published upon adoption of the rule in  33 DCR 6908.</p>
                 <p>Pursuant to subsection (b), loperamide was deleted from Schedule V appearing in § <a class="internal-link" href="/dc/council/code/sections/48-902.12.html">48-902.12</a>(3) by an order published upon adoption of the rule in  34 DCR 4370.</p>
+                <p>Pursuant to subsection (b), buprenorphine was rescheduled from Schedule II to Schedule V of enumerated controlled substances appearing in § <a class="internal-link" href="/dc/council/code/sections/48-902.12.html">48-902.12</a>(3), by an order published upon adoption of the rule in  33 DCR 6908.</p>
+                <p>Pursuant to subsection (b), sufentanil was added to the list of enumerated controlled substances in Schedule II, appearing in subparagraph (A) of paragraph (1) of § <a class="internal-link" href="/dc/council/code/sections/48-902.06.html">48-902.06</a>, by an order published upon adoption of the rule in  32 DCR 1097.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of Authority to implement <a class="internal-link" href="/dc/council/laws/4-29.html">D.C. Law 4-29</a>, the “District of Columbia Uniformed Controlled Substances Act of 1981”, see Mayor’s Order 98-49, April 15, 1998 ( 45 DCR 2694).</p>
               </section>
@@ -415,19 +429,19 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-3002.html">7-3002</a>, § <a class="internal-link" href="/dc/council/code/sections/44-1201.html">44-1201</a>, § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>, § <a class="internal-link" href="/dc/council/code/sections/48-902.01.html">48-902.01</a>, § <a class="internal-link" href="/dc/council/code/sections/48-902.02.html">48-902.02</a>, § <a class="internal-link" href="/dc/council/code/sections/48-1004.html">48-1004</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-2206.13.html">50-2206.13</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-99.html">D.C. Law 13-99</a> corrected the way in which two chemicals were stated in subsec. (3) and added provisions contained in (X) and (Y) in subsec. (3).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a>, in par. (5), deleted “and” from the end of subpar. (A), substituted “; and” for a period at the end of subpar. (B), and added subpar. (C).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> added (3)(Z) through (3)(KK); added (4)(C); inserted “their analogues or derivatives and” in the introductory language of (5); added (5)(D) through (5)(H); and made related changes.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-88.html">D.C. Law 18-88</a>, in par. (5), deleted “and” from the end of subpar. (A), substituted “; and” for a period at the end of subpar. (B), and added subpar. (C).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-99.html">D.C. Law 13-99</a> corrected the way in which two chemicals were stated in subsec. (3) and added provisions contained in (X) and (Y) in subsec. (3).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Uniform Controlled Substances Emergency Amendment Act of 1999 (D.C. Act 13-96, June 15, 1999,  46 DCR 5640).</p>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Uniform Controlled Substances Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-144, October 18, 1999,  46 DCR 9904).</p>
-                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
-                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
-                <p>For temporary amendment of section, see § 301(b) of the Omnibus Public Safety and Justice Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 301(b) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of section, see § 301(b) of the Omnibus Public Safety and Justice Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
+                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety and Justice Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-227, October 21, 2009,  56 DCR 8668).</p>
+                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety and Justice Emergency Amendment Act of 2009 (D.C. Act 18-181, August 6, 2009,  56 DCR 6903).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Uniform Controlled Substances Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-144, October 18, 1999,  46 DCR 9904).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Uniform Controlled Substances Emergency Amendment Act of 1999 (D.C. Act 13-96, June 15, 1999,  46 DCR 5640).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Uniform Controlled Substances Temporary Amendment Act of 1999 (D.C. Law 13-34, October 7, 1999, law notification  47 DCR 3423).</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-131.html#§2(b)">§ 2(b) of Revised Synthetics Abatement and Full Enforcement Drug Control Temporary Amendment Act of 2016 (D.C. Law 21-131, July 1, 2016, 63 DCR 7110)</a>.</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Uniform Controlled Substances Temporary Amendment Act of 1999 (D.C. Law 13-34, October 7, 1999, law notification  47 DCR 3423).</p>
               </section>
             </section>
             <hr/>
@@ -541,8 +555,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> substituted “Dronabinol” for “Dronabianol” in (4)(G).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of (4)(G), see § 301(c) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 301(c) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of (4)(G), see § 301(c) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <h4>Editor's Notes</h4>
                 <p>Mayor to implement public information program: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>.</p>
               </section>
@@ -673,11 +687,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-3002.html">7-3002</a>, § <a class="internal-link" href="/dc/council/code/sections/44-1201.html">44-1201</a>, § <a class="internal-link" href="/dc/council/code/sections/48-853.01.html">48-853.01</a>, § <a class="internal-link" href="/dc/council/code/sections/48-902.01.html">48-902.01</a>, § <a class="internal-link" href="/dc/council/code/sections/48-902.02.html">48-902.02</a>, and § <a class="internal-link" href="/dc/council/code/sections/48-1004.html">48-1004</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-300.html">D.C. Law 13-300</a>, in subsec. (a), deleted “and” at the end of par. (4)(H), substituted “; and” for the period at the end of par. (5)(BB), and added par. (6).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> added (a)(7); and made related changes.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-300.html">D.C. Law 13-300</a>, in subsec. (a), deleted “and” at the end of par. (4)(H), substituted “; and” for the period at the end of par. (5)(BB), and added par. (6).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of (a), see § 301(d) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 301(d) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of (a), see § 301(d) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-131.html#§2(c)">§ 2(c) of Revised Synthetics Abatement and Full Enforcement Drug Control Temporary Amendment Act of 2016 (D.C. Law 21-131, July 1, 2016, 63 DCR 7110)</a>.</p>
               </section>
@@ -784,8 +798,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> added (a)(1)(WW) and made related changes; and substituted “Cathine” for “Cathine” (made no change) in (a)(3)(D).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of (a), see § 301(e) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 301(e) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of (a), see § 301(e) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
               </section>
             </section>
             <hr/>
@@ -1127,24 +1141,24 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-403.html">7-403</a>, § <a class="internal-link" href="/dc/council/code/sections/23-546.html">23-546</a>, § <a class="internal-link" href="/dc/council/code/sections/24-112.html">24-112</a>, § <a class="internal-link" href="/dc/council/code/sections/24-221.06.html">24-221.06</a>, § <a class="internal-link" href="/dc/council/code/sections/24-906.html">24-906</a>, § <a class="internal-link" href="/dc/council/code/sections/48-904.06.html">48-904.06</a>, § <a class="internal-link" href="/dc/council/code/sections/48-904.07.html">48-904.07</a>, § <a class="internal-link" href="/dc/council/code/sections/48-904.07a.html">48-904.07a</a>, and § <a class="internal-link" href="/dc/council/code/sections/48-905.02.html">48-905.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-300.html">D.C. Law 13-300</a>, in subsec. (a), par. (2)(A), substituted “both; except that upon conviction of manufacturing, distributing or possessing with intent to distribute ½ pound or less of marijuana, a person who has not previously been convicted of manufacturing, distributing or possessing with intent to distribute a controlled substance or attempting to manufacture, distribute, or possess with intent to distribute a controlled substance may be imprisoned for not more than 180 days or fined not more than $1000 or both” for “both”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-196.html">D.C. Law 18-196</a> rewrote subsec. (d), which had read as follows: “(d) It is unlawful for any person knowingly or intentionally to possess a controlled substance unless the substance was obtained directly from, or pursuant to, a valid prescription or order of a practitioner while acting in the course of his or her professional practice, or except as otherwise authorized by this chapter. Any person who violates this subsection is guilty of a misdemeanor and upon conviction may be imprisoned for not more than 180 days, fined not more than $1,000, or both.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-210.html">D.C. Law 18-210</a>, in subsec. (a)(1), substituted “Except as authorized by this chapter or Chapter 16B of Title 7,” for “Except as authorized by this chapter”; and, in subsec. (d), substituted “except as otherwise authorized by this chapter or Chapter 16B of Title 7” for “except as otherwise authorized by this chapter”.</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $500,000” in (a)(2)(A); in (a)(2)(B), substituted the first occurrence of “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $50,000” and the second occurrence for “not more than $1,000”; substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $25,000” in (a)(2)(C) and for “not more than $10,000” in (a)(2)(D); in (b)(2), substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $500,000” in (b)(2)(A), for “not more than $50,000” in (b)(2)(B), for “not more than $25,000” in (b)(2)(C), and for “not more than $10,000” in (b)(2)(D); and in (d), substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $1,000” in (d)(1), and for “not more than $3,000” in (d)(2).</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-319.html">D.C. Law 19-319</a> added (e)(3).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-153.html">D.C. Law 20-153</a> rewrote (a).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-319.html">D.C. Law 19-319</a> added (e)(3).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $500,000” in (a)(2)(A); in (a)(2)(B), substituted the first occurrence of “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $50,000” and the second occurrence for “not more than $1,000”; substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $25,000” in (a)(2)(C) and for “not more than $10,000” in (a)(2)(D); in (b)(2), substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $500,000” in (b)(2)(A), for “not more than $50,000” in (b)(2)(B), for “not more than $25,000” in (b)(2)(C), and for “not more than $10,000” in (b)(2)(D); and in (d), substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $1,000” in (d)(1), and for “not more than $3,000” in (d)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-210.html">D.C. Law 18-210</a>, in subsec. (a)(1), substituted “Except as authorized by this chapter or Chapter 16B of Title 7,” for “Except as authorized by this chapter”; and, in subsec. (d), substituted “except as otherwise authorized by this chapter or Chapter 16B of Title 7” for “except as otherwise authorized by this chapter”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-196.html">D.C. Law 18-196</a> rewrote subsec. (d), which had read as follows: “(d) It is unlawful for any person knowingly or intentionally to possess a controlled substance unless the substance was obtained directly from, or pursuant to, a valid prescription or order of a practitioner while acting in the course of his or her professional practice, or except as otherwise authorized by this chapter. Any person who violates this subsection is guilty of a misdemeanor and upon conviction may be imprisoned for not more than 180 days, fined not more than $1,000, or both.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-300.html">D.C. Law 13-300</a>, in subsec. (a), par. (2)(A), substituted “both; except that upon conviction of manufacturing, distributing or possessing with intent to distribute ½ pound or less of marijuana, a person who has not previously been convicted of manufacturing, distributing or possessing with intent to distribute a controlled substance or attempting to manufacture, distribute, or possess with intent to distribute a controlled substance may be imprisoned for not more than 180 days or fined not more than $1000 or both” for “both”.</p>
                 <h4>Cross References</h4>
-                <p>Duties, powers, and goals of Prison Commission, see § <a class="internal-link" href="/dc/council/code/sections/24-112.html">24-112</a>.</p>
                 <p>Good time credits, exceptions, see § <a class="internal-link" href="/dc/council/code/sections/24-221.06.html">24-221.06</a>.</p>
+                <p>Duties, powers, and goals of Prison Commission, see § <a class="internal-link" href="/dc/council/code/sections/24-112.html">24-112</a>.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 252(a) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
                 <h4>Editor's Notes</h4>
-                <p>Mayor to implement public information program: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
-                <p>Section 4 of <a class="internal-link" href="/dc/council/laws/20-153.html">D.C. Law 20-153</a> provided that the amounts of the fines set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a> and § <a class="internal-link" href="/dc/council/code/sections/48-1103.html">48-1103</a> shall be adjusted through implementing or amending legislation enacted by the Council of the District of Columbia to the extent necessary to ensure that the act does not negate or limit any act of the Council of the District of Columbia pursuant to § <a class="internal-link" href="/dc/council/code/sections/1-204.46.html">1-204.46</a>.</p>
-                <p>Section 809 of through 113 P.L. 235 provided:</p>
-                <p>“(a) None of the Federal funds contained in this Act may be used to enact or carry out any law, rule, or regulation to legalize or otherwise reduce penalties associated with the possession, use, or distribution of any schedule I substance under the Controlled Substances Act ( 21 U.S.C. 801 et seq.) or any tetrahydrocannabinols derivative.</p>
                 <p>“(b) None of the funds contained in this Act may be used to enact any law, rule, or regulation to legalize or otherwise reduce penalties associated with the possession, use, or distribution of any schedule I substance under the Controlled Substances Act ( 21 U.S.C. 801 et seq.) or any tetrahydrocannabinols derivative for recreational purposes.”</p>
+                <p>“(a) None of the Federal funds contained in this Act may be used to enact or carry out any law, rule, or regulation to legalize or otherwise reduce penalties associated with the possession, use, or distribution of any schedule I substance under the Controlled Substances Act ( 21 U.S.C. 801 et seq.) or any tetrahydrocannabinols derivative.</p>
+                <p>Section 809 of through 113 P.L. 235 provided:</p>
+                <p>Section 4 of <a class="internal-link" href="/dc/council/laws/20-153.html">D.C. Law 20-153</a> provided that the amounts of the fines set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a> and § <a class="internal-link" href="/dc/council/code/sections/48-1103.html">48-1103</a> shall be adjusted through implementing or amending legislation enacted by the Council of the District of Columbia to the extent necessary to ensure that the act does not negate or limit any act of the Council of the District of Columbia pursuant to § <a class="internal-link" href="/dc/council/code/sections/1-204.46.html">1-204.46</a>.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
+                <p>Mayor to implement public information program: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>.</p>
               </section>
             </section>
             <hr/>
@@ -1172,8 +1186,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not more than $50,000” in (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 10(b) of the Metropolitan Police Department Civilianization and Street Solicitation for Prostitution Emergency Amendment Act of 1998 (D.C. Act 12-428, August 6, 1998,  45 DCR 5884), § 10(b) of the Metropolitan Police Department Civilianization Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-506, November 10, 1998,  45 DCR 8139), and § 10(b) of the Metropolitan Police Department Civilianization Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-13, February 8, 1999,  46 DCR 2333).</p>
                 <p>For temporary (90 days) amendment of this section, see § 252(b) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
+                <p>For temporary amendment of section, see § 10(b) of the Metropolitan Police Department Civilianization and Street Solicitation for Prostitution Emergency Amendment Act of 1998 (D.C. Act 12-428, August 6, 1998,  45 DCR 5884), § 10(b) of the Metropolitan Police Department Civilianization Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-506, November 10, 1998,  45 DCR 8139), and § 10(b) of the Metropolitan Police Department Civilianization Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-13, February 8, 1999,  46 DCR 2333).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 10(b) of Metropolitan Police Department Civilianization Temporary Amendment Act of 1998 (<a class="internal-link" href="/dc/council/laws/12-282.html">D.C. Law 12-282</a>, May 28, 1999, law notification  46 DCR 5148).</p>
                 <h4>Editor's Notes</h4>
@@ -1226,8 +1240,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 252(f) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
                 <h4>Editor's Notes</h4>
-                <p>Mayor to implement public information program: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
+                <p>Mayor to implement public information program: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>.</p>
               </section>
             </section>
             <hr/>
@@ -1317,25 +1331,25 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 33-547.1.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-353.html">D.C. Law 15-353</a>, in subsec. (a), inserted “public charter school,” following “secondary school,”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-306.html">D.C. Law 16-306</a> rewrote subsec. (a), which had read as follows: “(a) All areas within 1000 feet of a public or private day care center, elementary school, vocational school, secondary school, public charter school, junior college, college, or university, or any public swimming pool, playground, video arcade, youth center, public library, or in and around public housing, as defined in section 3(1) of the United States Housing Act of 1937, approved August 22, 1974 (88 Stat. 654;  42 U.S.C. § 1437a(b)), the development or administration of which is assisted by the United States Department of Housing and Urban Development, or an event sponsored by any of the above entities shall be declared a drug free zone.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-353.html">D.C. Law 15-353</a>, in subsec. (a), inserted “public charter school,” following “secondary school,”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety And Health Omnibus Emergency Amendment Act of 2002 (D.C. Act 14-310, March 26, 2002,  49 DCR 3420).</p>
-                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Emergency Amendment Act of 2003 (D.C. Act 15-3, January 22, 2003,  50 DCR 1426).</p>
-                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-71, April 16, 2003,  50 DCR 3593).</p>
-                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Second Emergency Amendment Act of 2003 (D.C. Act 15-279, December 18, 2003,  51 DCR 60).</p>
-                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-407, March 18, 2004,  51 DCR 3659).</p>
-                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Emergency Amendment Act of 2004 (D.C. Act 15-630, November 30, 2004,  52 DCR 1143).</p>
-                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-30, February 17, 2005,  52 DCR 2993).</p>
-                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety Emergency Amendment Act of 2006 (D.C. Act 16-445, July 19, 2006,  53 DCR 6443).</p>
-                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-490, October 18, 2006,  53 DCR 8686).</p>
-                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-10, January 16, 2007,  54 DCR 1479).</p>
                 <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety Second Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-25, April 19, 2007,  54 DCR 4036).</p>
+                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2007 (D.C. Act 17-10, January 16, 2007,  54 DCR 1479).</p>
+                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-490, October 18, 2006,  53 DCR 8686).</p>
+                <p>For temporary (90 day) amendment of section, see § 225 of Omnibus Public Safety Emergency Amendment Act of 2006 (D.C. Act 16-445, July 19, 2006,  53 DCR 6443).</p>
+                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-30, February 17, 2005,  52 DCR 2993).</p>
+                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Emergency Amendment Act of 2004 (D.C. Act 15-630, November 30, 2004,  52 DCR 1143).</p>
+                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-407, March 18, 2004,  51 DCR 3659).</p>
+                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Second Emergency Amendment Act of 2003 (D.C. Act 15-279, December 18, 2003,  51 DCR 60).</p>
+                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-71, April 16, 2003,  50 DCR 3593).</p>
+                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety and Health Omnibus Emergency Amendment Act of 2003 (D.C. Act 15-3, January 22, 2003,  50 DCR 1426).</p>
+                <p>For temporary (90 day) amendment of section, see § 702 of Child and Youth, Safety And Health Omnibus Emergency Amendment Act of 2002 (D.C. Act 14-310, March 26, 2002,  49 DCR 3420).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 702 of the Child and Youth, Safety and Health Omnibus Temporary Amendment Act of 2002 (<a class="internal-link" href="/dc/council/laws/14-164.html">D.C. Law 14-164</a>, June 25, 2002, law notification  49 DCR 6500).</p>
-                <p>For temporary (225 day) amendment of section, see § 702 of the Child and Youth, Safety and Health Omnibus Temporary Amendment Act of 2003 (<a class="internal-link" href="/dc/council/laws/15-2.html">D.C. Law 15-2</a>, May 3, 2003, law notification  50 DCR 3782).</p>
-                <p>For temporary (225 day) addition of section, see § 702 of the Child and Youth, Safety and Health Omnibus Temporary Amendment Act of 2004 (<a class="internal-link" href="/dc/council/laws/15-117.html">D.C. Law 15-117</a>, March 30, 2004, law notification  51 DCR 3804).</p>
                 <p>For temporary (225 day) addition of section, see § 702 of the Child and Youth, Safety and Health Omnibus Second Temporary Amendment Act of 2004 (<a class="internal-link" href="/dc/council/laws/15-319.html">D.C. Law 15-319</a>, on April 8, 2005, law notification  52 DCR 4708).</p>
+                <p>For temporary (225 day) addition of section, see § 702 of the Child and Youth, Safety and Health Omnibus Temporary Amendment Act of 2004 (<a class="internal-link" href="/dc/council/laws/15-117.html">D.C. Law 15-117</a>, March 30, 2004, law notification  51 DCR 3804).</p>
+                <p>For temporary (225 day) amendment of section, see § 702 of the Child and Youth, Safety and Health Omnibus Temporary Amendment Act of 2003 (<a class="internal-link" href="/dc/council/laws/15-2.html">D.C. Law 15-2</a>, May 3, 2003, law notification  50 DCR 3782).</p>
+                <p>For temporary (225 day) amendment of section, see § 702 of the Child and Youth, Safety and Health Omnibus Temporary Amendment Act of 2002 (<a class="internal-link" href="/dc/council/laws/14-164.html">D.C. Law 14-164</a>, June 25, 2002, law notification  49 DCR 6500).</p>
               </section>
             </section>
             <hr/>
@@ -1358,8 +1372,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> substituted “convicted under this chapter of a second or subsequent offense” for “convicted of a second or subsequent offense under this chapter” in (a); and substituted “a controlled substance” for “narcotic drugs, depressants, stimulants, or hallucinogenic drugs” in (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 301(f) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 301(f) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of section, see § 301(f) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
               </section>
             </section>
             <hr/>
@@ -1446,13 +1460,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-2507.06a.html">7-2507.06a</a>, § <a class="internal-link" href="/dc/council/code/sections/22-902.html">22-902</a>, and § <a class="internal-link" href="/dc/council/code/sections/22-2723.html">22-2723</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-160.html">D.C. Law 13-160</a> rewrote subsec. (b) which formerly provided: “(b) Property subject to forfeiture under this chapter may be seized by law enforcement officials, as designated by the Mayor, or designated civilian employees of the Metropolitan Police Department, upon process issued by the Superior Court of the District of Columbia having jurisdiction over the property, or without process if authorized by other law.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (d)(3)(B), which formerly read:</p>
-                <p>“(B) Any person claiming the property may, at any time within 30 days from the date of receipt of notice of seizure, file with the Mayor a claim stating his or her interest in the property. Upon the filing of a claim, the claimant shall give a bond to the District government in the penal sum of $2,500 or 10% of the fair market value of the claimed property (as appraised by the Chief of the Metropolitan Police Department), whichever is lower, but not less than $250, with sureties to be approved by the Mayor. In case of forfeiture of the claimed property, the costs and expenses of the forfeiture proceedings shall be deducted from the bonds. Any costs that exceed the amount of the bond shall be paid by the claimant. In determining the fair market value of the property seized, the Chief of the Metropolitan Police Department shall consider any verifiable and reasonable evidence of value that the claimant may present. The balance of the proceeds shall be transferred to the Drug Interdiction and Demand Reduction Fund (’Fund’) created by subchapter VII of this chapter. The Fund shall remain available until expended regardless of the expiration of the fiscal year in which the proceeds were collected. The Fund shall be distributed in the following descending order of priority:</p>
-                <p>“ (i) To fund law enforcement activities of the Metropolitan Police Department of the District of Columbia, except that, beginning October 1, 1990, not more than 49% of the total amount deposited to the Fund in the immediately preceding quarter-year period shall be used for this purpose in the next succeeding quarter-year period; and</p>
-                <p>“(ii) To provide grants to fund community-based drug education, prevention, and demand reduction programs;”</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction.</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-278.html">D.C. Law 20-278</a> rewrote the section.</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction.</p>
+                <p>“(ii) To provide grants to fund community-based drug education, prevention, and demand reduction programs;”</p>
+                <p>“ (i) To fund law enforcement activities of the Metropolitan Police Department of the District of Columbia, except that, beginning October 1, 1990, not more than 49% of the total amount deposited to the Fund in the immediately preceding quarter-year period shall be used for this purpose in the next succeeding quarter-year period; and</p>
+                <p>“(B) Any person claiming the property may, at any time within 30 days from the date of receipt of notice of seizure, file with the Mayor a claim stating his or her interest in the property. Upon the filing of a claim, the claimant shall give a bond to the District government in the penal sum of $2,500 or 10% of the fair market value of the claimed property (as appraised by the Chief of the Metropolitan Police Department), whichever is lower, but not less than $250, with sureties to be approved by the Mayor. In case of forfeiture of the claimed property, the costs and expenses of the forfeiture proceedings shall be deducted from the bonds. Any costs that exceed the amount of the bond shall be paid by the claimant. In determining the fair market value of the property seized, the Chief of the Metropolitan Police Department shall consider any verifiable and reasonable evidence of value that the claimant may present. The balance of the proceeds shall be transferred to the Drug Interdiction and Demand Reduction Fund (’Fund’) created by subchapter VII of this chapter. The Fund shall remain available until expended regardless of the expiration of the fiscal year in which the proceeds were collected. The Fund shall be distributed in the following descending order of priority:</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> rewrote subsec. (d)(3)(B), which formerly read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-160.html">D.C. Law 13-160</a> rewrote subsec. (b) which formerly provided: “(b) Property subject to forfeiture under this chapter may be seized by law enforcement officials, as designated by the Mayor, or designated civilian employees of the Metropolitan Police Department, upon process issued by the Superior Court of the District of Columbia having jurisdiction over the property, or without process if authorized by other law.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 10(c) of the Metropolitan Police Department Civilianization and Street Solicitation for Prostitution Emergency Amendment Act of 1998 (D.C. Act 12-428, August 6, 1998,  45 DCR 5884), § 10(c) of the Metropolitan Police Department Civilianization Legislative Review Emergency Amendment Act of 1998 (D.C. Act 12-506, November 10, 1998,  45 DCR 45 8139), and § 10(c) of the Metropolitan Police Department Civilianization Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-13, February 8, 1999,  46 DCR 2333).</p>
                 <h4>Temporary Legislation</h4>
@@ -1460,8 +1474,8 @@
                 <h4>References in Text</h4>
                 <p>Section 23-527, referred to in subsec. (a-1), did not exist in the 1981 Edition at the time of the recodification into the 2001 Edition.</p>
                 <h4>Editor's Notes</h4>
-                <p>Mayor to implement public information program: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>.</p>
                 <p><a class="internal-link" href="/dc/council/laws/20-278.html">D.C. Law 20-278</a>, referred to in (d), enacted Chapter 3 of Title 41 (§ <a class="internal-link" href="/dc/council/code/sections/41-301.html">41-301</a> et seq.), made amendments to the criminal offenses in §§ <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a> and <a class="internal-link" href="/dc/council/code/sections/48-905.02.html">48-905.02</a>, and made conforming amendments to §§ <a class="internal-link" href="/dc/council/code/sections/7-2507.06a.html">7-2507.06a</a>, <a class="internal-link" href="/dc/council/code/sections/8-905.html">8-905</a>, <a class="internal-link" href="/dc/council/code/sections/22-902.html">22-902</a>, <a class="internal-link" href="/dc/council/code/sections/22-1705.html">22-1705</a>, <a class="internal-link" href="/dc/council/code/sections/22-2723.html">22-2723</a>, <a class="internal-link" href="/dc/council/code/sections/32-1343.html">32-1343</a>, <a class="internal-link" href="/dc/council/code/sections/48-905.03.html">48-905.03</a>, and <a class="internal-link" href="/dc/council/code/sections/50-1501.04.html">50-1501.04</a>.</p>
+                <p>Mayor to implement public information program: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/48-901.02.html">48-901.02</a>.</p>
               </section>
             </section>
             <hr/>
@@ -1670,8 +1684,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/23-532.html">23-532</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) repeal of section, see § 8004 of Fiscal Year 2013 Budget Support  Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <p>For temporary (90 day) repeal of section, see § 8004 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) repeal of section, see § 8004 of Fiscal Year 2013 Budget Support  Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 804(a) of Multiyear Budget Spending Reduction and Support Temporary Act of 1995 (<a class="internal-link" href="/dc/council/laws/10-253.html">D.C. Law 10-253</a>, March 23, 1995, law notification  42 DCR 1652).</p>
                 <h4>Editor's Notes</h4>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/6/subchapters/XXIII/">Subchapter XXIII. Public Sector Workers’ Compensation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/6/subchapters/XXII/">Report Error</a>
@@ -88,22 +88,54 @@
         <section class="col8 body">
           <h1>Subchapter XXII. Life Insurance; Benefit Program Study.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-622.01.html">§ 1–622.01. Federal life insurance benefits.</a>
-            <a href="/dc/council/code/sections/1-622.02.html">§ 1–622.02. Benefit program study.</a>
-            <a href="/dc/council/code/sections/1-622.03.html">§ 1–622.03. District life insurance benefits.</a>
-            <a href="/dc/council/code/sections/1-622.04.html">§ 1–622.04. Definitions.</a>
-            <a href="/dc/council/code/sections/1-622.05.html">§ 1–622.05. Contracting authority.</a>
-            <a href="/dc/council/code/sections/1-622.06.html">§ 1–622.06. Automatic coverage; description of benefits.</a>
-            <a href="/dc/council/code/sections/1-622.07.html">§ 1–622.07. Group insurance; amounts.</a>
-            <a href="/dc/council/code/sections/1-622.08.html">§ 1–622.08. Death claims; order of precedence; viatical settlements.</a>
-            <a href="/dc/council/code/sections/1-622.09.html">§ 1–622.09. Termination of insurance.</a>
-            <a href="/dc/council/code/sections/1-622.10.html">§ 1–622.10. Employee deductions; withholdings; payments.</a>
-            <a href="/dc/council/code/sections/1-622.11.html">§ 1–622.11. District contributions.</a>
-            <a href="/dc/council/code/sections/1-622.12.html">§ 1–622.12. Annual accounting; reports.</a>
-            <a href="/dc/council/code/sections/1-622.13.html">§ 1–622.13. Special contingency reserve.</a>
-            <a href="/dc/council/code/sections/1-622.14.html">§ 1–622.14. Rules; eligibility.</a>
-            <a href="/dc/council/code/sections/1-622.15.html">§ 1–622.15. Disability income protection.</a>
-            <a href="/dc/council/code/sections/1-622.16.html">§ 1–622.16. Post-employment benefits.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.01.html">§ 1–622.01. Federal life insurance benefits.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.02.html">§ 1–622.02. Benefit program study.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.03.html">§ 1–622.03. District life insurance benefits.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.04.html">§ 1–622.04. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.05.html">§ 1–622.05. Contracting authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.06.html">§ 1–622.06. Automatic coverage; description of benefits.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.07.html">§ 1–622.07. Group insurance; amounts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.08.html">§ 1–622.08. Death claims; order of precedence; viatical settlements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.09.html">§ 1–622.09. Termination of insurance.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.10.html">§ 1–622.10. Employee deductions; withholdings; payments.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.11.html">§ 1–622.11. District contributions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.12.html">§ 1–622.12. Annual accounting; reports.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.13.html">§ 1–622.13. Special contingency reserve.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.14.html">§ 1–622.14. Rules; eligibility.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.15.html">§ 1–622.15. Disability income protection.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-622.16.html">§ 1–622.16. Post-employment benefits.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -118,8 +150,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§2201">Mar. 3, 1979, D.C. Law 2-139, § 2201, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/7-27.html">Oct. 1, 1987, D.C. Law 7-27, § 2(e), 34 DCR 5079</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-623.1.</p>
                 <p>1973 Ed., § 1-352.1.</p>
+                <p>1981 Ed., § 1-623.1.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-610.63.html">1-610.63</a> and § <a class="internal-link" href="/dc/council/code/sections/1-702.html">1-702</a>.</p>
               </section>
@@ -136,8 +168,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§2202">Mar. 3, 1979, D.C. Law 2-139, § 2202, 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-623.2.</p>
                 <p>1973 Ed., § 1-352.2.</p>
+                <p>1981 Ed., § 1-623.2.</p>
               </section>
             </section>
             <hr/>
@@ -191,11 +223,11 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-623.4.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(b) of the Comprehensive Merit Personnel Act Health Benefits and Life Insurance Clarification Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-27, March 11, 1997,  44 DCR 1892), and § 2(b) of the Comprehensive Merit Personnel Act Health and Life Insurance Clarification Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-213, December 5, 1997,  44 DCR 7615).</p>
                 <p>For temporary amendment of section, see § 2(a) of the District of Columbia Employee Viatical Settlement Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-26, March 11, 1997,  44 DCR 1890), and see § 2(a) of the Employee Viatical Settlement Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-212, December 5, 1997,  44 DCR 7613).</p>
+                <p>For temporary amendment of section, see § 2(b) of the Comprehensive Merit Personnel Act Health Benefits and Life Insurance Clarification Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-27, March 11, 1997,  44 DCR 1892), and § 2(b) of the Comprehensive Merit Personnel Act Health and Life Insurance Clarification Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-213, December 5, 1997,  44 DCR 7615).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(b) of the Comprehensive Merit Personnel Act Health and Life Insurance Clarification Temporary Amendment Act of 1996 (D.C. Law 11-183, April 9, 1997, law notification  44 DCR 2378).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of the District of Columbia Employee Viatical Settlement Temporary Amendment Act of 1996 (D.C. Law 11-188, April 9, 1997, law notification  44 DCR 2383).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(b) of the Comprehensive Merit Personnel Act Health and Life Insurance Clarification Temporary Amendment Act of 1996 (D.C. Law 11-183, April 9, 1997, law notification  44 DCR 2378).</p>
               </section>
             </section>
             <hr/>
@@ -253,8 +285,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-622.03.html">1-622.03</a> and § <a class="internal-link" href="/dc/council/code/sections/1-622.05.html">1-622.05</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>For actual amounts under the Federal Employees Group Life Insurance plan referred to in (a), see  5 U.S.C. § 8704.</p>
                 <p>Applicability of § 101(w) of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a>: Section 401(c) of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a>, as amended by § 60 of <a class="internal-link" href="/dc/council/laws/12-264.html">D.C. Law 12-264</a>, provided that § 101(h), (l), (m), (n), (o)(2) through (5), (q), (r), (t), (u), (w), and (y) of the act shall apply as of October 21, 1998.</p>
+                <p>For actual amounts under the Federal Employees Group Life Insurance plan referred to in (a), see  5 U.S.C. § 8704.</p>
               </section>
             </section>
             <hr/>
@@ -337,9 +369,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/13-54.html">D.C. Law 13-54</a> designated the existing text as subsec. (a), and added subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(b) of the Annuitants’ Health and Life Insurance Employer Contribution Emergency Amendment Act of 1998 (D.C. Act 12-617, January 22, 1999,  46 DCR 1335).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(b) of the Annuitants’ Health and Life Insurance Employer Contribution Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-199, December 1, 1999,  46 DCR 10446).</p>
                 <p>For temporary (90-day) amendment of section, see § 2(b) of the Annuitants’ Health and Life Insurance Employer Contribution Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-276, March 7, 2000,  47 DCR 2015).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(b) of the Annuitants’ Health and Life Insurance Employer Contribution Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-199, December 1, 1999,  46 DCR 10446).</p>
+                <p>For temporary amendment of section, see § 2(b) of the Annuitants’ Health and Life Insurance Employer Contribution Emergency Amendment Act of 1998 (D.C. Act 12-617, January 22, 1999,  46 DCR 1335).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of the Annuitants’ Health and Life Insurance Employer Contribution Temporary Amendment Act of 1999 (D.C. Law 12-278, April 27, 1999, law notification  46 DCR 4284).</p>
               </section>
@@ -421,8 +453,8 @@
                 <h4>Editor's Notes</h4>
                 <p>Applicability of § 101 of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a>: Section 401(c) of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a>, as amended by § 60 of <a class="internal-link" href="/dc/council/laws/12-264.html">D.C. Law 12-264</a>, provided that § 101(h), (l), (m), (n), (o)(2) through (5), (q), (r), (t), (u), (w), and (y) of the act shall apply as of October 21, 1998.</p>
                 <h4>Construction of Law</h4>
-                <p>Construction of Law 12-124</p>
                 <p>Section 301 of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a> provided that nothing in the act shall be construed as superseding the provisions of the National Capital Revitalization and Self-Government Improvement Act of 1997, approved August 5, 1997 (Public Law 105-33; 111 Stat. 712), except that § <a class="internal-link" href="/dc/council/code/sections/47-395.04.html">47-395.04</a>(b)(3) is expressly superseded. Further, nothing in the act shall be construed as superseding the provisions of § <a class="internal-link" href="/dc/council/code/sections/47-391.01.html">47-391.01</a> et seq. or of § 164 of the District of Columbia Appropriations Act, 1998, approved November 19, 1997 (Public Law 105-100; 111 Stat. 2160).</p>
+                <p>Construction of Law 12-124</p>
               </section>
             </section>
             <hr/>
@@ -437,11 +469,11 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§2216">Mar. 3, 1979, D.C. Law 2-139, § 2216</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">as added Mar. 3, 2010, D.C. Law 18-111, § 1201(e), 57 DCR 181</a>.)
     </p>
                 <h4>Cross References</h4>
-                <p>Merit system, effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <p>Temporary Assistance for Needy Families program (TANF), workers’ compensation coverage, see § <a class="internal-link" href="/dc/council/code/sections/4-205.19k.html">4-205.19k</a>.</p>
+                <p>Merit system, effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 1201(e) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) addition, see § 1201(e) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 1201(e) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>

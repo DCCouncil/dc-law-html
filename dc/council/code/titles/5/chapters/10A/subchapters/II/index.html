@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/5/chapters/11/">Chapter 11. Review of Citizen Complaints Involving Police.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/5/chapters/10A/subchapters/II/">Report Error</a>
@@ -88,13 +88,27 @@
         <section class="col8 body">
           <h1>Subchapter II. Firefighter Retirement While Under Disciplinary Investigation.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/5-1051.html">§ 5–1051. Definitions.</a>
-            <a href="/dc/council/code/sections/5-1052.html">§ 5–1052. Completion of disciplinary investigations.</a>
-            <a href="/dc/council/code/sections/5-1053.html">§ 5–1053. Conditional retirement.</a>
-            <a href="/dc/council/code/sections/5-1054.html">§ 5–1054. Penalties in lieu of discipline for members in conditional retirement.</a>
-            <a href="/dc/council/code/sections/5-1055.html">§ 5–1055. Payments of penalties and collection of debts.</a>
-            <a href="/dc/council/code/sections/5-1056.html">§ 5–1056. Administrative review.</a>
-            <a href="/dc/council/code/sections/5-1057.html">§ 5–1057. Applicability.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1051.html">§ 5–1051. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1052.html">§ 5–1052. Completion of disciplinary investigations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1053.html">§ 5–1053. Conditional retirement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1054.html">§ 5–1054. Penalties in lieu of discipline for members in conditional retirement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1055.html">§ 5–1055. Payments of penalties and collection of debts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1056.html">§ 5–1056. Administrative review.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1057.html">§ 5–1057. Applicability.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

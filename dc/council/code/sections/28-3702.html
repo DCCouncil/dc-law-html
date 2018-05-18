@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/28/chapters/38/">Chapter 38. Consumer Protections.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28-3702.html">Report Error</a>
@@ -105,8 +105,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/92-200.html">Dec. 17, 1971, 85 Stat. 668, Pub. L. 92-200, § 4</a>; <a class="internal-link" href="/dc/council/laws/4-70.html">Mar. 10, 1982, D.C. Law 4-70, § 6, 28 DCR 5236</a>; <a class="internal-link" href="/dc/council/laws/5-62.html">Mar. 14, 1984, D.C. Law 5-62, § 5, 31 DCR 114</a>; <a class="internal-link" href="/dc/council/laws/11-26.html">July 14, 1995, D.C. Law 11-26, § 2, 42 DCR 2565</a>; <a class="internal-link" href="/dc/council/laws/11-110.html">Apr. 18, 1996, D.C. Law 11-110, § 28, 43 DCR 530</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 27(k), 44 DCR 1271</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28-3702.</p>
                 <p>1973 Ed., § 28-3702.</p>
+                <p>1981 Ed., § 28-3702.</p>
               </section>
             </section>
           </section>

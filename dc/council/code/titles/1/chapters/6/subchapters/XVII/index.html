@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/6/subchapters/XVIII/">Subchapter XVIII. Employee Conduct.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/6/subchapters/XVII/">Report Error</a>
@@ -88,24 +88,60 @@
         <section class="col8 body">
           <h1>Subchapter XVII. Labor-Management Relations.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-617.01.html">§ 1–617.01. Policy.</a>
-            <a href="/dc/council/code/sections/1-617.02.html">§ 1–617.02. Labor-management relations program established; contents; impasse resolution.</a>
-            <a href="/dc/council/code/sections/1-617.03.html">§ 1–617.03. Standards of conduct for labor organizations.</a>
-            <a href="/dc/council/code/sections/1-617.04.html">§ 1–617.04. Unfair labor practices.</a>
-            <a href="/dc/council/code/sections/1-617.05.html">§ 1–617.05. Strikes prohibited.</a>
-            <a href="/dc/council/code/sections/1-617.06.html">§ 1–617.06. Employee rights.</a>
-            <a href="/dc/council/code/sections/1-617.07.html">§ 1–617.07. Union security; dues deduction.</a>
-            <a href="/dc/council/code/sections/1-617.08.html">§ 1–617.08. Management rights; matters subject to collective bargaining.</a>
-            <a href="/dc/council/code/sections/1-617.09.html">§ 1–617.09. Unit determination.</a>
-            <a href="/dc/council/code/sections/1-617.10.html">§ 1–617.10. Selection of exclusive representatives; elections.</a>
-            <a href="/dc/council/code/sections/1-617.11.html">§ 1–617.11. Rights accompanying exclusive recognition.</a>
-            <a href="/dc/council/code/sections/1-617.12.html">§ 1–617.12. Sunshine provisions.</a>
-            <a href="/dc/council/code/sections/1-617.13.html">§ 1–617.13. Remedies; enforcement; judicial review; payment of costs.</a>
-            <a href="/dc/council/code/sections/1-617.14.html">§ 1–617.14. Timeliness of decisions.</a>
-            <a href="/dc/council/code/sections/1-617.15.html">§ 1–617.15. Collective bargaining agreements.</a>
-            <a href="/dc/council/code/sections/1-617.16.html">§ 1–617.16. Collective bargaining concerning compensation.</a>
-            <a href="/dc/council/code/sections/1-617.17.html">§ 1–617.17. Collective bargaining concerning compensation.</a>
-            <a href="/dc/council/code/sections/1-617.18.html">§ 1–617.18. Evaluation process for public school employees.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.01.html">§ 1–617.01. Policy.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.02.html">§ 1–617.02. Labor-management relations program established; contents; impasse resolution.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.03.html">§ 1–617.03. Standards of conduct for labor organizations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.04.html">§ 1–617.04. Unfair labor practices.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.05.html">§ 1–617.05. Strikes prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.06.html">§ 1–617.06. Employee rights.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.07.html">§ 1–617.07. Union security; dues deduction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.08.html">§ 1–617.08. Management rights; matters subject to collective bargaining.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.09.html">§ 1–617.09. Unit determination.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.10.html">§ 1–617.10. Selection of exclusive representatives; elections.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.11.html">§ 1–617.11. Rights accompanying exclusive recognition.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.12.html">§ 1–617.12. Sunshine provisions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.13.html">§ 1–617.13. Remedies; enforcement; judicial review; payment of costs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.14.html">§ 1–617.14. Timeliness of decisions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.15.html">§ 1–617.15. Collective bargaining agreements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.16.html">§ 1–617.16. Collective bargaining concerning compensation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.17.html">§ 1–617.17. Collective bargaining concerning compensation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-617.18.html">§ 1–617.18. Evaluation process for public school employees.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -126,8 +162,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1701">Mar. 3, 1979, D.C. Law 2-139, § 1701, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/14-190.html">Oct. 1, 2002, D.C. Law 14-190, § 3832(a), 49 DCR 6968</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.1.</p>
                 <p>1973 Ed., § 1-347.1.</p>
+                <p>1981 Ed., § 1-618.1.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-615.52.html">1-615.52</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -177,8 +213,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1702">Mar. 3, 1979, D.C. Law 2-139, § 1702, 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.2.</p>
                 <p>1973 Ed., § 1-347.2.</p>
+                <p>1981 Ed., § 1-618.2.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-605.02.html">1-605.02</a>.</p>
               </section>
@@ -206,8 +242,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1703">Mar. 3, 1979, D.C. Law 2-139, § 1703, 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.3.</p>
                 <p>1973 Ed., § 1-347.3.</p>
+                <p>1981 Ed., § 1-618.3.</p>
               </section>
             </section>
             <hr/>
@@ -233,8 +269,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1704">Mar. 3, 1979, D.C. Law 2-139, § 1704, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/12-151.html">Sept. 18, 1998, D.C. Law 12-151, § 2(c), 45 DCR 4043</a>; <a class="internal-link" href="/dc/council/laws/14-190.html">Oct. 1, 2002, D.C. Law 14-190, § 3832(b), 49 DCR 6968</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.4.</p>
                 <p>1973 Ed., § 1-347.4.</p>
+                <p>1981 Ed., § 1-618.4.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a>, in subsec. (a)(1), inserted “with” after “Interfering”.</p>
                 <h4>Emergency Legislation</h4>
@@ -253,8 +289,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1705">Mar. 3, 1979, D.C. Law 2-139, § 1705, 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.5.</p>
                 <p>1973 Ed., § 1-347.5.</p>
+                <p>1981 Ed., § 1-618.5.</p>
               </section>
             </section>
             <hr/>
@@ -274,8 +310,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1706">Mar. 3, 1979, D.C. Law 2-139, § 1706, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/14-190.html">Oct. 1, 2002, D.C. Law 14-190, § 3832(c), 49 DCR 6968</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.6.</p>
                 <p>1973 Ed., § 1-347.6.</p>
+                <p>1981 Ed., § 1-618.6.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-617.02.html">1-617.02</a> and § <a class="internal-link" href="/dc/council/code/sections/1-617.04.html">1-617.04</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -296,8 +332,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1707">Mar. 3, 1979, D.C. Law 2-139, § 1707, 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.7.</p>
                 <p>1973 Ed., § 1-347.7.</p>
+                <p>1981 Ed., § 1-618.7.</p>
               </section>
             </section>
             <hr/>
@@ -324,8 +360,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1708">Mar. 3, 1979, D.C. Law 2-139, § 1708, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/15-334.html">Apr. 12, 2005, D.C. Law 15-334, § 2(b), 52 DCR 2012</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.8.</p>
                 <p>1973 Ed., § 1-347.8.</p>
+                <p>1981 Ed., § 1-618.8.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-608.01.html">1-608.01</a>, § <a class="internal-link" href="/dc/council/code/sections/1-624.08.html">1-624.08</a>, and § <a class="internal-link" href="/dc/council/code/sections/7-1703.02.html">7-1703.02</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -357,17 +393,17 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1709">Mar. 3, 1979, D.C. Law 2-139, § 1709, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/17-122.html">Mar. 20, 2008, D.C. Law 17-122, § 2(d), 55 DCR 1506</a>; <a class="internal-link" href="/dc/council/laws/17-219.html">Aug. 16, 2008, D.C. Law 17-219, § 4019(c), 55 DCR 7598</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 224(b), 56 DCR 1117</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.9.</p>
                 <p>1973 Ed., § 1-347.9.</p>
+                <p>1981 Ed., § 1-618.9.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-617.11.html">1-617.11</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-122.html">D.C. Law 17-122</a>, in subsec. (b)(1), substituted “Public Schools” for “Board of Education”; in subsec. (b)(5), deleted “or” from the end; in subsec. (b)(6), substituted “; or” for a period; and added subsec. (b)(7).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in subsec. (b)(7), substituted “and the Office of the State Superintendent of Education” for “, the Office of the State Superintendent for Education, and the Office of Public Education Facilities Modernization”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (b)(5).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in subsec. (b)(7), substituted “and the Office of the State Superintendent of Education” for “, the Office of the State Superintendent for Education, and the Office of Public Education Facilities Modernization”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-122.html">D.C. Law 17-122</a>, in subsec. (b)(1), substituted “Public Schools” for “Board of Education”; in subsec. (b)(5), deleted “or” from the end; in subsec. (b)(6), substituted “; or” for a period; and added subsec. (b)(7).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(d) of Public Education Personnel Reform Emergency Amendment Act of 2007 (D.C. Act 17-241, January 22, 2008,  55 DCR 983).</p>
                 <p>For temporary (90 day) amendment, see § 4019(c) of Fiscal Year 2009 Budget Support Emergency Act of 2008 (D.C. Act 17-468, July 28, 2008,  55 DCR 8746).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d) of Public Education Personnel Reform Emergency Amendment Act of 2007 (D.C. Act 17-241, January 22, 2008,  55 DCR 983).</p>
               </section>
             </section>
             <hr/>
@@ -390,8 +426,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1710">Mar. 3, 1979, D.C. Law 2-139, § 1710, 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.10.</p>
                 <p>1973 Ed., § 1-347.10.</p>
+                <p>1981 Ed., § 1-618.10.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-617.11.html">1-617.11</a>, § <a class="internal-link" href="/dc/council/code/sections/1-626.04.html">1-626.04</a>, and § <a class="internal-link" href="/dc/council/code/sections/5-704.html">5-704</a>.</p>
                 <h4>Cross References</h4>
@@ -411,8 +447,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1711">Mar. 3, 1979, D.C. Law 2-139, § 1711, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/14-190.html">Oct. 1, 2002, D.C. Law 14-190, § 3832(d), 49 DCR 6968</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.11.</p>
                 <p>1973 Ed., § 1-347.11.</p>
+                <p>1981 Ed., § 1-618.11.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-617.06.html">1-617.06</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -433,8 +469,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1712">Mar. 3, 1979, D.C. Law 2-139, § 1712, 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.12.</p>
                 <p>1973 Ed., § 1-347.12.</p>
+                <p>1981 Ed., § 1-618.12.</p>
               </section>
             </section>
             <hr/>
@@ -452,8 +488,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1713">Mar. 3, 1979, D.C. Law 2-139, § 1713, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/13-91.html">Apr. 12, 2000, D.C. Law 13-91, § 103(r), 47 DCR 520</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.13.</p>
                 <p>1973 Ed., § 1-347.13.</p>
+                <p>1981 Ed., § 1-618.13.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-605.02.html">1-605.02</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -472,8 +508,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1714">Mar. 3, 1979, D.C. Law 2-139, § 1714, 25 DCR 5740</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.14.</p>
                 <p>1973 Ed., § 1-347.14.</p>
+                <p>1981 Ed., § 1-618.14.</p>
               </section>
             </section>
             <hr/>
@@ -489,15 +525,15 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1715">Mar. 3, 1979, D.C. Law 2-139, § 1715, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/6-177.html">Feb. 24, 1987, D.C. Law 6-177, § 3(v), 33 DCR 7241</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 302(u), 43 DCR 2978</a>; <a class="internal-link" href="/dc/council/laws/21-36.html">Oct. 22, 2015, D.C. Law 21-36, § 1033(f), 62 DCR 10905</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.15.</p>
                 <p>1973 Ed., § 1-347.15.</p>
+                <p>1981 Ed., § 1-618.15.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> substituted “provided, that an agreement with a labor organization of employees of the Office of the Attorney General is subject to the approval of the Attorney General, and an agreement with a labor organization of employees of the District of Columbia Board of Education or The Board of Trustees of the University of the District of Columbia is subject to the approval of the respective Boards” for “or in the case of employees of the District of Columbia Board of Education or the Board of Trustees of the University of the District of Columbia, by the respective Boards” in (a).</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 1033(f) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <h4>Editor's Notes</h4>
-                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
                 <p>Repeal of § 4(b) of Law 6-177: Section 3(b) of <a class="internal-link" href="/dc/council/laws/8-74.html">D.C. Law 8-74</a>, effective March 15, 1990, provided that § 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> is repealed.</p>
+                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
               </section>
             </section>
             <hr/>
@@ -513,20 +549,20 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1716">Mar. 3, 1979, D.C. Law 2-139, § 1716, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/6-177.html">Feb. 24, 1987, D.C. Law 6-177, § 3(w), 33 DCR 7241</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 302(v), 43 DCR 2978</a>; <a class="internal-link" href="/dc/council/laws/21-36.html">Oct. 22, 2015, D.C. Law 21-36, § 1033(g), 62 DCR 10905</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.16.</p>
                 <p>1973 Ed., § 1-347.16.</p>
+                <p>1981 Ed., § 1-618.16.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-602.06.html">1-602.06</a>, § <a class="internal-link" href="/dc/council/code/sections/1-617.08.html">1-617.08</a>, § <a class="internal-link" href="/dc/council/code/sections/1-617.17.html">1-617.17</a>, § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>, § <a class="internal-link" href="/dc/council/code/sections/38-2021.13.html">38-2021.13</a>, and § <a class="internal-link" href="/dc/council/code/sections/38-2023.16.html">38-2023.16</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> added “the Attorney General for employees of the Office of the Attorney General” in (a).</p>
                 <h4>Cross References</h4>
-                <p>Retirement of public school teachers, compensation and salaries, purchase of annuity contracts, see § <a class="internal-link" href="/dc/council/code/sections/38-2023.16.html">38-2023.16</a>.</p>
                 <p>Retirement of public school teachers, “eligible service” defined, see § <a class="internal-link" href="/dc/council/code/sections/38-2021.13.html">38-2021.13</a>.</p>
+                <p>Retirement of public school teachers, compensation and salaries, purchase of annuity contracts, see § <a class="internal-link" href="/dc/council/code/sections/38-2023.16.html">38-2023.16</a>.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 1033(g) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <h4>Editor's Notes</h4>
-                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
                 <p>Repeal of § 4(b) of Law 6-177: Section 3(b) of <a class="internal-link" href="/dc/council/laws/8-74.html">D.C. Law 8-74</a>, effective March 15, 1990, provided that § 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> is repealed.</p>
+                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
               </section>
             </section>
             <hr/>
@@ -566,58 +602,58 @@
       (<a class="internal-link" href="/dc/council/laws/2-139.html#§1717">Mar. 3, 1979, D.C. Law 2-139, § 1113, 25 DCR 5740</a>; <a class="internal-link" href="/dc/council/laws/3-130.html">redesignated as § 1717, Mar. 4, 1981, D.C. Law 3-130, § 2(f), 28 DCR 277</a>; <a class="internal-link" href="/dc/council/laws/5-77.html">Apr. 25, 1984, D.C. Law 5-77, § 2, 31 DCR 1225</a>; <a class="internal-link" href="/dc/council/laws/6-15.html">Aug. 1, 1985, D.C. Law 6-15, § 7(f), 32 DCR 3570</a>; <a class="internal-link" href="/dc/council/laws/6-177.html">Feb. 24, 1987, D.C. Law 6-177, § 3(x), 33 DCR 7241</a>; <a class="internal-link" href="/dc/council/laws/7-6.html">June 5, 1987, D.C. Law 7-6, § 2, 34 DCR 2637</a>; <a class="internal-link" href="/dc/council/laws/7-16.html">July 25, 1987, D.C. Law 7-16, § 2, 34 DCR 3799</a>; <a class="internal-link" href="/dc/council/laws/7-27.html">Oct. 1, 1987, D.C. Law 7-27, § 2(h), 34 DCR 5079</a>; <a class="internal-link" href="/dc/council/laws/7-104.html">Apr. 30, 1988, D.C. Law 7-104, § 36(b), 35 DCR 147</a>; <a class="internal-link" href="/dc/council/laws/9-243.html">Mar. 17, 1993, D.C. Law 9-243, § 2, 40 DCR 636</a>; <a class="internal-link" href="/dc/council/laws/10-255.html">May 16, 1995, D.C. Law 10-255, § 2(b), 41 DCR 5193</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 302(w), 43 DCR 2978</a>; <a class="internal-link" href="/dc/council/laws/12-60.html">Mar. 20, 1998, D.C. Law 12-60, § 1001, 44 DCR 7378</a>; <a class="internal-link" href="/dc/council/laws/12-124.html">June 10, 1998, D.C. Law 12-124, § 101(t), 45 DCR 2464</a>; <a class="internal-link" href="/dc/council/laws/12-151.html">Sept. 18, 1998, D.C. Law 12-151, § 2(b), 45 DCR 4043</a>; <a class="internal-link" href="/dc/council/laws/14-190.html">Oct. 1, 2002, D.C. Law 14-190, § 3832(e), 49 DCR 6968</a>; <a class="internal-link" href="/dc/council/laws/15-205.html">Dec. 7, 2004, D.C. Law 15-205, § 1022, 51 DCR 8441</a>; <a class="internal-link" href="/dc/council/laws/15-334.html">Apr. 12, 2005, D.C. Law 15-334, § 2(c), 52 DCR 2012</a>; <a class="internal-link" href="/dc/council/laws/16-33.html">Oct. 20, 2005, D.C. Law 16-33, § 1021, 52 DCR 7503</a>; <a class="internal-link" href="/dc/council/laws/17-367.html">Mar. 25, 2009, D.C. Law 17-367, § 2, 56 DCR 1336</a>; <a class="internal-link" href="/dc/council/laws/18-223.html">Sept. 24, 2010, D.C. Law 18-223, § 1032(b), 57 DCR 6242</a>; <a class="internal-link" href="/dc/council/laws/18-370.html">Apr. 8, 2011, D.C. Law 18-370, § 793, 58 DCR 1008</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-618.17.</p>
                 <p>1973 Ed., § 1-341.13.</p>
+                <p>1981 Ed., § 1-618.17.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-617.16.html">1-617.16</a> and § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> repealed subsecs. (c) and (e); rewrote pars. (1) and (2) of subsec. (f); deleted the last sentence in subsec. (g); and rewrote subsec. (m).</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> added subsec. (n).</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-334.html">D.C. Law 15-334</a>, in subsec. (f), rewrote par. (1)(A), substituted “45” for “20” in par. (3), added par. (3A), and substituted “(1), (2), (3), or (3A)” for “(1), (2), or (3)” in par. (4); and, in subsec. (h), substituted “until impasse resolution proceedings have been concluded or upon settlement” for “until impasse or settlement”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, in subsec. (b), substituted “compensation matters. No subordinate agency shall negotiate a collective bargaining agreement.” for “compensation matters.”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-367.html">D.C. Law 17-367</a>, in subsec. (i)(1), substituted “Council within 60 days after the parties have reached agreement or an arbitration award has been issued with a budget” for “Council with a budget”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (n)(1), deleted “in excess of the basic non-overtime workday” following “overtime work”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-370.html">D.C. Law 18-370</a>, in subsec. (n)(1), substituted “for employees’ overtime work in excess of the basic non-overtime workday” for “for employees’ overtime work”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-223.html">D.C. Law 18-223</a>, in subsec. (n)(1), deleted “in excess of the basic non-overtime workday” following “overtime work”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-367.html">D.C. Law 17-367</a>, in subsec. (i)(1), substituted “Council within 60 days after the parties have reached agreement or an arbitration award has been issued with a budget” for “Council with a budget”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, in subsec. (b), substituted “compensation matters. No subordinate agency shall negotiate a collective bargaining agreement.” for “compensation matters.”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-334.html">D.C. Law 15-334</a>, in subsec. (f), rewrote par. (1)(A), substituted “45” for “20” in par. (3), added par. (3A), and substituted “(1), (2), (3), or (3A)” for “(1), (2), or (3)” in par. (4); and, in subsec. (h), substituted “until impasse resolution proceedings have been concluded or upon settlement” for “until impasse or settlement”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> added subsec. (n).</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> repealed subsecs. (c) and (e); rewrote pars. (1) and (2) of subsec. (f); deleted the last sentence in subsec. (g); and rewrote subsec. (m).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 1001 of the Fiscal Year 1998 Revised Budget Support Emergency Act of 1997 (D.C. Act 12-152, October 17, 1997,  44 DCR 6196), and see § 1001 of the Fiscal Year 1998 Revised Budget Support Congressional Review Emergency Act of 1997 (D.C. Act 12-239, January 13, 1998,  45 DCR 508).</p>
-                <p>For temporary (90 day) amendment of section, see § 3732(e) of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
-                <p>For temporary (90 day) amendment of section, see § 1022 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
-                <p>For temporary (90 day) amendment of section, see § 1022 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
-                <p>For temporary (90 day) amendment of section, see § 1021 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Department of Mental Health Collective Bargaining Agreements Emergency Act of 2006 (D.C. Act 16-254, January 26, 2006,  53 DCR 761).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Department of Mental Health Collective Bargaining Agreements Congressional Review Emergency Act of 2006 (D.C. Act 16-377, May 19, 2006,  53 DCR 4397).</p>
-                <p>For temporary (90 day) amendment of section, see § 1032(b) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
-                <p>For temporary (90 day) amendment of section, see §§ 3(a), 4 of Budget Support Act Clarification and Technical Amendment Emergency Amendment Act of 2010 (D.C. Act 18-543, October 5, 2010,  57 DCR 9630).</p>
-                <p>For temporary (90 day) amendment of section, see § 792 of Fiscal Year 2011 Supplemental Budget Support Emergency Act of 2010 (D.C. Act 18-694, January 19, 2011,  58 DCR 662).</p>
                 <p>For temporary (90) days approval of the interest arbitration award and compensation agreement between the District of Columbia Fire and Emergency Medical Services Department and Local 36 International Association of Firefighters, see § 2 of the Interest Arbitration Award and Compensation Agreement between the District of Columbia Fire and Emergency Medical Services Department and Local 36 International Association of Firefighters (Compensation Unit 4) Emergency Approval Act of 2014 (D.C. Act 20-384, July 31, 2014,  61 DCR 8043).</p>
+                <p>For temporary (90 day) amendment of section, see § 792 of Fiscal Year 2011 Supplemental Budget Support Emergency Act of 2010 (D.C. Act 18-694, January 19, 2011,  58 DCR 662).</p>
+                <p>For temporary (90 day) amendment of section, see §§ 3(a), 4 of Budget Support Act Clarification and Technical Amendment Emergency Amendment Act of 2010 (D.C. Act 18-543, October 5, 2010,  57 DCR 9630).</p>
+                <p>For temporary (90 day) amendment of section, see § 1032(b) of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Department of Mental Health Collective Bargaining Agreements Congressional Review Emergency Act of 2006 (D.C. Act 16-377, May 19, 2006,  53 DCR 4397).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Department of Mental Health Collective Bargaining Agreements Emergency Act of 2006 (D.C. Act 16-254, January 26, 2006,  53 DCR 761).</p>
+                <p>For temporary (90 day) amendment of section, see § 1021 of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
+                <p>For temporary (90 day) amendment of section, see § 1022 of Fiscal Year 2005 Budget Support Congressional Review Emergency Act of 2004 (D.C. Act 15-594, October 26, 2004,  51 DCR 11725).</p>
+                <p>For temporary (90 day) amendment of section, see § 1022 of Fiscal Year 2005 Budget Support Emergency Act of 2004 (D.C. Act 15-486, August 2, 2004,  51 DCR 8236).</p>
+                <p>For temporary (90 day) amendment of section, see § 3732(e) of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
+                <p>For temporary amendment of section, see § 1001 of the Fiscal Year 1998 Revised Budget Support Emergency Act of 1997 (D.C. Act 12-152, October 17, 1997,  44 DCR 6196), and see § 1001 of the Fiscal Year 1998 Revised Budget Support Congressional Review Emergency Act of 1997 (D.C. Act 12-239, January 13, 1998,  45 DCR 508).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of the Budget Implementation Temporary Act of 1995 (D.C. Law 11-18, May 27, 1995, law notification  42 DCR 2845).</p>
-                <p>For temporary (225 day) amendment of section, see § 3 of the Budget Implementation Exemption Temporary Amendment Act of 1995 (D.C. Law 11-27, law notification July 14, 1995,  42 DCR 3833).</p>
-                <p>Section 3(a) of D.C. Law 18-283 repealed subsec. (b).</p>
-                <p>Section 4 of D.C. Law 18-283, in subsec. (n)(1), reinstated “in excess of the basic non-overtime workday” following “for employees’ overtime work”.</p>
-                <p>Section 6(b) of D.C. Law 18-283 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Section 2 of D.C. Law 16-103 provided as follows:</p>
-                <p>“Sec. 2. Notwithstanding section 1717(b) of the District of Columbia Government Comprehensive Merit Personnel Act of 1978, effective March 3, 1979 (<a class="internal-link" href="/dc/council/code/titles/1/chapters/6/">D.C. Law 2-139</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/1-617.17.html">1-617.17</a>(b)), the Department of Mental Health may complete ongoing negotiations of collective bargaining agreements.”</p>
                 <p>Section 4(b) of D.C. Law 16-103 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“Sec. 2. Notwithstanding section 1717(b) of the District of Columbia Government Comprehensive Merit Personnel Act of 1978, effective March 3, 1979 (<a class="internal-link" href="/dc/council/code/titles/1/chapters/6/">D.C. Law 2-139</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/1-617.17.html">1-617.17</a>(b)), the Department of Mental Health may complete ongoing negotiations of collective bargaining agreements.”</p>
+                <p>Section 2 of D.C. Law 16-103 provided as follows:</p>
+                <p>Section 6(b) of D.C. Law 18-283 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>Section 4 of D.C. Law 18-283, in subsec. (n)(1), reinstated “in excess of the basic non-overtime workday” following “for employees’ overtime work”.</p>
+                <p>Section 3(a) of D.C. Law 18-283 repealed subsec. (b).</p>
+                <p>For temporary (225 day) amendment of section, see § 3 of the Budget Implementation Exemption Temporary Amendment Act of 1995 (D.C. Law 11-27, law notification July 14, 1995,  42 DCR 3833).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of the Budget Implementation Temporary Act of 1995 (D.C. Law 11-18, May 27, 1995, law notification  42 DCR 2845).</p>
                 <h4>Short Title</h4>
-                <p>Short title of subtitle C of title I of Law 15-205: Section 1021 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle C of title I of the act may be cited as the Compensation Bargaining Unit Overtime Negotiation Amendment Act of 2004.</p>
                 <p>Short title of subtitle E of title I of Law 16-33: Section 1020 of <a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a> provided that subtitle E of title I of the act may be cited as the Collective Bargaining Agreements Amendment Act of 2005.</p>
+                <p>Short title of subtitle C of title I of Law 15-205: Section 1021 of <a class="internal-link" href="/dc/council/laws/15-205.html">D.C. Law 15-205</a> provided that subtitle C of title I of the act may be cited as the Compensation Bargaining Unit Overtime Negotiation Amendment Act of 2004.</p>
                 <h4>Editor's Notes</h4>
-                <p>Section 794 of <a class="internal-link" href="/dc/council/laws/18-370.html">D.C. Law 18-370</a> provided: “Sec. 794. This subtitle shall apply as of January 3, 2011.”</p>
-                <p>Application of Law 12-60: Section 2002 of <a class="internal-link" href="/dc/council/laws/12-60.html">D.C. Law 12-60</a> provided that the act shall apply as of October 1, 1997.</p>
-                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
-                <p>Repeal of § 4(b) of Law 6-177: Section 3(b) of <a class="internal-link" href="/dc/council/laws/8-74.html">D.C. Law 8-74</a>, effective March 15, 1990, provided that § 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> is repealed.</p>
                 <p>Applicability of § 101(t) of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a>: Section 401(c) of <a class="internal-link" href="/dc/council/laws/12-124.html">D.C. Law 12-124</a>, as amended by § 60 of <a class="internal-link" href="/dc/council/laws/12-264.html">D.C. Law 12-264</a>, provided that § 101(h), (l), (m), (n), (o)(2) through (5), (q), (r), (t), (u), (w), and (y) of the act shall apply as of October 21, 1998. Compensation Settlement for Employees in Compensation Unit 12 Approval Resolution of 1994: Pursuant to Proposed Resolution 11-18, deemed approved February 18, 1995, Council approved the negotiated compensation settlement submitted by the Mayor of the District of Columbia for employees in Compensation Unit 12. Compensation Settlement for Employees in Compensation Unit 19 Approval Resolution of 1994: Pursuant to Proposed Resolution 11-21, deemed approved February 18, 1995, Council approved the negotiated compensation settlement submitted by the Mayor of the District of Columbia for employees in Compensation Unit 19. Compensation Settlement for Employees in Compensation Unit 18 Approval Resolution of 1994: Pursuant to Proposed Resolution 11-24, deemed approved February 18, 1995, Council approved the negotiated compensation settlement submitted by the Mayor of the District of Columbia for employees in Compensation Unit 18. Compensation Settlement for Employees in Compensation Unit 4 Approval Emergency Resolution of 1998: Pursuant to Resolution 12-432, effective March 3, 1998, the Council approved, on an emergency basis, a negotiated settlement agreement for uniformed members of the Fire and Emergency Medical Services Department covered by collective bargaining. Career and Excepted Service Compensation System Changes for Non-Union Employees and the Negotiated Compensation Agreements for Union Employees of the DOC Emergency Approval Resolution of 1998: Pursuant to Resolution 12-462, effective April 7, 1998, the Council approved, on an emergency basis, the proposed compensation changes for Career and Excepted Service employees and negotiated compensation agreements for Bargaining Unit employees of the Department of Corrections in Compensation Units 1, 2, 13, and 19. Compensation Settlement for Employees in Compensation Units 1 and 2 Emergency Approval Resolution of 1998: Pursuant to Resolution 12-484, effective May 5, 1998, the Council approved, the negotiated compensation settlement by the Mayor for certain employees in Compensation Units 1 and 2. Compensation Settlement for Employees in Compensation Unit 3 Emergency Approval Resolution of 1998: Pursuant to Resolution 12-556, effective June 16, 1998, the Council approved the compensation settlement for employees in Compensation Unit 3. Compensation Settlement for Doctors, Dentists and Podiatrists in Compensation Unit 19 Emergency Approval Resolution of 1998: Pursuant to Resolution 12-602, effective July 7, 1998, the Council approved, on an emergency basis, the negotiated compensation settlement for Physicians, Dentists, and Podiatrists within Compensation Unit 19 covered by collective bargaining. Compensation Settlement for Metropolitan Police Department Civilian Communication and Cellblock Employees in Compensation Unit 1 Emergency Approval Resolution of 1998: Pursuant to Resolution 12-768, effective November 10, 1998, the Council approved, on an emergency basis, a negotiated settlement agreement for civilian members of the District of Columbia Metropolitan Police Department Communications Division and Cellblock Unit covered by collective bargaining. Compensation Settlement for Employees in Compensation Unit 4 Emergency Approval Resolution of 1998: Pursuant to Resolution 12-776, effective November 10, 1998, the Council approved, on an emergency basis, a negotiated settlement agreement for uniformed members of the Fire and Emergency Medical Services Department covered by collective bargaining. Compensation Settlement for DS-699 (Emergency Medical Technician, Intermediate Technician, and Paramedic) Employees in Compensation Unit 1 Emergency Declaration Resolution of 1998: Pursuant to Resolution 12-844, effective December 15, 1998, the Council approved, on an emergency basis, a negotiated settlement agreement for civilian employees in series DS-699 (Emergency Medical Technician, Intermediate Technician, and Paramedic) of the Fire and Emergency Medical Services Department in Compensation Unit 1 covered by collective bargaining.</p>
+                <p>Repeal of § 4(b) of Law 6-177: Section 3(b) of <a class="internal-link" href="/dc/council/laws/8-74.html">D.C. Law 8-74</a>, effective March 15, 1990, provided that § 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> is repealed.</p>
+                <p>Repeal of § 3 of Law 6-177: Section 4(b) of <a class="internal-link" href="/dc/council/laws/6-177.html">D.C. Law 6-177</a> provided that the provisions of § 3 are repealed on the 1st day following the 36-month period after February 24, 1987.</p>
+                <p>Application of Law 12-60: Section 2002 of <a class="internal-link" href="/dc/council/laws/12-60.html">D.C. Law 12-60</a> provided that the act shall apply as of October 1, 1997.</p>
+                <p>Section 794 of <a class="internal-link" href="/dc/council/laws/18-370.html">D.C. Law 18-370</a> provided: “Sec. 794. This subtitle shall apply as of January 3, 2011.”</p>
                 <h4>Resolutions</h4>
-                <p>Resolution 15-794, the “Compensation Agreement between the District of Columbia and Compensation Unit 33 Approval Resolution of 2004”, was approved effective December 21, 2004.</p>
-                <p>Resolution 15-796, the “Compensation Settlement for Employees Represented by the American Federation of State, County, and Municipal Employees, Local 2095, and the American Federation of Government Employees, Local 383, Approval Resolution of 2004”, was approved effective December 21, 2004.</p>
-                <p>Resolution 16-111, the “Compensation Settlement for Employees Represented by the Services Employees International Union, District 1199-E-DC Approval Resolution of 2005”, was approved effective April 5, 2005.</p>
-                <p>Resolution 16-160, the “Police Compensation Approval Resolution of 2005”, was approved effective June 7, 2005.</p>
-                <p>Resolution 16-250, the “Compensation Correction for Employees in Class 3, Compensation Unit #3 Emergency Approval Resolution of 2005”, was approved effective July 6, 2005.</p>
-                <p>Resolution 16-287, the “Compensation Agreement Between the District of Columbia and Compensation Unit 13 Approval Resolution of 2005”, was approved effective September 20, 2005.</p>
-                <p>Resolution 16-380, the “Compensation Agreement Between the District of Columbia and the Doctors Council of the District of Columbia Representing Compensation Unit 19 Approval Resolution of 2005”, was approved effective November 15, 2005.</p>
-                <p>Resolution 18-423, the “Compensation and Working Conditions Collective Bargaining Agreement between the District of Columbia Public Schools and Teamsters Locals 639 and 730, affiliated with the International Brotherhood of Teamsters Approval Resolution of 2010”, was approved effective March 16, 2010.</p>
                 <p>Resolution 18-531, the “Compensation and Working Conditions Collective Bargaining Agreement Between the District of Columbia and the Washington Teachers’ Union, American Federation of Teachers Local No. 6, AFL CIO Emergency Approval Resolution of 2010”, was approved effective June 29, 2010.</p>
+                <p>Resolution 18-423, the “Compensation and Working Conditions Collective Bargaining Agreement between the District of Columbia Public Schools and Teamsters Locals 639 and 730, affiliated with the International Brotherhood of Teamsters Approval Resolution of 2010”, was approved effective March 16, 2010.</p>
+                <p>Resolution 16-380, the “Compensation Agreement Between the District of Columbia and the Doctors Council of the District of Columbia Representing Compensation Unit 19 Approval Resolution of 2005”, was approved effective November 15, 2005.</p>
+                <p>Resolution 16-287, the “Compensation Agreement Between the District of Columbia and Compensation Unit 13 Approval Resolution of 2005”, was approved effective September 20, 2005.</p>
+                <p>Resolution 16-250, the “Compensation Correction for Employees in Class 3, Compensation Unit #3 Emergency Approval Resolution of 2005”, was approved effective July 6, 2005.</p>
+                <p>Resolution 16-160, the “Police Compensation Approval Resolution of 2005”, was approved effective June 7, 2005.</p>
+                <p>Resolution 16-111, the “Compensation Settlement for Employees Represented by the Services Employees International Union, District 1199-E-DC Approval Resolution of 2005”, was approved effective April 5, 2005.</p>
+                <p>Resolution 15-796, the “Compensation Settlement for Employees Represented by the American Federation of State, County, and Municipal Employees, Local 2095, and the American Federation of Government Employees, Local 383, Approval Resolution of 2004”, was approved effective December 21, 2004.</p>
+                <p>Resolution 15-794, the “Compensation Agreement between the District of Columbia and Compensation Unit 33 Approval Resolution of 2004”, was approved effective December 21, 2004.</p>
               </section>
             </section>
             <hr/>
@@ -634,13 +670,13 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-618.18.</p>
                 <h4>Cross References</h4>
-                <p>Mayor and Council members, coverage, see § <a class="internal-link" href="/dc/council/code/sections/1-602.02.html">1-602.02</a>.</p>
-                <p>Merit system, coverage and limitations of Chapter 6 of Title 1, see § <a class="internal-link" href="/dc/council/code/sections/1-602.02.html">1-602.02</a>.</p>
                 <p>Merit system, effective date provisions, see § <a class="internal-link" href="/dc/council/code/sections/1-636.02.html">1-636.02</a>.</p>
+                <p>Merit system, coverage and limitations of Chapter 6 of Title 1, see § <a class="internal-link" href="/dc/council/code/sections/1-602.02.html">1-602.02</a>.</p>
+                <p>Mayor and Council members, coverage, see § <a class="internal-link" href="/dc/council/code/sections/1-602.02.html">1-602.02</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Pub. L. 104-134, § 143, Apr. 26, 1996, 110 Stat. 1321 214, provided as follows:</p>
-                <p>“§ <a class="internal-link" href="/dc/council/code/sections/1-617.18.html">1-617.18</a>. Public school employee evaluations.”</p>
                 <p>“Notwithstanding any other provision of law, rule, or regulation, the evaluation process and instruments for evaluating District of Columbia Public Schools employees shall be a nonnegotiable item for collective bargaining purposes.”</p>
+                <p>“§ <a class="internal-link" href="/dc/council/code/sections/1-617.18.html">1-617.18</a>. Public school employee evaluations.”</p>
+                <p>Pub. L. 104-134, § 143, Apr. 26, 1996, 110 Stat. 1321 214, provided as follows:</p>
               </section>
             </section>
             <hr/>

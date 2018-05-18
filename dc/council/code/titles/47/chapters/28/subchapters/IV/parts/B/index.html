@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/47/chapters/28/subchapters/IV/parts/C/">Part C. Pharmacy.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/47/chapters/28/subchapters/IV/parts/B/">Report Error</a>
@@ -89,25 +89,63 @@
         <section class="col8 body">
           <h1>Part B. Pawnbrokers.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/47-2884.01.html">§ 47–2884.01. Definitions.</a>
-            <a href="/dc/council/code/sections/47-2884.02.html">§ 47–2884.02. License required; display of sign or emblem.</a>
-            <a href="/dc/council/code/sections/47-2884.03.html">§ 47–2884.03. Appointment of Mayor as attorney; application for license; cash capital; application fee; endorsement to master business license.</a>
-            <a href="/dc/council/code/sections/47-2884.04.html">§ 47–2884.04. Bond.</a>
-            <a href="/dc/council/code/sections/47-2884.05.html">§ 47–2884.05. License—Issuance; fee; contents; display; transferability; change of place or business.</a>
-            <a href="/dc/council/code/sections/47-2884.06.html">§ 47–2884.06. License—Revocation; suspension; renewal; renewal fee; procedure; surrender.</a>
-            <a href="/dc/council/code/sections/47-2884.07.html">§ 47–2884.07. License—Enforcement of part; annual report; records of licensee; appeal of action, decision, or ruling of Mayor.</a>
-            <a href="/dc/council/code/sections/47-2884.08.html">§ 47–2884.08. Advertising; statement of rates.</a>
-            <a href="/dc/council/code/sections/47-2884.09.html">§ 47–2884.09. Maximum rate of interest permitted; repayment of loan.</a>
-            <a href="/dc/council/code/sections/47-2884.10.html">§ 47–2884.10. Excessive consideration prohibited; instruments for loans made in violation of part invalid; loans made outside of District.</a>
-            <a href="/dc/council/code/sections/47-2884.11.html">§ 47–2884.11. Book containing loan transactions required; inspection of books; police to be admitted to premises; daily transcript.</a>
-            <a href="/dc/council/code/sections/47-2884.12.html">§ 47–2884.12. Borrower to receive memorandum of loan transaction.</a>
-            <a href="/dc/council/code/sections/47-2884.13.html">§ 47–2884.13. Sale of pawn or pledge—Required time of possession.</a>
-            <a href="/dc/council/code/sections/47-2884.14.html">§ 47–2884.14. Sale of pawn or pledge—Notice.</a>
-            <a href="/dc/council/code/sections/47-2884.15.html">§ 47–2884.15. Sale of pawn or pledge—Disposition of surplus moneys.</a>
-            <a href="/dc/council/code/sections/47-2884.16.html">§ 47–2884.16. Penalties for violation of part; loan declared void; pledge returned.</a>
-            <a href="/dc/council/code/sections/47-2884.17.html">§ 47–2884.17. Rules and regulations.</a>
-            <a href="/dc/council/code/sections/47-2884.18.html">§ 47–2884.18. Exceptions to application of part.</a>
-            <a href="/dc/council/code/sections/47-2884.19.html">§ 47–2884.19. Severability.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.01.html">§ 47–2884.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.02.html">§ 47–2884.02. License required; display of sign or emblem.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.03.html">§ 47–2884.03. Appointment of Mayor as attorney; application for license; cash capital; application fee; endorsement to master business license.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.04.html">§ 47–2884.04. Bond.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.05.html">§ 47–2884.05. License—Issuance; fee; contents; display; transferability; change of place or business.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.06.html">§ 47–2884.06. License—Revocation; suspension; renewal; renewal fee; procedure; surrender.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.07.html">§ 47–2884.07. License—Enforcement of part; annual report; records of licensee; appeal of action, decision, or ruling of Mayor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.08.html">§ 47–2884.08. Advertising; statement of rates.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.09.html">§ 47–2884.09. Maximum rate of interest permitted; repayment of loan.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.10.html">§ 47–2884.10. Excessive consideration prohibited; instruments for loans made in violation of part invalid; loans made outside of District.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.11.html">§ 47–2884.11. Book containing loan transactions required; inspection of books; police to be admitted to premises; daily transcript.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.12.html">§ 47–2884.12. Borrower to receive memorandum of loan transaction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.13.html">§ 47–2884.13. Sale of pawn or pledge—Required time of possession.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.14.html">§ 47–2884.14. Sale of pawn or pledge—Notice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.15.html">§ 47–2884.15. Sale of pawn or pledge—Disposition of surplus moneys.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.16.html">§ 47–2884.16. Penalties for violation of part; loan declared void; pledge returned.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.17.html">§ 47–2884.17. Rules and regulations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.18.html">§ 47–2884.18. Exceptions to application of part.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/47-2884.19.html">§ 47–2884.19. Severability.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -126,8 +164,8 @@
       (Aug. 6, 1956, 70 Stat. 1036, ch. 970, § 1; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1901.</p>
                 <p>1973 Ed., § 2-2001.</p>
+                <p>1981 Ed., § 2-1901.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <h4>Change in Government</h4>
@@ -147,8 +185,8 @@
       (Aug. 6, 1956, 70 Stat. 1036, ch. 970, § 2; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1902.</p>
                 <p>1973 Ed., § 2-2002.</p>
+                <p>1981 Ed., § 2-1902.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <h4>Change in Government</h4>
@@ -178,19 +216,19 @@
       (Aug. 6, 1956, 70 Stat. 1036, ch. 970, § 3; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261,§ 2003(c), 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/15-38.html">Oct. 28, 2003, D.C. Law 15-38, § 3(hh)(4)(Y), 50 DCR 6913</a>; <a class="internal-link" href="/dc/council/laws/18-315.html">Mar. 12, 2011, D.C. Law 18-315, § 4(a), 57 DCR 12412</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>; <a class="internal-link" href="/dc/council/laws/20-61.html">Dec. 24, 2013, D.C. Law 20-61, § 7158(a), 60 DCR 12472</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1903.</p>
                 <p>1973 Ed., § 2-2003.</p>
+                <p>1981 Ed., § 2-1903.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2884.05.html">47-2884.05</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (e), substituted “an Inspected Sales and Services endorsement to a basic business license under the basic” for “a Class A Inspected Sales and Services endorsement to a master business license under the master”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a> added subsec. (f).</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> substituted “30 days before” for “30 days prior to” in (f)(1); and substituted “opinions” for “opinion” in (f)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a> added subsec. (f).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-38.html">D.C. Law 15-38</a>, in subsec. (e), substituted “an Inspected Sales and Services endorsement to a basic business license under the basic” for “a Class A Inspected Sales and Services endorsement to a master business license under the master”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 3(hh)(4)(Y) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7158(a) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7158(a) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7158(a) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(hh)(4)(Y) of Streamlining Regulation Emergency Act of 2003 (D.C. Act 15-145, August 11, 2003,  50 DCR 6896).</p>
                 <h4>Short Title</h4>
                 <p>Section 7151 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle O of Title VII of the act may be cited as the “Tax Clarification Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -212,8 +250,8 @@
       (Aug. 6, 1956, 70 Stat. 1037, ch. 970, § 4; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1904.</p>
                 <p>1973 Ed., § 2-2004.</p>
+                <p>1981 Ed., § 2-1904.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <h4>Change in Government</h4>
@@ -234,23 +272,23 @@
       (Aug. 6, 1956, 70 Stat. 1037, ch. 970, § 5; <a class="internal-link" href="/dc/council/laws/1-82.html">Sept. 14, 1976, D.C. Law 1-82, title I, § 101(a), 23 DCR 2461</a>; <a class="internal-link" href="/dc/council/laws/18-315.html">Mar. 12, 2011, D.C. Law 18-315, § 4(b), 57 DCR 12412</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>; <a class="internal-link" href="/dc/council/laws/20-61.html">Dec. 24, 2013, D.C. Law 20-61, § 7158(b), 60 DCR 12472</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1905.</p>
                 <p>1973 Ed., § 2-2005.</p>
+                <p>1981 Ed., § 2-1905.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a>, in subsec. (b), substituted “file an application for a new license in accordance with the provisions of § <a class="internal-link" href="/dc/council/code/sections/47-2884.03.html">47-2884.03</a>” for “immediately give written notice thereof to the Mayor. Upon receipt of such notice the Mayor shall attach to the license a statement of the change of location and the date thereof, which shall be authority for the operation of such business under such license at the new location.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> purported to substitute “file an application for a new license in accordance with the provisions of § <a class="internal-link" href="/dc/council/code/sections/47-2884.03.html">47-2884.03</a>” for “immediately give written notice thereof to the Mayor. Upon receipt of such notice the Mayor shall attach to the license a statement of the change of location and the date thereof, which shall be authority for the operation of such business under such license at the new location” in (b), a substitution that had already been made by <a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a>.</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a>, in subsec. (b), substituted “file an application for a new license in accordance with the provisions of § <a class="internal-link" href="/dc/council/code/sections/47-2884.03.html">47-2884.03</a>” for “immediately give written notice thereof to the Mayor. Upon receipt of such notice the Mayor shall attach to the license a statement of the change of location and the date thereof, which shall be authority for the operation of such business under such license at the new location.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Predatory Pawnbroker Regulation and Community Notification Emergency Act of 2010 (D.C. Act 18-385, April 29, 2010,  57 DCR 3838).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7158(b) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7158(b) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7158(b) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Predatory Pawnbroker Regulation and Community Notification Emergency Act of 2010 (D.C. Act 18-385, April 29, 2010,  57 DCR 3838).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(a) of D.C. Law 18-200 added subsec. (a-1) to read as follows:</p>
-                <p>“(a-1)(1) A license shall not be issued to an applicant unless:</p>
-                <p>“(A) At least 30 days prior to the issuance of a license, all Advisory Neighborhood Commissions in the ward where the pawnbroker will be located shall be provided notice that a pawnbroker license application has been submitted to the Mayor; and</p>
-                <p>“(B) All affected Advisory Neighborhood Commissions have been accorded great weight during deliberations to approve or deny the license application.</p>
-                <p>“(2) This subsection shall not apply to applications for licensure renewal submitted by any pawnbroker licensed in accordance with this part as of April 1, 2010.”.</p>
                 <p>Section 4(b) of D.C. Law 18-200 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) This subsection shall not apply to applications for licensure renewal submitted by any pawnbroker licensed in accordance with this part as of April 1, 2010.”.</p>
+                <p>“(B) All affected Advisory Neighborhood Commissions have been accorded great weight during deliberations to approve or deny the license application.</p>
+                <p>“(A) At least 30 days prior to the issuance of a license, all Advisory Neighborhood Commissions in the ward where the pawnbroker will be located shall be provided notice that a pawnbroker license application has been submitted to the Mayor; and</p>
+                <p>“(a-1)(1) A license shall not be issued to an applicant unless:</p>
+                <p>Section 2(a) of D.C. Law 18-200 added subsec. (a-1) to read as follows:</p>
                 <h4>Short Title</h4>
                 <p>Section 7151 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle O of Title VII of the act may be cited as the “Tax Clarification Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -275,8 +313,8 @@
       (Aug. 6, 1956, 70 Stat. 1038, ch. 970, § 6; <a class="internal-link" href="/dc/council/laws/1-82.html">Sept. 14, 1976, D.C. Law 1-82, title I, § 101(b), 23 DCR 2461</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1906.</p>
                 <p>1973 Ed., § 2-2006.</p>
+                <p>1981 Ed., § 2-1906.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <h4>Cross References</h4>
@@ -301,8 +339,8 @@
       (Aug. 6, 1956, 70 Stat. 1039, ch. 970, § 7; <a class="internal-link" href="/us/congress/laws/public/88-60.html">July 8, 1963, 77 Stat. 77, Pub. L. 88-60, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 570, Pub. L. 91-358, title I, § 155(a), 164(m)</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1907.</p>
                 <p>1973 Ed., § 2-2007.</p>
+                <p>1981 Ed., § 2-1907.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2884.01.html">47-2884.01</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -324,8 +362,8 @@
       (Aug. 6, 1956, 70 Stat. 1040, ch. 970, § 8; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1908.</p>
                 <p>1973 Ed., § 2-2008.</p>
+                <p>1981 Ed., § 2-1908.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <h4>Change in Government</h4>
@@ -347,21 +385,21 @@
       (Aug. 6, 1956, 70 Stat. 1040, ch. 970, § 9; <a class="internal-link" href="/dc/council/laws/18-315.html">Mar. 12, 2011, D.C. Law 18-315,§ 4(c), 57 DCR 12412</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>; <a class="internal-link" href="/dc/council/laws/20-61.html">Dec. 24, 2013, D.C. Law 20-61, § 7158(c), 60 DCR 12472</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1909.</p>
                 <p>1973 Ed., § 2-2009.</p>
+                <p>1981 Ed., § 2-1909.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a> rewrote subsec. (a); and added subsecs. (c) and (d).</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> purported to rewrite (a) and add (c) and (d); a substitution that had already been made by <a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a>.</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a> rewrote subsec. (a); and added subsecs. (c) and (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Predatory Pawnbroker Regulation and Community Notification Emergency Act of 2010 (D.C. Act 18-385, April 29, 2010,  57 DCR 3838).</p>
-                <p>For temporary (90 days) amendment of this section, see § 7158(c) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7158(c) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7158(c) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Predatory Pawnbroker Regulation and Community Notification Emergency Act of 2010 (D.C. Act 18-385, April 29, 2010,  57 DCR 3838).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2(b) of D.C. Law 18-200 amended subsec. (a) to read as follows:</p>
-                <p>“(a)(1) The maximum rate of interest which a pawnbroker may contract for, and receive, including fees, shall not exceed 24% per annum; provided, that this subsection shall not apply to any pawnbroker licensed in accordance with this part as of April 1, 2010.</p>
-                <p>“(2) The maximum rate of interest which a pawnbroker licensed in accordance with this part as of April 1, 2010 may contract for and receive shall be the same as permitted by section 8 of Article 41 of the Police Regulations, effective August 22, 1957 (C.O. 57-1638;  16 DCMR § 910).”.</p>
                 <p>Section 4(b) of D.C. Law 18-200 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) The maximum rate of interest which a pawnbroker licensed in accordance with this part as of April 1, 2010 may contract for and receive shall be the same as permitted by section 8 of Article 41 of the Police Regulations, effective August 22, 1957 (C.O. 57-1638;  16 DCMR § 910).”.</p>
+                <p>“(a)(1) The maximum rate of interest which a pawnbroker may contract for, and receive, including fees, shall not exceed 24% per annum; provided, that this subsection shall not apply to any pawnbroker licensed in accordance with this part as of April 1, 2010.</p>
+                <p>Section 2(b) of D.C. Law 18-200 amended subsec. (a) to read as follows:</p>
                 <h4>Short Title</h4>
                 <p>Section 7151 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle O of Title VII of the act may be cited as the “Tax Clarification Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -385,8 +423,8 @@
       (Aug. 6, 1956, 70 Stat. 1041, ch. 970, § 10; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1910.</p>
                 <p>1973 Ed., § 2-2010.</p>
+                <p>1981 Ed., § 2-1910.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <h4>Editor's Notes</h4>
@@ -408,17 +446,17 @@
       (Aug. 6, 1956, 70 Stat. 1041, ch. 970, § 11; <a class="internal-link" href="/dc/council/laws/18-315.html">Mar. 12, 2011, D.C. Law 18-315, § 4(d), 57 DCR 12412</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>; <a class="internal-link" href="/dc/council/laws/20-61.html">Dec. 24, 2013, D.C. Law 20-61, § 7158(d), 60 DCR 12472</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1911.</p>
                 <p>1973 Ed., § 2-2011.</p>
+                <p>1981 Ed., § 2-1911.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/47-2884.12.html">47-2884.12</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a>, in subsec. (d), substituted “on forms or via electronic means in a format prescribed by the Mayor” for “on forms to be prescribed by the Mayor of the District of Columbia”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> purported to substitute “on forms or via electronic means in a format prescribed by the Mayor” for “on forms to be prescribed by the Mayor of the District of Columbia” in (d), a substitution that had already been made by <a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a>.</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a>, in subsec. (d), substituted “on forms or via electronic means in a format prescribed by the Mayor” for “on forms to be prescribed by the Mayor of the District of Columbia”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 7158(d) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7158(d) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7158(d) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 7151 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle O of Title VII of the act may be cited as the “Tax Clarification Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -439,8 +477,8 @@
       (Aug. 6, 1956, 70 Stat. 1042, ch. 970, § 12; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1912.</p>
                 <p>1973 Ed., § 2-2012.</p>
+                <p>1981 Ed., § 2-1912.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
               </section>
@@ -457,8 +495,8 @@
       (Aug. 6, 1956, 70 Stat. 1042, ch. 970, § 13; <a class="internal-link" href="/dc/council/laws/5-137.html">Mar. 13, 1985, D.C. Law 5-137,§ 2(a), 31 DCR 5743</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1913.</p>
                 <p>1973 Ed., § 2-2013.</p>
+                <p>1981 Ed., § 2-1913.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
               </section>
@@ -475,8 +513,8 @@
       (Aug. 6, 1956, 70 Stat. 1042, ch. 970, § 14; <a class="internal-link" href="/dc/council/laws/5-137.html">Mar. 13, 1985, D.C. Law 5-137,§ 2(b), 31 DCR 5743</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1914.</p>
                 <p>1973 Ed., § 2-2014.</p>
+                <p>1981 Ed., § 2-1914.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
               </section>
@@ -493,8 +531,8 @@
       (Aug. 6, 1956, 70 Stat. 1042, ch. 970, § 15; <a class="internal-link" href="/dc/council/laws/5-137.html">Mar. 13, 1985, D.C. Law 5-137,§ 2(c), 31 DCR 5743</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1915.</p>
                 <p>1973 Ed., § 2-2015.</p>
+                <p>1981 Ed., § 2-1915.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
               </section>
@@ -513,11 +551,11 @@
       (Aug. 6, 1956, 70 Stat. 1042, ch. 970, § 16; <a class="internal-link" href="/dc/council/laws/6-42.html">Oct. 5, 1985, D.C. Law 6-42, § 439, 32 DCR 4450</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 286(v), 60 DCR 2064</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1916.</p>
                 <p>1973 Ed., § 2-2016.</p>
+                <p>1981 Ed., § 2-1916.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “of not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “of not more than $300” in (a).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 286(v) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
                 <h4>Editor's Notes</h4>
@@ -536,16 +574,16 @@
       (Aug. 6, 1956, 70 Stat. 1043, ch. 970, § 17; <a class="internal-link" href="/dc/council/laws/18-315.html">Mar. 12, 2011, D.C. Law 18-315, § 4(e), 57 DCR 12412</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, §§ 122, 302, 59 DCR 6190</a>; <a class="internal-link" href="/dc/council/laws/20-61.html">Dec. 24, 2013, D.C. Law 20-61, § 7158(e), 60 DCR 12472</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1917.</p>
                 <p>1973 Ed., § 2-2017.</p>
+                <p>1981 Ed., § 2-1917.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a> rewrote the section, which formerly read:</p>
-                <p>“The Council of the District of Columbia is authorized to make, and the Mayor of the District of Columbia is authorized to enforce, such rules and regulations as the Council deems necessary to carry out the purposes of this part.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law; and substituted “this part” for “this act.”</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> substituted “this part” for “this act”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law; and substituted “this part” for “this act.”</p>
+                <p>“The Council of the District of Columbia is authorized to make, and the Mayor of the District of Columbia is authorized to enforce, such rules and regulations as the Council deems necessary to carry out the purposes of this part.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-315.html">D.C. Law 18-315</a> rewrote the section, which formerly read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 7158(e) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 7158(e) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 7158(e) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 7151 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle O of Title VII of the act may be cited as the “Tax Clarification Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -566,14 +604,14 @@
       (Aug. 6, 1956, 70 Stat. 1043, ch. 970, § 18; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1918.</p>
                 <p>1973 Ed., § 2-2018.</p>
+                <p>1981 Ed., § 2-1918.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
                 <h4>References in Text</h4>
-                <p>The Federal Home Loan Bank Board, referred to in this section, was substituted for the Home Loan Bank Board pursuant to the Act of August 11, 1955, 69 Stat. 340, ch. 783, § 109.</p>
-                <p>The Federal Home Loan Bank Board and the Federal Savings and Loan Insurance Corporation referred to in this section have been abolished. For provisions relating to the abolition of the Federal Savings and Loan Insurance Corporation and the Federal Home Loan Bank Board and the transfer of functions, personnel and property of such agencies, see § 401 to 406 of Pub. L. 101-73, set out as notes under  12 U.S.C. § 1437.</p>
                 <p>The Department of Health and Human Services, referred to near the end of this section, was substituted for the Department of Health, Education and Welfare pursuant to the Act of October 17, 1979, 93 Stat. 695, Pub. L. 96-88, § 509.</p>
+                <p>The Federal Home Loan Bank Board and the Federal Savings and Loan Insurance Corporation referred to in this section have been abolished. For provisions relating to the abolition of the Federal Savings and Loan Insurance Corporation and the Federal Home Loan Bank Board and the transfer of functions, personnel and property of such agencies, see § 401 to 406 of Pub. L. 101-73, set out as notes under  12 U.S.C. § 1437.</p>
+                <p>The Federal Home Loan Bank Board, referred to in this section, was substituted for the Home Loan Bank Board pursuant to the Act of August 11, 1955, 69 Stat. 340, ch. 783, § 109.</p>
               </section>
             </section>
             <hr/>
@@ -588,8 +626,8 @@
       (Aug. 16, 1956, 70 Stat. 1043, ch. 970, § 20; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 302, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 2-1919.</p>
                 <p>1973 Ed., § 2-2019.</p>
+                <p>1981 Ed., § 2-1919.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> enacted this subchapter into law.</p>
               </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/3/chapters/12/subchapters/VI-A/">Subchapter VI-A. Naturopathic Medicine; Scope of Practice; Required Disclosures.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/3/chapters/12/subchapters/VI/">Report Error</a>
@@ -88,14 +88,30 @@
         <section class="col8 body">
           <h1>Subchapter VI. Advanced Registered Nursing; Scope of Practice; Requirement of Protocol; Collaboration.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/3-1206.01.html">§ 3–1206.01. General authorization.</a>
-            <a href="/dc/council/code/sections/3-1206.02.html">§ 3–1206.02. Requirements of protocols. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-1206.03.html">§ 3–1206.03. Collaboration.</a>
-            <a href="/dc/council/code/sections/3-1206.04.html">§ 3–1206.04. Authorized acts.</a>
-            <a href="/dc/council/code/sections/3-1206.05.html">§ 3–1206.05. Nurse-anesthesia. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-1206.06.html">§ 3–1206.06. Nurse-midwifery. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-1206.07.html">§ 3–1206.07. Nurse-practitioner practice. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-1206.08.html">§ 3–1206.08. Qualifications, certification. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1206.01.html">§ 3–1206.01. General authorization.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1206.02.html">§ 3–1206.02. Requirements of protocols. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1206.03.html">§ 3–1206.03. Collaboration.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1206.04.html">§ 3–1206.04. Authorized acts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1206.05.html">§ 3–1206.05. Nurse-anesthesia. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1206.06.html">§ 3–1206.06. Nurse-midwifery. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1206.07.html">§ 3–1206.07. Nurse-practitioner practice. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1206.08.html">§ 3–1206.08. Qualifications, certification. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

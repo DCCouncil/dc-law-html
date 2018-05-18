@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/3/chapters/14/">Chapter 14. Sports and Entertainment Commission. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/3/chapters/13A/">Report Error</a>
@@ -87,14 +87,30 @@
         <section class="col8 body">
           <h1>Chapter 13A. Motor Vehicle Theft Prevention Commission.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/3-1351.html">§ 3–1351. Definitions.</a>
-            <a href="/dc/council/code/sections/3-1352.html">§ 3–1352. Establishment of Motor Vehicle Theft Prevention Commission.</a>
-            <a href="/dc/council/code/sections/3-1353.html">§ 3–1353. Appointment; terms of office; removal; compensation.</a>
-            <a href="/dc/council/code/sections/3-1354.html">§ 3–1354. Powers of Commission.</a>
-            <a href="/dc/council/code/sections/3-1355.html">§ 3–1355. Annual audit and report.</a>
-            <a href="/dc/council/code/sections/3-1356.html">§ 3–1356. Establishment of Motor Vehicle Theft Prevention Fund. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-1357.html">§ 3–1357. Payments into Fund. [Repealed]</a>
-            <a href="/dc/council/code/sections/3-1358.html">§ 3–1358. Use of budget authority.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1351.html">§ 3–1351. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1352.html">§ 3–1352. Establishment of Motor Vehicle Theft Prevention Commission.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1353.html">§ 3–1353. Appointment; terms of office; removal; compensation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1354.html">§ 3–1354. Powers of Commission.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1355.html">§ 3–1355. Annual audit and report.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1356.html">§ 3–1356. Establishment of Motor Vehicle Theft Prevention Fund. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1357.html">§ 3–1357. Payments into Fund. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/3-1358.html">§ 3–1358. Use of budget authority.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -198,8 +214,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> deleted “subject to the financial limit in § <a class="internal-link" href="/dc/council/code/sections/3-1358.html">3-1358</a>(a)(2)” from the end of (8); substituted “its authorized budget to effectuate the purposes of the Commission” for “funds in the Fund to effectuate the purposes of the Commission, except as restricted by § <a class="internal-link" href="/dc/council/code/sections/3-1358.html">3-1358</a>” in (9); deleted “for deposit into the Fund” following “receive funds” in (10); and deleted “provided, that non-monetary contributions shall not be included in the costs of administration limitation prescribed by § <a class="internal-link" href="/dc/council/code/sections/3-1358.html">3-1358</a>(a)(2)” following “Commission” in (11).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 503(a) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 503(a) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary (90 days) amendment of this section, see § 503(a) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
               </section>
             </section>
             <hr/>
@@ -242,8 +258,8 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a>, in par. (2), inserted “The maximum amount of fines deposited into the Fund from this paragraph shall be $275,000 in fiscal year 2009, $750,000 in fiscal year 2010, $1 million in fiscal year 2011, and increased annually, beginning in fiscal year 2012, by 5%.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary repeal of section, see § 503(b) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) repeal of this section, see § 503(b) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary repeal of section, see § 503(b) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 3017 of <a class="internal-link" href="/dc/council/laws/17-219.html">D.C. Law 17-219</a> provided that subtitle H of title III of the act may be cited as the “Motor Vehicle Theft Prevention Commission Annual Maximum Appropriations Amendment Act of 2008”.</p>
               </section>
@@ -265,8 +281,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> rewrote the section heading, which read “Expenditures from Fund”; substituted “use its budget authority” for “expend money in the Fund” in the introductory language of (a); and deleted “and the Fund; provided, that money expended for this purpose shall not in any fiscal year exceed 15% of the amount of funds deposited in the Fund during the same fiscal year” from the end of (a)(2).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 503(c) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 503(c) of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of section, see § 503(c) of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
               </section>
             </section>
             <hr/>

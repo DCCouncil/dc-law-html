@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:3-305.html">§ 28:3-305. Defenses and claims in recoupment.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:3-304.html">Report Error</a>
@@ -109,9 +109,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 28:3-304.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>1. To be a holder in due course, one must take without notice that an instrument is overdue.  Section 3-302(a)(2)(iii).  Section 3-304 replaces subsection (3) of former  Section 3-304. For the sake of clarity it treats demand and time instruments separately. Subsection (a) applies to demand instruments. A check becomes stale after 90 days.</p>
-                <p>Under former  Section 3-304(3)(c), a holder that took a demand note had notice that it was overdue if it was taken “more than a reasonable length time after its issue.“ In substitution for this test, subsection (a)(3) requires the trier of fact to look at both the circumstances of the particular case and the nature of the instrument and trade usage. Whether a demand note is stale may vary a great deal depending on the facts of the particular case.</p>
                 <p>2. Subsections (b) and (c) cover time instruments. They follow the distinction made under former Article 3 between defaults in payment of principal and interest. In subsection (b) installment instruments and single payment instruments are treated separately. If an installment is late, the instrument is overdue until the default is cured.</p>
+                <p>Under former  Section 3-304(3)(c), a holder that took a demand note had notice that it was overdue if it was taken “more than a reasonable length time after its issue.“ In substitution for this test, subsection (a)(3) requires the trier of fact to look at both the circumstances of the particular case and the nature of the instrument and trade usage. Whether a demand note is stale may vary a great deal depending on the facts of the particular case.</p>
+                <p>1. To be a holder in due course, one must take without notice that an instrument is overdue.  Section 3-302(a)(2)(iii).  Section 3-304 replaces subsection (3) of former  Section 3-304. For the sake of clarity it treats demand and time instruments separately. Subsection (a) applies to demand instruments. A check becomes stale after 90 days.</p>
               </section>
             </section>
           </section>

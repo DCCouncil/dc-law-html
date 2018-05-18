@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/7-735.html">§ 7–735. Public Health Laboratory Fund. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-734.html">Report Error</a>
@@ -101,10 +101,10 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/14-257.html">D.C. Law 14-257</a> rewrote the first sentence which had read: “The Mayor is authorized to establish a schedule of fees for performing laboratory analysis of biological and environmental samples obtained from humans, animals, or various environmental media for the purpose of identifying environmental contaminants and performing epidemiological surveillance for cases of lead poisoning, tuberculosis, rabies, and sexually transmitted diseases.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 5 of Department of Health Functions Clarification Emergency Act of 2001 (D.C. Act 14-60, June 6, 2001,  48 DCR 5701).</p>
-                <p>For temporary (90 day) addition of section, see § 4405 of Fiscal Year 2002 Budget Support Emergency Act of 2001 (D.C. Act 14-124, August 3, 2001,  48 DCR 7861).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Public Health Laboratory Fee Emergency Amendment Act of 2002 (D.C. Act 14-390, June 21, 2002,  49 DCR 6083).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Public Health Laboratory Fee Congressional Review Emergency Amendment Act of 2002 (D.C. Act 14-479, October 3, 2002,  49 DCR 9579).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Public Health Laboratory Fee Emergency Amendment Act of 2002 (D.C. Act 14-390, June 21, 2002,  49 DCR 6083).</p>
+                <p>For temporary (90 day) addition of section, see § 4405 of Fiscal Year 2002 Budget Support Emergency Act of 2001 (D.C. Act 14-124, August 3, 2001,  48 DCR 7861).</p>
+                <p>For temporary (90 day) addition of section, see § 5 of Department of Health Functions Clarification Emergency Act of 2001 (D.C. Act 14-60, June 6, 2001,  48 DCR 5701).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Public Health Laboratory Fee Temporary Amendment Act of 2002 (D.C. Law 14-208, October 19, 2002, law notification  49 DCR 10464).</p>
               </section>

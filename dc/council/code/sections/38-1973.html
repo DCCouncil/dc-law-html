@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/38-1974.html">§ 38–1974. Promotions — Higher-paid salary classes. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-1973.html">Report Error</a>
@@ -99,8 +99,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/84-1-ch569.html#§10">Aug. 5, 1955, 69 Stat. 528, ch. 569, title IV, § 10</a>; <a class="internal-link" href="/us/congress/laws/public/89-810.html">Nov. 13, 1966, 80 Stat. 1601, Pub. L. 89-810, title II, § 202(7)</a>; <a class="internal-link" href="/us/congress/laws/public/90-319.html">May 27, 1968, 82 Stat. 138, Pub. L. 90-319, § 2(5)</a>; <a class="internal-link" href="/us/congress/laws/public/91-297.html">June 30, 1970, 84 Stat. 363, Pub. L. 91-297, title III, § 302(8)</a>; <a class="internal-link" href="/us/congress/laws/public/92-518.html">Oct. 21, 1972, 86 Stat. 1011, Pub. L. 92-518, title I,§ 103(5)</a>; <a class="internal-link" href="/dc/council/laws/1-90.html">Mar. 29, 1977, D.C. Law 1-90, § 2(4), 23 DCR 9532b</a>; <a class="internal-link" href="/dc/council/laws/4-78.html">Mar. 16, 1982, D.C. Law 4-78, § 11, 29 DCR 49</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1135.</p>
                 <p>1973 Ed., § 31-1535.</p>
+                <p>1981 Ed., § 31-1135.</p>
               </section>
             </section>
           </section>

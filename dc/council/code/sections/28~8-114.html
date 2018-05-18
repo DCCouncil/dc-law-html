@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:8-115.html">§ 28:8-115. Securities intermediary and others not liable to adverse claimant.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:8-114.html">Report Error</a>
@@ -103,18 +103,18 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 733, Pub. L. 88-243, § 1</a>; <a class="internal-link" href="/dc/council/laws/9-196.html">Mar. 16, 1993, D.C. Law 9-196, § 4, 39 DCR 9165</a>; <a class="internal-link" href="/dc/council/laws/11-240.html">renumbered and amended, Apr. 9, 1997, D.C. Law 11-240, § 2, 44 DCR 1087</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:8-114.</p>
                 <p>1973 Ed., § 28:8-105.</p>
+                <p>1981 Ed., § 28:8-114.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p>This section adapts the rules of negotiable instruments law concerning procedure in actions on instruments, see  Section 3-308, to actions on certificated securities governed by this Article. An “action on a security” includes any action or proceeding brought against the issuer to enforce a right or interest that is part of the security, such as an action to collect principal or interest or a dividend, or to establish a right to vote or to receive a new security under an exchange offer or plan of reorganization. This section applies only to certificated securities; actions on uncertificated securities are governed by general evidentiary principles.</p>
-                <p><strong>Definitional Cross References</strong> “Action”.  Section 1-201(1).</p>
-                <p>“Burden of establishing”.  Section 1-201(8).</p>
-                <p>“Certificated security”.  Section 8-102(a)(4).</p>
-                <p>“Indorsement”.  Section 8-102(a)(11).</p>
-                <p>“Issuer”.  Section 8-201.</p>
-                <p>“Presumed”.  Section 1-201(31).</p>
-                <p>“Security”.  Section 8-102(a)(15).</p>
                 <p>“Security certificate”.  Section 8-102(a)(16).</p>
+                <p>“Security”.  Section 8-102(a)(15).</p>
+                <p>“Presumed”.  Section 1-201(31).</p>
+                <p>“Issuer”.  Section 8-201.</p>
+                <p>“Indorsement”.  Section 8-102(a)(11).</p>
+                <p>“Certificated security”.  Section 8-102(a)(4).</p>
+                <p>“Burden of establishing”.  Section 1-201(8).</p>
+                <p><strong>Definitional Cross References</strong> “Action”.  Section 1-201(1).</p>
+                <p>This section adapts the rules of negotiable instruments law concerning procedure in actions on instruments, see  Section 3-308, to actions on certificated securities governed by this Article. An “action on a security” includes any action or proceeding brought against the issuer to enforce a right or interest that is part of the security, such as an action to collect principal or interest or a dividend, or to establish a right to vote or to receive a new security under an exchange offer or plan of reorganization. This section applies only to certificated securities; actions on uncertificated securities are governed by general evidentiary principles.</p>
               </section>
             </section>
           </section>

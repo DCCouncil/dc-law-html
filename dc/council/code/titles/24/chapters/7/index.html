@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/24/chapters/7A/">Chapter 7A. Treatment Instead of Jail for Certain Non-Violent Offenders. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/24/chapters/7/">Report Error</a>
@@ -87,21 +87,51 @@
         <section class="col8 body">
           <h1>Chapter 7. Rehabilitation of Users of Narcotics.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/24-701.html">§ 24–701. Purpose.</a>
-            <a href="/dc/council/code/sections/24-702.html">§ 24–702. Definitions.</a>
-            <a href="/dc/council/code/sections/24-703.html">§ 24–703. Order of examination.</a>
-            <a href="/dc/council/code/sections/24-704.html">§ 24–704. Right to counsel.</a>
-            <a href="/dc/council/code/sections/24-705.html">§ 24–705. Examinations by physicians.</a>
-            <a href="/dc/council/code/sections/24-706.html">§ 24–706. When hearing is required.</a>
-            <a href="/dc/council/code/sections/24-707.html">§ 24–707. Hearing.</a>
-            <a href="/dc/council/code/sections/24-708.html">§ 24–708. Confinement of patient.</a>
-            <a href="/dc/council/code/sections/24-709.html">§ 24–709. Release of patient.</a>
-            <a href="/dc/council/code/sections/24-710.html">§ 24–710. Periodic examination of released patients.</a>
-            <a href="/dc/council/code/sections/24-711.html">§ 24–711. Patient not deemed a criminal.</a>
-            <a href="/dc/council/code/sections/24-712.html">§ 24–712. [Omitted].</a>
-            <a href="/dc/council/code/sections/24-713.html">§ 24–713. Care and treatment of drug users; authority of Surgeon General.</a>
-            <a href="/dc/council/code/sections/24-714.html">§ 24–714. Admittance into Public Health Service hospitals; narcotics users from District.</a>
-            <a href="/dc/council/code/sections/24-715.html">§ 24–715. Release of patients.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-701.html">§ 24–701. Purpose.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-702.html">§ 24–702. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-703.html">§ 24–703. Order of examination.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-704.html">§ 24–704. Right to counsel.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-705.html">§ 24–705. Examinations by physicians.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-706.html">§ 24–706. When hearing is required.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-707.html">§ 24–707. Hearing.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-708.html">§ 24–708. Confinement of patient.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-709.html">§ 24–709. Release of patient.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-710.html">§ 24–710. Periodic examination of released patients.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-711.html">§ 24–711. Patient not deemed a criminal.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-712.html">§ 24–712. [Omitted].</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-713.html">§ 24–713. Care and treatment of drug users; authority of Surgeon General.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-714.html">§ 24–714. Admittance into Public Health Service hospitals; narcotics users from District.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/24-715.html">§ 24–715. Release of patients.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -116,8 +146,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§2">June 24, 1953, 67 Stat. 77, ch. 149, § 2</a>; July 24, 1956, 70 Stat. 609, ch. 676, title I, § 101.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-601.</p>
                 <p>1973 Ed., § 24-601.</p>
+                <p>1981 Ed., § 24-601.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/11-921.html">11-921</a>, § <a class="internal-link" href="/dc/council/code/sections/24-702.html">24-702</a>, § <a class="internal-link" href="/dc/council/code/sections/24-704.html">24-704</a>, § <a class="internal-link" href="/dc/council/code/sections/24-707.html">24-707</a>, § <a class="internal-link" href="/dc/council/code/sections/24-709.html">24-709</a>, § <a class="internal-link" href="/dc/council/code/sections/24-710.html">24-710</a>, § <a class="internal-link" href="/dc/council/code/sections/24-711.html">24-711</a>, and § <a class="internal-link" href="/dc/council/code/sections/24-714.html">24-714</a>.</p>
               </section>
@@ -138,8 +168,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§3">June 24, 1953, 67 Stat. 77, ch. 149, § 3</a>; July 24, 1956, 70 Stat. 609, ch. 676, title I, § 101; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 590, Pub. L. 91-358, title I,§ 170</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-602.</p>
                 <p>1973 Ed., § 24-602.</p>
+                <p>1981 Ed., § 24-602.</p>
                 <h4>References in Text</h4>
                 <p>Section 4731 of the Internal Revenue Code of 1954, referred to in subdivision (2) of this section, was repealed by 84 Stat. 1292, Pub. L. 91-513,§ 1101(b)(3)(A).</p>
                 <h4>Change in Government</h4>
@@ -159,8 +189,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§4">June 24, 1953, 67 Stat. 77, ch. 149, § 4</a>; July 24, 1956, 70 Stat. 609, ch. 676, title I, § 101.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-603.</p>
                 <p>1973 Ed., § 24-603.</p>
+                <p>1981 Ed., § 24-603.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-702.html">24-702</a> and § <a class="internal-link" href="/dc/council/code/sections/24-705.html">24-705</a>.</p>
                 <h4>Change in Government</h4>
@@ -181,8 +211,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§7">June 24, 1953, 67 Stat. 78, ch. 149, § 7</a>; July 24, 1956, 70 Stat. 610, ch. 676, title I, § 101.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-604.</p>
                 <p>1973 Ed., § 24-604.</p>
+                <p>1981 Ed., § 24-604.</p>
               </section>
             </section>
             <hr/>
@@ -198,8 +228,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§5">June 24, 1953, 67 Stat. 78, ch. 149, § 5</a>; July 24, 1956, 70 Stat. 610, ch. 676, title I, § 101; <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 572, Pub. L. 91-358, title I,§ 155(c)(31)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-605.</p>
                 <p>1973 Ed., § 24-605.</p>
+                <p>1981 Ed., § 24-605.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-703.html">24-703</a>, § <a class="internal-link" href="/dc/council/code/sections/24-704.html">24-704</a>, § <a class="internal-link" href="/dc/council/code/sections/24-706.html">24-706</a>, and § <a class="internal-link" href="/dc/council/code/sections/24-707.html">24-707</a>.</p>
                 <h4>Change in Government</h4>
@@ -218,8 +248,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§6">June 24, 1953, 67 Stat. 78, ch. 149, § 6</a>; July 24, 1956, 70 Stat. 610, ch. 676, title I, § 101.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-606.</p>
                 <p>1973 Ed., § 24-606.</p>
+                <p>1981 Ed., § 24-606.</p>
               </section>
             </section>
             <hr/>
@@ -235,8 +265,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§8">June 24, 1953, 67 Stat. 78, ch. 149, § 8</a>; July 24, 1956, 70 Stat. 610, ch. 676, title I, § 101.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-607.</p>
                 <p>1973 Ed., § 24-607.</p>
+                <p>1981 Ed., § 24-607.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-704.html">24-704</a> and § <a class="internal-link" href="/dc/council/code/sections/24-706.html">24-706</a>.</p>
                 <h4>Change in Government</h4>
@@ -255,8 +285,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§9">June 24, 1953, 67 Stat. 79, ch. 149, § 9</a>; July 24, 1956, 70 Stat. 611, ch. 676, title I, § 101.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-608.</p>
                 <p>1973 Ed., § 24-608.</p>
+                <p>1981 Ed., § 24-608.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -274,8 +304,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§10">June 24, 1953, 67 Stat. 79, ch. 149, § 10</a>; July 24, 1956, 70 Stat. 611, ch. 676, title I, § 101.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-609.</p>
                 <p>1973 Ed., § 24-609.</p>
+                <p>1981 Ed., § 24-609.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-708.html">24-708</a>.</p>
               </section>
@@ -293,8 +323,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§11">June 24, 1953, 67 Stat. 79, ch. 149, § 11</a>; July 24, 1956, 70 Stat. 611, ch. 676, title I, § 101.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-610.</p>
                 <p>1973 Ed., § 24-610.</p>
+                <p>1981 Ed., § 24-610.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-709.html">24-709</a>.</p>
                 <h4>Change in Government</h4>
@@ -313,8 +343,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch149.html#§12">June 24, 1953, 67 Stat. 79, ch. 149, § 12</a>; July 24, 1956, 70 Stat. 612, ch. 676, title I, § 101.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-611.</p>
                 <p>1973 Ed., § 24-611.</p>
+                <p>1981 Ed., § 24-611.</p>
               </section>
             </section>
             <hr/>
@@ -340,15 +370,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-2-ch373.html#§341">July 1, 1944, 58 Stat. 698, ch. 373, title III, § 341</a>; May 8, 1954, 68 Stat. 80, ch. 195, § 3; July 24, 1956, 70 Stat. 622, ch. 676, title III, § 302(a); <a class="internal-link" href="/us/congress/laws/public/89-793.html">Nov. 8, 1966, 80 Stat. 1449, Pub. L. 89-793, title VI, § 601</a>; <a class="internal-link" href="/us/congress/laws/public/91-513.html">Oct. 27, 1970, 84 Stat. 1240, Pub. L. 91-513, title I, § 2(a)(1)</a>; <a class="internal-link" href="/us/congress/laws/public/92-255.html">Mar. 21, 1972, 86 Stat. 77, Pub. L. 92-255, § 402</a>; <a class="internal-link" href="/us/congress/laws/public/98-473.html">Oct. 12, 1984, 98 Stat. 2031, Pub. L. 98-473, § 232(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-613.</p>
                 <p>1973 Ed., § 24-613.</p>
+                <p>1981 Ed., § 24-613.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-715.html">24-715</a>.</p>
                 <h4>Transfer of Functions</h4>
                 <p>All functions of Public Health Service, of the Surgeon General of the Public Health Service, and of all other officers and employees of the Public Health Service, and all functions of all agencies of or in the Public Health Service were transferred to the Secretary of Health, Education, and Welfare by 1966 Reorganization Plan No. 3, 80 Stat. 1610. The functions of the Department of Health, Education, and Welfare were transferred to the Department of Health and Human Services by the Act of October 17, 1979, 93 Stat. 695, Pub. L. 96-88, § 509.</p>
                 <h4>References in Text</h4>
-                <p>The Narcotic Addict Rehabilitation Act of 1966, referred to in subsection (a) of this section, is codified in  18 U.S.C. §§ 4251 to  4255,  28 U.S.C.§§ 2901 to  2906, and  42 U.S.C. §§ 3411 to  3426,  3441.</p>
                 <p>18 U.S.C. §§ 4251 to  4255 were repealed by Pub. L. 98-473, title II, § 218(a)(6), 98 Stat. 2027 effective November 1, 1987 except that the sections remain applicable for five years to individuals who committed offense or acts prior to November 1, 1987.</p>
+                <p>The Narcotic Addict Rehabilitation Act of 1966, referred to in subsection (a) of this section, is codified in  18 U.S.C. §§ 4251 to  4255,  28 U.S.C.§§ 2901 to  2906, and  42 U.S.C. §§ 3411 to  3426,  3441.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -371,8 +401,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-2-ch373.html#§345">July 1, 1944, ch. 373, title III, § 345</a>; May 8, 1954, 68 Stat. 80, ch. 195, § 2; July 24, 1956, 70 Stat. 622, ch. 676, title III, § 302(c); <a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 572, Pub. L. 91-358, title I, § 155(c)(32)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-614.</p>
                 <p>1973 Ed., § 24-614.</p>
+                <p>1981 Ed., § 24-614.</p>
                 <h4>Transfer of Functions</h4>
                 <p>All functions of Public Health Service, of the Surgeon General of the Public Health Service, and of all other officers and employees of the Public Health Service, and all functions of all agencies of or in the Public Health Service were transferred to the Secretary of Health, Education, and Welfare by 1966 Reorganization Plan No. 3, 80 Stat. 1610. The functions of the Department of Health, Education, and Welfare were transferred to the Department of Health and Human Services by the Act of October 17, 1979, 93 Stat. 695, Pub. L. 96-88, § 509.</p>
               </section>
@@ -389,8 +419,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-2-ch373.html#§347">July 1, 1944, ch. 373, title III, § 347</a>; May 8, 1954, 68 Stat. 81, ch. 195, § 4; <a class="internal-link" href="/us/congress/laws/public/91-513.html">Oct. 27, 1970, 84 Stat. 1240, Pub. L. 91-513, title I. § 2(a)(4)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 24-615.</p>
                 <p>1973 Ed., § 24-615.</p>
+                <p>1981 Ed., § 24-615.</p>
               </section>
             </section>
             <hr/>

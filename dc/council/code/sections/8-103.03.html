@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/8-103.03a.html">§ 8–103.03a. Fishing License Fund.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-103.03.html">Report Error</a>
@@ -108,10 +108,10 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-57.html">D.C. Law 16-57</a> rewrote subsec. (b)(3) which had read as follows: “(3) Revenues from a licensing regulatory scheme under this section shall be used only for protecting and managing aquatic life.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2004 (D.C. Act 15-655, December 29, 2004,  52 DCR 477).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-54, March 17, 2005,  52 DCR 3172).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2005 (D.C. Act 16-201, November 17, 2005,  52 DCR 10509).</p>
                 <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-280, February 27, 2006,  53 DCR 1626).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2005 (D.C. Act 16-201, November 17, 2005,  52 DCR 10509).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Congressional Review Emergency Amendment Act of 2005 (D.C. Act 16-54, March 17, 2005,  52 DCR 3172).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Water Pollution Control Emergency Amendment Act of 2004 (D.C. Act 15-655, December 29, 2004,  52 DCR 477).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Water Pollution Control Temporary Amendment Act of 2004 (D.C. Law 15-321, April 8, 2005, law notification  52 DCR 4710).</p>
               </section>

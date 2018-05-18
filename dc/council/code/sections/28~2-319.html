@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2-320.html">§ 28:2-320. C.I.F. and C. &amp; F. terms.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2-319.html">Report Error</a>
@@ -107,24 +107,24 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 649, Pub. L. 88-243, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:2-319.</p>
                 <p>1973 Ed., § 28:2-319.</p>
+                <p>1981 Ed., § 28:2-319.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:2-311.html">28:2-311</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Prior Uniform Statutory Provision:</strong> None.</p>
-                <p><strong>Purposes:</strong> 1. This section is intended to negate the uncommercial line of decision which treats an “F.O.B.” term as “merely a price term.” The distinctions taken in subsection (1) handle most of the issues which have on occasion led to the unfortunate judicial language just referred to. Other matters which have led to sound results being based on unhappy language in regard to F.O.B. clauses are dealt with in this Act by  Section 2-311(2) (seller’s option re arrangements relating to shipment) and  Sections 2-614 and 615 (substituted performance and seller’s excuse).</p>
-                <p>2. Subsection (1)(c) not only specifies the duties of a seller who engages to deliver “F.O.B. vessel,” or the like, but ought to make clear that no agreement is soundly drawn when it looks to reshipment from San Francisco or New York, but speaks merely of “F.O.B.” the place.</p>
-                <p>3. The buyer’s obligations stated in subsection (1)(c) and subsection (3) are, as shown in the text, obligations of cooperation. The last sentence of subsection (3) expressly, though perhaps unnecessarily, authorizes the seller, pending instructions, to go ahead with such preparatory moves as shipment from the interior to the named point of delivery. The sentence presupposes the usual case in which instructions “fail”; a prior repudiation by the buyer, giving notice that breach was intended, would remove the reason for the sentence, and would normally bring into play, instead, the second sentence of  Section 2-704, which duly calls for lessening damages.</p>
-                <p>4. The treatment of “F.O.B. vessel” in conjunction with F.A.S. fits, in regard to the need for payment against documents, with standard practice and case-law; but “F.O.B. vessel” is a term which by its very language makes express the need for an “on board” document. In this respect, that term is stricter than the ordinary overseas “shipment” contract (C.I.F., etc.,  Section 2-320).</p>
-                <p><strong>Cross References:</strong>Sections 2-311(3),  2-323,  2-503 and  2-504.</p>
-                <p><strong>Definitional Cross References:</strong> “Agreed”.  Section 1-201.</p>
-                <p>“Bill of lading”.  Section 1-201.</p>
-                <p>“Buyer”.  Section 2-103.</p>
-                <p>“Goods”.  Section 2-105.</p>
-                <p>“Seasonably”.  Section 1-204.</p>
-                <p>“Seller”.  Section 2-103.</p>
                 <p>“Term”.  Section 1-201.</p>
+                <p>“Seller”.  Section 2-103.</p>
+                <p>“Seasonably”.  Section 1-204.</p>
+                <p>“Goods”.  Section 2-105.</p>
+                <p>“Buyer”.  Section 2-103.</p>
+                <p>“Bill of lading”.  Section 1-201.</p>
+                <p><strong>Definitional Cross References:</strong> “Agreed”.  Section 1-201.</p>
+                <p><strong>Cross References:</strong>Sections 2-311(3),  2-323,  2-503 and  2-504.</p>
+                <p>4. The treatment of “F.O.B. vessel” in conjunction with F.A.S. fits, in regard to the need for payment against documents, with standard practice and case-law; but “F.O.B. vessel” is a term which by its very language makes express the need for an “on board” document. In this respect, that term is stricter than the ordinary overseas “shipment” contract (C.I.F., etc.,  Section 2-320).</p>
+                <p>3. The buyer’s obligations stated in subsection (1)(c) and subsection (3) are, as shown in the text, obligations of cooperation. The last sentence of subsection (3) expressly, though perhaps unnecessarily, authorizes the seller, pending instructions, to go ahead with such preparatory moves as shipment from the interior to the named point of delivery. The sentence presupposes the usual case in which instructions “fail”; a prior repudiation by the buyer, giving notice that breach was intended, would remove the reason for the sentence, and would normally bring into play, instead, the second sentence of  Section 2-704, which duly calls for lessening damages.</p>
+                <p>2. Subsection (1)(c) not only specifies the duties of a seller who engages to deliver “F.O.B. vessel,” or the like, but ought to make clear that no agreement is soundly drawn when it looks to reshipment from San Francisco or New York, but speaks merely of “F.O.B.” the place.</p>
+                <p><strong>Purposes:</strong> 1. This section is intended to negate the uncommercial line of decision which treats an “F.O.B.” term as “merely a price term.” The distinctions taken in subsection (1) handle most of the issues which have on occasion led to the unfortunate judicial language just referred to. Other matters which have led to sound results being based on unhappy language in regard to F.O.B. clauses are dealt with in this Act by  Section 2-311(2) (seller’s option re arrangements relating to shipment) and  Sections 2-614 and 615 (substituted performance and seller’s excuse).</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> None.</p>
               </section>
             </section>
           </section>

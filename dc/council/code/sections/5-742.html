@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/5-743.html">§ 5–743. Board to determine amount of pension relief.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/5-742.html">Report Error</a>
@@ -99,8 +99,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/80-1-ch272.html">July 21, 1947, 61 Stat. 398, ch. 272</a>; <a class="internal-link" href="/us/congress/laws/public/95-179.html">Nov. 15, 1977, 91 Stat. 1371, Pub. L. 95-179</a>; <a class="internal-link" href="/us/congress/laws/public/96-122.html">Nov. 17, 1979, 93 Stat. 866, Pub. L. 96-122, § 122(b)(3)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-602.</p>
                 <p>1973 Ed., § 4-504a.</p>
+                <p>1981 Ed., § 4-602.</p>
                 <h4>Editor's Notes</h4>
                 <p>Coverage Under Federal Employees’ Retirement Act: Officers and members of the United States Park Police, United States Secret Service Uniformed Division, and United States Secret Service Division hired on or after January 1, 1984, are covered by the Federal Employees’ Retirement System Act, not the District of Columbia Retirement System, unless exempt from coverage of such Act. See  5 U.S.C. §§ 8401(17)(B) and  8402.</p>
               </section>

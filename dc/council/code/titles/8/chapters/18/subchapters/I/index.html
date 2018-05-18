@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/8/chapters/18/subchapters/II/">Subchapter II. Commercial Licensing Requirement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/8/chapters/18/subchapters/I/">Report Error</a>
@@ -88,25 +88,63 @@
         <section class="col8 body">
           <h1>Subchapter I. General.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/8-1801.html">§ 8–1801. Definitions.</a>
-            <a href="/dc/council/code/sections/8-1802.html">§ 8–1802. Animal Care and Control Agency.</a>
-            <a href="/dc/council/code/sections/8-1803.html">§ 8–1803. Vaccinations.</a>
-            <a href="/dc/council/code/sections/8-1804.html">§ 8–1804. Licenses and fees.</a>
-            <a href="/dc/council/code/sections/8-1804.01.html">§ 8–1804.01. Animal hobby permit.</a>
-            <a href="/dc/council/code/sections/8-1805.html">§ 8–1805. Impoundment.</a>
-            <a href="/dc/council/code/sections/8-1806.html">§ 8–1806. Release to owner.</a>
-            <a href="/dc/council/code/sections/8-1807.html">§ 8–1807. Adoption.</a>
-            <a href="/dc/council/code/sections/8-1808.html">§ 8–1808. Prohibited conduct.</a>
-            <a href="/dc/council/code/sections/8-1808.01.html">§ 8–1808.01. Dog parks. [Recodified]</a>
-            <a href="/dc/council/code/sections/8-1808.02.html">§ 8–1808.02. Animals left in vehicles.</a>
-            <a href="/dc/council/code/sections/8-1809.html">§ 8–1809. Animal hobby permit. [Recodified]</a>
-            <a href="/dc/council/code/sections/8-1810.html">§ 8–1810. Education and incentive program.</a>
-            <a href="/dc/council/code/sections/8-1810.01.html">§ 8–1810.01. Animal Education and Outreach Fund.</a>
-            <a href="/dc/council/code/sections/8-1810.02.html">§ 8–1810.02. Dog parks.</a>
-            <a href="/dc/council/code/sections/8-1811.html">§ 8–1811. Penalty.</a>
-            <a href="/dc/council/code/sections/8-1812.html">§ 8–1812. Civil liability. [Repealed]</a>
-            <a href="/dc/council/code/sections/8-1813.html">§ 8–1813. Notice of violation.</a>
-            <a href="/dc/council/code/sections/8-1814.html">§ 8–1814. Rules.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1801.html">§ 8–1801. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1802.html">§ 8–1802. Animal Care and Control Agency.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1803.html">§ 8–1803. Vaccinations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1804.html">§ 8–1804. Licenses and fees.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1804.01.html">§ 8–1804.01. Animal hobby permit.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1805.html">§ 8–1805. Impoundment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1806.html">§ 8–1806. Release to owner.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1807.html">§ 8–1807. Adoption.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1808.html">§ 8–1808. Prohibited conduct.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1808.01.html">§ 8–1808.01. Dog parks. [Recodified]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1808.02.html">§ 8–1808.02. Animals left in vehicles.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1809.html">§ 8–1809. Animal hobby permit. [Recodified]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1810.html">§ 8–1810. Education and incentive program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1810.01.html">§ 8–1810.01. Animal Education and Outreach Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1810.02.html">§ 8–1810.02. Dog parks.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1811.html">§ 8–1811. Penalty.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1812.html">§ 8–1812. Civil liability. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1813.html">§ 8–1813. Notice of violation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/8-1814.html">§ 8–1814. Rules.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -145,20 +183,20 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§2">Oct. 18, 1979, D.C. Law 3-30, § 2, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/7-176.html">Oct. 18, 1988, D.C. Law 7-176, § 9(a), 35 DCR 4787</a>; <a class="internal-link" href="/dc/council/laws/16-40.html">Dec. 10, 2005, D.C. Law 16-40, § 2(a), 52 DCR 9087</a>; <a class="internal-link" href="/dc/council/laws/17-281.html">Dec. 5, 2008, D.C. Law 17-281, § 104(a), 55 DCR 9186</a>; <a class="internal-link" href="/dc/council/laws/22-37.html#§2(a)">Dec. 20, 2017, D.C. Law 22-37, § 2(a), 64 DCR 11682</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1001.</p>
                 <p>1973 Ed., § 6-2401.</p>
+                <p>1981 Ed., § 6-1001.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-40.html">D.C. Law 16-40</a>, designated existing text of par. (1) as subpar. (1)(A); added subpar. (1)(B); and added pars. (3A) and (3B).</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a>, in par. (2), substituted “Animal Care and Control Agency” for “Animal Control Agency”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-40.html">D.C. Law 16-40</a>, designated existing text of par. (1) as subpar. (1)(A); added subpar. (1)(B); and added pars. (3A) and (3B).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(a)">§ 2(a) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
-                <p>For temporary (90 days) creation of § 8-1801.01 and § 8-1801.02, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(b)">§ 2(b) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(a)">§ 2(a) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) creation of § 8-1801.01 and § 8-1801.02, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(b)">§ 2(b) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(a)">§ 2(a) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Mayor authorized to issue rules: Section 2(f) of <a class="internal-link" href="/dc/council/laws/9-236.html">D.C. Law 9-236</a> provided that the Mayor may issue rules to implement the provisions of the act pursuant to subchapter I of Chapter 5 of Title 2.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/3-30.html">D.C. Law 3-30</a>, the “Animal Control Act of 1979”, see Mayor’s Order 2000-97, June 14, 2000 ( 47 DCR 5275).</p>
                 <p>Delegation of Authority pursuant to <a class="internal-link" href="/dc/council/laws/3-30.html">D.C. Law 3-30</a>, the Animal Control Act of 1979, see Mayor’s Order 2009-38, March 23, 2009 ( 56 DCR 6774).</p>
+                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/3-30.html">D.C. Law 3-30</a>, the “Animal Control Act of 1979”, see Mayor’s Order 2000-97, June 14, 2000 ( 47 DCR 5275).</p>
               </section>
             </section>
             <hr/>
@@ -183,18 +221,18 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§3">Oct. 18, 1979, D.C. Law 3-30, § 3, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/3-97.html">Sept. 16, 1980, D.C. Law 3-97, § 2(a), 27 DCR 3523</a>; <a class="internal-link" href="/dc/council/laws/17-281.html">Dec. 5, 2008, D.C. Law 17-281, § 104(b), 55 DCR 9186</a>; <a class="internal-link" href="/dc/council/laws/22-37.html#§2(b)">Dec. 20, 2017, D.C. Law 22-37, § 2(b), 64 DCR 11682</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1002.</p>
                 <p>1973 Ed., § 6-2402.</p>
+                <p>1981 Ed., § 6-1002.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-2001.html">8-2001</a> and § <a class="internal-link" href="/dc/council/code/sections/8-2201.html">8-2201</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a>, in the section heading and subsec. (a), substituted “Animal Care and Control Agency” for “Animal Control Agency”; rewrote subsec. (b) which read: “The Animal Control Agency shall deliver all fees collected under this chapter to the Mayor.”; and added subsec. (c)</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(c)">§ 2(c) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(b)">§ 2(b) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(c)">§ 2(c) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority pursuant to Law 3-30, see Mayor’s Order 83-206, August 2, 1983, as amended by Mayor’s Order 86-64, April 22, 1986</p>
                 <p>Delegation of authority pursuant to Law 3-30, The Animal Control Act of 1979, see Mayor’s Order 2009-38, March 23, 2009 ( 56 DCR 6774)</p>
+                <p>Delegation of authority pursuant to Law 3-30, see Mayor’s Order 83-206, August 2, 1983, as amended by Mayor’s Order 86-64, April 22, 1986</p>
               </section>
             </section>
             <hr/>
@@ -210,11 +248,11 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§4">Oct. 18, 1979, D.C. Law 3-30, § 4, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/4-199.html">Mar. 10, 1983, D.C. Law 4-199, § 4(a), 30 DCR 119</a>; <a class="internal-link" href="/dc/council/laws/22-37.html#§2(c)">Dec. 20, 2017, D.C. Law 22-37, § 2(c), 64 DCR 11682</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1003.</p>
                 <p>1973 Ed., § 6-2403.</p>
+                <p>1981 Ed., § 6-1003.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(d)">§ 2(d) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(c)">§ 2(c) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(d)">§ 2(d) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority under Law 3-30, see Mayor’s Order 83-206, August 2, 1983.</p>
               </section>
@@ -247,24 +285,24 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§5">Oct. 18, 1979, D.C. Law 3-30, § 5, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/9-236.html">Mar. 17, 1993, D.C. Law 9-236, § 2(a), 40 DCR 614</a>; <a class="internal-link" href="/dc/council/laws/11-52.html">Sept. 26, 1995, D.C. Law 11-52, § 101, 42 DCR 3684</a>; <a class="internal-link" href="/dc/council/laws/12-261.html">Apr. 20, 1999, D.C. Law 12-261, § 2004, 46 DCR 3142</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 30, 53 DCR 6198</a>; <a class="internal-link" href="/dc/council/laws/17-281.html">Dec. 5, 2008, D.C. Law 17-281, § 104(c), 55 DCR 9186</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 9073, 58 DCR 6226</a>; <a class="internal-link" href="/dc/council/laws/19-168.html">Sept. 20, 2012, D.C. Law 19-168, § 8005, 59 DCR 8025</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, § 64, 59 DCR 6190</a>; <a class="internal-link" href="/dc/council/laws/22-37.html#§2(d)">Dec. 20, 2017, D.C. Law 22-37, § 2(d), 64 DCR 11682</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1004.</p>
                 <p>1973 Ed., § 6-2404.</p>
+                <p>1981 Ed., § 6-1004.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-1801.html">8-1801</a>, § <a class="internal-link" href="/dc/council/code/sections/8-1806.html">8-1806</a>, and § <a class="internal-link" href="/dc/council/code/sections/8-1807.html">8-1807</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, substituted “deaf, hearing impaired,” for “audio-handicapped”, throughout the section.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a> repealed subsec. (d); rewrote subsecs. (e), (f), and (h); and added subsecs. (i) and (j).</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> added subsec. (e-1).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> repealed (i).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “this subsection” for “subsection (d) of this section” in (j)(1).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> repealed (i).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> added subsec. (e-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a> repealed subsec. (d); rewrote subsecs. (e), (f), and (h); and added subsecs. (i) and (j).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, substituted “deaf, hearing impaired,” for “audio-handicapped”, throughout the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 101 of the Multiyear Budget Spending Reduction and Support Emergency Act of 1994 (D.C. Act 10-389, December 29, 1994,  42 DCR 197).</p>
-                <p>For temporary (90 day) amendment of section, see § 8005 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
-                <p>For temporary (90 day) amendment of section, see § 8005 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(e)">§ 2(e) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
-                <p>For temporary (90 days) creation of § 8-1804.01, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(f)">§ 2(f) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(d)">§ 2(d) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
                 <p>For temporary (90 days) redesignation of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(e)">§ 2(e) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(d)">§ 2(d) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) creation of § 8-1804.01, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(f)">§ 2(f) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(e)">§ 2(e) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 8005 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) amendment of section, see § 8005 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
+                <p>For temporary amendment of section, see § 101 of the Multiyear Budget Spending Reduction and Support Emergency Act of 1994 (D.C. Act 10-389, December 29, 1994,  42 DCR 197).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 101 of Multiyear Budget Spending Reduction and Support Temporary Act of 1995 (<a class="internal-link" href="/dc/council/laws/10-253.html">D.C. Law 10-253</a>, March 23, 1995, law notification  42 DCR 1652).</p>
                 <h4>Editor's Notes</h4>
@@ -296,18 +334,18 @@
       </a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1009.</p>
-                <p>1973 Ed., § 6-2409.</p>
                 <p>2001 Ed., § 8-1809</p>
+                <p>1973 Ed., § 6-2409.</p>
+                <p>1981 Ed., § 6-1009.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-1805.html">8-1805</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a>, in subsecs. (a) and (b), substituted “7 or more” for “5 or more”; and rewrote subsec. (d)(1), which had read as follows: “(1) A dog owner unless the owner has obtained a license for each dog as provided in § <a class="internal-link" href="/dc/council/code/sections/8-1804.html">8-1804</a>;”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(j)">§ 2(j) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>
         For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(f)">§ 2(f) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.
       </p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(j)">§ 2(j) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to Law 3-30, see Mayor’s Order 83-206, August 2, 1983, as amended by Mayor’s Order 86-64, April 22, 1986.</p>
               </section>
@@ -333,15 +371,15 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§6">Oct. 18, 1979, D.C. Law 3-30, § 6, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/3-97.html">Sept. 16, 1980, D.C. Law 3-97, § 2(b), 27 DCR 3523</a>; <a class="internal-link" href="/dc/council/laws/9-236.html">Mar. 17, 1993, D.C. Law 9-236, § 2(b), 40 DCR 614</a>; <a class="internal-link" href="/dc/council/laws/17-281.html">Dec. 5, 2008, D.C. Law 17-281, § 104(d), 55 DCR 9186</a>; <a class="internal-link" href="/dc/council/laws/22-37.html#§2(g)">Dec. 20, 2017, D.C. Law 22-37, § 2(g), 64 DCR 11682</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1005.</p>
                 <p>1973 Ed., § 6-2405.</p>
+                <p>1981 Ed., § 6-1005.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-1806.html">8-1806</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a> rewrote subsec. (a); and, in subsec. (b), substituted “impounded animal, including scanning the animal for a microchip” for “impounded animal”. Prior to amendment, subsec. (a) read as follows: “(a) The Mayor may impound any animal at large or any dangerous animal.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(g)">§ 2(g) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(g)">§ 2(g) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(g)">§ 2(g) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority under Law 3-30, see Mayor’s Order 83-206, August 2, 1983.</p>
               </section>
@@ -366,8 +404,8 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§7">Oct. 18, 1979, D.C. Law 3-30, § 7, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/9-236.html">Mar. 17, 1993, D.C. Law 9-236, § 2(c), 40 DCR 614</a>; <a class="internal-link" href="/dc/council/laws/22-37.html#§2(h)">Dec. 20, 2017, D.C. Law 22-37, § 2(h), 64 DCR 11682</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1006.</p>
                 <p>1973 Ed., § 6-2406.</p>
+                <p>1981 Ed., § 6-1006.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(h)">§ 2(h) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
               </section>
@@ -393,8 +431,8 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§8">Oct. 18, 1979, D.C. Law 3-30, § 8, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/3-97.html">Sept. 16, 1980, D.C. Law 3-97, § 2(c), 27 DCR 3523</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1007.</p>
                 <p>1973 Ed., § 6-2407.</p>
+                <p>1981 Ed., § 6-1007.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority under Law 3-30, see Mayor’s Order 83-206, August 2, 1983.</p>
               </section>
@@ -443,35 +481,35 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§9">Oct. 18, 1979, D.C. Law 3-30, § 9, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/3-97.html">Sept. 16, 1980, D.C. Law 3-97, § 2(d), (e), (g), 27 DCR 3523</a>; <a class="internal-link" href="/dc/council/laws/4-199.html">Mar. 10, 1983, D.C. Law 4-199, § 4(b), 30 DCR 119</a>; <a class="internal-link" href="/dc/council/laws/9-236.html">Mar. 17, 1993, D.C. Law 9-236, § 2(d), 40 DCR 614</a>; <a class="internal-link" href="/dc/council/laws/13-303.html">June 8, 2001, D.C. Law 13-303, § 4, 47 DCR 7307</a>; <a class="internal-link" href="/dc/council/laws/16-40.html">Dec. 10, 2005, D.C. Law 16-40, § 2(b), 52 DCR 9087</a>; <a class="internal-link" href="/dc/council/laws/17-281.html">Dec. 5, 2008, D.C. Law 17-281, § 104(e), 55 DCR 9186</a>; <a class="internal-link" href="/dc/council/laws/21-160.html#§4022">Oct. 8, 2016, D.C. Law 21-160, § 4022, 63 DCR 10775</a>; <a class="internal-link" href="/dc/council/laws/22-37.html#§2(i)">Dec. 20, 2017, D.C. Law 22-37, § 2(i), 64 DCR 11682</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1008.</p>
                 <p>1973 Ed., § 6-2408.</p>
+                <p>1981 Ed., § 6-1008.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-1009.html">7-1009</a> and § <a class="internal-link" href="/dc/council/code/sections/8-1802.html">8-1802</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-303.html">D.C. Law 13-303</a> added subsec. (j).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-40.html">D.C. Law 16-40</a>, in subsec. (e), substituted “public recreation area, other than a dog park,” for “public recreation area”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a>, in subsec. (h)(2), substituted “or museum for exhibition purposes” for “museum, or educational institution for educational, medical, scientific, or exhibition purposes”; and added subsec. (k).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-40.html">D.C. Law 16-40</a>, in subsec. (e), substituted “public recreation area, other than a dog park,” for “public recreation area”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-303.html">D.C. Law 13-303</a> added subsec. (j).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(a) of the Dangerous Dog Designation Emergency Amendment Act of 1996 (D.C. Act 11-351, August 12, 1996,   43 DCR 4553).</p>
-                <p>For temporary addition of (h)(6), see § 2 of the Classroom Animal for Educational Purposes Clarification Emergency Amendment Act of 2012 (D.C. Act 19-466, October 5, 2012,  59 DCR 11767).</p>
-                <p>For temporary addition of (h)(6), see § 2 of the Classroom Animal for Educational Purposes Clarification Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-624, January 18, 2013,  60 DCR 1344), applicable as of January 3, 2013.</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Clarification Emergency Amendment Act of 2014 (D.C. Act 20-274, February 10, 2014,  61 DCR 1208).</p>
-                <p>For temporary (90 days) amendment of this section, see §§ 2, 3 of the Classroom Animal for Educational Purposes Clarification Congressional Review Emergency Amendment Act of 2014, (D.C. Act 20-326, May 14, 2014, 61 DCR 5198).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Clarification Second Emergency Amendment Act of 2014 (D.C. Act 20-578, Jan. 13, 2015, 62 DCR 1256, 21 STAT 723).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Clarification Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-28, Mar. 27, 2015,  62 DCR 4520, 21 DCSTAT 863).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Emergency Amendment Act of 2015 (D.C. Act 21-226, Dec. 17, 2015,  62 DCR 16247).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(h)">§ 2(h) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(i)">§ 2(i) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(h)">§ 2(h) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Emergency Amendment Act of 2015 (D.C. Act 21-226, Dec. 17, 2015,  62 DCR 16247).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Clarification Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-28, Mar. 27, 2015,  62 DCR 4520, 21 DCSTAT 863).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Clarification Second Emergency Amendment Act of 2014 (D.C. Act 20-578, Jan. 13, 2015, 62 DCR 1256, 21 STAT 723).</p>
+                <p>For temporary (90 days) amendment of this section, see §§ 2, 3 of the Classroom Animal for Educational Purposes Clarification Congressional Review Emergency Amendment Act of 2014, (D.C. Act 20-326, May 14, 2014, 61 DCR 5198).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Clarification Emergency Amendment Act of 2014 (D.C. Act 20-274, February 10, 2014,  61 DCR 1208).</p>
+                <p>For temporary addition of (h)(6), see § 2 of the Classroom Animal for Educational Purposes Clarification Congressional Review Emergency Amendment Act of 2012 (D.C. Act 19-624, January 18, 2013,  60 DCR 1344), applicable as of January 3, 2013.</p>
+                <p>For temporary addition of (h)(6), see § 2 of the Classroom Animal for Educational Purposes Clarification Emergency Amendment Act of 2012 (D.C. Act 19-466, October 5, 2012,  59 DCR 11767).</p>
+                <p>For temporary amendment of section, see § 2(a) of the Dangerous Dog Designation Emergency Amendment Act of 1996 (D.C. Act 11-351, August 12, 1996,   43 DCR 4553).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 19-209 added (h)(6) to read as follows:</p>
-                <p>“(h)</p>
-                <p>*****</p>
-                <p>“(6) Paragraph (1) of this subsection shall not apply to educational institutions that possess animals for educational and instructional purposes and that otherwise comply with humane, sanitary, and safe treatment requirements, as set forth in section 502 of the Animal Protection Amendment Act of 2008, effective December 5, 2008 (<a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-1851.02.html">8-1851.02</a>).”</p>
-                <p>Section 4(b) of D.C. Law 19-209 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>For temporary (225 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Clarification Temporary Amendment Act of 2014 (D.C. Law 20-104, May 20, 2014, 61 DCR 2572).</p>
-                <p>For temporary (225 days) amendment of this section, see § 2 of the Classroom Animal For Educational Purposes Clarification Second Temporary Amendment Act of 2015 (D.C. Law 20-255, Apr. 30, 2015,  62 DCR 2257).</p>
-                <p>For temporary (225 days) amendment of this section, see § 2 of the Animal for Educational Purposes Clarification Second Temporary Amendment Act of 2015 (D.C. Law 20-255, April 30, 2015,  62 DCR 2257).</p>
                 <p>For temporary (225 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Temporary Amendment Act of 2015 (D.C. Law 21-88, Mar. 9, 2016,  63 DCR 794).</p>
+                <p>For temporary (225 days) amendment of this section, see § 2 of the Animal for Educational Purposes Clarification Second Temporary Amendment Act of 2015 (D.C. Law 20-255, April 30, 2015,  62 DCR 2257).</p>
+                <p>For temporary (225 days) amendment of this section, see § 2 of the Classroom Animal For Educational Purposes Clarification Second Temporary Amendment Act of 2015 (D.C. Law 20-255, Apr. 30, 2015,  62 DCR 2257).</p>
+                <p>For temporary (225 days) amendment of this section, see § 2 of the Classroom Animal for Educational Purposes Clarification Temporary Amendment Act of 2014 (D.C. Law 20-104, May 20, 2014, 61 DCR 2572).</p>
+                <p>Section 4(b) of D.C. Law 19-209 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(6) Paragraph (1) of this subsection shall not apply to educational institutions that possess animals for educational and instructional purposes and that otherwise comply with humane, sanitary, and safe treatment requirements, as set forth in section 502 of the Animal Protection Amendment Act of 2008, effective December 5, 2008 (<a class="internal-link" href="/dc/council/laws/17-281.html">D.C. Law 17-281</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/8-1851.02.html">8-1851.02</a>).”</p>
+                <p>*****</p>
+                <p>“(h)</p>
+                <p>Section 2 of D.C. Law 19-209 added (h)(6) to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -486,8 +524,8 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§9a">Oct. 18, 1979, D.C. Law 3-30, § 9a</a>; <a class="internal-link" href="/dc/council/laws/16-40.html">as added Dec. 10, 2005, D.C. Law 16-40, § 2(c), 52 DCR 9087</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(i)">§ 2(i) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) redesignation of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(j)">§ 2(j) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(i)">§ 2(i) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/3-30.html">D.C. Law 3-30</a>, the Animal Control Act of 1979, as amended by <a class="internal-link" href="/dc/council/laws/16-40.html">D.C. Law 16-40</a>, the Dog Park Establishment Act of 2005, see Mayor’s Order 2007-53, February 7, 2007 ( 54 DCR 2428).</p>
               </section>
@@ -527,8 +565,8 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§10">Oct. 18, 1979, D.C. Law 3-30, § 10, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/17-281.html">Dec. 5, 2008, D.C. Law 17-281, § 104(f), 55 DCR 9186</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1009.</p>
                 <p>1973 Ed., § 6-2409.</p>
+                <p>1981 Ed., § 6-1009.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-1805.html">8-1805</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -553,12 +591,12 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§11">Oct. 18, 1979, D.C. Law 3-30, § 11, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/22-37.html#§2(l)">Dec. 20, 2017, D.C. Law 22-37, § 2(l), 64 DCR 11682</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1010.</p>
                 <p>1973 Ed., § 6-2410.</p>
+                <p>1981 Ed., § 6-1010.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(k)">§ 2(k) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
-                <p>For temporary (90 days) creation of § 8-1810.01, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(l)">§ 2(l) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(l)">§ 2(l) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) creation of § 8-1810.01, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(l)">§ 2(l) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(k)">§ 2(k) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to law 3-30, see Mayor’s Order 83-206, August 2, 1983.</p>
               </section>
@@ -581,10 +619,10 @@
     </p>
                 <h4>Emergency Legislation</h4>
                 <p>
-            For temporary (90 days) creation of an abandonment of an animal section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(l)">§ 2(l) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.
+            For temporary (90 days) creation of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(m)">§ 2(m) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.
           </p>
                 <p>
-            For temporary (90 days) creation of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(m)">§ 2(m) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.
+            For temporary (90 days) creation of an abandonment of an animal section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(l)">§ 2(l) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.
           </p>
               </section>
             </section>
@@ -608,8 +646,8 @@
                 <h4>Prior Codifications</h4>
                 <p>2001 Ed., § 8-1808.01</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(i)">§ 2(i) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) redesignation of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(j)">§ 2(j) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(i)">§ 2(i) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <h4>Delegation of Authority</h4>
                 <p>Delegation of authority pursuant to <a class="internal-link" href="/dc/council/laws/3-30.html">D.C. Law 3-30</a>, the Animal Control Act of 1979, as amended by <a class="internal-link" href="/dc/council/laws/16-40.html">D.C. Law 16-40</a>, the Dog Park Establishment Act of 2005, see Mayor’s Order 2007-53, February 7, 2007 ( 54 DCR 2428).</p>
               </section>
@@ -629,12 +667,12 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§12">Oct. 18, 1979, D.C. Law 3-30, § 12, 26 DCR 765</a>; <a class="internal-link" href="/dc/council/laws/9-236.html">Mar. 17, 1993, D.C. Law 9-236, § 2(e), 40 DCR 614</a>; <a class="internal-link" href="/dc/council/laws/22-37.html#§2(n)">Dec. 20, 2017, D.C. Law 22-37, § 2(n), 64 DCR 11682</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1011.</p>
                 <p>1973 Ed., § 6-2411.</p>
+                <p>1981 Ed., § 6-1011.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(b) of the Dangerous Dog Designation Emergency Amendment Act of 1996 (D.C. Act 11-351, August 12, 1996,  43 DCR 4553).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(m)">§ 2(m) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(n)">§ 2(n) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(m)">§ 2(m) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
+                <p>For temporary amendment of section, see § 2(b) of the Dangerous Dog Designation Emergency Amendment Act of 1996 (D.C. Act 11-351, August 12, 1996,  43 DCR 4553).</p>
               </section>
             </section>
             <hr/>
@@ -651,8 +689,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-1012.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) repeal, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(n)">§ 2(n) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <p>For temporary (90 days) repeal of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(o)">§ 2(o) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.</p>
+                <p>For temporary (90 days) repeal, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(n)">§ 2(n) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
               </section>
             </section>
             <hr/>
@@ -675,8 +713,8 @@
       (<a class="internal-link" href="/dc/council/laws/3-30.html#§13">Oct. 18, 1979, D.C. Law 3-30, § 13, 26 DCR 765</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 6-1013.</p>
                 <p>1973 Ed., § 6-2412.</p>
+                <p>1981 Ed., § 6-1013.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) creation of § 8-1814, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(o)">§ 2(o) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.</p>
                 <h4>Delegation of Authority</h4>
@@ -696,10 +734,10 @@
     </p>
                 <h4>Emergency Legislation</h4>
                 <p>
-            For temporary (90 days) creation of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(o)">§ 2(o) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.
+            For temporary (90 days) creation of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(p)">§ 2(p) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.
           </p>
                 <p>
-            For temporary (90 days) creation of this section, see <a class="internal-link" href="/dc/council/acts/22-165.html#§2(p)">§ 2(p) of Standard of Care for Animals Congressional Review Emergency Amendment Act of 2017 (D.C. Act 22-165, Oct. 23, 2017, 64 DCR 10792)</a>.
+            For temporary (90 days) creation of this section, see <a class="internal-link" href="/dc/council/acts/22-137.html#§2(o)">§ 2(o) of Standard of Care for Animals Emergency Amendment Act of 2017 (D.C. Act 22-137, July 31, 2017, 64 DCR 7787)</a>.
           </p>
               </section>
             </section>

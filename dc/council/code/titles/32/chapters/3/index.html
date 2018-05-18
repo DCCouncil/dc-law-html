@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/32/chapters/4/">Chapter 4. Employment Services Licensing and Regulation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/32/chapters/3/">Report Error</a>
@@ -87,10 +87,14 @@
         <section class="col8 body">
           <h1>Chapter 3. Employment Opportunities for Individuals with Disabilities.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/32/chapters/3/subchapters/I/">Subchapter I. Employment Opportunities.</a>
-            <p>§§ 32-301 - 32-305</p>
-            <a href="/dc/council/code/titles/32/chapters/3/subchapters/II/">Subchapter II. Rehabilitation Services Program.</a>
-            <p>§§ 32-331 - 32-332</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/32/chapters/3/subchapters/I/">Subchapter I. Employment Opportunities.</a>
+            </p>
+            <p>§§ 32-301 – 32-305</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/32/chapters/3/subchapters/II/">Subchapter II. Rehabilitation Services Program.</a>
+            </p>
+            <p>§§ 32-331 – 32-332</p>
           </section>
           <section class="content">
             <hr/>
@@ -107,8 +111,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-128.html#§2">Mar. 3, 1979, D.C. Law 2-128, § 2, 25 DCR 2236</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 45(a), 53 DCR 6198</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 36-601.</p>
                 <p>1973 Ed., § 36-801.</p>
+                <p>1981 Ed., § 36-601.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “individuals and individuals with other severe disabilities” for “and other severely handicapped individuals” and “products and services for blind individuals and individuals for with other severe disabilities” for “blind and other severely handicapped products and services”.</p>
               </section>
@@ -132,11 +136,11 @@
       (<a class="internal-link" href="/dc/council/laws/2-128.html#§3">Mar. 3, 1979, D.C. Law 2-128, § 3, 25 DCR 2236</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 45(b), 53 DCR 6198</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 172(a), 56 DCR 1117</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 36-602.</p>
                 <p>1973 Ed., § 36-802.</p>
+                <p>1981 Ed., § 36-602.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (3), substituted “blind and other individuals with severe disabilities” for “blind and other severely handicapped” and “individuals with severe disabilities” for “severely handicapped individuals”; and in par. (4), substituted “individual with a severe disability” for “severely handicapped”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (c).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (3), substituted “blind and other individuals with severe disabilities” for “blind and other severely handicapped” and “individuals with severe disabilities” for “severely handicapped individuals”; and in par. (4), substituted “individual with a severe disability” for “severely handicapped”.</p>
               </section>
             </section>
             <hr/>
@@ -161,15 +165,15 @@
       (<a class="internal-link" href="/dc/council/laws/2-128.html#§4">Mar. 3, 1979, D.C. Law 2-128, § 4, 25 DCR 2236</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 45(c), 53 DCR 6198</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 36-603.</p>
                 <p>1973 Ed., § 36-803.</p>
+                <p>1981 Ed., § 36-603.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in the section heading, substituted “Other Persons with Severe Disabilities” for “Other Severely Handicapped”; and in subsec. (a), substituted “Individuals with Severe Disabilities” for “Severely Handicapped”, “individuals with severe disabilities” for “severely handicapped”, and “consumers with severe disabilities” for “handicapped consumers”.</p>
                 <h4>Cross References</h4>
                 <p>Disclosure of financial interests, see § <a class="internal-link" href="/dc/council/code/sections/1-1106.02.html">1-1106.02</a>.</p>
                 <h4>Transfer of Functions</h4>
-                <p>The Department of Human Resources was replaced by the Department of Human Services, pursuant to Reorganization Plan No. 2 of 1979, dated February 21, 1980.</p>
                 <p>The functions of the Department of General Services were transferred, in part, to the Department of Public Works by Reorganization Plan No. 4 of 1983, effective March 1, 1984, and transferred, in part, to the Department of Administrative Services by Reorganization Plan No. 5 of 1983, effective March 1, 1984.</p>
+                <p>The Department of Human Resources was replaced by the Department of Human Services, pursuant to Reorganization Plan No. 2 of 1979, dated February 21, 1980.</p>
               </section>
             </section>
             <hr/>
@@ -188,8 +192,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-128.html#§5">Mar. 3, 1979, D.C. Law 2-128, § 5, 25 DCR 2236</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 45(d), 53 DCR 6198</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 36-604.</p>
                 <p>1973 Ed., § 36-804.</p>
+                <p>1981 Ed., § 36-604.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a> substituted “individuals with severe disabilities” for “severely handicapped” wherever it appeared in the section.</p>
               </section>
@@ -207,8 +211,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-128.html#§6">Mar. 3, 1979, D.C. Law 2-128, § 6, 25 DCR 2236</a>; <a class="internal-link" href="/dc/council/laws/16-305.html">Apr. 24, 2007, D.C. Law 16-305, § 45(e), 53 DCR 6198</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 36-605.</p>
                 <p>1973 Ed., § 36-805.</p>
+                <p>1981 Ed., § 36-605.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in subsec. (a), substituted “individuals with severe disabilities” for “severely handicapped”.</p>
               </section>
@@ -229,18 +233,18 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-761.05.html">7-761.05</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Emergency Act of 2002 (D.C. Act 14-284, February 25, 2002,  49 DCR 2311).</p>
-                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Second Emergency Act of 2002 (D.C. Act 14-596, January 7, 2003,  50 DCR 650).</p>
-                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Congressional Review Emergency Act of 2003 (D.C. Act 15-72, April 16, 2003,  50 DCR 3612).</p>
-                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Emergency Act of 2003 (D.C. Act 15-235, November 25, 2003,  50 DCR 10737).</p>
-                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Congressional Review Emergency Act of 2004 (D.C. Act 15-358, February 19, 2004,  51 DCR 2576).</p>
-                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Emergency Act of 2004 (D.C. Act 15-559, October 26, 2004,  51 DCR 10378).</p>
                 <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Congressional Review Emergency Act of 2005 (D.C. Act 16-9, January 19, 2005,  52 DCR 2694).</p>
+                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Emergency Act of 2004 (D.C. Act 15-559, October 26, 2004,  51 DCR 10378).</p>
+                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Congressional Review Emergency Act of 2004 (D.C. Act 15-358, February 19, 2004,  51 DCR 2576).</p>
+                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Emergency Act of 2003 (D.C. Act 15-235, November 25, 2003,  50 DCR 10737).</p>
+                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Congressional Review Emergency Act of 2003 (D.C. Act 15-72, April 16, 2003,  50 DCR 3612).</p>
+                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Second Emergency Act of 2002 (D.C. Act 14-596, January 7, 2003,  50 DCR 650).</p>
+                <p>For temporary (90 day) addition, see § 2 of Rehabilitation Services Program Establishment Emergency Act of 2002 (D.C. Act 14-284, February 25, 2002,  49 DCR 2311).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Rehabilitation Services Program Establishment Temporary Act of 2002 (D.C. Law 14-138, May 21, 2002, law notification  49 DCR 5055).</p>
-                <p>For temporary (225 day) amendment of section, see § 2 of Rehabilitation Services Program Establishment Temporary Act of 2003 (D.C. Law 14-290, April 4, 2003, law notification  50 DCR 5848).</p>
-                <p>For temporary (225 day) amendment of section, see § 2 of Rehabilitation Services Program Establishment Temporary Act of 2003 (D.C. Law 15-99, March 10, 2004, law notification  51 DCR 3619).</p>
                 <p>For temporary (225 day) amendment of section, see § 2 of Rehabilitation Services Program Establishment Temporary Act of 2004 (D.C. Law 15-250, March 17, 2003, law notification  52 DCR 4126).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Rehabilitation Services Program Establishment Temporary Act of 2003 (D.C. Law 15-99, March 10, 2004, law notification  51 DCR 3619).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Rehabilitation Services Program Establishment Temporary Act of 2003 (D.C. Law 14-290, April 4, 2003, law notification  50 DCR 5848).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Rehabilitation Services Program Establishment Temporary Act of 2002 (D.C. Law 14-138, May 21, 2002, law notification  49 DCR 5055).</p>
               </section>
             </section>
             <hr/>
@@ -274,18 +278,18 @@
       (<a class="internal-link" href="/dc/council/laws/15-332.html#§3">Apr. 12, 2005, D.C. Law 15-332, § 3, 52 DCR 1989</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Emergency Act of 2002 (D.C. Act 14-284, February 25, 2002,  49 DCR 2311).</p>
-                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Second Emergency Act of 2002 (D.C. Act 14-596, January 7, 2003,  50 DCR 650).</p>
-                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Congressional Review Emergency Act of 2003 (D.C. Act 15-72, April 16, 2003,  50 DCR 3612).</p>
-                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Emergency Act of 2003 (D.C. Act 15-235, November 25, 2003,  50 DCR 10737).</p>
-                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Congressional Review Emergency Act of 2004 (D.C. Act 15-358, February 19, 2004,  51 DCR 2576).</p>
-                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Emergency Act of 2004 (D.C. Act 15-559, October 26, 2004,  51 DCR 10378).</p>
                 <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Congressional Review Emergency Act of 2005 (D.C. Act 16-9, January 19, 2005,  52 DCR 2694).</p>
+                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Emergency Act of 2004 (D.C. Act 15-559, October 26, 2004,  51 DCR 10378).</p>
+                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Congressional Review Emergency Act of 2004 (D.C. Act 15-358, February 19, 2004,  51 DCR 2576).</p>
+                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Emergency Act of 2003 (D.C. Act 15-235, November 25, 2003,  50 DCR 10737).</p>
+                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Congressional Review Emergency Act of 2003 (D.C. Act 15-72, April 16, 2003,  50 DCR 3612).</p>
+                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Second Emergency Act of 2002 (D.C. Act 14-596, January 7, 2003,  50 DCR 650).</p>
+                <p>For temporary (90 day) addition, see § 3 of Rehabilitation Services Program Establishment Emergency Act of 2002 (D.C. Act 14-284, February 25, 2002,  49 DCR 2311).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 3 of Rehabilitation Services Program Establishment Temporary Act of 2002 (D.C. Law 14-138, May 21, 2002, law notification  49 DCR 5055).</p>
-                <p>For temporary (225 day) amendment of section, see § 3 of Rehabilitation Services Program Establishment Temporary Act of 2003 (D.C. Law 14-290, April 4, 2003, law notification  50 DCR 5848).</p>
-                <p>For temporary (225 day) amendment of section, see § 3 of Rehabilitation Services Program Establishment Temporary Act of 2003 (D.C. Law 15-99, March 10, 2004, law notification  51 DCR 3619).</p>
                 <p>For temporary (225 day) amendment of section, see § 3 of Rehabilitation Services Program Establishment Temporary Act of 2004 (D.C. Law 15-250, March 17, 2003, law notification  52 DCR 4126).</p>
+                <p>For temporary (225 day) amendment of section, see § 3 of Rehabilitation Services Program Establishment Temporary Act of 2003 (D.C. Law 15-99, March 10, 2004, law notification  51 DCR 3619).</p>
+                <p>For temporary (225 day) amendment of section, see § 3 of Rehabilitation Services Program Establishment Temporary Act of 2003 (D.C. Law 14-290, April 4, 2003, law notification  50 DCR 5848).</p>
+                <p>For temporary (225 day) amendment of section, see § 3 of Rehabilitation Services Program Establishment Temporary Act of 2002 (D.C. Law 14-138, May 21, 2002, law notification  49 DCR 5055).</p>
               </section>
             </section>
             <hr/>

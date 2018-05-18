@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/23-522.html">§ 23–522. Applications for search warrants.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/23-521.html">Report Error</a>
@@ -118,23 +118,23 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 614, Pub. L. 91-358, title II, § 210(a)</a>; <a class="internal-link" href="/us/congress/laws/public/93-481.html">Oct. 26, 1974, 88 Stat. 1455, Pub. L. 93-481, § 4(b)</a>; <a class="internal-link" href="/dc/council/laws/7-104.html">Apr. 30, 1988, D.C. Law 7-104, § 7(a), 35 DCR 147</a>; <a class="internal-link" href="/dc/council/laws/18-376.html">June 3, 2011, D.C. Law 18-376, § 4, 58 DCR 944</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-521.</p>
                 <p>1973 Ed., § 23-521.</p>
+                <p>1981 Ed., § 23-521.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-301.89a.html">1-301.89a</a>, § <a class="internal-link" href="/dc/council/code/sections/23-522.html">23-522</a>, § <a class="internal-link" href="/dc/council/code/sections/23-523.html">23-523</a>, and § <a class="internal-link" href="/dc/council/code/sections/23-524.html">23-524</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-376.html">D.C. Law 18-376</a> rewrote subsec. (d)(4), which formerly read:</p>
                 <p>“(4) constitutes evidence of or tends to demonstrate the commission of an offense or the identity of a person participating in the commission of an offense.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-376.html">D.C. Law 18-376</a> rewrote subsec. (d)(4), which formerly read:</p>
                 <h4>Cross References</h4>
-                <p>Alcoholic Beverage Control Act, search warrants, see § <a class="internal-link" href="/dc/council/code/sections/25-803.html">25-803</a>.</p>
-                <p>Businesses, examination of books and search of premises of certain businesses, see § <a class="internal-link" href="/dc/council/code/sections/5-117.02.html">5-117.02</a>.</p>
-                <p>Cruelty to animals, search warrants to prevent, see § <a class="internal-link" href="/dc/council/code/sections/22-1005.html">22-1005</a>.</p>
-                <p>Gaming houses or bawdy houses, authorization of searches, see § <a class="internal-link" href="/dc/council/code/sections/5-115.06.html">5-115.06</a>.</p>
-                <p>Milk containers, search warrants to discover illegal use, see §§ <a class="internal-link" href="/dc/council/code/sections/36-125.html">36-125</a> and <a class="internal-link" href="/dc/council/code/sections/36-155.html">36-155</a>.</p>
-                <p>Pawned or pledged property, examination of property, see § <a class="internal-link" href="/dc/council/code/sections/5-117.03.html">5-117.03</a>.</p>
-                <p>Raids, prohibition of advance information of raids to attorneys or bondsmen, see § <a class="internal-link" href="/dc/council/code/sections/23-1109.html">23-1109</a>.</p>
-                <p>Uniform Narcotic Drug Act, search warrants, see § <a class="internal-link" href="/dc/council/code/sections/48-902.04.html">48-902.04</a>.</p>
                 <p>Weights, Measures, and Markets, warrantless searches by Director, see § <a class="internal-link" href="/dc/council/code/sections/37-201.24.html">37-201.24</a>.</p>
+                <p>Uniform Narcotic Drug Act, search warrants, see § <a class="internal-link" href="/dc/council/code/sections/48-902.04.html">48-902.04</a>.</p>
+                <p>Raids, prohibition of advance information of raids to attorneys or bondsmen, see § <a class="internal-link" href="/dc/council/code/sections/23-1109.html">23-1109</a>.</p>
+                <p>Pawned or pledged property, examination of property, see § <a class="internal-link" href="/dc/council/code/sections/5-117.03.html">5-117.03</a>.</p>
+                <p>Milk containers, search warrants to discover illegal use, see §§ <a class="internal-link" href="/dc/council/code/sections/36-125.html">36-125</a> and <a class="internal-link" href="/dc/council/code/sections/36-155.html">36-155</a>.</p>
+                <p>Gaming houses or bawdy houses, authorization of searches, see § <a class="internal-link" href="/dc/council/code/sections/5-115.06.html">5-115.06</a>.</p>
+                <p>Cruelty to animals, search warrants to prevent, see § <a class="internal-link" href="/dc/council/code/sections/22-1005.html">22-1005</a>.</p>
+                <p>Businesses, examination of books and search of premises of certain businesses, see § <a class="internal-link" href="/dc/council/code/sections/5-117.02.html">5-117.02</a>.</p>
+                <p>Alcoholic Beverage Control Act, search warrants, see § <a class="internal-link" href="/dc/council/code/sections/25-803.html">25-803</a>.</p>
               </section>
             </section>
           </section>

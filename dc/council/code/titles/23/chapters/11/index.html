@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/23/chapters/13/">Chapter 13. Bail Agency [Pretrial Services Agency] and Pretrial Detention.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/23/chapters/11/">Report Error</a>
@@ -87,18 +87,42 @@
         <section class="col8 body">
           <h1>Chapter 11. Professional Bondsmen.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/23-1101.html">§ 23–1101. Definitions.</a>
-            <a href="/dc/council/code/sections/23-1102.html">§ 23–1102. Bonding business impressed with public interests.</a>
-            <a href="/dc/council/code/sections/23-1103.html">§ 23–1103. Procuring business through official or attorney for a consideration prohibited.</a>
-            <a href="/dc/council/code/sections/23-1104.html">§ 23–1104. Attorneys procuring employment through official or bondsman for a consideration prohibited.</a>
-            <a href="/dc/council/code/sections/23-1105.html">§ 23–1105. Receiving other than regular fee for bonding prohibited; bondsmen prohibited from endeavoring to secure dismissal or settlement.</a>
-            <a href="/dc/council/code/sections/23-1106.html">§ 23–1106. Posting names of authorized bondsmen; list to be furnished prisoners; prisoners may communicate with bondsmen; record to be kept by police.</a>
-            <a href="/dc/council/code/sections/23-1107.html">§ 23–1107. Bondsmen prohibited from entering place of detention unless requested by prisoner; record of visit to be kept.</a>
-            <a href="/dc/council/code/sections/23-1108.html">§ 23–1108. Qualifications of bondsmen; rules to be prescribed by courts; list of agents to be furnished; renewal of authority to act; detailed records to be kept; penalties and disqualifications.</a>
-            <a href="/dc/council/code/sections/23-1109.html">§ 23–1109. Giving advance information of proposed raid prohibited.</a>
-            <a href="/dc/council/code/sections/23-1110.html">§ 23–1110. Designation of official to issue citations or take money or bond.</a>
-            <a href="/dc/council/code/sections/23-1111.html">§ 23–1111. Penalties.</a>
-            <a href="/dc/council/code/sections/23-1112.html">§ 23–1112. Enforcement.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1101.html">§ 23–1101. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1102.html">§ 23–1102. Bonding business impressed with public interests.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1103.html">§ 23–1103. Procuring business through official or attorney for a consideration prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1104.html">§ 23–1104. Attorneys procuring employment through official or bondsman for a consideration prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1105.html">§ 23–1105. Receiving other than regular fee for bonding prohibited; bondsmen prohibited from endeavoring to secure dismissal or settlement.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1106.html">§ 23–1106. Posting names of authorized bondsmen; list to be furnished prisoners; prisoners may communicate with bondsmen; record to be kept by police.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1107.html">§ 23–1107. Bondsmen prohibited from entering place of detention unless requested by prisoner; record of visit to be kept.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1108.html">§ 23–1108. Qualifications of bondsmen; rules to be prescribed by courts; list of agents to be furnished; renewal of authority to act; detailed records to be kept; penalties and disqualifications.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1109.html">§ 23–1109. Giving advance information of proposed raid prohibited.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1110.html">§ 23–1110. Designation of official to issue citations or take money or bond.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1111.html">§ 23–1111. Penalties.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/23-1112.html">§ 23–1112. Enforcement.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -115,8 +139,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 635, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1101.</p>
                 <p>1973 Ed., § 23-1101.</p>
+                <p>1981 Ed., § 23-1101.</p>
                 <h4>Cross References</h4>
                 <p>Bail, see §§ <a class="internal-link" href="/dc/council/code/sections/16-704.html">16-704</a> and <a class="internal-link" href="/dc/council/code/sections/23-1301.html">23-1301</a> et seq.</p>
               </section>
@@ -133,8 +157,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 635, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1102.</p>
                 <p>1973 Ed., § 23-1102.</p>
+                <p>1981 Ed., § 23-1102.</p>
               </section>
             </section>
             <hr/>
@@ -149,8 +173,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 635, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1103.</p>
                 <p>1973 Ed., § 23-1103.</p>
+                <p>1981 Ed., § 23-1103.</p>
               </section>
             </section>
             <hr/>
@@ -165,8 +189,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 635, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1104.</p>
                 <p>1973 Ed., § 23-1104.</p>
+                <p>1981 Ed., § 23-1104.</p>
               </section>
             </section>
             <hr/>
@@ -181,8 +205,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 636, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1105.</p>
                 <p>1973 Ed., § 23-1105.</p>
+                <p>1981 Ed., § 23-1105.</p>
               </section>
             </section>
             <hr/>
@@ -197,8 +221,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 636, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1106.</p>
                 <p>1973 Ed., § 23-1106.</p>
+                <p>1981 Ed., § 23-1106.</p>
               </section>
             </section>
             <hr/>
@@ -213,8 +237,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 636, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1107.</p>
                 <p>1973 Ed., § 23-1107.</p>
+                <p>1981 Ed., § 23-1107.</p>
               </section>
             </section>
             <hr/>
@@ -240,8 +264,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 637, Pub. L. 91-358, title II, § 210(a)</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 283(d), 60 DCR 2064</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1108.</p>
                 <p>1973 Ed., § 23-1108.</p>
+                <p>1981 Ed., § 23-1108.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “not more than $500” in (b).</p>
                 <h4>Cross References</h4>
@@ -264,8 +288,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 638, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1109.</p>
                 <p>1973 Ed., § 23-1109.</p>
+                <p>1981 Ed., § 23-1109.</p>
               </section>
             </section>
             <hr/>
@@ -291,19 +315,19 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 638, Pub. L. 91-358, title II, § 210(a)</a>; <a class="internal-link" href="/dc/council/laws/10-151.html">Aug. 20, 1994, D.C. Law 10-151, § 101(a), 41 DCR 2608</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 283(e), 60 DCR 2064</a>; <a class="internal-link" href="/dc/council/laws/20-243.html">Apr. 24, 2015, D.C. Law 20-243, § 2(b)(2), 61 DCR 8320</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1110.</p>
                 <p>1973 Ed., § 23-1110.</p>
+                <p>1981 Ed., § 23-1110.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/25-781.html">25-781</a>, § <a class="internal-link" href="/dc/council/code/sections/25-785.html">25-785</a>, and § <a class="internal-link" href="/dc/council/code/sections/25-1002.html">25-1002</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “not more than the maximum provided for the misdemeanor for which such citation was issued” in (b)(4).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-243.html">D.C. Law 20-243</a> substituted “to issue citations or take money or bond” for “to take bail or collateral when court is not in session; issuance of citations” in the section heading; and rewrote the section.</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “not more than the maximum provided for the misdemeanor for which such citation was issued” in (b)(4).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 101(a) of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
                 <p>For temporary (90 days) amendment of this section, see § 283(e) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
+                <p>For temporary amendment of section, see § 101(a) of the Omnibus Criminal Justice Reform Emergency Amendment Act of 1994 (D.C. Act 10-255, June 22, 1994,  41 DCR 4286).</p>
                 <h4>Editor's Notes</h4>
-                <p>Capitol Police Citation Release: For designation of a member of the Capitol Police to have responsibility for citation release, and to take bail, collateral, or bond in the same manner as an official of the Metropolitan Police Department of the District of Columbia under this section, see § 108 of Pub. L. 104-186, 110 Stat. 1719.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
+                <p>Capitol Police Citation Release: For designation of a member of the Capitol Police to have responsibility for citation release, and to take bail, collateral, or bond in the same manner as an official of the Metropolitan Police Department of the District of Columbia under this section, see § 108 of Pub. L. 104-186, 110 Stat. 1719.</p>
               </section>
             </section>
             <hr/>
@@ -318,8 +342,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 639, Pub. L. 91-358, title II, § 210(a)</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 283(f), 60 DCR 2064</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1111.</p>
                 <p>1973 Ed., § 23-1111.</p>
+                <p>1981 Ed., § 23-1111.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “and not more than the amount set forth in [§ <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>]” for “nor more than $100”.</p>
                 <h4>Emergency Legislation</h4>
@@ -340,8 +364,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-358.html">July 29, 1970, 84 Stat. 639, Pub. L. 91-358, title II, § 210(a)</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 23-1112.</p>
                 <p>1973 Ed., § 23-1112.</p>
+                <p>1981 Ed., § 23-1112.</p>
                 <h4>Cross References</h4>
                 <p>Court Services and Offender Supervision Agency, administration of the Pretrial Services Agency, see § <a class="internal-link" href="/dc/council/code/sections/24-133.html">24-133</a>.</p>
               </section>

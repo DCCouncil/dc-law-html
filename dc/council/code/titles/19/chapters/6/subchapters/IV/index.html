@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/19/chapters/7/">Chapter 7. Escheat.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/19/chapters/6/subchapters/IV/">Report Error</a>
@@ -88,25 +88,63 @@
         <section class="col8 body">
           <h1>Subchapter IV. Uniform Real Property Transfers On Death.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/19-604.01.html">§ 19–604.01. Short title.</a>
-            <a href="/dc/council/code/sections/19-604.02.html">§ 19–604.02. Definitions.</a>
-            <a href="/dc/council/code/sections/19-604.03.html">§ 19–604.03. Applicability.</a>
-            <a href="/dc/council/code/sections/19-604.04.html">§ 19–604.04. Nonexclusivity.</a>
-            <a href="/dc/council/code/sections/19-604.05.html">§ 19–604.05. Transfer on death deed authorized.</a>
-            <a href="/dc/council/code/sections/19-604.06.html">§ 19–604.06. Transfer on death deed revocable.</a>
-            <a href="/dc/council/code/sections/19-604.07.html">§ 19–604.07. Transfer on death deed nontestamentary.</a>
-            <a href="/dc/council/code/sections/19-604.08.html">§ 19–604.08. Capacity of transferor.</a>
-            <a href="/dc/council/code/sections/19-604.09.html">§ 19–604.09. Requirements.</a>
-            <a href="/dc/council/code/sections/19-604.10.html">§ 19–604.10. Notice, delivery, acceptance, consideration not required.</a>
-            <a href="/dc/council/code/sections/19-604.11.html">§ 19–604.11. Revocation by instrument authorized; revocation by act not permitted.</a>
-            <a href="/dc/council/code/sections/19-604.12.html">§ 19–604.12. Effect of transfer on death deed during transferor’s life.</a>
-            <a href="/dc/council/code/sections/19-604.13.html">§ 19–604.13. Effect of transfer on death deed at transferor’s death.</a>
-            <a href="/dc/council/code/sections/19-604.14.html">§ 19–604.14. Disclaimer.</a>
-            <a href="/dc/council/code/sections/19-604.15.html">§ 19–604.15. Liability for creditor claims and statutory allowances.</a>
-            <a href="/dc/council/code/sections/19-604.16.html">§ 19–604.16. Optional form of transfer on death deed.</a>
-            <a href="/dc/council/code/sections/19-604.17.html">§ 19–604.17. Optional form of revocation.</a>
-            <a href="/dc/council/code/sections/19-604.18.html">§ 19–604.18. Uniformity of application and construction.</a>
-            <a href="/dc/council/code/sections/19-604.19.html">§ 19–604.19. Relation to Electronic Signatures in Global and National Commerce Act.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.01.html">§ 19–604.01. Short title.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.02.html">§ 19–604.02. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.03.html">§ 19–604.03. Applicability.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.04.html">§ 19–604.04. Nonexclusivity.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.05.html">§ 19–604.05. Transfer on death deed authorized.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.06.html">§ 19–604.06. Transfer on death deed revocable.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.07.html">§ 19–604.07. Transfer on death deed nontestamentary.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.08.html">§ 19–604.08. Capacity of transferor.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.09.html">§ 19–604.09. Requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.10.html">§ 19–604.10. Notice, delivery, acceptance, consideration not required.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.11.html">§ 19–604.11. Revocation by instrument authorized; revocation by act not permitted.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.12.html">§ 19–604.12. Effect of transfer on death deed during transferor’s life.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.13.html">§ 19–604.13. Effect of transfer on death deed at transferor’s death.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.14.html">§ 19–604.14. Disclaimer.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.15.html">§ 19–604.15. Liability for creditor claims and statutory allowances.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.16.html">§ 19–604.16. Optional form of transfer on death deed.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.17.html">§ 19–604.17. Optional form of revocation.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.18.html">§ 19–604.18. Uniformity of application and construction.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/19-604.19.html">§ 19–604.19. Relation to Electronic Signatures in Global and National Commerce Act.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>

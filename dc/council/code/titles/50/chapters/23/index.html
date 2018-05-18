@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/50/chapters/23A/">Chapter 23A. Autonomous Vehicles.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/50/chapters/23/">Report Error</a>
@@ -87,18 +87,30 @@
         <section class="col8 body">
           <h1>Chapter 23. Traffic Adjudication.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/50/chapters/23/subchapters/I/">Subchapter I. General Provisions.</a>
-            <p>§§ 50-2301.01 - 50-2301.11</p>
-            <a href="/dc/council/code/titles/50/chapters/23/subchapters/II/">Subchapter II. Moving Infractions.</a>
-            <p>§§ 50-2302.01 - 50-2302.06</p>
-            <a href="/dc/council/code/titles/50/chapters/23/subchapters/III/">Subchapter III. Parking, Standing, Stopping and Pedestrian Infractions.</a>
-            <p>§§ 50-2303.01 - 50-2303.08</p>
-            <a href="/dc/council/code/titles/50/chapters/23/subchapters/III-A/">Subchapter III-A. Reconsideration.</a>
-            <p>§§ 50-2303.11 - 50-2303.11</p>
-            <a href="/dc/council/code/titles/50/chapters/23/subchapters/IV/">Subchapter IV. Administrative Review.</a>
-            <p>§§ 50-2304.01 - 50-2304.05</p>
-            <a href="/dc/council/code/titles/50/chapters/23/subchapters/V/">Subchapter V. Severability; Effective Date.</a>
-            <p>§§ 50-2305.01 - 50-2305.02</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/50/chapters/23/subchapters/I/">Subchapter I. General Provisions.</a>
+            </p>
+            <p>§§ 50-2301.01 – 50-2301.11</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/50/chapters/23/subchapters/II/">Subchapter II. Moving Infractions.</a>
+            </p>
+            <p>§§ 50-2302.01 – 50-2302.06</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/50/chapters/23/subchapters/III/">Subchapter III. Parking, Standing, Stopping and Pedestrian Infractions.</a>
+            </p>
+            <p>§§ 50-2303.01 – 50-2303.08</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/50/chapters/23/subchapters/III-A/">Subchapter III-A. Reconsideration.</a>
+            </p>
+            <p>§§ 50-2303.11 – 50-2303.11</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/50/chapters/23/subchapters/IV/">Subchapter IV. Administrative Review.</a>
+            </p>
+            <p>§§ 50-2304.01 – 50-2304.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/50/chapters/23/subchapters/V/">Subchapter V. Severability; Effective Date.</a>
+            </p>
+            <p>§§ 50-2305.01 – 50-2305.02</p>
           </section>
           <section class="content">
             <hr/>
@@ -114,8 +126,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§101">Sept. 12, 1978, D.C. Law 2-104, § 101, 25 DCR 1275</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-601.</p>
                 <p>1973 Ed., § 40-1101.</p>
+                <p>1981 Ed., § 40-601.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/9-1111.15.html">9-1111.15</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2829.html">47-2829</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2862.html">47-2862</a>, § <a class="internal-link" href="/dc/council/code/sections/50-405.01.html">50-405.01</a>, § <a class="internal-link" href="/dc/council/code/sections/50-1501.04.html">50-1501.04</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2201.03.html">50-2201.03</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2201.04.html">50-2201.04</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-2201.28.html">50-2201.28</a>.</p>
                 <h4>Emergency Legislation</h4>
@@ -123,8 +135,8 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) Southwest Waterfront parking violations, see <a class="internal-link" href="/dc/council/laws/22-41.html#§2">§ 2 of Southwest Waterfront Parking Enforcement Temporary Act of 2017 (D.C. Law 22-41, Jan. 17, 2018, 64 DCR 12306)</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Title 32 of the District of Columbia Rules and Regulations (Motor Vehicle Regulations for the District of Columbia).</p>
                 <p>Title 18A of the DCMR (Taxicabs and Vehicles for Hire) (October, 1987) has replaced Title 14 of the District of Columbia Rules and Regulations (relating to operation of taxicabs).</p>
+                <p>Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Title 32 of the District of Columbia Rules and Regulations (Motor Vehicle Regulations for the District of Columbia).</p>
               </section>
             </section>
             <hr/>
@@ -155,26 +167,26 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§102">Sept. 12, 1978, D.C. Law 2-104, § 102, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/5-176.html">Mar. 15, 1985, D.C. Law 5-176, § 4, 32 DCR 748</a>; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 302(a), 48 DCR 2057</a>; <a class="internal-link" href="/dc/council/laws/14-235.html">Mar. 25, 2003, D.C. Law 14-235, § 11, 49 DCR 9788</a>; <a class="internal-link" href="/dc/council/laws/15-105.html">Mar. 13, 2004, D.C. Law 15-105, § 90(a), 51 DCR 881</a>; <a class="internal-link" href="/dc/council/laws/16-224.html">Mar. 6, 2007, D.C. Law 16-224, § 209, 53 DCR 10225</a>; <a class="internal-link" href="/dc/council/laws/17-303.html">Mar. 20, 2009, D.C. Law 17-303, § 4(a), 55 DCR 12803</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-602.</p>
                 <p>1973 Ed., § 40-1102.</p>
+                <p>1981 Ed., § 40-602.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-1621.html">50-1621</a> and § <a class="internal-link" href="/dc/council/code/sections/50-2201.02.html">50-2201.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> rewrote pars. (1) and (2) which had read:</p>
-                <p>“(1) The term ‘Department’ means the District of Columbia Department of Transportation.</p>
-                <p>“(2) The term ‘Director’ means the Director of the District of Columbia Department of Transportation.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-235.html">D.C. Law 14-235</a> rewrote par. (5a) which had read as follows: “(5a) The term ‘motor vehicle’ means all vehicles propelled by an internal-combustion engine, electricity, or steam. The term ‘motor vehicle’ shall not include traction engines, road rollers, vehicles propelled only upon stationary rails or tracks, and battery-operated wheelchairs when operated by a handicapped person at speeds not exceeding 10 miles per hour.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in par. (5a), validated a previously made technical correction.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-224.html">D.C. Law 16-224</a>, in par. (5a), revived the provisions of <a class="internal-link" href="/dc/council/laws/14-235.html">D.C. Law 14-235</a> that expired on October 1, 2005, and substituted “personal mobility devices, as defined by § <a class="internal-link" href="/dc/council/code/sections/50-2201.02.html">50-2201.02</a>(12), or a battery-operated wheelchair when operated by a person with a disability” for “electric personal assistive mobility devices, as defined by § <a class="internal-link" href="/dc/council/code/sections/50-2201.02.html">50-2201.02</a>(12), and battery-operated wheelchairs when operated by a handicapped person at speeds not exceeding 10 miles per hour”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (5a), purported to substitute “person with a disability” for “handicapped person”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-303.html">D.C. Law 17-303</a> added pars. (8) and (9).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-305.html">D.C. Law 16-305</a>, in par. (5a), purported to substitute “person with a disability” for “handicapped person”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-224.html">D.C. Law 16-224</a>, in par. (5a), revived the provisions of <a class="internal-link" href="/dc/council/laws/14-235.html">D.C. Law 14-235</a> that expired on October 1, 2005, and substituted “personal mobility devices, as defined by § <a class="internal-link" href="/dc/council/code/sections/50-2201.02.html">50-2201.02</a>(12), or a battery-operated wheelchair when operated by a person with a disability” for “electric personal assistive mobility devices, as defined by § <a class="internal-link" href="/dc/council/code/sections/50-2201.02.html">50-2201.02</a>(12), and battery-operated wheelchairs when operated by a handicapped person at speeds not exceeding 10 miles per hour”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in par. (5a), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-235.html">D.C. Law 14-235</a> rewrote par. (5a) which had read as follows: “(5a) The term ‘motor vehicle’ means all vehicles propelled by an internal-combustion engine, electricity, or steam. The term ‘motor vehicle’ shall not include traction engines, road rollers, vehicles propelled only upon stationary rails or tracks, and battery-operated wheelchairs when operated by a handicapped person at speeds not exceeding 10 miles per hour.”</p>
+                <p>“(2) The term ‘Director’ means the Director of the District of Columbia Department of Transportation.”</p>
+                <p>“(1) The term ‘Department’ means the District of Columbia Department of Transportation.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> rewrote pars. (1) and (2) which had read:</p>
                 <h4>Expiration of Law</h4>
-                <p>Expiration of Law 14-235</p>
                 <p>Section 14 of <a class="internal-link" href="/dc/council/laws/14-235.html">D.C. Law 14-235</a> provided that the act shall expire on October 1, 2005.</p>
+                <p>Expiration of Law 14-235</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 11 of Motor Vehicle Definition Electric Personal Assistive Mobility Device Exemption Emergency Amendment Act of 2005 (D.C. Act 16-237, December 22, 2005,  53 DCR 249).</p>
-                <p>For temporary (90 day) amendment of section, see § 11 of Motor Vehicle Definition Electric Personal Assistive Mobility Device Exemption Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-323, March 23, 2006,  53 DCR 2567).</p>
                 <p>For temporary (90 day) amendment of section, see § 209 of Personal Mobility Device Emergency Amendment Act of 2006 (D.C. Act 16-528, December 4, 2006,  53 DCR 9826).</p>
+                <p>For temporary (90 day) amendment of section, see § 11 of Motor Vehicle Definition Electric Personal Assistive Mobility Device Exemption Congressional Review Emergency Amendment Act of 2006 (D.C. Act 16-323, March 23, 2006,  53 DCR 2567).</p>
+                <p>For temporary (90 day) amendment of section, see § 11 of Motor Vehicle Definition Electric Personal Assistive Mobility Device Exemption Emergency Amendment Act of 2005 (D.C. Act 16-237, December 22, 2005,  53 DCR 249).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 11 of Motor Vehicle Definition Electric Personal Assistive Mobility Device Exemption Temporary Amendment Act of 2006 (D.C. Law 16-85, April 4, 2006, law notification  53 DCR 3344).</p>
                 <h4>Transfer of Functions</h4>
@@ -193,8 +205,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§103">Sept. 12, 1978, D.C. Law 2-104, § 103, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 302(b), 48 DCR 2057</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-603.</p>
                 <p>1973 Ed., § 40-1103.</p>
+                <p>1981 Ed., § 40-603.</p>
                 <h4>Transfer of Functions</h4>
                 <p>The functions of the Department of Transportation were transferred to the Department of Public Works by Reorganization Plan No. 4 of 1983, effective March 1, 1984.</p>
               </section>
@@ -223,26 +235,26 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§104">Sept. 12, 1978, D.C. Law 2-104, § 104, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/5-66.html">Mar. 14, 1984, D.C. Law 5-66, § 2, 31 DCR 214</a>; <a class="internal-link" href="/dc/council/laws/5-83.html">May 22, 1984, D.C. Law 5-83, § 2, 31 DCR 1683</a>; <a class="internal-link" href="/dc/council/laws/9-148.html">Sept. 10, 1992, D.C. Law 9-148, § 2, 39 DCR 4915</a>; <a class="internal-link" href="/dc/council/laws/9-206.html">Mar. 17, 1993, D.C. Law 9-206, § 2, 40 DCR 12</a>; <a class="internal-link" href="/dc/council/laws/11-198.html">Apr. 9, 1997, D.C. Law 11-198, § 504(a), 43 DCR 4569</a>; <a class="internal-link" href="/dc/council/laws/16-279.html">Mar. 14, 2007, D.C. Law 16-279, § 301(a), 54 DCR 903</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, § 3(a), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-604.</p>
                 <p>1973 Ed., § 40-1104.</p>
+                <p>1981 Ed., § 40-604.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a> and § <a class="internal-link" href="/dc/council/code/sections/50-1401.01.html">50-1401.01</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (b), repealed par. (6), which formerly read:</p>
-                <p>“(6) To adjudicate notices of civil infractions issued to taxicab operators or owners pursuant to  31 DCMR 825 including the power to:</p>
-                <p>“(A) Preside over a hearing in a contested matter;</p>
-                <p>“(B) Compel the attendance of a witness by subpoena, administer an oath, take testimony of a witness under oath, and dismiss, rehear, or continue a case; and</p>
-                <p>“(C) Issue a proposed decision including the imposition of a fine for a civil infraction set forth in  31 DCMR 825.”</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> repealed (b)(4).</p>
+                <p>“(C) Issue a proposed decision including the imposition of a fine for a civil infraction set forth in  31 DCMR 825.”</p>
+                <p>“(B) Compel the attendance of a witness by subpoena, administer an oath, take testimony of a witness under oath, and dismiss, rehear, or continue a case; and</p>
+                <p>“(A) Preside over a hearing in a contested matter;</p>
+                <p>“(6) To adjudicate notices of civil infractions issued to taxicab operators or owners pursuant to  31 DCMR 825 including the power to:</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (b), repealed par. (6), which formerly read:</p>
                 <h4>Cross References</h4>
-                <p>Compulsory/no-fault motor vehicle insurance, crimes and offenses, penalties, see § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a>.</p>
-                <p>District of Columbia administration, employment, advancement and retention of employees, see § <a class="internal-link" href="/dc/council/code/sections/1-608.01.html">1-608.01</a>.</p>
                 <p>Motor vehicle operators’ permits, operation of vehicle by person with expired permit, penalties, see § <a class="internal-link" href="/dc/council/code/sections/50-1401.01.html">50-1401.01</a>.</p>
+                <p>District of Columbia administration, employment, advancement and retention of employees, see § <a class="internal-link" href="/dc/council/code/sections/1-608.01.html">1-608.01</a>.</p>
+                <p>Compulsory/no-fault motor vehicle insurance, crimes and offenses, penalties, see § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 504(a) of the Fiscal Year 1997 Budget Support Emergency Act of 1996 (D.C. Act 11-302, July 25, 1996,  43 DCR 4181), § 504(a) of the Fiscal Year 1997 Budget Support Emergency Amendment Act of 1996 (D.C. Act 11-429, October29, 1996,  43 DCR 6151), and § 504(a) of the Fiscal Year 1997 Budget Support Congressional Adjournment Emergency Amendment Act of 1997(D.C. Act 12-2, February 19, 1997,  44 DCR 1590).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary amendment of section, see § 504(a) of the Fiscal Year 1997 Budget Support Emergency Act of 1996 (D.C. Act 11-302, July 25, 1996,  43 DCR 4181), § 504(a) of the Fiscal Year 1997 Budget Support Emergency Amendment Act of 1996 (D.C. Act 11-429, October29, 1996,  43 DCR 6151), and § 504(a) of the Fiscal Year 1997 Budget Support Congressional Adjournment Emergency Amendment Act of 1997(D.C. Act 12-2, February 19, 1997,  44 DCR 1590).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 504(a) of Fiscal Year 1997 Budget Support Temporary Amendment Act of 1996 (<a class="internal-link" href="/dc/council/laws/11-226.html">D.C. Law 11-226</a>, April 9, 1997, law notification  44 DCR 2584).</p>
                 <h4>Transfer of Functions</h4>
@@ -270,35 +282,35 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§105">Sept. 12, 1978, D.C. Law 2-104, § 105, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/6-15.html">Aug. 1, 1985, D.C. Law 6-15, § 9, 32 DCR 3570</a>; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 302(c), 48 DCR 2057</a>; <a class="internal-link" href="/dc/council/laws/19-168.html">Sept. 20, 2012, D.C. Law 19-168, § 1054(b)[c], 59 DCR 8025</a>; <a class="internal-link" href="/dc/council/laws/19-307.html">May 1, 2013, D.C. Law 19-307, § 106, 60 DCR 2753</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, § 3(b), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-605.</p>
                 <p>1973 Ed., § 40-1105.</p>
+                <p>1981 Ed., § 40-605.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a>, § <a class="internal-link" href="/dc/council/code/sections/50-1401.01.html">50-1401.01</a>, § <a class="internal-link" href="/dc/council/code/sections/50-1501.02.html">50-1501.02</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2201.03.html">50-2201.03</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2207.02.html">50-2207.02</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2302.05.html">50-2302.05</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2302.06.html">50-2302.06</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2303.04a.html">50-2303.04a</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-2303.06.html">50-2303.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (a), par. (2)(A), substituted “§ <a class="internal-link" href="/dc/council/code/sections/50-2302.05.html">50-2302.05</a>(d)(1) and § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>(d)(1)” for “§ <a class="internal-link" href="/dc/council/code/sections/50-2302.03.html">50-2302.03</a>(d) and § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>(d)”; and added subsec. (c).</p>
-                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> deleted the last sentence of (b), which read: “The Director may pay a reasonable percentage of monies collected to private agencies for the collection of fines, penalties and fees.”</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a> rewrote (a)(1).</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> added “and fees” to the end of the section heading; made a minor stylistic change at the end of (c); and added (d).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a> rewrote (a)(1).</p>
+                <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> deleted the last sentence of (b), which read: “The Director may pay a reasonable percentage of monies collected to private agencies for the collection of fines, penalties and fees.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (a), par. (2)(A), substituted “§ <a class="internal-link" href="/dc/council/code/sections/50-2302.05.html">50-2302.05</a>(d)(1) and § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>(d)(1)” for “§ <a class="internal-link" href="/dc/council/code/sections/50-2302.03.html">50-2302.03</a>(d) and § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>(d)”; and added subsec. (c).</p>
                 <h4>Cross References</h4>
-                <p>Compulsory/no-fault motor vehicle insurance, crimes and offenses, penalties and hearing procedures, see § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a>.</p>
                 <p>Motor vehicle operators’ permits, operation of vehicle by person with expired permit, penalties, see § <a class="internal-link" href="/dc/council/code/sections/50-1401.01.html">50-1401.01</a>.</p>
+                <p>Compulsory/no-fault motor vehicle insurance, crimes and offenses, penalties and hearing procedures, see § <a class="internal-link" href="/dc/council/code/sections/31-2413.html">31-2413</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1054(b) of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
-                <p>For temporary (90 day) amendment of section, see § 1054(b) of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
-                <p>For temporary addition of provisions concerning automated traffic enforcement, see § 101 to 105 of the Safety-Based Traffic Enforcement Emergency Amendment Act of 2012 (D.C. Act 19-635, January 19, 2013,  60 DCR 1731).</p>
-                <p>For temporary amendment of section, see § 106 of the Safety-Based Traffic Enforcement Emergency Amendment Act of 2012 (D.C. Act 19-635, January 19, 2013,  60 DCR 1731).</p>
-                <p>For temporary (90 days) addition of provisions concerning automated traffic enforcement, see § 101 to 105 of the Safety-Based Traffic Enforcement Congressional Review Emergency Act of 2013 (D.C. Act 20-50, April 22, 2013,  60 DCR 6339, 20 DCSTAT 1356).</p>
-                <p>For temporary (90 days) amendment of this section, see § 106 of the Safety-Based Traffic Enforcement Congressional Review Emergency Act of 2013 (D.C. Act 20-50, April 22, 2013,  60 DCR 6339, 20 DCSTAT 1356).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 days) amendment of this section, see § 106 of the Safety-Based Traffic Enforcement Congressional Review Emergency Act of 2013 (D.C. Act 20-50, April 22, 2013,  60 DCR 6339, 20 DCSTAT 1356).</p>
+                <p>For temporary (90 days) addition of provisions concerning automated traffic enforcement, see § 101 to 105 of the Safety-Based Traffic Enforcement Congressional Review Emergency Act of 2013 (D.C. Act 20-50, April 22, 2013,  60 DCR 6339, 20 DCSTAT 1356).</p>
+                <p>For temporary amendment of section, see § 106 of the Safety-Based Traffic Enforcement Emergency Amendment Act of 2012 (D.C. Act 19-635, January 19, 2013,  60 DCR 1731).</p>
+                <p>For temporary addition of provisions concerning automated traffic enforcement, see § 101 to 105 of the Safety-Based Traffic Enforcement Emergency Amendment Act of 2012 (D.C. Act 19-635, January 19, 2013,  60 DCR 1731).</p>
+                <p>For temporary (90 day) amendment of section, see § 1054(b) of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) amendment of section, see § 1054(b) of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <h4>Editor's Notes</h4>
-                <p>Snow Emergency Fine Increase Resolution of 1998: Pursuant to Resolution PR 12-998, deemed approved on November 28, 1998, the Council approved a proposed rule, transmitted to the Council by the Mayor, which amended Title 18 of the District of Columbia Municipal Regulations, sections 2600.1 and 2601.1, to increase fines for violations of snow emergency rules.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a>: Section 401(a) of <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a> provided that the 2013 amendment to this section shall apply as of May 1, 2013.</p>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a>: Section 401(a) of <a class="internal-link" href="/dc/council/laws/19-307.html">D.C. Law 19-307</a> provided that the 2013 amendment to this section shall apply as of May 1, 2013.</p>
+                <p>Snow Emergency Fine Increase Resolution of 1998: Pursuant to Resolution PR 12-998, deemed approved on November 28, 1998, the Council approved a proposed rule, transmitted to the Council by the Mayor, which amended Title 18 of the District of Columbia Municipal Regulations, sections 2600.1 and 2601.1, to increase fines for violations of snow emergency rules.</p>
                 <h4>Resolutions</h4>
-                <p>Resolution 16-352, the “International Registration Plan Enforcement Rulemaking Disapproval Resolution of 2005”, was approved effective November 1, 2005.</p>
                 <p>Resolution 16-548, the “Commercial Driver’s License and International Registration Plan Enforcement Approval Resolution of 2006”, was approved effective March 7, 2006.</p>
+                <p>Resolution 16-352, the “International Registration Plan Enforcement Rulemaking Disapproval Resolution of 2005”, was approved effective November 1, 2005.</p>
               </section>
             </section>
             <hr/>
@@ -313,8 +325,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§106">Sept. 12, 1978, D.C. Law 2-104, § 106, 25 DCR 1275</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-606.</p>
                 <p>1973 Ed., § 40-1106.</p>
+                <p>1981 Ed., § 40-606.</p>
               </section>
             </section>
             <hr/>
@@ -329,8 +341,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§107">Sept. 12, 1978, D.C. Law 2-104, § 107, 25 DCR 1275</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-607.</p>
                 <p>1973 Ed., § 40-1107.</p>
+                <p>1981 Ed., § 40-607.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-2305.02.html">50-2305.02</a>.</p>
               </section>
@@ -405,17 +417,17 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§108">Sept. 12, 1978, D.C. Law 2-104, § 108, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, § 3(c), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-608.</p>
                 <p>1973 Ed., § 40-1108.</p>
+                <p>1981 Ed., § 40-608.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> added (12) and made related changes.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
               </section>
             </section>
             <hr/>
@@ -431,15 +443,15 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§109">Sept. 12, 1978, D.C. Law 2-104, §  109</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">as added July 23, 2014, D.C. Law 20-127, § 3(d), 61 DCR 5711</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Legislative History</h4>
-                <p>Legislative history of Law 20–127</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/50-2301.04.html">50-2301.04</a>.</p>
+                <p>Legislative history of Law 20–127</p>
                 <h4>Editor's Notes</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
               </section>
             </section>
             <hr/>
@@ -490,17 +502,17 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§201">Sept. 12, 1978, D.C. Law 2-104, § 201, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/9-173.html">Oct. 1, 1992, D.C. Law 9-173, § 2, 39 DCR 5834</a>; <a class="internal-link" href="/dc/council/laws/9-272.html">May 15, 1993, D.C. Law 9-272, § 203(a), 40 DCR 796</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-611.</p>
                 <p>1973 Ed., § 40-1109.</p>
+                <p>1981 Ed., § 40-611.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-629.05.html">1-629.05</a> and § <a class="internal-link" href="/dc/council/code/sections/47-2862.html">47-2862</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p>For requirement of the submission of a report and recommendations as to whether the District should implement a remediation and deferred disposition program, see <a class="internal-link" href="/dc/council/laws/21-155.html#§603">§ 603 of D.C. Law 21-155</a>.
+                <p>
+       For an amendment to the requirement of the submission of a report and recommendations as to whether emergency vehicles should be equipped with cameras to better enforce regulations associated with the failure to yield to emergency vehicles, see <a class="internal-link" href="/dc/council/laws/22-77.html#§2(g)">§ 2(g) of D.C. Law 22-77</a>.
       </p>
                 <p>For requirement of the submission of a report and recommendations as to whether emergency vehicles should be equipped with cameras to better enforce regulations associated with the failure to yield to emergency vehicles, see <a class="internal-link" href="/dc/council/laws/21-155.html#§609">§ 609 of D.C. Law 21-155</a>.
       </p>
-                <p>
-       For an amendment to the requirement of the submission of a report and recommendations as to whether emergency vehicles should be equipped with cameras to better enforce regulations associated with the failure to yield to emergency vehicles, see <a class="internal-link" href="/dc/council/laws/22-77.html#§2(g)">§ 2(g) of D.C. Law 22-77</a>.
+                <p>For requirement of the submission of a report and recommendations as to whether the District should implement a remediation and deferred disposition program, see <a class="internal-link" href="/dc/council/laws/21-155.html#§603">§ 603 of D.C. Law 21-155</a>.
       </p>
               </section>
             </section>
@@ -537,8 +549,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§202">Sept. 12, 1978, D.C. Law 2-104, § 202, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/4-36.html">Oct. 8, 1981, D.C. Law 4-36, § 4(a), 28 DCR 3383</a>; <a class="internal-link" href="/dc/council/laws/4-52.html">Nov. 17, 1981, D.C. Law 4-52, § 3(f), 28 DCR 4348</a>; <a class="internal-link" href="/dc/council/laws/19-316.html">June 8, 2013, D.C. Law 19-316, § 3, 60 DCR 1713</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-612.</p>
                 <p>1973 Ed., § 40-1110.</p>
+                <p>1981 Ed., § 40-612.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-921.04.html">50-921.04</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2301.04.html">50-2301.04</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2302.01.html">50-2302.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-2303.01.html">50-2303.01</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -546,8 +558,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 3 of the Reckless Driving Emergency Act of 2013 (D.C. Act 20-75, May 23, 2013,  60 DCR 7597, 20 DCSTAT 1428).</p>
                 <h4>Editor's Notes</h4>
-                <p>Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Title 32 of the District of Columbia Rules and Regulations, referred to in (1)(C), and (11) through (16).</p>
                 <p>Section 8 of <a class="internal-link" href="/dc/council/laws/19-316.html">D.C. Law 19-316</a> provided that the act shall apply as of June 1, 2013.</p>
+                <p>Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Title 32 of the District of Columbia Rules and Regulations, referred to in (1)(C), and (11) through (16).</p>
               </section>
             </section>
             <hr/>
@@ -564,8 +576,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§203">Sept. 12, 1978, D.C. Law 2-104, § 203, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 275(a), 60 DCR 2064</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-613.</p>
                 <p>1973 Ed., § 40-1111.</p>
+                <p>1981 Ed., § 40-613.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-2302.01.html">50-2302.01</a>.</p>
                 <h4>Effect of Amendments</h4>
@@ -573,8 +585,8 @@
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) amendment of this section, see § 275(a) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
                 <h4>Editor's Notes</h4>
-                <p>Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Title 32 of the District of Columbia Rules and Regulations, referred to in (a).</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
+                <p>Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Title 32 of the District of Columbia Rules and Regulations, referred to in (a).</p>
               </section>
             </section>
             <hr/>
@@ -592,16 +604,16 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§204">Sept. 12, 1978, D.C. Law 2-104, § 204, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 302(d), 48 DCR 2057</a>; <a class="internal-link" href="/dc/council/laws/16-279.html">Mar. 14, 2007, D.C. Law 16-279, § 301(b), 54 DCR 903</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, § 3(e), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-614.</p>
                 <p>1973 Ed., § 40-1112.</p>
+                <p>1981 Ed., § 40-614.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (c), substituted “30 calendar days” for “15 calendar days”; and, in subsec. (d), substituted “on its face, for reasons other than compliance with subsection (c) of this section” for “on its face”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (c), increased the time for which a person has to answer the notice of infraction from 30 calendar days to 60 calendar days.</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> deleted “for reasons other than compliance with subsection (c) of this section” following “on its face” in (d).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (c), increased the time for which a person has to answer the notice of infraction from 30 calendar days to 60 calendar days.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (c), substituted “30 calendar days” for “15 calendar days”; and, in subsec. (d), substituted “on its face, for reasons other than compliance with subsection (c) of this section” for “on its face”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see §  7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
               </section>
@@ -644,30 +656,30 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§205">Sept. 12, 1978, D.C. Law 2-104, § 205, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/11-198.html">Apr. 9, 1997, D.C. Law 11-198, § 504(b), 43 DCR 4569</a>; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 302(e), 48 DCR 2057</a>; <a class="internal-link" href="/dc/council/laws/15-307.html">Apr. 8, 2005, D.C. Law 15-307, § 207(a), 52 DCR 1700</a>; <a class="internal-link" href="/dc/council/laws/16-117.html">June 8, 2006, D.C. Law 16-117, § 202, 53 DCR 2548</a>; <a class="internal-link" href="/dc/council/laws/16-279.html">Mar. 14, 2007, D.C. Law 16-279, § 301(c), 54 DCR 903</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, § 3(f), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-615.</p>
                 <p>1973 Ed., § 40-1113.</p>
+                <p>1981 Ed., § 40-615.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-2207.02.html">50-2207.02</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2301.05.html">50-2301.05</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2302.04.html">50-2302.04</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2302.06.html">50-2302.06</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2303.04.html">50-2303.04</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2303.06.html">50-2303.06</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-2421.07.html">50-2421.07</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> rewrote the section.</p>
-                <p>“(a) In answer to a Notice of Infraction, a person to whom the notice was issued may:</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a>, in subsec. (f), substituted “307.7” for “307.6”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-117.html">D.C. Law 16-117</a>, designated the existing text of subsec. (b) as par. (b)(1); and added pars. (b)(2) and (b)(3).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a> rewrote subsecs. (d), (e), and (f).</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> made a stylistic change in the introductory language of (a)(1); added (a)(1)(A); rewrote (b)(1), (c)(1) and (c)(2);  repealed (h)(2) and (h)(3); and added (i) and (j).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a> rewrote subsecs. (d), (e), and (f).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-117.html">D.C. Law 16-117</a>, designated the existing text of subsec. (b) as par. (b)(1); and added pars. (b)(2) and (b)(3).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a>, in subsec. (f), substituted “307.7” for “307.6”.</p>
+                <p>“(a) In answer to a Notice of Infraction, a person to whom the notice was issued may:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> rewrote the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 401(a) of the Omnibus Budget Support Emergency Act of 1993 (D.C. Act 10-32, June 3, 1993,  40 DCR 3658).</p>
-                <p>For temporary amendment of section, see § 504(b) of the Fiscal Year 1997 Budget Support Emergency Act of 1996 (D.C. Act 11-302, July 25, 1996,  43 DCR 4181), § 504(b) of the Fiscal Year 1997 Budget Support Emergency Amendment Act of 1996 (D.C. Act 11-429, October 29, 1996,  43 DCR 6151), and § 504(b) of the Fiscal Year 1997 Budget Support Congressional Adjournment Emergency Amendment Act of 1997 (D.C. Act 12-2, February 19, 1997,  44 DCR 1590).</p>
-                <p>For temporary (90 day) establishment of adjudication process, see § 4 of Motor Vehicle Registration and Operator’s Permit Issuance Enhancement Emergency Amendment Act of 2002 (D.C. Act 14-413, July 16, 2002,  49 DCR 7378).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) establishment of adjudication process, see § 4 of Motor Vehicle Registration and Operator’s Permit Issuance Enhancement Emergency Amendment Act of 2002 (D.C. Act 14-413, July 16, 2002,  49 DCR 7378).</p>
+                <p>For temporary amendment of section, see § 504(b) of the Fiscal Year 1997 Budget Support Emergency Act of 1996 (D.C. Act 11-302, July 25, 1996,  43 DCR 4181), § 504(b) of the Fiscal Year 1997 Budget Support Emergency Amendment Act of 1996 (D.C. Act 11-429, October 29, 1996,  43 DCR 6151), and § 504(b) of the Fiscal Year 1997 Budget Support Congressional Adjournment Emergency Amendment Act of 1997 (D.C. Act 12-2, February 19, 1997,  44 DCR 1590).</p>
+                <p>For temporary amendment of section, see § 401(a) of the Omnibus Budget Support Emergency Act of 1993 (D.C. Act 10-32, June 3, 1993,  40 DCR 3658).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 504(a) of Fiscal Year 1997 Budget Support Temporary Amendment Act of 1996 (<a class="internal-link" href="/dc/council/laws/11-226.html">D.C. Law 11-226</a>, April 9, 1997, law notification  44 DCR 2584).</p>
                 <h4>Editor's Notes</h4>
-                <p>Chapters 1 and 3 of Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Chapter II of Title 32 of the District of Columbia Rules and Regulations, referred to in (c).</p>
-                <p>Section 1001 of <a class="internal-link" href="/dc/council/laws/11-198.html">D.C. Law 11-198</a> provided that titles I, II, III, V, and VI and sections 405 and 406 of the act shall apply after September 30, 1996.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
+                <p>Section 1001 of <a class="internal-link" href="/dc/council/laws/11-198.html">D.C. Law 11-198</a> provided that titles I, II, III, V, and VI and sections 405 and 406 of the act shall apply after September 30, 1996.</p>
+                <p>Chapters 1 and 3 of Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Chapter II of Title 32 of the District of Columbia Rules and Regulations, referred to in (c).</p>
               </section>
             </section>
             <hr/>
@@ -709,24 +721,24 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§206">Sept. 12, 1978, D.C. Law 2-104, § 206, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 302(f), 48 DCR 2057</a>; <a class="internal-link" href="/dc/council/laws/16-279.html">Mar. 14, 2007, D.C. Law 16-279, § 301(d), 54 DCR 903</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, §3(g), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-616.</p>
                 <p>1973 Ed., § 40-1114.</p>
+                <p>1981 Ed., § 40-616.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (a), substituted “Chapter 10 of Title 18 of the District of Columbia Municipal Regulations” for “Chapter IX of Title 32 of the District of Columbia Rules and Regulations”; and rewrote subsecs. (b) and (i), which had read:</p>
-                <p>“(b) If a person to whom a notice of infraction has been issued fails to appear at a hearing where he is required to do so, the hearing examiner may suspend that person’s license or privilege to drive until such person appears at a hearing or pays a civil fine pursuant to § <a class="internal-link" href="/dc/council/code/sections/50-2302.05.html">50-2302.05</a>(c). Such suspension shall take effect and notice shall be given in accordance with § <a class="internal-link" href="/dc/council/code/sections/50-2302.05.html">50-2302.05</a>(d).”</p>
-                <p>“(i) All civil fines and other monies collected pursuant to the provisions of this title shall be paid into the General Fund of the District.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (b), reduced the application to vacate time from within 90 days of the effective date of the judgment to from within 60 days of the effective date of the judgment; in subsec. (c), substituted “denied the commission of the infraction; except, no officer is required at the hearing when a violation is detected by an automated traffic enforcement system” for “denied the commission of the infraction”; and in subsec. (f)(2), substituted “The completion of traffic school in lieu of the assessment of the applicable points; or” for “The required completion of traffic school; or”.</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> rewrote (b); added the last sentence in (d); added (d-1); and substituted “30 calendar days” for “15 calendar days” in (i).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (b), reduced the application to vacate time from within 90 days of the effective date of the judgment to from within 60 days of the effective date of the judgment; in subsec. (c), substituted “denied the commission of the infraction; except, no officer is required at the hearing when a violation is detected by an automated traffic enforcement system” for “denied the commission of the infraction”; and in subsec. (f)(2), substituted “The completion of traffic school in lieu of the assessment of the applicable points; or” for “The required completion of traffic school; or”.</p>
+                <p>“(i) All civil fines and other monies collected pursuant to the provisions of this title shall be paid into the General Fund of the District.”</p>
+                <p>“(b) If a person to whom a notice of infraction has been issued fails to appear at a hearing where he is required to do so, the hearing examiner may suspend that person’s license or privilege to drive until such person appears at a hearing or pays a civil fine pursuant to § <a class="internal-link" href="/dc/council/code/sections/50-2302.05.html">50-2302.05</a>(c). Such suspension shall take effect and notice shall be given in accordance with § <a class="internal-link" href="/dc/council/code/sections/50-2302.05.html">50-2302.05</a>(d).”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (a), substituted “Chapter 10 of Title 18 of the District of Columbia Municipal Regulations” for “Chapter IX of Title 32 of the District of Columbia Rules and Regulations”; and rewrote subsecs. (b) and (i), which had read:</p>
                 <h4>Cross References</h4>
                 <p>Motor vehicle child restraints, adjudication of violations, see § <a class="internal-link" href="/dc/council/code/sections/50-1706.html">50-1706</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see §  7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Editor's Notes</h4>
-                <p>Chapter 10 of Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Chapter IX of Title 32 of the District of Columbia Rules and Regulations, referred to in (a) and (h).</p>
-                <p>Chapter 3 of Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced the provisions governing assessment of traffic points formerly contained in Chapter II of Title 32 of the District of Columbia Rules and Regulations, referred to in (e).</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
+                <p>Chapter 3 of Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced the provisions governing assessment of traffic points formerly contained in Chapter II of Title 32 of the District of Columbia Rules and Regulations, referred to in (e).</p>
+                <p>Chapter 10 of Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Chapter IX of Title 32 of the District of Columbia Rules and Regulations, referred to in (a) and (h).</p>
               </section>
             </section>
             <hr/>
@@ -742,8 +754,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§301">Sept. 12, 1978, D.C. Law 2-104, § 301, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/9-272.html">May 15, 1993, D.C. Law 9-272, § 203(b), 40 DCR 796</a>; <a class="internal-link" href="/dc/council/laws/11-130.html">May 24, 1996, D.C. Law 11-130, § 4, 43 DCR 1570</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-621.</p>
                 <p>1973 Ed., § 40-1115.</p>
+                <p>1981 Ed., § 40-621.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-629.05.html">1-629.05</a>.</p>
               </section>
@@ -762,15 +774,15 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§302">Sept. 12, 1978, D.C. Law 2-104, § 302, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/19-317.html">June 11, 2013, D.C. Law 19-317, § 275(b), 60 DCR 2064</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-622.</p>
                 <p>1973 Ed., § 40-1116.</p>
+                <p>1981 Ed., § 40-622.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-2303.01.html">50-2303.01</a>.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> substituted “of not more than the amount set forth in § <a class="internal-link" href="/dc/council/code/sections/22-3571.01.html">22-3571.01</a>” for “not to exceed $300” in (a).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2(a) of Street Sweeping Improvement Enforcement Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-458, July 28, 2008,  55 DCR 8723).</p>
                 <p>For temporary (90 days) amendment of this section, see § 275(b) of the Criminal Fine Proportionality Emergency Act of 2013 (D.C. Act 20-45, April 1, 2013,  60 DCR 5400, 20 DCSTAT 1300).</p>
+                <p>For temporary (90 day) addition, see § 2(a) of Street Sweeping Improvement Enforcement Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-458, July 28, 2008,  55 DCR 8723).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a>: Section 401 of <a class="internal-link" href="/dc/council/laws/19-317.html">D.C. Law 19-317</a> provided that the act shall apply only to offenses committed on or after June 11, 2013.</p>
               </section>
@@ -814,18 +826,18 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§303">Sept. 12, 1978, D.C. Law 2-104, § 303, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 302(g), 48 DCR 2057</a>; <a class="internal-link" href="/dc/council/laws/16-279.html">Mar. 14, 2007, D.C. Law 16-279, § 301(e), 54 DCR 903</a>; <a class="internal-link" href="/dc/council/laws/17-217.html">Aug. 15, 2008, D.C. Law 17-217, § 2(b), 55 DCR 7513</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-623.</p>
                 <p>1973 Ed., § 40-1117.</p>
+                <p>1981 Ed., § 40-623.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-629.05.html">1-629.05</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (e), substituted “on its face, for reasons other than compliance with subsection (b)” for “on its face”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a> rewrote subsec. (c), which formerly read:</p>
-                <p>“(c) A notice of infraction shall be served personally upon the operator of a vehicle who is present at the time of service and his name, together with the plate designation and the plate type as shown by the registration plates of said vehicle and the make or model of such vehicle, shall be inserted therein. If the operator is not present, the notice of infraction shall be served upon the owner of the vehicle by affixing such notice to such vehicle in a conspicuous place, by inserting the word “owner” in the space provided for identification of such person and by noting the plate designation and plate type as shown by the registration plates of such vehicle together with the make or model of such vehicle. Service of the notice of infraction or a duplicate thereof by affixation, as herein provided, shall have the same force and effect and shall be subject to the same penalties for the disregard thereof as though the notice of infraction was personally served on the owner and operator of the vehicle.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-217.html">D.C. Law 17-217</a> rewrote subsec. (c) and added subsecs. (c-1) and (c-2). Prior to amendment, subsec. (c) read as follows: “(c) A notice of infraction shall be served personally upon the operator of a vehicle who is present at the time of service or by affixing such notice to the vehicle in a conspicuous place and by noting the plate designation and plate type as shown by the registration plates of such vehicle together with the make or model of the vehicle. Service of the notice of infraction or a duplicate thereof by affixation shall have the same force and effect, and the infraction shall be subject to the same penalties for the disregard thereof as though the notice of infraction was personally served on the owner and operator of the vehicle.”</p>
+                <p>“(c) A notice of infraction shall be served personally upon the operator of a vehicle who is present at the time of service and his name, together with the plate designation and the plate type as shown by the registration plates of said vehicle and the make or model of such vehicle, shall be inserted therein. If the operator is not present, the notice of infraction shall be served upon the owner of the vehicle by affixing such notice to such vehicle in a conspicuous place, by inserting the word “owner” in the space provided for identification of such person and by noting the plate designation and plate type as shown by the registration plates of such vehicle together with the make or model of such vehicle. Service of the notice of infraction or a duplicate thereof by affixation, as herein provided, shall have the same force and effect and shall be subject to the same penalties for the disregard thereof as though the notice of infraction was personally served on the owner and operator of the vehicle.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a> rewrote subsec. (c), which formerly read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (e), substituted “on its face, for reasons other than compliance with subsection (b)” for “on its face”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2(a) of Street Sweeping Improvement Enforcement Amendment Emergency Act of 2008 (D.C. Act 17-369, May 20, 2008,  55 DCR 6087).</p>
                 <p>For temporary (90 day) amendment, see § 2(b) of Street Sweeping Improvement Enforcement Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-458, July 28, 2008,  55 DCR 8723).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(a) of Street Sweeping Improvement Enforcement Amendment Emergency Act of 2008 (D.C. Act 17-369, May 20, 2008,  55 DCR 6087).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of Street Sweeping Improvement Enforcement Temporary Amendment Act of 2008 (D.C. Law 17-218, August 15, 2008, law notification  55 DCR 9902).</p>
               </section>
@@ -845,18 +857,18 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§304">Sept. 12, 1978, D.C. Law 2-104, § 304, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/15-307.html">Apr. 8, 2005, D.C. Law 15-307, § 207(b), 52 DCR 1700</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-624.</p>
                 <p>1973 Ed., § 40-1118.</p>
+                <p>1981 Ed., § 40-624.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-2301.08.html">50-2301.08</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a> rewrote the section which had read:</p>
-                <p>“(a) The operator of a vehicle shall be primarily liable for the civil penalties imposed pursuant to this subchapter. Subject to the provisions of subsections (b) and (c) of this section, the owner of the vehicle, even if not the operator thereof, shall also be liable therefor, unless he can show that such vehicle was used without his permission, express or implied. An owner who pays any civil fine or penalties pursuant to this subchapter shall have the right to recover same from the operator and shall have a cause of action against the operator of the vehicle for such amount paid.</p>
-                <p>“(b) The lessor of a vehicle shall not be liable for fines or penalties imposed for an infraction pursuant to this subchapter if:</p>
-                <p>“(1) Prior to the infraction, the lessor has filed with the Bureau the license plate number and state of registration of the vehicle to which the notice of infraction was issued; and</p>
-                <p>“(2) Within 30 days after receiving notice from the Bureau of the date and time of an infraction, as well as other information contained in the original notice of infraction, the lessor submits to the Bureau the correct name and address of the person to whom the vehicle identified in the notice of infraction was rented or leased at the time of the infraction and the lessor notifies such person by mail of the notice of infraction.</p>
-                <p>“(c) Where the lessor has paid any fine or penalty for which he is liable and the Bureau thereafter collects from the person to whom the vehicle was rented or leased the amount of the scheduled fine and penalties owed by such person, or any portion thereof, the lessor shall be entitled to reimbursement from the Bureau of the amount of the fines and penalties paid by the lessor, less the Bureau’s cost of collection.</p>
                 <p>“(d) Where the lessor is liable for an infraction, he shall not be liable for penalties in excess of the standard civil fine unless the lessor fails to answer within 15 calendar days of his actual receipt of the notice of infraction.”</p>
+                <p>“(c) Where the lessor has paid any fine or penalty for which he is liable and the Bureau thereafter collects from the person to whom the vehicle was rented or leased the amount of the scheduled fine and penalties owed by such person, or any portion thereof, the lessor shall be entitled to reimbursement from the Bureau of the amount of the fines and penalties paid by the lessor, less the Bureau’s cost of collection.</p>
+                <p>“(2) Within 30 days after receiving notice from the Bureau of the date and time of an infraction, as well as other information contained in the original notice of infraction, the lessor submits to the Bureau the correct name and address of the person to whom the vehicle identified in the notice of infraction was rented or leased at the time of the infraction and the lessor notifies such person by mail of the notice of infraction.</p>
+                <p>“(1) Prior to the infraction, the lessor has filed with the Bureau the license plate number and state of registration of the vehicle to which the notice of infraction was issued; and</p>
+                <p>“(b) The lessor of a vehicle shall not be liable for fines or penalties imposed for an infraction pursuant to this subchapter if:</p>
+                <p>“(a) The operator of a vehicle shall be primarily liable for the civil penalties imposed pursuant to this subchapter. Subject to the provisions of subsections (b) and (c) of this section, the owner of the vehicle, even if not the operator thereof, shall also be liable therefor, unless he can show that such vehicle was used without his permission, express or implied. An owner who pays any civil fine or penalties pursuant to this subchapter shall have the right to recover same from the operator and shall have a cause of action against the operator of the vehicle for such amount paid.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a> rewrote the section which had read:</p>
               </section>
             </section>
             <hr/>
@@ -886,25 +898,25 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-2201.03.html">50-2201.03</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (d), par. (9), substituted “Department of Motor Vehicles” for “Department of Public Works”; and rewrote subsec. (e), which had read:</p>
-                <p>“(e) A fleet owner who participates in the fleet adjudication program shall answer, within 15 days of receipt, the monthly fleet infraction report which sets forth the date and time of the infraction, as well as other information contained in the original notice of infraction. Answers shall be consistent with § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>(a).”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a>, in subsec. (a), deleted “engaged in commercial activity” following “motor vehicles” in par. (1), and deleted “engaged in the regular course of business in the District of Columbia” following “motor vehicles” in par. (2); in subsec. (b), substituted “notices of infraction for parking violations and for violations detected by an automated traffic enforcement system,” for “notices of infraction”; and rewrote pars. (1) and (3) of subsec. (d) and subsec. (e) which had read:</p>
-                <p>“(1) Register its fleet engaged in the regular course of business in the District of Columbia with the Department of Motor Vehicles;”</p>
-                <p>“(3) Satisfy all outstanding parking infractions prior to registration in the program.”</p>
-                <p>“(e) A fleet owner participant in the fleet adjudication program shall answer, within 30 days of receipt, the monthly fleet infraction report, which sets forth the date and time of the infraction and other information contained in the original notice of infraction. Answers shall be consistent with § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>. The owner’s failure to answer within 30 days shall result in the imposition of monetary penalties established by § <a class="internal-link" href="/dc/council/code/sections/50-2301.05.html">50-2301.05</a>, in addition to the potential civil fine for the infraction. If the owner fails to answer within 60 days, the owner shall be deemed liable for the violations. The Director may suspend program participation for multiple violations of this subsection.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (e), substituted “§ <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a> and § <a class="internal-link" href="/dc/council/code/sections/50-2209.02.html">50-2209.02</a>” for “§ 2302.05 and with § <a class="internal-link" href="/dc/council/code/sections/50-2209.02.html">50-2209.02</a>(b)”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-217.html">D.C. Law 17-217</a>, in subsec. (b), inserted “or an automated parking enforcement system” following “automated traffic enforcement system”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote subsecs. (a), (d), (e), and (f); and, in the section heading and subsec. (b), substituted “reconciliation” for “adjudication”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> validated a previously made technical correction in (e); redesignated the subsection (f) added by <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> as (e-1); and thereby restored former (f).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote subsecs. (a), (d), (e), and (f); and, in the section heading and subsec. (b), substituted “reconciliation” for “adjudication”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-217.html">D.C. Law 17-217</a>, in subsec. (b), inserted “or an automated parking enforcement system” following “automated traffic enforcement system”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (e), substituted “§ <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a> and § <a class="internal-link" href="/dc/council/code/sections/50-2209.02.html">50-2209.02</a>” for “§ 2302.05 and with § <a class="internal-link" href="/dc/council/code/sections/50-2209.02.html">50-2209.02</a>(b)”.</p>
+                <p>“(e) A fleet owner participant in the fleet adjudication program shall answer, within 30 days of receipt, the monthly fleet infraction report, which sets forth the date and time of the infraction and other information contained in the original notice of infraction. Answers shall be consistent with § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>. The owner’s failure to answer within 30 days shall result in the imposition of monetary penalties established by § <a class="internal-link" href="/dc/council/code/sections/50-2301.05.html">50-2301.05</a>, in addition to the potential civil fine for the infraction. If the owner fails to answer within 60 days, the owner shall be deemed liable for the violations. The Director may suspend program participation for multiple violations of this subsection.”</p>
+                <p>“(3) Satisfy all outstanding parking infractions prior to registration in the program.”</p>
+                <p>“(1) Register its fleet engaged in the regular course of business in the District of Columbia with the Department of Motor Vehicles;”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-307.html">D.C. Law 15-307</a>, in subsec. (a), deleted “engaged in commercial activity” following “motor vehicles” in par. (1), and deleted “engaged in the regular course of business in the District of Columbia” following “motor vehicles” in par. (2); in subsec. (b), substituted “notices of infraction for parking violations and for violations detected by an automated traffic enforcement system,” for “notices of infraction”; and rewrote pars. (1) and (3) of subsec. (d) and subsec. (e) which had read:</p>
+                <p>“(e) A fleet owner who participates in the fleet adjudication program shall answer, within 15 days of receipt, the monthly fleet infraction report which sets forth the date and time of the infraction, as well as other information contained in the original notice of infraction. Answers shall be consistent with § <a class="internal-link" href="/dc/council/code/sections/50-2303.05.html">50-2303.05</a>(a).”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a>, in subsec. (d), par. (9), substituted “Department of Motor Vehicles” for “Department of Public Works”; and rewrote subsec. (e), which had read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 2(a) of the Traffic Adjudication Fleet Adjudication Emergency Amendment Act of 1997 (D.C. Act 12-122, August 1, 1997,  44 DCR 4649), and § 2(a) of the Fleet Traffic Adjudication Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-173, October 30, 1997,  44 DCR 6911).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Street Sweeping Improvement Enforcement Amendment Emergency Act of 2008 (D.C. Act 17-369, May 20, 2008,  55 DCR 6087).</p>
-                <p>For temporary (90 day) amendment, see § 2(c) of Street Sweeping Improvement Enforcement Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-458, July 28, 2008,  55 DCR 8723).</p>
-                <p>For temporary (90 day) amendment of section, see § 6003 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 6003 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 6003 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment, see § 2(c) of Street Sweeping Improvement Enforcement Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-458, July 28, 2008,  55 DCR 8723).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Street Sweeping Improvement Enforcement Amendment Emergency Act of 2008 (D.C. Act 17-369, May 20, 2008,  55 DCR 6087).</p>
+                <p>For temporary addition of section, see § 2(a) of the Traffic Adjudication Fleet Adjudication Emergency Amendment Act of 1997 (D.C. Act 12-122, August 1, 1997,  44 DCR 4649), and § 2(a) of the Fleet Traffic Adjudication Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-173, October 30, 1997,  44 DCR 6911).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(c) of Street Sweeping Improvement Enforcement Temporary Amendment Act of 2008 (D.C. Law 17-218, August 15, 2008, law notification  55 DCR 9902).</p>
                 <p>For temporary (225 day) addition, see § 2(a) of Fleet Traffic Adjudication Temporary Amendment Act of 1997 (D.C. Law 12-49, February 27, 1998, law notification  45 DCR 1510).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(c) of Street Sweeping Improvement Enforcement Temporary Amendment Act of 2008 (D.C. Law 17-218, August 15, 2008, law notification  55 DCR 9902).</p>
                 <h4>Editor's Notes</h4>
                 <p>Mayor authorized to issue rules: Section 3 of <a class="internal-link" href="/dc/council/laws/12-76.html">D.C. Law 12-76</a> provided that the Mayor may issue rules to implement the provisions of the act.</p>
               </section>
@@ -942,29 +954,29 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§305">Sept. 12, 1978, D.C. Law 2-104, § 305, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/11-198.html">Apr. 9, 1997, D.C. Law 11-198, § 504(c), 43 DCR 4569</a>; <a class="internal-link" href="/dc/council/laws/12-76.html">March 24, 1998, D.C. Law 12-76, § 2(b), 45 DCR 481</a>; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 302(i), 48 DCR 2057</a>; <a class="internal-link" href="/dc/council/laws/16-279.html">Mar. 14, 2007, D.C. Law 16-279, § 301(g), 54 DCR 903</a>; <a class="internal-link" href="/dc/council/laws/17-303.html">Mar. 20, 2009, D.C. Law 17-303, § 4(b), 55 DCR 12803</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 164(b), 56 DCR 1117</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, § 3(h), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-625.</p>
                 <p>1973 Ed., § 40-1119.</p>
+                <p>1981 Ed., § 40-625.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-331.html">50-331</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2201.03.html">50-2201.03</a>, § <a class="internal-link" href="/dc/council/code/sections/50-2301.05.html">50-2301.05</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-2303.06.html">50-2303.06</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> validated a previously made change and rewrote subsec. (d).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (a), par. (2), added subpars. (F), and (G); in subsec. (b), substituted “telephone, email, or through the Department’s website” for “telephone”; in subsec. (d), par. (2), substituted “mail, to the address in the Department of Motor Vehicles’ records, if such address was supplied to the Department of Motor Vehicles,” for “mail”; and added subsec. (f).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-303.html">D.C. Law 17-303</a>, in subsec. (a)(1)(A), substituted “civil fine and any related vehicle conveyance fee” for “civil fine”; in subsec. (c), substituted “civil fine, any related vehicle conveyance fee assessed by the District,” for “civil fine”; in subsec. (d)(1), inserted “and any related vehicle conveyance fee”; and, in subsec. (d)(2), substituted “penalties, fines, and any vehicle conveyance fees” for “penalties and fines”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> made a technical amendment to the enacting clause of <a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, § 301(g), which did not change the text of the section.</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> made a minor stylistic change in (a)(1)(A) and added (a)(1)(A-i); substituted “by mail, or through the Department’s website” for “or by mail. Answers by telephone, email, or through the Department’s website may be permitted by regulation” in (b); substituted “the person submits an answer” for “he submits an answer” in (c); added (c-1); repealed (e); rewrote the introductory language of (f); added “as set forth in subsection (a)(2) of this section” in (f)(1); and added (g).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> made a technical amendment to the enacting clause of <a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, § 301(g), which did not change the text of the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-303.html">D.C. Law 17-303</a>, in subsec. (a)(1)(A), substituted “civil fine and any related vehicle conveyance fee” for “civil fine”; in subsec. (c), substituted “civil fine, any related vehicle conveyance fee assessed by the District,” for “civil fine”; in subsec. (d)(1), inserted “and any related vehicle conveyance fee”; and, in subsec. (d)(2), substituted “penalties, fines, and any vehicle conveyance fees” for “penalties and fines”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (a), par. (2), added subpars. (F), and (G); in subsec. (b), substituted “telephone, email, or through the Department’s website” for “telephone”; in subsec. (d), par. (2), substituted “mail, to the address in the Department of Motor Vehicles’ records, if such address was supplied to the Department of Motor Vehicles,” for “mail”; and added subsec. (f).</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> validated a previously made change and rewrote subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 504(c) of the Fiscal Year 1997 Budget Support Emergency Act of 1996 (D.C. Act 11-302, July 25, 1996,  43 DCR 4181), § 504(c) of the Fiscal Year 1997 Budget Support Emergency Amendment Act of 1996 (D.C. Act 11-429, October 29, 1996,  43 DCR 6151), § 504(c) of the Fiscal Year 1997 Budget Support Congressional Adjournment Emergency Amendment Act of 1997 (D.C. Act 12-2, February 19, 1997,  44 DCR 1590), § 2(b) of the Traffic Adjudication Fleet Adjudication Emergency Amendment Act of 1997 (D.C. Act 12-122, August 1, 1997,  44 DCR 4649), and § 2(b) of the Fleet Traffic Adjudication Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-173, October 30, 1997,  44 DCR 6911).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary amendment of section, see § 504(c) of the Fiscal Year 1997 Budget Support Emergency Act of 1996 (D.C. Act 11-302, July 25, 1996,  43 DCR 4181), § 504(c) of the Fiscal Year 1997 Budget Support Emergency Amendment Act of 1996 (D.C. Act 11-429, October 29, 1996,  43 DCR 6151), § 504(c) of the Fiscal Year 1997 Budget Support Congressional Adjournment Emergency Amendment Act of 1997 (D.C. Act 12-2, February 19, 1997,  44 DCR 1590), § 2(b) of the Traffic Adjudication Fleet Adjudication Emergency Amendment Act of 1997 (D.C. Act 12-122, August 1, 1997,  44 DCR 4649), and § 2(b) of the Fleet Traffic Adjudication Legislative Review Emergency Amendment Act of 1997 (D.C. Act 12-173, October 30, 1997,  44 DCR 6911).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 503(c) of Fiscal Year 1997 Budget Support Temporary Amendment Act of 1996 (<a class="internal-link" href="/dc/council/laws/11-226.html">D.C. Law 11-226</a>, April 9, 1997, law notification  44 DCR 2584).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(b) of Fleet Traffic Adjudication Temporary Amendment Act of 1997 (D.C. Law 12-49, February 27, 1998, law notification  45 DCR 1510).</p>
+                <p>For temporary (225 day) amendment of section, see § 503(c) of Fiscal Year 1997 Budget Support Temporary Amendment Act of 1996 (<a class="internal-link" href="/dc/council/laws/11-226.html">D.C. Law 11-226</a>, April 9, 1997, law notification  44 DCR 2584).</p>
                 <h4>Transfer of Functions</h4>
                 <p>The functions of the Department of Transportation were transferred to the Department of Public Works by Reorganization Plan No. 4 of 1983, effective March 1, 1984.</p>
                 <h4>Editor's Notes</h4>
-                <p>Mayor authorized to issue rules: Section 3 of <a class="internal-link" href="/dc/council/laws/12-76.html">D.C. Law 12-76</a> provided that the Mayor may issue rules to implement the provisions of the act.</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
+                <p>Mayor authorized to issue rules: Section 3 of <a class="internal-link" href="/dc/council/laws/12-76.html">D.C. Law 12-76</a> provided that the Mayor may issue rules to implement the provisions of the act.</p>
               </section>
             </section>
             <hr/>
@@ -992,22 +1004,22 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§306">Sept. 12, 1978, D.C. Law 2-104, § 306, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/13-289.html">Apr. 27, 2001, D.C. Law 13-289, § 302(j), 48 DCR 2057</a>; <a class="internal-link" href="/dc/council/laws/16-279.html">Mar. 14, 2007, D.C. Law 16-279, § 301(h), 54 DCR 903</a>; <a class="internal-link" href="/dc/council/laws/17-303.html">Mar. 20, 2009, D.C. Law 17-303, § 4(c), 55 DCR 12803</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, § 3(i), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-626.</p>
                 <p>1973 Ed., § 40-1120.</p>
+                <p>1981 Ed., § 40-626.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-331.html">50-331</a> and § <a class="internal-link" href="/dc/council/code/sections/50-2201.03.html">50-2201.03</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> substituted “Chapter 10 of Title 18 of the District of Columbia Municipal Regulations” for “Chapter IX of Title 32 of the District of Columbia Rules and Regulations” in subsec. (a); deleted “or admitted with explanation” following “has admitted” in the introductory paragraph of subsec. (c); and rewrote subsec. (d).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (e), extended the time to submit a written application to vacate from within 30 days of the effective date of the judgment to within 60 days of the effective date of the judgment.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-303.html">D.C. Law 17-303</a>, in subsec. (d), substituted “appropriate penalties and vehicle conveyance fee” for “appropriate penalties”.</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> repealed (c), (d), and (e); added the last sentence in (f); and added (f-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-303.html">D.C. Law 17-303</a>, in subsec. (d), substituted “appropriate penalties and vehicle conveyance fee” for “appropriate penalties”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a>, in subsec. (e), extended the time to submit a written application to vacate from within 30 days of the effective date of the judgment to within 60 days of the effective date of the judgment.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-289.html">D.C. Law 13-289</a> substituted “Chapter 10 of Title 18 of the District of Columbia Municipal Regulations” for “Chapter IX of Title 32 of the District of Columbia Rules and Regulations” in subsec. (a); deleted “or admitted with explanation” following “has admitted” in the introductory paragraph of subsec. (c); and rewrote subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see §  7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Editor's Notes</h4>
-                <p>Chapter 10 of Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Chapter IX of Title 32 of the District of Columbia Rules and Regulations, referred to in (a).</p>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
+                <p>Chapter 10 of Title 18 of the DCMR (Vehicles and Traffic) (June, 1987) has replaced Chapter IX of Title 32 of the District of Columbia Rules and Regulations, referred to in (a).</p>
               </section>
             </section>
             <hr/>
@@ -1042,9 +1054,9 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§308">Sept. 12, 1978, D.C. Law 2-104, § 308</a>; <a class="internal-link" href="/dc/council/laws/16-279.html">as added Mar. 14, 2007, D.C. Law 16-279, § 301(i), 54 DCR 903</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see §  7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
               </section>
@@ -1086,8 +1098,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§401">Sept. 12, 1978, D.C. Law 2-104, § 401, 25 DCR 1275</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-631.</p>
                 <p>1973 Ed., § 40-1121.</p>
+                <p>1981 Ed., § 40-631.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-2304.02.html">50-2304.02</a>.</p>
                 <h4>Transfer of Functions</h4>
@@ -1107,22 +1119,22 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§402">Sept. 12, 1978, D.C. Law 2-104, § 402, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/15-108.html">Mar. 30, 2004, D.C. Law 15-108, § 2, 51 DCR 1340</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, § 3(k), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-632.</p>
                 <p>1973 Ed., § 40-1122.</p>
+                <p>1981 Ed., § 40-632.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-108.html">D.C. Law 15-108</a> redesignated the text as subsection (a); and added subsec. (b).</p>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> rewrote (a); and substituted “A person” for “An aggrieved person” in (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-108.html">D.C. Law 15-108</a> redesignated the text as subsection (a); and added subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2 of Traffic Adjudication Appeal Fee Emergency Amendment Act of 2003 (D.C. Act 15-42, March 24, 2003,  50 DCR 2801).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Traffic Adjudication Appeal Fee Emergency Amendment Act of 2004 (D.C. Act 15-344, January 29, 2004,  51 DCR 1829).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015,  62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Traffic Adjudication Appeal Fee Emergency Amendment Act of 2004 (D.C. Act 15-344, January 29, 2004,  51 DCR 1829).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Traffic Adjudication Appeal Fee Emergency Amendment Act of 2003 (D.C. Act 15-42, March 24, 2003,  50 DCR 2801).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2 of Traffic Adjudication Appeal Fee Temporary Amendment Act of 2003 (D.C. Law 15-16, June 21, 2003, law notification  50 DCR 5460).</p>
                 <h4>Legislative History</h4>
-                <p>Legislative history of Law 20–127</p>
                 <p>See note to § <a class="internal-link" href="/dc/council/code/sections/50-2301.04.html">50-2301.04</a>.</p>
+                <p>Legislative history of Law 20–127</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
               </section>
@@ -1144,11 +1156,11 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§403">Sept. 12, 1978, D.C. Law 2-104, § 403, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/16-279.html">Mar. 14, 2007, D.C. Law 16-279, § 301(j), 54 DCR 903</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-633.</p>
                 <p>1973 Ed., § 40-1123.</p>
+                <p>1981 Ed., § 40-633.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a> repealed par. (2), which formerly read:</p>
                 <p>“(2) Contrary to constitutional right, power, privilege or immunity;”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-279.html">D.C. Law 16-279</a> repealed par. (2), which formerly read:</p>
               </section>
             </section>
             <hr/>
@@ -1165,14 +1177,14 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§404">Sept. 12, 1978, D.C. Law 2-104, § 404, 25 DCR 1275</a>; <a class="internal-link" href="/dc/council/laws/20-127.html">July 23, 2014, D.C. Law 20-127, § 3(l), 61 DCR 5711</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-634.</p>
                 <p>1973 Ed., § 40-1124.</p>
+                <p>1981 Ed., § 40-634.</p>
                 <h4>Effect of Amendments</h4>
                 <p>The 2014 amendment by <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a> substituted “30 calendar days” for “15 calendar days” in (a); rewrote (b); and substituted “30-day period” for “15-day period” in (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see §  7009 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014,  61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, § 5, see § 7009 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014,  61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-127.html">D.C. Law 20-127</a>, as amended by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a>, § 7009, provided that the act shall apply as of October 1, 2014.</p>
               </section>
@@ -1189,8 +1201,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§405">Sept. 12, 1978, D.C. Law 2-104, § 405, 25 DCR 1275</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-635.</p>
                 <p>1973 Ed., § 40-1125.</p>
+                <p>1981 Ed., § 40-635.</p>
               </section>
             </section>
             <hr/>
@@ -1206,8 +1218,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§701">Sept. 12, 1978, D.C. Law 2-104, § 701, 25 DCR 1275</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-641.</p>
                 <p>1973 Ed., § 40-1126.</p>
+                <p>1981 Ed., § 40-641.</p>
               </section>
             </section>
             <hr/>
@@ -1222,8 +1234,8 @@
       (<a class="internal-link" href="/dc/council/laws/2-104.html#§702">Sept. 12, 1978, D.C. Law 2-104, § 702, 25 DCR 1275</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-642.</p>
                 <p>1973 Ed., § 40-1127.</p>
+                <p>1981 Ed., § 40-642.</p>
               </section>
             </section>
             <hr/>

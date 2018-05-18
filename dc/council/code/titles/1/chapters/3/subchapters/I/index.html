@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/3/subchapters/II/">Subchapter II. Regulatory Authority.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/3/subchapters/I/">Report Error</a>
@@ -88,34 +88,62 @@
         <section class="col8 body">
           <h1>Subchapter I. Additional Governmental Powers and Responsibilities.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/A/">Part A. General.</a>
-            <p>§§ 1-301.01 - 1-301.05</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/B/">Part B. Subpoenas, Administration of Oaths, and Documents Concerning Police Officers and Firefighters.</a>
-            <p>§§ 1-301.21 - 1-301.23</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/C/">Part C. The Council.</a>
-            <p>§§ 1-301.41 - 1-301.49</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/D/">Part D. The Mayor.</a>
-            <p>§§ 1-301.61 - 1-301.78</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/D-i/">Part D-i. Attorney General for the District of Columbia.</a>
-            <p>§§ 1-301.81 - 1-301.90</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/E/">Part E. Additional Authority of the Director of the Office of Contracting and Procurement.</a>
-            <p>§§ 1-301.91 - 1-301.92</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/F/">Part F. Additional Authority of the Attorney General.</a>
-            <p>§§ 1-301.111 - 1-301.114</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/F-i/">Part F-i. Office of the Inspector General.</a>
-            <p>§§ 1-301.115a - 1-301.115b</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/G/">Part G. Authority to Participate in Multistate Efforts to Develop Sales and Use Taxes.</a>
-            <p>§§ 1-301.121 - 1-301.128</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/H/">Part H. Chief Financial Officer for the Department of Housing and Community Development.</a>
-            <p>§§ 1-301.141 - 1-301.141</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/I/">Part I. Chief Financial Officer Additional Duties.</a>
-            <p>§§ 1-301.151 - 1-301.157</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/J/">Part J. District of Columbia Auditor Subpoena and Oath Authority.</a>
-            <p>§§ 1-301.171 - 1-301.174</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/K/">Part K. District of Columbia Auditor Compliance Unit. [Repealed]</a>
-            <p>§§ 1-301.181 - 1-301.184</p>
-            <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/L/">Part L. Office of the Deputy Mayor for Public Safety and Justice.</a>
-            <p>§§ 1-301.191 - 1-301.191</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/A/">Part A. General.</a>
+            </p>
+            <p>§§ 1-301.01 – 1-301.05</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/B/">Part B. Subpoenas, Administration of Oaths, and Documents Concerning Police Officers and Firefighters.</a>
+            </p>
+            <p>§§ 1-301.21 – 1-301.23</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/C/">Part C. The Council.</a>
+            </p>
+            <p>§§ 1-301.41 – 1-301.49</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/D/">Part D. The Mayor.</a>
+            </p>
+            <p>§§ 1-301.61 – 1-301.78</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/D-i/">Part D-i. Attorney General for the District of Columbia.</a>
+            </p>
+            <p>§§ 1-301.81 – 1-301.90</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/E/">Part E. Additional Authority of the Director of the Office of Contracting and Procurement.</a>
+            </p>
+            <p>§§ 1-301.91 – 1-301.92</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/F/">Part F. Additional Authority of the Attorney General.</a>
+            </p>
+            <p>§§ 1-301.111 – 1-301.114</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/F-i/">Part F-i. Office of the Inspector General.</a>
+            </p>
+            <p>§§ 1-301.115a – 1-301.115b</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/G/">Part G. Authority to Participate in Multistate Efforts to Develop Sales and Use Taxes.</a>
+            </p>
+            <p>§§ 1-301.121 – 1-301.128</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/H/">Part H. Chief Financial Officer for the Department of Housing and Community Development.</a>
+            </p>
+            <p>§§ 1-301.141 – 1-301.141</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/I/">Part I. Chief Financial Officer Additional Duties.</a>
+            </p>
+            <p>§§ 1-301.151 – 1-301.157</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/J/">Part J. District of Columbia Auditor Subpoena and Oath Authority.</a>
+            </p>
+            <p>§§ 1-301.171 – 1-301.174</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/K/">Part K. District of Columbia Auditor Compliance Unit. [Repealed]</a>
+            </p>
+            <p>§§ 1-301.181 – 1-301.184</p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/titles/1/chapters/3/subchapters/I/parts/L/">Part L. Office of the Deputy Mayor for Public Safety and Justice.</a>
+            </p>
+            <p>§§ 1-301.191 – 1-301.191</p>
           </section>
           <section class="content">
             <hr/>
@@ -158,85 +186,85 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-2-ch611.html#§1">Dec. 20, 1944, 58 Stat. 819, ch. 611, § 1</a>; <a class="internal-link" href="/us/congress/laws/public/85-491.html">July 2, 1958, 72 Stat. 292, Pub. L. 85-491, §§ 1, 2</a>; <a class="internal-link" href="/us/congress/laws/public/86-178.html">Aug. 21, 1959, 73 Stat. 414, Pub. L. 86-178, § 2</a>; <a class="internal-link" href="/us/congress/laws/public/86-743.html">Sept. 13, 1960, 74 Stat. 881, Pub. L. 86-743, § 1</a>; <a class="internal-link" href="/dc/council/laws/1-109.html">Apr. 7, 1977, D.C. Law 1-109, § 2, 23 DCR 8739</a>; <a class="internal-link" href="/dc/council/laws/2-153.html">Mar. 6, 1979, D.C. Law 2-153, § 5, 25 DCR 6960</a>; <a class="internal-link" href="/dc/council/laws/3-70.html">June 14, 1980, D.C. Law 3-70, § 7(b), 27 DCR 1776</a>; <a class="internal-link" href="/dc/council/laws/3-75.html">July 1, 1980, D.C. Law 3-75, § 3, 27 DCR 2277</a>; <a class="internal-link" href="/dc/council/laws/4-34.html">Oct. 8, 1981, D.C. Law 4-34, § 29(d), 28 DCR 3271</a>; <a class="internal-link" href="/dc/council/laws/4-201.html">Mar. 10, 1983, D.C. Law 4-201, § 707, 30 DCR 148</a>; <a class="internal-link" href="/dc/council/laws/8-227.html">Mar. 7, 1991, D.C. Law 8-227, § 2, 38 DCR 224</a>; <a class="internal-link" href="/dc/council/laws/10-140.html">July 23, 1994, D.C. Law 10-140, § 2, 41 DCR 3053</a>; <a class="internal-link" href="/dc/council/laws/11-259.html">Apr. 12, 1997, D.C. Law 11-259, § 302, 44 DCR 1423</a>; <a class="internal-link" href="/dc/council/laws/18-63.html">Oct. 22, 2009, D.C. Law 18-63, § 2, 56 DCR 6601</a>; <a class="internal-link" href="/dc/council/laws/18-370.html">Apr. 8, 2011, D.C. Law 18-370, § 123, 58 DCR 1008</a>; <a class="internal-link" href="/dc/council/laws/19-21.html">Sept. 14, 2011, D.C. Law 19-21, § 9020(a), 58 DCR 6226</a>; <a class="internal-link" href="/dc/council/laws/19-168.html">Sept. 20, 2012, D.C. Law 19-168, §§ 6032, 8002, 59 DCR 8025</a>; <a class="internal-link" href="/dc/council/laws/21-160.html#§3002">Oct. 8, 2016, D.C. Law 21-160, § 3002, 63 DCR 10775</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-337.</p>
                 <p>1973 Ed., § 1-244.</p>
+                <p>1981 Ed., § 1-337.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-301.05.html">1-301.05</a>, § <a class="internal-link" href="/dc/council/code/sections/1-321.02.html">1-321.02</a>, § <a class="internal-link" href="/dc/council/code/sections/5-121.01.html">5-121.01</a>, § <a class="internal-link" href="/dc/council/code/sections/10-1101.01.html">10-1101.01</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2844.html">47-2844</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2883.02.html">47-2883.02</a>, and § <a class="internal-link" href="/dc/council/code/sections/50-603.html">50-603</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-63.html">D.C. Law 18-63</a> rewrote the first sentence of subsec. (k)(1), which had previously read: “The Director of the Office of Contracting and Procurement is authorized and empowered in his discretion to authorize any department, office, or agency of the District of Columbia government, when it is determined to be in the best interest of the District of Columbia so to do, place orders with any other department, office, or agency of the District for materials, supplies, equipment, work, or services of any kind that such requisitioned department, office, or agency may be in a position to supply or equipped to render.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-370.html">D.C. Law 18-370</a>, in subsec. (k)(1), substituted “the Chief Financial Officer shall submit quarterly to the Council and the Mayor the summary required by D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/47-355.05.html">47-355.05</a>(e), along with all Memoranda of Understanding between” for “the Mayor shall submit annually to the Council a report of all Memoranda of Understanding between”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (i)(1), substituted “unrestricted fund balance of the General Fund of the District of Columbia” for “General Fund”.</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> deleted “the unrestricted fund balance of” following “deposited in” in the last sentence of (i)(1); and added (j-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a>, in subsec. (i)(1), substituted “unrestricted fund balance of the General Fund of the District of Columbia” for “General Fund”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-370.html">D.C. Law 18-370</a>, in subsec. (k)(1), substituted “the Chief Financial Officer shall submit quarterly to the Council and the Mayor the summary required by D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/47-355.05.html">47-355.05</a>(e), along with all Memoranda of Understanding between” for “the Mayor shall submit annually to the Council a report of all Memoranda of Understanding between”.</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-63.html">D.C. Law 18-63</a> rewrote the first sentence of subsec. (k)(1), which had previously read: “The Director of the Office of Contracting and Procurement is authorized and empowered in his discretion to authorize any department, office, or agency of the District of Columbia government, when it is determined to be in the best interest of the District of Columbia so to do, place orders with any other department, office, or agency of the District for materials, supplies, equipment, work, or services of any kind that such requisitioned department, office, or agency may be in a position to supply or equipped to render.”</p>
                 <h4>Cross References</h4>
-                <p>Bonding of home improvement businesses, bond requirements, see § <a class="internal-link" href="/dc/council/code/sections/47-2883.01.html">47-2883.01</a> et seq.</p>
-                <p>General license law, bonding of licensees authorized to collect moneys, see § <a class="internal-link" href="/dc/council/code/sections/47-2844.html">47-2844</a>.</p>
-                <p>Motor vehicles, installment sales, dealer bonds, limitation of actions, see § <a class="internal-link" href="/dc/council/code/sections/50-603.html">50-603</a>.</p>
-                <p>Private detectives, bonds, see § <a class="internal-link" href="/dc/council/code/sections/5-121.01.html">5-121.01</a>.</p>
                 <p>Public space rental and utilization, “vault” defined, see § <a class="internal-link" href="/dc/council/code/sections/10-1101.01.html">10-1101.01</a>.</p>
+                <p>Private detectives, bonds, see § <a class="internal-link" href="/dc/council/code/sections/5-121.01.html">5-121.01</a>.</p>
+                <p>Motor vehicles, installment sales, dealer bonds, limitation of actions, see § <a class="internal-link" href="/dc/council/code/sections/50-603.html">50-603</a>.</p>
+                <p>General license law, bonding of licensees authorized to collect moneys, see § <a class="internal-link" href="/dc/council/code/sections/47-2844.html">47-2844</a>.</p>
+                <p>Bonding of home improvement businesses, bond requirements, see § <a class="internal-link" href="/dc/council/code/sections/47-2883.01.html">47-2883.01</a> et seq.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) enactment, see §§ 2 to 7 of Mayor and Chairman of the Council Transition Revised Emergency Amendment Act of 2006 (D.C. Act 16-534, December 4, 2006,  53 DCR 9846).</p>
-                <p>For temporary (90 day) enactments, see §§ 2 to 7 of Mayor and Chairman of the Council Transition Revised Congressional Review Emergency Act of 2007 (D.C. Act 17-14, February 20, 2007,  54 DCR 1768).</p>
-                <p>For temporary (90 day) addition, see § 2 of Department of Parks and Recreation Budget Transparency Emergency Act of 2009 (D.C. Act 18-235, November 25, 2009,  56 DCR 9049).</p>
-                <p>For temporary (90 day) amendment of section, see § 123 of Fiscal Year 2011 Supplemental Budget Support Emergency Act of 2010 (D.C. Act 18-694, January 19, 2011,  58 DCR 662).</p>
-                <p>For temporary (90 day) amendment of section, see § 8002 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
                 <p>For temporary (90 day) amendment of section, see § 8002 of Fiscal Year 2013 Budget Support Congressional Review Emergency Act of 2012 (D.C. Act 19-413, July 25, 2012,  59 DCR 9290).</p>
+                <p>For temporary (90 day) amendment of section, see § 8002 of Fiscal Year 2013 Budget Support Emergency Act of 2012 (D.C. Act 19-383, June 19, 2012,  59 DCR 7764).</p>
+                <p>For temporary (90 day) amendment of section, see § 123 of Fiscal Year 2011 Supplemental Budget Support Emergency Act of 2010 (D.C. Act 18-694, January 19, 2011,  58 DCR 662).</p>
+                <p>For temporary (90 day) addition, see § 2 of Department of Parks and Recreation Budget Transparency Emergency Act of 2009 (D.C. Act 18-235, November 25, 2009,  56 DCR 9049).</p>
+                <p>For temporary (90 day) enactments, see §§ 2 to 7 of Mayor and Chairman of the Council Transition Revised Congressional Review Emergency Act of 2007 (D.C. Act 17-14, February 20, 2007,  54 DCR 1768).</p>
+                <p>For temporary (90 day) enactment, see §§ 2 to 7 of Mayor and Chairman of the Council Transition Revised Emergency Amendment Act of 2006 (D.C. Act 16-534, December 4, 2006,  53 DCR 9846).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Sections 2 to 7 of D.C. Law 16-216 added provisions to read as follows:</p>
-                <p>“Sec. 2. Purpose.</p>
-                <p>“This act authorizes the Mayor to take appropriate action to assure continuity in the execution of the laws and in the conduct of the legislative and executive affairs of the District of Columbia government. The purposes of this act are to provide for the orderly transfer of the:</p>
-                <p>“(1) Executive duties and responsibilities of the Executive Office of the Mayor with the expiration of the term of office of a Mayor and the assumption of those duties and responsibilities by a new Mayor; and</p>
-                <p>“(2) Legislative duties and responsibilities of the Chairman of the Council with the expiration of the term of office of a Chairman and the assumption of those duties and responsibilities by a new Chairman.</p>
-                <p>“Sec. 3. (a) The Mayor, in the discharge of his or her duties pursuant to section 422 of the District of Columbia Home Rule Act, approved December 23, 1973 (87 Stat. 790; D.C. Official Code § 1-204.22), may make available to the Mayor-elect and the Chairman-elect the following:</p>
-                <p>“(1) Office space, furniture, furnishings, office machines, and supplies, at whatever place or places within the District as the Mayor shall designate, at no cost to the Mayor-elect, the Chairman-elect, and the transition staff of each;</p>
-                <p>“(2) Compensation for the Mayor-elect’s and Chairman-elect’s transition staffs at a rate that does not exceed the rate prescribed pursuant to the District of Columbia Government Comprehensive Merit Personnel Act of 1973, effective March 3, 1979 (<a class="internal-link" href="/dc/council/code/titles/1/chapters/6/">D.C. Law 2-139</a>; D.C. Official Code § 1-601.1 et seq.) (’Merit Personnel Act’); provided, that any person who receives compensation as a member of transition staff under this paragraph does not hold a position in, or be considered to be an employee of, the District government.</p>
-                <p>“(3) Expenses for the procurement by the Mayor-elect and Chairman-elect of services of any expert or consultant, or organization thereof;</p>
-                <p>“(4) Travel expenses or subsistence allowances, as authorized by the Mayor-elect or Chairman-elect, including rental of a governmental or hired motor vehicle at a rate not to exceed the rate authorized pursuant to the Merit Personnel Act;</p>
-                <p>“(5) Expenses incurred by the Mayor-elect and Chairman-elect for printing, binding, and duplicating;</p>
-                <p>“(6) Postage or mailing expenses incurred by the Mayor-elect and Chairman-elect consistent with the Official Correspondence Regulations, effective April 7, 1977 (<a class="internal-link" href="/dc/council/laws/1-118.html">D.C. Law 1-118</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-701.html">2-701</a> et seq.); and</p>
-                <p>“(7) Expenses for communications equipment or service.</p>
-                <p>“(b)(1) No funds authorized by this act shall be expended in connection with any obligation incurred other than by the Mayor-elect or Chairman-elect.</p>
-                <p>“(2) Obligations may be incurred by the Mayor-elect or the Chairman-elect through the seventh day following the date of the inauguration of the Mayor-elect and Chairman-elect.</p>
-                <p>“Sec. 4. The Mayor-elect and Chairman-elect shall each file a report to be prepared with appropriate supporting documentation accounting for the expenditure of funds pursuant to this act. These reports shall be submitted to the Mayor, Council, and Chief Financial Officer no later than March 31, 2007.</p>
-                <p>“Sec. 5. Upon certification by the Chief Financial Officer that appropriated funds are available and that the reprogramming of those funds has been approved by the Council, there is hereby authorized the following amounts to be made available for transition costs:</p>
-                <p>“(1) Up to $250,000 for the transition of the Mayor-elect; and</p>
-                <p>“(2) Up to $150,000 for the transition of the Chairman-elect.</p>
-                <p>“Sec. 6. (a) For the purposes of this act, the term:</p>
-                <p>“(1) ‘Chairman-elect’ means the person who is certified as the successful candidate for the office of Chairman of the Council by the District of Columbia Board of Elections and Ethics (‘Board of Elections and Ethics’) following the general election held to determine the Chairman, or for the period of time between the general election and certification, the person announced and published by the Board of Elections and Ethics as the unofficial winner of the general election for Chairman with a margin of victory of at least 3% of the votes cast as reflected in the D.C. General Election 2006, November 7, 2006, Summary Report, Unofficial Results posted on the Board of Elections and Ethics website at</p>
-                <p>“(2) ‘Mayor-elect’ means the person who is certified as the successful candidate for the office of Mayor by the Board of Elections and Ethics following the general election held to determine the Mayor, or for the period of time between the general election and certification, the person announced and published by the Board of Elections and Ethics as the unofficial winner of the general election for Mayor with a margin of victory of at least 3% of the votes cast as reflected in the D.C. General Election 2006, November 7, 2006, Summary Report, Unofficial Results posted on the Board of Elections and Ethics website at</p>
-                <p>“Sec. 7. Pursuant to section 202(j)(2) and (3)(B) of the District of Columbia Financial Responsibility and Management Assistance Act of 1995, approved April 17, 1995 (Pub. L. No. 104-8; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/47-392.02.html">47-392.02</a>(j)(2) and (3)(B)), an amount not to exceed $2 million may be expended from the District of Columbia 2007 Operating Cash Reserve as follows:</p>
-                <p>“(1) An amount not to exceed $1 million shall be for the Council of the District of Columbia for Council personnel and compensation costs; and</p>
-                <p>“(2) An amount not to exceed $1 million shall be for the Council of the District of Columbia for the administration of central services.”</p>
                 <p>Section 9(b) of D.C. Law 16-216 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(2) An amount not to exceed $1 million shall be for the Council of the District of Columbia for the administration of central services.”</p>
+                <p>“(1) An amount not to exceed $1 million shall be for the Council of the District of Columbia for Council personnel and compensation costs; and</p>
+                <p>“Sec. 7. Pursuant to section 202(j)(2) and (3)(B) of the District of Columbia Financial Responsibility and Management Assistance Act of 1995, approved April 17, 1995 (Pub. L. No. 104-8; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/47-392.02.html">47-392.02</a>(j)(2) and (3)(B)), an amount not to exceed $2 million may be expended from the District of Columbia 2007 Operating Cash Reserve as follows:</p>
+                <p>“(2) ‘Mayor-elect’ means the person who is certified as the successful candidate for the office of Mayor by the Board of Elections and Ethics following the general election held to determine the Mayor, or for the period of time between the general election and certification, the person announced and published by the Board of Elections and Ethics as the unofficial winner of the general election for Mayor with a margin of victory of at least 3% of the votes cast as reflected in the D.C. General Election 2006, November 7, 2006, Summary Report, Unofficial Results posted on the Board of Elections and Ethics website at</p>
+                <p>“(1) ‘Chairman-elect’ means the person who is certified as the successful candidate for the office of Chairman of the Council by the District of Columbia Board of Elections and Ethics (‘Board of Elections and Ethics’) following the general election held to determine the Chairman, or for the period of time between the general election and certification, the person announced and published by the Board of Elections and Ethics as the unofficial winner of the general election for Chairman with a margin of victory of at least 3% of the votes cast as reflected in the D.C. General Election 2006, November 7, 2006, Summary Report, Unofficial Results posted on the Board of Elections and Ethics website at</p>
+                <p>“Sec. 6. (a) For the purposes of this act, the term:</p>
+                <p>“(2) Up to $150,000 for the transition of the Chairman-elect.</p>
+                <p>“(1) Up to $250,000 for the transition of the Mayor-elect; and</p>
+                <p>“Sec. 5. Upon certification by the Chief Financial Officer that appropriated funds are available and that the reprogramming of those funds has been approved by the Council, there is hereby authorized the following amounts to be made available for transition costs:</p>
+                <p>“Sec. 4. The Mayor-elect and Chairman-elect shall each file a report to be prepared with appropriate supporting documentation accounting for the expenditure of funds pursuant to this act. These reports shall be submitted to the Mayor, Council, and Chief Financial Officer no later than March 31, 2007.</p>
+                <p>“(2) Obligations may be incurred by the Mayor-elect or the Chairman-elect through the seventh day following the date of the inauguration of the Mayor-elect and Chairman-elect.</p>
+                <p>“(b)(1) No funds authorized by this act shall be expended in connection with any obligation incurred other than by the Mayor-elect or Chairman-elect.</p>
+                <p>“(7) Expenses for communications equipment or service.</p>
+                <p>“(6) Postage or mailing expenses incurred by the Mayor-elect and Chairman-elect consistent with the Official Correspondence Regulations, effective April 7, 1977 (<a class="internal-link" href="/dc/council/laws/1-118.html">D.C. Law 1-118</a>; D.C. Official Code § <a class="internal-link" href="/dc/council/code/sections/2-701.html">2-701</a> et seq.); and</p>
+                <p>“(5) Expenses incurred by the Mayor-elect and Chairman-elect for printing, binding, and duplicating;</p>
+                <p>“(4) Travel expenses or subsistence allowances, as authorized by the Mayor-elect or Chairman-elect, including rental of a governmental or hired motor vehicle at a rate not to exceed the rate authorized pursuant to the Merit Personnel Act;</p>
+                <p>“(3) Expenses for the procurement by the Mayor-elect and Chairman-elect of services of any expert or consultant, or organization thereof;</p>
+                <p>“(2) Compensation for the Mayor-elect’s and Chairman-elect’s transition staffs at a rate that does not exceed the rate prescribed pursuant to the District of Columbia Government Comprehensive Merit Personnel Act of 1973, effective March 3, 1979 (<a class="internal-link" href="/dc/council/code/titles/1/chapters/6/">D.C. Law 2-139</a>; D.C. Official Code § 1-601.1 et seq.) (’Merit Personnel Act’); provided, that any person who receives compensation as a member of transition staff under this paragraph does not hold a position in, or be considered to be an employee of, the District government.</p>
+                <p>“(1) Office space, furniture, furnishings, office machines, and supplies, at whatever place or places within the District as the Mayor shall designate, at no cost to the Mayor-elect, the Chairman-elect, and the transition staff of each;</p>
+                <p>“Sec. 3. (a) The Mayor, in the discharge of his or her duties pursuant to section 422 of the District of Columbia Home Rule Act, approved December 23, 1973 (87 Stat. 790; D.C. Official Code § 1-204.22), may make available to the Mayor-elect and the Chairman-elect the following:</p>
+                <p>“(2) Legislative duties and responsibilities of the Chairman of the Council with the expiration of the term of office of a Chairman and the assumption of those duties and responsibilities by a new Chairman.</p>
+                <p>“(1) Executive duties and responsibilities of the Executive Office of the Mayor with the expiration of the term of office of a Mayor and the assumption of those duties and responsibilities by a new Mayor; and</p>
+                <p>“This act authorizes the Mayor to take appropriate action to assure continuity in the execution of the laws and in the conduct of the legislative and executive affairs of the District of Columbia government. The purposes of this act are to provide for the orderly transfer of the:</p>
+                <p>“Sec. 2. Purpose.</p>
+                <p>Sections 2 to 7 of D.C. Law 16-216 added provisions to read as follows:</p>
                 <h4>Transfer of Functions</h4>
                 <p>The functions of the Insurance Department were transferred to the Department of Consumer and Regulatory Affairs by Reorganization Plan No. 1 of 1983, effective March 31, 1983.</p>
                 <h4>References in Text</h4>
                 <p>“ Section 8 of Title 6, United States Code,” referred to in (b)(3), was repealed by Pub. L. 97-258, § 5(b), Sept. 13, 1982, 96 Stat. 1068, 1085.</p>
                 <h4>Editor's Notes</h4>
-                <p>Designation of Mary Terrell—Arthur Elmes Parks: See Act of March 5, 1981, D.C. Law 3-151,  27 DCR 4905.</p>
-                <p>Designation of Blues Alley: See Act of March 5, 1981, D.C. Law 3-165,  27 DCR 5230.</p>
-                <p>Designation of Walter Houp Court: See Act of March 5, 1981, D.C. Law 3-168,  27 DCR 5365.</p>
-                <p>Designation of Community Park West: See Act of December 10, 1981, D.C. Law 4-56,  28 DCR 4650.</p>
-                <p>Designation of Ward Court: See Act of March 9, 1983, D.C. Law 4-168,  29 DCR 4987.</p>
-                <p>Designation of Anna J. Cooper Circle: See Act of March 9, 1983, D.C. Law 4-175,  29 DCR 5760.</p>
-                <p>Designation of Windom Place, Northwest: See Act of March 10, 1983, D.C. Law 4-192,  30 DCR 43.</p>
-                <p>Designation of Charles Richard Drew Bridge: See Act of May 3, 1983, D.C. Law 5-2,  30 DCR 1230.</p>
                 <p>Section 8010 of <a class="internal-link" href="/dc/council/laws/19-168.html">D.C. Law 19-168</a> provided that §§ 8002, 8003, 8004, 8005, 8006, and 8007 of the act shall apply as of September 14, 2011.</p>
+                <p>Designation of Charles Richard Drew Bridge: See Act of May 3, 1983, D.C. Law 5-2,  30 DCR 1230.</p>
+                <p>Designation of Windom Place, Northwest: See Act of March 10, 1983, D.C. Law 4-192,  30 DCR 43.</p>
+                <p>Designation of Anna J. Cooper Circle: See Act of March 9, 1983, D.C. Law 4-175,  29 DCR 5760.</p>
+                <p>Designation of Ward Court: See Act of March 9, 1983, D.C. Law 4-168,  29 DCR 4987.</p>
+                <p>Designation of Community Park West: See Act of December 10, 1981, D.C. Law 4-56,  28 DCR 4650.</p>
+                <p>Designation of Walter Houp Court: See Act of March 5, 1981, D.C. Law 3-168,  27 DCR 5365.</p>
+                <p>Designation of Blues Alley: See Act of March 5, 1981, D.C. Law 3-165,  27 DCR 5230.</p>
+                <p>Designation of Mary Terrell—Arthur Elmes Parks: See Act of March 5, 1981, D.C. Law 3-151,  27 DCR 4905.</p>
                 <h4>Mayor's Orders</h4>
-                <p>See Mayor’s Order 92-153, December 1, 1992.</p>
                 <p>See Mayor’s Order 91-187, November 25, 1991.</p>
+                <p>See Mayor’s Order 92-153, December 1, 1992.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority, see Mayor’s Order 90-68, April 30, 1990.</p>
-                <p>Delegation of contracting authority, see Mayor’s Order 90-178, November 19, 1990.</p>
-                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-227.html">D.C. Law 8-227</a>, the “Sale of Government Publications Amendment Act of 1990.”, see Mayor’s Order 91-98, June 5, 1991.</p>
-                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-227.html">D.C. Law 8-227</a>, the “Sale of Government Publication Amendment Act of 1990.”, see Mayor’s Order 93-199, November 19, 1993.</p>
-                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-227.html">D.C. Law 8-227</a>, the “Sale of Government Publications Amendment Act of 1990.”, see Mayor’s Order 94-236, November 9, 1994 ( 41 DCR 7593).</p>
-                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-227.html">D.C. Law 8-227</a>, the “Sale of Government Publications Amendment Act of 1990.”, see Mayor’s Order 96-40, March 18, 1996 ( 43 DCR 1801).</p>
-                <p>Amendment of Mayor's Order 90-178, Delegation of Contracting Authority:  See Mayor's Order 96-83, June 20, 1996 ( 43 DCR 3510).</p>
-                <p>Amendment of Mayor's Order 90-178, Delegation of Contracting Authority:  See Mayor's Order 96-136, September 9, 1996 ( 43 DCR 5043).</p>
-                <p>Amendment of Mayor's Order 90-178, Delegation of Contracting Authority:  See Mayor's Order 96-152, October 17, 1996 ( 43 DCR 5855).</p>
-                <p>Delegation of Authority to Approve or to Disapprove the Acquisition and Disposition of Real Estate, by Sale, Lease or Otherwise,  see Mayor's Order 2003-161, November 17, 2003 ( 50 DCR 10197).</p>
-                <p>Delegation of Authority to Execute Leases and Associated Documents with Respect to Certain Real Estate, see Mayor's Order 2005-112, July 22, 2005, ( 52 DCR 8180).</p>
                 <p>Delegation of Authority to Solicit Offers, Accept Unsolicited Offers and Execute Leases and Associated Documents with Respect to the Lincoln Theatre Site, see Mayor's Order 2007-251, November 2, 2007 ( 55 DCR 200).</p>
+                <p>Delegation of Authority to Execute Leases and Associated Documents with Respect to Certain Real Estate, see Mayor's Order 2005-112, July 22, 2005, ( 52 DCR 8180).</p>
+                <p>Delegation of Authority to Approve or to Disapprove the Acquisition and Disposition of Real Estate, by Sale, Lease or Otherwise,  see Mayor's Order 2003-161, November 17, 2003 ( 50 DCR 10197).</p>
+                <p>Amendment of Mayor's Order 90-178, Delegation of Contracting Authority:  See Mayor's Order 96-152, October 17, 1996 ( 43 DCR 5855).</p>
+                <p>Amendment of Mayor's Order 90-178, Delegation of Contracting Authority:  See Mayor's Order 96-136, September 9, 1996 ( 43 DCR 5043).</p>
+                <p>Amendment of Mayor's Order 90-178, Delegation of Contracting Authority:  See Mayor's Order 96-83, June 20, 1996 ( 43 DCR 3510).</p>
+                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-227.html">D.C. Law 8-227</a>, the “Sale of Government Publications Amendment Act of 1990.”, see Mayor’s Order 96-40, March 18, 1996 ( 43 DCR 1801).</p>
+                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-227.html">D.C. Law 8-227</a>, the “Sale of Government Publications Amendment Act of 1990.”, see Mayor’s Order 94-236, November 9, 1994 ( 41 DCR 7593).</p>
+                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-227.html">D.C. Law 8-227</a>, the “Sale of Government Publication Amendment Act of 1990.”, see Mayor’s Order 93-199, November 19, 1993.</p>
+                <p>Delegation of authority under <a class="internal-link" href="/dc/council/laws/8-227.html">D.C. Law 8-227</a>, the “Sale of Government Publications Amendment Act of 1990.”, see Mayor’s Order 91-98, June 5, 1991.</p>
+                <p>Delegation of contracting authority, see Mayor’s Order 90-178, November 19, 1990.</p>
+                <p>Delegation of authority, see Mayor’s Order 90-68, April 30, 1990.</p>
                 <h4>New Implementing Regulations</h4>
                 <p>New implementing regulations: Pursuant to this section, the following new regulations were adopted in 1979: The “District of Columbia Electrical Licensing and Bonding Regulations Amendment Act of 1979” (D.C. Law 3-12, July 12, 1979,  25 DCR 10258).</p>
                 <h4>Change in Government</h4>
@@ -255,11 +283,11 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-2-ch611.html#§2">Dec. 20, 1944, 58 Stat. 821, ch. 611, § 2</a>; Aug. 16, 1949, 63 Stat. 607, ch. 438; <a class="internal-link" href="/dc/council/laws/11-259.html">April 12, 1997, D.C. Law 11-259, § 404, 44 DCR 1423</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-339.</p>
                 <p>1973 Ed., § 1-245.</p>
+                <p>1981 Ed., § 1-339.</p>
                 <h4>Mayor's Orders</h4>
-                <p>Amendment of Mayor’s Order 90-178, Delegation of Contracting Authority; Delegation of Personnel Authority; and Establishment of Position of Administrator in the Commission on Mental Health Services: See Mayor’s Order 96-172, December 9, 1996 ( 43 DCR 6973).</p>
                 <p>Amendment of Mayor’s Order 96-172, Establishing Position of Administrator in the Commission on Mental Health Services; Appointment of Interim Administrator; Duties of Administrator: See Mayor’s Order 97-6, January 9, 1997 ( 44 DCR 357).</p>
+                <p>Amendment of Mayor’s Order 90-178, Delegation of Contracting Authority; Delegation of Personnel Authority; and Establishment of Position of Administrator in the Commission on Mental Health Services: See Mayor’s Order 96-172, December 9, 1996 ( 43 DCR 6973).</p>
               </section>
             </section>
             <hr/>
@@ -274,8 +302,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-2-ch611.html#§3">Dec. 20, 1944, 58 Stat. 822, ch. 611, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-340.</p>
                 <p>1973 Ed., § 1-246.</p>
+                <p>1981 Ed., § 1-340.</p>
                 <h4>Cross References</h4>
                 <p>Construction and repairs of schools, authority to oversee, see § <a class="internal-link" href="/dc/council/code/sections/38-402.html">38-402</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -296,8 +324,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-2-ch611.html#§5">Dec. 20, 1944, 58 Stat. 822, ch. 611, § 5</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-342.</p>
                 <p>1973 Ed., § 1-248.</p>
+                <p>1981 Ed., § 1-342.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -314,8 +342,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/78-2-ch611.html#§6">Dec. 20, 1944, 58 Stat. 822, ch. 611, § 6</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-343.</p>
                 <p>1973 Ed., § 1-249.</p>
+                <p>1981 Ed., § 1-343.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -341,25 +369,25 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-703.02.html">7-703.02</a>, § <a class="internal-link" href="/dc/council/code/sections/32-508.html">32-508</a>, and § <a class="internal-link" href="/dc/council/code/sections/41-130.html">41-130</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-376.html">D.C. Law 18-376</a>, in subsec. (a), designated the existing text as par. (1) and added par. (2).</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> substituted “this subsection” for “this part” in (a)(2).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-376.html">D.C. Law 18-376</a>, in subsec. (a), designated the existing text as par. (1) and added par. (2).</p>
                 <h4>Cross References</h4>
-                <p>Disposition of unclaimed property, reports and records, see § <a class="internal-link" href="/dc/council/code/sections/41-130.html">41-130</a>.</p>
-                <p>Family and medical leave, records, investigations, see § <a class="internal-link" href="/dc/council/code/sections/32-508.html">32-508</a>.</p>
                 <p>Long-term care ombudsman program, records, permitted access, see § <a class="internal-link" href="/dc/council/code/sections/7-703.02.html">7-703.02</a>.</p>
+                <p>Family and medical leave, records, investigations, see § <a class="internal-link" href="/dc/council/code/sections/32-508.html">32-508</a>.</p>
+                <p>Disposition of unclaimed property, reports and records, see § <a class="internal-link" href="/dc/council/code/sections/41-130.html">41-130</a>.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 2 of Metropolitan Police Department Subpoena Limitation Emergency Amendment Act of 2009 (D.C. Act 18-5, January 30, 2009,  56 DCR 1629).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Section 2 of D.C. Law 18-2 added subsec. (a-1) to read as follows:</p>
-                <p>“(a-1) Notwithstanding subsection (a) of this section, the Metropolitan Police Department or its agents shall not issue subpoenas in pursuance of criminal investigations.”</p>
                 <p>Section 4(b) of D.C. Law 18-2 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(a-1) Notwithstanding subsection (a) of this section, the Metropolitan Police Department or its agents shall not issue subpoenas in pursuance of criminal investigations.”</p>
+                <p>Section 2 of D.C. Law 18-2 added subsec. (a-1) to read as follows:</p>
                 <h4>Editor's Notes</h4>
-                <p>Delegation of subpoena power, see Mayor’s Order 88-31, February 11, 1988.</p>
                 <p>Delegation of Subpoena Power to Implement the Parental Leave Act of 1994: See Mayor’s Order 97-137, August 1, 1997 ( 44 DCR 4551).</p>
+                <p>Delegation of subpoena power, see Mayor’s Order 88-31, February 11, 1988.</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of authority to the Inspector General to issue subpoenas &amp; to administer oaths in any investigation or examination of municipal matters: See Mayor’s Order 90-146, October 31, 1990.</p>
-                <p>Delegation of Authority to the Chief, Metropolitan Police Department to Issue Subpoenas and to Administer Oaths in Any Investigation of Examination of Municipal Matters, see Mayor’s Order 2008-154, November 7, 2008 ( 55 DCR 12535).</p>
                 <p>Delegation of Authority to the Attorney General to Issue Subpoenas and to Administer Oaths in Any Criminal Investigation, see Mayor’s Order 2009-5, January 16, 2009 ( 56 DCR 2019).</p>
+                <p>Delegation of Authority to the Chief, Metropolitan Police Department to Issue Subpoenas and to Administer Oaths in Any Investigation of Examination of Municipal Matters, see Mayor’s Order 2008-154, November 7, 2008 ( 55 DCR 12535).</p>
+                <p>Delegation of authority to the Inspector General to issue subpoenas &amp; to administer oaths in any investigation or examination of municipal matters: See Mayor’s Order 90-146, October 31, 1990.</p>
               </section>
             </section>
             <hr/>
@@ -391,8 +419,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/72-1-ch40.html">Feb. 11, 1932, 47 Stat. 48, ch. 40</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-303.</p>
                 <p>1973 Ed., § 1-214.</p>
+                <p>1981 Ed., § 1-303.</p>
                 <h4>Cross References</h4>
                 <p>Industrial home school site, instruments of transfer, see § <a class="internal-link" href="/dc/council/code/sections/10-803.html">10-803</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -416,8 +444,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-65.html#§2">June 8, 1976, D.C. Law 1-65, § 2, 22 DCR 7150</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-222.</p>
                 <p>1973 Ed., § 1-141a.</p>
+                <p>1981 Ed., § 1-222.</p>
               </section>
             </section>
             <hr/>
@@ -432,8 +460,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-65.html#§3">June 8, 1976, D.C. Law 1-65, § 3, 22 DCR 7151</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-223.</p>
                 <p>1973 Ed., § 1-141b.</p>
+                <p>1981 Ed., § 1-223.</p>
               </section>
             </section>
             <hr/>
@@ -448,8 +476,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-65.html#§4">June 8, 1976, D.C. Law 1-65, § 4, 22 DCR 7151</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-224.</p>
                 <p>1973 Ed., § 1-141c.</p>
+                <p>1981 Ed., § 1-224.</p>
               </section>
             </section>
             <hr/>
@@ -491,8 +519,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> made a technical correction to <a class="internal-link" href="/dc/council/laws/18-11.html">D.C. Law 18-11</a> which did not affect this section as codified.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 1101 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) addition, see § 1101 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 1101 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 1100 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle K of title I of the act may be cited as the “Independence of Legislative Branch Information Technology and Personnel Authority Amendment Act of 2009”.</p>
                 <h4>Delegation of Authority</h4>
@@ -516,8 +544,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> made a technical correction to <a class="internal-link" href="/dc/council/laws/18-11.html">D.C. Law 18-11</a> which did not affect this section as codified.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 1101 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) addition, see § 1101 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 1101 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>
@@ -570,16 +598,16 @@
       (<a class="internal-link" href="/dc/council/laws/1-17.html#§2">Sept. 23, 1975, D.C. Law 1-17, § 2, 22 DCR 1990</a>; <a class="internal-link" href="/dc/council/laws/4-111.html">June 4, 1982, D.C. Law 4-111, § 2(b), 29 DCR 1684</a>; <a class="internal-link" href="/dc/council/laws/16-91.html">Apr. 7, 2006, D.C. Law 16-91, § 105, 52 DCR 10637</a>; <a class="internal-link" href="/dc/council/laws/17-231.html">Sept. 12, 2008, D.C. Law 17-231, § 2, 55 DCR 6758</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-230.</p>
                 <p>1973 Ed., § 1-146a.</p>
+                <p>1981 Ed., § 1-230.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/9-1115.03.html">9-1115.03</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-91.html">D.C. Law 16-91</a> added par. (10).</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-231.html">D.C. Law 17-231</a> added par. (11).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-91.html">D.C. Law 16-91</a> added par. (10).</p>
                 <h4>Cross References</h4>
-                <p>General rules of construction, see § <a class="internal-link" href="/dc/council/code/sections/45-601.html">45-601</a> et seq.</p>
                 <p>Woodrow Wilson Bridge and Tunnel Compact, see § <a class="internal-link" href="/dc/council/code/sections/9-1115.03.html">9-1115.03</a>.</p>
+                <p>General rules of construction, see § <a class="internal-link" href="/dc/council/code/sections/45-601.html">45-601</a> et seq.</p>
               </section>
             </section>
             <hr/>
@@ -596,8 +624,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-17.html#§3">Sept. 23, 1975, D.C. Law 1-17, § 3, 22 DCR 1991</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-231.</p>
                 <p>1973 Ed., § 1-146b.</p>
+                <p>1981 Ed., § 1-231.</p>
               </section>
             </section>
             <hr/>
@@ -617,8 +645,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-17.html#§4">Sept. 23, 1975, D.C. Law 1-17, § 4, 22 DCR 1992</a>; <a class="internal-link" href="/dc/council/laws/15-105.html">Mar. 13, 2004, D.C. Law 15-105, § 105, 51 DCR 881</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-232.</p>
                 <p>1973 Ed., § 1-146c.</p>
+                <p>1981 Ed., § 1-232.</p>
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a> added par. (5).</p>
               </section>
@@ -648,9 +676,9 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a>, in the section credit, validated a previously made technical correction.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of section, see § 3 of the Fiscal Year 2016 Second Budget Support Clarification Emergency Amendment Act of 2015 (D.C. Act 21-202, Nov. 23, 2015,  62 DCR 15276).</p>
-                <p>For temporary (90 days) amendment of this section, see § 3 of the Fiscal Year 2016 Budget Support Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-307, Feb. 18, 2016,  63 DCR 2182).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§1082">§ 1082 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 3 of the Fiscal Year 2016 Budget Support Clarification Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-307, Feb. 18, 2016,  63 DCR 2182).</p>
+                <p>For temporary (90 days) amendment of section, see § 3 of the Fiscal Year 2016 Second Budget Support Clarification Emergency Amendment Act of 2015 (D.C. Act 21-202, Nov. 23, 2015,  62 DCR 15276).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 3 of the Fiscal Year 2016 Budget Support Clarification Temporary Amendment Act of 2015 (D.C. Law 21-76, Feb. 27, 2016,  63 DCR 264).</p>
               </section>
@@ -700,8 +728,8 @@
       (<a class="internal-link" href="/dc/council/laws/1-124.html#§902">Apr. 19, 1977, D.C. Law 1-124, title IX, § 902, 23 DCR 8749</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-243.</p>
                 <p>1973 Ed., § 1-162a.</p>
+                <p>1981 Ed., § 1-243.</p>
               </section>
             </section>
             <hr/>
@@ -779,8 +807,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/45-2-ch180.html#§3">June 11, 1878, 20 Stat. 104, ch. 180, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-309.</p>
                 <p>1973 Ed., § 1-216.</p>
+                <p>1981 Ed., § 1-309.</p>
                 <h4>Cross References</h4>
                 <p>Mayor’s authority, suspension of officers and employees, see § <a class="internal-link" href="/dc/council/code/sections/1-301.01.html">1-301.01</a>.</p>
                 <h4>Transfer of Functions</h4>
@@ -801,8 +829,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/45-2-ch180.html#§3">June 11, 1878, 20 Stat. 104, ch. 180, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-310.</p>
                 <p>1973 Ed., § 1-219.</p>
+                <p>1981 Ed., § 1-310.</p>
                 <h4>Cross References</h4>
                 <p>Borrowing, issuance of revenue anticipation notes by Council, see § <a class="internal-link" href="/dc/council/code/sections/1-204.72.html">1-204.72</a>.</p>
                 <h4>Change in Government</h4>
@@ -821,8 +849,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/45-2-ch180.html#§3">June 11, 1878, 20 Stat. 104, ch. 180, § 3</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-312.</p>
                 <p>1973 Ed., § 1-221.</p>
+                <p>1981 Ed., § 1-312.</p>
                 <h4>Cross References</h4>
                 <p>Mayor’s authority, regulation of hack stands, see § <a class="internal-link" href="/dc/council/code/sections/50-2201.03.html">50-2201.03</a>.</p>
                 <h4>Change in Government</h4>
@@ -841,8 +869,8 @@
       (<a class="internal-link" href="/us/congress/congresses/55/resolutions/46.html">June 7, 1898, 30 Stat. 747, Res. No. 46</a>; <a class="internal-link" href="/dc/council/laws/6-97.html">Mar. 25, 1986, D.C. Law 6-97, § 22(c), 33 DCR 703</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-313.</p>
                 <p>1973 Ed., § 1-222.</p>
+                <p>1981 Ed., § 1-313.</p>
               </section>
             </section>
             <hr/>
@@ -857,8 +885,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/60-2-ch250.html">Mar. 3, 1909, 35 Stat. 724, ch. 250</a>; <a class="internal-link" href="/dc/council/laws/6-97.html">Mar. 25, 1986, D.C. Law 6-97, § 22(c), 33 DCR 703</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-314.</p>
                 <p>1973 Ed., § 1-223.</p>
+                <p>1981 Ed., § 1-314.</p>
               </section>
             </section>
             <hr/>
@@ -873,19 +901,19 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch101.html#§1">June 5, 1953, 67 Stat. 43, ch. 101, § 1</a>; <a class="internal-link" href="/dc/council/laws/4-209.html">Mar. 10, 1983, D.C. Law 4-209, § 35(c), 30 DCR 390</a>; <a class="internal-link" href="/dc/council/laws/5-14.html">June 22, 1983, D.C. Law 5-14, § 206(b), 30 DCR 2632</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-346.</p>
                 <p>1973 Ed., § 1-252.</p>
+                <p>1981 Ed., § 1-346.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-301.75.html">1-301.75</a>.</p>
                 <h4>Cross References</h4>
-                <p>Boxing and wrestling commission, fees for permits and licenses, see § <a class="internal-link" href="/dc/council/code/sections/3-606.html">3-606</a>.</p>
-                <p>Electrical fees, schedules, see § <a class="internal-link" href="/dc/council/code/sections/47-2712.html">47-2712</a>.</p>
                 <p>Public space permits, fee schedules, see § <a class="internal-link" href="/dc/council/code/sections/47-2718.html">47-2718</a>.</p>
+                <p>Electrical fees, schedules, see § <a class="internal-link" href="/dc/council/code/sections/47-2712.html">47-2712</a>.</p>
+                <p>Boxing and wrestling commission, fees for permits and licenses, see § <a class="internal-link" href="/dc/council/code/sections/3-606.html">3-606</a>.</p>
                 <h4>References in Text</h4>
-                <p>Section 3-1623 was repealed by <a class="internal-link" href="/dc/council/laws/9-184.html">D.C. Law 9-184</a>, § 604,  39 DCR 8208, effective March 13, 1992.</p>
-                <p>Sections 3-1711 and  3-2019 were repealed by <a class="internal-link" href="/dc/council/laws/9-245.html">D.C. Law 9-245</a>, § 38,  40 DCR 660, effective March 17, 1993.</p>
-                <p>Sections 3-2114,  3-2128,  3-2905,  3-2920,  3-2301.04,  3-2301.08,  3-2414,  3-2418,  3-2609,  3-2610, were repealed by <a class="internal-link" href="/dc/council/laws/6-99.html">D.C. Law 6-99</a>, § 1104, effective March 26, 1986.</p>
                 <p>Section 47-2843 was repealed by <a class="internal-link" href="/dc/council/laws/5-84.html">D.C. Law 5-84</a>, § 22(a), effective May 22, 1984.</p>
+                <p>Sections 3-2114,  3-2128,  3-2905,  3-2920,  3-2301.04,  3-2301.08,  3-2414,  3-2418,  3-2609,  3-2610, were repealed by <a class="internal-link" href="/dc/council/laws/6-99.html">D.C. Law 6-99</a>, § 1104, effective March 26, 1986.</p>
+                <p>Sections 3-1711 and  3-2019 were repealed by <a class="internal-link" href="/dc/council/laws/9-245.html">D.C. Law 9-245</a>, § 38,  40 DCR 660, effective March 17, 1993.</p>
+                <p>Section 3-1623 was repealed by <a class="internal-link" href="/dc/council/laws/9-184.html">D.C. Law 9-184</a>, § 604,  39 DCR 8208, effective March 13, 1992.</p>
                 <h4>Editor's Notes</h4>
                 <p>Mayor authorized to issue rules: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/1-1201.html">1-1201</a>.</p>
               </section>
@@ -902,13 +930,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/83-1-ch101.html#§2">June 5, 1953, 67 Stat. 43, ch. 101, § 2</a>; <a class="internal-link" href="/dc/council/laws/5-14.html">June 22, 1983, D.C. Law 5-14, § 206(c), 30 DCR 2632</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-347.</p>
                 <p>1973 Ed., § 1-253.</p>
+                <p>1981 Ed., § 1-347.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-301.74.html">1-301.74</a>.</p>
                 <h4>Cross References</h4>
-                <p>Electrical fees, schedules, see § <a class="internal-link" href="/dc/council/code/sections/47-2712.html">47-2712</a>.</p>
                 <p>Public space permits, fee schedules, see § <a class="internal-link" href="/dc/council/code/sections/47-2718.html">47-2718</a>.</p>
+                <p>Electrical fees, schedules, see § <a class="internal-link" href="/dc/council/code/sections/47-2712.html">47-2712</a>.</p>
                 <h4>Editor's Notes</h4>
                 <p>Mayor authorized to issue rules: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/1-1201.html">1-1201</a>.</p>
               </section>
@@ -925,8 +953,8 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§6">R.S., D.C., § 6</a>; June 20, 1874, 18 Stat. 116, ch. 337, § 2; June 11, 1878, 20 Stat. 103, ch. 180, § 2; Apr. 28, 1892, 27 Stat. 22, ch. 55; 1967 Reorg. Plan No. 3, § 401, 81 Stat. 951.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-311.</p>
                 <p>1973 Ed., § 1-220.</p>
+                <p>1981 Ed., § 1-311.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 4002 of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
                 <h4>Change in Government</h4>
@@ -945,8 +973,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/1-301.77.html">Apr. 3, 2001, D.C. Law 13-226, § 4(d), 48 DCR 1603</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition of section, see § 4(d) of the Redevelopment Land Agency Disposition Review Congressional Review Emergency Act of 2000 (D.C. Act 13-524, January 11, 2001,  48 DCR 624).</p>
                 <p>For temporary (90 day) addition of section, see § 2(b) of the Redevelopment Land Agency Disposition Fiscal Year 2001 Budget Support Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-563, January 31, 2001,  48 DCR 1625).</p>
+                <p>For temporary (90 day) addition of section, see § 4(d) of the Redevelopment Land Agency Disposition Review Congressional Review Emergency Act of 2000 (D.C. Act 13-524, January 11, 2001,  48 DCR 624).</p>
               </section>
             </section>
             <hr/>
@@ -982,12 +1010,12 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-1001.02.html">1-1001.02</a>.</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-238.html">D.C. Law 21-238</a>: <a class="internal-link" href="/dc/council/laws/21-238.html#§701">§ 701 of D.C. Law 21-238</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-238.html#§302">§ 302 of D.C. Law 21-238</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7026">Section 7026 of D.C. Law 22-33</a> amended <a class="internal-link" href="/dc/council/laws/21-238.html#§701(a)">§ 701(a) of D.C. Law 21-238</a>, removing the applicability restriction affecting this section, therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-238.html">D.C. Law 21-238</a> have been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-238.html">D.C. Law 21-238</a>: <a class="internal-link" href="/dc/council/laws/21-238.html#§701">§ 701 of D.C. Law 21-238</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-238.html#§302">§ 302 of D.C. Law 21-238</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§3102">§ 3102 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
                 <p>For temporary (90 days) amendment of § 701|(a) of D.C. Law 21-238, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7026">§ 7026 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§3102">§ 3102 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
               </section>
             </section>
             <hr/>
@@ -1006,12 +1034,12 @@
       (<a class="internal-link" href="/dc/council/laws/18-160.html#§102">May 27, 2010, D.C. Law 18-160, § 102, 57 DCR 3012</a>; <a class="internal-link" href="/dc/council/laws/20-60.html">Dec. 13, 2013, D.C. Law 20-60, § 201, 60 DCR 15487</a>; <a class="internal-link" href="/dc/council/laws/20-155.html">Feb. 26, 2015, D.C. Law 20-155, § 1163, 61 DCR 9990</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a> rewrote (a) which read “Until such time as an Attorney General is elected under § <a class="internal-link" href="/dc/council/code/sections/1-204.35.html">1-204.35</a>, the Attorney General for the District of Columbia shall be appointed by the Mayor with the advice and consent of the Council pursuant to § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-155.html">D.C. Law 20-155</a> deleted “which time shall not be before January 1, 2018” following “under § <a class="internal-link" href="/dc/council/code/sections/1-204.35.html">1-204.35</a>” in (a).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a> rewrote (a) which read “Until such time as an Attorney General is elected under § <a class="internal-link" href="/dc/council/code/sections/1-204.35.html">1-204.35</a>, the Attorney General for the District of Columbia shall be appointed by the Mayor with the advice and consent of the Council pursuant to § <a class="internal-link" href="/dc/council/code/sections/1-523.01.html">1-523.01</a>.”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see §  1163 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) amendment of this section, see §  1163 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) amendment of this section, see §  1163 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) amendment of this section, see §  1163 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) amendment of this section, see §  1163 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
                 <h4>Editor's Notes</h4>
                 <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a>: Section 401(b) of <a class="internal-link" href="/dc/council/laws/20-60.html">D.C. Law 20-60</a> provided that § 201 of the act shall apply as of December 13, 2013.</p>
               </section>
@@ -1121,8 +1149,8 @@
       (<a class="internal-link" href="/dc/council/laws/18-160.html#§106b">May 27, 2010, D.C. Law 18-160, §  106b</a>; <a class="internal-link" href="/dc/council/laws/21-36.html">as added Oct. 22, 2015, D.C. Law 21-36, § 1032(a), 62 DCR 10905</a>; <a class="internal-link" href="/dc/council/laws/21-160.html#§3092(a)">Oct. 8, 2016, D.C. Law 21-160, § 3092(a), 63 DCR 10775</a>; <a class="internal-link" href="/dc/council/laws/22-33.html#§3072(a)">Dec. 13, 2017, D.C. Law 22-33, § 3072(a), 64 DCR 7652</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 1032(a) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§3072(a)">§ 3072(a) of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) addition of this section, see § 1032(a) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
               </section>
             </section>
             <hr/>
@@ -1215,8 +1243,8 @@
       (<a class="internal-link" href="/dc/council/laws/18-160.html#§108b">May 27, 2010, D.C. Law 18-160, §  108b</a>; <a class="internal-link" href="/dc/council/laws/21-36.html">as added Oct. 22, 2015, D.C. Law 21-36, § 1032(b), 62 DCR 10905</a>; <a class="internal-link" href="/dc/council/laws/21-160.html#§3092(b)">Oct. 8, 2016, D.C. Law 21-160, § 3092(b), 63 DCR 10775</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 1032(b) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <p>For temporary (90 days) amendment of this section, see § 3 of the Office of the Attorney General Personnel and Procurement Clarification Emergency Amendment Act of 2015 (D.C. Act 21-254, Jan. 6, 2016,  63 DCR 518).</p>
+                <p>For temporary (90 days) addition of this section, see § 1032(b) of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) amendment of this section, see § 3 of the Office of the Attorney General Personnel and Procurement Clarification Temporary Amendment Act of 2015 (D.C. Law 21-91, Mar. 23, 2016,  63 DCR 989).</p>
               </section>
@@ -1434,71 +1462,71 @@
       (<a class="internal-link" href="/us/congress/laws/public/91-650.html#§705">Jan. 5, 1971, 84 Stat. 1939, Pub. L. 91-650, title VII, § 705(a), (b)</a>; <a class="internal-link" href="/dc/council/laws/8-257.html">Mar. 8, 1991, D.C. Law 8-257, § 2, 38 DCR 969</a>; <a class="internal-link" href="/dc/council/laws/11-259.html">Apr. 12, 1997, D.C. Law 11-259, § 301, 44 DCR 1423</a>; <a class="internal-link" href="/dc/council/laws/12-104.html">May 8, 1998, D.C. Law 12-104, § 4, 45 DCR 1687</a>; <a class="internal-link" href="/dc/council/laws/12-264.html">Apr. 20, 1999, D.C. Law 12-264, §§ 4, 59(b), 46 DCR 2118</a>; <a class="internal-link" href="/dc/council/laws/13-7.html">June 11, 1999, D.C. Law 13-7, § 2, 46 DCR 3626</a>; <a class="internal-link" href="/dc/council/laws/13-38.html">Oct. 20, 1999, D.C. Law 13-38, § 402, 46 DCR 6373</a>; <a class="internal-link" href="/dc/council/laws/15-238.html">Mar. 16, 2005, D.C. Law 15-238, § 3, 51 DCR 10599</a>; <a class="internal-link" href="/dc/council/laws/19-171.html">Sept. 26, 2012, D.C. Law 19-171, §§ 4, 202, 59 DCR 6190</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-336.</p>
                 <p>1973 Ed., § 1-243b.</p>
+                <p>1981 Ed., § 1-336.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/24-261.05.html">24-261.05</a> and § <a class="internal-link" href="/dc/council/code/sections/50-2509.html">50-2509</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-7.html">D.C. Law 13-7</a>, in the introductory portion of subsec. (d), in the first sentence, substituted “Mayor” for “Director of the Office of Contracting and Procurement”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/13-38.html">D.C. Law 13-38</a> repealed subsec. (b), which read:</p>
-                <p>“No lease agreement entered into under subsection (a) of this section shall provide for the payment of rental in excess of the limitations prescribed by  § 278a of Title 40, United States Code, except that the provisions of this subsection shall not apply to leases made prior to January 5, 1971, except when renewals thereof are made after such date.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-238.html">D.C. Law 15-238</a> repealed subsec. (c) which had read:</p>
-                <p>“(c) No funds under the control of the Mayor shall be obligated or expended to construct, alter, purchase, or acquire any building or interest in any building to be used as a public building for the District government or to house a program funded through the District government that involves a total expenditure in excess of $1,000,000 unless the proposed construction, alteration, purchase, or acquisition has been submitted to and approved by the Council, by resolution. No funds under the control of the Mayor shall be obligated or expended to lease any space at an average annual gross rental in excess of $1,000,000 over the lease period, inclusive of all options, for use for public purposes by the District government or to house a program funded through the District government unless the proposed lease agreement has been submitted to and approved by the Council, by resolution. No funds under the control of the Mayor shall be obligated or expended to alter any building or part of any building that is under lease by the District government for a public purpose if the cost of the alteration would exceed $500,000, unless the proposed alteration has been submitted to and approved by the Council, by resolution. The Mayor shall not designate a developer for city-owned property unless the developer has been selected through competitive procedures in accordance with subchapter III of Chapter 3 of Title 2, and the proposal has been submitted to the Council for a 60-day period of review, exclusive of days of Council recess, pursuant to subsection (d) of this section and approved by the Council by resolution. The Mayor shall submit with the request for approval a prospectus of the proposed facility that shall include, but is not limited to:</p>
-                <p>“(1) A brief description of the building to be constructed, altered, purchased, or acquired, or the space to be leased, including its location, size, condition if applicable, and its conformity with allowable uses under the Zoning Regulations;</p>
-                <p>“(2) An estimate of the gross and net costs to the District government of the facility to be constructed, altered, purchased, or acquired, or the space to be leased;</p>
-                <p>“(3) The facility’s conformity with the Public Facilities Plan developed pursuant to title VI of the District of Columbia Comprehensive Plan Act of 1984;</p>
-                <p>“(4) A statement by the Director of the Office of Contracting and Procurement that suitable space owned by the District is not available or cannot be reasonably renovated or altered and that suitable rental space is not available at a price commensurate with the space and price to be afforded through the proposed action, including a current survey of suitable vacant rental office space;</p>
-                <p>“(5) A certification by the Director of the Office of Contracting and Procurement that no other public space is available, including surplus government property that is under the control of the Board of Education; and</p>
-                <p>“(6) A statement by the Director of the Office of Contracting and Procurement of rents and other housing costs currently being paid by the District for entities of the District government to be housed in the building to be constructed, altered, purchased, or acquired, or the space to be leased.”</p>
                 <p>The 2012 amendment by <a class="internal-link" href="/dc/council/laws/19-171.html">D.C. Law 19-171</a> repealed (d) and (d-1); and substituted “without regard to §§ <a class="internal-link" href="/dc/council/code/sections/2-354.02.html">2-354.02</a> and <a class="internal-link" href="/dc/council/code/sections/2-354.03.html">2-354.03</a>” for “without regard to §§ <a class="internal-link" href="/dc/council/code/sections/2-303.03.html">2-303.03</a> and <a class="internal-link" href="/dc/council/code/sections/2-303.04.html">2-303.04</a>” in (h-1).</p>
+                <p>“(6) A statement by the Director of the Office of Contracting and Procurement of rents and other housing costs currently being paid by the District for entities of the District government to be housed in the building to be constructed, altered, purchased, or acquired, or the space to be leased.”</p>
+                <p>“(5) A certification by the Director of the Office of Contracting and Procurement that no other public space is available, including surplus government property that is under the control of the Board of Education; and</p>
+                <p>“(4) A statement by the Director of the Office of Contracting and Procurement that suitable space owned by the District is not available or cannot be reasonably renovated or altered and that suitable rental space is not available at a price commensurate with the space and price to be afforded through the proposed action, including a current survey of suitable vacant rental office space;</p>
+                <p>“(3) The facility’s conformity with the Public Facilities Plan developed pursuant to title VI of the District of Columbia Comprehensive Plan Act of 1984;</p>
+                <p>“(2) An estimate of the gross and net costs to the District government of the facility to be constructed, altered, purchased, or acquired, or the space to be leased;</p>
+                <p>“(1) A brief description of the building to be constructed, altered, purchased, or acquired, or the space to be leased, including its location, size, condition if applicable, and its conformity with allowable uses under the Zoning Regulations;</p>
+                <p>“(c) No funds under the control of the Mayor shall be obligated or expended to construct, alter, purchase, or acquire any building or interest in any building to be used as a public building for the District government or to house a program funded through the District government that involves a total expenditure in excess of $1,000,000 unless the proposed construction, alteration, purchase, or acquisition has been submitted to and approved by the Council, by resolution. No funds under the control of the Mayor shall be obligated or expended to lease any space at an average annual gross rental in excess of $1,000,000 over the lease period, inclusive of all options, for use for public purposes by the District government or to house a program funded through the District government unless the proposed lease agreement has been submitted to and approved by the Council, by resolution. No funds under the control of the Mayor shall be obligated or expended to alter any building or part of any building that is under lease by the District government for a public purpose if the cost of the alteration would exceed $500,000, unless the proposed alteration has been submitted to and approved by the Council, by resolution. The Mayor shall not designate a developer for city-owned property unless the developer has been selected through competitive procedures in accordance with subchapter III of Chapter 3 of Title 2, and the proposal has been submitted to the Council for a 60-day period of review, exclusive of days of Council recess, pursuant to subsection (d) of this section and approved by the Council by resolution. The Mayor shall submit with the request for approval a prospectus of the proposed facility that shall include, but is not limited to:</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-238.html">D.C. Law 15-238</a> repealed subsec. (c) which had read:</p>
+                <p>“No lease agreement entered into under subsection (a) of this section shall provide for the payment of rental in excess of the limitations prescribed by  § 278a of Title 40, United States Code, except that the provisions of this subsection shall not apply to leases made prior to January 5, 1971, except when renewals thereof are made after such date.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-38.html">D.C. Law 13-38</a> repealed subsec. (b), which read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-7.html">D.C. Law 13-7</a>, in the introductory portion of subsec. (d), in the first sentence, substituted “Mayor” for “Director of the Office of Contracting and Procurement”.</p>
                 <h4>Cross References</h4>
-                <p>Correctional treatment facilities, exemptions from leasing and property laws, see § <a class="internal-link" href="/dc/council/code/sections/24-261.05.html">24-261.05</a>.</p>
-                <p>Public parking authority, transfer of property interest between the District and the public parking authority, Mayor’s authority, see § <a class="internal-link" href="/dc/council/code/sections/50-2509.html">50-2509</a>.</p>
                 <p>Public postsecondary education reorganization, office of contracting and procurement, power to contract, see § <a class="internal-link" href="/dc/council/code/sections/38-1204.05.html">38-1204.05</a>.</p>
+                <p>Public parking authority, transfer of property interest between the District and the public parking authority, Mayor’s authority, see § <a class="internal-link" href="/dc/council/code/sections/50-2509.html">50-2509</a>.</p>
+                <p>Correctional treatment facilities, exemptions from leasing and property laws, see § <a class="internal-link" href="/dc/council/code/sections/24-261.05.html">24-261.05</a>.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary amendment of section, see § 2 of the Tenant Representative Services Lease Negotiation and Review Emergency Amendment Act of 1997 (D.C. Act 12-4, February 24, 1997,  44 DCR 1607), § 2 of the Tenant Representative Services Lease Negotiation and Review Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-81, June 10, 1997,  44 DCR 3607), and § 2 of the Tenant Representative Services Lease Negotiation and Review Emergency Amendment Act of 1998 (D.C. Act 12-269, February 19,</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of Tenant Representative Services Lease Negotiation and Review Temporary Amendment Act of 1997 (D.C. Law 12-5, June 5, 1997, law notification  44 DCR 4637).</p>
                 <p>For temporary (225 day) approval of a proposed lease agreement between the District of Columbia and Wells Fargo Delaware Trust Company, see § 2 of Unified Communications Center Lease Agreement Temporary Act of 2003 (D.C. Law 15-53, December 9, 2003, law notification  51 DCR 1788).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of Tenant Representative Services Lease Negotiation and Review Temporary Amendment Act of 1997 (D.C. Law 12-5, June 5, 1997, law notification  44 DCR 4637).</p>
                 <h4>References in Text</h4>
-                <p>“The District of Columbia Comprehensive Plan Act of 1984”, referred to in (c)(3), is <a class="internal-link" href="/dc/council/laws/5-76.html">D.C. Law 5-76</a>.</p>
                 <p>The “Public Facilities Plan”, referred to in (g), is Title VI of <a class="internal-link" href="/dc/council/laws/5-76.html">D.C. Law 5-76</a>.</p>
+                <p>“The District of Columbia Comprehensive Plan Act of 1984”, referred to in (c)(3), is <a class="internal-link" href="/dc/council/laws/5-76.html">D.C. Law 5-76</a>.</p>
                 <h4>Editor's Notes</h4>
-                <p><a class="internal-link" href="/dc/council/laws/12-104.html">D.C. Law 12-104</a> purported to designate the existing text in (h) as (h)(1), and added a new (h)(2). However, (h) was repealed by <a class="internal-link" href="/dc/council/laws/11-259.html">D.C. Law 11-259</a>. At the direction of the D.C. Codification Counsel, (h)(2) has been redesignated as new (h-1).</p>
-                <p>Lease/Purchase of Building and Land at 441-4th Street, N.W. (One Judiciary Square: Lot 20; Square 532) Emergency Approval Resolution of 1991: Pursuant to Resolution 9-94, effective July 19, 1991, the Council approved, on an emergency basis, the District of Columbia’s purchase of an office building and lease/purchase of the land at 441-4th Street, N.W. to be used for municipal purposes.</p>
-                <p>See Mayor’s Order 92-153, December 1, 1992.</p>
-                <p>65 K Street, N.E., Lease Amendment Approval Emergency Resolution of 1994: Pursuant to Resolution 10-500, effective December 6, 1994, the Council approved, on an emergency basis, the amendment of a lease for 65 K Street, N.E.</p>
-                <p>717 Fourteenth Street, N.W. Lease Approval Emergency Resolution of 1997: Pursuant to Resolution 12-348, effective December 19, 1997, the Council approved, on an emergency basis, the Lease Agreement between the District of Columbia government and 711 Fourteenth Street, N.W., Associates Limited Partnership, and to exempt this lease from the formal competitive procurement requirements applicable to leases where the District will be the predominant user of the building.</p>
-                <p>1300 First Street, N.E. Lease Approval Emergency Resolution of 1998: Pursuant to Resolution 12-489, effective May 5, 1998, the Council approved, on an emergency basis, the Lease Agreement between the District of Columbia government and Edward R. Webster Company for 1300 First Street, N.E.</p>
-                <p>University of the District of Columbia Acquisition of 4250 Connecticut Avenue Authorization Resolution of 1995: Pursuant to Resolution 11-192, effective December 5, 1995, the Council approved the acquisition, by the University of the District of Columbia, of an interest in a ground lease of Lot 1 in Square 2047 and the purchase of improvements situated thereon known as 4250 Connecticut Avenue, N.W., to be used for governmental purposes.</p>
-                <p>Section 151 of Public Law 106-113 provided:</p>
-                <p>“(a) RESTRICTIONS ON LEASES.—Upon the expiration of the 60-day period that begins on the date of the enactment of this Act, none of the funds contained in this Act may be used to make rental payments under a lease for the use of real property by the District of Columbia government (including any independent agency of the District) unless the lease and an abstract of the lease have been filed (by the District of Columbia or any other party to the lease) with the central office of the Deputy Mayor for Economic Development, in an indexed registry available for public inspection.</p>
-                <p>“(b) ADDITIONAL RESTRICTIONS ON CURRENT LEASES.—</p>
-                <p>“(1) IN GENERAL.—Upon the expiration of the 60-day period that begins on the date of the enactment of this Act, in the case of a lease described in paragraph (3), none of the funds contained in this Act may be used to make rental payments under the lease unless the lease is included in periodic reports submitted by the Mayor and Council of the District of Columbia to the Committees on Appropriations of the House of Representatives and Senate describing for each such lease the following information:</p>
-                <p>“(A) The location of the property involved, the name of the owners of record according to the land records of the District of Columbia, the name of the lessors according to the lease, the rate of payment under the lease, the period of time covered by the lease, and the conditions under which the lease may be terminated.</p>
-                <p>“(B) The extent to which the property is or is not occupied by the District of Columbia government as of the end of the reporting period involved.</p>
-                <p>“(C) If the property is not occupied and utilized by the District government as of the end of the reporting period involved, a plan for occupying and utilizing the property (including construction or renovation work) or a status statement regarding any efforts by the District to terminate or renegotiate the lease.</p>
-                <p>“(2) TIMING OF REPORTS.—The reports described in paragraph (1) shall be submitted for each calendar quarter (beginning with the quarter ending December 31, 1999) not later than 20 days after the end of the quarter involved, plus an initial report submitted not later than 60 days after the date of the enactment of this Act, which shall provide information as of the date of the enactment of this Act.</p>
-                <p>“(3) LEASES DESCRIBED.—A lease described in this paragraph is a lease in effect as of the date of the enactment of this Act for the use of real property by the District of Columbia government (including any independent agency of the District) which is not being occupied by the District government (including any independent agency of the District) as of such date or during the 60-day period which begins on the date of the enactment of this Act.”</p>
-                <p>Section 162 of Public Law 106-522 provided:</p>
-                <p>“(a) EXCLUSIVE AUTHORITY OF MAYOR.—Notwithstanding section 451 of the District of Columbia Home Rule Act or any other provision of District of Columbia or Federal law to the contrary, the Mayor of the District of Columbia shall have the exclusive authority to approve and execute leases of the Washington Marina and the Washington municipal fish wharf with the existing lessees thereof for an initial term of 30 years, together with such other terms and conditions (including renewal options) as the Mayor deems appropriate.</p>
-                <p>“(b) DEFINITIONS.—In this section—</p>
-                <p>“(1) the term ‘Washington Marina’ means the portions of Federal property in the Southwest quadrant of the District of Columbia within Lot 848 in Square 473, the unassessed Federal real property adjacent to Lot 848 in Square 473, and riparian rights appurtenant thereto; and</p>
                 <p>“(2) the term ‘Washington municipal fish wharf’ means the water frontage on the Potomac River lying south of Water Street between 11th and 12th Streets, including the buildings and wharves thereon.”</p>
+                <p>“(1) the term ‘Washington Marina’ means the portions of Federal property in the Southwest quadrant of the District of Columbia within Lot 848 in Square 473, the unassessed Federal real property adjacent to Lot 848 in Square 473, and riparian rights appurtenant thereto; and</p>
+                <p>“(b) DEFINITIONS.—In this section—</p>
+                <p>“(a) EXCLUSIVE AUTHORITY OF MAYOR.—Notwithstanding section 451 of the District of Columbia Home Rule Act or any other provision of District of Columbia or Federal law to the contrary, the Mayor of the District of Columbia shall have the exclusive authority to approve and execute leases of the Washington Marina and the Washington municipal fish wharf with the existing lessees thereof for an initial term of 30 years, together with such other terms and conditions (including renewal options) as the Mayor deems appropriate.</p>
+                <p>Section 162 of Public Law 106-522 provided:</p>
+                <p>“(3) LEASES DESCRIBED.—A lease described in this paragraph is a lease in effect as of the date of the enactment of this Act for the use of real property by the District of Columbia government (including any independent agency of the District) which is not being occupied by the District government (including any independent agency of the District) as of such date or during the 60-day period which begins on the date of the enactment of this Act.”</p>
+                <p>“(2) TIMING OF REPORTS.—The reports described in paragraph (1) shall be submitted for each calendar quarter (beginning with the quarter ending December 31, 1999) not later than 20 days after the end of the quarter involved, plus an initial report submitted not later than 60 days after the date of the enactment of this Act, which shall provide information as of the date of the enactment of this Act.</p>
+                <p>“(C) If the property is not occupied and utilized by the District government as of the end of the reporting period involved, a plan for occupying and utilizing the property (including construction or renovation work) or a status statement regarding any efforts by the District to terminate or renegotiate the lease.</p>
+                <p>“(B) The extent to which the property is or is not occupied by the District of Columbia government as of the end of the reporting period involved.</p>
+                <p>“(A) The location of the property involved, the name of the owners of record according to the land records of the District of Columbia, the name of the lessors according to the lease, the rate of payment under the lease, the period of time covered by the lease, and the conditions under which the lease may be terminated.</p>
+                <p>“(1) IN GENERAL.—Upon the expiration of the 60-day period that begins on the date of the enactment of this Act, in the case of a lease described in paragraph (3), none of the funds contained in this Act may be used to make rental payments under the lease unless the lease is included in periodic reports submitted by the Mayor and Council of the District of Columbia to the Committees on Appropriations of the House of Representatives and Senate describing for each such lease the following information:</p>
+                <p>“(b) ADDITIONAL RESTRICTIONS ON CURRENT LEASES.—</p>
+                <p>“(a) RESTRICTIONS ON LEASES.—Upon the expiration of the 60-day period that begins on the date of the enactment of this Act, none of the funds contained in this Act may be used to make rental payments under a lease for the use of real property by the District of Columbia government (including any independent agency of the District) unless the lease and an abstract of the lease have been filed (by the District of Columbia or any other party to the lease) with the central office of the Deputy Mayor for Economic Development, in an indexed registry available for public inspection.</p>
+                <p>Section 151 of Public Law 106-113 provided:</p>
+                <p>University of the District of Columbia Acquisition of 4250 Connecticut Avenue Authorization Resolution of 1995: Pursuant to Resolution 11-192, effective December 5, 1995, the Council approved the acquisition, by the University of the District of Columbia, of an interest in a ground lease of Lot 1 in Square 2047 and the purchase of improvements situated thereon known as 4250 Connecticut Avenue, N.W., to be used for governmental purposes.</p>
+                <p>1300 First Street, N.E. Lease Approval Emergency Resolution of 1998: Pursuant to Resolution 12-489, effective May 5, 1998, the Council approved, on an emergency basis, the Lease Agreement between the District of Columbia government and Edward R. Webster Company for 1300 First Street, N.E.</p>
+                <p>717 Fourteenth Street, N.W. Lease Approval Emergency Resolution of 1997: Pursuant to Resolution 12-348, effective December 19, 1997, the Council approved, on an emergency basis, the Lease Agreement between the District of Columbia government and 711 Fourteenth Street, N.W., Associates Limited Partnership, and to exempt this lease from the formal competitive procurement requirements applicable to leases where the District will be the predominant user of the building.</p>
+                <p>65 K Street, N.E., Lease Amendment Approval Emergency Resolution of 1994: Pursuant to Resolution 10-500, effective December 6, 1994, the Council approved, on an emergency basis, the amendment of a lease for 65 K Street, N.E.</p>
+                <p>See Mayor’s Order 92-153, December 1, 1992.</p>
+                <p>Lease/Purchase of Building and Land at 441-4th Street, N.W. (One Judiciary Square: Lot 20; Square 532) Emergency Approval Resolution of 1991: Pursuant to Resolution 9-94, effective July 19, 1991, the Council approved, on an emergency basis, the District of Columbia’s purchase of an office building and lease/purchase of the land at 441-4th Street, N.W. to be used for municipal purposes.</p>
+                <p><a class="internal-link" href="/dc/council/laws/12-104.html">D.C. Law 12-104</a> purported to designate the existing text in (h) as (h)(1), and added a new (h)(2). However, (h) was repealed by <a class="internal-link" href="/dc/council/laws/11-259.html">D.C. Law 11-259</a>. At the direction of the D.C. Codification Counsel, (h)(2) has been redesignated as new (h-1).</p>
                 <h4>Mayor's Orders</h4>
                 <p>Amendment of Mayor’s Order 96-172, Establishing Position of Administrator in the Commission on Mental Health Services; Appointment of Interim Administrator; Duties of Administrator: See Mayor’s Order 97-6, January 9, 1997 ( 44 DCR 357).</p>
                 <h4>Delegation of Authority</h4>
-                <p>Delegation of contracting authority, see Mayor’s Order 90-178, November 19, 1990.</p>
-                <p>Delegation of authority under Public Law 91-650,  D.C. Code § 1-301.96, see Mayor’s Order 93-6, January 15, 1993.</p>
-                <p>Amendment of Mayor’s Order 90-178, Delegation of Contracting Authority: See Mayor’s Order 96-83, June 20, 1996 ( 43 DCR 3510).</p>
                 <p>Amendment of Mayor’s Order 90-178, Delegation of Contracting Authority: See Mayor’s Order 96-136, September 9, 1996 (43 DCR</p>
+                <p>Amendment of Mayor’s Order 90-178, Delegation of Contracting Authority: See Mayor’s Order 96-83, June 20, 1996 ( 43 DCR 3510).</p>
+                <p>Delegation of authority under Public Law 91-650,  D.C. Code § 1-301.96, see Mayor’s Order 93-6, January 15, 1993.</p>
+                <p>Delegation of contracting authority, see Mayor’s Order 90-178, November 19, 1990.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to the District of Columbia Council and to a Commissioner of the District of Columbia. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
                 <h4>Resolutions</h4>
-                <p>Resolution 14-79, the “77 P Street, N.E., Lease Approval Emergency Resolution of 2001”, was approved effective April 3, 2001.</p>
-                <p>Resolution 14-108, the “Parcel 124/171 Purchase Approval Emergency Approval Resolution of 2001”, was approved effective May 1, 2001.</p>
-                <p>Resolution 14-168, the “3515 and 3521 V Street, N.E., Lease Approval Emergency Resolution of 2001”, was approved effective July 10, 2001.</p>
                 <p>Resolution 14-199, the “821 Howard Road, S.E., Purchase Approval Emergency Resolution of 2001”, was approved effective September 19, 2001.</p>
+                <p>Resolution 14-168, the “3515 and 3521 V Street, N.E., Lease Approval Emergency Resolution of 2001”, was approved effective July 10, 2001.</p>
+                <p>Resolution 14-108, the “Parcel 124/171 Purchase Approval Emergency Approval Resolution of 2001”, was approved effective May 1, 2001.</p>
+                <p>Resolution 14-79, the “77 P Street, N.E., Lease Approval Emergency Resolution of 2001”, was approved effective April 3, 2001.</p>
               </section>
             </section>
             <hr/>
@@ -1513,8 +1541,8 @@
       (<a class="internal-link" href="/us/congress/laws/public/79-1-ch209.html#§7">June 30, 1945, 59 Stat. 293, ch. 209, § 7</a>; July 9, 1946, 60 Stat. 532, ch. 544, § 7; <a class="internal-link" href="/dc/council/laws/11-259.html">Apr. 12, 1997, D.C. Law 11-259, § 303, 44 DCR 1423</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-344.</p>
                 <p>1973 Ed., § 1-250.</p>
+                <p>1981 Ed., § 1-344.</p>
               </section>
             </section>
             <hr/>
@@ -1530,11 +1558,11 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/108.html#§18">Leg. Assem., Aug. 23, 1871, ch. 108, § 18</a>; June 20, 1874, 18 Stat. 116, ch. 337, § 2; Mar. 3, 1901, 31 Stat. 1340, ch. 854, § 932; June 30, 1902, 32 Stat. 537, ch. 1329; Mar. 4, 1923, 42 Stat. 1488, ch. 265; 1967 Reorg. Plan No. 3, § 401, 81 Stat. 951; <a class="internal-link" href="/dc/council/laws/18-160.html">May 27, 2010, D.C. Law 18-160, § 141(a), 57 DCR 3012</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-361.</p>
                 <p>1973 Ed., § 1-301.</p>
+                <p>1981 Ed., § 1-361.</p>
                 <h4>Editor's Notes</h4>
-                <p>Office of Corporation Counsel abolished: The Office of the Corporation Counsel was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. Reorganization Order No. 50 of the Board of Commissioners, dated June 26, 1953, as amended, provided that the Office of the Corporation Counsel would be organized as previously constituted. The previously existing Office of the Corporation Counsel was abolished, and all functions and positions including the duties, powers, and authorities of all officers and employees of the former office were transferred to the new office. Authority to settle claims and suits against the District up to and including $5,000 (or $10,000 if approved by the Assistant Commissioner) was delegated to the Corporation Counsel by the Order. This Order was issued pursuant to Reorganization Plan No. 5 of 1952. The functions of the Employees Compensation Sub-Section, Investigation Section, Office of the Corporation Counsel, were transferred to the Personnel Office, Department of General Administration by Reorganization Order No. 21 of the Board of Commissioners, dated November 20, 1952. This Order was issued pursuant to Reorganization Plan No. 5 of 1952. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967.</p>
                 <p>Office of Secretary to Board of Commissioners abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/1-301.23.html">1-301.23</a>.</p>
+                <p>Office of Corporation Counsel abolished: The Office of the Corporation Counsel was abolished and the functions thereof transferred to the Board of Commissioners of the District of Columbia by Reorganization Plan No. 5 of 1952. Reorganization Order No. 50 of the Board of Commissioners, dated June 26, 1953, as amended, provided that the Office of the Corporation Counsel would be organized as previously constituted. The previously existing Office of the Corporation Counsel was abolished, and all functions and positions including the duties, powers, and authorities of all officers and employees of the former office were transferred to the new office. Authority to settle claims and suits against the District up to and including $5,000 (or $10,000 if approved by the Assistant Commissioner) was delegated to the Corporation Counsel by the Order. This Order was issued pursuant to Reorganization Plan No. 5 of 1952. The functions of the Employees Compensation Sub-Section, Investigation Section, Office of the Corporation Counsel, were transferred to the Personnel Office, Department of General Administration by Reorganization Order No. 21 of the Board of Commissioners, dated November 20, 1952. This Order was issued pursuant to Reorganization Plan No. 5 of 1952. The executive functions of the Board of Commissioners were transferred to the Commissioner of the District of Columbia by § 401 of Reorganization Plan No. 3 of 1967.</p>
                 <h4>Mayor's Orders</h4>
                 <p>Re-Designation of the Office of the Corporation Counsel as the Office of the Attorney General, see Mayor’s Order 2004-92, May 26,</p>
                 <h4>Change in Government</h4>
@@ -1553,8 +1581,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/108.html#§19">Leg. Assem., Aug. 23, 1871, ch. 108, § 19</a>; June 20, 1874, 18 Stat. 116, ch. 337, § 2; Mar. 3, 1901, 31 Stat. 1340, ch. 854, § 932; June 30, 1902, 32 Stat. 537, ch. 1329; Mar. 4, 1923, 42 Stat. 1488, ch. 265; 1967 Reorg. Plan No. 3, § 401, 81 Stat. 951; <a class="internal-link" href="/dc/council/laws/18-160.html">May 27, 2010, D.C. Law 18-160, § 141(a), 57 DCR 3012</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-362.</p>
                 <p>1973 Ed., § 1-302.</p>
+                <p>1981 Ed., § 1-362.</p>
                 <h4>Change in Government</h4>
                 <p>This section originated at a time when local government powers were delegated to a Board of Commissioners of the District of Columbia (see Acts Relating to the Establishment of the District of Columbia and its Various Forms of Governmental Organization in Volume 1). Section 401 of Reorganization Plan No. 3 of 1967 (see Reorganization Plans in Volume 1) transferred all of the functions of the Board of Commissioners under this section to a single Commissioner. The District of Columbia Self-Government and Governmental Reorganization Act, 87 Stat. 818, § 711 ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.11.html">1-207.11</a>), abolished the District of Columbia Council and the Office of Commissioner of the District of Columbia. These branches of government were replaced by the Council of the District of Columbia and the Office of Mayor of the District of Columbia, respectively. Accordingly, and also pursuant to § 714(a) of such Act ( D.C. Code, § <a class="internal-link" href="/dc/council/code/sections/1-207.14.html">1-207.14</a>(a)), appropriate changes in terminology were made in this section.</p>
               </section>
@@ -1571,8 +1599,8 @@
       (<a class="internal-link" href="/dc/council/leg-assem/chapters/51.html">Leg. Assem., Aug. 19, 1871, ch. 51</a>; Mar. 3, 1901, 31 Stat. 1340, ch. 854, § 932; June 30, 1902, 32 Stat. 537, ch. 1329; <a class="internal-link" href="/dc/council/laws/18-160.html">May 27, 2010, D.C. Law 18-160, § 141(b), 57 DCR 3012</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 1-363.</p>
                 <p>1973 Ed., § 1-303.</p>
+                <p>1981 Ed., § 1-363.</p>
               </section>
             </section>
             <hr/>
@@ -1587,8 +1615,8 @@
       (<a class="internal-link" href="/dc/council/laws/17-20.html#§3032">Sept. 18, 2007, D.C. Law 17-20, § 3032, 54 DCR 7052</a>; <a class="internal-link" href="/dc/council/laws/18-223.html">Sept. 24, 2010, D.C. Law 18-223, § 3013, 57 DCR 6242</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 3032 of Fiscal Year 2008 Budget Support Emergency Act of 2007 (D.C. Act 17-74, July 25, 2007,  54 DCR 7549).</p>
                 <p>For temporary (90 day) repeal of section, see § 3013 of Fiscal Year 2011 Budget Support Emergency Act of 2010 (D.C. Act 18-463, July 2, 2010,  57 DCR 6542).</p>
+                <p>For temporary (90 day) addition, see § 3032 of Fiscal Year 2008 Budget Support Emergency Act of 2007 (D.C. Act 17-74, July 25, 2007,  54 DCR 7549).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 3031 of <a class="internal-link" href="/dc/council/laws/17-20.html">D.C. Law 17-20</a> provided that subtitle D of title III of the act may be cited as the “Civil Legal Services Amendment Act of 2007”.</p>
               </section>
@@ -1675,54 +1703,54 @@
       (<a class="internal-link" href="/dc/council/laws/6-85.html#§208">Feb. 21, 1986, D.C. Law 6-85, § 208, 32 DCR 7396</a>; <a class="internal-link" href="/dc/council/laws/7-201.html">Mar. 16, 1989, D.C. Law 7-201, § 5, 36 DCR 248</a>; <a class="internal-link" href="/us/congress/laws/public/104-8.html">Apr. 17, 1995, 109 Stat. 148-151, Pub. L. 104-8, § 303(a)-(d)</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 5, 44 DCR 1271</a>; Aug. 5, 1997, 111 Stat. 777, Pub. L. 105-33, § 11601(b)(3); <a class="internal-link" href="/us/congress/laws/public/105-277.html">Oct. 21, 1998, 112 Stat. 2681-148, Pub. L. 105-277, § 160</a>; <a class="internal-link" href="/dc/council/laws/12-190.html">Mar. 26, 1999, D.C. Law 12-190, § 2, 45 DCR 7814</a>; <a class="internal-link" href="/dc/council/laws/13-71.html">April 5, 2000, D.C. Law 13-71, § 2, 46 DCR 10403</a>; <a class="internal-link" href="/dc/council/laws/13-105.html">May 9, 2000, D.C. Law 13-105, § 29(a), 47 DCR 1325</a>; <a class="internal-link" href="/us/congress/laws/public/106-552.html">Nov. 22, 2000, 114 Stat. 2440, Pub. L. 106-552, § 164(a)</a>; <a class="internal-link" href="/dc/council/laws/13-313.html">June 19, 2001, D.C. Law 13-313, § 4(b), 48 DCR 1873</a>; <a class="internal-link" href="/dc/council/laws/15-26.html">July 30, 2003, D.C. Law 15-26, § 2, 50 DCR 4651</a>; <a class="internal-link" href="/dc/council/laws/15-212.html">Dec. 7, 2004, D.C. Law 15-212, § 2(a), 51 DCR 8820</a>; <a class="internal-link" href="/us/congress/laws/public/109-356.html">Oct. 16, 2006, 120 Stat. 2043, Pub. L. 109-356, § 308(b)</a>; <a class="internal-link" href="/dc/council/laws/16-267.html">Mar. 14, 2007, D.C. Law 16-267, § 2, 54 DCR 831</a>; <a class="internal-link" href="/dc/council/laws/20-237.html">Mar. 11, 2015, D.C. Law 20-237, § 2, 62 DCR 489</a>; <a class="internal-link" href="/dc/council/laws/21-160.html">Oct. 8, 2016, D.C. Law 21-160, §§ 1052, 1053, 63 DCR 10775</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/2-302.08.html">2-302.08</a></p>
                 <p>1981 Ed., § 1-1182.8.</p>
+                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/2-302.08.html">2-302.08</a></p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-301.115b.html">1-301.115b</a>, § <a class="internal-link" href="/dc/council/code/sections/1-603.01.html">1-603.01</a>, § <a class="internal-link" href="/dc/council/code/sections/2-302.08.html">2-302.08</a>, § <a class="internal-link" href="/dc/council/code/sections/47-391.01.html">47-391.01</a>, § <a class="internal-link" href="/dc/council/code/sections/47-3401.01.html">47-3401.01</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-3401.02.html">47-3401.02</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>Public Law 106-522, § 164(a), in subpar. (a)(4)(A), inserted “, except as may be provided in paragraph (5)”; and added par. (a)(5).</p>
-                <p>Section 164(b) of Public Law 106-522 provided: “The amendment made by subsection (a) shall apply with respect to financial statements and reports for activities of the District of Columbia Government for fiscal years beginning with fiscal year 2001.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/13-71.html">D.C. Law 13-71</a> inserted subsec. (a-1); in par. (a)(3), rewrote subpars. (B), (D), and (F), which previously read:</p>
-                <p>“(B) Act as liaison representative for the Mayor for all external audits of the District government;”</p>
-                <p>“(D) Conduct other special audits, assignments, and investigations the Mayor shall assign;”</p>
-                <p>“(F) Forward to the Mayor and the appropriate authority any evidence of criminal wrongdoing, that is discovered as a result of any investigation or audit conducted by the office;”;</p>
-                <p>rewrote subsec. (b), which previously read:</p>
-                <p>“In determining the procedures to be followed and the extent of the examinations of invoices, documents, and records, the Inspector General shall give due regard to the provisions of this chapter, as well as generally accepted accounting and procurement principles, practices, and procedures, including, but not limited to, federal and District government case law, decisions of the U.S. Comptroller General, and decisions of federal contract appeals boards.”;</p>
-                <p>inserted subsec. (b-1); rewrote par. (1) of subsec. (c), which previously read:</p>
-                <p>“The Inspector General shall have access to all books, accounts, records, reports, findings, and all other papers, things, or property belonging to or in use by any department or agency under the direct supervision of the Mayor necessary to facilitate the Inspector General’s work.”;</p>
-                <p>added par. (3) of subsec. (c); and added subsecs. (f-2) to (f-5).</p>
-                <p><a class="internal-link" href="/dc/council/laws/13-105.html">D.C. Law 13-105</a> inserted subsec. (e-1).</p>
-                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a> rewrote subsec. (f-2), which prior thereto read:</p>
-                <p>“(f-2) The Inspector General shall prepare an annual report not later than 30 days after the beginning of the fiscal year, beginning with FY 2001, summarizing the activities of the Office of Inspector General during the preceding fiscal year. Upon its completion, the Inspector General shall transmit the report to the Mayor, the Council, and the appropriate committees or subcommittees of Congress. The Inspector General shall make copies of the report available to the public upon request. The annual report shall include:”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-26.html">D.C. Law 15-26</a>, in subsec. (a)(1), rewrote the third sentence of subpar. (A), added subpar. (A-1), rewrote subpar. (D), and added subpar. (D-i). Prior to amendment, the third sentence of subsec. (a)(1)(A) had read “The Inspector General may be reappointed for additional terms.”; and subsec. (a)(1)(D) had read as follows: “(D) The Inspector General shall be appointed without regard to party affiliation and solely on the basis of integrity and demonstrated ability in accounting, auditing, financial management analysis, public administration, or investigations.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-212.html">D.C. Law 15-212</a> added subpars. (A-ii) to subsec. (a)(1).</p>
-                <p>Pub. L. 109-356 added subsec. (a)(3)(J).</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-267.html">D.C. Law 16-267</a> rewrote subsec. (a)(1)(E), which formerly read:</p>
-                <p>“(E) The Inspector General shall be paid at an annual rate determined by the Mayor, except that such rate may not exceed the rate of basic pay payable for level IV of the Executive Schedule.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-237.html">D.C. Law 20-237</a> rewrote (a)(1)(D); and repealed (a)(1)(D-i).</p>
+                <p>“(E) The Inspector General shall be paid at an annual rate determined by the Mayor, except that such rate may not exceed the rate of basic pay payable for level IV of the Executive Schedule.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-267.html">D.C. Law 16-267</a> rewrote subsec. (a)(1)(E), which formerly read:</p>
+                <p>Pub. L. 109-356 added subsec. (a)(3)(J).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-212.html">D.C. Law 15-212</a> added subpars. (A-ii) to subsec. (a)(1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-26.html">D.C. Law 15-26</a>, in subsec. (a)(1), rewrote the third sentence of subpar. (A), added subpar. (A-1), rewrote subpar. (D), and added subpar. (D-i). Prior to amendment, the third sentence of subsec. (a)(1)(A) had read “The Inspector General may be reappointed for additional terms.”; and subsec. (a)(1)(D) had read as follows: “(D) The Inspector General shall be appointed without regard to party affiliation and solely on the basis of integrity and demonstrated ability in accounting, auditing, financial management analysis, public administration, or investigations.”</p>
+                <p>“(f-2) The Inspector General shall prepare an annual report not later than 30 days after the beginning of the fiscal year, beginning with FY 2001, summarizing the activities of the Office of Inspector General during the preceding fiscal year. Upon its completion, the Inspector General shall transmit the report to the Mayor, the Council, and the appropriate committees or subcommittees of Congress. The Inspector General shall make copies of the report available to the public upon request. The annual report shall include:”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a> rewrote subsec. (f-2), which prior thereto read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-105.html">D.C. Law 13-105</a> inserted subsec. (e-1).</p>
+                <p>added par. (3) of subsec. (c); and added subsecs. (f-2) to (f-5).</p>
+                <p>“The Inspector General shall have access to all books, accounts, records, reports, findings, and all other papers, things, or property belonging to or in use by any department or agency under the direct supervision of the Mayor necessary to facilitate the Inspector General’s work.”;</p>
+                <p>inserted subsec. (b-1); rewrote par. (1) of subsec. (c), which previously read:</p>
+                <p>“In determining the procedures to be followed and the extent of the examinations of invoices, documents, and records, the Inspector General shall give due regard to the provisions of this chapter, as well as generally accepted accounting and procurement principles, practices, and procedures, including, but not limited to, federal and District government case law, decisions of the U.S. Comptroller General, and decisions of federal contract appeals boards.”;</p>
+                <p>rewrote subsec. (b), which previously read:</p>
+                <p>“(F) Forward to the Mayor and the appropriate authority any evidence of criminal wrongdoing, that is discovered as a result of any investigation or audit conducted by the office;”;</p>
+                <p>“(D) Conduct other special audits, assignments, and investigations the Mayor shall assign;”</p>
+                <p>“(B) Act as liaison representative for the Mayor for all external audits of the District government;”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-71.html">D.C. Law 13-71</a> inserted subsec. (a-1); in par. (a)(3), rewrote subpars. (B), (D), and (F), which previously read:</p>
+                <p>Section 164(b) of Public Law 106-522 provided: “The amendment made by subsection (a) shall apply with respect to financial statements and reports for activities of the District of Columbia Government for fiscal years beginning with fiscal year 2001.”</p>
+                <p>Public Law 106-522, § 164(a), in subpar. (a)(4)(A), inserted “, except as may be provided in paragraph (5)”; and added par. (a)(5).</p>
                 <h4>Cross References</h4>
-                <p>District of Columbia administration, personnel management, “subordinate agency” defined, see § <a class="internal-link" href="/dc/council/code/sections/1-603.01.html">1-603.01</a>.</p>
-                <p>District of Columbia fiscal management, intermediate-term advances for liquidation of deficit, certification of and compliance with an approved financial plan and budget, see § <a class="internal-link" href="/dc/council/code/sections/47-3401.01.html">47-3401.01</a>.</p>
-                <p>District of Columbia fiscal management, short-term advances for seasonal cash-flow management, certification of and compliance with an approved financial plan and budget, see § <a class="internal-link" href="/dc/council/code/sections/47-3401.02.html">47-3401.02</a>.</p>
                 <p>Financial Responsibility and Management Assistance Authority, consent to appointment of the Inspector General, see § <a class="internal-link" href="/dc/council/code/sections/47-391.01.html">47-391.01</a>.</p>
+                <p>District of Columbia fiscal management, short-term advances for seasonal cash-flow management, certification of and compliance with an approved financial plan and budget, see § <a class="internal-link" href="/dc/council/code/sections/47-3401.02.html">47-3401.02</a>.</p>
+                <p>District of Columbia fiscal management, intermediate-term advances for liquidation of deficit, certification of and compliance with an approved financial plan and budget, see § <a class="internal-link" href="/dc/council/code/sections/47-3401.01.html">47-3401.01</a>.</p>
+                <p>District of Columbia administration, personnel management, “subordinate agency” defined, see § <a class="internal-link" href="/dc/council/code/sections/1-603.01.html">1-603.01</a>.</p>
                 <h4>Applicability</h4>
                 <p>
          Section 1053 of D.C. Law 21-160 provided that the changes made by section 1052 shall apply as of March 24, 2016.
         </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2 of the Office of the Inspector General Law Enforcement Powers Emergency Amendment Act of 1998 (D.C. Act 12-394, July 6, 1998,  45 DCR 4645), § 2 of the Office of the Inspector General Law Enforcement Powers Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-463, October 28, 1998,  45 DCR 7818), and § 2 of the Office of the Inspector General Law Enforcement Powers Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-3, February 8, 1999, 46</p>
-                <p>For temporary (90 days) amendment of this section, see §  2 of the Inspector General Qualifications Emergency Amendment Act of 2014 (D.C. Act 20-464, Nov. 6, 2014, 61 DCR 11828, 20 STAT 4398).</p>
                 <p>For temporary (90 days) amendment of this section, see § 2 of the Inspector General Qualifications Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-2, Feb. 19, 2015,  62 DCR 2466, 21 STAT 799).</p>
+                <p>For temporary (90 days) amendment of this section, see §  2 of the Inspector General Qualifications Emergency Amendment Act of 2014 (D.C. Act 20-464, Nov. 6, 2014, 61 DCR 11828, 20 STAT 4398).</p>
+                <p>For temporary amendment of section, see § 2 of the Office of the Inspector General Law Enforcement Powers Emergency Amendment Act of 1998 (D.C. Act 12-394, July 6, 1998,  45 DCR 4645), § 2 of the Office of the Inspector General Law Enforcement Powers Congressional Review Emergency Amendment Act of 1998 (D.C. Act 12-463, October 28, 1998,  45 DCR 7818), and § 2 of the Office of the Inspector General Law Enforcement Powers Congressional Review Emergency Amendment Act of 1999 (D.C. Act 13-3, February 8, 1999, 46</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2 of the Office of the Inspector General Law Enforcement Powers Temporary Amendment Act of 1998, (<a class="internal-link" href="/dc/council/laws/12-177.html">D.C. Law 12-177</a>, March 26, 1999, law notification  46 DCR 3403).</p>
-                <p>For temporary (225 day) amendment of section, see § 2 of the Inspector General Qualifications Temporary Amendment Act of 2003 (D.C. Law 15-22, June 21, 2003, law notification  50 DCR 5466).</p>
-                <p>For temporary (225 day) amendment of section, see § 2 of the Inspector General Appointment and Term Clarification Temporary Amendment Act of 2003 (D.C. Law 15-101, March 10, 2004, law notification  51 DCR 3621).</p>
                 <p>For temporary (225 days) amendment of this section, see §  2 of the Inspector General Qualifications Temporary Amendment Act of 2014 (D.C. Law 20-174, March 7, 2015, 61 DCR 12711).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of the Inspector General Appointment and Term Clarification Temporary Amendment Act of 2003 (D.C. Law 15-101, March 10, 2004, law notification  51 DCR 3621).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of the Inspector General Qualifications Temporary Amendment Act of 2003 (D.C. Law 15-22, June 21, 2003, law notification  50 DCR 5466).</p>
+                <p>For temporary (225 day) amendment of section, see § 2 of the Office of the Inspector General Law Enforcement Powers Temporary Amendment Act of 1998, (<a class="internal-link" href="/dc/council/laws/12-177.html">D.C. Law 12-177</a>, March 26, 1999, law notification  46 DCR 3403).</p>
                 <h4>References in Text</h4>
                 <p>The Individuals with Disabilities Education Act, referred to in subsec. (a)(3)(J), is codified at  20 U.S.C. § 1400 et seq.</p>
                 <h4>Editor's Notes</h4>
-                <p>Office of Inspector: Section 155 of P.L. 105-100 required placement of Inspector General hotline on permit and license application forms.</p>
                 <p>Applicability of § 2(b) of Law 15-212: Section 3 of Law 15-212 provided that section 2(b) of this act shall apply upon its enactment by the United States Congress.</p>
+                <p>Office of Inspector: Section 155 of P.L. 105-100 required placement of Inspector General hotline on permit and license application forms.</p>
               </section>
             </section>
             <hr/>
@@ -1738,8 +1766,8 @@
       (<a class="internal-link" href="/dc/council/code/sections/1-301.115b.html">Apr. 17, 1995, 109 Stat. 151, Pub. L. 104-8, § 303(e)</a>; Aug. 5, 1997, 111 Stat. 782, Pub. L. 105-33, § 11711(b).)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/2-321.01.html">2-321.01</a></p>
                 <p>1981 Ed., § 1-1182.8a.</p>
+                <p>2001 Ed., § <a class="internal-link" href="/dc/council/code/sections/2-321.01.html">2-321.01</a></p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/2-321.01.html">2-321.01</a>.</p>
                 <h4>References in Text</h4>
@@ -1767,34 +1795,34 @@
       (<a class="internal-link" href="/dc/council/laws/14-156.html#§2">June 25, 2002, D.C. Law 14-156, § 2, 49 DCR 4272</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 1132 of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
-                <p>For temporary (90 day) additions, see §§ 2 and 3 of Commission on Uniform State Laws Appointment Authorization Emergency Act of 2009 (D.C. Act 18-132, July 6, 2009,  56 DCR 5692).</p>
-                <p>For temporary (90 day) additions, see §§ 2 and 3 of Commission on Uniform State Laws Appointment Authorization Emergency Act of 2010 (D.C. Act 18-403, May 19, 2010,  57 DCR 4508).</p>
                 <p>For temporary (90 day) additions, see §§ 2 and 3 of Commission on Uniform State Laws Appointment Authorization Congressional Review Emergency Act of 2010 (D.C. Act 18-503, July 30, 2010,  57 DCR 7576).</p>
+                <p>For temporary (90 day) additions, see §§ 2 and 3 of Commission on Uniform State Laws Appointment Authorization Emergency Act of 2010 (D.C. Act 18-403, May 19, 2010,  57 DCR 4508).</p>
+                <p>For temporary (90 day) additions, see §§ 2 and 3 of Commission on Uniform State Laws Appointment Authorization Emergency Act of 2009 (D.C. Act 18-132, July 6, 2009,  56 DCR 5692).</p>
+                <p>For temporary (90 day) amendment of section, see § 1132 of Fiscal Year 2003 Budget Support Emergency Act of 2002 (D.C. Act 14-453, July 23, 2002,  49 DCR 8026).</p>
                 <h4>Temporary Legislation</h4>
-                <p>Sections 2 and 3 of D.C. Law 18-59 added sections to read as follows:</p>
-                <p>“Sec. 2. Appointments to National Conference of Commissioners on Uniform State Laws.</p>
-                <p>“(a) The official commissioners of the District of Columbia to the National Conference of Commissioners on Uniform State Laws (‘NCCUSL’) shall be members of the District of Columbia Bar, and shall be appointed as follows:</p>
-                <p>“(1) Three commissioners shall be appointed by the Mayor;</p>
-                <p>“(2) One commissioner shall be appointed by the Chairman of the Council; and</p>
-                <p>“(3) One commissioner shall be appointed by the Chief Judge of the Superior Court of the District of Columbia.</p>
-                <p>“(b) Each commissioner appointed pursuant to subsection (a) of this section shall serve a term of 3 years, beginning on July 1 of the year of appointment, and shall serve until his or her successor is appointed.</p>
-                <p>“(c) In addition to the 5 members appointed under this section, the following persons shall be members of the Commission:</p>
-                <p>“(1) Any resident of the District of Columbia who, because of long service in the cause of the uniformity of state legislation, shall have been elected a life member of the NCCUSL; and</p>
-                <p>“(2) The General Counsel to the Council of the District of Columbia, or his or her designee.</p>
-                <p>“(d) A person serving as a NCCUSL commissioner as of the effective date of this act may continue to serve until the expiration of his or her term, or until a successor has been appointed, whichever occurs later.</p>
-                <p>“Sec. 3. Duties of commissioners.</p>
-                <p>“(a) The commissioners shall advise the Mayor and the Council, and Council committees, concerning:</p>
-                <p>“(1) Proposals for uniform and model state laws;</p>
-                <p>“(2) The effect that the proposals would have on the laws of the District of Columbia; and</p>
-                <p>“(3) Other matters pertinent to desirable uniformity in legislation between the District and other jurisdictions.</p>
-                <p>“(b) Each commissioner shall attend the meetings of the NCCUSL and, both within and out of the NCCUSL, do all in his or her power to promote uniformity in state laws in all subjects in which uniformity is desirable and practicable.</p>
-                <p>“(c) The commissioners shall report to the Council after each annual meeting, and from time to time thereafter as the commissioners consider proper.”</p>
-                <p>Section 5(b) of D.C. Law 18-59 provided that the act shall expire after 225 days of its having taken effect.</p>
-                <p>Sections 2 and 3 of D.C. Law 18-215 added sections to read as follows:</p>
-                <p>“(a) The official commissioners of the District of Columbia to the National Conference of Commissioners on Uniform State Laws (’NCCUSL’) shall be members of the District of Columbia Bar, and shall be appointed as follows:</p>
-                <p>“(c) In addition to the 5 members appointed under this section, the following persons shall be members of the NCCUSL:</p>
                 <p>Section 5(b) of D.C. Law 18-215 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(c) In addition to the 5 members appointed under this section, the following persons shall be members of the NCCUSL:</p>
+                <p>“(a) The official commissioners of the District of Columbia to the National Conference of Commissioners on Uniform State Laws (’NCCUSL’) shall be members of the District of Columbia Bar, and shall be appointed as follows:</p>
+                <p>Sections 2 and 3 of D.C. Law 18-215 added sections to read as follows:</p>
+                <p>Section 5(b) of D.C. Law 18-59 provided that the act shall expire after 225 days of its having taken effect.</p>
+                <p>“(c) The commissioners shall report to the Council after each annual meeting, and from time to time thereafter as the commissioners consider proper.”</p>
+                <p>“(b) Each commissioner shall attend the meetings of the NCCUSL and, both within and out of the NCCUSL, do all in his or her power to promote uniformity in state laws in all subjects in which uniformity is desirable and practicable.</p>
+                <p>“(3) Other matters pertinent to desirable uniformity in legislation between the District and other jurisdictions.</p>
+                <p>“(2) The effect that the proposals would have on the laws of the District of Columbia; and</p>
+                <p>“(1) Proposals for uniform and model state laws;</p>
+                <p>“(a) The commissioners shall advise the Mayor and the Council, and Council committees, concerning:</p>
+                <p>“Sec. 3. Duties of commissioners.</p>
+                <p>“(d) A person serving as a NCCUSL commissioner as of the effective date of this act may continue to serve until the expiration of his or her term, or until a successor has been appointed, whichever occurs later.</p>
+                <p>“(2) The General Counsel to the Council of the District of Columbia, or his or her designee.</p>
+                <p>“(1) Any resident of the District of Columbia who, because of long service in the cause of the uniformity of state legislation, shall have been elected a life member of the NCCUSL; and</p>
+                <p>“(c) In addition to the 5 members appointed under this section, the following persons shall be members of the Commission:</p>
+                <p>“(b) Each commissioner appointed pursuant to subsection (a) of this section shall serve a term of 3 years, beginning on July 1 of the year of appointment, and shall serve until his or her successor is appointed.</p>
+                <p>“(3) One commissioner shall be appointed by the Chief Judge of the Superior Court of the District of Columbia.</p>
+                <p>“(2) One commissioner shall be appointed by the Chairman of the Council; and</p>
+                <p>“(1) Three commissioners shall be appointed by the Mayor;</p>
+                <p>“(a) The official commissioners of the District of Columbia to the National Conference of Commissioners on Uniform State Laws (‘NCCUSL’) shall be members of the District of Columbia Bar, and shall be appointed as follows:</p>
+                <p>“Sec. 2. Appointments to National Conference of Commissioners on Uniform State Laws.</p>
+                <p>Sections 2 and 3 of D.C. Law 18-59 added sections to read as follows:</p>
               </section>
             </section>
             <hr/>
@@ -1951,8 +1979,8 @@
       (<a class="internal-link" href="/dc/council/laws/14-190.html#§3202">Oct. 1, 2002, D.C. Law 14-190, § 3202, 49 DCR 6968</a>.)
     </p>
                 <h4>Short Title</h4>
-                <p>Short title of title XXXII of Law 14-190: Section 3201 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided that title XXXII of the act may be cited as the Chief Financial Officer Fiscal Year 2003 Duties Act of 2002.</p>
                 <p>Section 7231 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle W of Title VII of the act may be cited as the “Contingency Cash Reserve Notification Act of 2013”.</p>
+                <p>Short title of title XXXII of Law 14-190: Section 3201 of <a class="internal-link" href="/dc/council/laws/14-190.html">D.C. Law 14-190</a> provided that title XXXII of the act may be cited as the Chief Financial Officer Fiscal Year 2003 Duties Act of 2002.</p>
               </section>
             </section>
             <hr/>
@@ -1969,8 +1997,8 @@
       (<a class="internal-link" href="/dc/council/laws/20-61.html#§7232">Dec. 24, 2013, D.C. Law 20-61, § 7232, 60 DCR 12472</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 7232 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) addition of this section, see § 7232 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) addition of this section, see § 7232 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 7231 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle W of Title VII of the act may be cited as the “Contingency Cash Reserve Notification Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -1989,8 +2017,8 @@
       (<a class="internal-link" href="/dc/council/laws/20-61.html#§7282">Dec. 24, 2013, D.C. Law 20-61, § 7282, 60 DCR 12472</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 7282 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) addition of this section, see § 7282 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) addition of this section, see § 7282 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 7281 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle BB of Title VII of the act may be cited as the “Marriage Equality Estate Tax Clarification Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -2009,9 +2037,9 @@
       (<a class="internal-link" href="/dc/council/laws/20-155.html#§1112">Feb. 26, 2015, D.C. Law 20-155, §  1112, 61 DCR 9990</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of section, see §  1112 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) addition of section, see §  1112 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) addition of section, see §  1112 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) addition of section, see §  1112 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) addition of section, see §  1112 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>
@@ -2039,9 +2067,9 @@
       (<a class="internal-link" href="/dc/council/laws/20-155.html#§1142">Feb. 26, 2015, D.C. Law 20-155, §  1142, 61 DCR 9990</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of section, see §§  1142 and 1143 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) addition of section, see §  1142 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) addition of section, see §  1142 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) addition of section, see §  1142 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) addition of section, see §§  1142 and 1143 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>
@@ -2062,9 +2090,9 @@
       (<a class="internal-link" href="/dc/council/laws/20-155.html#§7132">Feb. 26, 2015, D.C. Law 20-155, §  7132, 61 DCR 9990</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of section, see §  7142 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) addition of section, see §  7132 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) addition of section, see §  7132 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) addition of section, see §  7132 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) addition of section, see §  7142 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>
@@ -2118,9 +2146,9 @@
       (<a class="internal-link" href="/dc/council/laws/20-155.html#§7133">Feb. 26, 2015, D.C. Law 20-155, §  7133, 61 DCR 9990</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of section, see §  7143 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
-                <p>For temporary (90 days) addition of section, see §  7133 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
                 <p>For temporary (90 days) addition of section, see §  7133 of the Fiscal Year 2015 Budget Support Second Congressional Review Emergency Act of 2014 (D.C. Act 20-566, January 9, 2015, 62 DCR 884, 21 STAT 541).</p>
+                <p>For temporary (90 days) addition of section, see §  7133 of the Fiscal Year 2015 Budget Support Congressional Review Emergency Act of 2014 (D.C. Act 20-449, October 10, 2014, 61 DCR 10915, 20 STAT 4188).</p>
+                <p>For temporary (90 days) addition of section, see §  7143 of the Fiscal Year 2015 Budget Support Emergency Act of 2014 (D.C. Act 20-377, July 14, 2014, 61 DCR 7598, 20 STAT 3696).</p>
               </section>
             </section>
             <hr/>
@@ -2203,10 +2231,10 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> rewrote subsec. (b), which had read as follows: “(b) The Unit shall conduct an audit and report on compliance related to real estate development transactions, agreements, or parcels (‘projects’) receiving government assistance, which were previously managed by the dissolved National Capital Revitalization Corporation and Anacostia Waterfront Corporation and placed under the management of the Office of the Deputy Mayor for Planning and Economic Development, pursuant to the National Capital Revitalization Corporation and Anacostia Waterfront Corporation Reorganization Act of 2008, effective March 26, 2008 (<a class="internal-link" href="/dc/council/laws/17-138.html">D.C. Law 17-138</a>;  55 DCR 1689).”</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2221(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 2221(a) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-403.html#§2(a)">§ 2(a) of Repeal of Outdated and Unnecessary Audit Mandates Emergency Amendment Act of 2016 (D.C. Act 21-403, May 21, 2016, 63 DCR 7925)</a>.</p>
                 <p>For temporary (90 days) repeal of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§1102">§ 1102 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-403.html#§2(a)">§ 2(a) of Repeal of Outdated and Unnecessary Audit Mandates Emergency Amendment Act of 2016 (D.C. Act 21-403, May 21, 2016, 63 DCR 7925)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2221(a) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 2221(a) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 2220 of <a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> provided that subtitle W of title II of the act may be cited as the “Department of Small and Local Business Development Amendment Act of 2009”.</p>
                 <h4>Editor's Notes</h4>
@@ -2227,10 +2255,10 @@
                 <h4>Effect of Amendments</h4>
                 <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> added subsec. (c).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 2221(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of section, see § 2221(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-403.html#§2(b)">§ 2(b) of Repeal of Outdated and Unnecessary Audit Mandates Emergency Amendment Act of 2016 (D.C. Act 21-403, May 21, 2016, 63 DCR 7925)</a>.</p>
                 <p>For temporary (90 days) repeal of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§1102">§ 1102 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-403.html#§2(b)">§ 2(b) of Repeal of Outdated and Unnecessary Audit Mandates Emergency Amendment Act of 2016 (D.C. Act 21-403, May 21, 2016, 63 DCR 7925)</a>.</p>
+                <p>For temporary (90 day) amendment of section, see § 2221(b) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 2221(b) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>
@@ -2264,10 +2292,10 @@
       (<a class="internal-link" href="/dc/council/laws/17-176.html#§4a">June 13, 2008, D.C. Law 17-176, § 4a</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">as added Mar. 3, 2010, D.C. Law 18-111, § 2221(c), 57 DCR 181</a>; <a class="internal-link" href="/dc/council/laws/21-143.html#§2(d)">Aug. 17, 2016, D.C. Law 21-143, § 2(d), 63 DCR 7589</a>; <a class="internal-link" href="/dc/council/laws/22-33.html#§1102">Dec. 13, 2017, D.C. Law 22-33, § 1102, 64 DCR 7652</a>.)
     </p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) addition, see § 2221(c) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) addition, see § 2221(c) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-403.html#§2(d)">§ 2(d) of Repeal of Outdated and Unnecessary Audit Mandates Emergency Amendment Act of 2016 (D.C. Act 21-403, May 21, 2016, 63 DCR 7925)</a>.</p>
                 <p>For temporary (90 days) repeal of this section, see <a class="internal-link" href="/dc/council/acts/22-104.html#§1102">§ 1102 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/21-403.html#§2(d)">§ 2(d) of Repeal of Outdated and Unnecessary Audit Mandates Emergency Amendment Act of 2016 (D.C. Act 21-403, May 21, 2016, 63 DCR 7925)</a>.</p>
+                <p>For temporary (90 day) addition, see § 2221(c) of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) addition, see § 2221(c) of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
               </section>
             </section>
             <hr/>
@@ -2324,13 +2352,13 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> substituted “Be responsible for providing guidance and support to, and coordination of, the” for “Oversee and provide administrative support for” in the introductory language of (c)(5)(A).</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-125.html">D.C. Law 21-125</a>: <a class="internal-link" href="/dc/council/laws/21-125.html#§901">§ 901 of D.C. Law 21-125</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-125.html#§210">§ 210 of D.C. Law 21-125</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
+                <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7014">Section 7014 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-125.html#§901">§ 901 of D.C. Law 21-125</a>. Therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-125.html">D.C. Law 21-125</a> have been given effect.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§3102(b)">Section 3102(b) of D.C. Law 21-160</a> amended <a class="internal-link" href="/dc/council/laws/21-125.html#§901(a)">section 901(a) of D.C. Law 21-125</a>, removing the subject to funding requirement. Therefore the changes made to this section by D.C. Law 21-125 have been given effect.
         </p>
-                <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7014">Section 7014 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-125.html#§901">§ 901 of D.C. Law 21-125</a>. Therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-125.html">D.C. Law 21-125</a> have been given effect.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-125.html">D.C. Law 21-125</a>: <a class="internal-link" href="/dc/council/laws/21-125.html#§901">§ 901 of D.C. Law 21-125</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-125.html#§210">§ 210 of D.C. Law 21-125</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 3022 the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <p>For temporary (90 days) repeal of § 901 of D.C. Law 21-125, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7014">§ 7014 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 3022 the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015,  62 DCR 10201).</p>
                 <h4>Short Title</h4>
                 <p>Short title: Section 3021 of <a class="internal-link" href="/dc/council/laws/19-21.html">D.C. Law 19-21</a> provided that subtitle C of title III of the act may be cited as “Office of the Deputy Mayor for Public Safety and Justice Establishment Act of 2011”.</p>
               </section>

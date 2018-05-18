@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/8-902.html">§ 8–902. Prohibition and penalties.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-901.html">Report Error</a>
@@ -124,11 +124,11 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/8-105.02.html">8-105.02</a>, § <a class="internal-link" href="/dc/council/code/sections/47-2829.html">47-2829</a>, and § <a class="internal-link" href="/dc/council/code/sections/47-2862.html">47-2862</a>.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of chapter 29A, see §§ 2-6 of the Illegal Dumping Enforcement Emergency Act of 1993 (D.C. Act 10-89, August 4, 1993,  40 DCR 6074) and §§ 2-6 of the Illegal Dumping Enforcement Congressional Recess Emergency Act of 1993 (D.C. Act 10-138, November 1, 1993,  40 DCR 7741).</p>
                 <p>For temporary amendment of section, see § 3 (a) of the Recycling Fee and Illegal Dumping Emergency Amendment Act of 1994 (D.C. Act 10-269, July 7, 1994,  41 DCR 4669).</p>
+                <p>For temporary addition of chapter 29A, see §§ 2-6 of the Illegal Dumping Enforcement Emergency Act of 1993 (D.C. Act 10-89, August 4, 1993,  40 DCR 6074) and §§ 2-6 of the Illegal Dumping Enforcement Congressional Recess Emergency Act of 1993 (D.C. Act 10-138, November 1, 1993,  40 DCR 7741).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 3(a) of Recycling Fee and Illegal Dumping Temporary Amendment Act of 1994 (D.C. Law 10-191, October 1, 1994, law notification  41 DCR 6934).</p>
                 <p>For temporary (225 day) additions, see §§ 2 to 5 of Illegal Dumping Enforcement Temporary Act of 1993 (<a class="internal-link" href="/dc/council/laws/10-62.html">D.C. Law 10-62</a>, November 20, 1993, law notification  40 DCR 8455).</p>
+                <p>For temporary (225 day) amendment of section, see § 3(a) of Recycling Fee and Illegal Dumping Temporary Amendment Act of 1994 (D.C. Law 10-191, October 1, 1994, law notification  41 DCR 6934).</p>
                 <h4>Editor's Notes</h4>
                 <p>Mayor authorized to issue regulations: Section 6 of <a class="internal-link" href="/dc/council/laws/10-62.html">D.C. Law 10-62</a> provided that the Mayor is authorized to promulgate regulations necessary to implement and enforce this act in accordance with subchapter I of Chapter 15 of Title 1.</p>
               </section>

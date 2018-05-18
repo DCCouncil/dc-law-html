@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/7-1811.02.html">§ 7–1811.02. Board of Trustees of the Tobacco Settlement Trust Fund. [Repealed]</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/7-1811.01.html">Report Error</a>
@@ -111,25 +111,25 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/7-1932.html">7-1932</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> rewrote this section, which previously read:</p>
-                <p>“Establishment of Tobacco Settlement Trust Fund.</p>
-                <p>“(a) There is established within the General Fund of the District of Columbia, a trust fund designated as the Tobacco Settlement Trust Fund (’Fund’), to which shall be credited, without regard to fiscal year limitation, all revenue owed and accruing to the District from the proceeds of the tobacco litigation settlement, except for the first $16.05 million recognized as general fund revenue and already included in the base budget in FY 2000, and except for the second $16.05 million which is allocated first to the reserve to replace funds allocated from the reserve to the fund pursuant to title XX of this act. The Fund shall be continuing. Revenues deposited into the Fund shall not revert to the General Fund at the end of any fiscal year or at any other time, but shall be continually available, subject to authorization by Congress in an appropriations act.</p>
-                <p>“(b) Tobacco settlement monies received, or deposited into the Fund shall be used for the purposes set forth in legislation adopted by the Council.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/14-300.html">D.C. Law 14-300</a>, in subsec. (a)(1)(C), substituted “by law, which shall include funds to be deposited into a Reservation 13 Benefit Area (‘R13BA’) Hospital account or R13BA Health Care account (collectively, ‘R13BA funds’) pursuant to Chapter 15 of Title 10” for “by law.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-69.html">D.C. Law 15-69</a>, in subpar. (1)(C) of subsec. (a), substituted “Health Care account (‘R13BA fund’)” for “Hospital account or R13BA Health Care account (collectively, ‘R13BA funds)”, and made a technical correction that required no change in the text.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (a)(1)(C), validated a previously made technical correction.</p>
-                <p><a class="internal-link" href="/dc/council/laws/16-142.html">D.C. Law 16-142</a>, in subpar. (a)(1)(A)(i), substituted a semicolon for “; and”; in subpar. (a)(1)(A)(ii), substituted “§ <a class="internal-link" href="/dc/council/code/sections/7-1831.02.html">7-1831.02</a>; and” for “§ <a class="internal-link" href="/dc/council/code/sections/7-1831.02.html">7-1831.02</a>;”; added subpars. (a)(1)(A)(iii) and (a)(1)(B-i); added subsec. (c); and rewrote subpar. (a)(1)(B), which had read as follows: “(B) All payments received with respect to the Residual Interest, as the term is defined in § <a class="internal-link" href="/dc/council/code/sections/7-1831.01.html">7-1831.01</a>(7); and”</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (a)(1)(B).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-271.html">D.C. Law 20-271</a> substituted “Office of the Chief Financial Officer” for “Board of Trustees of the Tobacco Settlement Trust Fund established under § <a class="internal-link" href="/dc/council/code/sections/7-1811.02.html">7-1811.02</a>” in (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (a)(1)(B).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-142.html">D.C. Law 16-142</a>, in subpar. (a)(1)(A)(i), substituted a semicolon for “; and”; in subpar. (a)(1)(A)(ii), substituted “§ <a class="internal-link" href="/dc/council/code/sections/7-1831.02.html">7-1831.02</a>; and” for “§ <a class="internal-link" href="/dc/council/code/sections/7-1831.02.html">7-1831.02</a>;”; added subpars. (a)(1)(A)(iii) and (a)(1)(B-i); added subsec. (c); and rewrote subpar. (a)(1)(B), which had read as follows: “(B) All payments received with respect to the Residual Interest, as the term is defined in § <a class="internal-link" href="/dc/council/code/sections/7-1831.01.html">7-1831.01</a>(7); and”</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a>, in subsec. (a)(1)(C), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-69.html">D.C. Law 15-69</a>, in subpar. (1)(C) of subsec. (a), substituted “Health Care account (‘R13BA fund’)” for “Hospital account or R13BA Health Care account (collectively, ‘R13BA funds)”, and made a technical correction that required no change in the text.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-300.html">D.C. Law 14-300</a>, in subsec. (a)(1)(C), substituted “by law, which shall include funds to be deposited into a Reservation 13 Benefit Area (‘R13BA’) Hospital account or R13BA Health Care account (collectively, ‘R13BA funds’) pursuant to Chapter 15 of Title 10” for “by law.”</p>
+                <p>“(b) Tobacco settlement monies received, or deposited into the Fund shall be used for the purposes set forth in legislation adopted by the Council.”</p>
+                <p>“(a) There is established within the General Fund of the District of Columbia, a trust fund designated as the Tobacco Settlement Trust Fund (’Fund’), to which shall be credited, without regard to fiscal year limitation, all revenue owed and accruing to the District from the proceeds of the tobacco litigation settlement, except for the first $16.05 million recognized as general fund revenue and already included in the base budget in FY 2000, and except for the second $16.05 million which is allocated first to the reserve to replace funds allocated from the reserve to the fund pursuant to title XX of this act. The Fund shall be continuing. Revenues deposited into the Fund shall not revert to the General Fund at the end of any fiscal year or at any other time, but shall be continually available, subject to authorization by Congress in an appropriations act.</p>
+                <p>“Establishment of Tobacco Settlement Trust Fund.</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> rewrote this section, which previously read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see § 2302 of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
-                <p>For temporary (90-day) amendment of section, see § 3721(a) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
-                <p>For temporary (90-day) authorization for use of fund for certain bonus payments, see § 2 of the Funding for Compensation Units 1 and 2 Bonus Payment Authorization Emergency Act of 1999 (D.C. Act 13-211, December 14, 1999,  46 DCR 10476).</p>
-                <p>For temporary (90 day) amendment of section, see § 3721(a) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(d)(1) of Draft Master Plan for Public Reservation 13 Emergency Amendment Act of 2003 (D.C. Act 15-13, January 27, 2003,  50 DCR 1488).</p>
-                <p>For temporary (90 day) amendment of section, see § 3(a) of Draft Master Plan for Public Reservation 13 Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-273, December 18, 2003,  51 DCR 40).</p>
-                <p>For temporary (90 days) amendment of this section, see § 255(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
                 <p>For temporary (90 days) amendment of this section, see § 255(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Congressional Review Emergency Amendment Act of 2015 (D.C. Act 21-7, Feb. 26, 2015,  62 DCR 2646, 21 STAT 807).</p>
+                <p>For temporary (90 days) amendment of this section, see § 255(a) of the New Columbia Statehood Initiative, Omnibus Boards and Commissions, and Election Transition Reform Emergency Amendment Act of 2014 (D.C. Act 20-481, Nov. 18, 2014, 61 DCR 12133, 20 STAT 4405).</p>
+                <p>For temporary (90 day) amendment of section, see § 3(a) of Draft Master Plan for Public Reservation 13 Congressional Review Emergency Amendment Act of 2003 (D.C. Act 15-273, December 18, 2003,  51 DCR 40).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(d)(1) of Draft Master Plan for Public Reservation 13 Emergency Amendment Act of 2003 (D.C. Act 15-13, January 27, 2003,  50 DCR 1488).</p>
+                <p>For temporary (90 day) amendment of section, see § 3721(a) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) authorization for use of fund for certain bonus payments, see § 2 of the Funding for Compensation Units 1 and 2 Bonus Payment Authorization Emergency Act of 1999 (D.C. Act 13-211, December 14, 1999,  46 DCR 10476).</p>
+                <p>For temporary (90-day) amendment of section, see § 3721(a) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
+                <p>For temporary (90-day) addition of section, see § 2302 of the Service Improvement and Fiscal Year 2000 Budget Support Emergency Act of 1999 (D.C. Act 13-110, July 28, 1999,  46 DCR 6320).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 2(d)(1) of Draft Master Plan for Public Reservation 13 Temporary Amendment Act of 2003 (<a class="internal-link" href="/dc/council/laws/15-3.html">D.C. Law 15-3</a>, May 3, 2003, law notification  50 DCR 3783).</p>
                 <h4>Short Title</h4>

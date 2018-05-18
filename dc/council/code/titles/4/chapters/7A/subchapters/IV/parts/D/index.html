@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/4/chapters/7A/subchapters/IV/parts/E/">Part E. Administrative Hearings and Review.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/4/chapters/7A/subchapters/IV/parts/D/">Report Error</a>
@@ -89,17 +89,39 @@
         <section class="col8 body">
           <h1>Part D. Provider Requirements.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/4-754.31.html">§ 4–754.31. Monitoring and inspections of services.</a>
-            <a href="/dc/council/code/sections/4-754.32.html">§ 4–754.32. Provider Program Rules.</a>
-            <a href="/dc/council/code/sections/4-754.33.html">§ 4–754.33. Notice.</a>
-            <a href="/dc/council/code/sections/4-754.34.html">§ 4–754.34. Transfer of clients.</a>
-            <a href="/dc/council/code/sections/4-754.35.html">§ 4–754.35. Suspension of services.</a>
-            <a href="/dc/council/code/sections/4-754.36.html">§ 4–754.36. Termination.</a>
-            <a href="/dc/council/code/sections/4-754.36a.html">§ 4–754.36a. Discontinuation of permanent supportive housing.</a>
-            <a href="/dc/council/code/sections/4-754.36b.html">§ 4–754.36b. Program exits.</a>
-            <a href="/dc/council/code/sections/4-754.37.html">§ 4–754.37. Alternative sanctions.</a>
-            <a href="/dc/council/code/sections/4-754.38.html">§ 4–754.38. Emergency transfers of clients; emergency suspensions and terminations of services.</a>
-            <a href="/dc/council/code/sections/4-754.39.html">§ 4–754.39. Mediation.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.31.html">§ 4–754.31. Monitoring and inspections of services.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.32.html">§ 4–754.32. Provider Program Rules.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.33.html">§ 4–754.33. Notice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.34.html">§ 4–754.34. Transfer of clients.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.35.html">§ 4–754.35. Suspension of services.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.36.html">§ 4–754.36. Termination.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.36a.html">§ 4–754.36a. Discontinuation of permanent supportive housing.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.36b.html">§ 4–754.36b. Program exits.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.37.html">§ 4–754.37. Alternative sanctions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.38.html">§ 4–754.38. Emergency transfers of clients; emergency suspensions and terminations of services.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/4-754.39.html">§ 4–754.39. Mediation.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -157,8 +179,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> added (a)(9) and made related changes.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 5182(e) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 5182(e) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5182(e) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 5181 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle Q of Title V of the act may be cited as the “Homeless Services Reform Emergency Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -205,17 +227,17 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/4-754.11.html">4-754.11</a>, § <a class="internal-link" href="/dc/council/code/sections/4-754.21.html">4-754.21</a>, § <a class="internal-link" href="/dc/council/code/sections/4-754.34.html">4-754.34</a>, § <a class="internal-link" href="/dc/council/code/sections/4-754.35.html">4-754.35</a>, § <a class="internal-link" href="/dc/council/code/sections/4-754.36a.html">4-754.36a</a>, § <a class="internal-link" href="/dc/council/code/sections/4-754.38.html">4-754.38</a>, and § <a class="internal-link" href="/dc/council/code/sections/4-754.42.html">4-754.42</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> rewrote (c) and (d)(4).</p>
                 <p>The 2016 amendment by <a class="internal-link" href="/dc/council/laws/21-75.html">D.C. Law 21-75</a> added (b-1) and (d-1).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> rewrote (c) and (d)(4).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 5182(f) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
-                <p>For temporary (90 days) amendment of this section, see § 5182(f) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(e) of the Interim Eligibility and Minimum Shelter Standards Emergency Amendment Act of 2015 (D.C. Act 21-217, Nov. 30, 2015,  62 DCR 15648).</p>
-                <p>For temporary (90 days) amendment of this section, see § 2(e) of the Interim Eligibility and Minimum Shelter Standards Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-326, Mar. 3, 2016,  63 DCR 3658).</p>
                 <p>For temporary (90 days) amendment of this section, see <a class="internal-link" href="/dc/council/acts/22-195.html#§2(b)">§ 2(b) of Medical Respite Services Exemption Emergency Amendment Act of 2017 (D.C. Act 22-195, Nov. 29, 2017, 64 DCR 12407)</a>.</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(e) of the Interim Eligibility and Minimum Shelter Standards Congressional Review Emergency Amendment Act of 2016 (D.C. Act 21-326, Mar. 3, 2016,  63 DCR 3658).</p>
+                <p>For temporary (90 days) amendment of this section, see § 2(e) of the Interim Eligibility and Minimum Shelter Standards Emergency Amendment Act of 2015 (D.C. Act 21-217, Nov. 30, 2015,  62 DCR 15648).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5182(f) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5182(f) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-245.html#§2(b)">§ 2(b) of Medical Respite Services Exemption Temporary Amendment Act of 2017 (D.C. Law 21-245, Apr. 7, 2017, 64 DCR 1618)</a>.</p>
                 <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/22-51.html#§2(b)">§ 2(b) of Medical Respite Services Exemption Temporary Amendment Act of 2017 (D.C. Law 22-51, Jan. 27, 2018, 64 DCR 12549)</a>.</p>
+                <p>For temporary (225 days) amendment of this section, see <a class="internal-link" href="/dc/council/laws/21-245.html#§2(b)">§ 2(b) of Medical Respite Services Exemption Temporary Amendment Act of 2017 (D.C. Law 21-245, Apr. 7, 2017, 64 DCR 1618)</a>.</p>
                 <h4>Short Title</h4>
                 <p>Section 5181 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle Q of Title V of the act may be cited as the “Homeless Services Reform Emergency Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -296,8 +318,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> rewrote the section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) amendment of this section, see § 5182(g) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) amendment of this section, see § 5182(g) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 5182(g) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 5181 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle Q of Title V of the act may be cited as the “Homeless Services Reform Emergency Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>
@@ -324,8 +346,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> added this section.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 days) addition of this section, see § 5182(h) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <p>For temporary (90 days) addition of this section, see § 5182(h) of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) addition of this section, see § 5182(h) of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
                 <h4>Short Title</h4>
                 <p>Section 5181 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle Q of Title V of the act may be cited as the “Homeless Services Reform Emergency Amendment Act of 2013”.</p>
                 <h4>Editor's Notes</h4>

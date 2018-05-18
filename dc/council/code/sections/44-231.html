@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/44-232.html">§ 44–232. Access by the public to defibrillation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/44-231.html">Report Error</a>
@@ -109,12 +109,12 @@
       (<a class="internal-link" href="/dc/council/laws/13-278.html#§2">Apr. 27, 2001, D.C. Law 13-278, § 2, 48 DCR 1869</a>; <a class="internal-link" href="/dc/council/laws/16-217.html">Mar. 6, 2007, D.C. Law 16-217, § 2(a), 53 DCR 10207</a>; <a class="internal-link" href="/dc/council/laws/17-362.html">Mar. 25, 2009, D.C. Law 17-362, § 2(a), 56 DCR 1211</a>; <a class="internal-link" href="/dc/council/laws/21-160.html#§3144(a)">Oct. 8, 2016, D.C. Law 21-160, § 3144(a), 63 DCR 10775</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-217.html">D.C. Law 16-217</a> rewrote this section, which formerly read:</p>
-                <p>“For the purposes of this chapter, the term ‘automated external defibrillator’ or ‘AED’ or ‘defibrillator’ means a medical device heart monitor and defibrillator that:</p>
-                <p>“(1) Has received approval from the United States Food and Drug Administration of its premarket notification filed pursuant to section 510(k) of the Federal Food, Drug, and Cosmetic Act, approved October 10, 1962 (76 Stat. 794;  21 U.S.C. 360(k));</p>
-                <p>“(2) Is capable of recognizing the presence or absence of ventricular fibrillation or rapid ventricular tachycardia, and determining, without intervention by an operator, whether defibrillation should be performed; and</p>
-                <p>“(3) Upon determining that defibrillation should be performed, automatically charges and requests delivery of an electrical impulse to an individual’s heart.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-362.html">D.C. Law 17-362</a> added pars. (3) and (4).</p>
+                <p>“(3) Upon determining that defibrillation should be performed, automatically charges and requests delivery of an electrical impulse to an individual’s heart.”</p>
+                <p>“(2) Is capable of recognizing the presence or absence of ventricular fibrillation or rapid ventricular tachycardia, and determining, without intervention by an operator, whether defibrillation should be performed; and</p>
+                <p>“(1) Has received approval from the United States Food and Drug Administration of its premarket notification filed pursuant to section 510(k) of the Federal Food, Drug, and Cosmetic Act, approved October 10, 1962 (76 Stat. 794;  21 U.S.C. 360(k));</p>
+                <p>“For the purposes of this chapter, the term ‘automated external defibrillator’ or ‘AED’ or ‘defibrillator’ means a medical device heart monitor and defibrillator that:</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-217.html">D.C. Law 16-217</a> rewrote this section, which formerly read:</p>
               </section>
             </section>
           </section>

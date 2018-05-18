@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/6/subchapters/XI/">Subchapter XI. Classification; Compensation.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/6/subchapters/X-B/">Report Error</a>
@@ -88,12 +88,24 @@
         <section class="col8 body">
           <h1>Subchapter X-B. Lateral Police Career Appointments.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-610.71.html">§ 1–610.71. Definitions.</a>
-            <a href="/dc/council/code/sections/1-610.72.html">§ 1–610.72. Salary and Assignment for appointment of Metropolitan Police Department at Class 1 — Private.</a>
-            <a href="/dc/council/code/sections/1-610.73.html">§ 1–610.73. Treatment of lateral law enforcement officers as police hired after September 30, 1987.</a>
-            <a href="/dc/council/code/sections/1-610.74.html">§ 1–610.74. Leave accrual for lateral law enforcement officers.</a>
-            <a href="/dc/council/code/sections/1-610.75.html">§ 1–610.75. Retirement benefits for lateral law enforcement officers hired after January 11, 2000.</a>
-            <a href="/dc/council/code/sections/1-610.76.html">§ 1–610.76. Credit for prior law enforcement service.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-610.71.html">§ 1–610.71. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-610.72.html">§ 1–610.72. Salary and Assignment for appointment of Metropolitan Police Department at Class 1 — Private.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-610.73.html">§ 1–610.73. Treatment of lateral law enforcement officers as police hired after September 30, 1987.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-610.74.html">§ 1–610.74. Leave accrual for lateral law enforcement officers.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-610.75.html">§ 1–610.75. Retirement benefits for lateral law enforcement officers hired after January 11, 2000.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-610.76.html">§ 1–610.76. Credit for prior law enforcement service.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -189,13 +201,13 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 1-611.75.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> added subsec. (b).</p>
                 <p><a class="internal-link" href="/dc/council/laws/15-194.html">D.C. Law 15-194</a> repealed subsec. (b) which had read as follows: “(b) Metropolitan Police Officers hired after January 11, 2000, and prior to December 31, 2003, shall have successfully completed at least 60 post-secondary semester hours from an accredited university by the fifth anniversary of the date hired.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-172.html">D.C. Law 13-172</a> added subsec. (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) addition of section, see § 2(b) of the Lateral Appointment of Law Enforcement Officers Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-305, April 7, 2000,  47 DCR 2701).</p>
-                <p>For temporary (90-day) amendment of section, see § 812(a), (b) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
-                <p>For temporary (90 day) amendment of section, see § 812(b) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
                 <p>For temporary (90 day) amendment of section, see § 3 of Metropolitan Police Department Educational Requirement Clarification Emergency Amendment Act of 2004 (D.C. Act 15-323, January 28, 2004,  51 DCR 1586).</p>
+                <p>For temporary (90 day) amendment of section, see § 812(b) of the Fiscal Year 2001 Budget Support Congressional Review Emergency Act of 2000 (D.C. Act 13-438, October 20, 2000,  47 DCR 8740).</p>
+                <p>For temporary (90-day) amendment of section, see § 812(a), (b) of the Fiscal Year 2001 Budget Support Emergency Act of 2000 (D.C. Act 13-376, July 24, 2000,  47 DCR 6574).</p>
+                <p>For temporary (90-day) addition of section, see § 2(b) of the Lateral Appointment of Law Enforcement Officers Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-305, April 7, 2000,  47 DCR 2701).</p>
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 day) amendment of section, see § 3 of Metropolitan Police Department Education Requirement Clarification Temporary Amendment Act of 2004 (D.C. Law 15-147, April 22, 2004, law notification  51 DCR 4931).</p>
               </section>

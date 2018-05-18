@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/11/">Chapter 11. Election Campaigns; Lobbying; Conflict of Interest. [Repealed].</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/10/subchapters/VII/">Report Error</a>
@@ -88,26 +88,66 @@
         <section class="col8 body">
           <h1>Subchapter VII. Uniform Military and Overseas Voters Act.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-1061.01.html">§ 1–1061.01. Short title.</a>
-            <a href="/dc/council/code/sections/1-1061.02.html">§ 1–1061.02. Definitions.</a>
-            <a href="/dc/council/code/sections/1-1061.03.html">§ 1–1061.03. Elections covered.</a>
-            <a href="/dc/council/code/sections/1-1061.04.html">§ 1–1061.04. Role of Board.</a>
-            <a href="/dc/council/code/sections/1-1061.05.html">§ 1–1061.05. Overseas voter’s registration address.</a>
-            <a href="/dc/council/code/sections/1-1061.06.html">§ 1–1061.06. Methods of registering to vote.</a>
-            <a href="/dc/council/code/sections/1-1061.07.html">§ 1–1061.07. Methods of applying for military-overseas ballot.</a>
-            <a href="/dc/council/code/sections/1-1061.08.html">§ 1–1061.08. Timeliness and scope of application for military-overseas ballot.  [Repealed]</a>
-            <a href="/dc/council/code/sections/1-1061.09.html">§ 1–1061.09. Transmission of unvoted ballots.</a>
-            <a href="/dc/council/code/sections/1-1061.10.html">§ 1–1061.10. Timely casting of ballot.</a>
-            <a href="/dc/council/code/sections/1-1061.11.html">§ 1–1061.11. Federal write-in absentee ballot.</a>
-            <a href="/dc/council/code/sections/1-1061.12.html">§ 1–1061.12. Receipt of voted ballot.  [Repealed]</a>
-            <a href="/dc/council/code/sections/1-1061.13.html">§ 1–1061.13. Declaration.</a>
-            <a href="/dc/council/code/sections/1-1061.14.html">§ 1–1061.14. Confirmation of receipt of application and voted ballot.</a>
-            <a href="/dc/council/code/sections/1-1061.15.html">§ 1–1061.15. Use of voter’s electronic-mail address.</a>
-            <a href="/dc/council/code/sections/1-1061.16.html">§ 1–1061.16. Publication of election notice.</a>
-            <a href="/dc/council/code/sections/1-1061.17.html">§ 1–1061.17. Prohibition of nonsubstantive requirements.</a>
-            <a href="/dc/council/code/sections/1-1061.18.html">§ 1–1061.18. Equitable relief.</a>
-            <a href="/dc/council/code/sections/1-1061.19.html">§ 1–1061.19. Uniformity of application and construction.  [Repealed]</a>
-            <a href="/dc/council/code/sections/1-1061.20.html">§ 1–1061.20. Relation to Electronic Signatures in Global and National Commerce Act.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.01.html">§ 1–1061.01. Short title.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.02.html">§ 1–1061.02. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.03.html">§ 1–1061.03. Elections covered.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.04.html">§ 1–1061.04. Role of Board.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.05.html">§ 1–1061.05. Overseas voter’s registration address.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.06.html">§ 1–1061.06. Methods of registering to vote.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.07.html">§ 1–1061.07. Methods of applying for military-overseas ballot.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.08.html">§ 1–1061.08. Timeliness and scope of application for military-overseas ballot.  [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.09.html">§ 1–1061.09. Transmission of unvoted ballots.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.10.html">§ 1–1061.10. Timely casting of ballot.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.11.html">§ 1–1061.11. Federal write-in absentee ballot.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.12.html">§ 1–1061.12. Receipt of voted ballot.  [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.13.html">§ 1–1061.13. Declaration.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.14.html">§ 1–1061.14. Confirmation of receipt of application and voted ballot.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.15.html">§ 1–1061.15. Use of voter’s electronic-mail address.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.16.html">§ 1–1061.16. Publication of election notice.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.17.html">§ 1–1061.17. Prohibition of nonsubstantive requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.18.html">§ 1–1061.18. Equitable relief.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.19.html">§ 1–1061.19. Uniformity of application and construction.  [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-1061.20.html">§ 1–1061.20. Relation to Electronic Signatures in Global and National Commerce Act.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -193,11 +233,11 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>, § 5, see § 21 of the Fiscal Year 2016 Budget Support Clarification Temporary Amendment Act of 2015 (D.C. Law 21-76, Feb. 27, 2016,  63 DCR 264).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 3 of the Uniform Military and Overseas Voters Act.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
-                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7018">Section 7018 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-273.html#§5">§ 5 of D.C. Law 20-273</a>. Therefore the changes made to this section by D.C. Law 20-273 have been given effect.
         </p>
+                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
+                <p>Uniform Law: This section is based on § 3 of the Uniform Military and Overseas Voters Act.</p>
               </section>
             </section>
             <hr/>
@@ -224,11 +264,11 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>, § 5, see § 21 of the Fiscal Year 2016 Budget Support Clarification Temporary Amendment Act of 2015 (D.C. Law 21-76, Feb. 27, 2016,  63 DCR 264).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 4 of the Uniform Military and Overseas Voters Act.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
-                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7018">Section 7018 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-273.html#§5">§ 5 of D.C. Law 20-273</a>. Therefore the changes made to this section by D.C. Law 20-273 have been given effect.
         </p>
+                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
+                <p>Uniform Law: This section is based on § 4 of the Uniform Military and Overseas Voters Act.</p>
               </section>
             </section>
             <hr/>
@@ -262,9 +302,9 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/1-1061.07.html">1-1061.07</a>.</p>
                 <h4>Applicability</h4>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-208.html">D.C. Law 21-208</a>: <a class="internal-link" href="/dc/council/laws/21-208.html#§5">§ 5 of D.C. Law 21-208</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-208.html#§3">§ 3 of D.C. Law 21-208</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <p><a class="internal-link" href="/dc/council/laws/22-33.html#§7021">Section 7021 of D.C. Law 22-33</a> repealed <a class="internal-link" href="/dc/council/laws/21-208.html#§5">§ 5 of D.C. Law 21-208</a>. Therefore the changes made to this section by <a class="internal-link" href="/dc/council/laws/21-208.html">D.C. Law 21-208</a> have been given effect.
             </p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/21-208.html">D.C. Law 21-208</a>: <a class="internal-link" href="/dc/council/laws/21-208.html#§5">§ 5 of D.C. Law 21-208</a> provided that the change made to this section by <a class="internal-link" href="/dc/council/laws/21-208.html#§3">§ 3 of D.C. Law 21-208</a> is subject to the inclusion of the law’s fiscal effect in an approved budget and financial plan. Therefore that amendment has not been implemented.</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 days) repeal of § 5 of D.C. Law 21-208, see <a class="internal-link" href="/dc/council/acts/22-104.html#§7021">§ 7021 of Fiscal Year 2018 Budget Support Emergency Act of 2017 (D.C. Act 22-104, July 20, 2017, 64 DCR 7032)</a>.</p>
                 <h4>Editor's Notes</h4>
@@ -310,11 +350,11 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>, § 5, see § 21 of the Fiscal Year 2016 Budget Support Clarification Temporary Amendment Act of 2015 (D.C. Law 21-76, Feb. 27, 2016,  63 DCR 264).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 8 of the Uniform Military and Overseas Voters Act.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
-                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7018">Section 7018 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-273.html#§5">§ 5 of D.C. Law 20-273</a>. Therefore the changes made to this section by D.C. Law 20-273 have been given effect.
         </p>
+                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
+                <p>Uniform Law: This section is based on § 8 of the Uniform Military and Overseas Voters Act.</p>
               </section>
             </section>
             <hr/>
@@ -352,11 +392,11 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>, § 5, see § 21 of the Fiscal Year 2016 Budget Support Clarification Temporary Amendment Act of 2015 (D.C. Law 21-76, Feb. 27, 2016,  63 DCR 264).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 10 of the Uniform Military and Overseas Voters Act.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
-                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7018">Section 7018 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-273.html#§5">§ 5 of D.C. Law 20-273</a>. Therefore the changes made to this section by D.C. Law 20-273 have been given effect.
         </p>
+                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
+                <p>Uniform Law: This section is based on § 10 of the Uniform Military and Overseas Voters Act.</p>
               </section>
             </section>
             <hr/>
@@ -390,11 +430,11 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>, § 5, see § 21 of the Fiscal Year 2016 Budget Support Clarification Temporary Amendment Act of 2015 (D.C. Law 21-76, Feb. 27, 2016,  63 DCR 264).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 12 of the Uniform Military and Overseas Voters Act.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
-                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7018">Section 7018 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-273.html#§5">§ 5 of D.C. Law 20-273</a>. Therefore the changes made to this section by D.C. Law 20-273 have been given effect.
         </p>
+                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
+                <p>Uniform Law: This section is based on § 12 of the Uniform Military and Overseas Voters Act.</p>
               </section>
             </section>
             <hr/>
@@ -466,11 +506,11 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>, § 5, see § 21 of the Fiscal Year 2016 Budget Support Clarification Temporary Amendment Act of 2015 (D.C. Law 21-76, Feb. 27, 2016,  63 DCR 264).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 16 of the Uniform Military and Overseas Voters Act.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
-                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7018">Section 7018 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-273.html#§5">§ 5 of D.C. Law 20-273</a>. Therefore the changes made to this section by D.C. Law 20-273 have been given effect.
         </p>
+                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
+                <p>Uniform Law: This section is based on § 16 of the Uniform Military and Overseas Voters Act.</p>
               </section>
             </section>
             <hr/>
@@ -522,11 +562,11 @@
                 <h4>Temporary Legislation</h4>
                 <p>For temporary (225 days) repeal of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>, § 5, see § 21 of the Fiscal Year 2016 Budget Support Clarification Temporary Amendment Act of 2015 (D.C. Law 21-76, Feb. 27, 2016,  63 DCR 264).</p>
                 <h4>Editor's Notes</h4>
-                <p>Uniform Law: This section is based on § 19 of the Uniform Military and Overseas Voters Act.</p>
-                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
-                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
                 <p><a class="internal-link" href="/dc/council/laws/21-160.html#§7018">Section 7018 of D.C. Law 21-160</a> repealed <a class="internal-link" href="/dc/council/laws/20-273.html#§5">§ 5 of D.C. Law 20-273</a>. Therefore the changes made to this section by D.C. Law 20-273 have been given effect.
         </p>
+                <p>The Budget Director of the Council of the District of Columbia has determined that the fiscal effect of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> has been included in an approved budget and financial plan.</p>
+                <p>Applicability of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a>: Section 5 of <a class="internal-link" href="/dc/council/laws/20-273.html">D.C. Law 20-273</a> provided (a) that the act shall apply upon the date of inclusions of its fiscal effect in an approved budget and financial plan; (b) that the Chief Financial Officer shall certify the date of the inclusion of the fiscal effect in an approved budget and financial plan, and provide notice to the Budget Director of the Council of the certification; and (c) that the Budget Director shall cause the notice of the certification to be published in the District of Columbia Register and that the date of publication of the notice of the certification shall not affect the applicability of the act.</p>
+                <p>Uniform Law: This section is based on § 19 of the Uniform Military and Overseas Voters Act.</p>
               </section>
             </section>
             <hr/>

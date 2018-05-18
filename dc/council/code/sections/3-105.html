@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/3-106.html">§ 3–106. Analysis of correctional impact.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/3-105.html">Report Error</a>
@@ -103,21 +103,21 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 2-4205.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/13-302.html">D.C. Law 13-302</a> rewrote the section which had read:</p>
-                <p>“If the Commission recommends a system of sentencing guidelines as part of its report, any such recommendation shall:</p>
-                <p>“(1) Specify whether and under what circumstances to impose a sentence of probation, a term of imprisonment, and a fine, and the amount or length of each;</p>
-                <p>“(2) Provide for the application of intermediate sanctions in appropriate cases;</p>
-                <p>“(3) Include provisions for such appeal rights from sentencing determinations as may be appropriate or constitutionally required.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-190.html">D.C. Law 15-190</a> added subsec. (e).</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-25.html">D.C. Law 17-25</a> rewrote the section.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-190.html">D.C. Law 15-190</a> added subsec. (e).</p>
+                <p>“(3) Include provisions for such appeal rights from sentencing determinations as may be appropriate or constitutionally required.”</p>
+                <p>“(2) Provide for the application of intermediate sanctions in appropriate cases;</p>
+                <p>“(1) Specify whether and under what circumstances to impose a sentence of probation, a term of imprisonment, and a fine, and the amount or length of each;</p>
+                <p>“If the Commission recommends a system of sentencing guidelines as part of its report, any such recommendation shall:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-302.html">D.C. Law 13-302</a> rewrote the section which had read:</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) amendment of section, see § 2 of the Sentencing Reform Emergency Amendment Act of 2000 (D.C. Act 13-410, August 11, 2000,  47 DCR 7271).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of the Sentencing Reform Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-462, November 7, 2000,  47 DCR 9443).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-2, February 2, 2001,  48 DCR 2239).</p>
-                <p>For temporary (90 day) amendment of section, see § 2 of Sentencing Reform Second Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-51, May 2, 2001,  48 DCR 4370).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Advisory Commission on Sentencing Structured Sentencing System Pilot Program Emergency Amendment Act of 2004 (D.C. Act 15-437, May 21, 2004,  51 DCR 5957).</p>
-                <p>For temporary (90 day) amendment of section, see § 2(b) of Advisory Commission on Sentencing Structured Sentencing System Pilot Program Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-510, August 2, 2004,  51 DCR 8967).</p>
                 <p>For temporary (90 day) amendment of section, see § 2(f) of District of Columbia Sentencing and Criminal Code Revision Commission Emergency Amendment Act of 2007 (D.C. Act 17-72, July 20, 2007,  54 DCR 7401).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Advisory Commission on Sentencing Structured Sentencing System Pilot Program Congressional Review Emergency Amendment Act of 2004 (D.C. Act 15-510, August 2, 2004,  51 DCR 8967).</p>
+                <p>For temporary (90 day) amendment of section, see § 2(b) of Advisory Commission on Sentencing Structured Sentencing System Pilot Program Emergency Amendment Act of 2004 (D.C. Act 15-437, May 21, 2004,  51 DCR 5957).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Sentencing Reform Second Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-51, May 2, 2001,  48 DCR 4370).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of Sentencing Reform Congressional Review Emergency Amendment Act of 2001 (D.C. Act 14-2, February 2, 2001,  48 DCR 2239).</p>
+                <p>For temporary (90 day) amendment of section, see § 2 of the Sentencing Reform Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-462, November 7, 2000,  47 DCR 9443).</p>
+                <p>For temporary (90-day) amendment of section, see § 2 of the Sentencing Reform Emergency Amendment Act of 2000 (D.C. Act 13-410, August 11, 2000,  47 DCR 7271).</p>
               </section>
             </section>
           </section>

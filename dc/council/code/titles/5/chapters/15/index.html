@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -61,19 +73,7 @@
           <p>
             <a href="/dc/council/code/titles/6/">Title 6. Housing and Building Restrictions and Regulations.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/5/chapters/15/">Report Error</a>
@@ -87,23 +87,57 @@
         <section class="col8 body">
           <h1>Chapter 15. Department of Forensic Sciences.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/5-1501.01.html">§ 5–1501.01. Definitions.</a>
-            <a href="/dc/council/code/sections/5-1501.02.html">§ 5–1501.02. Establishment of the Department of Forensic Sciences.</a>
-            <a href="/dc/council/code/sections/5-1501.03.html">§ 5–1501.03. Director; appointment, qualifications, compensation, term.</a>
-            <a href="/dc/council/code/sections/5-1501.04.html">§ 5–1501.04. Duties of the Director.</a>
-            <a href="/dc/council/code/sections/5-1501.05.html">§ 5–1501.05. Personnel.</a>
-            <a href="/dc/council/code/sections/5-1501.06.html">§ 5–1501.06. Powers and duties of the Department.</a>
-            <a href="/dc/council/code/sections/5-1501.06a.html">§ 5–1501.06a. Department Laboratory Fund.</a>
-            <a href="/dc/council/code/sections/5-1501.07.html">§ 5–1501.07. Impaired driving program; certification and testing of breath alcohol equipment.</a>
-            <a href="/dc/council/code/sections/5-1501.08.html">§ 5–1501.08. Transfer of personnel, records, functions, and authority.</a>
-            <a href="/dc/council/code/sections/5-1501.09.html">§ 5–1501.09. Reexamination by independent experts.</a>
-            <a href="/dc/council/code/sections/5-1501.10.html">§ 5–1501.10. Allegations of negligence, misconduct, or misidentification or other testing error.</a>
-            <a href="/dc/council/code/sections/5-1501.11.html">§ 5–1501.11. Science Advisory Board.</a>
-            <a href="/dc/council/code/sections/5-1501.12.html">§ 5–1501.12. Functions of the Board.</a>
-            <a href="/dc/council/code/sections/5-1501.13.html">§ 5–1501.13. Stakeholder Council.</a>
-            <a href="/dc/council/code/sections/5-1501.14.html">§ 5–1501.14. Functions of the Stakeholder Council.</a>
-            <a href="/dc/council/code/sections/5-1501.15.html">§ 5–1501.15. Rules.</a>
-            <a href="/dc/council/code/sections/5-1501.16.html">§ 5–1501.16. Continuity; regulations and rules.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.01.html">§ 5–1501.01. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.02.html">§ 5–1501.02. Establishment of the Department of Forensic Sciences.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.03.html">§ 5–1501.03. Director; appointment, qualifications, compensation, term.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.04.html">§ 5–1501.04. Duties of the Director.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.05.html">§ 5–1501.05. Personnel.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.06.html">§ 5–1501.06. Powers and duties of the Department.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.06a.html">§ 5–1501.06a. Department Laboratory Fund.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.07.html">§ 5–1501.07. Impaired driving program; certification and testing of breath alcohol equipment.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.08.html">§ 5–1501.08. Transfer of personnel, records, functions, and authority.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.09.html">§ 5–1501.09. Reexamination by independent experts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.10.html">§ 5–1501.10. Allegations of negligence, misconduct, or misidentification or other testing error.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.11.html">§ 5–1501.11. Science Advisory Board.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.12.html">§ 5–1501.12. Functions of the Board.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.13.html">§ 5–1501.13. Stakeholder Council.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.14.html">§ 5–1501.14. Functions of the Stakeholder Council.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.15.html">§ 5–1501.15. Rules.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/5-1501.16.html">§ 5–1501.16. Continuity; regulations and rules.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -324,13 +358,13 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/5-1419.html">5-1419</a> and § <a class="internal-link" href="/dc/council/code/sections/50-2206.52.html">50-2206.52</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-260.html">D.C. Law 19-260</a> substituted “180 days” for “3 months” in (a).</p>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-266.html">D.C. Law 19-266</a> rewrote this section; and added “Impaired driving program; certification and” to the section heading.</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-260.html">D.C. Law 19-260</a> substituted “180 days” for “3 months” in (a).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 201 of Comprehensive Impaired Driving and Alcohol Testing Program Emergency Amendment Act of 2012 (D.C. Act 19-429, July 30, 2012,  59 DCR 9387).</p>
-                <p>For temporary amendment of section, see § 201 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Amendment Act of 2012 (D.C Act 19-508, October 26, 2012,  59 DCR 13325).</p>
-                <p>For temporary (90 days) amendment of this section, see § 201 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Act of 2013 (D.C. Act 20-3, January 29, 2013,  60 DCR 2762, 20 DCSTAT 410).</p>
                 <p>For temporary (90 days) amendment of this section, see § 201 of the Comprehensive Impaired Driving and Alcohol Testing Program Second Congressional Review Emergency Act of 2013 (D.C. Act 20-51, April 17, 2013,  60 DCR 6344, 20 DCSTAT 1360).</p>
+                <p>For temporary (90 days) amendment of this section, see § 201 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Act of 2013 (D.C. Act 20-3, January 29, 2013,  60 DCR 2762, 20 DCSTAT 410).</p>
+                <p>For temporary amendment of section, see § 201 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Amendment Act of 2012 (D.C Act 19-508, October 26, 2012,  59 DCR 13325).</p>
+                <p>For temporary (90 day) amendment of section, see § 201 of Comprehensive Impaired Driving and Alcohol Testing Program Emergency Amendment Act of 2012 (D.C. Act 19-429, July 30, 2012,  59 DCR 9387).</p>
                 <h4>Editor's Notes</h4>
                 <p>Section 5 of <a class="internal-link" href="/dc/council/laws/19-260.html">D.C. Law 19-260</a> provided that the act shall apply as of the effective date of the Comprehensive Impaired Driving and Alcohol Breath Testing Program Amendment Act of 2012, signed by the Mayor on October 24, 2012 (D.C. Act 19-489;  59 DCR 12957), which became <a class="internal-link" href="/dc/council/laws/19-266.html">D.C. Law 19-266</a>, effective April 27, 2013.</p>
               </section>
@@ -374,10 +408,10 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-266.html">D.C. Law 19-266</a> added (a-1); and substituted “transfers set forth in subsections (a) and (a-1)” for “transfer set forth in subsection (a)” in (b).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 303 of Comprehensive Impaired Driving and Alcohol Testing Program Emergency Amendment Act of 2012 (D.C. Act 19-429, July 30, 2012,  59 DCR 9387).</p>
-                <p>For temporary addition of (a-1) and amendment of (b), see § 303 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Amendment Act of 2012 (D.C Act 19-508, October 26, 2012,  59 DCR 13325).</p>
-                <p>For temporary (90 days) amendment of this section, see § 303 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Act of 2013 (D.C. Act 20-3, January 29, 2013,  60 DCR 2762, 20 DCSTAT 410).</p>
                 <p>For temporary (90 days) amendment of this section, see § 303 of the Comprehensive Impaired Driving and Alcohol Testing Program Second Congressional Review Emergency Act of 2013 (D.C. Act 20-51, April 17, 2013,  60 DCR 6344, 20 DCSTAT 1360).</p>
+                <p>For temporary (90 days) amendment of this section, see § 303 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Act of 2013 (D.C. Act 20-3, January 29, 2013,  60 DCR 2762, 20 DCSTAT 410).</p>
+                <p>For temporary addition of (a-1) and amendment of (b), see § 303 of the Comprehensive Impaired Driving and Alcohol Testing Program Congressional Review Emergency Amendment Act of 2012 (D.C Act 19-508, October 26, 2012,  59 DCR 13325).</p>
+                <p>For temporary (90 day) amendment of section, see § 303 of Comprehensive Impaired Driving and Alcohol Testing Program Emergency Amendment Act of 2012 (D.C. Act 19-429, July 30, 2012,  59 DCR 9387).</p>
               </section>
             </section>
             <hr/>
@@ -445,8 +479,8 @@
                 <h4>Effect of Amendments</h4>
                 <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/19-320.html">D.C. Law 19-320</a> inserted “and who are not currently employed by the Department or by a law enforcement laboratory or agency” in (a)(1).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of (a)(1), see § 507 of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
                 <p>For temporary (90 days) amendment of this section, see § 507 of the Omnibus Criminal Code Amendment Congressional Review Emergency Act of 2013 (D.C. Act 20-44, April 1, 2013,  60 DCR 5381, 20 DCSTAT 1281).</p>
+                <p>For temporary amendment of (a)(1), see § 507 of the Omnibus Criminal Code Amendments Emergency Amendment Act of 2012 (D.C. Act 19-599, January 14, 2013,  60 DCR 1017).</p>
               </section>
             </section>
             <hr/>

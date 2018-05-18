@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/8-105.10.html">§ 8–105.10. Administrative enforcement.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/8-105.09.html">Report Error</a>
@@ -109,13 +109,13 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-959.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
-                <p>“(a) User information and data provided to the District shall be available to the public or to any government agency without restriction unless the user specifically requests and is able to demonstrate to the satisfaction of the Mayor that the release of the information would divulge information, processes, or methods of operation entitled to protection as trade secrets, pursuant to § <a class="internal-link" href="/dc/council/code/sections/2-534.html">2-534</a>(a)(1).</p>
-                <p>“(b) When requested by the user in writing, information and data which might disclose trade secrets or secret processes shall not be made available for public inspection. However, the information and data shall be immediately available to the EPA for any purpose, and to WASA and the District in administrative and judicial review or enforcement proceedings to which the user is a party or in which the user has standing. Additionally, upon written request, WASA and the District may release such information and data to other government agencies in connection with uses related to this subchapter or to pretreatment programs.</p>
-                <p>“(c) Wastewater constituents and characteristics shall not be considered confidential information.</p>
-                <p>“(d) Information accepted by the Mayor as confidential shall not be transmitted to any governmental agency unless written notification is sent to the user at least 10 days before transmitting the information.</p>
-                <p>“(e)(1) All users shall retain and preserve any records, books, documents, memoranda, reports, correspondence, and any summaries of these materials relating to testing, internal or external monitoring, sampling, investigative and chemical analyses made by or in behalf of a user in connection with its discharge for no less than 3 years from the date of preparation, drafting, or memorialization.</p>
                 <p>“(2) All records which pertain to or may pertain to matters which are the subject of enforcement or litigation activities initiated by the District shall be retained and preserved by the user until all the enforcement activities have concluded and all periods of appeal have expired.”</p>
+                <p>“(e)(1) All users shall retain and preserve any records, books, documents, memoranda, reports, correspondence, and any summaries of these materials relating to testing, internal or external monitoring, sampling, investigative and chemical analyses made by or in behalf of a user in connection with its discharge for no less than 3 years from the date of preparation, drafting, or memorialization.</p>
+                <p>“(d) Information accepted by the Mayor as confidential shall not be transmitted to any governmental agency unless written notification is sent to the user at least 10 days before transmitting the information.</p>
+                <p>“(c) Wastewater constituents and characteristics shall not be considered confidential information.</p>
+                <p>“(b) When requested by the user in writing, information and data which might disclose trade secrets or secret processes shall not be made available for public inspection. However, the information and data shall be immediately available to the EPA for any purpose, and to WASA and the District in administrative and judicial review or enforcement proceedings to which the user is a party or in which the user has standing. Additionally, upon written request, WASA and the District may release such information and data to other government agencies in connection with uses related to this subchapter or to pretreatment programs.</p>
+                <p>“(a) User information and data provided to the District shall be available to the public or to any government agency without restriction unless the user specifically requests and is able to demonstrate to the satisfaction of the Mayor that the release of the information would divulge information, processes, or methods of operation entitled to protection as trade secrets, pursuant to § <a class="internal-link" href="/dc/council/code/sections/2-534.html">2-534</a>(a)(1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-256.html">D.C. Law 18-256</a>, rewrote the section, which formerly read:</p>
               </section>
             </section>
           </section>

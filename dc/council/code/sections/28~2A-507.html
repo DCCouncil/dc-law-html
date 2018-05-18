@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/titles/28/articles/2A/parts/V/subparts/B/">Subpart B. Default by Lessor.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2A-507.html">Report Error</a>
@@ -105,16 +105,16 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 28:2A-507.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Uniform Statutory Source:</strong>Sections 2-723 and  2-724.</p>
-                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology. Sections 2A-519 and 2A-528 specify the times as of which market rent is to be determined.</p>
-                <p><strong>Definitional Cross References:</strong> “Goods”. Section 2A-103(1)(h).</p>
-                <p>“Lease”. Section 2A-103(1)(j).</p>
-                <p>“Lease agreement”. Section 2A-103(1)(k).</p>
-                <p>“Notice”.  Section 1-201(25).</p>
-                <p>“Party”.  Section 1-201(29).</p>
-                <p>“Reasonable time”.  Section 1-204(1) and (2).</p>
-                <p>“Usage of trade”.  Section 1-205.</p>
                 <p>“Value”.  Section 1-201(44).</p>
+                <p>“Usage of trade”.  Section 1-205.</p>
+                <p>“Reasonable time”.  Section 1-204(1) and (2).</p>
+                <p>“Party”.  Section 1-201(29).</p>
+                <p>“Notice”.  Section 1-201(25).</p>
+                <p>“Lease agreement”. Section 2A-103(1)(k).</p>
+                <p>“Lease”. Section 2A-103(1)(j).</p>
+                <p><strong>Definitional Cross References:</strong> “Goods”. Section 2A-103(1)(h).</p>
+                <p><strong>Changes:</strong> Revised to reflect leasing practices and terminology. Sections 2A-519 and 2A-528 specify the times as of which market rent is to be determined.</p>
+                <p><strong>Uniform Statutory Source:</strong>Sections 2-723 and  2-724.</p>
               </section>
             </section>
           </section>

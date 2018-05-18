@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/31-4705.01.html">§ 31–4705.01. Nonforfeiture benefits and cash surrender values.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/31-4705.html">Report Error</a>
@@ -117,12 +117,12 @@
       (<a class="internal-link" href="/us/congress/laws/public/73-2-ch672.html#§5">June 19, 1934, 48 Stat. 1161, ch. 672, ch. V, § 5</a>; <a class="internal-link" href="/dc/council/laws/2-120.html">Oct. 13, 1978, D.C. Law 2-120, § 5, 25 DCR 1519</a>; <a class="internal-link" href="/dc/council/laws/11-268.html">May 21, 1997, D.C. Law 11-268, § 10(j), 44 DCR 1730</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 35-505.</p>
                 <p>1973 Ed., § 35-705.</p>
+                <p>1981 Ed., § 35-505.</p>
                 <h4>Cross References</h4>
-                <p>Copy of application, required delivery with policy, see § <a class="internal-link" href="/dc/council/code/sections/31-5203.html">31-5203</a>.</p>
-                <p>False statements in application, effect, see § <a class="internal-link" href="/dc/council/code/sections/31-4314.html">31-4314</a>.</p>
                 <p>Industrial policies, special provisions governing, see § <a class="internal-link" href="/dc/council/code/sections/31-4801.html">31-4801</a> et seq.</p>
+                <p>False statements in application, effect, see § <a class="internal-link" href="/dc/council/code/sections/31-4314.html">31-4314</a>.</p>
+                <p>Copy of application, required delivery with policy, see § <a class="internal-link" href="/dc/council/code/sections/31-5203.html">31-5203</a>.</p>
                 <h4>References in Text</h4>
                 <p>The “operative date of § <a class="internal-link" href="/dc/council/code/sections/31-4705.03.html">31-4705.03</a>,” referred to throughout paragraph (b)(6) of this section, is prescribed by § (9)(b) of <a class="internal-link" href="/dc/council/laws/2-120.html">D.C. Law 2-120</a>.</p>
                 <h4>Editor's Notes</h4>

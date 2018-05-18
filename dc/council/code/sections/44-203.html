@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/44-204.html">§ 44–204. Qualifications of technical personnel.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/44-203.html">Report Error</a>
@@ -107,8 +107,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 32-1503.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, in subsec. (b), substituted “a person shall meet the applicable qualifications as specified in rules issued pursuant to § <a class="internal-link" href="/dc/council/code/sections/44-213.html">44-213</a> and shall:” for “a person shall meet:”; in subsec. (e), substituted “5” for “2”; and rewrote subsec. (d), which had read as follows: “(d) The laboratory director shall be present for a reasonable period of each working day in each clinical laboratory for which he or she is director. If the laboratory director cannot be present on a short-term basis for a period of time to be determined by the Mayor, the laboratory director shall designate, in writing, a substitute laboratory director who meets the qualifications of subsection (b) of this section.”</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a> validated a previously made technical correction in (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/16-33.html">D.C. Law 16-33</a>, in subsec. (b), substituted “a person shall meet the applicable qualifications as specified in rules issued pursuant to § <a class="internal-link" href="/dc/council/code/sections/44-213.html">44-213</a> and shall:” for “a person shall meet:”; in subsec. (e), substituted “5” for “2”; and rewrote subsec. (d), which had read as follows: “(d) The laboratory director shall be present for a reasonable period of each working day in each clinical laboratory for which he or she is director. If the laboratory director cannot be present on a short-term basis for a period of time to be determined by the Mayor, the laboratory director shall designate, in writing, a substitute laboratory director who meets the qualifications of subsection (b) of this section.”</p>
                 <h4>Emergency Legislation</h4>
                 <p>For temporary (90 day) amendment of section, see § 5012(c) of Fiscal Year 2006 Budget Support Emergency Act of 2005 (D.C. Act 16-168, July 26, 2005,  52 DCR 7667).</p>
               </section>

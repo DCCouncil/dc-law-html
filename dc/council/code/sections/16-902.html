@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/sections/16-903.html">§ 16–903. Decree annulling marriage.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/16-902.html">Report Error</a>
@@ -106,12 +106,12 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-241.html">Dec. 23, 1963, Pub. L. 88-241, § 1, 77 Stat. 560</a>; <a class="internal-link" href="/us/congress/laws/public/89-217.html">Sept. 29, 1965, 79 Stat. 889, Pub. L. 89-217, § 1</a>; <a class="internal-link" href="/dc/council/laws/1-107.html">Apr. 7, 1977, D.C. Law 1-107, title I, § 101, 23 DCR 8737</a>; <a class="internal-link" href="/dc/council/laws/19-133.html">May 31, 2012, D.C. Law 19-133, § 2, 59 DCR 2395</a>; <a class="internal-link" href="/dc/council/laws/20-183.html">Mar. 10, 2015, D.C. Law 20-183, § 2(a), 61 DCR 11834</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 16-902.</p>
                 <p>1973 Ed., § 16-902.</p>
+                <p>1981 Ed., § 16-902.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/19-133.html">D.C. Law 19-133</a> rewrote the section, which formerly read:</p>
-                <p>“No action for divorce or legal separation shall be maintainable unless one of the parties to the marriage has been a bona fide resident of the District of Columbia for at least six months next preceding the commencement of the action. No action for annulment of a marriage performed outside the District of Columbia or for affirmance of any marriage shall be maintainable unless one of the parties is a bona fide resident of the District of Columbia at the time of the commencement of the action. The residence of the parties to an action for annulment of a marriage performed in the District of Columbia shall not be considered in determining whether such action shall be maintainable. If a member of the armed forces of the United States resides in the District of Columbia for a continuous period of six months during his or her period of military service, he or she shall be deemed to reside in the District of Columbia for purposes of this section only.”</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/20-183.html">D.C. Law 20-183</a> substituted “divorce or legal separation” for “divorce” throughout (b); and substituted “Any action for divorce or legal separation as provided by this subsection, including any accompanying petition for alimony, assignment and equitable distribution of property, pendent lite relief, or child custody determination if the District has jurisdiction under § <a class="internal-link" href="/dc/council/code/sections/16-4602.01.html">16-4602.01</a> or § 16.4602.03” for “Any action for divorce as provided by this subsection” in (b)(3).</p>
+                <p>“No action for divorce or legal separation shall be maintainable unless one of the parties to the marriage has been a bona fide resident of the District of Columbia for at least six months next preceding the commencement of the action. No action for annulment of a marriage performed outside the District of Columbia or for affirmance of any marriage shall be maintainable unless one of the parties is a bona fide resident of the District of Columbia at the time of the commencement of the action. The residence of the parties to an action for annulment of a marriage performed in the District of Columbia shall not be considered in determining whether such action shall be maintainable. If a member of the armed forces of the United States resides in the District of Columbia for a continuous period of six months during his or her period of military service, he or she shall be deemed to reside in the District of Columbia for purposes of this section only.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-133.html">D.C. Law 19-133</a> rewrote the section, which formerly read:</p>
               </section>
             </section>
           </section>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/50-2602.html">§ 50–2602. Definitions.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/50-2601.html">Report Error</a>
@@ -99,16 +99,16 @@
       (<a class="internal-link" href="/us/congress/laws/public/77-2-ch76.html#§1">Feb. 16, 1942, 56 Stat. 90, ch. 76, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 40-802.</p>
                 <p>1973 Ed., § 40-802.</p>
+                <p>1981 Ed., § 40-802.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) additions, see §§ 2 to 8 of Performance Parking Pilot Zone Emergency Act of 2008 (D.C. Act 17-320, March 19, 2008,  55 DCR 3432).</p>
-                <p>For temporary (90 day) amendment of D.C. Act 17-320, see § 2 of Performance Parking Pilot Zone Emergency Amendment Act of 2008 (D.C. Act 17-355, April 17, 2008,  55 DCR 5375).</p>
-                <p>For temporary (90 day) amendment of section 7 of D.C. Law 17-170, see § 2 of Adams Morgan Taxicab Zone Emergency Amendment Act of 2008 (D.C. Act 17-428, July 16, 2008,  55 DCR 8252).</p>
                 <p>For temporary (90 day) amendment of section 7 of D.C. Law 17-170, see § 2 of Adams Morgan Taxicab Zone Congressional Review Emergency Amendment Act of 2008 (D.C. Act 17-557, October 27, 2008,  55 DCR 12006).</p>
+                <p>For temporary (90 day) amendment of section 7 of D.C. Law 17-170, see § 2 of Adams Morgan Taxicab Zone Emergency Amendment Act of 2008 (D.C. Act 17-428, July 16, 2008,  55 DCR 8252).</p>
+                <p>For temporary (90 day) amendment of D.C. Act 17-320, see § 2 of Performance Parking Pilot Zone Emergency Amendment Act of 2008 (D.C. Act 17-355, April 17, 2008,  55 DCR 5375).</p>
+                <p>For temporary (90 day) additions, see §§ 2 to 8 of Performance Parking Pilot Zone Emergency Act of 2008 (D.C. Act 17-320, March 19, 2008,  55 DCR 3432).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section 7 of D.C. Law 17-170, see § 2 of Adams Morgan Taxicab Zone Temporary Amendment Act of 2008 (D.C. Law 17-243, October 21, 2008, law notification  55 DCR 11706).</p>
                 <p>For temporary (225 day) additions, see §§ 2 to 8 of Performance Parking Pilot Zone Temporary Act of 2008 (D.C. Law 17-170, June 5, 2008, law notification  55 DCR 6975).</p>
+                <p>For temporary (225 day) amendment of section 7 of D.C. Law 17-170, see § 2 of Adams Morgan Taxicab Zone Temporary Amendment Act of 2008 (D.C. Law 17-243, October 21, 2008, law notification  55 DCR 11706).</p>
               </section>
             </section>
           </section>

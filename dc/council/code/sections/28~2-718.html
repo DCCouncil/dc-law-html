@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/28:2-719.html">§ 28:2-719. Contractual modification or limitation of remedy.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/28:2-718.html">Report Error</a>
@@ -106,25 +106,25 @@
       (<a class="internal-link" href="/us/congress/laws/public/88-243.html">Dec. 30, 1963, 77 Stat. 669, Pub. L. 88-243, § 1</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 28:2-718.</p>
                 <p>1973 Ed., § 28:2-718.</p>
+                <p>1981 Ed., § 28:2-718.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/28:2-316.html">28:2-316</a> and § <a class="internal-link" href="/dc/council/code/sections/28:2-601.html">28:2-601</a>.</p>
                 <h4>Uniform Commercial Code Comment</h4>
-                <p><strong>Prior Uniform Statutory Provision:</strong> None.</p>
-                <p><strong>Purposes:</strong> 1. Under subsection (1) liquidated damage clauses are allowed where the amount involved is reasonable in the light of the circumstances of the case. The subsection sets forth explicitly the elements to be considered in determining the reasonableness of a liquidated damage clause. A term fixing unreasonably large liquidated damages is expressly made void as a penalty. An unreasonably small amount would be subject to similar criticism and might be stricken under the section on unconscionable contracts or clauses.</p>
-                <p>2. Subsection (2) refuses to recognize a forfeiture unless the amount of the payment so forfeited represents a reasonable liquidation of damages as determined under subsection (1). A special exception is made in the case of small amounts (20% of the price or $500, whichever is smaller) deposited as security. No distinction is made between cases in which the payment is to be applied on the price and those in which it is intended as security for performance. Subsection (2) is applicable to any deposit or down or part payment. In the case of a deposit or turn in of goods resold before the breach, the amount actually received on the resale is to be viewed as the deposit rather than the amount allowed the buyer for the trade in. However, if the seller knows of the breach prior to the resale of the goods turned in, he must make reasonable efforts to realize their true value, and this is assured by requiring him to comply with the conditions laid down in the section on resale by an aggrieved seller.</p>
-                <p><strong>Cross References:</strong> Point 1:  Section 2-302.</p>
-                <p>Point 2:  Section 2-706.</p>
-                <p><strong>Definitional Cross References:</strong> “Aggrieved party”.  Section 1-201.</p>
-                <p>“Agreement”.  Section 1-201.</p>
-                <p>“Buyer”.  Section 2-103.</p>
-                <p>“Goods”.  Section 2-105.</p>
-                <p>“Notice”.  Section 1-201.</p>
-                <p>“Party”.  Section 1-201.</p>
-                <p>“Remedy”.  Section 1-201.</p>
-                <p>“Seller”.  Section 2-103.</p>
                 <p>“Term”.  Section 1-201.</p>
+                <p>“Seller”.  Section 2-103.</p>
+                <p>“Remedy”.  Section 1-201.</p>
+                <p>“Party”.  Section 1-201.</p>
+                <p>“Notice”.  Section 1-201.</p>
+                <p>“Goods”.  Section 2-105.</p>
+                <p>“Buyer”.  Section 2-103.</p>
+                <p>“Agreement”.  Section 1-201.</p>
+                <p><strong>Definitional Cross References:</strong> “Aggrieved party”.  Section 1-201.</p>
+                <p>Point 2:  Section 2-706.</p>
+                <p><strong>Cross References:</strong> Point 1:  Section 2-302.</p>
+                <p>2. Subsection (2) refuses to recognize a forfeiture unless the amount of the payment so forfeited represents a reasonable liquidation of damages as determined under subsection (1). A special exception is made in the case of small amounts (20% of the price or $500, whichever is smaller) deposited as security. No distinction is made between cases in which the payment is to be applied on the price and those in which it is intended as security for performance. Subsection (2) is applicable to any deposit or down or part payment. In the case of a deposit or turn in of goods resold before the breach, the amount actually received on the resale is to be viewed as the deposit rather than the amount allowed the buyer for the trade in. However, if the seller knows of the breach prior to the resale of the goods turned in, he must make reasonable efforts to realize their true value, and this is assured by requiring him to comply with the conditions laid down in the section on resale by an aggrieved seller.</p>
+                <p><strong>Purposes:</strong> 1. Under subsection (1) liquidated damage clauses are allowed where the amount involved is reasonable in the light of the circumstances of the case. The subsection sets forth explicitly the elements to be considered in determining the reasonableness of a liquidated damage clause. A term fixing unreasonably large liquidated damages is expressly made void as a penalty. An unreasonably small amount would be subject to similar criticism and might be stricken under the section on unconscionable contracts or clauses.</p>
+                <p><strong>Prior Uniform Statutory Provision:</strong> None.</p>
               </section>
             </section>
           </section>

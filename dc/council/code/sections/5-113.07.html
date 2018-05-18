@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/titles/5/chapters/1/subchapters/VII/parts/B/">Part B. Preservation of Crime Investigation Records — Law Enforcement Agencies.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/5-113.07.html">Report Error</a>
@@ -100,12 +100,12 @@
       (<a class="internal-link" href="/dc/council/revised-statutes.html#§390">R.S., D.C., § 390</a>; June 11, 1878, 20 Stat. 107, ch. 180, § 6; June 29, 1953, 67 Stat. 99, ch. 159, title III, § 301(c); <a class="internal-link" href="/dc/council/laws/15-174.html">July 15, 2004, D.C. Law 15-174,§ 302, 51 DCR 3677</a>; <a class="internal-link" href="/dc/council/laws/15-354.html">Apr. 13, 2005, D.C. Law 15-354, § 88, 52 DCR 2638</a>; <a class="internal-link" href="/dc/council/laws/16-191.html">Mar. 2, 2007, D.C. Law 16-191, § 24, 53 DCR 6794</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 4-137.</p>
                 <p>1973 Ed., § 4-137.</p>
+                <p>1981 Ed., § 4-137.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/15-174.html">D.C. Law 15-174</a> rewrote the section which had read as follows: “All records of the Metropolitan Police force shall be preserved, except that the Mayor of the District of Columbia, upon recommendation of the Chief of Police, may cause records which it considers to be obsolete or of no further value to be destroyed.”</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> validated a previously made technical correction.</p>
                 <p><a class="internal-link" href="/dc/council/laws/16-191.html">D.C. Law 16-191</a> validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-354.html">D.C. Law 15-354</a> validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-174.html">D.C. Law 15-174</a> rewrote the section which had read as follows: “All records of the Metropolitan Police force shall be preserved, except that the Mayor of the District of Columbia, upon recommendation of the Chief of Police, may cause records which it considers to be obsolete or of no further value to be destroyed.”</p>
                 <h4>Editor's Notes</h4>
                 <p>Office of Major and Superintendent of Metropolitan Police abolished: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/5-105.01.html">5-105.01</a>.</p>
                 <h4>Change in Government</h4>

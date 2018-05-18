@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/1/chapters/3/subchapters/IV/parts/D-i/">Part D-i. Captive Insurance Agencies.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/1/chapters/3/subchapters/IV/parts/D/">Report Error</a>
@@ -89,20 +89,48 @@
         <section class="col8 body">
           <h1>Part D. Opportunity Accounts.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/1-307.61.html">§ 1–307.61. Definitions.</a>
-            <a href="/dc/council/code/sections/1-307.62.html">§ 1–307.62. Establishment of Opportunity Account Office.</a>
-            <a href="/dc/council/code/sections/1-307.63.html">§ 1–307.63. Solicitation and consideration of proposals by organizations to administer opportunity account programs.</a>
-            <a href="/dc/council/code/sections/1-307.64.html">§ 1–307.64. Responsibilities of administering organization.</a>
-            <a href="/dc/council/code/sections/1-307.65.html">§ 1–307.65. Financial institution establishment of opportunity accounts.</a>
-            <a href="/dc/council/code/sections/1-307.66.html">§ 1–307.66. Eligibility to open an opportunity account; account limit.</a>
-            <a href="/dc/council/code/sections/1-307.67.html">§ 1–307.67. Matching funds and return of matching funds; tax exemption.</a>
-            <a href="/dc/council/code/sections/1-307.68.html">§ 1–307.68. Use of opportunity account funds.</a>
-            <a href="/dc/council/code/sections/1-307.69.html">§ 1–307.69. Emergency withdrawal.</a>
-            <a href="/dc/council/code/sections/1-307.70.html">§ 1–307.70. Disposition upon death.</a>
-            <a href="/dc/council/code/sections/1-307.71.html">§ 1–307.71. Use of reserve funds for administrative expenses.</a>
-            <a href="/dc/council/code/sections/1-307.72.html">§ 1–307.72. Exclusion of opportunity account funds from public assistance program calculations.</a>
-            <a href="/dc/council/code/sections/1-307.73.html">§ 1–307.73. Rulemaking.</a>
-            <a href="/dc/council/code/sections/1-307.74.html">§ 1–307.74. Report to Council.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.61.html">§ 1–307.61. Definitions.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.62.html">§ 1–307.62. Establishment of Opportunity Account Office.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.63.html">§ 1–307.63. Solicitation and consideration of proposals by organizations to administer opportunity account programs.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.64.html">§ 1–307.64. Responsibilities of administering organization.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.65.html">§ 1–307.65. Financial institution establishment of opportunity accounts.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.66.html">§ 1–307.66. Eligibility to open an opportunity account; account limit.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.67.html">§ 1–307.67. Matching funds and return of matching funds; tax exemption.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.68.html">§ 1–307.68. Use of opportunity account funds.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.69.html">§ 1–307.69. Emergency withdrawal.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.70.html">§ 1–307.70. Disposition upon death.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.71.html">§ 1–307.71. Use of reserve funds for administrative expenses.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.72.html">§ 1–307.72. Exclusion of opportunity account funds from public assistance program calculations.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.73.html">§ 1–307.73. Rulemaking.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/1-307.74.html">§ 1–307.74. Report to Council.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -258,16 +286,16 @@
       (<a class="internal-link" href="/dc/council/laws/13-266.html#§8">Apr. 3, 2001, D.C. Law 13-266, § 8, 48 DCR 1240</a>; <a class="internal-link" href="/dc/council/laws/13-313.html">June 19, 2001, D.C. Law 13-313, § 26(a), (b), 48 DCR 1873</a>; <a class="internal-link" href="/dc/council/laws/14-42.html">Oct. 26, 2001, D.C. Law 14-42, § 17, 48 DCR 7612</a>; <a class="internal-link" href="/dc/council/laws/18-111.html">Mar. 3, 2010, D.C. Law 18-111, § 7036, 57 DCR 181</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a> validated a previously made technical correction in subsec. (d).</p>
-                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a>, rewrote subsec. (d); and, in subsec. (f), substituted “Except for matching funds used for an approved purpose under § <a class="internal-link" href="/dc/council/code/sections/1-307.68.html">1-307.68</a>(a) before 10 years after the establishment of the opportunity account,” for “Except for matching funds used to purchase a federally qualified individual retirement account as permitted under § <a class="internal-link" href="/dc/council/code/sections/1-307.68.html">1-307.68</a>(a)(8)”. Prior to amendment, subsec. (d) read:</p>
-                <p>“(d) Subject to appropriations, matching funds deposited into a matching funds account or withdrawn by an account holder from a matching funds account shall be exempt from taxation under District of Columbia law; provided, that:</p>
-                <p>“(1) Interest earned on the matching funds shall not be exempt from taxation; and</p>
-                <p>“(2) Any money withdrawn from a matching funds account for an unapproved use shall be taxed as income unless it is reinstated in the account as provided in section 9(d).”</p>
                 <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a>, in subsecs. (b) and (d), substituted “Subject to annual available appropriations” for “Subject to appropriations”.</p>
+                <p>“(2) Any money withdrawn from a matching funds account for an unapproved use shall be taxed as income unless it is reinstated in the account as provided in section 9(d).”</p>
+                <p>“(1) Interest earned on the matching funds shall not be exempt from taxation; and</p>
+                <p>“(d) Subject to appropriations, matching funds deposited into a matching funds account or withdrawn by an account holder from a matching funds account shall be exempt from taxation under District of Columbia law; provided, that:</p>
+                <p><a class="internal-link" href="/dc/council/laws/13-313.html">D.C. Law 13-313</a>, rewrote subsec. (d); and, in subsec. (f), substituted “Except for matching funds used for an approved purpose under § <a class="internal-link" href="/dc/council/code/sections/1-307.68.html">1-307.68</a>(a) before 10 years after the establishment of the opportunity account,” for “Except for matching funds used to purchase a federally qualified individual retirement account as permitted under § <a class="internal-link" href="/dc/council/code/sections/1-307.68.html">1-307.68</a>(a)(8)”. Prior to amendment, subsec. (d) read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a> validated a previously made technical correction in subsec. (d).</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 17 of Technical Amendments Emergency Act of 2001 (D.C. Act 14-108, August 3, 2001,  48 DCR 7622).</p>
-                <p>For temporary (90 day) amendment of section, see § 7036 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
                 <p>For temporary (90 day) amendment of section, see § 7036 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 7036 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 17 of Technical Amendments Emergency Act of 2001 (D.C. Act 14-108, August 3, 2001,  48 DCR 7622).</p>
               </section>
             </section>
             <hr/>

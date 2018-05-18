@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/50/chapters/16/subchapters/I/parts/B/">Part B. Bicycle Registration; Rental Rate Information.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/50/chapters/16/subchapters/I/parts/A/">Report Error</a>
@@ -89,15 +89,33 @@
         <section class="col8 body">
           <h1>Part A. Bicycle Safety.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/50-1601.html">§ 50–1601. Findings.</a>
-            <a href="/dc/council/code/sections/50-1602.html">§ 50–1602. Comprehensive Bicycle Transportation and Safety Program.</a>
-            <a href="/dc/council/code/sections/50-1603.html">§ 50–1603. Office of Bicycle Transportation and Safety.</a>
-            <a href="/dc/council/code/sections/50-1604.html">§ 50–1604. District of Columbia Bicycle Advisory Council.</a>
-            <a href="/dc/council/code/sections/50-1605.html">§ 50–1605. Helmet use requirements.</a>
-            <a href="/dc/council/code/sections/50-1606.html">§ 50–1606. Contributory negligence.</a>
-            <a href="/dc/council/code/sections/50-1607.html">§ 50–1607. Child safety helmet education program.</a>
-            <a href="/dc/council/code/sections/50-1608.html">§ 50–1608. Child safety helmet assistance program.</a>
-            <a href="/dc/council/code/sections/50-1609.html">§ 50–1609. Definitions.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1601.html">§ 50–1601. Findings.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1602.html">§ 50–1602. Comprehensive Bicycle Transportation and Safety Program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1603.html">§ 50–1603. Office of Bicycle Transportation and Safety.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1604.html">§ 50–1604. District of Columbia Bicycle Advisory Council.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1605.html">§ 50–1605. Helmet use requirements.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1606.html">§ 50–1606. Contributory negligence.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1607.html">§ 50–1607. Child safety helmet education program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1608.html">§ 50–1608. Child safety helmet assistance program.</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/50-1609.html">§ 50–1609. Definitions.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -174,8 +192,8 @@
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/50-1604.html">50-1604</a>.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-184.html">D.C. Law 17-184</a>, in the introductory language and par. (3)(E), substituted “District Department of Transportation” for “Department of Public Works”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in par. (3)(E).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-184.html">D.C. Law 17-184</a>, in the introductory language and par. (3)(E), substituted “District Department of Transportation” for “Department of Public Works”.</p>
               </section>
             </section>
             <hr/>
@@ -204,20 +222,20 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 40-1404.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a>, in subsec. (d), inserted “, Council of the District of Columbia” before “and District”.</p>
-                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsec. (d), validated a previously made technical correction.</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-184.html">D.C. Law 17-184</a> rewrote subsec. (b).</p>
-                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated previously made technical corrections in subsec. (b).</p>
-                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> added subsec. (c-1).</p>
-                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> rewrote (b)(2)(B).</p>
                 <p>The 2015 amendment by <a class="internal-link" href="/dc/council/laws/21-36.html">D.C. Law 21-36</a> designated the existing text of (c) as (c)(1); and added (c)(2).</p>
+                <p>The 2013 amendment by <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> rewrote (b)(2)(B).</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-111.html">D.C. Law 18-111</a> added subsec. (c-1).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated previously made technical corrections in subsec. (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-184.html">D.C. Law 17-184</a> rewrote subsec. (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/15-105.html">D.C. Law 15-105</a>, in subsec. (d), validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/14-42.html">D.C. Law 14-42</a>, in subsec. (d), inserted “, Council of the District of Columbia” before “and District”.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90 day) amendment of section, see § 28 of Technical Amendments Emergency Act of 2001 (D.C. Act 14-108, August 3, 2001,  48 DCR 7622).</p>
-                <p>For temporary (90 day) amendment of section, see § 6062 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
-                <p>For temporary (90 day) amendment of § 6062 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
-                <p>For temporary (90 days) amendment of this section, see § 6052 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
-                <p>For temporary (90 days) amendment of this section, see § 6052 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
                 <p>For temporary (90 days) amendment of this section, see §  6072 of the Fiscal Year 2016 Budget Support Emergency Act of 2015 (D.C. Act 21-127, July 27, 2015, 62 DCR 10201).</p>
+                <p>For temporary (90 days) amendment of this section, see § 6052 of the Fiscal Year 2014 Budget Support Congressional Review Emergency Act of 2013 (D.C. Act 20-204, October 17, 2013,  60 DCR 15341, 20 DCSTAT 2311).</p>
+                <p>For temporary (90 days) amendment of this section, see § 6052 of the Fiscal Year 2014 Budget Support Emergency Act of 2013 (D.C. Act 20-130, July 30, 2013,  60 DCR 11384, 20 DCSTAT 1827).</p>
+                <p>For temporary (90 day) amendment of § 6062 of Fiscal Year Budget Support Congressional Review Emergency Amendment Act of 2009 (D.C. Act 18-260, January 4, 2010,  57 DCR 345).</p>
+                <p>For temporary (90 day) amendment of section, see § 6062 of Fiscal Year 2010 Budget Support Second Emergency Act of 2009 (D.C. Act 18-207, October 15, 2009,  56 DCR 8234).</p>
+                <p>For temporary (90 day) amendment of section, see § 28 of Technical Amendments Emergency Act of 2001 (D.C. Act 14-108, August 3, 2001,  48 DCR 7622).</p>
                 <h4>Short Title</h4>
                 <p>Section 6051 of <a class="internal-link" href="/dc/council/laws/20-61.html">D.C. Law 20-61</a> provided that Subtitle F of Title VI of the act may be cited as the “Bicycle Advisory Council Amendment Act of 2013”.</p>
                 <h4>References in Text</h4>
@@ -280,8 +298,8 @@
       (<a class="internal-link" href="/dc/council/laws/5-179.html#§8">Mar. 16, 1985, D.C. Law 5-179, § 8, 32 DCR 764</a>; <a class="internal-link" href="/dc/council/laws/13-112.html">as added May 23, 2000, D.C. Law 13-112, § 2(b), 47 DCR 1985</a>; <a class="internal-link" href="/dc/council/laws/17-184.html">July 18, 2008, D.C. Law 17-184, § 2(c), 55 DCR 6101</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 238(c), 56 DCR 1117</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-184.html">D.C. Law 17-184</a>, in subsecs. (a) and (b), substituted “District Department of Transportation” for “Department of Public Works”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction in subsec. (b).</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-184.html">D.C. Law 17-184</a>, in subsecs. (a) and (b), substituted “District Department of Transportation” for “Department of Public Works”.</p>
               </section>
             </section>
             <hr/>
@@ -296,8 +314,8 @@
       (<a class="internal-link" href="/dc/council/laws/5-179.html#§9">Mar. 16, 1985, D.C. Law 5-179, § 9, 32 DCR 764</a>; <a class="internal-link" href="/dc/council/laws/13-112.html">as added May 23, 2000, D.C. Law 13-112, § 2(b), 47 DCR 1985</a>; <a class="internal-link" href="/dc/council/laws/17-184.html">July 18, 2008, D.C. Law 17-184, § 2(d), 55 DCR 6101</a>; <a class="internal-link" href="/dc/council/laws/17-353.html">Mar. 25, 2009, D.C. Law 17-353, § 238(d), 56 DCR 1117</a>.)
     </p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/17-184.html">D.C. Law 17-184</a> substituted “District Department of Transportation” for “District of Columbia Department of Public Works”.</p>
                 <p><a class="internal-link" href="/dc/council/laws/17-353.html">D.C. Law 17-353</a> validated a previously made technical correction.</p>
+                <p><a class="internal-link" href="/dc/council/laws/17-184.html">D.C. Law 17-184</a> substituted “District Department of Transportation” for “District of Columbia Department of Public Works”.</p>
               </section>
             </section>
             <hr/>

@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/titles/38/chapters/12/subchapters/II/">Subchapter II. University of the District of Columbia.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-1201.03.html">Report Error</a>
@@ -112,15 +112,15 @@
       (<a class="internal-link" href="/us/congress/laws/public/93-471.html#§103">Oct. 26, 1974, 88 Stat. 1424, Pub. L. 93-471, title I, § 103</a>; <a class="internal-link" href="/dc/council/laws/1-36.html">Nov. 1, 1975, D.C. Law 1-36, § 3, 22 DCR 2909</a>; <a class="internal-link" href="/dc/council/laws/11-152.html">Aug. 1, 1996, D.C. Law 11-152, § 301(a), 43 DCR 2978</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-1502.</p>
                 <p>1973 Ed., § 31-1702.</p>
+                <p>1981 Ed., § 31-1502.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 301(a) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and § 201(a) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <p>Section 501 of D.C. Act 11-335 provided for the application of the act.</p>
+                <p>For temporary amendment of section, see § 301(a) of the Fiscal Year 1996 Budget Support Emergency Act of 1996 (D.C. Act 11-264, April 26, 1996,  43 DCR 2412), and § 201(a) of the Fiscal Year 1996 Budget Support Congressional Review Emergency Act of 1996 (D.C. Act 11-335, August 1, 1996,  43 DCR 4256).</p>
                 <h4>References in Text</h4>
-                <p>“Section 3 of the Federal Deposit Insurance Act,” referred to in paragraph (10), is codified at  12 U.S.C. § 1813.</p>
-                <p>“Section 401 of the National Housing Act,” referred to in paragraph (10), was codified at  12 U.S.C. § 1724, and was repealed by the Act of August 9, 1989, 103 Stat. 363, Pub. L. 101-73.</p>
                 <p>Section 38-1205.03, referred to twice in (12), was repealed by <a class="internal-link" href="/dc/council/laws/11-152.html">D.C. Law 11-152</a>,  43 DCR 2978.</p>
+                <p>“Section 401 of the National Housing Act,” referred to in paragraph (10), was codified at  12 U.S.C. § 1724, and was repealed by the Act of August 9, 1989, 103 Stat. 363, Pub. L. 101-73.</p>
+                <p>“Section 3 of the Federal Deposit Insurance Act,” referred to in paragraph (10), is codified at  12 U.S.C. § 1813.</p>
               </section>
             </section>
           </section>

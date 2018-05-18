@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -64,19 +76,7 @@
           <p>
             <a href="/dc/council/code/sections/38-205.html">§ 38–205. Report of enrollments and withdrawals.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/38-204.html">Report Error</a>
@@ -100,13 +100,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/68-2-ch140.html#§3">Feb. 4, 1925, 43 Stat. 807, ch. 140, Art. II, § 1</a>; <a class="internal-link" href="/dc/council/laws/8-247.html">renumbered as Art. II, § 3 and amended, Mar. 8, 1991, D.C. Law 8-247, § 2(a), 38 DCR 376</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 31-404.</p>
                 <p>1973 Ed., § 31-208.</p>
+                <p>1981 Ed., § 31-404.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/38-1802.04.html">38-1802.04</a>, § <a class="internal-link" href="/dc/council/code/sections/38-2605.html">38-2605</a>, and § <a class="internal-link" href="/dc/council/code/sections/38-2901.html">38-2901</a>.</p>
                 <h4>Cross References</h4>
-                <p>Census duties of public charter schools, see § <a class="internal-link" href="/dc/council/code/sections/38-1802.04.html">38-1802.04</a>.</p>
                 <p>Duties and responsibilities of charter schools under this section, see § <a class="internal-link" href="/dc/council/code/sections/38-1702.05.html">38-1702.05</a>.</p>
+                <p>Census duties of public charter schools, see § <a class="internal-link" href="/dc/council/code/sections/38-1802.04.html">38-1802.04</a>.</p>
               </section>
             </section>
           </section>

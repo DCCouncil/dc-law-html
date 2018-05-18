@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/7/chapters/7/subchapters/II/">Subchapter II. Establishment of a Long-Term Care Ombudsman Program.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/7/chapters/7/subchapters/I/">Report Error</a>
@@ -88,7 +88,9 @@
         <section class="col8 body">
           <h1>Subchapter I. Definitions.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/7-701.01.html">§ 7–701.01. Definitions.</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/7-701.01.html">§ 7–701.01. Definitions.</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -133,9 +135,9 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 6-3501.</p>
                 <h4>Effect of Amendments</h4>
-                <p><a class="internal-link" href="/dc/council/laws/18-321.html">D.C. Law 18-321</a> added pars. (3A) and (4A); in par. (5)(B), substituted “Is an employee or volunteer” for “Is an employee”; and, in par. (7), deleted “or” from the end of subpar. (A), substituted “; or” for a period at the end of subpar. (B), and added subpar. (C).</p>
-                <p><a class="internal-link" href="/dc/council/laws/19-111.html">D.C. Law 19-111</a> added pars. (6A) and (7A); and rewrote par. (13), which formerly read:</p>
                 <p>“(13) ‘Resident’ means a resident of a long-term care facility.”</p>
+                <p><a class="internal-link" href="/dc/council/laws/19-111.html">D.C. Law 19-111</a> added pars. (6A) and (7A); and rewrote par. (13), which formerly read:</p>
+                <p><a class="internal-link" href="/dc/council/laws/18-321.html">D.C. Law 18-321</a> added pars. (3A) and (4A); in par. (5)(B), substituted “Is an employee or volunteer” for “Is an employee”; and, in par. (7), deleted “or” from the end of subpar. (A), substituted “; or” for a period at the end of subpar. (B), and added subpar. (C).</p>
                 <h4>References in Text</h4>
                 <p>The “Health-Care and Community Residence Facility, Hospice, and Home Care Licensure Act of 1983”, referred to in paragraph (12), is <a class="internal-link" href="/dc/council/laws/5-48.html">D.C. Law 5-48</a>.</p>
                 <h4>Editor's Notes</h4>

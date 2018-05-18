@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -63,19 +75,7 @@
           <p>
             <a href="/dc/council/code/sections/26-1304.html">§ 26–1304. Organization certificate; execution; contents.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/sections/26-1301.html">Report Error</a>
@@ -99,13 +99,13 @@
       (<a class="internal-link" href="/us/congress/laws/public/56-2-ch854.html#§715">Mar. 3, 1901, 31 Stat. 1303, ch. 854, § 715</a>; <a class="internal-link" href="/us/congress/laws/public/89-399.html">Apr. 16, 1966, 80 Stat. 121, Pub. L. 89-399, § 1(b)</a>; <a class="internal-link" href="/dc/council/laws/11-255.html">Apr. 9, 1997, D.C. Law 11-255, § 24(a), 44 DCR 1271</a>.)
     </p>
                 <h4>Prior Codifications</h4>
-                <p>1981 Ed., § 26-401.</p>
                 <p>1973 Ed., § 26-301.</p>
+                <p>1981 Ed., § 26-401.</p>
                 <h4>Section References</h4>
                 <p>This section is referenced in § <a class="internal-link" href="/dc/council/code/sections/26-702.01.html">26-702.01</a>, § <a class="internal-link" href="/dc/council/code/sections/26-710.html">26-710</a>, § <a class="internal-link" href="/dc/council/code/sections/26-1304.html">26-1304</a>, § <a class="internal-link" href="/dc/council/code/sections/26-1309.html">26-1309</a>, § <a class="internal-link" href="/dc/council/code/sections/26-1310.html">26-1310</a>, and § <a class="internal-link" href="/dc/council/code/sections/26-1313.html">26-1313</a>.</p>
                 <h4>Transfer of Functions</h4>
-                <p>Pursuant to Reorganization Plan No. 3 of 1992, effective January 20, 1993, unless another date was designated by the Mayor under Sec V of the Plan, the D.C. Office of Banking and Financial Institutions (“OBFI”) is hereby transferred from the Deputy Mayor for Economic Development (“DMED”) control center to a separate OBFI control center/responsibility center. OBFI will continue to be administered by the Superintendent and will remain a part of the economic development cluster reporting to the Mayor.</p>
                 <p>[Reserved].</p>
+                <p>Pursuant to Reorganization Plan No. 3 of 1992, effective January 20, 1993, unless another date was designated by the Mayor under Sec V of the Plan, the D.C. Office of Banking and Financial Institutions (“OBFI”) is hereby transferred from the Deputy Mayor for Economic Development (“DMED”) control center to a separate OBFI control center/responsibility center. OBFI will continue to be administered by the Superintendent and will remain a part of the economic development cluster reporting to the Mayor.</p>
               </section>
             </section>
           </section>

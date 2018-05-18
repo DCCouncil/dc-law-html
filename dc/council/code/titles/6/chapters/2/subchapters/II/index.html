@@ -21,9 +21,21 @@
               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
               g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
             })();
-
-          window.searchHost = 'https://search.code.dccouncil.us';
-          window.queryUrl = '/v1/search';
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let responseDOM = new DOMParser().parseFromString(this.responseText, 'text/html');
+                    let docInfo = document.getElementsByClassName("document-info")[0];
+                    let responseDocInfo = responseDOM.getElementsByClassName('document-info')[0];
+                    docInfo.insertBefore(responseDocInfo, docInfo.firstChild);
+                }
+            };
+            xhttp.open("GET", "/dc/council/code/", true);
+            xhttp.send();
+            
+            window.searchHost = 'https://search.code.dccouncil.us';
+            window.queryUrl = '/v1/search';
           </script>
     <noscript>
       <p>
@@ -62,19 +74,7 @@
           <p>
             <a href="/dc/council/code/titles/6/chapters/3/">Chapter 3. Housing Redevelopment.</a>
           </p>
-          <h2>Publication Information</h2>
-          <h3>Current through May 5, 2018</h3>
-          <dl id="recency">
-            <dt>Last codified D.C. Law:</dt>
-            <dd>
-          Law 22-98 effective May 5, 2018</dd>
-            <dt>Last codified Emergency Law:</dt>
-            <dd>
-          Act 21-354 effective Mar. 23, 2016</dd>
-            <dt>Last codified Federal Law:</dt>
-            <dd>
-          Public Law  approved May 5, 2017</dd>
-          </dl>
+          <div class="document-info"/>
           <section class="cta">
             <p>
               <a href="mailto:code@dccouncil.us?subject=[ERROR]+/dc/council/code/titles/6/chapters/2/subchapters/II/">Report Error</a>
@@ -88,20 +88,48 @@
         <section class="col8 body">
           <h1>Subchapter II. District of Columbia Housing Authority, 1994.</h1>
           <section class="line-group toc child-link">
-            <a href="/dc/council/code/sections/6-251.html">§ 6–251. Definitions. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-252.html">§ 6–252. Establishment of the District of Columbia Housing Authority. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-253.html">§ 6–253. Dissolution of the Department of Public and Assisted Housing. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-254.html">§ 6–254. Board of Commissioners of the District of Columbia Housing Authority. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-255.html">§ 6–255. Executive Director. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-256.html">§ 6–256. Resident Council Advisory Board and tenant election of members of resident councils and Resident Council Advisory Board. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-257.html">§ 6–257. Social services teams in public housing. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-258.html">§ 6–258. Transfer of DPAH’s Employees to the Authority. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-258.01.html">§ 6–258.01. District of Columbia Housing Authority Police Force. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-259.html">§ 6–259. Procurement. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-260.html">§ 6–260. Conflict of interest. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-261.html">§ 6–261. Local law. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-262.html">§ 6–262. Tax exemption. [Repealed]</a>
-            <a href="/dc/council/code/sections/6-263.html">§ 6–263. Disposition of assets on dissolution. [Repealed]</a>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-251.html">§ 6–251. Definitions. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-252.html">§ 6–252. Establishment of the District of Columbia Housing Authority. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-253.html">§ 6–253. Dissolution of the Department of Public and Assisted Housing. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-254.html">§ 6–254. Board of Commissioners of the District of Columbia Housing Authority. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-255.html">§ 6–255. Executive Director. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-256.html">§ 6–256. Resident Council Advisory Board and tenant election of members of resident councils and Resident Council Advisory Board. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-257.html">§ 6–257. Social services teams in public housing. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-258.html">§ 6–258. Transfer of DPAH’s Employees to the Authority. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-258.01.html">§ 6–258.01. District of Columbia Housing Authority Police Force. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-259.html">§ 6–259. Procurement. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-260.html">§ 6–260. Conflict of interest. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-261.html">§ 6–261. Local law. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-262.html">§ 6–262. Tax exemption. [Repealed]</a>
+            </p>
+            <p class="toc-link-container">
+              <a href="/dc/council/code/sections/6-263.html">§ 6–263. Disposition of assets on dissolution. [Repealed]</a>
+            </p>
           </section>
           <section class="content">
             <hr/>
@@ -118,24 +146,24 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-121.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary amendment of section, see § 2(a) of the District of Columbia Housing Authority Police Emergency Amendment Act of 1996 (D.C. Act 11-357, August 8, 1996,  43 DCR 4628), § 2(a) of the District of Columbia Housing Authority Police Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-417, October 28, 1996,  43 DCR 6080), and § 2(a) of the District of Columbia Housing Authority Police Second Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-470, December 30, 1996,  44 DCR 184).</p>
-                <p>For temporary amendment of section, see § 2 of the District of Columbia Housing Authority Police Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-67, April 18, 1997,  44 DCR 2617).</p>
-                <p>For temporary amendment of section, see § 2(a) of the Housing Authority Police Emergency Amendment Act of 1997 (D.C. Act 12-217, November 21, 1997,  44 DCR 7622).</p>
-                <p>For temporary amendment of section, see § 2(a) of the Housing Authority Police Congressional Recess Emergency Amendment Act of 1998 (D.C. Act 12-289, February 27, 1998,  45 DCR 1743).</p>
-                <p>For temporary amendment of section, see § 2(a) of the Housing Authority Emergency Amendment Act of 1998 (D.C. Act 12-569, January 12, 1999,  45 DCR 887).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(a) of the Housing Authority Emergency Amendment Act of 1999 (D.C. Act 13-200, December 1, 1999,  46 DCR 10448).</p>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(a) of the Housing Authority Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-274, March 7, 2000,  47 DCR 2008).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(a) of the Housing Authority Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-274, March 7, 2000,  47 DCR 2008).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(a) of the Housing Authority Emergency Amendment Act of 1999 (D.C. Act 13-200, December 1, 1999,  46 DCR 10448).</p>
+                <p>For temporary amendment of section, see § 2(a) of the Housing Authority Emergency Amendment Act of 1998 (D.C. Act 12-569, January 12, 1999,  45 DCR 887).</p>
+                <p>For temporary amendment of section, see § 2(a) of the Housing Authority Police Congressional Recess Emergency Amendment Act of 1998 (D.C. Act 12-289, February 27, 1998,  45 DCR 1743).</p>
+                <p>For temporary amendment of section, see § 2(a) of the Housing Authority Police Emergency Amendment Act of 1997 (D.C. Act 12-217, November 21, 1997,  44 DCR 7622).</p>
+                <p>For temporary amendment of section, see § 2 of the District of Columbia Housing Authority Police Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-67, April 18, 1997,  44 DCR 2617).</p>
+                <p>For temporary amendment of section, see § 2(a) of the District of Columbia Housing Authority Police Emergency Amendment Act of 1996 (D.C. Act 11-357, August 8, 1996,  43 DCR 4628), § 2(a) of the District of Columbia Housing Authority Police Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-417, October 28, 1996,  43 DCR 6080), and § 2(a) of the District of Columbia Housing Authority Police Second Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-470, December 30, 1996,  44 DCR 184).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(a) of District of Columbia Housing Authority Police Temporary Amendment Act of 1996 (D.C. Law 11-208, April 9, 1997, law notification  44 DCR 2403).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(a) of Housing Authority Temporary Amendment Act of 1998 (D.C. Law 12-272, April 27, 1999, law notification  46 DCR 4278).</p>
                 <p>For temporary (225 day) amendment of section, see § 2(a) of Housing Authority Temporary Amendment Act of 1999 (D.C. Law 13-92, April 12, 2000, law notification  47 DCR 2843).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(a) of Housing Authority Temporary Amendment Act of 1998 (D.C. Law 12-272, April 27, 1999, law notification  46 DCR 4278).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(a) of District of Columbia Housing Authority Police Temporary Amendment Act of 1996 (D.C. Law 11-208, April 9, 1997, law notification  44 DCR 2403).</p>
                 <h4>Editor's Notes</h4>
-                <p><a class="internal-link" href="/dc/council/laws/10-243.html">D.C. Law 10-243</a>, § 2 ( 42 DCR 91), eff. March 21, 1995, provided:</p>
-                <p>“Sec. 2. Purpose.</p>
-                <p>“(a) The Council of the District of Columbia hereby finds: (1) That the quality of life for those citizens who require housing assistance is inextricably linked to safe and affordable housing; (2) That quality public housing sustains and creates opportunities for self-sufficiency, and social and economic improvement; (3) That the inability of some residents to provide shelter for themselves and their families compels them to live in unsafe and unhealthy conditions; and (4) That these conditions are detrimental to the health and welfare of District residents and adversely affect the economy of the District.</p>
                 <p>“(b) The Council determines that it is necessary and in the public interest to create an independent housing authority in the District of Columbia and to confer and vest in the authority all powers necessary or appropriate in order that it may engage in providing and maintaining quality public housing in the District of Columbia.”</p>
+                <p>“(a) The Council of the District of Columbia hereby finds: (1) That the quality of life for those citizens who require housing assistance is inextricably linked to safe and affordable housing; (2) That quality public housing sustains and creates opportunities for self-sufficiency, and social and economic improvement; (3) That the inability of some residents to provide shelter for themselves and their families compels them to live in unsafe and unhealthy conditions; and (4) That these conditions are detrimental to the health and welfare of District residents and adversely affect the economy of the District.</p>
+                <p>“Sec. 2. Purpose.</p>
+                <p><a class="internal-link" href="/dc/council/laws/10-243.html">D.C. Law 10-243</a>, § 2 ( 42 DCR 91), eff. March 21, 1995, provided:</p>
               </section>
             </section>
             <hr/>
@@ -152,8 +180,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-122.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -172,8 +200,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-123.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -192,8 +220,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-124.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -212,8 +240,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-125.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -232,8 +260,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-126.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -252,8 +280,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-127.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -272,8 +300,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-128.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -292,17 +320,17 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-128.1.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary addition of section, see § 2(b) of the District of Columbia Housing Authority Police Emergency Amendment Act of 1996 (D.C. Act 11-357, August 8, 1996,  43 DCR 4628), § 2(b) of the District of Columbia Housing Authority Police Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-417, October 28, 1996,  43 DCR 6080), § 2(b) of the District of Columbia Housing Authority Police Second Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-470, December 30, 1996,  44 DCR 184), § 2(b) of the District of Columbia Housing Authority Police Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-67, Apr. 18, 1997,  44 DCR 2617), and § 2(b) of the Housing Authority Police Emergency Amendment Act of 1997 (D.C. Act 12-217, November 21, 1997,  44 DCR 7622).</p>
-                <p>For temporary addition of section, see § 2(b) of the Housing Authority Police Congressional Recess Emergency Amendment Act of 1998 (D.C. Act 12-289, February 27, 1998,  45 DCR 1743).</p>
-                <p>For temporary amendment of section, see § 2(b) of the Housing Authority Emergency Amendment Act of 1998 (D.C. Act 12-569, January 12, 1999,  45 DCR 887).</p>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
-                <p>For temporary (90-day) amendment of section, see § 2(b) of the Housing Authority Emergency Amendment Act of 1999 (D.C. Act 13-200, December 1, 1999,  46 DCR 10448).</p>
                 <p>For temporary (90-day) amendment of section, see § 2(b) of the Housing Authority Congressional Review Emergency Amendment Act of 2000 (D.C. Act 13-274, March 7, 2000,  47 DCR 2008).</p>
+                <p>For temporary (90-day) amendment of section, see § 2(b) of the Housing Authority Emergency Amendment Act of 1999 (D.C. Act 13-200, December 1, 1999,  46 DCR 10448).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
+                <p>For temporary amendment of section, see § 2(b) of the Housing Authority Emergency Amendment Act of 1998 (D.C. Act 12-569, January 12, 1999,  45 DCR 887).</p>
+                <p>For temporary addition of section, see § 2(b) of the Housing Authority Police Congressional Recess Emergency Amendment Act of 1998 (D.C. Act 12-289, February 27, 1998,  45 DCR 1743).</p>
+                <p>For temporary addition of section, see § 2(b) of the District of Columbia Housing Authority Police Emergency Amendment Act of 1996 (D.C. Act 11-357, August 8, 1996,  43 DCR 4628), § 2(b) of the District of Columbia Housing Authority Police Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-417, October 28, 1996,  43 DCR 6080), § 2(b) of the District of Columbia Housing Authority Police Second Congressional Review Emergency Amendment Act of 1996 (D.C. Act 11-470, December 30, 1996,  44 DCR 184), § 2(b) of the District of Columbia Housing Authority Police Congressional Review Emergency Amendment Act of 1997 (D.C. Act 12-67, Apr. 18, 1997,  44 DCR 2617), and § 2(b) of the Housing Authority Police Emergency Amendment Act of 1997 (D.C. Act 12-217, November 21, 1997,  44 DCR 7622).</p>
                 <h4>Temporary Legislation</h4>
-                <p>For temporary (225 day) amendment of section, see § 2(b) of Housing Authority Temporary Amendment Act of 1998 (D.C. Law 12-272, April 27, 1999, law notification  46 DCR 4278).</p>
-                <p>For temporary (225 day) amendment of section, see § 2(b) of Housing Authority Temporary Amendment Act of 1999 (D.C. Law 13-92, April 12, 2000, law notification  47 DCR 2843).</p>
                 <p>For temporary (225 day) addition of section, see § 2(b) of District of Columbia Housing Authority Police Temporary Amendment Act of 1996 (D.C. Law 11-208, April 9, 1997, law notification  44 DCR 2403).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(b) of Housing Authority Temporary Amendment Act of 1999 (D.C. Law 13-92, April 12, 2000, law notification  47 DCR 2843).</p>
+                <p>For temporary (225 day) amendment of section, see § 2(b) of Housing Authority Temporary Amendment Act of 1998 (D.C. Law 12-272, April 27, 1999, law notification  46 DCR 4278).</p>
               </section>
             </section>
             <hr/>
@@ -319,8 +347,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-129.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -339,8 +367,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-130.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -359,8 +387,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-131.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -379,8 +407,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-132.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
@@ -399,8 +427,8 @@
                 <h4>Prior Codifications</h4>
                 <p>1981 Ed., § 5-133.</p>
                 <h4>Emergency Legislation</h4>
-                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Congressional Review Emergency Act of 2000 (D.C. Act 13-346, June 5, 2000,  47 DCR 4980).</p>
+                <p>For temporary (90-day) repeal of sections, see § 29 of the District of Columbia Housing Authority Emergency Act of 1999 (D.C. Act 13-259, February 9, 2000,  47 DCR 1129).</p>
                 <h4>Editor's Notes</h4>
                 <p>Purpose of Law 10-243: See Historical and Statutory Notes following § <a class="internal-link" href="/dc/council/code/sections/6-251.html">6-251</a>.</p>
               </section>
